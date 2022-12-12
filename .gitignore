@@ -1,0 +1,7 @@
+# Quarto
+**/*.html
+
+# VSCode
+**/.vscode
+
+
