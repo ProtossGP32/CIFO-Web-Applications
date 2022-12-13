@@ -1,16 +1,23 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "first-project",
+    "objectID": "walkthrough.html",
+    "href": "walkthrough.html",
+    "title": "Hello, Quarto",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Markdown is an easy to read and write text format:\n\nIt’s plain text so works well with version control\nIt can be rendered into HTML, PDF, and more\nLearn more at: https://quarto.org/docs/authoring/"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "objectID": "walkthrough.html#code-cell",
+    "href": "walkthrough.html#code-cell",
+    "title": "Hello, Quarto",
+    "section": "Code Cell",
+    "text": "Code Cell\nHere is a Python code cell.\nInstall the VS Code Python Extension to enable running this cell interactively.\n\nimport os\nos.cpu_count()\n\n8"
+  },
+  {
+    "objectID": "walkthrough.html#equation",
+    "href": "walkthrough.html#equation",
+    "title": "Hello, Quarto",
+    "section": "Equation",
+    "text": "Equation\nUse LaTeX to write equations:\n\\[\n\\chi' = \\sum_{i=1}^n k_i s_i^2\n\\]"
   }
 ]
