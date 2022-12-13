@@ -5,6 +5,9 @@
 # VSCode
 **/.vscode
 
+# IntelliJ
+**/*.idea
+
 # Vim
 **/*.swp
 
