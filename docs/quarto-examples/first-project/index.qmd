@@ -1,7 +1,5 @@
 ---
-title: "first-project"
+title: "Index"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+CIFO Web Applications course documentation
