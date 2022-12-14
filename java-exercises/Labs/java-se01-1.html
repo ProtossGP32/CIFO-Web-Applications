@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -82,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../first-project/index.html">
+    <a class="nav-link" href="../../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -134,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../first-project/about.html">
+    <a class="nav-link" href="../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -286,12 +349,121 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="classes-specifications">Classes specifications</h2>
 <section id="person" class="level3">
 <h3 class="anchored" data-anchor-id="person">Person</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">example</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Getter</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">NoArgsConstructor</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Setter</span><span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="at">@Getter</span> <span class="at">@Setter</span> <span class="at">@NoArgsConstructor</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">public</span> <span class="kw">class</span> Person <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="kw">private</span> <span class="bu">String</span> address<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="kw">private</span> <span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="kw">private</span> Account account<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>    <span class="kw">public</span> <span class="fu">Person</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="bu">String</span> address<span class="op">,</span> <span class="dt">int</span> age<span class="op">,</span> Account account<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">address</span> <span class="op">=</span> address<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">age</span> <span class="op">=</span> age<span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">account</span> <span class="op">=</span> account<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="op">}</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getBalance</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">account</span><span class="op">.</span><span class="fu">getBalance</span><span class="op">();</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="op">}</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setBalance</span><span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">account</span><span class="op">.</span><span class="fu">setBalance</span><span class="op">(</span>amount<span class="op">);</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="op">}</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getPin</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">account</span><span class="op">.</span><span class="fu">getPin</span><span class="op">();</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>    <span class="op">}</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setPin</span><span class="op">(</span><span class="bu">String</span> newPin<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">account</span><span class="op">.</span><span class="fu">setPin</span><span class="op">(</span>newPin<span class="op">);</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>    <span class="op">}</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="account" class="level3">
 <h3 class="anchored" data-anchor-id="account">Account</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">example</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Getter</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">NoArgsConstructor</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Setter</span><span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="at">@Getter</span> <span class="at">@Setter</span> <span class="at">@NoArgsConstructor</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">public</span> <span class="kw">class</span> Account <span class="op">{</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="kw">private</span> <span class="bu">String</span> accountNumber<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="kw">private</span> <span class="bu">String</span> pin<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="kw">private</span> <span class="dt">double</span> balance<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="kw">public</span> <span class="fu">Account</span><span class="op">(</span><span class="bu">String</span> accountNumber<span class="op">,</span> <span class="bu">String</span> pin<span class="op">,</span> <span class="dt">double</span> balance<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">accountNumber</span> <span class="op">=</span> accountNumber<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">pin</span> <span class="op">=</span> pin<span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">balance</span> <span class="op">=</span> balance<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    <span class="op">}</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span><span class="op">(</span><span class="bu">Object</span> compared<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">==</span> compared<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>        <span class="op">}</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>        <span class="cf">if</span> <span class="op">(!(</span>compared <span class="kw">instanceof</span> Account<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>        <span class="op">}</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a></span>
+<span id="cb2-27"><a href="#cb2-27"></a>        Account comparedAccount <span class="op">=</span> <span class="op">(</span>Account<span class="op">)</span> compared<span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a></span>
+<span id="cb2-29"><a href="#cb2-29"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">accountNumber</span><span class="op">.</span><span class="fu">equals</span><span class="op">(</span>comparedAccount<span class="op">.</span><span class="fu">accountNumber</span><span class="op">)</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a>                <span class="kw">this</span><span class="op">.</span><span class="fu">pin</span><span class="op">.</span><span class="fu">equals</span><span class="op">(</span>comparedAccount<span class="op">.</span><span class="fu">pin</span><span class="op">)</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a>                <span class="kw">this</span><span class="op">.</span><span class="fu">balance</span> <span class="op">==</span> comparedAccount<span class="op">.</span><span class="fu">balance</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a>        <span class="op">}</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a></span>
+<span id="cb2-35"><a href="#cb2-35"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a>    <span class="op">}</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="accountmanager" class="level3">
 <h3 class="anchored" data-anchor-id="accountmanager">AccountManager</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">example</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Getter</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">NoArgsConstructor</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Setter</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="at">@Getter</span> <span class="at">@Setter</span> <span class="at">@NoArgsConstructor</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">/**</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a> <span class="co">*</span> Public class with static methods to manage accounts between persons</span>
+<span id="cb3-10"><a href="#cb3-10"></a> <span class="co">*/</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">public</span> <span class="kw">class</span> AccountManager <span class="op">{</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">boolean</span> <span class="fu">withdrawal</span><span class="op">(</span>Person person<span class="op">,</span> <span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>        <span class="cf">if</span> <span class="op">(</span>amount <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> amount <span class="op">&lt;=</span> person<span class="op">.</span><span class="fu">getBalance</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>            person<span class="op">.</span><span class="fu">setBalance</span><span class="op">(</span>person<span class="op">.</span><span class="fu">getBalance</span><span class="op">()</span> <span class="op">-</span> amount<span class="op">);</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>        <span class="op">}</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>    <span class="op">}</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">boolean</span> <span class="fu">transfer</span><span class="op">(</span>Person sender<span class="op">,</span> Person receiver<span class="op">,</span> <span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>        <span class="cf">if</span> <span class="op">(</span>amount <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> amount <span class="op">&lt;=</span> sender<span class="op">.</span><span class="fu">getBalance</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>            sender<span class="op">.</span><span class="fu">setBalance</span><span class="op">(</span>sender<span class="op">.</span><span class="fu">getBalance</span><span class="op">()</span> <span class="op">-</span> amount<span class="op">);</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>            receiver<span class="op">.</span><span class="fu">setBalance</span><span class="op">(</span>receiver<span class="op">.</span><span class="fu">getBalance</span><span class="op">()</span> <span class="op">+</span> amount<span class="op">);</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a>        <span class="op">}</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a>    <span class="op">}</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a></span>
+<span id="cb3-29"><a href="#cb3-29"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">boolean</span> <span class="fu">changePin</span><span class="op">(</span>Person person<span class="op">,</span> <span class="bu">String</span> oldPin<span class="op">,</span> <span class="bu">String</span> newPin<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a>        <span class="cf">if</span> <span class="op">(</span>person<span class="op">.</span><span class="fu">getPin</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>oldPin<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>            person<span class="op">.</span><span class="fu">setPin</span><span class="op">(</span>newPin<span class="op">);</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a>        <span class="op">}</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a>    <span class="op">}</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -553,7 +725,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">
         <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../../first-project/about.html">About</a>
+    <a class="nav-link" href="../../about.html">About</a>
   </li>  
 </ul>
       </div>

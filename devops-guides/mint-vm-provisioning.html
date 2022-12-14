@@ -145,7 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../first-project/index.html">
+    <a class="nav-link" href="../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -197,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../first-project/about.html">
+    <a class="nav-link" href="../about.html">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -447,7 +447,7 @@ Tip
 <ol start="3" type="A">
 <li>Once the ISO is mounted inside the guest OS, it should try to execute the <code>VBoxLinuxAdditions.run</code> file in the ISO root; if not, open a terminal and execute</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /media/cifo-web/VBox_GAs_<span class="op">&lt;</span>version<span class="op">&gt;</span>/VBoxLinuxAdditions.run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">sudo</span> /media/cifo-web/VBox_GAs_<span class="op">&lt;</span>version<span class="op">&gt;</span>/VBoxLinuxAdditions.run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -475,24 +475,24 @@ Note
 </div>
 </div>
 <p>The output should be like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cifo-web@cifoweb-VirtualBox:/media/cifo-web/VBox_GAs_6.1.40$</span> sudo ./VBoxLinuxAdditions.run</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Verifying</span> archive integrity... All good.</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Uncompressing</span> VirtualBox 6.1.40 Guest Additions for Linux........</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions installer</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Copying</span> additional installer modules ...</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Installing</span> additional modules ...</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions: Starting.</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions: Setting up modules</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions: Building the VirtualBox Guest Additions kernel </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">modules.</span>  This may take a while.</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions: To build modules for other installed kernels, run</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions:   /sbin/rcvboxadd quicksetup <span class="op">&lt;</span>version<span class="op">&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions: or</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions:   /sbin/rcvboxadd quicksetup all</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions: Building the modules for kernel 5.15.0-41-generic.</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ex">update-initramfs:</span> Generating /boot/initrd.img-5.15.0-41-generic</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ex">VirtualBox</span> Guest Additions: Running kernel modules will not be replaced until </span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">the</span> system is restarted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">cifo-web@cifoweb-VirtualBox:/media/cifo-web/VBox_GAs_6.1.40$</span> sudo ./VBoxLinuxAdditions.run</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">Verifying</span> archive integrity... All good.</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">Uncompressing</span> VirtualBox 6.1.40 Guest Additions for Linux........</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="ex">VirtualBox</span> Guest Additions installer</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">Copying</span> additional installer modules ...</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">Installing</span> additional modules ...</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">VirtualBox</span> Guest Additions: Starting.</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">VirtualBox</span> Guest Additions: Setting up modules</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="ex">VirtualBox</span> Guest Additions: Building the VirtualBox Guest Additions kernel </span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="ex">modules.</span>  This may take a while.</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="ex">VirtualBox</span> Guest Additions: To build modules for other installed kernels, run</span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="ex">VirtualBox</span> Guest Additions:   /sbin/rcvboxadd quicksetup <span class="op">&lt;</span>version<span class="op">&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">VirtualBox</span> Guest Additions: or</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="ex">VirtualBox</span> Guest Additions:   /sbin/rcvboxadd quicksetup all</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="ex">VirtualBox</span> Guest Additions: Building the modules for kernel 5.15.0-41-generic.</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="ex">update-initramfs:</span> Generating /boot/initrd.img-5.15.0-41-generic</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="ex">VirtualBox</span> Guest Additions: Running kernel modules will not be replaced until </span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="ex">the</span> system is restarted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="4" type="A">
 <li>Restart your guest OS</li>
 </ol>
@@ -782,7 +782,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">
         <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../first-project/about.html">About</a>
+    <a class="nav-link" href="../about.html">About</a>
   </li>  
 </ul>
       </div>
