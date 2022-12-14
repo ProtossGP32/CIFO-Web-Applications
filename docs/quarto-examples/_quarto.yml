@@ -11,6 +11,8 @@ website:
         menu:
         - href: devops-guides/mint-vm-provisioning.qmd
           text: VM provisioning
+      - href: java-exercises/index.qmd
+        text: Java exercises
       - href: walkthrough/walkthrough.qmd
         text: Walkthrough
       - href: first-project/about.qmd

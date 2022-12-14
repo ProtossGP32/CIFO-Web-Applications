@@ -18,7 +18,7 @@ In this page we're going to define the steps to create and install all the requi
 
 :::{.callout-tip}
 If you add the name of the Linux distribution that you plan to install to this VM, VirtualBox will select the closest OS type and version. This is useful as VirtualBox sets initial values to RAM and disk size based on the OS to install (you can always change them later).
-For example, if you set `Linux Mint` as the VM name, the OS will be set to `Linux` type and `Ubuntu (64-bit)`. version
+For example, if you set `Linux Mint` as the VM name, the OS will be set to `Linux` type and `Ubuntu (64-bit)` version.
 :::
 
 (@) Create a virtual disk by defining its path, size and type, as well as how data shall be stored in our physical hard drive
