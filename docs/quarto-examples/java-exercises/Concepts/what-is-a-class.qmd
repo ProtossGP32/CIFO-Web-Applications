@@ -1,0 +1,14 @@
+---
+title: "What is a class?"
+---
+# Class definition
+A *class* is a set of parameters and methods that define the abstraction of an object.
+A *class* has the following elements:
+
+* *Fields:* these are the parameters
+* *Constructor:* method that creates a new class object. A constructor can accept input parameters to initialize
+* *Methods:* functions that can use the *fields* values to compute required outputs or update its own fields
+
+## Difference between class and object
+* An *object* is an instance of a *class*
+* Each *object* is independent of any other *object* of the same *class*

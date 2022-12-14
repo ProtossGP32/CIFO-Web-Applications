@@ -1,0 +1,32 @@
+---
+title: "LAB#SE01-1"
+---
+# Maven/Gradle Person and Account
+
+::: {.panel-tabset}
+## Context
+**Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
+
+**Knowledge of algotighms and data structures** to implement the required classes.
+
+## Goal
+**Create three classes in Java** (`Person`, `Account` and `Manager`) that implement different algorightms or data structures.
+
+**Test these classes** using JUnit.
+
+## Tasks
+(@) Create **a new Maven or Gradle project** and setting up the project structure
+(@) Modify the project's `pom.xml` or `build.gradle` file to import necessary dependencies, including **JUnit** for testing
+(@) Implement the three required classes in Java
+(@) Implement two basic patter-designs: **singleton** and **think about factory**
+(@) Write **JUnit tests** to verify that classes work as expected
+
+## Optional
+*   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
+:::
+
+## Classes specifications
+### Person
+### Account
+### AccountManager
+
