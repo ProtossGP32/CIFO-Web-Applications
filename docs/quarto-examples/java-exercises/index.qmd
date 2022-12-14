@@ -1,0 +1,5 @@
+---
+title: "Java exercises"
+---
+
+This page contains access to the Java exercises done during the CIFO Web Applications course
