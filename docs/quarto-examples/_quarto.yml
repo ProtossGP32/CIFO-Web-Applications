@@ -16,12 +16,12 @@ website:
     # Left side
     left:
       - text: Home
-        file: first-project/index.qmd
+        file: index.qmd
       - sidebar:devops-guides
       - sidebar:java-exercises
       - sidebar:walkthrough
       - text: About
-        file: first-project/about.qmd
+        file: about.qmd
 
     # Right side
     right:
@@ -52,7 +52,7 @@ website:
   page-footer:
     center:
       - text: "About"
-        file: first-project/about.qmd
+        file: about.qmd
 
   # Search options
   search:
