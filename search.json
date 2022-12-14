@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "first-project/index.html",
+    "href": "first-project/index.html",
+    "title": "Index",
+    "section": "",
+    "text": "CIFO Web Applications course documentation"
+  },
+  {
+    "objectID": "first-project/about.html",
+    "href": "first-project/about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
     "objectID": "devops-guides/mint-vm-provisioning.html",
     "href": "devops-guides/mint-vm-provisioning.html",
     "title": "Virtual Machine Provisioning",
@@ -21,18 +35,11 @@
     "text": "VirtualBox additional configurations\nNow VirtualBox is rendering the VM to the native resolution defined within our Linux Mint OS (guest machine). In order to dinamically change the resolution based on the window size, we must install the VirtualBox Guest Additions inside it\n\nWhat does Guest Additions enable?\n\nEnable users to seamlessly move mouse pointer between host and guest OS.\nAllow guest OS to have read and write access to hard drives on the host OS, so you can transfer files between them.\nPower up the graphics/video ability of the guest OS. The screen resolution of guest OS can be automatically adjusted and 3D graphics can be accelerated.\nEnable bidirectional shared clipboard between host and guest OS, so you can copy and paste stuff between them.\n\n\n\nInstallation steps\n\nOn the Devices drop-down menu, select Insert Guest Additions CD image \nVirtual Box prompts if we want to download the ISO file. Accept all warnings regarding this:\n\n\n\n\n\n\n\n\n(a) Virtual Box - Download Guest Additions\n\n\n\n\n\n\n\n\n\n(b) Virtual Box - Accept Download Guest Additions\n\n\n\n\n\n\n\n\n\n(c) Virtual Box - Mount Guest Additions\n\n\n\n\nFigure 1: Guest Additions warnings\n\n\n\nOnce the ISO is mounted inside the guest OS, it should try to execute the VBoxLinuxAdditions.run file in the ISO root; if not, open a terminal and execute\n\nsudo /media/cifo-web/VBox_GAs_<version>/VBoxLinuxAdditions.run\n\n\n\n\n\n\nWarning\n\n\n\nIf the autoexec function didn’t launch, this doesn’t mean there’s something wrong with your guest OS; it might mean that it has this feature disabled by default. Check your Desktop manager options.\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe mount path of the Guest Additions ISO may be different depending on the username and the ISO version, so you might have to change it.\n\n\nThe output should be like this:\ncifo-web@cifoweb-VirtualBox:/media/cifo-web/VBox_GAs_6.1.40$ sudo ./VBoxLinuxAdditions.run\nVerifying archive integrity... All good.\nUncompressing VirtualBox 6.1.40 Guest Additions for Linux........\nVirtualBox Guest Additions installer\nCopying additional installer modules ...\nInstalling additional modules ...\nVirtualBox Guest Additions: Starting.\nVirtualBox Guest Additions: Setting up modules\nVirtualBox Guest Additions: Building the VirtualBox Guest Additions kernel \nmodules.  This may take a while.\nVirtualBox Guest Additions: To build modules for other installed kernels, run\nVirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup <version>\nVirtualBox Guest Additions: or\nVirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup all\nVirtualBox Guest Additions: Building the modules for kernel 5.15.0-41-generic.\nupdate-initramfs: Generating /boot/initrd.img-5.15.0-41-generic\nVirtualBox Guest Additions: Running kernel modules will not be replaced until \nthe system is restarted\n\nRestart your guest OS\n\n\n\nGuest Additions configurations\n\nEnable fluid window\nFluid mode is automatically enabled after the guest OS restart. If not, you can always enable it with the shortcut Right Ctrl + L.\n\n\nEnable bidirectional clipboard\nMake sure the clipboard is set to bidirectional; after that, copy-paste commands should work between Host and Guest machines."
   },
   {
-    "objectID": "first-project/about.html",
-    "href": "first-project/about.html",
-    "title": "About",
+    "objectID": "java-exercises/index.html",
+    "href": "java-exercises/index.html",
+    "title": "Java exercises",
     "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "first-project/index.html",
-    "href": "first-project/index.html",
-    "title": "Index",
-    "section": "",
-    "text": "CIFO Web Applications course documentation"
+    "text": "This page contains access to the Java exercises done during the CIFO Web Applications course"
   },
   {
     "objectID": "walkthrough/walkthrough.html",
