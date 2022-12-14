@@ -123,6 +123,11 @@ the system is restarted
 
 D.  Restart your guest OS
 
+:::{.callout-note}
+See this video if you have any more doubts regarding Guest Additions in Linux Mint:
+{{< video https://youtu.be/hbG5mU1Hb9s >}}
+:::
+
 ### Guest Additions configurations
 #### Enable fluid window
 Fluid mode is automatically enabled after the guest OS restart. If not, you can always enable it with the shortcut `Right Ctrl + L`.
