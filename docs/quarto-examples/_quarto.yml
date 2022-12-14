@@ -68,8 +68,13 @@ website:
 
 format:
   html:
+    # Theme options
     theme:
       light: [cosmo, theme.scss]
       dark: [cosmo, theme-dark.scss]
     css: styles.css
+    # Table of Contents options
     toc: true
+    # Code snippets options
+    code-line-numbers: true
+    code-overflow: scroll
