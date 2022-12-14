@@ -1,0 +1,21 @@
+---
+title: "What is Maven?"
+---
+# Introduction
+*Maven* is a Java dependency manager
+
+# Dependencies
+## Description
+## Scope
+[Maven documentation](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope)
+
+Each dependency can define its `scope`, used to limit the transitivity of a dependency and to determine when a dependency is included in a classpath.
+
+There are 6 different scopes:
+
+* `compile`: default scope, if none is defined. The dependency is available in all classpaths of a project
+* `provided`: similar to `compile`, but JDK or a container is expected to provide the dependency at runtime
+* `runtime`: the dependency is not required for compilation, but is for execution
+* `test`: the dependency is only available for test compilation and execution phases; not transitive
+* `system`: similar to `provided`, except that a JAR that contains it is explicitly provided; the artifact is always available and is not looked up in a repository
+* `import`: only support on a dependency of type `pom` in the `<dependencyManager>` section. The dependency is to be replaced with the effective list of dependencies in the specified POM's `<dependencyManagement>` section. Since they are replaced, dependencies with a scope of `import` do not actually participate in limiting the transitivity of a dependency

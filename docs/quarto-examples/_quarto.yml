@@ -3,20 +3,34 @@ project:
 
 website:
   title: "CIFO - Web Applications"
+
+  # Navigation bar
   navbar:
     left:
-      - href: first-project/index.qmd
-        text: Home
-      - text: DevOps guides
-        menu:
-        - href: devops-guides/mint-vm-provisioning.qmd
-          text: VM provisioning
-      - href: java-exercises/index.qmd
-        text: Java exercises
-      - href: walkthrough/walkthrough.qmd
-        text: Walkthrough
-      - href: first-project/about.qmd
-        text: About
+      - text: Home
+        file: first-project/index.qmd
+      - sidebar:devops-guides
+      - sidebar:java-exercises
+      - sidebar:walkthrough
+      - text: About
+        file: first-project/about.qmd
+        
+  # Sidebars
+  sidebar:
+    - id: devops-guides
+      title: "DevOps guides"
+      style: "docked"
+      contents: devops-guides/**
+
+    - id: java-exercises
+      title: "Java exercises"
+      style: "docked"
+      contents: java-exercises/**
+
+    - id: walkthrough
+      title: "Walkthrough"
+      style: "docked"
+      contents: walkthrough/**
 
 format:
   html:
