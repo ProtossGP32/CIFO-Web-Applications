@@ -1,6 +1,9 @@
 project:
   type: website
 
+filters:
+  - include-code-files
+
 website:
   # Website info
   title: "CIFO - Web Applications"

@@ -8,6 +8,11 @@
 # IntelliJ
 **/*.idea
 
+# Java outputs
+**/target
+
 # Vim
 **/*.swp
 
+
+/.luarc.json
