@@ -27,6 +27,16 @@ title: "LAB#SE01-1"
 
 ## Classes specifications
 ### Person
+```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/Person.java"}
+
+```
+
 ### Account
+```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/Account.java"}
+
+```
 ### AccountManager
+```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/AccountManager.java"}
+
+```
 
