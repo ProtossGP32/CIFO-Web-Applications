@@ -2,24 +2,71 @@ project:
   type: website
 
 website:
+  # Website info
   title: "CIFO - Web Applications"
+  site-url: https://protossgp32.github.io/CIFO-Web-Applications
+
+  # Repository info
+  repo-url: https://github.com/protossgp32/CIFO-Web-Applications
+  repo-subdir: docs/quarto-examples
+  repo-actions: [edit, issue]
+
+  # Navigation bar
   navbar:
+    # Left side
     left:
-      - href: first-project/index.qmd
-        text: Home
-      - text: DevOps guides
-        menu:
-        - href: devops-guides/mint-vm-provisioning.qmd
-          text: VM provisioning
-      - href: java-exercises/index.qmd
-        text: Java exercises
-      - href: walkthrough/walkthrough.qmd
-        text: Walkthrough
-      - href: first-project/about.qmd
-        text: About
+      - text: Home
+        file: index.qmd
+      - sidebar:devops-guides
+      - sidebar:java-exercises
+      - sidebar:walkthrough
+      - text: About
+        file: about.qmd
+
+    # Right side
+    right:
+      - icon: github
+        href: https://github.com/protossgp32
+        aria-label: GitHub
+
+        
+  # Sidebars
+  sidebar:
+    # Categories
+    - id: devops-guides
+      title: "DevOps guides"
+      style: "docked"
+      contents: devops-guides/**
+
+    - id: java-exercises
+      title: "Java exercises"
+      style: "docked"
+      contents: java-exercises/**
+
+    - id: walkthrough
+      title: "Walkthrough"
+      style: "docked"
+      contents: walkthrough/**
+
+  # Page Footer
+  page-footer:
+    center:
+      - text: "About"
+        file: about.qmd
+
+  # Search options
+  search:
+    location: navbar
+    type: overlay
+
+  # Look and feel options
+  reader-mode: true
+  
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, theme-dark.scss]
     css: styles.css
     toc: true
