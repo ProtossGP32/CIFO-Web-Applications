@@ -71,7 +71,8 @@ format:
     # Theme options
     theme:
       light: [cosmo, theme.scss]
-      dark: [cosmo, theme-dark.scss]
+      dark: superhero
+      #dark: [cosmo, theme-dark.scss]
     css: styles.css
     # Table of Contents options
     toc: true
