@@ -123,6 +123,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -286,12 +289,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#mavengradle-person-and-account" id="toc-mavengradle-person-and-account" class="nav-link active" data-scroll-target="#mavengradle-person-and-account">Maven/Gradle Person and Account</a>
   <ul class="collapse">
-  <li><a href="#classes-specifications" id="toc-classes-specifications" class="nav-link" data-scroll-target="#classes-specifications">Classes specifications</a>
+  <li><a href="#approach-1" id="toc-approach-1" class="nav-link" data-scroll-target="#approach-1">Approach 1</a>
   <ul class="collapse">
-  <li><a href="#person" id="toc-person" class="nav-link" data-scroll-target="#person">Person</a></li>
-  <li><a href="#account" id="toc-account" class="nav-link" data-scroll-target="#account">Account</a></li>
-  <li><a href="#accountmanager" id="toc-accountmanager" class="nav-link" data-scroll-target="#accountmanager">AccountManager</a></li>
+  <li><a href="#uml-diagram" id="toc-uml-diagram" class="nav-link" data-scroll-target="#uml-diagram">UML diagram</a></li>
+  <li><a href="#classes-specification" id="toc-classes-specification" class="nav-link" data-scroll-target="#classes-specification">Classes specification</a></li>
   </ul></li>
+  <li><a href="#approach-2" id="toc-approach-2" class="nav-link" data-scroll-target="#approach-2">Approach 2</a></li>
+  <li><a href="#approach-3" id="toc-approach-3" class="nav-link" data-scroll-target="#approach-3">Approach 3</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se01-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -345,10 +349,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<section id="classes-specifications" class="level2">
-<h2 class="anchored" data-anchor-id="classes-specifications">Classes specifications</h2>
-<section id="person" class="level3">
-<h3 class="anchored" data-anchor-id="person">Person</h3>
+<section id="approach-1" class="level2">
+<h2 class="anchored" data-anchor-id="approach-1">Approach 1</h2>
+<section id="uml-diagram" class="level3">
+<h3 class="anchored" data-anchor-id="uml-diagram">UML diagram</h3>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">classDiagram
+    Person "1" --o "1" Account : has
+    Person "*" -- "1" AccountManager : manages
+
+    class Person{
+        -String name
+        -String address
+        -int age
+        -Account account
+        +getBalance()
+        +setBalance()
+        +getPin()
+        +setPin()
+    }
+    
+    class Account{
+        -String accountManager
+        -String pin
+        -double balance
+        +equals(Account compared) boolean
+    }
+
+    class AccountManager{
+        +withdrawal(Person person, double amount) boolean
+        +transfer(Person sender, Person receiver, double amount) boolean
+        +changePin(Person person, String oldPin, String newPin) boolean
+    }
+    &lt;&lt;Static&gt;&gt; AccountManager
+    %%note for AccountManager "Can withdraw money from a person's account\nCan tranfer money between two persons' account\nCan change the Pin of a person's account"
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="classes-specification" class="level3">
+<h3 class="anchored" data-anchor-id="classes-specification">Classes specification</h3>
+<section id="person" class="level4">
+<h4 class="anchored" data-anchor-id="person">Person</h4>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Person class
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">example</span><span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Getter</span><span class="op">;</span></span>
@@ -385,9 +462,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-34"><a href="#cb1-34"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">account</span><span class="op">.</span><span class="fu">setPin</span><span class="op">(</span>newPin<span class="op">);</span></span>
 <span id="cb1-35"><a href="#cb1-35"></a>    <span class="op">}</span></span>
 <span id="cb1-36"><a href="#cb1-36"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="account" class="level3">
-<h3 class="anchored" data-anchor-id="account">Account</h3>
+<section id="account" class="level4">
+<h4 class="anchored" data-anchor-id="account">Account</h4>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Account class
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">example</span><span class="op">;</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Getter</span><span class="op">;</span></span>
@@ -425,9 +517,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-35"><a href="#cb2-35"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
 <span id="cb2-36"><a href="#cb2-36"></a>    <span class="op">}</span></span>
 <span id="cb2-37"><a href="#cb2-37"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="accountmanager" class="level3">
-<h3 class="anchored" data-anchor-id="accountmanager">AccountManager</h3>
+<section id="accountmanager" class="level4">
+<h4 class="anchored" data-anchor-id="accountmanager">AccountManager</h4>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">example</span><span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.</span><span class="im">Getter</span><span class="op">;</span></span>
@@ -464,9 +571,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-34"><a href="#cb3-34"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
 <span id="cb3-35"><a href="#cb3-35"></a>    <span class="op">}</span></span>
 <span id="cb3-36"><a href="#cb3-36"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
+</div>
+</div>
+</div>
 </section>
+</section>
+</section>
+<section id="approach-2" class="level2">
+<h2 class="anchored" data-anchor-id="approach-2">Approach 2</h2>
+</section>
+<section id="approach-3" class="level2">
+<h2 class="anchored" data-anchor-id="approach-3">Approach 3</h2>
+
+
 </section>
 </section>
 
