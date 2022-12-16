@@ -1,0 +1,5 @@
+# Lua extension files
+/.luarc.json
+
+# Quarto files
+**/.quarto/
