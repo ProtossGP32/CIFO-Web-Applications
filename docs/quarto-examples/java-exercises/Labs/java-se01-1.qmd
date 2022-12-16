@@ -25,18 +25,65 @@ title: "LAB#SE01-1"
 *   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
 :::
 
-## Classes specifications
-### Person
+## Approach 1
+### UML diagram
+:::{.callout-note collapse="false"}
+```{mermaid}
+classDiagram
+    Person "1" --o "1" Account : has
+    Person "*" -- "1" AccountManager : manages
+
+    class Person{
+        -String name
+        -String address
+        -int age
+        -Account account
+        +getBalance()
+        +setBalance()
+        +getPin()
+        +setPin()
+    }
+    
+    class Account{
+        -String accountManager
+        -String pin
+        -double balance
+        +equals(Account compared) boolean
+    }
+
+    class AccountManager{
+        +withdrawal(Person person, double amount) boolean
+        +transfer(Person sender, Person receiver, double amount) boolean
+        +changePin(Person person, String oldPin, String newPin) boolean
+    }
+    <<Static>> AccountManager
+    %%note for AccountManager "Can withdraw money from a person's account\nCan tranfer money between two persons' account\nCan change the Pin of a person's account"
+```
+:::
+### Classes specification
+#### Person
+:::{.callout-note collapse="true"}
+## Person class
 ```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/Person.java"}
 
 ```
+:::
 
-### Account
+#### Account
+:::{.callout-note collapse="true"}
+## Account class
 ```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/Account.java"}
 
 ```
-### AccountManager
+:::
+
+#### AccountManager
+:::{.callout-note collapse="true"}
 ```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/AccountManager.java"}
 
 ```
+:::
 
+## Approach 2
+
+## Approach 3
