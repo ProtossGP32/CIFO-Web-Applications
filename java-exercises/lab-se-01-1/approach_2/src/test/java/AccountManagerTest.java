@@ -106,6 +106,15 @@ public class AccountManagerTest {
     }
 
     @Test
+    public void AccountManagerCanDeposit() {
+        double amount = 50.0;
+        double person1InitialBalance = this.person1Test.getBalance();
+        assertTrue(accountManagerTest.deposit(this.person1Test, amount));
+        // Check that both balances are correct after the transferring
+        assertEquals(person1InitialBalance + amount, this.person1Test.getBalance(), this.deltaCompare);
+    }
+
+    @Test
     public void AccountManagerCanChangePin() {
         String oldPin = this.person1Test.getPin();
         String newPin = "abracadabra";

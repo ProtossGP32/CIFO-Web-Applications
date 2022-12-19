@@ -31,6 +31,14 @@ public class AccountManager {
         return false;
     }
 
+    public static boolean deposit(Person person, double amount){
+        if (amount > 0) {
+            person.setBalance(person.getBalance() + amount);
+            return true;
+        }
+        return false;
+    }
+    
     public static boolean changePin(Person person, String oldPin, String newPin) {
         if (person.getPin().equals(oldPin)) {
             person.setPin(newPin);
