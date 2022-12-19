@@ -130,6 +130,11 @@ echo ""
 echo "- Obsidian"
 ./retrieve_latest_release.py --gh-user obsidianmd --gh-repo obsidian-releases --pattern .deb
 echo ""
+# - Quarto
+echo "- Quarto"
+./retrieve_latest_release.py --gh-user quarto-dev --gh-repo quarto-cli --pattern .deb
+echo ""
+
 
 echo "Installing all downloaded packages..."
 $INSTALL ./*.deb
