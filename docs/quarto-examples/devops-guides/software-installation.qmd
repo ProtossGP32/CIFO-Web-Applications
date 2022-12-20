@@ -1,0 +1,113 @@
+---
+title: "Software installation"
+---
+# Introduction
+This page explains the automation procedure for the software installation required for the CIFO courses
+
+# Required software
+## IDEs
+### Visual Studio Code
+Used mainly for any type of development or documentation maintenance; its plugins allow to easily manage Git and GitHub repositories, create Quarto/Markdown files and publish them as static websites, and many more things.
+
+- Installation page: [Running Visual Code on Linux](https://code.visualstudio.com/docs/setup/linux)
+
+### IntelliJ IDEA
+Its main purpose is to ease Java applications development. It also has a nice Git and GitHub repository manager, so it's easy to keep track of the updates and latest changes on our code.
+
+- Installation page: [JetBrains Toolbox App](https://www.jetbrains.com/toolbox-app/)
+    - It's recommended to install any JetBrains application through their Toolbox, as it also manages any available update of them
+
+### Vim
+One of the most popular terminal IDEs for Linux, useful when no Desktop application is available or quick changes on files have to be done from a terminal.
+
+- Installation command:
+```{bash}
+sudo apt-get install vim
+```
+
+### Sublime Text
+A good text editor which features can be expanded by installing additional extensions/packages. With the correct configuration it can also compile and test projects from within the application.
+
+- Installation page: [Linux Package Manager Repositories](https://www.sublimetext.com/docs/linux_repositories.html)
+
+## Version Control Software
+### Git
+This is the main tool to manage git repositories, any other software uses it on background or includes it within the app. Available by default in the default Linux Package Repositories.
+
+- Installation command:
+```{bash}
+sudo apt-get install git
+```
+
+### GitHub
+The CLI tool to interact with GitHub repositories, very useful to manage your own repositories, branches, etc... It can also create and solve Pull Requests from the CLI.
+
+- Installation page: [Installing gh on Linux and BSD](https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
+
+### GitHub Desktop
+The Desktop app to interact with GitHub repositories, more user-friendly than the CLI version. There's no official linux release, but GitHub themselves redirect users to a trusted fork ([Community Releases](https://github.com/desktop/desktop#community-releases)).
+
+- Installation page: [GitHub Desktop - The Linux Fork](https://github.com/shiftkey/desktop)
+
+## Documentation
+### Obsidian
+A Markdown editor with many more features. The installation packages for Linux are available in their GitHub releases repository.
+
+- Installation page: [Obsidian releases](https://github.com/obsidianmd/obsidian-releases)
+
+### Quarto CLI
+A Markdown framework that expands the language by adding compatibily with other documentation tools, such as Medusa for diagrams. The installation packages for Linux are available in their GitHub repository.
+
+- Installation page: [Quarto releases](https://github.com/quarto-dev/quarto-cli/releases)
+
+---
+
+# Automating the software installation
+Almost all the required software can be installed directly from the command line interface (CLI), so in order to avoid repeating commands and human errors, some scripts are created to automate all the process
+
+## Software installation script
+The script `software_install.sh` is a shell script that automates all the installation process. As some steps require a more complex parsing logic, the script invokes extra scripts that act as tools.
+The script is split into the following steps:
+
+1.  Install pre-required programs (`wget`, `curl`, `apt-transport-https`, etc...)
+2.  Add both GPG keys and package repositories for the software that has them.
+    - The sources lists are stored in `/etc/apt/sources.list.d`.
+    - The GPG keys are stored in different paths depending on the app creator instructions
+3.  Install software from newly-added repositories
+4.  Install software that comes with its own installation scripts
+    - Jetbrains Toolbox: `tools/jetbrains-toolbox.sh`
+5.  Retrieve and install `.deb` packages of software maintained as GitHub repositories
+    - This step uses the `tools/retrieve_latest_release.py` script
+
+:::{.callout-note collapse="true"}
+```{.bash include="../../../scripts/software_installation/software_install.sh"}
+```
+:::
+
+## Tools scripts
+Tools scripts are scripts that help the main script with more complex tasks or simply have all the installation process for a single software:
+
+### JetBrains Toolbox
+:::{.callout-note collapse="true"}
+```{.bash include="../../../scripts/software_installation/tools/jetbrains-toolbox.sh"}
+```
+:::
+
+### Retrieve latest package released from GitHub repositories
+:::{.callout-note collapse="true"}
+```{.python include="../../../scripts/software_installation/tools/retrieve_latest_release.py"}
+```
+:::
+
+### Install additional extensions for VSCode
+Visual Studio Code comes with a CLI that allows the user to install/uninstall extensions from the terminal. More info can be found in the [official documentation](https://code.visualstudio.com/docs/editor/command-line).
+
+:::{.callout-warning appearance="simple"}
+Pending to create a list of useful extensions and a shell script to install them
+:::
+
+### Install additional extensions for IntelliJ IDEA
+
+:::{.callout-warning appearance="simple"}
+Pending to see if IntelliJ IDEA has any CLI to automate the process
+:::

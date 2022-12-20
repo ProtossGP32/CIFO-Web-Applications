@@ -31,7 +31,7 @@ def main():
         for asset in response_text["assets"]:
             if "name" in asset and asset["name"].endswith(args.pattern):
                 print(f'Downloading {asset["browser_download_url"]}...')
-                filename = asset["browser_download_url"].split('/')[-1]
+                filename = asset["name"]
                 download = requests.get(asset["browser_download_url"])
                 print(f"Saving content into {filename}")
                 open(filename, "wb").write(download.content)
