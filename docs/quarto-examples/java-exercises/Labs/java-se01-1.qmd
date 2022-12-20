@@ -82,9 +82,7 @@ classDiagram
 
 #### AccountManager
 :::{.callout-note collapse="true"}
-```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/example/Accou### UML diagram
-:::{.callout-note collapse="false"}ntManager.java"}
-
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/example/AccountManager.java
 ```
 :::
 
@@ -147,8 +145,23 @@ classDiagram
 
 ### Classes specifications
 #### Person
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/example/Person.java"}
+
+```
+:::
 #### Account
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/example/Account.java"}
+
+```
+:::
 #### AccountManager
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/example/AccountManager.java"}
+
+```
+:::
 
 ## Approach 3 - Singleton + Hashmaps
 

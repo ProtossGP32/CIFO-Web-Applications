@@ -1,5 +1,5 @@
-import org.example.Account;
-import org.example.Person;
+import org.labSe01Part1.Account;
+import org.labSe01Part1.Person;
 import org.junit.Before;
 import org.junit.Test;
 

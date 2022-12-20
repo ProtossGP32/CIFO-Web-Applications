@@ -1,4 +1,4 @@
-package org.example;
+package org.labSe01Part1;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
