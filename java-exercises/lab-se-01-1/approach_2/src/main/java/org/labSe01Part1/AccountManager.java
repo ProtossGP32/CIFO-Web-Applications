@@ -1,4 +1,4 @@
-package org.example;
+package org.labSe01Part1;
 
 public class AccountManager {
     private static AccountManager instance;

@@ -1,4 +1,4 @@
-import org.example.Account;
+import org.labSe01Part1.Account;
 import org.junit.Before;
 import org.junit.Test;
 
