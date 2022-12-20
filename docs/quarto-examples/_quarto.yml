@@ -70,7 +70,8 @@ format:
   html:
     # Theme options
     theme:
-      light: [cosmo, theme.scss]
+      light: cosmo
+      #light: [cosmo, theme.scss]
       dark: superhero
       #dark: [cosmo, theme-dark.scss]
     css: styles.css
