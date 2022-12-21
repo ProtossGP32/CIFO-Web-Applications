@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/index.html</loc>
-    <lastmod>2022-12-21T11:38:37.849Z</lastmod>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/about.html</loc>
+    <lastmod>2022-12-21T20:51:05.455Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/mint-vm-provisioning.html</loc>
-    <lastmod>2022-12-21T11:38:38.485Z</lastmod>
+    <lastmod>2022-12-21T20:51:05.985Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/software-installation.html</loc>
-    <lastmod>2022-12-21T11:38:41.945Z</lastmod>
+    <lastmod>2022-12-21T20:51:09.875Z</lastmod>
   </url>
   <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Labs/java-se01-1.html</loc>
-    <lastmod>2022-12-21T11:38:42.277Z</lastmod>
-  </url>
-  <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-maven.html</loc>
-    <lastmod>2022-12-21T11:38:42.525Z</lastmod>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/index.html</loc>
+    <lastmod>2022-12-21T20:51:10.157Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-a-class.html</loc>
-    <lastmod>2022-12-21T11:38:42.805Z</lastmod>
-  </url>
-  <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-tdd.html</loc>
-    <lastmod>2022-12-21T11:38:43.037Z</lastmod>
+    <lastmod>2022-12-21T20:51:10.472Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-a-model.html</loc>
-    <lastmod>2022-12-21T11:38:43.297Z</lastmod>
+    <lastmod>2022-12-21T20:51:10.823Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-maven.html</loc>
+    <lastmod>2022-12-21T20:51:11.136Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-tdd.html</loc>
+    <lastmod>2022-12-21T20:51:11.424Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Labs/java-se01-1.html</loc>
+    <lastmod>2022-12-21T20:51:12.025Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/walkthrough/walkthrough.html</loc>
-    <lastmod>2022-12-21T11:38:45.849Z</lastmod>
-  </url>
-  <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/about.html</loc>
-    <lastmod>2022-12-21T11:38:46.097Z</lastmod>
+    <lastmod>2022-12-21T20:51:14.815Z</lastmod>
   </url>
 </urlset>
