@@ -38,6 +38,7 @@ classDiagram
         -String address
         -int age
         -Account account
+
         +getBalance()
         +setBalance()
         +getPin()
@@ -48,6 +49,7 @@ classDiagram
         -String accountManager
         -String pin
         -double balance
+
         +equals(Account compared) boolean
     }
 
@@ -60,11 +62,12 @@ classDiagram
     %%note for AccountManager "Can withdraw money from a person's account\nCan tranfer money between two persons' account\nCan change the Pin of a person's account"
 ```
 :::
+
 ### Classes specification
 #### Person
 :::{.callout-note collapse="true"}
 ## Person class
-```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/Person.java"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/Person.java"}
 
 ```
 :::
@@ -72,18 +75,180 @@ classDiagram
 #### Account
 :::{.callout-note collapse="true"}
 ## Account class
-```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/Account.java"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/Account.java"}
 
 ```
 :::
 
 #### AccountManager
 :::{.callout-note collapse="true"}
-```{.java include="../../../../java-exercises/lab-se-01-1/src/main/java/org/example/AccountManager.java"}
-
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/AccountManager.java
 ```
 :::
 
 ## Approach 2
 
-## Approach 3
+The `AccountManager` class is created as a `Singleton` to force its usage when managing accounts.
+
+### UML diagram
+:::{.callout-note collapse="false"}
+```{mermaid}
+classDiagram
+    class Account {
+        -String accountNumber
+        -String pin
+        -double balance
+
+        +getAccountNumber()
+        +setAccountNumber()
+        +getPin()
+        +setPin()
+        +getBalance()
+        +setBalance()
+    }
+
+    class Person {
+        -String name
+        -int age
+        -String address
+        -Account account
+
+        +getName()
+        +setName()
+        +getAge()
+        +setAge()
+        +getAddress()
+        +setAddress()
+        +getAccount()
+        +setAccount()
+        +getBalance()
+        +setBalance()
+        +getPin()
+        +setPin()
+    }
+
+    %% AccountManager Singleton
+    class AccountManager {
+        +getInstance()
+        +withdrawal(Person client, double amount)
+        +transfer(Person sender, Person receiver, double amount)
+        +deposit(Person client, double amount)
+        +changePin(Person client)
+    }
+
+    <<Singleton>> AccountManager
+    %% Classes relationships
+    Person "1" --o "1" Account : has
+    Person "*" -- "1" AccountManager : manages
+```
+:::
+
+### Classes specifications
+#### Person
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/labSe01Part1/Person.java"}
+
+```
+:::
+#### Account
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/labSe01Part1/Account.java"}
+
+```
+:::
+#### AccountManager
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/labSe01Part1/AccountManager.java"}
+
+```
+:::
+
+## Approach 3 - Singleton + Hashmaps
+
+Another approach would be that a client might have multiple accounts. We can manage all the client's accounts as a `HashMap` where its keys are the account's owners (`Person`) and each value is a list of accounts (`Account`). This way we are decoupling classes Account and Person.
+
+The `AccountManager` class is created as a `Singleton` to force its usage when managing accounts.
+
+### UML diagram
+:::{.callout-note collapse="false"}
+```{mermaid}
+classDiagram
+    class Person {
+        -String name
+        -int age
+        -String address
+
+        +getName()
+        +setName()
+        +getAge()
+        +setAge()
+        +getAddress()
+        +setAddress()
+        +equals(Person compared) boolean
+    }
+
+    class Account {
+        -String accountNumber
+        -String pin
+        -double balance
+
+        +getAccountNumber()
+        +setAccountNumber()
+        +getPin()
+        +setPin()
+        +getBalance()
+        +setBalance()
+        +equals(Account compared) boolean
+    }
+
+    %% AccountManager Singleton
+    class AccountManager {
+        -HashMap< Person, ArrayList< Account > > clients
+
+        -getAccount(Person client, String accountNumber)
+        -createAccount(Person client, Account newAccount)
+        -removeAccount(Person client, Account newAccount)
+
+        -getClient(String clientName)
+        -removeClient(Person client)
+
+        -getAccounts(Person client)
+
+        -changePin(Account account, String oldPin, String newPin)
+
+        +getInstance()
+        +getClientBalance(String clientName)
+        +getAccountBalance(String clientName, String accountNumber)
+        +withdrawal(String clientName, String accountNumber, double amount)
+        +transfer(String senderName, String senderAccountNumber, String receiverName, String receiverAccountNumber, double amount)
+        +deposit(String clientName, String accountNumber, double amount)
+        +changePin(String clientName, String accountNumber, String oldPin, String newPin)
+    }
+
+    <<Singleton>> AccountManager
+
+    %% Classes relationship
+    Person "*" -- "1" AccountManager : manages
+    Account "*" -- "1" AccountManager : manages
+```
+:::
+
+### Classes specifications
+#### Person
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_3/src/main/java/org/labSe01Part1/Person.java"}
+
+```
+:::
+#### Account
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_3/src/main/java/org/labSe01Part1/Account.java"}
+
+```
+:::
+#### AccountManager
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_3/src/main/java/org/labSe01Part1/AccountManager.java"}
+
+```
+:::

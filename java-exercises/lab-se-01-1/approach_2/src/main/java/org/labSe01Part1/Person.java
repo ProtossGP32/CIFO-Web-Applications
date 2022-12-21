@@ -1,10 +1,10 @@
-package org.example;
+package org.labSe01Part1;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter
 public class Person {
     private String name;
     private String address;
