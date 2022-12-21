@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/index.html</loc>
-    <lastmod>2022-12-16T11:45:25.314Z</lastmod>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/about.html</loc>
+    <lastmod>2022-12-21T06:57:57.340Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/mint-vm-provisioning.html</loc>
-    <lastmod>2022-12-16T11:45:25.942Z</lastmod>
+    <lastmod>2022-12-21T06:57:57.780Z</lastmod>
   </url>
   <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Labs/java-se01-1.html</loc>
-    <lastmod>2022-12-16T11:45:26.290Z</lastmod>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/software-installation.html</loc>
+    <lastmod>2022-12-21T06:58:01.631Z</lastmod>
   </url>
   <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-maven.html</loc>
-    <lastmod>2022-12-16T11:45:26.542Z</lastmod>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/index.html</loc>
+    <lastmod>2022-12-21T06:58:01.917Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-a-class.html</loc>
-    <lastmod>2022-12-16T11:45:26.806Z</lastmod>
+    <lastmod>2022-12-21T06:58:02.277Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-maven.html</loc>
+    <lastmod>2022-12-21T06:58:02.581Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-tdd.html</loc>
-    <lastmod>2022-12-16T11:45:27.033Z</lastmod>
+    <lastmod>2022-12-21T06:58:02.861Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Labs/java-se01-1.html</loc>
+    <lastmod>2022-12-21T06:58:03.388Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/walkthrough/walkthrough.html</loc>
-    <lastmod>2022-12-16T11:45:30.045Z</lastmod>
-  </url>
-  <url>
-    <loc>https://protossgp32.github.io/CIFO-Web-Applications/about.html</loc>
-    <lastmod>2022-12-16T11:45:30.305Z</lastmod>
+    <lastmod>2022-12-21T06:58:06.058Z</lastmod>
   </url>
 </urlset>
