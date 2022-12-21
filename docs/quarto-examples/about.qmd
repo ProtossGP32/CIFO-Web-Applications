@@ -2,4 +2,4 @@
 title: "About"
 ---
 
-This side is a compilation of all the knowledge achieved during CIFO courses, such as DevOps or Web Applications with Java.
+This site is a compilation of all the knowledge achieved during CIFO courses, such as DevOps or Web Applications with Java.
