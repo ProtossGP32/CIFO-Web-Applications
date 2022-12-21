@@ -67,7 +67,7 @@ classDiagram
 #### Person
 :::{.callout-note collapse="true"}
 ## Person class
-```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/example/Person.java"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/Person.java"}
 
 ```
 :::
@@ -75,14 +75,14 @@ classDiagram
 #### Account
 :::{.callout-note collapse="true"}
 ## Account class
-```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/example/Account.java"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/Account.java"}
 
 ```
 :::
 
 #### AccountManager
 :::{.callout-note collapse="true"}
-```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/example/AccountManager.java
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/AccountManager.java
 ```
 :::
 
@@ -146,19 +146,19 @@ classDiagram
 ### Classes specifications
 #### Person
 :::{.callout-note collapse="true"}
-```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/example/Person.java"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/labSe01Part1/Person.java"}
 
 ```
 :::
 #### Account
 :::{.callout-note collapse="true"}
-```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/example/Account.java"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/labSe01Part1/Account.java"}
 
 ```
 :::
 #### AccountManager
 :::{.callout-note collapse="true"}
-```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/example/AccountManager.java"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_2/src/main/java/org/labSe01Part1/AccountManager.java"}
 
 ```
 :::
@@ -203,17 +203,26 @@ classDiagram
 
     %% AccountManager Singleton
     class AccountManager {
-        -HashMap< Person, ArrayList< Account > > accountsList
+        -HashMap< Person, ArrayList< Account > > clients
+
+        -getAccount(Person client, String accountNumber)
+        -createAccount(Person client, Account newAccount)
+        -removeAccount(Person client, Account newAccount)
+
+        -getClient(String clientName)
+        -removeClient(Person client)
+
+        -getAccounts(Person client)
+
+        -changePin(Account account, String oldPin, String newPin)
 
         +getInstance()
-        +createAccount(Person client)
-        +getAccounts(Person client)
-        +getAccount(String accountNumber)
-        +deleteAccount(String accountNumber)
-        +deleteClient(Person client)
-        +withdrawal(Person client, double amount)
-        +transfer(Person sender, Person receiver, double amount)
-        +deposit(Person client, double amount)
+        +getClientBalance(String clientName)
+        +getAccountBalance(String clientName, String accountNumber)
+        +withdrawal(String clientName, String accountNumber, double amount)
+        +transfer(String senderName, String senderAccountNumber, String receiverName, String receiverAccountNumber, double amount)
+        +deposit(String clientName, String accountNumber, double amount)
+        +changePin(String clientName, String accountNumber, String oldPin, String newPin)
     }
 
     <<Singleton>> AccountManager
@@ -226,5 +235,20 @@ classDiagram
 
 ### Classes specifications
 #### Person
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_3/src/main/java/org/labSe01Part1/Person.java"}
+
+```
+:::
 #### Account
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_3/src/main/java/org/labSe01Part1/Account.java"}
+
+```
+:::
 #### AccountManager
+:::{.callout-note collapse="true"}
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_3/src/main/java/org/labSe01Part1/AccountManager.java"}
+
+```
+:::
