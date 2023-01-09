@@ -1,0 +1,51 @@
+---
+title: "GIT useful tips"
+---
+# Introduction
+# Git commands
+## Remote repository
+### Get a copy of a remote repository
+```bash
+git clone <git-repository-url>
+```
+
+### Update list of repository's remote branches
+```bash
+git remote update origin --prune
+```
+- `--prune` removes any local reference to non-existing remote branches
+
+## Branches
+### Show available branches
+```bash
+git branch
+```
+
+- Also show remote branches:
+```bash
+git branch -a
+```
+
+### Clone an existing branch
+```bash
+git checkout <branch-name>
+```
+
+### Create a new branch
+```bash
+git checkout -b <new-branch-name>
+```
+
+## Updating local checkouts
+### Retrieve latest changes in remote repositories
+```bash
+git fetch
+```
+- This command downloads the git objects (blobs, trees and commits), it doesn't `merge` the changes into the local checkouts.
+    - This means that the files in local branches are still behind the latest commits, they must be `merge`d or `fast-forward`ed
+
+### Update local branches
+```bash
+git merge <remote-branch> <local-branch>
+```
+
