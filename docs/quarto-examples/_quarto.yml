@@ -4,6 +4,9 @@ project:
 filters:
   - include-code-files
 
+editor:
+  render-on-save: true
+
 website:
   # Website info
   title: "CIFO - Web Applications"
