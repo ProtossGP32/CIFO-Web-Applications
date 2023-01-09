@@ -67,6 +67,7 @@ website:
 
   # Look and feel options
   reader-mode: true
+  page-navigation: true
   
 
 format:

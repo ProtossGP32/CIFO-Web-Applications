@@ -51,27 +51,63 @@ classDiagram
         -String name
         -double price
 
-        +getName()
-        +setName()
-        +getPrice()
-        +setPrice()
-        +equals()
-        +toString()
+        +getName() String
+        +setName() void
+        +getPrice() double
+        +setPrice() void
+        +equals() boolean
+        +toString() String
     }
 
     %% Define a ShoppingList class to keep track of the items to buy
     class ShoppingList {
-        -HashMap< Item, int > itemsToBuy
-
-        +printList()
-        +getItemAmount(Item newItem)
-        +getItemPrice(Item newItem)
-        +getTotalPrice()
-        +addItem(Item newItem, int initialAmount)
-        +increaseAmountOfItem(Item item, int amount)
+        +printList() void
+        +getItemAmount(Item newItem) int
+        +getItemPrice(Item newItem) double
+        +getTotalPrice() double
+        +addItem(Item newItem, int initialAmount) void
+        +increaseAmountOfItem(Item item, int amount) void
     }
 
     %% Classes relationships
     Item "*" o-- "1" ShoppingList : contains
 
 ```
+
+#### The View
+In our shopping list app, the view would define how the list is presented to the user, and receive the data to display from the model.
+
+The following UML diagram is an example of the expected user interface:
+```{mermaid}
+classDiagram
+    class UserInterface {
+    }
+
+    %% Define a ShoppingView class that has the View design, its layout, its UI elements, etc...
+    class ShoppingView {
+        +getView() Scene
+    }
+
+    %% Classes relationships
+    ShoppingView "1" o-- "1" UserInterface : uses
+```
+
+#### The Controller
+Our shopping list could have input forms and buttons that allow us to add or delete items. These actions require the model to be updated, so the input is sent to the controller, which then manipulates the model as appropriate, which then sends updated data to the view.
+
+The following UML diagram is an example of the expected controller
+
+:::{.callout-warning}
+## TODO
+Add the UML diagram of the shopping list controller
+:::
+
+### MVC on the web
+#### The Model
+The data model is probably contained in some kind of database
+
+#### The View
+The User Interface is probably written using HTML/CSS/whatever else you like, but Java can also do frontend.
+
+#### The Controller
+The app's controlling code is probably written in HTML/JavaScript, but Java can also implement it in the frontend.

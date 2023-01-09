@@ -1,0 +1,75 @@
+---
+title: "Proxmox VE"
+---
+# Introduction
+_[From Proxmox page:](https://www.proxmox.com/en/proxmox-ve)_
+
+> Proxmox Virtual Environment (Proxmox VE from now on) is a complete, opensouce server management platform for enterprise virtualization. It tightly integrates the KVM hypervisor and Linux Containers (LXC), software-defined storage and networking functionality, on a single platform. With the integrated web-based user interface you can manage VMs and containers, high availability for clusters, or the integrated disaster recovery tools with ease.
+
+# Installation process
+## Download ISO
+Latest available ISOs: [Link](https://www.proxmox.com/en/downloads/category/iso-images-pve)
+
+## Installation steps
+Latest documentation: [Link](https://www.proxmox.com/en/downloads/category/documentation-pve)
+
+Just follow the steps defined in the _Installing Proxmox VE_ section. Remember to keep the root password in a safe place.
+
+
+## Configuration
+Once the installation has finished and the machine is restarted, access the Proxmox web interface in the following URL:
+```
+https://proxmox.ip.address:8006
+```
+
+Credentials are `root` and the password provided during installation.
+
+:::{.callout-note collapse="false"}
+## Ignore the server subscription
+![Proxmox VE - Server subscription warning](../../images/devops-guides/virtualization/proxmox-ve-configuration-00-warning-subscription.png)
+The above message can be ignored as it is related to Enterprise subscriptions that include Proxmox support. All Proxmox VE features are available without any subscription.
+
+You can remove it by following the steps described in this [link](https://johnscs.com/remove-proxmox51-subscription-notice/), or just executing the following `bash` command from the node terminal:
+
+```bash
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
+```
+:::
+
+## Creating VMs using a template and Cloud-Init
+### What is Cloud-Init?
+
+Cloud-Init is a feature that allows zero-touch OS installations in VM. Cloud-Init allows to define an initial username and password as well as use SSH keys for external logging. It also allows the user to define Network configurations and other things.
+
+This is very useful as an auto-provisioning tool!
+
+
+### Installation instructions
+Follow this guide and its corresponding video:
+
+- [Perfect Proxmox Template with Cloud Image and Cloud Init](https://docs.technotim.live/posts/cloud-init-cloud-image/)
+
+{{< video https://youtu.be/shiIi38cJe4 >}}
+
+### Notes on configuring Cloud-Init
+:::{.callout-note}
+## Configure the network interface!
+![Proxmox VM - Cloud-Init parameters](../../images/devops-guides/virtualization/proxmox-ve-configuration-01-cloud-init.png)
+
+By default, Cloud-Init leaves the config of the Network as static and empty, so you must configure it or else there won't be any network ready:
+
+![Proxmox VM - Cloud-Init network default values](../../images/devops-guides/virtualization/proxmox-ve-configuration-02-cloud-init-network-default.png)
+
+:::
+
+:::{.callout-warning}
+## Never start the Template VM machine!
+This VM shall act as a template for other Ubuntu Cloud VMs, and if it is started, then it will be bootstrapped and assigned to an ID that will pass along any VM created from this one.
+:::
+
+:::{.callout-note}
+## Creating clones with the Cloud-Init VM template
+For this, you can use the WebUI and right-click on the VM template, or you can use `pvesh` commands to do it from the terminal. Read this article for more info:
+
+- [Rapid Topology deployment with Proxmox](https://www.historiantech.com/rapid-topology-deployment-with-proxmox/)
+:::

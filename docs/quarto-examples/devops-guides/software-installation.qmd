@@ -80,6 +80,7 @@ The script is split into the following steps:
     - This step uses the `tools/retrieve_latest_release.py` script
 
 :::{.callout-note collapse="true"}
+## software_installation.sh
 ```{.bash include="../../../scripts/software_installation/software_install.sh"}
 ```
 :::
@@ -89,12 +90,30 @@ Tools scripts are scripts that help the main script with more complex tasks or s
 
 ### JetBrains Toolbox
 :::{.callout-note collapse="true"}
+## jetbrains-toolbox.sh
 ```{.bash include="../../../scripts/software_installation/tools/jetbrains-toolbox.sh"}
 ```
 :::
 
 ### Retrieve latest package released from GitHub repositories
+If the GitHub CLI package is installed, then this can be used to retrieve the latest `.deb` release of any reachable repository:
+
 :::{.callout-note collapse="true"}
+## gh releases download
+```bash
+# Download the latest release
+gh release download --repo ${GH_USER}/${GH_REPO} --pattern '*.deb'
+```
+Example:
+```bash
+gh release download --repo quarto-dev/quarto-cli --pattern '*.deb'
+```
+:::
+
+If gh cli is not available, then the following `python` script has been created for the same purpose:
+
+:::{.callout-note collapse="true"}
+## retrieve_latest_release.py
 ```{.python include="../../../scripts/software_installation/tools/retrieve_latest_release.py"}
 ```
 :::
