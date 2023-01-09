@@ -1,0 +1,34 @@
+---
+title: "Quarto - Quick guide"
+---
+# Introduction
+
+Here we'll describe some useful tips to reduce time and resources when creating Quarto projects
+
+# Quarto workflow
+## Render current file
+
+```bash
+quarto render ${quarto_file.qmd}
+```
+
+## Preview current `.qmd` file and enable live changes
+
+```bash
+quarto preview ${quarto_file.qmd} --no-browser --no-watch-inputs
+```
+Then, open the provided URL in a new browser tab/window
+
+## Ensure that any `.qmd` file within the Quarto project is rendered on save
+In `_quarto.yml` file, add the following lines:
+
+```.yml
+editor:
+    render-on-save: true
+```
+
+## When publishing, don't render again the `.qmd` files (already rendered on save)
+
+```bash
+quarto publish gh-pages --no-render
+```
