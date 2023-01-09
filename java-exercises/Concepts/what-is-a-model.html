@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../java-exercises/Concepts/what-is-maven.html" rel="next">
+<link href="../../java-exercises/Concepts/what-is-a-class.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -100,6 +102,34 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../../devops-guides/mint-vm-provisioning.html">
  <span class="dropdown-text">Virtual Machine Provisioning</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Documentation</li>
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/documentation/quarto-quick-guide.html">
+ <span class="dropdown-text">Quarto - Quick guide</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Self Hosted Project</li>
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/self-hosted-project/docker-software-deployment.html">
+ <span class="dropdown-text">Docker software deployment</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Version Control Software</li>
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/version-control-software/git-useful-tips.html">
+ <span class="dropdown-text">GIT useful tips</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Virtualization</li>
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/virtualization/harvester.html">
+ <span class="dropdown-text">Harvester</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/virtualization/proxmox.html">
+ <span class="dropdown-text">Proxmox VE</span></a>
   </li>  
     </ul>
   </li>
@@ -244,6 +274,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#model-parts" id="toc-model-parts" class="nav-link" data-scroll-target="#model-parts">Model parts</a></li>
   <li><a href="#model-view-controller-example" id="toc-model-view-controller-example" class="nav-link" data-scroll-target="#model-view-controller-example">Model View controller example</a></li>
+  <li><a href="#mvc-on-the-web" id="toc-mvc-on-the-web" class="nav-link" data-scroll-target="#mvc-on-the-web">MVC on the web</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -339,24 +370,22 @@ ul.task-list li input[type="checkbox"] {
         -String name
         -double price
 
-        +getName()
-        +setName()
-        +getPrice()
-        +setPrice()
-        +equals()
-        +toString()
+        +getName() String
+        +setName() void
+        +getPrice() double
+        +setPrice() void
+        +equals() boolean
+        +toString() String
     }
 
     %% Define a ShoppingList class to keep track of the items to buy
     class ShoppingList {
-        -HashMap&lt; Item, int &gt; itemsToBuy
-
-        +printList()
-        +getItemAmount(Item newItem)
-        +getItemPrice(Item newItem)
-        +getTotalPrice()
-        +addItem(Item newItem, int initialAmount)
-        +increaseAmountOfItem(Item item, int amount)
+        +printList() void
+        +getItemAmount(Item newItem) int
+        +getItemPrice(Item newItem) double
+        +getTotalPrice() double
+        +addItem(Item newItem, int initialAmount) void
+        +increaseAmountOfItem(Item item, int amount) void
     }
 
     %% Classes relationships
@@ -370,6 +399,67 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="the-view" class="level4">
+<h4 class="anchored" data-anchor-id="the-view">The View</h4>
+<p>In our shopping list app, the view would define how the list is presented to the user, and receive the data to display from the model.</p>
+<p>The following UML diagram is an example of the expected user interface:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">classDiagram
+    class UserInterface {
+    }
+
+    %% Define a ShoppingView class that has the View design, its layout, its UI elements, etc...
+    class ShoppingView {
+        +getView() Scene
+    }
+
+    %% Classes relationships
+    ShoppingView "1" o-- "1" UserInterface : uses
+</pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-controller" class="level4">
+<h4 class="anchored" data-anchor-id="the-controller">The Controller</h4>
+<p>Our shopping list could have input forms and buttons that allow us to add or delete items. These actions require the model to be updated, so the input is sent to the controller, which then manipulates the model as appropriate, which then sends updated data to the view.</p>
+<p>The following UML diagram is an example of the expected controller</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Add the UML diagram of the shopping list controller</p>
+</div>
+</div>
+</section>
+</section>
+<section id="mvc-on-the-web" class="level3">
+<h3 class="anchored" data-anchor-id="mvc-on-the-web">MVC on the web</h3>
+<section id="the-model-1" class="level4">
+<h4 class="anchored" data-anchor-id="the-model-1">The Model</h4>
+<p>The data model is probably contained in some kind of database</p>
+</section>
+<section id="the-view-1" class="level4">
+<h4 class="anchored" data-anchor-id="the-view-1">The View</h4>
+<p>The User Interface is probably written using HTML/CSS/whatever else you like, but Java can also do frontend.</p>
+</section>
+<section id="the-controller-1" class="level4">
+<h4 class="anchored" data-anchor-id="the-controller-1">The Controller</h4>
+<p>The app’s controlling code is probably written in HTML/JavaScript, but Java can also implement it in the frontend.</p>
 
 
 </section>
@@ -626,6 +716,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../java-exercises/Concepts/what-is-a-class.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is a class?</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../java-exercises/Concepts/what-is-maven.html" class="pagination-link">
+        <span class="nav-page-text">What is Maven?</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CIFO - Web Applications - What is Maven?</title>
+<title>CIFO - Web Applications - Quarto - Quick guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -30,8 +93,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Concepts/what-is-tdd.html" rel="next">
-<link href="../../java-exercises/Concepts/what-is-a-model.html" rel="prev">
+<link href="../../devops-guides/self-hosted-project/docker-software-deployment.html" rel="next">
+<link href="../../devops-guides/mint-vm-provisioning.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -197,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">What is Maven?</h1>
+      <h1 class="quarto-secondary-nav-title">Quarto - Quick guide</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -210,9 +273,19 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/software-installation.html" class="sidebar-item-text sidebar-link">Software installation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/mint-vm-provisioning.html" class="sidebar-item-text sidebar-link">Virtual Machine Provisioning</a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Concepts</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Documentation</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -220,29 +293,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-class.html" class="sidebar-item-text sidebar-link">What is a class?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link">What is a model?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-maven.html" class="sidebar-item-text sidebar-link active">What is Maven?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-tdd.html" class="sidebar-item-text sidebar-link">What is TDD?</a>
+  <a href="../../devops-guides/documentation/quarto-quick-guide.html" class="sidebar-item-text sidebar-link active">Quarto - Quick guide</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Labs</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Self Hosted Project</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -250,7 +308,42 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">LAB#SE01-1</a>
+  <a href="../../devops-guides/self-hosted-project/docker-software-deployment.html" class="sidebar-item-text sidebar-link">Docker software deployment</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Version Control Software</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/version-control-software/git-useful-tips.html" class="sidebar-item-text sidebar-link">GIT useful tips</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Virtualization</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/virtualization/harvester.html" class="sidebar-item-text sidebar-link">Harvester</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/virtualization/proxmox.html" class="sidebar-item-text sidebar-link">Proxmox VE</a>
   </div>
 </li>
       </ul>
@@ -265,20 +358,22 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a>
+  <li><a href="#quarto-workflow" id="toc-quarto-workflow" class="nav-link" data-scroll-target="#quarto-workflow">Quarto workflow</a>
   <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
-  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope">Scope</a></li>
+  <li><a href="#render-current-file" id="toc-render-current-file" class="nav-link" data-scroll-target="#render-current-file">Render current file</a></li>
+  <li><a href="#preview-current-.qmd-file-and-enable-live-changes" id="toc-preview-current-.qmd-file-and-enable-live-changes" class="nav-link" data-scroll-target="#preview-current-.qmd-file-and-enable-live-changes">Preview current <code>.qmd</code> file and enable live changes</a></li>
+  <li><a href="#ensure-that-any-.qmd-file-within-the-quarto-project-is-rendered-on-save" id="toc-ensure-that-any-.qmd-file-within-the-quarto-project-is-rendered-on-save" class="nav-link" data-scroll-target="#ensure-that-any-.qmd-file-within-the-quarto-project-is-rendered-on-save">Ensure that any <code>.qmd</code> file within the Quarto project is rendered on save</a></li>
+  <li><a href="#when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save" id="toc-when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save" class="nav-link" data-scroll-target="#when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save">When publishing, don’t render again the <code>.qmd</code> files (already rendered on save)</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Concepts/what-is-maven.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/documentation/quarto-quick-guide.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">What is Maven?</h1>
+<h1 class="title d-none d-lg-block">Quarto - Quick guide</h1>
 </div>
 
 
@@ -295,26 +390,28 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p><em>Maven</em> is a Java dependency manager</p>
+<p>Here we’ll describe some useful tips to reduce time and resources when creating Quarto projects</p>
 </section>
-<section id="dependencies" class="level1">
-<h1>Dependencies</h1>
-<section id="description" class="level2">
-<h2 class="anchored" data-anchor-id="description">Description</h2>
+<section id="quarto-workflow" class="level1">
+<h1>Quarto workflow</h1>
+<section id="render-current-file" class="level2">
+<h2 class="anchored" data-anchor-id="render-current-file">Render current file</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">quarto</span> render <span class="va">${quarto_file</span><span class="er">.qmd</span><span class="va">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="scope" class="level2">
-<h2 class="anchored" data-anchor-id="scope">Scope</h2>
-<p><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope">Maven documentation</a></p>
-<p>Each dependency can define its <code>scope</code>, used to limit the transitivity of a dependency and to determine when a dependency is included in a classpath.</p>
-<p>There are 6 different scopes:</p>
-<ul>
-<li><code>compile</code>: default scope, if none is defined. The dependency is available in all classpaths of a project</li>
-<li><code>provided</code>: similar to <code>compile</code>, but JDK or a container is expected to provide the dependency at runtime</li>
-<li><code>runtime</code>: the dependency is not required for compilation, but is for execution</li>
-<li><code>test</code>: the dependency is only available for test compilation and execution phases; not transitive</li>
-<li><code>system</code>: similar to <code>provided</code>, except that a JAR that contains it is explicitly provided; the artifact is always available and is not looked up in a repository</li>
-<li><code>import</code>: only support on a dependency of type <code>pom</code> in the <code>&lt;dependencyManager&gt;</code> section. The dependency is to be replaced with the effective list of dependencies in the specified POM’s <code>&lt;dependencyManagement&gt;</code> section. Since they are replaced, dependencies with a scope of <code>import</code> do not actually participate in limiting the transitivity of a dependency</li>
-</ul>
+<section id="preview-current-.qmd-file-and-enable-live-changes" class="level2">
+<h2 class="anchored" data-anchor-id="preview-current-.qmd-file-and-enable-live-changes">Preview current <code>.qmd</code> file and enable live changes</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">quarto</span> preview <span class="va">${quarto_file</span><span class="er">.qmd</span><span class="va">}</span> <span class="at">--no-browser</span> <span class="at">--no-watch-inputs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, open the provided URL in a new browser tab/window</p>
+</section>
+<section id="ensure-that-any-.qmd-file-within-the-quarto-project-is-rendered-on-save" class="level2">
+<h2 class="anchored" data-anchor-id="ensure-that-any-.qmd-file-within-the-quarto-project-is-rendered-on-save">Ensure that any <code>.qmd</code> file within the Quarto project is rendered on save</h2>
+<p>In <code>_quarto.yml</code> file, add the following lines:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource .yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">editor</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="at">    </span><span class="fu">render-on-save</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save" class="level2">
+<h2 class="anchored" data-anchor-id="when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save">When publishing, don’t render again the <code>.qmd</code> files (already rendered on save)</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">quarto</span> publish gh-pages <span class="at">--no-render</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -571,13 +668,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Concepts/what-is-a-model.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is a model?</span>
+      <a href="../../devops-guides/mint-vm-provisioning.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Virtual Machine Provisioning</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Concepts/what-is-tdd.html" class="pagination-link">
-        <span class="nav-page-text">What is TDD?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../devops-guides/self-hosted-project/docker-software-deployment.html" class="pagination-link">
+        <span class="nav-page-text">Docker software deployment</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

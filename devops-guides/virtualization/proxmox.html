@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CIFO - Web Applications - Virtual Machine Provisioning</title>
+<title>CIFO - Web Applications - Proxmox VE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,26 +86,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../devops-guides/documentation/quarto-quick-guide.html" rel="next">
-<link href="../devops-guides/software-installation.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../devops-guides/virtualization/harvester.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,7 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -137,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">CIFO - Web Applications</span>
     </a>
   </div>
@@ -147,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html">
+    <a class="nav-link" href="../../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -156,39 +155,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-devops-guides">    
         <li>
-    <a class="dropdown-item" href="../devops-guides/software-installation.html">
+    <a class="dropdown-item" href="../../devops-guides/software-installation.html">
  <span class="dropdown-text">Software installation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../devops-guides/mint-vm-provisioning.html">
+    <a class="dropdown-item" href="../../devops-guides/mint-vm-provisioning.html">
  <span class="dropdown-text">Virtual Machine Provisioning</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Documentation</li>
         <li>
-    <a class="dropdown-item" href="../devops-guides/documentation/quarto-quick-guide.html">
+    <a class="dropdown-item" href="../../devops-guides/documentation/quarto-quick-guide.html">
  <span class="dropdown-text">Quarto - Quick guide</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Self Hosted Project</li>
         <li>
-    <a class="dropdown-item" href="../devops-guides/self-hosted-project/docker-software-deployment.html">
+    <a class="dropdown-item" href="../../devops-guides/self-hosted-project/docker-software-deployment.html">
  <span class="dropdown-text">Docker software deployment</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Version Control Software</li>
         <li>
-    <a class="dropdown-item" href="../devops-guides/version-control-software/git-useful-tips.html">
+    <a class="dropdown-item" href="../../devops-guides/version-control-software/git-useful-tips.html">
  <span class="dropdown-text">GIT useful tips</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Virtualization</li>
         <li>
-    <a class="dropdown-item" href="../devops-guides/virtualization/harvester.html">
+    <a class="dropdown-item" href="../../devops-guides/virtualization/harvester.html">
  <span class="dropdown-text">Harvester</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../devops-guides/virtualization/proxmox.html">
+    <a class="dropdown-item" href="../../devops-guides/virtualization/proxmox.html">
  <span class="dropdown-text">Proxmox VE</span></a>
   </li>  
     </ul>
@@ -200,25 +199,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="dropdown-menu" aria-labelledby="nav-menu-java-exercises">    
         <li class="dropdown-header">Concepts</li>
         <li>
-    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-a-class.html">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-class.html">
  <span class="dropdown-text">What is a class?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-a-model.html">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-model.html">
  <span class="dropdown-text">What is a model?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-maven.html">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-maven.html">
  <span class="dropdown-text">What is Maven?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-tdd.html">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-tdd.html">
  <span class="dropdown-text">What is TDD?</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
-    <a class="dropdown-item" href="../java-exercises/Labs/java-se01-1.html">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
  <span class="dropdown-text">LAB#SE01-1</span></a>
   </li>  
     </ul>
@@ -229,13 +228,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-walkthrough">    
         <li>
-    <a class="dropdown-item" href="../walkthrough/walkthrough.html">
+    <a class="dropdown-item" href="../../walkthrough/walkthrough.html">
  <span class="dropdown-text">Hello, Quarto</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">
+    <a class="nav-link" href="../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -260,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Virtual Machine Provisioning</h1>
+      <h1 class="quarto-secondary-nav-title">Proxmox VE</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -275,12 +274,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../devops-guides/software-installation.html" class="sidebar-item-text sidebar-link">Software installation</a>
+  <a href="../../devops-guides/software-installation.html" class="sidebar-item-text sidebar-link">Software installation</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../devops-guides/mint-vm-provisioning.html" class="sidebar-item-text sidebar-link active">Virtual Machine Provisioning</a>
+  <a href="../../devops-guides/mint-vm-provisioning.html" class="sidebar-item-text sidebar-link">Virtual Machine Provisioning</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -293,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../devops-guides/documentation/quarto-quick-guide.html" class="sidebar-item-text sidebar-link">Quarto - Quick guide</a>
+  <a href="../../devops-guides/documentation/quarto-quick-guide.html" class="sidebar-item-text sidebar-link">Quarto - Quick guide</a>
   </div>
 </li>
       </ul>
@@ -308,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../devops-guides/self-hosted-project/docker-software-deployment.html" class="sidebar-item-text sidebar-link">Docker software deployment</a>
+  <a href="../../devops-guides/self-hosted-project/docker-software-deployment.html" class="sidebar-item-text sidebar-link">Docker software deployment</a>
   </div>
 </li>
       </ul>
@@ -323,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../devops-guides/version-control-software/git-useful-tips.html" class="sidebar-item-text sidebar-link">GIT useful tips</a>
+  <a href="../../devops-guides/version-control-software/git-useful-tips.html" class="sidebar-item-text sidebar-link">GIT useful tips</a>
   </div>
 </li>
       </ul>
@@ -338,12 +337,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../devops-guides/virtualization/harvester.html" class="sidebar-item-text sidebar-link">Harvester</a>
+  <a href="../../devops-guides/virtualization/harvester.html" class="sidebar-item-text sidebar-link">Harvester</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../devops-guides/virtualization/proxmox.html" class="sidebar-item-text sidebar-link">Proxmox VE</a>
+  <a href="../../devops-guides/virtualization/proxmox.html" class="sidebar-item-text sidebar-link active">Proxmox VE</a>
   </div>
 </li>
       </ul>
@@ -358,29 +357,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#pre-requisites" id="toc-pre-requisites" class="nav-link" data-scroll-target="#pre-requisites">Pre-requisites</a></li>
-  <li><a href="#virtual-machine-creation" id="toc-virtual-machine-creation" class="nav-link" data-scroll-target="#virtual-machine-creation">Virtual Machine creation</a>
+  <li><a href="#installation-process" id="toc-installation-process" class="nav-link" data-scroll-target="#installation-process">Installation process</a>
   <ul class="collapse">
-  <li><a href="#linux-mint-installation" id="toc-linux-mint-installation" class="nav-link" data-scroll-target="#linux-mint-installation">Linux Mint installation</a>
-  <ul class="collapse">
+  <li><a href="#download-iso" id="toc-download-iso" class="nav-link" data-scroll-target="#download-iso">Download ISO</a></li>
   <li><a href="#installation-steps" id="toc-installation-steps" class="nav-link" data-scroll-target="#installation-steps">Installation steps</a></li>
-  </ul></li>
-  <li><a href="#virtualbox-additional-configurations" id="toc-virtualbox-additional-configurations" class="nav-link" data-scroll-target="#virtualbox-additional-configurations">VirtualBox additional configurations</a>
+  <li><a href="#configuration" id="toc-configuration" class="nav-link" data-scroll-target="#configuration">Configuration</a></li>
+  <li><a href="#creating-vms-using-a-template-and-cloud-init" id="toc-creating-vms-using-a-template-and-cloud-init" class="nav-link" data-scroll-target="#creating-vms-using-a-template-and-cloud-init">Creating VMs using a template and Cloud-Init</a>
   <ul class="collapse">
-  <li><a href="#what-does-guest-additions-enable" id="toc-what-does-guest-additions-enable" class="nav-link" data-scroll-target="#what-does-guest-additions-enable">What does Guest Additions enable?</a></li>
-  <li><a href="#installation-steps-1" id="toc-installation-steps-1" class="nav-link" data-scroll-target="#installation-steps-1">Installation steps</a></li>
-  <li><a href="#guest-additions-configurations" id="toc-guest-additions-configurations" class="nav-link" data-scroll-target="#guest-additions-configurations">Guest Additions configurations</a></li>
+  <li><a href="#what-is-cloud-init" id="toc-what-is-cloud-init" class="nav-link" data-scroll-target="#what-is-cloud-init">What is Cloud-Init?</a></li>
+  <li><a href="#installation-instructions" id="toc-installation-instructions" class="nav-link" data-scroll-target="#installation-instructions">Installation instructions</a></li>
+  <li><a href="#notes-on-configuring-cloud-init" id="toc-notes-on-configuring-cloud-init" class="nav-link" data-scroll-target="#notes-on-configuring-cloud-init">Notes on configuring Cloud-Init</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/mint-vm-provisioning.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/virtualization/proxmox.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Virtual Machine Provisioning</h1>
+<h1 class="title d-none d-lg-block">Proxmox VE</h1>
 </div>
 
 
@@ -397,176 +394,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this page we’re going to define the steps to create and install all the required software for the CIFO Web Application course. At the end of the process we’ll have created a fully functional environment for software development, documentation and deployment, and we’ll also have some scripts that automate the installation of the required software and dependencies in case they have to be installed again</p>
+<p><em><a href="https://www.proxmox.com/en/proxmox-ve">From Proxmox page:</a></em></p>
+<blockquote class="blockquote">
+<p>Proxmox Virtual Environment (Proxmox VE from now on) is a complete, opensouce server management platform for enterprise virtualization. It tightly integrates the KVM hypervisor and Linux Containers (LXC), software-defined storage and networking functionality, on a single platform. With the integrated web-based user interface you can manage VMs and containers, high availability for clusters, or the integrated disaster recovery tools with ease.</p>
+</blockquote>
 </section>
-<section id="pre-requisites" class="level1">
-<h1>Pre-requisites</h1>
+<section id="installation-process" class="level1">
+<h1>Installation process</h1>
+<section id="download-iso" class="level2">
+<h2 class="anchored" data-anchor-id="download-iso">Download ISO</h2>
+<p>Latest available ISOs: <a href="https://www.proxmox.com/en/downloads/category/iso-images-pve">Link</a></p>
+</section>
+<section id="installation-steps" class="level2">
+<h2 class="anchored" data-anchor-id="installation-steps">Installation steps</h2>
+<p>Latest documentation: <a href="https://www.proxmox.com/en/downloads/category/documentation-pve">Link</a></p>
+<p>Just follow the steps defined in the <em>Installing Proxmox VE</em> section. Remember to keep the root password in a safe place.</p>
+</section>
+<section id="configuration" class="level2">
+<h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
+<p>Once the installation has finished and the machine is restarted, access the Proxmox web interface in the following URL:</p>
+<pre><code>https://proxmox.ip.address:8006</code></pre>
+<p>Credentials are <code>root</code> and the password provided during installation.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ignore the server subscription
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><img src="../../images/devops-guides/virtualization/proxmox-ve-configuration-00-warning-subscription.png" class="img-fluid" alt="Proxmox VE - Server subscription warning"> The above message can be ignored as it is related to Enterprise subscriptions that include Proxmox support. All Proxmox VE features are available without any subscription.</p>
+<p>You can remove it by following the steps described in this <a href="https://johnscs.com/remove-proxmox51-subscription-notice/">link</a>, or just executing the following <code>bash</code> command from the node terminal:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">sed</span> <span class="at">-Ezi.bak</span> <span class="st">"s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g"</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span class="kw">&amp;&amp;</span> <span class="ex">systemctl</span> restart pveproxy.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-vms-using-a-template-and-cloud-init" class="level2">
+<h2 class="anchored" data-anchor-id="creating-vms-using-a-template-and-cloud-init">Creating VMs using a template and Cloud-Init</h2>
+<section id="what-is-cloud-init" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-cloud-init">What is Cloud-Init?</h3>
+<p>Cloud-Init is a feature that allows zero-touch OS installations in VM. Cloud-Init allows to define an initial username and password as well as use SSH keys for external logging. It also allows the user to define Network configurations and other things.</p>
+<p>This is very useful as an auto-provisioning tool!</p>
+</section>
+<section id="installation-instructions" class="level3">
+<h3 class="anchored" data-anchor-id="installation-instructions">Installation instructions</h3>
+<p>Follow this guide and its corresponding video:</p>
 <ul>
-<li>VirtualBox 1.6 or higher <a href="https://www.virtualbox.org/wiki/Downloads">[Installation page]</a></li>
-<li>Linux Mint ISO <a href="https://www.linuxmint.com/download.php">[Download page]</a></li>
-<li>At least 60GB of free space</li>
+<li><a href="https://docs.technotim.live/posts/cloud-init-cloud-image/">Perfect Proxmox Template with Cloud Image and Cloud Init</a></li>
 </ul>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/shiIi38cJe4" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
-<section id="virtual-machine-creation" class="level1">
-<h1>Virtual Machine creation</h1>
-<ol class="example" type="1">
-<li><p>From VirtualBox, create a new virtual machine (VM) by clicking the “New” button: <img src="../images/devops-guides/vbox-create-new-vm.png" title="VirtualBox - Create new VM" class="img-fluid" alt="VirtualBox - Create new VM"></p></li>
-<li><p>Enter a unique name for the VM and select the desired architecture: <img src="../images/devops-guides/vbox-set-vm-name.png" title="VirtualBox - Set VM name" class="img-fluid" alt="VirtualBox - Set VM Name"></p></li>
-</ol>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<section id="notes-on-configuring-cloud-init" class="level3">
+<h3 class="anchored" data-anchor-id="notes-on-configuring-cloud-init">Notes on configuring Cloud-Init</h3>
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Tip
+Configure the network interface!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you add the name of the Linux distribution that you plan to install to this VM, VirtualBox will select the closest OS type and version. This is useful as VirtualBox sets initial values to RAM and disk size based on the OS to install (you can always change them later). For example, if you set <code>Linux Mint</code> as the VM name, the OS will be set to <code>Linux</code> type and <code>Ubuntu (64-bit)</code> version.</p>
-</div>
-</div>
-<ol start="3" class="example" type="1">
-<li>Create a virtual disk by defining its path, size and type, as well as how data shall be stored in our physical hard drive <img src="../images/devops-guides/vbox-set-virtual-disk.png" class="img-fluid" alt="VirtualBox - Set Virtual disk"></li>
-</ol>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>As we’re going to install some heavy development software, it’s better to set the disk size to at least 60GB, as the OS will easily use 20GB. Also, keep the storage as dynamic; this way instead of occupying 60GB of real space from the beginning, the virtual disk will grow according to its real usage.</p>
-</div>
-</div>
-<ol start="4" class="example" type="1">
-<li>Once the VM is created, mount the Linux Mint ISO file on the Secondary IDE drive as shown in the next caption <img src="../images/devops-guides/vbox-mount-iso-file.png" class="img-fluid" alt="VirtualBox - Mount ISO file"></li>
-</ol>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In order to speed up things in the next steps, it’s better to change now the VM specs so it uses more CPUs and memory. Click the <code>Parameters</code> button in the top menu bar to do so.</p>
-</div>
-</div>
-<ol start="5" class="example" type="1">
-<li>Now start the virtual machine with the <code>Start</code> button and follow the steps to install the OS</li>
-</ol>
-<section id="linux-mint-installation" class="level2">
-<h2 class="anchored" data-anchor-id="linux-mint-installation">Linux Mint installation</h2>
-<ol start="6" class="example" type="1">
-<li><p>When initializing the VM, GRUB will greet us with some options. Select <code>Start Linux Mint &lt;version&gt; &lt;desktop-flavour&gt; 64-bit</code> to launch the Live Mint version that lets you test the OS prior to installing it as well as install it onto the virtual disk <img src="../images/devops-guides/vbox-start-vm-linux-mint.png" class="img-fluid" alt="VirtualBox - Start Linux Mint VM"></p></li>
-<li><p>Once inside the Linux Mint desktop, double-click the <code>Install Linux Mint</code> icon and follow the step-by-step installation process: <img src="../images/devops-guides/vbox-linux-mint-install.png" class="img-fluid" alt="VirtualBox - Linux mint installation"></p></li>
-</ol>
-<section id="installation-steps" class="level3">
-<h3 class="anchored" data-anchor-id="installation-steps">Installation steps</h3>
-<ol type="A">
-<li><u>Language selection</u>: It’s the system language and will be used to also configure any installed software default language</li>
-<li><u>Keyboard Layout</u>: Select the same one as your host machine, else the keyboard inputs won’t match the inputs shown in the VM (Select <code>Spanish - Spanish</code>)</li>
-<li><u>Multimedia coders</u>: Skip, unrequired for this course and can always be installed later on</li>
-<li><u>Installation type</u>: As we’re installing the OS for the first time, just leave the default <code>Erase disk and install Linux Mint</code> option selected</li>
-<li><u>Install now</u>: Accept all changes regarding disk writing</li>
-<li><u>Where are you?</u>: This option sets both the timezone of the VM as well as the nearest package repositories to your location that will be used</li>
-<li><u>Who are you?</u>: Here you define your name (used in other programs as the author of mails, files, projects, etc…), the host name (VM internal name), the username and its password (the process creates a user account based on this information)</li>
-</ol>
-<ol start="8" class="example" type="1">
-<li>After that, the installation process continues by installing all the required files and stock programs for that distribution and desktop manager</li>
-</ol>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>At this point there’s no need for any additional input from the user, so you can go grab a coffee or something else as this will take a while to complete</p>
-</div>
-</div>
-<ol start="9" class="example" type="1">
-<li>Once done, just restart the machine as asked</li>
-</ol>
-</section>
-</section>
-<section id="virtualbox-additional-configurations" class="level2">
-<h2 class="anchored" data-anchor-id="virtualbox-additional-configurations">VirtualBox additional configurations</h2>
-<p>Now VirtualBox is rendering the VM to the native resolution defined within our Linux Mint OS (guest machine). In order to dinamically change the resolution based on the window size, we must install the VirtualBox Guest Additions inside it</p>
-<section id="what-does-guest-additions-enable" class="level3">
-<h3 class="anchored" data-anchor-id="what-does-guest-additions-enable">What does Guest Additions enable?</h3>
-<ul>
-<li>Enable users to seamlessly move mouse pointer between host and guest OS.</li>
-<li>Allow guest OS to have read and write access to hard drives on the host OS, so you can transfer files between them.</li>
-<li>Power up the graphics/video ability of the guest OS. The screen resolution of guest OS can be automatically adjusted and 3D graphics can be accelerated.</li>
-<li>Enable bidirectional shared clipboard between host and guest OS, so you can copy and paste stuff between them.</li>
-</ul>
-</section>
-<section id="installation-steps-1" class="level3">
-<h3 class="anchored" data-anchor-id="installation-steps-1">Installation steps</h3>
-<ol type="A">
-<li><p>On the <code>Devices</code> drop-down menu, select <code>Insert Guest Additions CD image</code> <img src="../images/devops-guides/vbox-insert-guest-additions-image.png" class="img-fluid" alt="Virtual Box - Insert Guest Additions"></p></li>
-<li><p>Virtual Box prompts if we want to download the ISO file. Accept all warnings regarding this:</p></li>
-</ol>
-<div id="fig-guest-additions" class="quarto-layout-panel">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
-<div id="fig-ga-download" class="quarto-figure quarto-figure-center anchored">
+<p><img src="../../images/devops-guides/virtualization/proxmox-ve-configuration-01-cloud-init.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Proxmox VM - Cloud-Init parameters</figcaption><p></p>
+</figure>
+</div>
+<p>By default, Cloud-Init leaves the config of the Network as static and empty, so you must configure it or else there won’t be any network ready:</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/devops-guides/vbox-download-guest-additions-1.png" class="img-fluid figure-img" data-ref-parent="fig-guest-additions"></p>
-<p></p><figcaption class="figure-caption">(a) Virtual Box - Download Guest Additions</figcaption><p></p>
+<p><img src="../../images/devops-guides/virtualization/proxmox-ve-configuration-02-cloud-init-network-default.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Proxmox VM - Cloud-Init network default values</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
-<div id="fig-ga-accept" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../images/devops-guides/vbox-download-guest-additions-2.png" class="img-fluid figure-img" data-ref-parent="fig-guest-additions"></p>
-<p></p><figcaption class="figure-caption">(b) Virtual Box - Accept Download Guest Additions</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
-<div id="fig-ga-mount" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="../images/devops-guides/vbox-download-guest-additions-3.png" class="img-fluid figure-img" data-ref-parent="fig-guest-additions"></p>
-<p></p><figcaption class="figure-caption">(c) Virtual Box - Mount Guest Additions</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Guest Additions warnings</figcaption><p></p>
-</figure>
-</div>
-<ol start="3" type="A">
-<li>Once the ISO is mounted inside the guest OS, it should try to execute the <code>VBoxLinuxAdditions.run</code> file in the ISO root; if not, open a terminal and execute</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">sudo</span> /media/cifo-web/VBox_GAs_<span class="op">&lt;</span>version<span class="op">&gt;</span>/VBoxLinuxAdditions.run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Warning
+Never start the Template VM machine!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If the autoexec function didn’t launch, this doesn’t mean there’s something wrong with your guest OS; it might mean that it has this feature disabled by default. Check your Desktop manager options.</p>
+<p>This VM shall act as a template for other Ubuntu Cloud VMs, and if it is started, then it will be bootstrapped and assigned to an ID that will pass along any VM created from this one.</p>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -575,62 +495,18 @@ Warning
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Creating clones with the Cloud-Init VM template
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The mount path of the Guest Additions ISO may be different depending on the username and the ISO version, so you might have to change it.</p>
+<p>For this, you can use the WebUI and right-click on the VM template, or you can use <code>pvesh</code> commands to do it from the terminal. Read this article for more info:</p>
+<ul>
+<li><a href="https://www.historiantech.com/rapid-topology-deployment-with-proxmox/">Rapid Topology deployment with Proxmox</a></li>
+</ul>
 </div>
 </div>
-<p>The output should be like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">cifo-web@cifoweb-VirtualBox:/media/cifo-web/VBox_GAs_6.1.40$</span> sudo ./VBoxLinuxAdditions.run</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">Verifying</span> archive integrity... All good.</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">Uncompressing</span> VirtualBox 6.1.40 Guest Additions for Linux........</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="ex">VirtualBox</span> Guest Additions installer</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">Copying</span> additional installer modules ...</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">Installing</span> additional modules ...</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">VirtualBox</span> Guest Additions: Starting.</span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">VirtualBox</span> Guest Additions: Setting up modules</span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="ex">VirtualBox</span> Guest Additions: Building the VirtualBox Guest Additions kernel </span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="ex">modules.</span>  This may take a while.</span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="ex">VirtualBox</span> Guest Additions: To build modules for other installed kernels, run</span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="ex">VirtualBox</span> Guest Additions:   /sbin/rcvboxadd quicksetup <span class="op">&lt;</span>version<span class="op">&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">VirtualBox</span> Guest Additions: or</span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="ex">VirtualBox</span> Guest Additions:   /sbin/rcvboxadd quicksetup all</span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="ex">VirtualBox</span> Guest Additions: Building the modules for kernel 5.15.0-41-generic.</span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="ex">update-initramfs:</span> Generating /boot/initrd.img-5.15.0-41-generic</span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="ex">VirtualBox</span> Guest Additions: Running kernel modules will not be replaced until </span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="ex">the</span> system is restarted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" type="A">
-<li>Restart your guest OS</li>
-</ol>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>See this video if you have any more doubts regarding Guest Additions in Linux Mint:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/hbG5mU1Hb9s" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</div>
-</div>
-</section>
-<section id="guest-additions-configurations" class="level3">
-<h3 class="anchored" data-anchor-id="guest-additions-configurations">Guest Additions configurations</h3>
-<section id="enable-fluid-window" class="level4">
-<h4 class="anchored" data-anchor-id="enable-fluid-window">Enable fluid window</h4>
-<p>Fluid mode is automatically enabled after the guest OS restart. If not, you can always enable it with the shortcut <code>Right Ctrl + L</code>.</p>
-</section>
-<section id="enable-bidirectional-clipboard" class="level4">
-<h4 class="anchored" data-anchor-id="enable-bidirectional-clipboard">Enable bidirectional clipboard</h4>
-<p>Make sure the clipboard is set to bidirectional; after that, copy-paste commands should work between Host and Guest machines. <img src="../images/devops-guides/vbox-clipboard-bidirectional.png" class="img-fluid" alt="Virtual Box - Bidirectional clipboard"></p>
 
 
-</section>
 </section>
 </section>
 </section>
@@ -886,14 +762,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../devops-guides/software-installation.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Software installation</span>
+      <a href="../../devops-guides/virtualization/harvester.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Harvester</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../devops-guides/documentation/quarto-quick-guide.html" class="pagination-link">
-        <span class="nav-page-text">Quarto - Quick guide</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -902,7 +775,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">
         <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../about.html">About</a>
+    <a class="nav-link" href="../../about.html">About</a>
   </li>  
 </ul>
       </div>

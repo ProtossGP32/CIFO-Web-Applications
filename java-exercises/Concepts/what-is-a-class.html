@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../java-exercises/Concepts/what-is-a-model.html" rel="next">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,6 +98,34 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../../devops-guides/mint-vm-provisioning.html">
  <span class="dropdown-text">Virtual Machine Provisioning</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Documentation</li>
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/documentation/quarto-quick-guide.html">
+ <span class="dropdown-text">Quarto - Quick guide</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Self Hosted Project</li>
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/self-hosted-project/docker-software-deployment.html">
+ <span class="dropdown-text">Docker software deployment</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Version Control Software</li>
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/version-control-software/git-useful-tips.html">
+ <span class="dropdown-text">GIT useful tips</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Virtualization</li>
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/virtualization/harvester.html">
+ <span class="dropdown-text">Harvester</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../devops-guides/virtualization/proxmox.html">
+ <span class="dropdown-text">Proxmox VE</span></a>
   </li>  
     </ul>
   </li>
@@ -237,6 +266,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#class-definition" id="toc-class-definition" class="nav-link active" data-scroll-target="#class-definition">Class definition</a>
   <ul class="collapse">
   <li><a href="#difference-between-class-and-object" id="toc-difference-between-class-and-object" class="nav-link" data-scroll-target="#difference-between-class-and-object">Difference between class and object</a></li>
+  <li><a href="#ways-to-create-an-object" id="toc-ways-to-create-an-object" class="nav-link" data-scroll-target="#ways-to-create-an-object">Ways to create an object</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Concepts/what-is-a-class.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -274,6 +304,30 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>An <em>object</em> is an instance of a <em>class</em></li>
 <li>Each <em>object</em> is independent of any other <em>object</em> of the same <em>class</em></li>
+</ul>
+</section>
+<section id="ways-to-create-an-object" class="level2">
+<h2 class="anchored" data-anchor-id="ways-to-create-an-object">Ways to create an object</h2>
+<p>There are several ways to <strong>create</strong> an object:</p>
+<ul>
+<li>Using the <code>new</code> operator: the most common way to create an object in Java.</li>
+<li>Using the <code>clone()</code> method: if you want to create a copy of an existing object.
+<ul>
+<li>To use it, implement the <code>Cloneable</code> interface in your class and override the <code>clone()</code> method</li>
+</ul></li>
+<li>Using <code>factory</code> methods: it is a <code>static</code> method that returns an instance of a class
+<ul>
+<li><strong>Factory methods are often used to create objects</strong> when you need more flexibility or control over the object creation process</li>
+</ul></li>
+<li>Using <code>reflection</code>: feature of the Java language that allows you to <strong>inspect and manipulate the structure of a class at runtime</strong>.
+<ul>
+<li>To use it, invoke the <code>newInstance()</code> method on the Constructor object for a particular class</li>
+</ul></li>
+<li>Using <code>deserialization</code>: create an object from its serialized form, which is a stream of bytes that represents the object’s state
+<ul>
+<li>This method allows to persist the state of the execution and retrieve it when requested</li>
+<li>To use it, the class must implement the <code>Serializable</code> interface and use <code>ObjectInputStream</code> and <code>ObjectOutputStream</code> classes to serialize and deserialize the object</li>
+</ul></li>
 </ul>
 
 
@@ -529,6 +583,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../java-exercises/Concepts/what-is-a-model.html" class="pagination-link">
+        <span class="nav-page-text">What is a model?</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
