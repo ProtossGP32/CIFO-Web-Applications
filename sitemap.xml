@@ -2,62 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/about.html</loc>
-    <lastmod>2023-01-09T21:23:57.594Z</lastmod>
+    <lastmod>2023-01-10T19:41:47.164Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/documentation/quarto-quick-guide.html</loc>
-    <lastmod>2023-01-09T21:23:58.144Z</lastmod>
+    <lastmod>2023-01-10T19:41:47.707Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/mint-vm-provisioning.html</loc>
-    <lastmod>2023-01-09T21:23:58.603Z</lastmod>
+    <lastmod>2023-01-10T19:41:48.471Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/self-hosted-project/docker-software-deployment.html</loc>
-    <lastmod>2023-01-09T21:23:58.927Z</lastmod>
+    <lastmod>2023-01-10T19:41:48.786Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/software-installation.html</loc>
-    <lastmod>2023-01-09T21:24:02.481Z</lastmod>
+    <lastmod>2023-01-10T19:41:52.721Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/version-control-software/git-useful-tips.html</loc>
-    <lastmod>2023-01-09T21:24:02.819Z</lastmod>
+    <lastmod>2023-01-10T19:41:53.072Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/virtualization/harvester.html</loc>
-    <lastmod>2023-01-09T21:24:03.140Z</lastmod>
+    <lastmod>2023-01-10T19:41:53.389Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/devops-guides/virtualization/proxmox.html</loc>
-    <lastmod>2023-01-09T21:24:03.537Z</lastmod>
+    <lastmod>2023-01-10T19:41:53.759Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/index.html</loc>
-    <lastmod>2023-01-09T21:24:03.826Z</lastmod>
+    <lastmod>2023-01-10T19:41:54.081Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-a-class.html</loc>
-    <lastmod>2023-01-09T21:24:04.157Z</lastmod>
+    <lastmod>2023-01-10T19:41:54.418Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-a-model.html</loc>
-    <lastmod>2023-01-09T21:24:04.549Z</lastmod>
+    <lastmod>2023-01-10T19:41:54.808Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-maven.html</loc>
-    <lastmod>2023-01-09T21:24:04.869Z</lastmod>
+    <lastmod>2023-01-10T19:41:55.145Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-spring-boot.html</loc>
+    <lastmod>2023-01-10T19:41:55.494Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Concepts/what-is-tdd.html</loc>
-    <lastmod>2023-01-09T21:24:05.190Z</lastmod>
+    <lastmod>2023-01-10T19:41:55.807Z</lastmod>
+  </url>
+  <url>
+    <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Final-assignment/project-proposals.html</loc>
+    <lastmod>2023-01-10T19:41:56.149Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/java-exercises/Labs/java-se01-1.html</loc>
-    <lastmod>2023-01-09T21:24:05.825Z</lastmod>
+    <lastmod>2023-01-10T19:41:56.787Z</lastmod>
   </url>
   <url>
     <loc>https://protossgp32.github.io/CIFO-Web-Applications/walkthrough/walkthrough.html</loc>
-    <lastmod>2023-01-09T21:24:08.693Z</lastmod>
+    <lastmod>2023-01-10T19:41:59.947Z</lastmod>
   </url>
 </urlset>

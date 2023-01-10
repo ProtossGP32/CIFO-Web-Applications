@@ -214,7 +214,7 @@
     "href": "java-exercises/Concepts/what-is-maven.html#description",
     "title": "What is Maven?",
     "section": "Description",
-    "text": "Description"
+    "text": "Description\nA dependency is a set of classes that provide functionalities to a Java project."
   },
   {
     "objectID": "java-exercises/Concepts/what-is-maven.html#scope",
@@ -222,6 +222,27 @@
     "title": "What is Maven?",
     "section": "Scope",
     "text": "Scope\nMaven documentation\nEach dependency can define its scope, used to limit the transitivity of a dependency and to determine when a dependency is included in a classpath.\nThere are 6 different scopes:\n\ncompile: default scope, if none is defined. The dependency is available in all classpaths of a project\nprovided: similar to compile, but JDK or a container is expected to provide the dependency at runtime\nruntime: the dependency is not required for compilation, but is for execution\ntest: the dependency is only available for test compilation and execution phases; not transitive\nsystem: similar to provided, except that a JAR that contains it is explicitly provided; the artifact is always available and is not looked up in a repository\nimport: only support on a dependency of type pom in the <dependencyManager> section. The dependency is to be replaced with the effective list of dependencies in the specified POM’s <dependencyManagement> section. Since they are replaced, dependencies with a scope of import do not actually participate in limiting the transitivity of a dependency"
+  },
+  {
+    "objectID": "java-exercises/Concepts/what-is-spring-boot.html",
+    "href": "java-exercises/Concepts/what-is-spring-boot.html",
+    "title": "What is SpringBoot?",
+    "section": "",
+    "text": "From spring.io:\n\nSpring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”.\n\n\n\n\nCreate stand-alone Spring applications\nEmbed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)\nProvide opinionated ‘starter’ dependencies to simplify your build configuration\nAutomatically configure Spring and 3rd party libraries whenever possible\nProvide production-ready features such as metrics, health checks, and externalized configuration\nAbsolutely no code generation and no requirements for XML configuration\n\nIBM has an article about why Spring Framework is so popular and how Spring Boot eases the creation of Spring projects: From ibm.com:\n\nSpring Framework offers a dependency injection feature that lets objects define their own dependencies that the Spring container later injects into them. This enables developers to create modular applications consisting of loosely coupled components that are ideal for microservices and distributed network applications.\n\n\nAs capable as comprehensive as Spring Framework is, it still requires significant time and knowledge to configure, set up, and deploy Spring applications. Spring Boot mitigates this effort with three important capabilities.\n\n\n\n\n\n\nAutoconfiguration means that applications are initialized with pre-set dependencies that you don’t have to configure manually.\n\nAs Java Spring Boot comes with built-in autoconfiguration capabilities, it automatically configures both the underlying Spring Framework and third-party packages based on your settings (and based on best practices, which helps avoid errors)\nEven though you can override these defaults once the initialization is complete, Java Spring Boot’s autoconfiguration feature enables you to start developing your Spring-based applications fast and reduces the possibility of human errors.\n\n\n\n\nSpring Boot uses an opinionated approach to adding and configuring starter dependencies, based on the needs of your project.\n\nFollowing its own judgement, Spring Boot chooses which packages to install and which default values to use, rather than requiring you to make all those decisions yourself and set up everything manually.\nYou can define the needs of your projects during the initialization process, during which you choose among multiple starter dependencies –called _Spring Starters– that cover typical use cases. You run Spring Boot Initializr by filling out a simple web form, without any codingYou can define the needs of\n\n\n\n\nSpring Boot helps developers create applications that just run.\n\nIt lets you create standalone applications that run on their own, without relying on an external web server, by embedding a web server such as Tomcat or Netty into your app during the initialization process\nAs a result, you can launch your application on any platform by simply hitting th Run command"
+  },
+  {
+    "objectID": "java-exercises/Final-assignment/project-proposals.html",
+    "href": "java-exercises/Final-assignment/project-proposals.html",
+    "title": "Project proposals",
+    "section": "",
+    "text": "For the Java Web Applications course final assignment, at least 3 proposals of feasible projects shall be defined and presented. Each member of the team shall present them to the rest and the project to work on shall be chosen by all team members."
+  },
+  {
+    "objectID": "java-exercises/Final-assignment/project-proposals.html#data-analysis-platform",
+    "href": "java-exercises/Final-assignment/project-proposals.html#data-analysis-platform",
+    "title": "Project proposals",
+    "section": "Data analysis platform",
+    "text": "Data analysis platform\n\nWhat is it expected to do? Retrieve data from a data source and provide useful insights related to it\nWhat is it for? This allows to reach conclusions and take decisions based on actual facts and not speculations\nWho is it for? Any decision-making person regardless of their sector, be it market, entertainment, education, etc…\nWhy would it be interesting to do? Because it would be an entry point to such a powerful sector as the Data Analysis, that uses Machine Learning to create models for categorization, prediction, foresight, etc…\nHow would it be done?\n\nData acquisition would be done via API requests to public assets or using web scappers\nData engineering would be done with ETL (Extract, Transform and Load) processes\nData persistency would be achieved with relational databases (i.e. SQL, MariaDB…) for event-driven records (i.e. time-based information and historical data), or non-relational databases (noSQL, MongoDB, DynamoDB…) for any other type of document-based data (i.e. Information of movies, shows, sports teams, etc…)\nData representation would be done with a web application capable of graphically represent data sets. The user shall be able to modify the scope of the represented data and properly drill-down to obtain insight information"
   },
   {
     "objectID": "java-exercises/Labs/java-se01-1.html",
