@@ -1,0 +1,109 @@
+---
+title: "LAB#SE02-1: Movie/Review, model"
+categories: [javase, lab]
+---
+# Introduction
+::: {.panel-tabset}
+## Context
+**Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
+
+**Knowledge of algotighms and data structures** to implement the required classes.
+
+## Goal
+**Create three classes in Java** (`Movie`, `Critic` and `Review`) that implement different algorightms or data structures.
+
+**Test these classes** using JUnit.
+
+## Tasks
+(@) Create **a new Maven or Gradle project** and setting up the project structure
+(@) Modify the project's `pom.xml` or `build.gradle` file to import necessary dependencies, including **JUnit** for testing
+(@) Implement the three required classes in Java
+(@) Implement two basic patter-designs: **singleton** and **think about factory**
+(@) Write **JUnit tests** to verify that classes work as expected
+
+## Optional
+*   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
+:::
+
+# Tasks
+## Model design
+:::{.callout-warning}
+## UML diagram of the model
+TODO: 
+:::
+## Dependencies
+
+* Lombok (both dependency and Maven plugin):
+```xml
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.24</version>
+    <scope>provided</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok-maven-plugin</artifactId>
+    <version>1.18.20.0</version>
+    <scope>provided</scope>
+</dependency>
+
+```
+* Junit:
+```xml
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.9.1</version>
+    <scope>test</scope>
+</dependency>
+
+```
+* Java Faker:
+```xml
+<!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+<dependency>
+    <groupId>com.github.javafaker</groupId>
+    <artifactId>javafaker</artifactId>
+    <version>1.0.2</version>
+</dependency>
+
+```
+
+## Business logic design
+### Movie
+A `Movie` class shall represent a movie being reviewed. It should have the following attributes:
+
+* `title`: a `String` representing the title of the movie
+* `reviews`: a `Set` of `Review` objects representing the reviews that have been written for this movie
+* `Critic`: The `Critic` class represents a critic who writes reviews
+
+:::{.callout-tip}
+## First iteration
+In this first iteration, each `Movie` only has one `Critic`. Later on we can allow each `Movie` to be reviewed by multiple `Critic`s
+:::
+
+### Critic
+A `Critic` class shall represent a critic and a `Review` of its own. It should have the following attributes:
+
+* `name`: a String representing the name of the critic
+* `Review`: the `Review` class represents a review of a movie written by a critic
+
+:::{.callout-tip}
+## First iteration
+Again, in this first iteration each `Critic` has a single `Review`. This shall be fine-tuned.
+:::
+
+### Review
+A `Review` class shall represent the information that identifies a review of a movie. It shall have the following attributes:
+
+* `movie`: a `Movie` object representing the movie being reviewed
+* `critic`: a `Critic` object representing the critic 
+
+:::{.callout-tip}
+## First iteration
+Again, in this first iteration each `Review` has a single `Critic`. This shall be fine-tuned.
+:::
