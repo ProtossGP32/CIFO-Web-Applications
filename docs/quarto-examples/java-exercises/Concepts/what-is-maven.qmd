@@ -6,8 +6,10 @@ title: "What is Maven?"
 
 # Dependencies
 ## Description
+A dependency is a set of classes that provide functionalities to a Java project.
+
 ## Scope
-[Maven documentation](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope)
+[_Maven documentation_](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope)
 
 Each dependency can define its `scope`, used to limit the transitivity of a dependency and to determine when a dependency is included in a classpath.
 

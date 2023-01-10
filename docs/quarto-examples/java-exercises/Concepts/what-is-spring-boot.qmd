@@ -1,0 +1,47 @@
+---
+title: "What is SpringBoot?"
+---
+# Introduction
+
+_[From spring.io:](https://spring.io/projects/spring-boot)_
+
+> Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+
+## Features:
+
+* Create stand-alone Spring applications
+* Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
+* Provide opinionated 'starter' dependencies to simplify your build configuration
+* Automatically configure Spring and 3rd party libraries whenever possible
+* Provide production-ready features such as metrics, health checks, and externalized configuration
+* Absolutely no code generation and no requirements for XML configuration
+
+IBM has an article about why Spring Framework is so popular and how Spring Boot eases the creation of Spring projects:
+[_From ibm.com:_](https://ibm.com/topics/java-spring-boot)
+
+> Spring Framework offers a _dependency injection_ feature that lets objects define their own dependencies that the Spring container later injects into them. This enables developers to create modular applications consisting of loosely coupled components that are ideal for [microservices](https://www.ibm.com/topics/microservices) and distributed network applications.
+
+> As capable as comprehensive as Spring Framework is, it still requires significant time and knowledge to configure, set up, and deploy Spring applications. Spring Boot mitigates this effort with three important capabilities.
+
+## Capabilities:
+
+### Autoconfiguration:
+
+Autoconfiguration means that **applications are initialized with pre-set dependencies that you don't have to configure manually**.
+
+* As Java Spring Boot comes with built-in autoconfiguration capabilities, it automatically configures both the underlying Spring Framework and third-party packages based on your settings (and based on best practices, which helps avoid errors)
+* Even though you can override these defaults once the initialization is complete, Java Spring Boot's autoconfiguration feature enables you to start developing your Spring-based applications fast and **reduces the possibility of human errors**.
+
+### Opinionated approach
+
+Spring Boot uses an opinionated approach to **adding and configuring starter dependencies, based on the needs of your project**.
+
+* Following its own judgement, **Spring Boot chooses which packages to install and which default values to use**, rather than requiring you to make all those decisions yourself and set up everything manually.
+* You can **define the needs of your projects during the initialization process**, during which you choose among multiple starter dependencies --called _Spring Starters-- that cover typical use cases. You run Spring Boot Initializr by filling out a simple web form, without any codingYou can define the needs of 
+
+### Standalone applications
+
+Spring Boot helps developers create applications that _just run_.
+
+* It lets you **create standalone applications that run on their own**, without relying on an external web server, by embedding a web server such as Tomcat or Netty into your app during the initialization process
+* As a result, you can launch your application on any platform by simply hitting th Run command
