@@ -21,3 +21,7 @@ There are 6 different scopes:
 * `test`: the dependency is only available for test compilation and execution phases; not transitive
 * `system`: similar to `provided`, except that a JAR that contains it is explicitly provided; the artifact is always available and is not looked up in a repository
 * `import`: only support on a dependency of type `pom` in the `<dependencyManager>` section. The dependency is to be replaced with the effective list of dependencies in the specified POM's `<dependencyManagement>` section. Since they are replaced, dependencies with a scope of `import` do not actually participate in limiting the transitivity of a dependency
+
+## Annotations
+
+* `@Data`: Lombok dependency annotation that bundles the features of `@ToString`, `@EqualsAndHashCode`, `@Getter / @Setter` and `@RequiredArgsConstructor` together
