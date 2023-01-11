@@ -7,5 +7,61 @@ title: "Docker software deployment"
 # Software categories
 ## Communication
 ### NextCloud
+#### Installation
+Follow the Docker deployment [installation guide](https://github.com/docker-library/docs/blob/master/nextcloud/README.md) for a quick nextCloud deployment. After that, create the required configurations to ensure persistence.
+
+For a quick test, just run:
+```bash
+docker run -d -p 8081:80 nextcloud:stable-apache
+```
+Connect to `http://<nextcloud-server>:8081` and follow the instructions. Install the recommended apps to try the Online Office feature.
+
+:::{.callout-warning}
+## Data is not persistent!
+Be aware that if no volume binding has been made, when stopping the containers the volumes become dandling, not reattached to the next started container. Make sure to define pertinent volume attachments when deploying to production.
+:::
+
+:::{.callout-note}
+## Enabling NextCloud office features
+NextCloud can make use of a built-in document server named Collabora, based on LibreOffice that allows to modify several types of documents online.
+
+On a testing environment, if documents aren't opened online, try to go to the Administration Parameters --> Administration --> Office. Even though the second option is selected, the built-in CODE isn't accessible due to using an insecure protocol (HTTP) (just try to click again on the button and the verification will fail). As a workaround, click on the first option `Use your own server` and just tick the `Disable certificate verification` checkbox; Now the notification regarding Collabora Online accessibility should be OK.
+:::
+
+:::{.callout-warning}
+## Some features are unavailable without an SSL certificate
+Features like video conferences in Talk are disabled
+:::
+
+:::{.callout-note}
+## OnlyOffice + NextCloud integration
+As an alternative to the built-in Collabora/CODE document server, if you want to easily deploy both the OnlyOffice Document Server and the NextCloud at the same time, follow this [installation guide](https://github.com/ONLYOFFICE/docker-onlyoffice-nextcloud). It contains a `docker-compose.yml` file for the deployment.
+:::
+
+#### Configuration
+Try to create a `docker-compose.yml` file to ease the nextCloud deployment. The steps are defined in the installation guide.
 
 ## Collaborative tools
+
+## Productivity tools
+### OpenProject
+OpenProject is a project management suite. It has the required tools to manage Scrum projects.
+
+#### Installation
+OpenProject can be deployed as docker containers. Follow the [installation guide](https://www.openproject.org/docs/installation-and-operations/installation/docker/) to do it. They have a GitHub repository with the `docker-compose` configuration to easily deploy it.
+
+:::{.callout-note}
+## Be patient with the OpenProject initialization
+It takes some time for the OpenProject Web GUI to be available, just wait at least 5 minutes.
+If something goes wrong, check logs. From the same `docker-compose.yml` dir:
+```bash
+docker compose logs
+``` 
+:::
+Once up, access the Web GUI at `http://<openproject-ip>:8080`
+
+#### Configuration
+Things to consider configuring:
+
+* **User creation activation:** by default, the `admin` user is responsible of manually activate any new account. This can be changed to automatically activate accounts either instantly or by sending an e-mail
+    * The e-mail option requires OpenProject to have an SMTP server available to send mails
