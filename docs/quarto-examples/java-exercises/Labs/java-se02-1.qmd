@@ -62,7 +62,7 @@ TODO:
 </dependency>
 
 ```
-* Java Faker:
+* Java Faker: dependency used to generate stub data for testing
 ```xml
 <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
 <dependency>
@@ -73,7 +73,7 @@ TODO:
 
 ```
 
-## Business logic design
+## Domain design
 ### Movie
 A `Movie` class shall represent a movie being reviewed. It should have the following attributes:
 
@@ -107,3 +107,26 @@ A `Review` class shall represent the information that identifies a review of a m
 ## First iteration
 Again, in this first iteration each `Review` has a single `Critic`. This shall be fine-tuned.
 :::
+
+### UML diagram
+```{mermaid}
+classDiagram
+    Movie "1" --o "*" Review : has
+    Movie "1" --o "1" Critic : has
+    Review "1" o--o "1" Critic : has
+
+    class Movie{
+        -String name
+        -int year
+    }
+    
+    class Critic {
+        -String name
+    }
+
+    class Review {
+        -int rating
+        -String comment
+    }
+
+```
