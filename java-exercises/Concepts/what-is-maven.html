@@ -299,6 +299,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
   <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope">Scope</a></li>
+  <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations">Annotations</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Concepts/what-is-maven.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -345,6 +346,12 @@ ul.task-list li input[type="checkbox"] {
 <li><code>test</code>: the dependency is only available for test compilation and execution phases; not transitive</li>
 <li><code>system</code>: similar to <code>provided</code>, except that a JAR that contains it is explicitly provided; the artifact is always available and is not looked up in a repository</li>
 <li><code>import</code>: only support on a dependency of type <code>pom</code> in the <code>&lt;dependencyManager&gt;</code> section. The dependency is to be replaced with the effective list of dependencies in the specified POM’s <code>&lt;dependencyManagement&gt;</code> section. Since they are replaced, dependencies with a scope of <code>import</code> do not actually participate in limiting the transitivity of a dependency</li>
+</ul>
+</section>
+<section id="annotations" class="level2">
+<h2 class="anchored" data-anchor-id="annotations">Annotations</h2>
+<ul>
+<li><code>@Data</code>: Lombok dependency annotation that bundles the features of <code>@ToString</code>, <code>@EqualsAndHashCode</code>, <code>@Getter / @Setter</code> and <code>@RequiredArgsConstructor</code> together</li>
 </ul>
 
 

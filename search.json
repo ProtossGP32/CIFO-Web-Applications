@@ -67,7 +67,7 @@
     "href": "devops-guides/self-hosted-project/docker-software-deployment.html#communication",
     "title": "Docker software deployment",
     "section": "Communication",
-    "text": "Communication\n\nNextCloud"
+    "text": "Communication\n\nNextCloud\n\nInstallation\nFollow the Docker deployment installation guide for a quick nextCloud deployment. After that, create the required configurations to ensure persistence.\nFor a quick test, just run:\ndocker run -d -p 8081:80 nextcloud:stable-apache\nConnect to http://<nextcloud-server>:8081 and follow the instructions. Install the recommended apps to try the Online Office feature.\n\n\n\n\n\n\nData is not persistent!\n\n\n\nBe aware that if no volume binding has been made, when stopping the containers the volumes become dandling, not reattached to the next started container. Make sure to define pertinent volume attachments when deploying to production.\n\n\n\n\n\n\n\n\nEnabling NextCloud office features\n\n\n\nNextCloud can make use of a built-in document server named Collabora, based on LibreOffice that allows to modify several types of documents online.\nOn a testing environment, if documents aren’t opened online, try to go to the Administration Parameters –> Administration –> Office. Even though the second option is selected, the built-in CODE isn’t accessible due to using an insecure protocol (HTTP) (just try to click again on the button and the verification will fail). As a workaround, click on the first option Use your own server and just tick the Disable certificate verification checkbox; Now the notification regarding Collabora Online accessibility should be OK.\n\n\n\n\n\n\n\n\nSome features are unavailable without an SSL certificate\n\n\n\nFeatures like video conferences in Talk are disabled\n\n\n\n\n\n\n\n\nOnlyOffice + NextCloud integration\n\n\n\nAs an alternative to the built-in Collabora/CODE document server, if you want to easily deploy both the OnlyOffice Document Server and the NextCloud at the same time, follow this installation guide. It contains a docker-compose.yml file for the deployment.\n\n\n\n\nConfiguration\nTry to create a docker-compose.yml file to ease the nextCloud deployment. The steps are defined in the installation guide."
   },
   {
     "objectID": "devops-guides/self-hosted-project/docker-software-deployment.html#collaborative-tools",
@@ -75,6 +75,13 @@
     "title": "Docker software deployment",
     "section": "Collaborative tools",
     "text": "Collaborative tools"
+  },
+  {
+    "objectID": "devops-guides/self-hosted-project/docker-software-deployment.html#productivity-tools",
+    "href": "devops-guides/self-hosted-project/docker-software-deployment.html#productivity-tools",
+    "title": "Docker software deployment",
+    "section": "Productivity tools",
+    "text": "Productivity tools\n\nOpenProject\nOpenProject is a project management suite. It has the required tools to manage Scrum projects.\n\nInstallation\nOpenProject can be deployed as docker containers. Follow the installation guide to do it. They have a GitHub repository with the docker-compose configuration to easily deploy it.\n\n\n\n\n\n\nBe patient with the OpenProject initialization\n\n\n\nIt takes some time for the OpenProject Web GUI to be available, just wait at least 5 minutes. If something goes wrong, check logs. From the same docker-compose.yml dir:\ndocker compose logs\n\n\nOnce up, access the Web GUI at http://<openproject-ip>:8080\n\n\nConfiguration\nThings to consider configuring:\n\nUser creation activation: by default, the admin user is responsible of manually activate any new account. This can be changed to automatically activate accounts either instantly or by sending an e-mail\n\nThe e-mail option requires OpenProject to have an SMTP server available to send mails"
   },
   {
     "objectID": "devops-guides/software-installation.html",
@@ -222,6 +229,13 @@
     "title": "What is Maven?",
     "section": "Scope",
     "text": "Scope\nMaven documentation\nEach dependency can define its scope, used to limit the transitivity of a dependency and to determine when a dependency is included in a classpath.\nThere are 6 different scopes:\n\ncompile: default scope, if none is defined. The dependency is available in all classpaths of a project\nprovided: similar to compile, but JDK or a container is expected to provide the dependency at runtime\nruntime: the dependency is not required for compilation, but is for execution\ntest: the dependency is only available for test compilation and execution phases; not transitive\nsystem: similar to provided, except that a JAR that contains it is explicitly provided; the artifact is always available and is not looked up in a repository\nimport: only support on a dependency of type pom in the <dependencyManager> section. The dependency is to be replaced with the effective list of dependencies in the specified POM’s <dependencyManagement> section. Since they are replaced, dependencies with a scope of import do not actually participate in limiting the transitivity of a dependency"
+  },
+  {
+    "objectID": "java-exercises/Concepts/what-is-maven.html#annotations",
+    "href": "java-exercises/Concepts/what-is-maven.html#annotations",
+    "title": "What is Maven?",
+    "section": "Annotations",
+    "text": "Annotations\n\n@Data: Lombok dependency annotation that bundles the features of @ToString, @EqualsAndHashCode, @Getter / @Setter and @RequiredArgsConstructor together"
   },
   {
     "objectID": "java-exercises/Concepts/what-is-spring-boot.html",
