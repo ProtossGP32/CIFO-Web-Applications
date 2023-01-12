@@ -72,4 +72,9 @@ This VM shall act as a template for other Ubuntu Cloud VMs, and if it is started
 For this, you can use the WebUI and right-click on the VM template, or you can use `pvesh` commands to do it from the terminal. Read this article for more info:
 
 - [Rapid Topology deployment with Proxmox](https://www.historiantech.com/rapid-topology-deployment-with-proxmox/)
+
+You can also use the `qm clone` command, but make sure to configure unique hardware configs for each one, such as network parameters:
+```bash
+qm set <vmid> --ipconfig0 ip=<new-ip>,gw=<new-gw>
+```
 :::

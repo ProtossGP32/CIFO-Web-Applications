@@ -1,0 +1,7 @@
+---
+title: "What is the project life cycle?"
+---
+# Introduction
+The **project life cycle** is...
+
+# Life Cycle stages 
