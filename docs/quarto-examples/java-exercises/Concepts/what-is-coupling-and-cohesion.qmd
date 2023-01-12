@@ -1,0 +1,13 @@
+---
+title: "What is coupling and cohesion?"
+---
+# Introduction
+Coupling and cohesion are important concepts when proposing software solutions during design time.
+
+## Coupling
+:::{.callout-note}
+## Custom definition
+Coupling is the degree of dependency between classes.
+:::
+
+When designing the model of a project, the level of dependency or **coupling** between classes shall be the lesser possible. High coupling between classes is bad because if a class must be modified, then all the other classes that are tightly coupled to it will be affected.

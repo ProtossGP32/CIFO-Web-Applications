@@ -1,3 +1,17 @@
 ---
 title: "What is TDD?"
 ---
+
+# Introduction
+
+Test-driven Domain (TDD) is a software development process in which **tests are written for a piece of code before the code itself is written**.
+
+* This approach is designed to ensure that the code meets the requirements and works as intended
+* TDD involves the following steps:
+    * Writing a test for a feature
+    * Running the test to see if it fails
+    * Writing the code to implement the feature
+    * Running the test again to ensure that it passes
+* TDD is often used in **agile software development** as it allows for the rapid development of **high-quality code**.
+
+# What should and shouldn't be tested?
