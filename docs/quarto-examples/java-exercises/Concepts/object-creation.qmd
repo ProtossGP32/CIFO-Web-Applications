@@ -1,0 +1,38 @@
+---
+title: "Object creation"
+---
+# Introduction
+## What to take into account when creating objects:
+- Where do we create them?
+    - Project structure
+    - Data types
+    - Nested classes
+- How do we create them?
+    - `new`
+    - `Factory` classes
+- How do we manage them?
+    - Methods creation
+    - Manager classes
+- How do we send data?
+    - Send Object references to other classes
+
+```{mermaid}
+%%| fig-width: 6.5
+%%| fig-cap: Object creation scope
+flowchart LR
+    A[Object Creation] --> B{Where do we\ncreate them?}
+    B --> C[Project structure]
+    A --> D{How do we\ncreate them?}
+    D --> E['new']
+    D --> F['Factory' classes]
+    A --> G{How do we\nmanage them?}
+    G --> H[Methods creation]
+    G --> H2[Manager classes]
+    A --> I{How do we\nsend data?}
+    I --> J[Send Object references\n to other classes]
+```
+
+:::{.callout-important}
+## Be aware of the scope of each Object!
+Encapsulation is critical, keep variables within its required scope. Don't try to make them available to everyone if not critical.
+:::

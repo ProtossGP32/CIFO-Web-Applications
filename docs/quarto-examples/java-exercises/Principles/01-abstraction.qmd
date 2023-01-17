@@ -1,0 +1,15 @@
+---
+title: "Abstraction"
+---
+
+:::{.callout-note}
+## Class notes definition
+**Abstraction** is the process of focusing on the essential characteristics of an object, while ignoring the non-essential details.
+:::
+
+:::{.callout-warning}
+## TODO
+Create your own definition of **abstraction**
+:::
+
+The main purpose of **abstraction** it to sort.

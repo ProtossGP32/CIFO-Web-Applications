@@ -1,0 +1,17 @@
+---
+title: "Encapsulation"
+---
+
+:::{.callout-note}
+## Class notes definition
+**Encapsulation** is the process of wrapping data and methods that operate on a data into a single unit. In other words, it is the process of hiding the implementation details of an object from the outside world.
+
+In Java, **encapsulation** is achieved through the use of access modifiers like `private`, `public` and `protected`.
+:::
+
+:::{.callout-warning}
+## TODO
+Create your own definition of **encapsulation**
+:::
+
+The main purpose of **encapsulation** is to divide the code and create blocks of functionality.

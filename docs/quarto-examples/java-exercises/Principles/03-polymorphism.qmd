@@ -1,0 +1,16 @@
+---
+title: "Polymorphism"
+---
+:::{.callout-note}
+## Class notes definition
+**Polymorphism** is a fundamental concept in object-oriented programming. It is the ability of an object to take on different forms.
+
+In other words, it is the ability of a single object **to behave differently in different context.**
+:::
+
+:::{.callout-warning}
+## TODO
+Create your own definition of **polymorphism**
+:::
+
+The main purpose of **polymorphism** is to impersonate another inherited class.

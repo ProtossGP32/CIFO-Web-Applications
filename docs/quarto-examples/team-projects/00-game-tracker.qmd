@@ -1,0 +1,62 @@
+---
+title: "First project - GameTracker"
+---
+
+# Introduction
+For the Java Web Applications course team projects, at least 3 proposals of feasible projects shall be defined and presented each time. Each member of the team shall present them to the rest and the project to work on shall be chosen by all team members.
+
+# Projects proposals
+These are the options for the first team project:
+
+## Lakes status (David Marchan)
+
+* **What is it expected to do?** Provides status info of lakes where to go fishing
+* **What is it for?** Its main purpose is to help the user decide which lake would be more appropriate to go fishing
+* **Who is it for?** Fishermen, fans of fishing and nature
+* **Why would it be interesting to do?** TODO
+* **How would it be done?**
+    * Data acquisition...
+    * Data engineering...
+    * Data persistency...
+    * Data representation...
+
+## Data analysis platform (Marc)
+
+* **What is it expected to do?** Retrieve data from a data source and provide useful insights related to it
+* **What is it for?** This allows to reach conclusions and take decisions based on actual facts and not speculations
+* **Who is it for?** Any decision-making person regardless of their sector, be it market, entertainment, education, etc...
+* **Why would it be interesting to do?** Because it would be an entry point to such a powerful sector as the Data Analysis, that uses Machine Learning to create models for categorization, prediction, foresight, etc...
+* **How would it be done?**
+    * Data acquisition would be done via API requests to public assets or using web scappers
+    * Data engineering would be done with ETL (Extract, Transform and Load) processes
+    * Data persistency would be achieved with relational databases (i.e. SQL, MariaDB...) for event-driven records (i.e. time-based information and historical data), or non-relational databases (noSQL, MongoDB, DynamoDB...) for any other type of document-based data (i.e. Information of movies, shows, sports teams, etc...)
+    * Data representation would be done with a web application capable of graphically represent data sets. The user shall be able to modify the scope of the represented data and properly drill-down to obtain insight information
+
+## Game Tracker (Victor)
+
+* **What is it expected to do?** Provides info related to board games and other users that play them or have common interests
+* **What is it for?** Its main purpose is to track the user experience as a board game player and offer match-making functionalities
+* **Who is it for?** Board Games players, families, people that want to buy a game as a gift, etc...
+* **Why would it be interesting to do?** Statistics are always fun and data mining and analysis has proven to be very valuable in our society. Also, there's a social component in sharing one's games, experience and reviews, as well as the match-making aspect, where people can gather together to share their interests
+* **How would it be done?**
+    * Data acquisition...
+    * Data engineering...
+    * Data persistency...
+    * Data representation...
+
+## NGO _Tinder_ (David Maqueda)
+
+* **What is it expected to do?** Provides info related to Non-governmental Organizations (NGO) and volunteers with common interests
+* **What is it for?** Its main purpose is to act as a bridge between the organizations and the people who want to volunteer with them
+* **Who is it for?** Volunteers that want to find NGO activities and demonstrations based on their interests
+* **Why would it be interesting to do?** Social movements are very diverse and it's difficult to know which activities have the most affinity with each person. This app would help people to know the goals of each NGO and contribute to their causes with a better understanding.
+* **How would it be done?**
+    * Data acquisition...
+    * Data engineering...
+    * Data persistency...
+    * Data representation...
+
+# Selected project: Game Tracker
+One of the things that led us to choose this project is because there's already some websites that do similar things ([BoardGameGeek](https://boardgamegeek.com/)) that we can use as a reference, and it's a good starting point for working with databases, APIs and a little bit of frontend.
+
+Also, working with this project can establish the foundations for a core engine that can be reused on any other of the proposed projects with minimal changes, such as the NGO Tinder (match-making features, for example).
