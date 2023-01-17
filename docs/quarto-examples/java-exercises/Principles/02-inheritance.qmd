@@ -1,0 +1,14 @@
+---
+title: "Inheritance"
+---
+:::{.callout-note}
+## Class notes definition
+**Inheritance** is a fundamental concept in object-oriented programming. It is the process of **creating new classes from existing classes.**
+:::
+
+:::{.callout-warning}
+## TODO
+Create your own definition of **inheritance**
+:::
+
+The main purpose of **inheritance** is to reuse your code the most.
