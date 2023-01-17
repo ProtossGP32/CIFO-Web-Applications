@@ -1,0 +1,3 @@
+[submodule "team-projects/game-tracker/pythonApi/boardgamegeek"]
+	path = team-projects/game-tracker/pythonApi/boardgamegeek
+	url = https://github.com/ProtossGP32/boardgamegeek
