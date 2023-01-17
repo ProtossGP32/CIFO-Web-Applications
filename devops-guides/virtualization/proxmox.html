@@ -199,12 +199,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="dropdown-menu" aria-labelledby="nav-menu-java-exercises">    
         <li class="dropdown-header">Concepts</li>
         <li>
+    <a class="dropdown-item" href="../../java-exercises/Concepts/object-creation.html">
+ <span class="dropdown-text">Object creation</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-class.html">
  <span class="dropdown-text">What is a class?</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-model.html">
  <span class="dropdown-text">What is a model?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html">
+ <span class="dropdown-text">What is coupling and cohesion?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-ddd.html">
+ <span class="dropdown-text">What is DDD?</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-maven.html">
@@ -218,17 +230,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-tdd.html">
  <span class="dropdown-text">What is TDD?</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">Final Assignment</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Final-assignment/project-proposals.html">
- <span class="dropdown-text">Project proposals</span></a>
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-project-life-cycle.html">
+ <span class="dropdown-text">What is the project life cycle?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-static-modifier.html">
+ <span class="dropdown-text">What Is the Static Modifier</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
  <span class="dropdown-text">LAB#SE01-1</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Principles</li>
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Principles/01-abstraction.html">
+ <span class="dropdown-text">Abstraction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Principles/00-encapsulation.html">
+ <span class="dropdown-text">Encapsulation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Principles/02-inheritance.html">
+ <span class="dropdown-text">Inheritance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Principles/03-polymorphism.html">
+ <span class="dropdown-text">Polymorphism</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-team-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Team projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-team-projects">    
+        <li>
+    <a class="dropdown-item" href="../../team-projects/00-game-tracker.html">
+ <span class="dropdown-text">First project - GameTracker</span></a>
   </li>  
     </ul>
   </li>
@@ -513,6 +556,8 @@ Creating clones with the Cloud-Init VM template
 <ul>
 <li><a href="https://www.historiantech.com/rapid-topology-deployment-with-proxmox/">Rapid Topology deployment with Proxmox</a></li>
 </ul>
+<p>You can also use the <code>qm clone</code> command, but make sure to configure unique hardware configs for each one, such as network parameters:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">qm</span> set <span class="op">&lt;</span>vmid<span class="op">&gt;</span> --ipconfig0 ip=<span class="op">&lt;</span>new-ip<span class="op">&gt;</span>,gw=<span class="op">&lt;</span>new-gw<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 

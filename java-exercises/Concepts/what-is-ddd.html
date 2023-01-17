@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CIFO - Web Applications - What is a model?</title>
+<title>CIFO - Web Applications - What is DDD?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" rel="next">
-<link href="../../java-exercises/Concepts/what-is-a-class.html" rel="prev">
+<link href="../../java-exercises/Concepts/what-is-maven.html" rel="next">
+<link href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,9 +62,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -253,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">What is a model?</h1>
+      <h1 class="quarto-secondary-nav-title">What is DDD?</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -286,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link active">What is a model?</a>
+  <a href="../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link">What is a model?</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -296,7 +293,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link">What is DDD?</a>
+  <a href="../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link active">What is DDD?</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -380,25 +377,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#models-description" id="toc-models-description" class="nav-link" data-scroll-target="#models-description">Models description</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#mvc" id="toc-mvc" class="nav-link" data-scroll-target="#mvc">MVC</a>
-  <ul class="collapse">
-  <li><a href="#model-parts" id="toc-model-parts" class="nav-link" data-scroll-target="#model-parts">Model parts</a></li>
-  <li><a href="#model-view-controller-example" id="toc-model-view-controller-example" class="nav-link" data-scroll-target="#model-view-controller-example">Model View controller example</a></li>
-  <li><a href="#mvc-on-the-web" id="toc-mvc-on-the-web" class="nav-link" data-scroll-target="#mvc-on-the-web">MVC on the web</a></li>
+  <li><a href="#what-is-the-domain" id="toc-what-is-the-domain" class="nav-link" data-scroll-target="#what-is-the-domain">What is the Domain?</a></li>
+  <li><a href="#what-is-domain-driven-design" id="toc-what-is-domain-driven-design" class="nav-link" data-scroll-target="#what-is-domain-driven-design">What is Domain-Driven Design?</a></li>
   </ul></li>
+  <li><a href="#where-to-begin" id="toc-where-to-begin" class="nav-link" data-scroll-target="#where-to-begin">Where to begin?</a>
+  <ul class="collapse">
+  <li><a href="#building-blocks" id="toc-building-blocks" class="nav-link" data-scroll-target="#building-blocks">Building Blocks</a></li>
+  <li><a href="#advantages-of-domain-driven-design" id="toc-advantages-of-domain-driven-design" class="nav-link" data-scroll-target="#advantages-of-domain-driven-design">Advantages of Domain-Driven Design</a></li>
+  <li><a href="#disadvantages-of-domain-driven-design" id="toc-disadvantages-of-domain-driven-design" class="nav-link" data-scroll-target="#disadvantages-of-domain-driven-design">Disadvantages of Domain-Driven Design</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Concepts/what-is-a-model.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Concepts/what-is-ddd.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">What is a model?</h1>
+<h1 class="title d-none d-lg-block">What is DDD?</h1>
 </div>
 
 
@@ -415,168 +413,90 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>A <strong>model</strong> is…</p>
-</section>
-<section id="models-description" class="level1">
-<h1>Models description</h1>
-<section id="mvc" class="level2">
-<h2 class="anchored" data-anchor-id="mvc">MVC</h2>
-<p><em>From <a href="https://developer.mozilla.org/en-US/docs/Glossary/MVC">Mozilla.org</a>:</em></p>
-<blockquote class="blockquote">
-<p><strong>MVC</strong> (Model-View-Controller) is a pattern in software design commonly used to implement user interfaces, data, and controlling logic. It emphasizes a separation between the software’s business logic and display. This “separation of concerns” provides for a better division of labor and improved maintenance. Some other design patterns are based on MVC, such as MVVM (Model-View-Viewmodel), MVP (Model-View-Presenter), and MVW (Model-View-Whatever).</p>
-</blockquote>
-<section id="model-parts" class="level3">
-<h3 class="anchored" data-anchor-id="model-parts">Model parts</h3>
-<p>An MVC software-design pattern is composed by three parts:</p>
-<section id="model-manages-data-and-business-logic" class="level4">
-<h4 class="anchored" data-anchor-id="model-manages-data-and-business-logic">Model: manages data and business logic</h4>
-<p>The model defines what data the app should contain. If the state of thsi data changes, then the model will usually notify the view (so the display can change as needed) and sometimes the controller (if different logic is needed to control the updated view).</p>
-</section>
-<section id="view-handles-layout-and-display" class="level4">
-<h4 class="anchored" data-anchor-id="view-handles-layout-and-display">View: handles layout and display</h4>
-<p>The view defines how the app’s data should be displayed.</p>
-</section>
-<section id="controller-routes-commands-to-the-model-and-view-parts" class="level4">
-<h4 class="anchored" data-anchor-id="controller-routes-commands-to-the-model-and-view-parts">Controller: routes commands to the model and view parts</h4>
-<p>The controller contains logic that updates the model and/or view in response to input from the users of the app.</p>
-<div class="callout-tip callout callout-style-simple">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>You might however also want to just update the view to display the data in a different format, e.g., change the item order to alphabetical, or lowest to highest price. In this case the controller could handle this directly without needing to update the model.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="model-view-controller-example" class="level3">
-<h3 class="anchored" data-anchor-id="model-view-controller-example">Model View controller example</h3>
-<p><em>From <a href="https://developer.mozilla.org/en-US/docs/Glossary/MVC#model_view_controller_example">Mozilla.org</a>:</em></p>
-<p>Let’s define a simple shopping list app. What do we want to show? For each item in our shopping list, we want:</p>
-<ol type="1">
-<li>The name of the item</li>
-<li>The quantity of the item to buy</li>
-<li>The price of the item</li>
-</ol>
-<p>The following diagram describes required functionalities and how they are implemented using MVC:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figure class="figure">
-<img src="https://developer.mozilla.org/en-US/docs/Glossary/MVC/model-view-controller-light-blue.png" title="MVC - Shopping app example" class="img-fluid figure-img">
-</figure>
-<p></p><figcaption class="figure-caption">MVC - Shopping app example</figcaption><p></p>
-</figure>
-</div>
-<section id="the-model" class="level4">
-<h4 class="anchored" data-anchor-id="the-model">The model</h4>
-<p>The model would specify what data the list items should contain – item, price, etc. – and what list items are already present.</p>
-<p>The following UML diagram is an example of the required data structure</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">classDiagram
-    %% Define an Item class that contains the info of each item
-    class Item {
-        -String name
-        -double price
-
-        +getName() String
-        +setName() void
-        +getPrice() double
-        +setPrice() void
-        +equals() boolean
-        +toString() String
-    }
-
-    %% Define a ShoppingList class to keep track of the items to buy
-    class ShoppingList {
-        +printList() void
-        +getItemAmount(Item newItem) int
-        +getItemPrice(Item newItem) double
-        +getTotalPrice() double
-        +addItem(Item newItem, int initialAmount) void
-        +increaseAmountOfItem(Item item, int amount) void
-    }
-
-    %% Classes relationships
-    Item "*" o-- "1" ShoppingList : contains
-
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="the-view" class="level4">
-<h4 class="anchored" data-anchor-id="the-view">The View</h4>
-<p>In our shopping list app, the view would define how the list is presented to the user, and receive the data to display from the model.</p>
-<p>The following UML diagram is an example of the expected user interface:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">classDiagram
-    class UserInterface {
-    }
-
-    %% Define a ShoppingView class that has the View design, its layout, its UI elements, etc...
-    class ShoppingView {
-        +getView() Scene
-    }
-
-    %% Classes relationships
-    ShoppingView "1" o-- "1" UserInterface : uses
-</pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="the-controller" class="level4">
-<h4 class="anchored" data-anchor-id="the-controller">The Controller</h4>
-<p>Our shopping list could have input forms and buttons that allow us to add or delete items. These actions require the model to be updated, so the input is sent to the controller, which then manipulates the model as appropriate, which then sends updated data to the view.</p>
-<p>The following UML diagram is an example of the expected controller</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<p><a href="https://blog.airbrake.io/blog/software-design/domain-driven-design"><em>From Airbrake:</em></a></p>
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-TODO
+TL:DR
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Add the UML diagram of the shopping list controller</p>
+<p>Domain-driven Design (DDD) is a software development approach that uses and builds upon Object-Oriented Analysis and Design (OOAD) principles and ideas.</p>
 </div>
 </div>
+<section id="what-is-the-domain" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-domain">What is the Domain?</h2>
+<p>The standard dictionary dictionary definition of domain is: “A sphere of knowledge or activity”. In software engineering, the domain commonly referes to the subject area on which the application is intended to apply.</p>
+<p>In other words, during appliaction development, the <strong>domain</strong> is the <strong>sphere of knowledge and activity around which the application logic resolves.</strong></p>
+<p>The domain layer or domain logic is better known as the <strong>business logic</strong>. The business logic of an application refers to the higher-level rules for how buisness objects interact with one another to create and modify modeled data.</p>
+</section>
+<section id="what-is-domain-driven-design" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-domain-driven-design">What is Domain-Driven Design?</h2>
+<p>DDD aims to ease the creation of complex applicatoins by connecting the related pieces of software into an ever-evolving model.</p>
+<p>DDD focueses on three core principles:</p>
+<ul>
+<li>Focus on the core domain and domain logic</li>
+<li>Base complex designs on models of the domain</li>
+<li>Collaboration with domain experts to improve the application model and resolve any emerging domain-related issues</li>
+</ul>
 </section>
 </section>
-<section id="mvc-on-the-web" class="level3">
-<h3 class="anchored" data-anchor-id="mvc-on-the-web">MVC on the web</h3>
-<section id="the-model-1" class="level4">
-<h4 class="anchored" data-anchor-id="the-model-1">The Model</h4>
-<p>The data model is probably contained in some kind of database</p>
+<section id="where-to-begin" class="level1">
+<h1>Where to begin?</h1>
+<p>The following list describes a few common terms that are useful when describing and discussing DDD practices: * <strong>Context:</strong> The setting in which a word or statement appears determines its meaning. Statements about a model can only be understood in a context * <strong>Model:</strong> A system of abstractions that describes selected aspects of a domain and can be used to solve problems related to that domain * <strong>Ubiquitous Language:</strong> A language structured around the domain model and used by all team members to connect all the activities of the team with the software * This means that all team memmbers must know the domain vocabulary and understand what the other members are talking about * <strong>Bounded Context</strong></p>
+<section id="building-blocks" class="level2">
+<h2 class="anchored" data-anchor-id="building-blocks">Building Blocks</h2>
+<p>Domain-driven design also defines several high-level concepts that can be used in conjunction with one another to create and modify domain models:</p>
+<ul>
+<li><strong>Entity:</strong> An object identified by its consistent thread of continuity, as opposed to traditional objects, which are defined by their attributes
+<ul>
+<li><em>Custom interpretation:</em></li>
+</ul></li>
+<li><strong>Value Object:</strong> An immutable (unchangeable) object that has attributes but no distinct identity
+<ul>
+<li><em>Custom interpretation:</em></li>
+</ul></li>
+<li><strong>Domain event:</strong> An object that records a discrete event related to model activity within the system. While <em>all</em> events within the system could be tracked, a domain event is only created for event types that the domain experts care about.
+<ul>
+<li><em>Custom interpretation:</em></li>
+</ul></li>
+<li><strong>Aggregate:</strong> A cluster of entities and value objects with defined boundaries around the group. Rather than allowing every single entity or value object to perform all actions on its own, the collective aggregate of items is assigned a singular aggregate root item. Now, <strong>external objects no longer have direct access to every individual entity or value object within the aggragate</strong> but instead only have access to the single aggregate root item and use that to pass along instructions to the group as a whole.
+<ul>
+<li><em>Custom interpretation:</em></li>
+</ul></li>
+<li><strong>Service:</strong> Essentially, a service is an operation or form of business logic that doesn’t naturally fit within the realm of objects. In other words, if some functionality must exist, but it cannot be related to an entity or value object, it’s probably a service.
+<ul>
+<li><em>Custom interpretation:</em></li>
+</ul></li>
+<li><strong>Repositories:</strong> Not to be confused with common version control repositories, the DDD meaning of a repository is a <strong>service that uses a global interface to provide access to all entities and value objects within a particular aggregate collection</strong>. Methods should be defined to allow for the creation, modification, and deletion of objects within the aggregate. However, by using this repository service to make data queries, the goal is to remove such data query capabilities from within the business logic of object models.
+<ul>
+<li><em>Custom interpretation:</em></li>
+</ul></li>
+<li><strong>Factories:</strong> DDD suggests using a factory, which <strong>encapsulates the logic of creating complex objects and aggregates, ensuring that the client does not know the inner-workings of object manipulation.</strong></li>
+</ul>
+<p>DDD heavily emphasizes the ever-more-popular practice of continuous integration (CI), which asks the entire development team to use one shared code repository and push commits to it daily (if not multiple times a day).</p>
+<p>An automatic process executes at the end of the work day, which checks the integrity of the entire code base, running automated unit tests, regression tests, and the like to quickly detect any potential problems that may have been introduced in the latest commits.</p>
 </section>
-<section id="the-view-1" class="level4">
-<h4 class="anchored" data-anchor-id="the-view-1">The View</h4>
-<p>The User Interface is probably written using HTML/CSS/whatever else you like, but Java can also do frontend.</p>
+<section id="advantages-of-domain-driven-design" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-domain-driven-design">Advantages of Domain-Driven Design</h2>
+<ul>
+<li><strong>Eases Communication:</strong> With an early emphasis on establishing a common and ubiuitous language related to the domain model of the project, teams will often find communitacion throughout the entire development life cycle to be much easier. Typically, <strong>DDD will require less technical jargon when discussing aspects of the application</strong> since the ubiquitous language established early on will likely define simpler terms to refer to those more technical aspects.</li>
+<li><strong>Improves Flexibility:</strong> Since DDD is so heavily based on the concepts of object-oriented analysis and design, <strong>nearly everything within the domain model will be based on an object and will, therefore, be modular and encapsulated</strong>. This allows for various components, or even the entire system, to be altered and improved on a regular, continuous basis.</li>
+<li><strong>Emphasizes Domain Over Interface:</strong> Since DDD is the practice of building around the concepts of domain and what the domain experts within the project advise, <strong>DDD will often produce applications that are accurately suited for and representative of the domain at hand,</strong> as opposed to those applications which emphasize the UI/UX first and foremost. While balance is required, focusing on the domain means that a DDD approach can produce a product that resonates well with the audience associated with that domain.</li>
+</ul>
 </section>
-<section id="the-controller-1" class="level4">
-<h4 class="anchored" data-anchor-id="the-controller-1">The Controller</h4>
-<p>The app’s controlling code is probably written in HTML/JavaScript, but Java can also implement it in the frontend.</p>
+<section id="disadvantages-of-domain-driven-design" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-of-domain-driven-design">Disadvantages of Domain-Driven Design</h2>
+<ul>
+<li><strong>Requires Robust Domain Expertise:</strong> Even with the most technically proficient minds working on development, <strong>it’s all for naught if there isn’t at least one domain expert on the team that knows the exact ins and outs of the subject area</strong>. In some cases, domain-driven design may require integrating one or more outside team members who can act as domain experts throughout the development life cycle.</li>
+<li><strong>Encourages Iterative Practices:</strong> While many consider this an advantage, it cannot be denied that DDD practices strongly rely on constant iteration and continuous integration to build a malleable project that can adjust itself when necessary. Some organizations may have trouble with these practices, particularly if their past experience is primarily tied to less-flexible development models, such as the <a href="https://airbrake.io/blog/sdlc/waterfall-model">waterfall model</a>.</li>
+<li><strong>Ill-Suited for Highly Technical Projects:</strong> DDD is not very well-suited for applications with marginal domain complexity but has a great deal of technical complexity. Since DDD so heavily emphasizes the need for (and importance of) domain experts to generate the proper ubiquitous language and then domain model on which the project is based, a project that is incredibly technically complex may be challenging for domain experts to grasp, causing problems down the line, perhaps when all members of the team did not fully understand technical requirements or limitations.</li>
+</ul>
 
 
-</section>
-</section>
 </section>
 </section>
 
@@ -831,13 +751,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Concepts/what-is-a-class.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is a class?</span>
+      <a href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is coupling and cohesion?</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="pagination-link">
-        <span class="nav-page-text">What is coupling and cohesion?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../java-exercises/Concepts/what-is-maven.html" class="pagination-link">
+        <span class="nav-page-text">What is Maven?</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
