@@ -25,6 +25,7 @@ website:
         file: index.qmd
       - sidebar:devops-guides
       - sidebar:java-exercises
+      - sidebar:team-projects
       - sidebar:walkthrough
       - text: About
         file: about.qmd
@@ -53,6 +54,11 @@ website:
       title: "Walkthrough"
       style: "docked"
       contents: walkthrough/**
+    
+    - id: team-projects
+      title: "Team projects"
+      style: "docked"
+      contents: team-projects/**
 
   # Page Footer
   page-footer:
