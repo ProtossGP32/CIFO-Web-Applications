@@ -79,7 +79,8 @@ A `Movie` class shall represent a movie being reviewed. It should have the follo
 
 * `title`: a `String` representing the title of the movie
 * `reviews`: a `Set` of `Review` objects representing the reviews that have been written for this movie
-* `Critic`: The `Critic` class represents a critic who writes reviews
+* `critic`: The `Critic` class represents a critic who writes reviews
+* `director`: The `Director` class represents the movie director
 
 :::{.callout-tip}
 ## First iteration
@@ -113,6 +114,7 @@ Again, in this first iteration each `Review` has a single `Critic`. This shall b
 classDiagram
     Movie "1" --o "*" Review : has
     Movie "1" --o "1" Critic : has
+    Movie "1" --o "1" Director : has
     Review "1" o--o "1" Critic : has
 
     class Movie{
@@ -124,9 +126,50 @@ classDiagram
         -String name
     }
 
+    class Director {
+        -String name
+    }
+
     class Review {
         -int rating
         -String comment
     }
 
 ```
+
+## Second iteration - Manager classes
+In this iteration we'll use a manager class to access the domain classes. We'll decide whether the manager class should be `static` or not.
+
+### Movie
+```
+
+```
+### Director
+### Critic
+### Review
+### MovieManager (`non-static`)
+The `non-static` approach requests the user to create a `MovieManager` in order to access its methods.
+```{mermaid}
+classDiagram
+
+    class MovieManager {
+    }
+
+```
+
+### MovieManager (`static`)
+:::{.callout-note}
+## Static method and static class
+A `static` method is a method that is owned only by the class, not by the class objects. You don't instantiate a class object to access the `static` methods.
+
+A `static` class is a class that doesn't instantiate objects. `static` class' methods are accessed through the class name.
+:::
+```{mermaid}
+classDiagram
+    class MovieManager {
+    }
+
+    <<Static>> MovieManager
+```
+
+
