@@ -1,0 +1,59 @@
+---
+title: "UML"
+---
+
+# Introduction
+
+:::{.callout-note}
+## Class notes' definition
+**UML** stands for **Unified Modeling Language.** It is a standardized **visual language for specifying, constructing, visualizing, and documenting the artifacts of software systems,** as well as for business modeling and other non-software systems.
+
+UML is used by software **developers, business analysts, and system engineers** to model the design of a system and communicate that design to others.
+:::
+
+Why is it useful?
+- It allows all team members to be on the same page by providing a common language; thus, people from different disciplines can understand and discuss system design in a concise and precise way (13)
+- It allows to identify issues either in the design or in the team dynamics (13)
+- It allows to solve any found issue even before coding the system (13)
+- It helps understanding the problem to solve, the client requirements, the market needs, the core, etc... (21)
+- It serves as a project documentation (13)
+
+# Class diagram and relationships
+## Inheritance
+Inheritance is a relationship between classes, where **one class is a subclass of another class** and inherits the properties and behavioral of the superclass. This is represented in UML by a solid line with a closed, filled arrowhead pointing from the subclass to the superclass:
+
+```{mermaid}
+classDiagram
+    class SuperClass {
+    }
+    class SubClass {
+    }
+    SuperClass <|-- SubClass : Inheritance
+
+```
+## Composition
+Composition is a strong type of association that represents a whole-part relationship between two classes, **where the parts can exist independently of the whole**.
+```{mermaid}
+classDiagram
+    class Tree {
+    }
+    class Leaf {
+    }
+
+    Tree *-- Leaf : Composition
+
+```
+## Aggregation
+## Association
+## Dependency
+## Use
+
+# Entity realtionship types: multiplicity
+- _What is it?_ A way to define relationship between different types of entities using cardinality (cuantitative method)
+- _Why is it required?_ It helps programmers to understand and go deep within the problem
+- _What is it for?_ It is used as tool that allows us to propose solutions to our problem at the coding stage
+- _How is it used?_ It is used when taking decisions regarding the necessity of each entity within the proposed solution
+
+## One-to-One (1:1)
+## One-to-Many (1:n)
+## Many-to-Many (n:m)
