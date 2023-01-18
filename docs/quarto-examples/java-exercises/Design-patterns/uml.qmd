@@ -44,6 +44,8 @@ classDiagram
 
 ```
 ## Aggregation
+Aggregation is a weaker type of association that represents a **whole-part relationship between two classes, where the parts can exist independently of the whole**. 
+
 ## Association
 ## Dependency
 ## Use
