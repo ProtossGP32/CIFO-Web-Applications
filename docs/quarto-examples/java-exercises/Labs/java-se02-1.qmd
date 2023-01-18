@@ -1,0 +1,261 @@
+---
+title: "LAB#SE02-1: Movie/Review, model"
+categories: [javase, lab]
+---
+# Introduction
+::: {.panel-tabset}
+## Context
+**Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
+
+**Knowledge of algotighms and data structures** to implement the required classes.
+
+## Goal
+**Create three classes in Java** (`Movie`, `Critic` and `Review`) that implement different algorightms or data structures.
+
+**Test these classes** using JUnit.
+
+## Tasks
+(@) Create **a new Maven or Gradle project** and setting up the project structure
+(@) Modify the project's `pom.xml` or `build.gradle` file to import necessary dependencies, including **JUnit** for testing
+(@) Implement the three required classes in Java
+(@) Implement two basic patter-designs: **singleton** and **think about factory**
+(@) Write **JUnit tests** to verify that classes work as expected
+
+## Optional
+*   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
+:::
+
+# Tasks
+## Model design
+:::{.callout-warning}
+## UML diagram of the model
+TODO: Review [multiplicity concept](https://www.umlboard.com/docs/relations/multiplicity/) and apply it to the UML!!
+
+An association (the UML equivalent to a relationship in data modeling circles) has a multiplicity for each direction.
+:::
+## Dependencies
+
+* Lombok (both dependency and Maven plugin):
+```xml
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.24</version>
+    <scope>provided</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok-maven-plugin</artifactId>
+    <version>1.18.20.0</version>
+    <scope>provided</scope>
+</dependency>
+
+```
+* Junit:
+```xml
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.9.1</version>
+    <scope>test</scope>
+</dependency>
+
+```
+* Java Faker: dependency used to generate stub data for testing
+```xml
+<!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+<dependency>
+    <groupId>com.github.javafaker</groupId>
+    <artifactId>javafaker</artifactId>
+    <version>1.0.2</version>
+</dependency>
+
+```
+## First approach
+### Domain design
+#### Movie
+A `Movie` class shall represent a movie being reviewed. It should have the following attributes:
+
+* `title`: a `String` representing the title of the movie
+* `reviews`: a `Set` of `Review` objects representing the reviews that have been written for this movie
+* `critic`: The `Critic` class represents a critic who writes reviews
+
+#### Critic
+A `Critic` class shall represent a critic and a `Review` of its own. It should have the following attributes:
+
+* `name`: a String representing the name of the critic
+* `Review`: the `Review` class represents a review of a movie written by a critic
+
+#### Review
+A `Review` class shall represent the information that identifies a review of a movie. It shall have the following attributes:
+
+* `movie`: a `Movie` object representing the movie being reviewed
+* `critic`: a `Critic` object representing the critic 
+
+### UML diagram
+:::{.callout-warning}
+## Quarto bug
+`.mmd` files attachment through the `file` directive ([as explained here](https://quarto.org/docs/authoring/diagrams.html#file-include)) isn't working, there's [an open bug in github](https://github.com/quarto-dev/quarto-cli/issues/3665).
+
+Once the bug is solved, replace any `{mermaid}` snippet with a link to the `uml.mmd` file attached to each lab approach like this:
+````md
+```{mermaid}
+%%| label: fig-uml
+%%| fig-cap: "UML diagram"
+%%| file: ../../../../java-exercises/lab-se-02-1/approach_1/uml.mmd
+
+```
+````
+:::
+
+```{mermaid}
+%%| label: fig-uml
+%%| fig-cap: "UML diagram - First approach"
+
+classDiagram
+    direction LR
+    Review "*" o-- "1" Movie : has
+    Review "*" o-- "1" Critic : is done by
+    Critic "1" *-- "*" Review : can do
+    Movie "*" *-- "*" Critic : is reviewed by
+    
+    class Movie{
+        -title: String
+        -year: int
+        -critics: Set
+    }
+    
+    class Critic {
+        -name: String
+        -reviews: Set
+    }
+
+    class Review {
+        -movie: Movie
+        -rating: int
+        -comment: String
+        -critic: Critic
+    }
+```
+
+## Second approach - Less coupling between classes
+In this approach we remove redundant or unnecessary associations between the classes.
+
+### Changes in previous Domain
+#### Movie
+
+* This time `Movie` has a `Review` set instead of a `Critic` set
+
+#### Critic
+
+* This time `Critic` doesn't include any reference to the class `Review`
+
+#### Review
+
+* `Review` class is the same as in the first approach
+
+### UML diagram
+```{mermaid}
+%%| label: fig-uml
+%%| fig-cap: "UML diagram - Second approach"
+classDiagram
+    direction LR
+    Movie "1" *-- "*" Review : may have
+    Review "*" o-- "1" Movie : talks about
+    Review "*" o-- "1" Critic : is written by
+
+    class Movie {
+        -title: String
+        -reviews: Set
+    }
+
+    class Review {
+        -movie: Movie
+        -critic: Critic
+        -rating: int
+        -comment: String
+    }
+
+    class Critic {
+        -name: String
+    }
+```
+
+## Third approach - Use Manager classes
+In this approach, instead of heavily binding classes between them, we delegate the responsibility to an external class, called `MovieManager`
+
+### Logic
+#### MovieManager (`non-static`)
+The `non-static` approach requests the user to create a `MovieManager` object in order to access its methods.
+```{mermaid}
+classDiagram
+
+    class MovieManager {
+    }
+
+```
+
+#### MovieManager (`static`)
+:::{.callout-note}
+## Static method and static class
+A `static` method is a method that is owned only by the class, not by the class objects. You don't instantiate a class object to access the `static` methods.
+
+A `static` class is a class that doesn't instantiate objects; thus, `static` class' methods are accessed through the class name.
+:::
+```{mermaid}
+classDiagram
+    class MovieManager {
+    }
+
+    <<Static>> MovieManager
+```
+
+:::{.callout-warning}
+## TODO
+:::
+
+### UML diagram
+
+:::{.callout-warning}
+## TODO
+:::
+
+## Fourth approach - Create a superclass Person
+Let's say that we want to add information about the `FilmMaker` and the `Actor`s of a `Movie` to our model. Now we have three classes (`Critic`, `FilmMaker` and `Actor`) that have something in common: **they are all persons**. Thus, we can encapsule their common treats into a new class `Person` and make these classes inherit it.
+
+### Changes in Domain
+#### Person
+The `Person` class defines the common treats of any human being:
+
+* `name`: a `String` representing the name of the person
+* `birthDate`: a `String` representing the birth date of the person (it can also be a `Date` type)
+
+#### FilmMaker
+`FilmMaker` is a `Person` subclass that contains info about its works:
+
+* `movies`: a **Set** of `Movie` containing all the movies that this `Person` has filmed
+
+#### Actor
+`Actor` is a `Person` subclass that contains info about its works:
+
+* `movies`: a **Set** of `Movie` containing all the movies where this `Person` has performed in
+
+#### Critic
+`Critic` now is a `Person` subclass that contains info about the reviews it has written:
+
+* `reviews`: a **Set** of `Review` containing all its reviews
+
+### Logic
+Now the `MovieManager` class must take into account all these changes in its methods
+
+:::{.callout-warning}
+## TODO
+:::
+
+### UML diagram
+:::{.callout-warning}
+## TODO
+:::

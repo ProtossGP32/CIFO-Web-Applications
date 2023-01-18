@@ -1,0 +1,23 @@
+classDiagram
+    direction LR
+    Movie "1" *-- "*" Review : appears in
+    Review "*" o-- "1" Movie : talks about
+    Review "*" o-- "1" Critic : is written by
+
+    class Movie {
+        -title: String
+        -reviews: Set
+    }
+
+    class Review {
+        -movie: Movie
+        -critic: Critic
+        -rating: int
+        -comment: String
+    }
+
+    class Critic {
+        -name: String
+    }
+
+    
