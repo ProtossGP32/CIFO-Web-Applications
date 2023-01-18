@@ -1,0 +1,25 @@
+classDiagram
+    direction LR
+    Review "*" o-- "1" Movie : has
+    Review "*" o-- "1" Critic : is done by
+    Critic "1" *-- "*" Review : can do
+    Movie "*" *-- "*" Critic : is reviewed by
+    
+    class Movie{
+        -title: String
+        -year: int
+        -critics: Set
+    }
+    
+    class Critic {
+        -name: String
+        -reviews: Set
+    }
+
+    class Review {
+        -movie: Movie
+        -rating: int
+        -comment: String
+        -critic: Critic
+    }
+
