@@ -43,6 +43,7 @@ classDiagram
     Tree *-- Leaf : Composition
 
 ```
+
 ## Aggregation
 Aggregation is a weaker type of association that represents a **whole-part relationship between two classes, where the parts can exist independently of the whole**. 
 
@@ -55,6 +56,10 @@ Aggregation is a weaker type of association that represents a **whole-part relat
 - _Why is it required?_ It helps programmers to understand and go deep within the problem
 - _What is it for?_ It is used as tool that allows us to propose solutions to our problem at the coding stage
 - _How is it used?_ It is used when taking decisions regarding the necessity of each entity within the proposed solution
+
+Multiplicity is a combination between **cardinality** and **participation**, where:
+- Cardinality denotes the maximum number of possible relationship ocurrences in which a certain entity can participate in (in simple terms: at most)
+- Participation: denotes if all or only some entity ocurrences participate in a relationship (in simple terms: at least)
 
 ## One-to-One (1:1)
 ## One-to-Many (1:n)

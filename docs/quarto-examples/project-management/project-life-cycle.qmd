@@ -1,0 +1,24 @@
+---
+title: "What is the project lifecycle?"
+---
+# Introduction
+The **software development lifecycle (SDLC)** is a process that describes the stages involved in creating and deployng software.
+
+# Lifecycle stages
+## Planning
+This stage involves identifying the goals and objectives of the software, as well as determining the resources and timelines required to develop it.
+
+## Design
+In this stage, the software's architecture and user interface are created, and the functional and non-functional requirements are defined.
+
+## Test
+This stage involves the implementation of test-driven development (TDD). It starts by writing automated test cases based on the requirements and design of the software. The developer then writes the minimum amount of code needed to pass the test, and repeat this process until all the requirements are met.
+
+## Develop
+The actual coding of the software takes place during this stage. This may involve writing code in a specific programming language or using certain development tools.
+
+## Maintain
+Once the software is tested and developed, it will be integrated into the primary source code through developer efforts, usually by leveraging training environments to detect further errors or defects.
+
+## Deploy
+The final stage is deployment, where the software is made available to users. This may involve installing the software on individual computers or deploying it to a server for multiple users to access.

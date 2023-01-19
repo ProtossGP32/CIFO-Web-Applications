@@ -1,0 +1,5 @@
+---
+title: "What is the static modifier?"
+---
+
+The `static` modifier defines the access scope of any element of the object-oriented domain (?)

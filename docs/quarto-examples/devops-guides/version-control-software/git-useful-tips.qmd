@@ -36,6 +36,16 @@ git checkout <branch-name>
 git checkout -b <new-branch-name>
 ```
 
+### Delete a local branch
+```bash
+git branch --delete <branch-name>
+```
+
+### Delete a remote branch
+```bash
+git push origin --delete feature/login
+```
+
 ## Updating local checkouts
 ### Retrieve latest changes in remote repositories
 ```bash
@@ -49,3 +59,7 @@ git fetch
 git merge <remote-branch> <local-branch>
 ```
 
+### Overwrite local branches with remote repositories
+```bash
+git pull
+```
