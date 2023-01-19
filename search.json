@@ -84,6 +84,13 @@
     "text": "Productivity tools\n\nOpenProject\nOpenProject is a project management suite. It has the required tools to manage Scrum projects.\n\nInstallation\nOpenProject can be deployed as docker containers. Follow the installation guide to do it. They have a GitHub repository with the docker-compose configuration to easily deploy it.\n\n\n\n\n\n\nBe patient with the OpenProject initialization\n\n\n\nIt takes some time for the OpenProject Web GUI to be available, just wait at least 5 minutes. If something goes wrong, check logs. From the same docker-compose.yml dir:\ndocker compose logs\n\n\nOnce up, access the Web GUI at http://<openproject-ip>:8080\n\n\nConfiguration\nThings to consider configuring:\n\nUser creation activation: by default, the admin user is responsible of manually activate any new account. This can be changed to automatically activate accounts either instantly or by sending an e-mail\n\nThe e-mail option requires OpenProject to have an SMTP server available to send mails"
   },
   {
+    "objectID": "devops-guides/self-hosted-project/docker-software-deployment.html#user-database-and-authentication",
+    "href": "devops-guides/self-hosted-project/docker-software-deployment.html#user-database-and-authentication",
+    "title": "Docker software deployment",
+    "section": "User database and authentication",
+    "text": "User database and authentication\n\nOpenLDAP + phpLDAPadmin\nWe’ll be using a bitnami/openldap docker image as it runs as non-privileged user, so that’s an additional layer of security.\n\n\nFreeIPA\nFollow this tutorial:"
+  },
+  {
     "objectID": "devops-guides/software-installation.html",
     "href": "devops-guides/software-installation.html",
     "title": "Software installation",
@@ -137,14 +144,14 @@
     "href": "devops-guides/version-control-software/git-useful-tips.html#branches",
     "title": "GIT useful tips",
     "section": "Branches",
-    "text": "Branches\n\nShow available branches\ngit branch\n\nAlso show remote branches:\n\ngit branch -a\n\n\nClone an existing branch\ngit checkout <branch-name>\n\n\nCreate a new branch\ngit checkout -b <new-branch-name>"
+    "text": "Branches\n\nShow available branches\ngit branch\n\nAlso show remote branches:\n\ngit branch -a\n\n\nClone an existing branch\ngit checkout <branch-name>\n\n\nCreate a new branch\ngit checkout -b <new-branch-name>\n\n\nDelete a local branch\ngit branch --delete <branch-name>\n\n\nDelete a remote branch\ngit push origin --delete feature/login"
   },
   {
     "objectID": "devops-guides/version-control-software/git-useful-tips.html#updating-local-checkouts",
     "href": "devops-guides/version-control-software/git-useful-tips.html#updating-local-checkouts",
     "title": "GIT useful tips",
     "section": "Updating local checkouts",
-    "text": "Updating local checkouts\n\nRetrieve latest changes in remote repositories\ngit fetch\n\nThis command downloads the git objects (blobs, trees and commits), it doesn’t merge the changes into the local checkouts.\n\nThis means that the files in local branches are still behind the latest commits, they must be merged or fast-forwarded\n\n\n\n\nUpdate local branches\ngit merge <remote-branch> <local-branch>"
+    "text": "Updating local checkouts\n\nRetrieve latest changes in remote repositories\ngit fetch\n\nThis command downloads the git objects (blobs, trees and commits), it doesn’t merge the changes into the local checkouts.\n\nThis means that the files in local branches are still behind the latest commits, they must be merged or fast-forwarded\n\n\n\n\nUpdate local branches\ngit merge <remote-branch> <local-branch>\n\n\nOverwrite local branches with remote repositories\ngit pull"
   },
   {
     "objectID": "devops-guides/virtualization/proxmox.html",
@@ -294,11 +301,81 @@
     "text": "Introduction\nTest-driven Domain (TDD) is a software development process in which tests are written for a piece of code before the code itself is written.\n\nThis approach is designed to ensure that the code meets the requirements and works as intended\nTDD involves the following steps:\n\nWriting a test for a feature\nRunning the test to see if it fails\nWriting the code to implement the feature\nRunning the test again to ensure that it passes\n\nTDD is often used in agile software development as it allows for the rapid development of high-quality code.\n\n\n\nWhat should and shouldn’t be tested?"
   },
   {
-    "objectID": "java-exercises/Concepts/what-is-the-project-life-cycle.html",
-    "href": "java-exercises/Concepts/what-is-the-project-life-cycle.html",
-    "title": "What is the project life cycle?",
+    "objectID": "java-exercises/Concepts/what-is-the-static-modifier.html",
+    "href": "java-exercises/Concepts/what-is-the-static-modifier.html",
+    "title": "What is the static modifier?",
     "section": "",
-    "text": "Introduction\nThe project life cycle is…\n\n\nLife Cycle stages"
+    "text": "The static modifier defines the access scope of any element of the object-oriented domain (?)"
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html",
+    "href": "java-exercises/Design-patterns/uml.html",
+    "title": "UML",
+    "section": "",
+    "text": "Class notes’ definition\n\n\n\nUML stands for Unified Modeling Language. It is a standardized visual language for specifying, constructing, visualizing, and documenting the artifacts of software systems, as well as for business modeling and other non-software systems.\nUML is used by software developers, business analysts, and system engineers to model the design of a system and communicate that design to others.\n\n\nWhy is it useful?\n\nIt allows all team members to be on the same page by providing a common language; thus, people from different disciplines can understand and discuss system design in a concise and precise way (13)\nIt allows to identify issues either in the design or in the team dynamics (13)\nIt allows to solve any found issue even before coding the system (13)\nIt helps understanding the problem to solve, the client requirements, the market needs, the core, etc… (21)\nIt serves as a project documentation (13)"
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#inheritance",
+    "href": "java-exercises/Design-patterns/uml.html#inheritance",
+    "title": "UML",
+    "section": "Inheritance",
+    "text": "Inheritance\n\n\n\n\n\nclassDiagram\n    class SuperClass {\n    }\n    class SubClass {\n    }\n    SuperClass <|-- SubClass : Inheritance\n\n\n\n\n\n\n\n\nInheritance is a relationship between classes, where one class is a subclass of another class and inherits the properties and behavioral of the superclass. This is represented in UML by a solid line with a closed, filled arrowhead pointing from the subclass to the superclass:"
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#composition",
+    "href": "java-exercises/Design-patterns/uml.html#composition",
+    "title": "UML",
+    "section": "Composition",
+    "text": "Composition\n\n\n\n\n\nclassDiagram\n    class Client {\n    }\n    class BankAccount {\n    }\n\n    Client o-- BankAccount : Composition\n\n\n\n\n\n\n\n\nComposition is a strong type of association that represents a whole-part relationship between two classes, where the parts cannot exist independently of the whole. This is represented in UML by a solid line with a closed diamond shape pointing from the whole to the part."
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#aggregation",
+    "href": "java-exercises/Design-patterns/uml.html#aggregation",
+    "title": "UML",
+    "section": "Aggregation",
+    "text": "Aggregation\n\n\n\n\n\nclassDiagram\n    class Person {\n    }\n    class Hand {\n    }\n\n    Person *-- Hand : Aggregation\n\n\n\n\n\n\n\n\nAggregation is a weaker type of association that represents a whole-part relationship between two classes, where the parts can exist independently of the whole. Thisis represented in UML by a solid line with an open diamond shape pointing from the whole to the part."
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#association",
+    "href": "java-exercises/Design-patterns/uml.html#association",
+    "title": "UML",
+    "section": "Association",
+    "text": "Association\n\n\n\n\n\nclassDiagram\n    class Customer {\n    }\n    class Ticket {\n    }\n\n    Customer --> Ticket : Association\n\n\n\n\n\n\n\n\nAssociation is a relationship between two classes that represents a connection or relationship between them (as in generic relationship). This is represented in UML by a solid line with an open arrowhead pointing from one class to the other."
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#dependency",
+    "href": "java-exercises/Design-patterns/uml.html#dependency",
+    "title": "UML",
+    "section": "Dependency",
+    "text": "Dependency\n\n\n\n\n\nclassDiagram\n    class MovieManager {\n    }\n    class Movie {\n    }\n\n    MovieManager ..> Movie : Dependency\n\n\n\n\n\n\n\nDependency is a relationship between two classes that indicates that one class depends on the other for its functionality. This is represented in UML by a dashed line with an open arrowhead pointing from the dependenet class to the class it depends on."
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#use-realization",
+    "href": "java-exercises/Design-patterns/uml.html#use-realization",
+    "title": "UML",
+    "section": "Use / Realization",
+    "text": "Use / Realization\n\n\n\n\n\nclassDiagram\n    class ShoppingList {\n    }\n    class Item {\n    }\n    \n    ShoppingList ..|> Item : Use / Realization\n\n\n\n\n\n\n\nUse is a relationship between two classes that indicates that one class uses the other in some way. This is represented in UML by a dashed line with an open, unfilled arrowhead pointing from the using class to the class being used."
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#one-to-one-11",
+    "href": "java-exercises/Design-patterns/uml.html#one-to-one-11",
+    "title": "UML",
+    "section": "One-to-One (1:1)",
+    "text": "One-to-One (1:1)"
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#one-to-many-1n",
+    "href": "java-exercises/Design-patterns/uml.html#one-to-many-1n",
+    "title": "UML",
+    "section": "One-to-Many (1:n)",
+    "text": "One-to-Many (1:n)"
+  },
+  {
+    "objectID": "java-exercises/Design-patterns/uml.html#many-to-many-nm",
+    "href": "java-exercises/Design-patterns/uml.html#many-to-many-nm",
+    "title": "UML",
+    "section": "Many-to-Many (n:m)",
+    "text": "Many-to-Many (n:m)"
   },
   {
     "objectID": "java-exercises/Labs/java-se01-1.html",
@@ -306,6 +383,55 @@
     "title": "LAB#SE01-1",
     "section": "",
     "text": "ContextGoalTasksOptional\n\n\nBasic understanding of Java programming language is required, as well as some familiarity with Maven or Gradle for managing dependencies and building the project.\nKnowledge of algotighms and data structures to implement the required classes.\n\n\nCreate three classes in Java (Person, Account and Manager) that implement different algorightms or data structures.\nTest these classes using JUnit.\n\n\n\nCreate a new Maven or Gradle project and setting up the project structure\nModify the project’s pom.xml or build.gradle file to import necessary dependencies, including JUnit for testing\nImplement the three required classes in Java\nImplement two basic patter-designs: singleton and think about factory\nWrite JUnit tests to verify that classes work as expected\n\n\n\n\nAllow the user to input data via the console, rather than using hard-coded test data in JUnit tests\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\n\n\n\n\nclassDiagram\n    Person \"1\" --o \"1\" Account : has\n    Person \"*\" -- \"1\" AccountManager : manages\n\n    class Person{\n        -String name\n        -String address\n        -int age\n        -Account account\n\n        +getBalance()\n        +setBalance()\n        +getPin()\n        +setPin()\n    }\n    \n    class Account{\n        -String accountManager\n        -String pin\n        -double balance\n\n        +equals(Account compared) boolean\n    }\n\n    class AccountManager{\n        +withdrawal(Person person, double amount) boolean\n        +transfer(Person sender, Person receiver, double amount) boolean\n        +changePin(Person person, String oldPin, String newPin) boolean\n    }\n    <<Static>> AccountManager\n    %%note for AccountManager \"Can withdraw money from a person's account\\nCan tranfer money between two persons' account\\nCan change the Pin of a person's account\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPerson class\n\n\n\n\n\npackage org.labSe01Part1;\n\nimport lombok.Getter;\nimport lombok.NoArgsConstructor;\nimport lombok.Setter;\n\n@Getter @Setter @NoArgsConstructor\npublic class Person {\n    private String name;\n    private String address;\n    private int age;\n    private Account account;\n\n    public Person(String name, String address, int age, Account account) {\n        this.name = name;\n        this.address = address;\n        this.age = age;\n        this.account = account;\n    }\n\n    public double getBalance() {\n        return this.account.getBalance();\n    }\n\n    public void setBalance(double amount) {\n        this.account.setBalance(amount);\n    }\n\n    public String getPin() {\n        return this.account.getPin();\n    }\n\n    public void setPin(String newPin) {\n        this.account.setPin(newPin);\n    }\n}\n\n\n\n\n\n\n\n\n\n\n\n\nAccount class\n\n\n\n\n\npackage org.labSe01Part1;\n\nimport lombok.Getter;\nimport lombok.NoArgsConstructor;\nimport lombok.Setter;\n\n@Getter @Setter @NoArgsConstructor\npublic class Account {\n    private String accountNumber;\n    private String pin;\n    private double balance;\n\n    public Account(String accountNumber, String pin, double balance) {\n        this.accountNumber = accountNumber;\n        this.pin = pin;\n        this.balance = balance;\n    }\n\n    public boolean equals(Object compared) {\n        if (this == compared) {\n            return true;\n        }\n        if (!(compared instanceof Account)) {\n            return false;\n        }\n\n        Account comparedAccount = (Account) compared;\n\n        if (this.accountNumber.equals(comparedAccount.accountNumber) &&\n                this.pin.equals(comparedAccount.pin) &&\n                this.balance == comparedAccount.balance) {\n            return true;\n        }\n\n        return false;\n    }\n}\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\n{.java include=\"../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/AccountManager.java\n\n\n\n\n\n\n\n\nThe AccountManager class is created as a Singleton to force its usage when managing accounts.\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\n\n\n\n\nclassDiagram\n    class Account {\n        -String accountNumber\n        -String pin\n        -double balance\n\n        +getAccountNumber()\n        +setAccountNumber()\n        +getPin()\n        +setPin()\n        +getBalance()\n        +setBalance()\n    }\n\n    class Person {\n        -String name\n        -int age\n        -String address\n        -Account account\n\n        +getName()\n        +setName()\n        +getAge()\n        +setAge()\n        +getAddress()\n        +setAddress()\n        +getAccount()\n        +setAccount()\n        +getBalance()\n        +setBalance()\n        +getPin()\n        +setPin()\n    }\n\n    %% AccountManager Singleton\n    class AccountManager {\n        +getInstance()\n        +withdrawal(Person client, double amount)\n        +transfer(Person sender, Person receiver, double amount)\n        +deposit(Person client, double amount)\n        +changePin(Person client)\n    }\n\n    <<Singleton>> AccountManager\n    %% Classes relationships\n    Person \"1\" --o \"1\" Account : has\n    Person \"*\" -- \"1\" AccountManager : manages\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\npackage org.labSe01Part1;\n\nimport lombok.Getter;\nimport lombok.NoArgsConstructor;\nimport lombok.Setter;\n\n@Getter @Setter\npublic class Person {\n    private String name;\n    private String address;\n    private int age;\n    private Account account;\n\n    public Person(String name, String address, int age, Account account) {\n        this.name = name;\n        this.address = address;\n        this.age = age;\n        this.account = account;\n    }\n\n    public double getBalance() {\n        return this.account.getBalance();\n    }\n\n    public void setBalance(double amount) {\n        this.account.setBalance(amount);\n    }\n\n    public String getPin() {\n        return this.account.getPin();\n    }\n\n    public void setPin(String newPin) {\n        this.account.setPin(newPin);\n    }\n}\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\npackage org.labSe01Part1;\n\nimport lombok.Getter;\nimport lombok.NoArgsConstructor;\nimport lombok.Setter;\n\n@Getter @Setter\npublic class Account {\n    private String accountNumber;\n    private String pin;\n    private double balance;\n\n    public Account(String accountNumber, String pin, double balance) {\n        this.accountNumber = accountNumber;\n        this.pin = pin;\n        this.balance = balance;\n    }\n\n    public boolean equals(Object compared) {\n        if (this == compared) {\n            return true;\n        }\n        if (!(compared instanceof Account)) {\n            return false;\n        }\n\n        Account comparedAccount = (Account) compared;\n\n        if (this.accountNumber.equals(comparedAccount.accountNumber) &&\n                this.pin.equals(comparedAccount.pin) &&\n                this.balance == comparedAccount.balance) {\n            return true;\n        }\n\n        return false;\n    }\n}\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\npackage org.labSe01Part1;\n\npublic class AccountManager {\n    private static AccountManager instance;\n\n    private AccountManager() {\n        // Empty constructor?\n    }\n\n    public static AccountManager getInstance() {\n        if (instance == null) {\n            instance = new AccountManager();\n        }\n        return instance;\n    }\n\n    public static boolean withdrawal(Person person, double amount) {\n        if (amount > 0 && amount <= person.getBalance()) {\n            person.setBalance(person.getBalance() - amount);\n            return true;\n        }\n        return false;\n    }\n\n    public static boolean transfer(Person sender, Person receiver, double amount) {\n        if (amount > 0 && amount <= sender.getBalance()) {\n            sender.setBalance(sender.getBalance() - amount);\n            receiver.setBalance(receiver.getBalance() + amount);\n            return true;\n        }\n        return false;\n    }\n\n    public static boolean deposit(Person person, double amount){\n        if (amount > 0) {\n            person.setBalance(person.getBalance() + amount);\n            return true;\n        }\n        return false;\n    }\n    \n    public static boolean changePin(Person person, String oldPin, String newPin) {\n        if (person.getPin().equals(oldPin)) {\n            person.setPin(newPin);\n            return true;\n        }\n        return false;\n    }\n}\n\n\n\n\n\n\n\n\nAnother approach would be that a client might have multiple accounts. We can manage all the client’s accounts as a HashMap where its keys are the account’s owners (Person) and each value is a list of accounts (Account). This way we are decoupling classes Account and Person.\nThe AccountManager class is created as a Singleton to force its usage when managing accounts.\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\n\n\n\n\nclassDiagram\n    class Person {\n        -String name\n        -int age\n        -String address\n\n        +getName()\n        +setName()\n        +getAge()\n        +setAge()\n        +getAddress()\n        +setAddress()\n        +equals(Person compared) boolean\n    }\n\n    class Account {\n        -String accountNumber\n        -String pin\n        -double balance\n\n        +getAccountNumber()\n        +setAccountNumber()\n        +getPin()\n        +setPin()\n        +getBalance()\n        +setBalance()\n        +equals(Account compared) boolean\n    }\n\n    %% AccountManager Singleton\n    class AccountManager {\n        -HashMap< Person, ArrayList< Account > > clients\n\n        -getAccount(Person client, String accountNumber)\n        -createAccount(Person client, Account newAccount)\n        -removeAccount(Person client, Account newAccount)\n\n        -getClient(String clientName)\n        -removeClient(Person client)\n\n        -getAccounts(Person client)\n\n        -changePin(Account account, String oldPin, String newPin)\n\n        +getInstance()\n        +getClientBalance(String clientName)\n        +getAccountBalance(String clientName, String accountNumber)\n        +withdrawal(String clientName, String accountNumber, double amount)\n        +transfer(String senderName, String senderAccountNumber, String receiverName, String receiverAccountNumber, double amount)\n        +deposit(String clientName, String accountNumber, double amount)\n        +changePin(String clientName, String accountNumber, String oldPin, String newPin)\n    }\n\n    <<Singleton>> AccountManager\n\n    %% Classes relationship\n    Person \"*\" -- \"1\" AccountManager : manages\n    Account \"*\" -- \"1\" AccountManager : manages\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\npackage org.labSe01Part1;\n\nimport lombok.Getter;\nimport lombok.NoArgsConstructor;\nimport lombok.Setter;\n\n@Getter @Setter\npublic class Person {\n    private String name;\n    private String address;\n    private int age;\n\n    public Person(String name, String address, int age) {\n        this.name = name;\n        this.address = address;\n        this.age = age;\n    }\n}\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\npackage org.labSe01Part1;\n\nimport lombok.Getter;\nimport lombok.Setter;\n\n@Getter @Setter\npublic class Account {\n    private String accountNumber;\n    private String pin;\n    private double balance;\n\n    public Account(String accountNumber, String pin, double balance) {\n        this.accountNumber = accountNumber;\n        this.pin = pin;\n        this.balance = balance;\n    }\n\n    public boolean equals(Object compared) {\n        if (this == compared) {\n            return true;\n        }\n        if (!(compared instanceof Account)) {\n            return false;\n        }\n\n        Account comparedAccount = (Account) compared;\n\n        if (this.accountNumber.equals(comparedAccount.accountNumber) &&\n                this.pin.equals(comparedAccount.pin) &&\n                this.balance == comparedAccount.balance) {\n            return true;\n        }\n\n        return false;\n    }\n}\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\npackage org.labSe01Part1;\nimport java.util.ArrayList;\nimport java.util.HashMap;\n\npublic class AccountManager {\n    private static AccountManager instance;\n    private HashMap<Person, ArrayList<Account>> clients;\n    private AccountManager() {\n        this.clients = new HashMap<>();\n        // Empty constructor?\n    }\n\n    public static AccountManager getInstance() {\n        if (instance == null) {\n            instance = new AccountManager();\n        }\n        return instance;\n    }\n\n    // clearAccounts only for testing purposes\n    public void clearAccounts() {\n        this.clients = new HashMap<>();\n    }\n\n    // Private methods: any method that requires Person or Account objects as input parameters\n    private boolean createAccount(Person client, Account newAccount) {\n        if (!this.clients.containsKey(client)) {\n            ArrayList<Account> accounts = new ArrayList<>();\n            accounts.add(newAccount);\n            this.clients.put(client, accounts);\n            return true;\n        }\n        else if (!this.clients.get(client).contains(newAccount)) {\n            this.clients.get(client).add(newAccount);\n            return true;\n        }\n        return false;\n    }\n\n    private boolean removeAccount(Person client, Account accountToDelete) {\n        if (this.clients.containsKey(client) && this.clients.get(client).contains(accountToDelete)) {\n            this.clients.get(client).remove(accountToDelete);\n            System.out.println(\"Account \" + accountToDelete.getAccountNumber() + \" removed from the system.\");\n            return true;\n        }\n        return false;\n    }\n\n    private boolean removeClient(Person client) {\n        if (this.clients.containsKey(client)) {\n            this.clients.remove(client);\n            System.out.println(\"Client \" + client.getName() + \" removed from the system.\");\n            return true;\n        }\n        return false;\n    }\n\n    private ArrayList<Account> getAccounts(Person client) {\n        return this.clients.getOrDefault(client, null);\n    }\n\n    private Person getClient(String clientName) {\n        for (Person client : this.clients.keySet()) {\n            if (client.getName().equals(clientName)) {\n                return client;\n            }\n        }\n        return null;\n    }\n\n    private Account getAccount(Person client, String accountNumber) {\n        if (this.clients.containsKey(client)) {\n            for (Account account : this.clients.get(client)) {\n                if (account.getAccountNumber().equals(accountNumber)) {\n                    return account;\n                }\n            }\n        }\n        return null;\n    }\n\n    private double getClientBalance(Person client) {\n        double totalBalance = 0.0;\n        if (this.clients.containsKey(client)) {\n            for (Account account : this.clients.get(client)) {\n                totalBalance += account.getBalance();\n            }\n        }\n        return totalBalance;\n    }\n\n    private boolean withdrawal(Account account, double amount) {\n        // Check if there's enough money to withdraw\n        if (amount > 0 && amount <= account.getBalance()) {\n            account.setBalance(account.getBalance() - amount);\n            System.out.println(\"Withdrawal completed. New balance: \" + account.getBalance());\n            return true;\n        }\n        // Not enough money to withdraw\n        System.out.println(\"Not enough money on client's account. Withdrawal operation cancelled.\");\n        return false;\n    }\n\n    private boolean transfer(Account senderAccount, Account receiverAccount, double amount) {\n        // Check if we can transfer the money\n        if (amount > 0 && amount <= senderAccount.getBalance()) {\n            senderAccount.setBalance(senderAccount.getBalance() - amount);\n            receiverAccount.setBalance(receiverAccount.getBalance() + amount);\n            System.out.println(\"Transfer completed.\");\n            System.out.println(\"New sender balance: \" + senderAccount.getBalance());\n            System.out.println(\"New receiver balance: \" + receiverAccount.getBalance());\n            return true;\n        }\n        // Not enough money for the transfer\n        System.out.println(\"Not enough money on sender's account. Transfer operation cancelled.\");\n        return false;\n    }\n\n    private boolean deposit(Account account, double amount) {\n        if (amount > 0) {\n            account.setBalance(account.getBalance() + amount);\n            System.out.println(\"Deposit completed. New balance: \" + account.getBalance());\n            return true;\n        }\n        System.out.println(\"Bad amount of money. Deposit cancelled.\");\n        return false;\n    }\n\n    private boolean changePin(Account account, String oldPin, String newPin) {\n        if (account.getPin().equals(oldPin)) {\n            account.setPin(newPin);\n            System.out.println(\"Pin correctly changed.\");\n            return true;\n        }\n        return false;\n    }\n\n    // Public methods: only basic data types accepted, no Person or Account\n    public boolean createAccount(String clientName, String clientAddress, int age, String accountNumber, String accountPin, double balance) {\n        return this.createAccount(new Person(clientName, clientAddress, age), new Account(accountNumber, accountPin, balance));\n    }\n    public boolean createAccount(String clientName, String clientAddress, int age, String accountNumber, String accountPin) {\n        return this.createAccount(clientName, clientAddress, age, accountNumber, accountPin, 0.0);\n    }\n\n    public boolean removeAccount(String clientName, String accountNumber) {\n        Person client = this.getClient(clientName);\n        if (client == null) {\n            return false;\n        }\n        Account account = this.getAccount(client, accountNumber);\n        if (account == null) {\n            return false;\n        }\n        return this.removeAccount(client, account);\n    }\n\n    public boolean removeClient(String clientName) {\n        Person client = this.getClient(clientName);\n        if (client == null) {\n            return false;\n        }\n\n        return this.removeClient(client);\n    }\n\n    public Account getAccount(String clientName, String accountNumber) {\n        Person client = this.getClient(clientName);\n        if (client == null) {\n            return null;\n        }\n        return this.getAccount(client, accountNumber);\n    }\n\n    public double getAccountBalance(String clientName, String accountNumber) {\n        Account account = this.getAccount(clientName, accountNumber);\n        if (account == null) {\n            return 0.0;\n        }\n        return account.getBalance();\n    }\n\n    public double getClientBalance(String clientName) {\n        Person client = this.getClient(clientName);\n        if (client == null) {\n            System.out.println(\"Client \" + clientName + \" does not exist.\");\n            return 0.0;\n        }\n        return this.getClientBalance(client);\n    }\n\n    public boolean withdrawal(String clientName, String accountNumber, double amount) {\n        // Retrieve the account from that client\n        Account account = this.getAccount(clientName, accountNumber);\n        if (account == null) {\n            System.out.println(\"Client \" + clientName + \"doesn't have an account with number \" + accountNumber +\". Withdrawal operation cancelled.\");\n            return false;\n        }\n\n        return this.withdrawal(account, amount);\n    }\n\n    public boolean transfer(String senderName, String senderAccountNumber, String receiverName, String receiverAccountNumber, double amount) {\n        // Retrieve the sender account\n        Account senderAccount = this.getAccount(senderName, senderAccountNumber);\n        if (senderAccount == null) {\n            System.out.println(\"Client \" + senderName + \"doesn't have an account with number \" + senderAccountNumber + \". Transfer operation cancelled.\");\n            return false;\n        }\n        // Retrieve the receiver account\n        Account receiverAccount = this.getAccount(receiverName, receiverAccountNumber);\n        if (receiverAccount == null) {\n            System.out.println(\"Client \" + senderName + \"doesn't have an account with number \" + senderAccountNumber + \". Transfer operation cancelled.\");\n            return false;\n        }\n\n        return this.transfer(senderAccount, receiverAccount, amount);\n    }\n\n    public boolean deposit(String clientName, String accountNumber, double amount){\n        Account clientAccount = this.getAccount(clientName, accountNumber);\n        if (clientAccount == null) {\n            System.out.println(\"Client \" + clientName + \" doesn't have an account with number \" + accountNumber + \". Deposit operation cancelled.\");\n            return false;\n        }\n\n        return this.deposit(clientAccount, amount);\n    }\n\n    public boolean changePin(String clientName, String accountNumber, String oldPin, String newPin) {\n        Account account = this.getAccount(clientName, accountNumber);\n        if (account == null) {\n            return false;\n        }\n        return this.changePin(account, oldPin, newPin);\n    }\n}"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se02-1.html",
+    "href": "java-exercises/Labs/java-se02-1.html",
+    "title": "LAB#SE02-1: Movie/Review, model",
+    "section": "",
+    "text": "ContextGoalTasksOptional\n\n\nBasic understanding of Java programming language is required, as well as some familiarity with Maven or Gradle for managing dependencies and building the project.\nKnowledge of algotighms and data structures to implement the required classes.\n\n\nCreate three classes in Java (Movie, Critic and Review) that implement different algorightms or data structures.\nTest these classes using JUnit.\n\n\n\nCreate a new Maven or Gradle project and setting up the project structure\nModify the project’s pom.xml or build.gradle file to import necessary dependencies, including JUnit for testing\nImplement the three required classes in Java\nImplement two basic patter-designs: singleton and think about factory\nWrite JUnit tests to verify that classes work as expected\n\n\n\n\nAllow the user to input data via the console, rather than using hard-coded test data in JUnit tests"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se02-1.html#model-design",
+    "href": "java-exercises/Labs/java-se02-1.html#model-design",
+    "title": "LAB#SE02-1: Movie/Review, model",
+    "section": "Model design",
+    "text": "Model design\n\n\n\n\n\n\nUML diagram of the model\n\n\n\nTODO: Review multiplicity concept and apply it to the UML!!\nAn association (the UML equivalent to a relationship in data modeling circles) has a multiplicity for each direction."
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se02-1.html#dependencies",
+    "href": "java-exercises/Labs/java-se02-1.html#dependencies",
+    "title": "LAB#SE02-1: Movie/Review, model",
+    "section": "Dependencies",
+    "text": "Dependencies\n\nLombok (both dependency and Maven plugin):\n\n<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->\n<dependency>\n    <groupId>org.projectlombok</groupId>\n    <artifactId>lombok</artifactId>\n    <version>1.18.24</version>\n    <scope>provided</scope>\n</dependency>\n<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin -->\n<dependency>\n    <groupId>org.projectlombok</groupId>\n    <artifactId>lombok-maven-plugin</artifactId>\n    <version>1.18.20.0</version>\n    <scope>provided</scope>\n</dependency>\n\nJunit:\n\n<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->\n<dependency>\n    <groupId>org.junit.jupiter</groupId>\n    <artifactId>junit-jupiter-api</artifactId>\n    <version>5.9.1</version>\n    <scope>test</scope>\n</dependency>\n\nJava Faker: dependency used to generate stub data for testing\n\n<!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->\n<dependency>\n    <groupId>com.github.javafaker</groupId>\n    <artifactId>javafaker</artifactId>\n    <version>1.0.2</version>\n</dependency>"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se02-1.html#first-approach",
+    "href": "java-exercises/Labs/java-se02-1.html#first-approach",
+    "title": "LAB#SE02-1: Movie/Review, model",
+    "section": "First approach",
+    "text": "First approach\n\nDomain design\n\nMovie\nA Movie class shall represent a movie being reviewed. It should have the following attributes:\n\ntitle: a String representing the title of the movie\nreviews: a Set of Review objects representing the reviews that have been written for this movie\ncritic: The Critic class represents a critic who writes reviews\n\n\n\nCritic\nA Critic class shall represent a critic and a Review of its own. It should have the following attributes:\n\nname: a String representing the name of the critic\nReview: the Review class represents a review of a movie written by a critic\n\n\n\nReview\nA Review class shall represent the information that identifies a review of a movie. It shall have the following attributes:\n\nmovie: a Movie object representing the movie being reviewed\ncritic: a Critic object representing the critic\n\n\n\n\nUML diagram\n\n\n\n\n\n\nQuarto bug\n\n\n\n.mmd files attachment through the file directive (as explained here) isn’t working, there’s an open bug in github.\nOnce the bug is solved, replace any {mermaid} snippet with a link to the uml.mmd file attached to each lab approach like this:\n```{mermaid}\n%%| label: fig-uml\n%%| fig-cap: \"UML diagram\"\n%%| file: ../../../../java-exercises/lab-se-02-1/approach_1/uml.mmd\n\n```\n\n\n\n\n\n\n\nclassDiagram\n    direction LR\n    Review \"*\" o-- \"1\" Movie : has\n    Review \"*\" o-- \"1\" Critic : is done by\n    Critic \"1\" *-- \"*\" Review : can do\n    Movie \"*\" *-- \"*\" Critic : is reviewed by\n    \n    class Movie{\n        -title: String\n        -year: int\n        -critics: Set\n    }\n    \n    class Critic {\n        -name: String\n        -reviews: Set\n    }\n\n    class Review {\n        -movie: Movie\n        -rating: int\n        -comment: String\n        -critic: Critic\n    }\n\n\n\n\n\nFigure 1: UML diagram - First approach"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se02-1.html#second-approach---less-coupling-between-classes",
+    "href": "java-exercises/Labs/java-se02-1.html#second-approach---less-coupling-between-classes",
+    "title": "LAB#SE02-1: Movie/Review, model",
+    "section": "Second approach - Less coupling between classes",
+    "text": "Second approach - Less coupling between classes\nIn this approach we remove redundant or unnecessary associations between the classes.\n\nChanges in previous Domain\n\nMovie\n\nThis time Movie has a Review set instead of a Critic set\n\n\n\nCritic\n\nThis time Critic doesn’t include any reference to the class Review\n\n\n\nReview\n\nReview class is the same as in the first approach\n\n\n\n\nUML diagram\n\n\n\n\n\nclassDiagram\n    direction LR\n    Movie \"1\" *-- \"*\" Review : may have\n    Review \"*\" o-- \"1\" Movie : talks about\n    Review \"*\" o-- \"1\" Critic : is written by\n\n    class Movie {\n        -title: String\n        -reviews: Set\n    }\n\n    class Review {\n        -movie: Movie\n        -critic: Critic\n        -rating: int\n        -comment: String\n    }\n\n    class Critic {\n        -name: String\n    }\n\n\n\n\n\nFigure 2: UML diagram - Second approach"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se02-1.html#third-approach---use-manager-classes",
+    "href": "java-exercises/Labs/java-se02-1.html#third-approach---use-manager-classes",
+    "title": "LAB#SE02-1: Movie/Review, model",
+    "section": "Third approach - Use Manager classes",
+    "text": "Third approach - Use Manager classes\nIn this approach, instead of heavily binding classes between them, we delegate the responsibility to an external class, called MovieManager\n\nLogic\n\nMovieManager (non-static)\nThe non-static approach requests the user to create a MovieManager object in order to access its methods.\n\n\n\n\nclassDiagram\n\n    class MovieManager {\n    }\n\n\n\n\n\n\n\n\n\n\n\nMovieManager (static)\n\n\n\n\n\n\nStatic method and static class\n\n\n\nA static method is a method that is owned only by the class, not by the class objects. You don’t instantiate a class object to access the static methods.\nA static class is a class that doesn’t instantiate objects; thus, static class’ methods are accessed through the class name.\n\n\n\n\n\n\nclassDiagram\n    class MovieManager {\n    }\n\n    <<Static>> MovieManager\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\nUML diagram\n\n\n\n\n\n\nTODO"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se02-1.html#fourth-approach---create-a-superclass-person",
+    "href": "java-exercises/Labs/java-se02-1.html#fourth-approach---create-a-superclass-person",
+    "title": "LAB#SE02-1: Movie/Review, model",
+    "section": "Fourth approach - Create a superclass Person",
+    "text": "Fourth approach - Create a superclass Person\nLet’s say that we want to add information about the FilmMaker and the Actors of a Movie to our model. Now we have three classes (Critic, FilmMaker and Actor) that have something in common: they are all persons. Thus, we can encapsule their common treats into a new class Person and make these classes inherit it.\n\nChanges in Domain\n\nPerson\nThe Person class defines the common treats of any human being:\n\nname: a String representing the name of the person\nbirthDate: a String representing the birth date of the person (it can also be a Date type)\n\n\n\nFilmMaker\nFilmMaker is a Person subclass that contains info about its works:\n\nmovies: a Set of Movie containing all the movies that this Person has filmed\n\n\n\nActor\nActor is a Person subclass that contains info about its works:\n\nmovies: a Set of Movie containing all the movies where this Person has performed in\n\n\n\nCritic\nCritic now is a Person subclass that contains info about the reviews it has written:\n\nreviews: a Set of Review containing all its reviews\n\n\n\n\nLogic\nNow the MovieManager class must take into account all these changes in its methods\n\n\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\nUML diagram\n\n\n\n\n\n\nTODO"
   },
   {
     "objectID": "java-exercises/Principles/00-encapsulation.html",
@@ -334,6 +460,125 @@
     "title": "Polymorphism",
     "section": "",
     "text": "Class notes definition\n\n\n\nPolymorphism is a fundamental concept in object-oriented programming. It is the ability of an object to take on different forms.\nIn other words, it is the ability of a single object to behave differently in different context.\n\n\n\n\n\n\n\n\nTODO\n\n\n\nCreate your own definition of polymorphism\n\n\nThe main purpose of polymorphism is to impersonate another inherited class."
+  },
+  {
+    "objectID": "project-management/decision-making.html",
+    "href": "project-management/decision-making.html",
+    "title": "Decision Making",
+    "section": "",
+    "text": "From UMass Darthmouth:\n\nDecision making is the process of making choices by identifying a decision, gathering information, and assessing alternative resolutions.\nUsing a step-by-step decision-making process can help you make more deliberate, thoughtful decisions by organizing relevant information and defining alternatives. This approach increases the chances that you will choose the most satisfying alternative possible.\n\n\n\n\n7 Steps to Effective Decision Making"
+  },
+  {
+    "objectID": "project-management/decision-making.html#step-0-go-for-small-iterations-of-work",
+    "href": "project-management/decision-making.html#step-0-go-for-small-iterations-of-work",
+    "title": "Decision Making",
+    "section": "Step 0: Go for small iterations of work",
+    "text": "Step 0: Go for small iterations of work\nFocusing on small, feasable units of work allows the team to quickly identify problems."
+  },
+  {
+    "objectID": "project-management/decision-making.html#step-1-identify-the-decision",
+    "href": "project-management/decision-making.html#step-1-identify-the-decision",
+    "title": "Decision Making",
+    "section": "Step 1: Identify the decision",
+    "text": "Step 1: Identify the decision\nYou realize that you need to make a decision. Try to clearly define the nature of the decision you must make. This first step is very important"
+  },
+  {
+    "objectID": "project-management/decision-making.html#step-2-gather-relevant-information",
+    "href": "project-management/decision-making.html#step-2-gather-relevant-information",
+    "title": "Decision Making",
+    "section": "Step 2: Gather relevant information",
+    "text": "Step 2: Gather relevant information\nCollect some pertinent information before you make your decision: what information is neeede, the best sources of information, and how to get it. This step involves both internal and external “work”. Some information is internal: you’ll seek it through a process of self-assessment. Other information is external: you’ll find it online, in books, from other people, and from other sources."
+  },
+  {
+    "objectID": "project-management/decision-making.html#step-3-identify-the-alternatives",
+    "href": "project-management/decision-making.html#step-3-identify-the-alternatives",
+    "title": "Decision Making",
+    "section": "Step 3: Identify the alternatives",
+    "text": "Step 3: Identify the alternatives\nAs you collect information, you will probably identify several possible paths of action, or alternatives. You can also use your imagination and additional information to construct new alternatives. In this step, you will list all possible and desirable alternatives."
+  },
+  {
+    "objectID": "project-management/decision-making.html#step-4-weigh-the-evidence",
+    "href": "project-management/decision-making.html#step-4-weigh-the-evidence",
+    "title": "Decision Making",
+    "section": "Step 4: Weigh the evidence",
+    "text": "Step 4: Weigh the evidence\nDraw on your information and emotions to imagine whati it would be like if you carried out each of the alternatives to the end. Evaluate whether the need identified in Step 1 would be met or resolved through the use of each alternative. As you go through this difficult internal process, you’ll begin to favor certain alternatives: those that seem to have a higher potential for reaching your goal. Finally, place the alternatives in a priority order, based upon your own value system."
+  },
+  {
+    "objectID": "project-management/decision-making.html#step-5-choose-among-alternatives",
+    "href": "project-management/decision-making.html#step-5-choose-among-alternatives",
+    "title": "Decision Making",
+    "section": "Step 5: Choose among alternatives",
+    "text": "Step 5: Choose among alternatives\nOnce you have weighed all the evidence, you are ready to select the alternative that seems to be best one for you. You may even choose a combination of alternatives. Your choice in Step 5 may very likely be the same or similar to the alternative you placed at the top of your list at the end of Step 4."
+  },
+  {
+    "objectID": "project-management/decision-making.html#step-6-take-action",
+    "href": "project-management/decision-making.html#step-6-take-action",
+    "title": "Decision Making",
+    "section": "Step 6: Take action",
+    "text": "Step 6: Take action\nYou’re now ready to take some positive action by beginning to implement the alternative you chose in Step 5."
+  },
+  {
+    "objectID": "project-management/decision-making.html#step-7-review-your-decision-its-consequences",
+    "href": "project-management/decision-making.html#step-7-review-your-decision-its-consequences",
+    "title": "Decision Making",
+    "section": "Step 7: Review your decision & its consequences",
+    "text": "Step 7: Review your decision & its consequences\nIn this final step, consider the results of your decision and evaluate whether or not it has resolved the need you identified in Step 1. If the decision has not met the identified need, you may want to repeat certain steps of the process to make a new decision. For example, you might want to gather more detailed or somewhat different information or explore additional alternatives."
+  },
+  {
+    "objectID": "project-management/project-life-cycle.html",
+    "href": "project-management/project-life-cycle.html",
+    "title": "What is the project lifecycle?",
+    "section": "",
+    "text": "The software development lifecycle (SDLC) is a process that describes the stages involved in creating and deployng software."
+  },
+  {
+    "objectID": "project-management/project-life-cycle.html#planning",
+    "href": "project-management/project-life-cycle.html#planning",
+    "title": "What is the project lifecycle?",
+    "section": "Planning",
+    "text": "Planning\nThis stage involves identifying the goals and objectives of the software, as well as determining the resources and timelines required to develop it."
+  },
+  {
+    "objectID": "project-management/project-life-cycle.html#design",
+    "href": "project-management/project-life-cycle.html#design",
+    "title": "What is the project lifecycle?",
+    "section": "Design",
+    "text": "Design\nIn this stage, the software’s architecture and user interface are created, and the functional and non-functional requirements are defined."
+  },
+  {
+    "objectID": "project-management/project-life-cycle.html#test",
+    "href": "project-management/project-life-cycle.html#test",
+    "title": "What is the project lifecycle?",
+    "section": "Test",
+    "text": "Test\nThis stage involves the implementation of test-driven development (TDD). It starts by writing automated test cases based on the requirements and design of the software. The developer then writes the minimum amount of code needed to pass the test, and repeat this process until all the requirements are met."
+  },
+  {
+    "objectID": "project-management/project-life-cycle.html#develop",
+    "href": "project-management/project-life-cycle.html#develop",
+    "title": "What is the project lifecycle?",
+    "section": "Develop",
+    "text": "Develop\nThe actual coding of the software takes place during this stage. This may involve writing code in a specific programming language or using certain development tools."
+  },
+  {
+    "objectID": "project-management/project-life-cycle.html#maintain",
+    "href": "project-management/project-life-cycle.html#maintain",
+    "title": "What is the project lifecycle?",
+    "section": "Maintain",
+    "text": "Maintain\nOnce the software is tested and developed, it will be integrated into the primary source code through developer efforts, usually by leveraging training environments to detect further errors or defects."
+  },
+  {
+    "objectID": "project-management/project-life-cycle.html#deploy",
+    "href": "project-management/project-life-cycle.html#deploy",
+    "title": "What is the project lifecycle?",
+    "section": "Deploy",
+    "text": "Deploy\nThe final stage is deployment, where the software is made available to users. This may involve installing the software on individual computers or deploying it to a server for multiple users to access."
+  },
+  {
+    "objectID": "project-management/useful-questions.html",
+    "href": "project-management/useful-questions.html",
+    "title": "Useful questions",
+    "section": "",
+    "text": "Answering the useful (right?) questions\nQuestions that begin with the words why, who, what and how are necessary and paramount because they help to clarify information, to seek additional details, and to better understand a situation. Besides, they play a crucial role in facilitating communication and understanding.\nThese words are often used to ask open-ended questions, which are questions that cannot be answered with a simple yes or no. Asking open-ended questions allows for more in-depth conversation and debate and can help to uncover important information or insights.\n\n\n\n\n\n\nOverall, asking why, who, what and how can help to imporve communication, to facilitate decision-making, and to deepen understanding.\n\n\n\n\n\n\n\nflowchart\n    id1{Why: programming} --> id1a[You love it]\n    id1 --> id1b[You need it]\n    id1a --> id2{Who: profiles}\n    id1c[Here you need some kind of guidance] --> id2\n    id1b --> id2\n    id2 -->|Teacher? Senior?\\nElse, a coder| id3[What: sylabus]\n    id3 -->|The what is helpless\\nif you don't know the for| id4[For what: skills]\n    id4 -->|The second most important step\\nafter the 'why': the 'how'.\\nA bad 'how' may destroy your 'why'| id5[How: learning techniques]"
   },
   {
     "objectID": "team-projects/00-game-tracker.html",

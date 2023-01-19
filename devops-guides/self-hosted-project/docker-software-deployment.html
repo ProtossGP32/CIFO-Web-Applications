@@ -232,18 +232,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">What is TDD?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-project-life-cycle.html">
- <span class="dropdown-text">What is the project life cycle?</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-static-modifier.html">
- <span class="dropdown-text">What Is the Static Modifier</span></a>
+ <span class="dropdown-text">What is the static modifier?</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Design Patterns</li>
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Design-patterns/uml.html">
+ <span class="dropdown-text">UML</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
  <span class="dropdown-text">LAB#SE01-1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se02-1.html">
+ <span class="dropdown-text">LAB#SE02-1: Movie/Review, model</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Principles</li>
@@ -422,6 +428,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#openproject" id="toc-openproject" class="nav-link" data-scroll-target="#openproject">OpenProject</a></li>
   </ul></li>
+  <li><a href="#user-database-and-authentication" id="toc-user-database-and-authentication" class="nav-link" data-scroll-target="#user-database-and-authentication">User database and authentication</a>
+  <ul class="collapse">
+  <li><a href="#openldap-phpldapadmin" id="toc-openldap-phpldapadmin" class="nav-link" data-scroll-target="#openldap-phpldapadmin">OpenLDAP + phpLDAPadmin</a></li>
+  <li><a href="#freeipa" id="toc-freeipa" class="nav-link" data-scroll-target="#freeipa">FreeIPA</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/self-hosted-project/docker-software-deployment.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -557,9 +568,21 @@ Be patient with the OpenProject initialization
 <li>The e-mail option requires OpenProject to have an SMTP server available to send mails</li>
 </ul></li>
 </ul>
-
-
 </section>
+</section>
+</section>
+<section id="user-database-and-authentication" class="level2">
+<h2 class="anchored" data-anchor-id="user-database-and-authentication">User database and authentication</h2>
+<section id="openldap-phpldapadmin" class="level3">
+<h3 class="anchored" data-anchor-id="openldap-phpldapadmin">OpenLDAP + phpLDAPadmin</h3>
+<p>We’ll be using a bitnami/openldap docker image as it runs as non-privileged user, so that’s an additional layer of security.</p>
+</section>
+<section id="freeipa" class="level3">
+<h3 class="anchored" data-anchor-id="freeipa">FreeIPA</h3>
+<p>Follow this tutorial:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/lH7I-omZ4PA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+
+
 </section>
 </section>
 </section>

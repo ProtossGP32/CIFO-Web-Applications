@@ -232,18 +232,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">What is TDD?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-project-life-cycle.html">
- <span class="dropdown-text">What is the project life cycle?</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-static-modifier.html">
- <span class="dropdown-text">What Is the Static Modifier</span></a>
+ <span class="dropdown-text">What is the static modifier?</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Design Patterns</li>
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Design-patterns/uml.html">
+ <span class="dropdown-text">UML</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
  <span class="dropdown-text">LAB#SE01-1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se02-1.html">
+ <span class="dropdown-text">LAB#SE02-1: Movie/Review, model</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Principles</li>
@@ -423,11 +429,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#show-available-branches" id="toc-show-available-branches" class="nav-link" data-scroll-target="#show-available-branches">Show available branches</a></li>
   <li><a href="#clone-an-existing-branch" id="toc-clone-an-existing-branch" class="nav-link" data-scroll-target="#clone-an-existing-branch">Clone an existing branch</a></li>
   <li><a href="#create-a-new-branch" id="toc-create-a-new-branch" class="nav-link" data-scroll-target="#create-a-new-branch">Create a new branch</a></li>
+  <li><a href="#delete-a-local-branch" id="toc-delete-a-local-branch" class="nav-link" data-scroll-target="#delete-a-local-branch">Delete a local branch</a></li>
+  <li><a href="#delete-a-remote-branch" id="toc-delete-a-remote-branch" class="nav-link" data-scroll-target="#delete-a-remote-branch">Delete a remote branch</a></li>
   </ul></li>
   <li><a href="#updating-local-checkouts" id="toc-updating-local-checkouts" class="nav-link" data-scroll-target="#updating-local-checkouts">Updating local checkouts</a>
   <ul class="collapse">
   <li><a href="#retrieve-latest-changes-in-remote-repositories" id="toc-retrieve-latest-changes-in-remote-repositories" class="nav-link" data-scroll-target="#retrieve-latest-changes-in-remote-repositories">Retrieve latest changes in remote repositories</a></li>
   <li><a href="#update-local-branches" id="toc-update-local-branches" class="nav-link" data-scroll-target="#update-local-branches">Update local branches</a></li>
+  <li><a href="#overwrite-local-branches-with-remote-repositories" id="toc-overwrite-local-branches-with-remote-repositories" class="nav-link" data-scroll-target="#overwrite-local-branches-with-remote-repositories">Overwrite local branches with remote repositories</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -490,12 +499,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="create-a-new-branch">Create a new branch</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>new-branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="delete-a-local-branch" class="level3">
+<h3 class="anchored" data-anchor-id="delete-a-local-branch">Delete a local branch</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> branch <span class="at">--delete</span> <span class="op">&lt;</span>branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="delete-a-remote-branch" class="level3">
+<h3 class="anchored" data-anchor-id="delete-a-remote-branch">Delete a remote branch</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> push origin <span class="at">--delete</span> feature/login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="updating-local-checkouts" class="level2">
 <h2 class="anchored" data-anchor-id="updating-local-checkouts">Updating local checkouts</h2>
 <section id="retrieve-latest-changes-in-remote-repositories" class="level3">
 <h3 class="anchored" data-anchor-id="retrieve-latest-changes-in-remote-repositories">Retrieve latest changes in remote repositories</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">git</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>This command downloads the git objects (blobs, trees and commits), it doesn’t <code>merge</code> the changes into the local checkouts.
 <ul>
@@ -505,7 +522,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="update-local-branches" class="level3">
 <h3 class="anchored" data-anchor-id="update-local-branches">Update local branches</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>remote-branch<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>remote-branch<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="overwrite-local-branches-with-remote-repositories" class="level3">
+<h3 class="anchored" data-anchor-id="overwrite-local-branches-with-remote-repositories">Overwrite local branches with remote repositories</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
