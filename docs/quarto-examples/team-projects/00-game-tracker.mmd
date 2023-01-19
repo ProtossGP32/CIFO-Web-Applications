@@ -1,0 +1,14 @@
+classDiagram
+    direction UD
+    class Game
+    class User
+    class GameManager
+    class UserManager
+    class GameSession
+
+    UserManager --> User : handles
+    GameManager --> Game : handles
+    GameSession o-- User : requires
+    GameSession o-- Game : requires
+    GameSession --|> UserManager : uses
+    GameSession --|> GameManager : uses
