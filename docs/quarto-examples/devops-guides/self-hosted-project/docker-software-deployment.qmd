@@ -65,3 +65,11 @@ Things to consider configuring:
 
 * **User creation activation:** by default, the `admin` user is responsible of manually activate any new account. This can be changed to automatically activate accounts either instantly or by sending an e-mail
     * The e-mail option requires OpenProject to have an SMTP server available to send mails
+
+## User database and authentication
+### OpenLDAP + phpLDAPadmin
+We'll be using a bitnami/openldap docker image as it runs as non-privileged user, so that's an additional layer of security.
+
+### FreeIPA
+Follow this tutorial:
+{{< video https://youtu.be/lH7I-omZ4PA >}}
