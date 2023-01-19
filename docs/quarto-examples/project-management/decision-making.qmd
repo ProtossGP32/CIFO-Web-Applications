@@ -1,0 +1,36 @@
+---
+title: "Decision Making"
+---
+# Introduction
+_[From UMass Darthmouth:](https://www.umassd.edu/fycm/decision-making/process/)_
+
+> Decision making is the process of making choices by identifying a decision, gathering information, and assessing alternative resolutions.
+>
+>Using a step-by-step decision-making process can help you make more deliberate, thoughtful decisions by organizing relevant information and defining alternatives. This approach increases the chances that you will choose the most satisfying alternative possible.
+
+![7 Steps to Effective Decision Making](https://pxl-umassdedu.terminalfour.net/fit-in/945x600/filters:format(webp)/filters:quality(90)/prod01/production-cdn-pxl/media/umassdartmouth/fycm/decisionmaking-1.jpg?text=945+WebP)
+
+# Steps
+## Step 0: Go for small iterations of work
+Focusing on small, feasable units of work allows the team to quickly identify problems.
+
+## Step 1: Identify the decision
+You realize that you need to make a decision. Try to clearly define the nature of the decision you must make. This first step is very important
+
+## Step 2: Gather relevant information
+Collect some pertinent information before you make your decision: what information is neeede, the best sources of information, and how to get it. This step involves both internal and external "work". Some information is internal: you'll seek it through a process of self-assessment. Other information is external: you'll find it online, in books, from other people, and from other sources.
+
+## Step 3: Identify the alternatives
+As you collect information, you will probably identify several possible paths of action, or alternatives. You can also use your imagination and additional information to construct new alternatives. In this step, you will list all possible and desirable alternatives.
+
+## Step 4: Weigh the evidence
+Draw on your information and emotions to imagine whati it would be like if you carried out each of the alternatives to the end. Evaluate whether the need identified in Step 1 would be met or resolved through the use of each alternative. As you go through this difficult internal process, you'll begin to favor certain alternatives: those that seem to have a higher potential for reaching your goal. Finally, place the alternatives in a priority order, based upon your own value system.
+
+## Step 5: Choose among alternatives
+Once you have weighed all the evidence, you are ready to select the alternative that seems to be best one for you. You may even choose a combination of alternatives. Your choice in Step 5 may very likely be the same or similar to the alternative you placed at the top of your list at the end of Step 4.
+
+## Step 6: Take action
+You're now ready to take some positive action by beginning to implement the alternative you chose in Step 5.
+
+## Step 7: Review your decision & its consequences
+In this final step, consider the results of your decision and evaluate whether or not it has resolved the need you identified in Step 1. If the decision has _not_ met the identified need, you may want to repeat certain steps of the process to make a new decision. For example, you might want to gather more detailed or somewhat different information or explore additional alternatives.

@@ -1,0 +1,24 @@
+---
+title: "Useful questions"
+---
+
+# Answering the useful (right?) questions
+Questions that begin with the words **why, who, what and how** are necessary and paramount because they help to **clarify information, to seek additional details, and to better understand a situation**. Besides, they play a crucial role in **facilitating communication** and understanding.
+
+These words are often used to ask **open-ended questions**, which are questions that cannot be answered with a simple yes or no. Asking open-ended questions allows for more **in-depth conversation and debate** and can help to uncover important information or insights.
+
+:::{.callout-important appearance="simple"}
+Overall, asking **why, who, what and how** can help to **imporve communication**, to **facilitate decision-making**, and to **deepen understanding**.
+:::
+
+```{mermaid}
+flowchart
+    id1{Why: programming} --> id1a[You love it]
+    id1 --> id1b[You need it]
+    id1a --> id2{Who: profiles}
+    id1c[Here you need some kind of guidance] --> id2
+    id1b --> id2
+    id2 -->|Teacher? Senior?\nElse, a coder| id3[What: sylabus]
+    id3 -->|The what is helpless\nif you don't know the for| id4[For what: skills]
+    id4 -->|The second most important step\nafter the 'why': the 'how'.\nA bad 'how' may destroy your 'why'| id5[How: learning techniques]
+```
