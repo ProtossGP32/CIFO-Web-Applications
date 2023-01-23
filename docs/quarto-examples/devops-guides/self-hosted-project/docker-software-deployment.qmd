@@ -73,3 +73,71 @@ We'll be using a bitnami/openldap docker image as it runs as non-privileged user
 ### FreeIPA
 Follow this tutorial:
 {{< video https://youtu.be/lH7I-omZ4PA >}}
+
+## Code analysis
+### SonarQube
+
+* Use the following [docker-compose.yml](https://github.com/SonarSource/docker-sonarqube/find/master) as a starting point.
+* Sonarqube uses ElasticSearch, and it requires some system params changes, we have to change it inside the docker container. We'll use an `init` container for that:
+    * Add the following code snippet as a `service` inside the `docker-compose.yml`:
+
+    ```{.yml filename=docker-compose.yml}
+    service:
+        [...]
+        # Init container for system parameter changes
+        init:
+            image: bash
+            privileged: true
+            user: root
+            volumes:
+            - ./scripts/init.sh:/mnt/init.sh
+            command: ["sh", "-e", "/mnt/init.sh"]
+
+    ```
+
+    * Create a `scripts/init.sh` file that changes some limits:
+    ```{.bash filename="scripts/init.sh" include=../../../../scripts/docker-compose/sonarqube/init.sh}
+    ```
+
+* If we want SonarQube to use LDAP authentication, we need to add custom config properties:
+
+    * We must edit its properties file `$SONARQUBE_HOME/conf/sonar.properties` (change the values according to your LDAP server):
+
+    ```{.yaml filename=$SONARQUBE_HOME/conf/sonar.properties}
+    # LDAP configuration
+
+    # General Configuration
+    sonar.security.realm=LDAP
+    ldap.url=ldap://myserver.mycompany.com
+    ldap.bindDn=my_bind_dn # i.e: cn=admin,dc=mycompany,dc=com
+    ldap.bindPassword=my_bind_password
+
+    # User Configuration
+    ldap.user.baseDn=ou=Users,dc=mycompany,dc=com
+    ldap.user.request=(&(objectClass=inetOrgPerson)(uid={login}))
+    ldap.user.realNameAttribute=cn
+    ldap.user.emailAttribute=mail
+
+    # Group Configuration
+    ldap.group.baseDn=ou=Groups,dc=sonarsource,dc=com
+    ldap.group.request=(&(objectClass=groupOfUniqueNames)(memberUid={uid}))
+    ```
+
+    * Add both a `conf` volume and the `sonar.properties` inside the SonarQube app:
+    ```{.yaml filename=$PWD/conf/sonar.properties}
+    services:
+        sonarqube:
+            [...]
+            volumes:
+            - sonarqube_conf:/opt/sonarqube/conf
+            - $PWD/conf/sonar.properties:/opt/sonarqube/conf/sonar.properties
+    
+    volumes:
+        [...]
+        sonarqube_conf:
+    ```
+
+:::{.callout-warning}
+## TODO
+Obfuscate LDAP credentials somehow!
+:::
