@@ -115,12 +115,12 @@ Follow this tutorial:
     # User Configuration
     ldap.user.baseDn=ou=Users,dc=mycompany,dc=com
     ldap.user.request=(&(objectClass=inetOrgPerson)(uid={login}))
-    ldap.user.realNameAttribute=cn
+    ldap.user.realNameAttribute=displayName
     ldap.user.emailAttribute=mail
 
     # Group Configuration
     ldap.group.baseDn=ou=Groups,dc=sonarsource,dc=com
-    ldap.group.request=(&(objectClass=groupOfUniqueNames)(memberUid={uid}))
+    ldap.group.request=(&(objectClass=groupOfUniqueNames)(memberUid={dn}))
     ```
 
     * Add both a `conf` volume and the `sonar.properties` inside the SonarQube app:
