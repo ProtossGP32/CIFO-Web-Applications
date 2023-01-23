@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CIFO - Web Applications - LAB#SE02-1: Movie/Review, model</title>
+<title>CIFO - Web Applications - LAB#SE00-1: Maven Clinic</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Principles/01-abstraction.html" rel="next">
-<link href="../../java-exercises/Labs/java-se01-1.html" rel="prev">
+<link href="../../java-exercises/Labs/java-se00-1.html" rel="next">
+<link href="../../java-exercises/Design-patterns/uml.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -125,9 +125,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -330,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">LAB#SE02-1: Movie/Review, model</h1>
+      <h1 class="quarto-secondary-nav-title">LAB#SE00-1: Maven Clinic</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -423,7 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Clinic</a>
+  <a href="../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link active">LAB#SE00-1: Maven Clinic</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -438,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link active">LAB#SE02-1: Movie/Review, model</a>
+  <a href="../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link">LAB#SE02-1: Movie/Review, model</a>
   </div>
 </li>
       </ul>
@@ -482,47 +479,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#tasks-1" id="toc-tasks-1" class="nav-link" data-scroll-target="#tasks-1">Tasks</a>
+  <li><a href="#maven-clinic" id="toc-maven-clinic" class="nav-link active" data-scroll-target="#maven-clinic">Maven Clinic</a>
   <ul class="collapse">
-  <li><a href="#model-design" id="toc-model-design" class="nav-link" data-scroll-target="#model-design">Model design</a></li>
-  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
-  <li><a href="#first-approach" id="toc-first-approach" class="nav-link" data-scroll-target="#first-approach">First approach</a>
+  <li><a href="#approach-1" id="toc-approach-1" class="nav-link" data-scroll-target="#approach-1">Approach 1</a>
   <ul class="collapse">
-  <li><a href="#domain-design" id="toc-domain-design" class="nav-link" data-scroll-target="#domain-design">Domain design</a></li>
   <li><a href="#uml-diagram" id="toc-uml-diagram" class="nav-link" data-scroll-target="#uml-diagram">UML diagram</a></li>
-  </ul></li>
-  <li><a href="#second-approach---less-coupling-between-classes" id="toc-second-approach---less-coupling-between-classes" class="nav-link" data-scroll-target="#second-approach---less-coupling-between-classes">Second approach - Less coupling between classes</a>
-  <ul class="collapse">
-  <li><a href="#changes-in-previous-domain" id="toc-changes-in-previous-domain" class="nav-link" data-scroll-target="#changes-in-previous-domain">Changes in previous Domain</a></li>
-  <li><a href="#uml-diagram-1" id="toc-uml-diagram-1" class="nav-link" data-scroll-target="#uml-diagram-1">UML diagram</a></li>
-  </ul></li>
-  <li><a href="#third-approach---use-manager-classes" id="toc-third-approach---use-manager-classes" class="nav-link" data-scroll-target="#third-approach---use-manager-classes">Third approach - Use Manager classes</a>
-  <ul class="collapse">
-  <li><a href="#logic" id="toc-logic" class="nav-link" data-scroll-target="#logic">Logic</a></li>
-  <li><a href="#uml-diagram-2" id="toc-uml-diagram-2" class="nav-link" data-scroll-target="#uml-diagram-2">UML diagram</a></li>
-  </ul></li>
-  <li><a href="#fourth-approach---create-a-superclass-person" id="toc-fourth-approach---create-a-superclass-person" class="nav-link" data-scroll-target="#fourth-approach---create-a-superclass-person">Fourth approach - Create a superclass Person</a>
-  <ul class="collapse">
-  <li><a href="#changes-in-domain" id="toc-changes-in-domain" class="nav-link" data-scroll-target="#changes-in-domain">Changes in Domain</a></li>
-  <li><a href="#logic-1" id="toc-logic-1" class="nav-link" data-scroll-target="#logic-1">Logic</a></li>
-  <li><a href="#uml-diagram-3" id="toc-uml-diagram-3" class="nav-link" data-scroll-target="#uml-diagram-3">UML diagram</a></li>
+  <li><a href="#classes-specifications" id="toc-classes-specifications" class="nav-link" data-scroll-target="#classes-specifications">Classes specifications</a></li>
+  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests">Tests</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se02-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se00-2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">LAB#SE02-1: Movie/Review, model</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">javase</div>
-    <div class="quarto-category">lab</div>
-  </div>
-  </div>
+<h1 class="title d-none d-lg-block">LAB#SE00-1: Maven Clinic</h1>
+</div>
 
 
 
@@ -536,8 +511,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="maven-clinic" class="level1">
+<h1>Maven Clinic</h1>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Context</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Goal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Tasks</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Optional</a></li></ul>
 <div class="tab-content">
@@ -546,14 +521,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Knowledge of algotighms and data structures</strong> to implement the required classes.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p><strong>Create three classes in Java</strong> (<code>Movie</code>, <code>Critic</code> and <code>Review</code>) that implement different algorightms or data structures.</p>
+<p><strong>Create multiple classes in Java</strong> (<code>Person</code>, <code>Clinic</code> and <code>MyDate</code>) using the most convenient entity relationship between them.</p>
 <p><strong>Test these classes</strong> using JUnit.</p>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <ol class="example" type="1">
 <li>Create <strong>a new Maven or Gradle project</strong> and setting up the project structure</li>
 <li>Modify the project’s <code>pom.xml</code> or <code>build.gradle</code> file to import necessary dependencies, including <strong>JUnit</strong> for testing</li>
-<li>Implement the three required classes in Java</li>
+<li>Implement the required classes in Java</li>
 <li>Implement two basic patter-designs: <strong>singleton</strong> and <strong>think about factory</strong></li>
 <li>Write <strong>JUnit tests</strong> to verify that classes work as expected</li>
 </ol>
@@ -565,95 +540,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-</section>
-<section id="tasks-1" class="level1">
-<h1>Tasks</h1>
-<section id="model-design" class="level2">
-<h2 class="anchored" data-anchor-id="model-design">Model design</h2>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-UML diagram of the model
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TODO: Review <a href="https://www.umlboard.com/docs/relations/multiplicity/">multiplicity concept</a> and apply it to the UML!!</p>
-<p>An association (the UML equivalent to a relationship in data modeling circles) has a multiplicity for each direction.</p>
-</div>
-</div>
-</section>
-<section id="dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="dependencies">Dependencies</h2>
-<ul>
-<li>Lombok (both dependency and Maven plugin):</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>&lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3"></a>    &lt;<span class="kw">groupId</span>&gt;org.projectlombok&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    &lt;<span class="kw">artifactId</span>&gt;lombok&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb1-5"><a href="#cb1-5"></a>    &lt;<span class="kw">version</span>&gt;1.18.24&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb1-6"><a href="#cb1-6"></a>    &lt;<span class="kw">scope</span>&gt;provided&lt;/<span class="kw">scope</span>&gt;</span>
-<span id="cb1-7"><a href="#cb1-7"></a>&lt;/<span class="kw">dependency</span>&gt;</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin --&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>&lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb1-10"><a href="#cb1-10"></a>    &lt;<span class="kw">groupId</span>&gt;org.projectlombok&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb1-11"><a href="#cb1-11"></a>    &lt;<span class="kw">artifactId</span>&gt;lombok-maven-plugin&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb1-12"><a href="#cb1-12"></a>    &lt;<span class="kw">version</span>&gt;1.18.20.0&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb1-13"><a href="#cb1-13"></a>    &lt;<span class="kw">scope</span>&gt;provided&lt;/<span class="kw">scope</span>&gt;</span>
-<span id="cb1-14"><a href="#cb1-14"></a>&lt;/<span class="kw">dependency</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Junit:</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">&lt;!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api --&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>&lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    &lt;<span class="kw">groupId</span>&gt;org.junit.jupiter&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    &lt;<span class="kw">artifactId</span>&gt;junit-jupiter-api&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    &lt;<span class="kw">version</span>&gt;5.9.1&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    &lt;<span class="kw">scope</span>&gt;test&lt;/<span class="kw">scope</span>&gt;</span>
-<span id="cb2-7"><a href="#cb2-7"></a>&lt;/<span class="kw">dependency</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Java Faker: dependency used to generate stub data for testing</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">&lt;!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker --&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>&lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    &lt;<span class="kw">groupId</span>&gt;com.github.javafaker&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    &lt;<span class="kw">artifactId</span>&gt;javafaker&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb3-5"><a href="#cb3-5"></a>    &lt;<span class="kw">version</span>&gt;1.0.2&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb3-6"><a href="#cb3-6"></a>&lt;/<span class="kw">dependency</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="first-approach" class="level2">
-<h2 class="anchored" data-anchor-id="first-approach">First approach</h2>
-<section id="domain-design" class="level3">
-<h3 class="anchored" data-anchor-id="domain-design">Domain design</h3>
-<section id="movie" class="level4">
-<h4 class="anchored" data-anchor-id="movie">Movie</h4>
-<p>A <code>Movie</code> class shall represent a movie being reviewed. It should have the following attributes:</p>
-<ul>
-<li><code>title</code>: a <code>String</code> representing the title of the movie</li>
-<li><code>reviews</code>: a <code>Set</code> of <code>Review</code> objects representing the reviews that have been written for this movie</li>
-<li><code>critic</code>: The <code>Critic</code> class represents a critic who writes reviews</li>
-</ul>
-</section>
-<section id="critic" class="level4">
-<h4 class="anchored" data-anchor-id="critic">Critic</h4>
-<p>A <code>Critic</code> class shall represent a critic and a <code>Review</code> of its own. It should have the following attributes:</p>
-<ul>
-<li><code>name</code>: a String representing the name of the critic</li>
-<li><code>Review</code>: the <code>Review</code> class represents a review of a movie written by a critic</li>
-</ul>
-</section>
-<section id="review" class="level4">
-<h4 class="anchored" data-anchor-id="review">Review</h4>
-<p>A <code>Review</code> class shall represent the information that identifies a review of a movie. It shall have the following attributes:</p>
-<ul>
-<li><code>movie</code>: a <code>Movie</code> object representing the movie being reviewed</li>
-<li><code>critic</code>: a <code>Critic</code> object representing the critic</li>
-</ul>
-</section>
-</section>
+<section id="approach-1" class="level2">
+<h2 class="anchored" data-anchor-id="approach-1">Approach 1</h2>
 <section id="uml-diagram" class="level3">
 <h3 class="anchored" data-anchor-id="uml-diagram">UML diagram</h3>
 <div class="callout-warning callout callout-style-default callout-captioned">
@@ -662,254 +550,254 @@ UML diagram of the model
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Quarto bug
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>.mmd</code> files attachment through the <code>file</code> directive (<a href="https://quarto.org/docs/authoring/diagrams.html#file-include">as explained here</a>) isn’t working, there’s <a href="https://github.com/quarto-dev/quarto-cli/issues/3665">an open bug in github</a>.</p>
-<p>Once the bug is solved, replace any <code>{mermaid}</code> snippet with a link to the <code>uml.mmd</code> file attached to each lab approach like this:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{mermaid}</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>%%| label: fig<span class="ot">-u</span>ml</span>
-<span id="cb4-3"><a href="#cb4-3"></a>%%| fig<span class="ot">-c</span>ap: <span class="ot">"</span><span class="st">UML diagram</span><span class="ot">"</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>%%| file: ..<span class="ot">/../</span>..<span class="ot">/../</span>java<span class="ot">-e</span>xercises/lab<span class="ot">-s</span>e<span class="bn">-02</span><span class="dv">-1</span>/approach_1/uml.mmd</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-uml" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">classDiagram
-    direction LR
-    Review "*" o-- "1" Movie : has
-    Review "*" o-- "1" Critic : is done by
-    Critic "1" *-- "*" Review : can do
-    Movie "*" *-- "*" Critic : is reviewed by
-    
-    class Movie{
-        -title: String
-        -year: int
-        -critics: Set
-    }
-    
-    class Critic {
-        -name: String
-        -reviews: Set
-    }
-
-    class Review {
-        -movie: Movie
-        -rating: int
-        -comment: String
-        -critic: Critic
-    }
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: UML diagram - First approach</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="second-approach---less-coupling-between-classes" class="level2">
-<h2 class="anchored" data-anchor-id="second-approach---less-coupling-between-classes">Second approach - Less coupling between classes</h2>
-<p>In this approach we remove redundant or unnecessary associations between the classes.</p>
-<section id="changes-in-previous-domain" class="level3">
-<h3 class="anchored" data-anchor-id="changes-in-previous-domain">Changes in previous Domain</h3>
-<section id="movie-1" class="level4">
-<h4 class="anchored" data-anchor-id="movie-1">Movie</h4>
-<ul>
-<li>This time <code>Movie</code> has a <code>Review</code> set instead of a <code>Critic</code> set</li>
-</ul>
-</section>
-<section id="critic-1" class="level4">
-<h4 class="anchored" data-anchor-id="critic-1">Critic</h4>
-<ul>
-<li>This time <code>Critic</code> doesn’t include any reference to the class <code>Review</code></li>
-</ul>
-</section>
-<section id="review-1" class="level4">
-<h4 class="anchored" data-anchor-id="review-1">Review</h4>
-<ul>
-<li><code>Review</code> class is the same as in the first approach</li>
-</ul>
-</section>
-</section>
-<section id="uml-diagram-1" class="level3">
-<h3 class="anchored" data-anchor-id="uml-diagram-1">UML diagram</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-uml" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">classDiagram
-    direction LR
-    Movie "1" *-- "*" Review : may have
-    Review "*" o-- "1" Movie : talks about
-    Review "*" o-- "1" Critic : is written by
-
-    class Movie {
-        -title: String
-        -reviews: Set
-    }
-
-    class Review {
-        -movie: Movie
-        -critic: Critic
-        -rating: int
-        -comment: String
-    }
-
-    class Critic {
-        -name: String
-    }
-</pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
-</div>
-<p></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: UML diagram - Second approach</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="third-approach---use-manager-classes" class="level2">
-<h2 class="anchored" data-anchor-id="third-approach---use-manager-classes">Third approach - Use Manager classes</h2>
-<p>In this approach, instead of heavily binding classes between them, we delegate the responsibility to an external class, called <code>MovieManager</code></p>
-<section id="logic" class="level3">
-<h3 class="anchored" data-anchor-id="logic">Logic</h3>
-<section id="moviemanager-non-static" class="level4">
-<h4 class="anchored" data-anchor-id="moviemanager-non-static">MovieManager (<code>non-static</code>)</h4>
-<p>The <code>non-static</code> approach requests the user to create a <code>MovieManager</code> object in order to access its methods.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">classDiagram
-
-    class MovieManager {
-    }
-
-</pre>
-<div id="mermaid-tooltip-3" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="moviemanager-static" class="level4">
-<h4 class="anchored" data-anchor-id="moviemanager-static">MovieManager (<code>static</code>)</h4>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Static method and static class
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A <code>static</code> method is a method that is owned only by the class, not by the class objects. You don’t instantiate a class object to access the <code>static</code> methods.</p>
-<p>A <code>static</code> class is a class that doesn’t instantiate objects; thus, <code>static</code> class’ methods are accessed through the class name.</p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">classDiagram
-    class MovieManager {
-    }
-
-    &lt;&lt;Static&gt;&gt; MovieManager
-</pre>
-<div id="mermaid-tooltip-4" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
 TODO
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Pending to create UML diagram</p>
 </div>
 </div>
 </section>
-</section>
-<section id="uml-diagram-2" class="level3">
-<h3 class="anchored" data-anchor-id="uml-diagram-2">UML diagram</h3>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-</section>
-</section>
-<section id="fourth-approach---create-a-superclass-person" class="level2">
-<h2 class="anchored" data-anchor-id="fourth-approach---create-a-superclass-person">Fourth approach - Create a superclass Person</h2>
-<p>Let’s say that we want to add information about the <code>FilmMaker</code> and the <code>Actor</code>s of a <code>Movie</code> to our model. Now we have three classes (<code>Critic</code>, <code>FilmMaker</code> and <code>Actor</code>) that have something in common: <strong>they are all persons</strong>. Thus, we can encapsule their common treats into a new class <code>Person</code> and make these classes inherit it.</p>
-<section id="changes-in-domain" class="level3">
-<h3 class="anchored" data-anchor-id="changes-in-domain">Changes in Domain</h3>
+<section id="classes-specifications" class="level3">
+<h3 class="anchored" data-anchor-id="classes-specifications">Classes specifications</h3>
 <section id="person" class="level4">
 <h4 class="anchored" data-anchor-id="person">Person</h4>
-<p>The <code>Person</code> class defines the common treats of any human being:</p>
-<ul>
-<li><code>name</code>: a <code>String</code> representing the name of the person</li>
-<li><code>birthDate</code>: a <code>String</code> representing the birth date of the person (it can also be a <code>Date</code> type)</li>
-</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Person class
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Person.java</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">labse00part2</span><span class="op">.</span><span class="im">domain</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.*;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="at">@Data</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="at">@Getter</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="at">@Setter</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="at">@AllArgsConstructor</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="at">@NoArgsConstructor</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">public</span> <span class="kw">class</span> Person <span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="kw">private</span> <span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="kw">private</span> <span class="dt">int</span> height<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>    <span class="kw">private</span> <span class="dt">int</span> weight<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="kw">private</span> MyDate birthDate<span class="op">;</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">printPerson</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">+</span> <span class="st">", "</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">age</span> <span class="op">+</span> <span class="st">" years old"</span><span class="op">);</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="op">}</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">becomeOlder</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">age</span><span class="op">++;</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="op">}</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">becomeOlder</span><span class="op">(</span><span class="dt">int</span> years<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">age</span> <span class="op">+=</span> years<span class="op">;</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="op">}</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">isAdult</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">age</span> <span class="op">&gt;=</span> <span class="dv">18</span><span class="op">;</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>    <span class="op">}</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">weightIndex</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>        <span class="dt">double</span> heightInMeters <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">height</span> <span class="op">/</span> <span class="fl">100.0</span><span class="op">;</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">weight</span> <span class="op">/</span> <span class="op">(</span>heightInMeters <span class="op">*</span> heightInMeters<span class="op">);</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>    <span class="op">}</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">olderThan</span><span class="op">(</span>Person compared<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">age</span> <span class="op">&gt;</span> compared<span class="op">.</span><span class="fu">getAge</span><span class="op">();</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>    <span class="op">}</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a></span>
+<span id="cb1-42"><a href="#cb1-42"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">setAge</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: Use the myDate attribute to set the current age</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a>        <span class="co">// Some methods like becomeOlder should be removed</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a>    <span class="op">}</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a></span>
+<span id="cb1-47"><a href="#cb1-47"></a>    <span class="at">@Override</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getName</span><span class="op">()</span> <span class="op">+</span> <span class="st">", born in "</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getBirthDate</span><span class="op">()</span> <span class="op">+</span> <span class="st">", "</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getAge</span><span class="op">()</span> <span class="op">+</span> <span class="st">" years old, weight index: "</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">weightIndex</span><span class="op">()</span> <span class="op">+</span> <span class="st">"."</span><span class="op">;</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a>    <span class="op">}</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="filmmaker" class="level4">
-<h4 class="anchored" data-anchor-id="filmmaker">FilmMaker</h4>
-<p><code>FilmMaker</code> is a <code>Person</code> subclass that contains info about its works:</p>
-<ul>
-<li><code>movies</code>: a <strong>Set</strong> of <code>Movie</code> containing all the movies that this <code>Person</code> has filmed</li>
-</ul>
+<section id="mydate" class="level4">
+<h4 class="anchored" data-anchor-id="mydate">MyDate</h4>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+MyDate class
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>MyDate.java</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">labse00part2</span><span class="op">.</span><span class="im">domain</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.*;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="at">@Data</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="at">@Getter</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="at">@Setter</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="at">@AllArgsConstructor</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="at">@NoArgsConstructor</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="kw">public</span> <span class="kw">class</span> MyDate <span class="op">{</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="kw">private</span> <span class="dt">int</span> day<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="kw">private</span> <span class="dt">int</span> month<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="kw">private</span> <span class="dt">int</span> year<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="at">@Override</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getYear</span><span class="op">()</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getMonth</span><span class="op">()</span> <span class="op">+</span> <span class="st">"/"</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getDay</span><span class="op">();</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>    <span class="op">}</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">earlierThan</span><span class="op">(</span>MyDate compared<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>        <span class="co">// First, compare years</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">getYear</span><span class="op">()</span> <span class="op">&lt;</span> compared<span class="op">.</span><span class="fu">getYear</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>        <span class="op">}</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>        <span class="co">// Then, compare months</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">getYear</span><span class="op">()</span> <span class="op">==</span> compared<span class="op">.</span><span class="fu">getYear</span><span class="op">()</span> <span class="op">&amp;&amp;</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getMonth</span><span class="op">()</span> <span class="op">&lt;</span> compared<span class="op">.</span><span class="fu">getMonth</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>        <span class="op">}</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a></span>
+<span id="cb2-30"><a href="#cb2-30"></a>        <span class="co">// Then, compare day</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">getYear</span><span class="op">()</span> <span class="op">==</span> compared<span class="op">.</span><span class="fu">getYear</span><span class="op">()</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>                <span class="op">&amp;&amp;</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getMonth</span><span class="op">()</span> <span class="op">==</span> compared<span class="op">.</span><span class="fu">getMonth</span><span class="op">()</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a>                <span class="op">&amp;&amp;</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getDay</span><span class="op">()</span> <span class="op">&lt;</span> compared<span class="op">.</span><span class="fu">getDay</span><span class="op">()){</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a>        <span class="op">}</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a></span>
+<span id="cb2-37"><a href="#cb2-37"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a>    <span class="op">}</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a></span>
+<span id="cb2-40"><a href="#cb2-40"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="actor" class="level4">
-<h4 class="anchored" data-anchor-id="actor">Actor</h4>
-<p><code>Actor</code> is a <code>Person</code> subclass that contains info about its works:</p>
-<ul>
-<li><code>movies</code>: a <strong>Set</strong> of <code>Movie</code> containing all the movies where this <code>Person</code> has performed in</li>
-</ul>
+<section id="clinic" class="level4">
+<h4 class="anchored" data-anchor-id="clinic">Clinic</h4>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Clinic class
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Clinic.java</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">labse00part2</span><span class="op">.</span><span class="im">domain</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.*;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">ArrayList</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">List</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="at">@Data</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="at">@Getter</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="at">@Setter</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="at">@AllArgsConstructor</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="at">@NoArgsConstructor</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="kw">public</span> <span class="kw">class</span> Clinic <span class="op">{</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a></span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="kw">private</span> <span class="dt">double</span> lowestWeightIndex<span class="op">;</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>    <span class="kw">private</span> <span class="bu">List</span><span class="op">&lt;</span>Person<span class="op">&gt;</span> members<span class="op">;</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a>    <span class="at">@Builder</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>    <span class="kw">public</span> <span class="fu">Clinic</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="dt">double</span> lowestWeightIndex<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">lowestWeightIndex</span> <span class="op">=</span> lowestWeightIndex<span class="op">;</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">members</span> <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>    <span class="op">}</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a></span>
+<span id="cb3-26"><a href="#cb3-26"></a>    <span class="at">@Builder</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a>    <span class="kw">public</span> <span class="fu">Clinic</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="bu">List</span><span class="op">&lt;</span>Person<span class="op">&gt;</span> members<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">members</span> <span class="op">=</span> members<span class="op">;</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a>        <span class="co">// Once initialized the members, set the lowest Weight Index</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">setLowestWeightIndex</span><span class="op">();</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>    <span class="op">}</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a></span>
+<span id="cb3-34"><a href="#cb3-34"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">addMember</span><span class="op">(</span>Person member<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">getMembers</span><span class="op">().</span><span class="fu">add</span><span class="op">(</span>member<span class="op">);</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a>        <span class="co">// Remember to update the lowestWeightIndex each time a new member is added</span></span>
+<span id="cb3-37"><a href="#cb3-37"></a>        <span class="cf">if</span> <span class="op">(</span>member<span class="op">.</span><span class="fu">weightIndex</span><span class="op">()</span> <span class="op">&lt;</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getLowestWeightIndex</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a>            <span class="kw">this</span><span class="op">.</span><span class="fu">lowestWeightIndex</span> <span class="op">=</span> member<span class="op">.</span><span class="fu">weightIndex</span><span class="op">();</span></span>
+<span id="cb3-39"><a href="#cb3-39"></a>        <span class="op">}</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">setLowestWeightIndex</span><span class="op">();</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>    <span class="op">}</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a></span>
+<span id="cb3-43"><a href="#cb3-43"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">hasMember</span><span class="op">(</span>Person member<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getMembers</span><span class="op">().</span><span class="fu">contains</span><span class="op">(</span>member<span class="op">);</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a>    <span class="op">}</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a></span>
+<span id="cb3-47"><a href="#cb3-47"></a>    <span class="kw">public</span> Person <span class="fu">personWithHighestWeightIndex</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a>        Person highestWeightIndexMember <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb3-49"><a href="#cb3-49"></a>        <span class="cf">for</span> <span class="op">(</span>Person member <span class="op">:</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getMembers</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-50"><a href="#cb3-50"></a>            <span class="cf">if</span> <span class="op">(</span>highestWeightIndexMember <span class="op">==</span> <span class="kw">null</span> <span class="op">||</span> member<span class="op">.</span><span class="fu">weightIndex</span><span class="op">()</span> <span class="op">&gt;</span> highestWeightIndexMember<span class="op">.</span><span class="fu">weightIndex</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-51"><a href="#cb3-51"></a>                highestWeightIndexMember <span class="op">=</span> member<span class="op">;</span></span>
+<span id="cb3-52"><a href="#cb3-52"></a>            <span class="op">}</span></span>
+<span id="cb3-53"><a href="#cb3-53"></a>        <span class="op">}</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a>        <span class="cf">return</span> highestWeightIndexMember<span class="op">;</span></span>
+<span id="cb3-55"><a href="#cb3-55"></a>    <span class="op">}</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a></span>
+<span id="cb3-57"><a href="#cb3-57"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setLowestWeightIndex</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-58"><a href="#cb3-58"></a>        <span class="cf">for</span> <span class="op">(</span>Person member <span class="op">:</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getMembers</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-59"><a href="#cb3-59"></a>            <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">getLowestWeightIndex</span><span class="op">()</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">||</span> member<span class="op">.</span><span class="fu">weightIndex</span><span class="op">()</span> <span class="op">&lt;</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getLowestWeightIndex</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-60"><a href="#cb3-60"></a>                <span class="kw">this</span><span class="op">.</span><span class="fu">lowestWeightIndex</span> <span class="op">=</span> member<span class="op">.</span><span class="fu">weightIndex</span><span class="op">();</span></span>
+<span id="cb3-61"><a href="#cb3-61"></a>            <span class="op">}</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a>        <span class="op">}</span></span>
+<span id="cb3-63"><a href="#cb3-63"></a>    <span class="op">}</span></span>
+<span id="cb3-64"><a href="#cb3-64"></a></span>
+<span id="cb3-65"><a href="#cb3-65"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-66"><a href="#cb3-66"></a>        <span class="bu">StringBuilder</span> membersBuilder <span class="op">=</span> <span class="kw">new</span> <span class="bu">StringBuilder</span><span class="op">(</span><span class="st">""</span><span class="op">);</span></span>
+<span id="cb3-67"><a href="#cb3-67"></a>        <span class="cf">for</span> <span class="op">(</span>Person member <span class="op">:</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getMembers</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-68"><a href="#cb3-68"></a>            membersBuilder<span class="op">.</span><span class="fu">append</span><span class="op">(</span>member <span class="op">+</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb3-69"><a href="#cb3-69"></a>        <span class="op">}</span></span>
+<span id="cb3-70"><a href="#cb3-70"></a>        <span class="cf">return</span> <span class="st">"Clinic: "</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getName</span><span class="op">()</span> <span class="op">+</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb3-71"><a href="#cb3-71"></a>                <span class="op">+</span> <span class="st">"Lowest Weight Index: "</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getLowestWeightIndex</span><span class="op">()</span> <span class="op">+</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb3-72"><a href="#cb3-72"></a>                <span class="op">+</span> <span class="st">"Members: "</span> <span class="op">+</span> membersBuilder<span class="op">;</span></span>
+<span id="cb3-73"><a href="#cb3-73"></a>    <span class="op">}</span></span>
+<span id="cb3-74"><a href="#cb3-74"></a></span>
+<span id="cb3-75"><a href="#cb3-75"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="critic-2" class="level4">
-<h4 class="anchored" data-anchor-id="critic-2">Critic</h4>
-<p><code>Critic</code> now is a <code>Person</code> subclass that contains info about the reviews it has written:</p>
-<ul>
-<li><code>reviews</code>: a <strong>Set</strong> of <code>Review</code> containing all its reviews</li>
-</ul>
 </section>
-</section>
-<section id="logic-1" class="level3">
-<h3 class="anchored" data-anchor-id="logic-1">Logic</h3>
-<p>Now the <code>MovieManager</code> class must take into account all these changes in its methods</p>
+<section id="tests" class="level3">
+<h3 class="anchored" data-anchor-id="tests">Tests</h3>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -920,23 +808,20 @@ TODO
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Missing tests for <code>Person</code> and <code>MyDate</code> classes</p>
 </div>
 </div>
-</section>
-<section id="uml-diagram-3" class="level3">
-<h3 class="anchored" data-anchor-id="uml-diagram-3">UML diagram</h3>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-TODO
+Use the Code Coverage feature!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>When launching tests, do it with Code Coverage to know how much of your code is being tested. Just click on the button next to the <em>Run</em> one when executing a batch of tests or right-click on the <em>Play</em> button next to each test: <img src="../../images/java-labs/lab-se00-part1-code-coverage.png" class="img-fluid" alt="IntelliJ - Code Coverage"></p>
 </div>
 </div>
 
@@ -1196,13 +1081,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Labs/java-se01-1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">LAB#SE01-1</span>
+      <a href="../../java-exercises/Design-patterns/uml.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">UML</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Principles/01-abstraction.html" class="pagination-link">
-        <span class="nav-page-text">Abstraction</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../java-exercises/Labs/java-se00-1.html" class="pagination-link">
+        <span class="nav-page-text">LAB#SE00-1: Maven Person</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

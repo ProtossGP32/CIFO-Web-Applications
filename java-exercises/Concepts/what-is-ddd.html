@@ -181,6 +181,14 @@ ul.task-list li input[type="checkbox"] {
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-2.html">
+ <span class="dropdown-text">LAB#SE00-1: Maven Clinic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-1.html">
+ <span class="dropdown-text">LAB#SE00-1: Maven Person</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
  <span class="dropdown-text">LAB#SE01-1</span></a>
   </li>  
@@ -349,6 +357,16 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Clinic</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../java-exercises/Labs/java-se00-1.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Person</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">LAB#SE01-1</a>
   </div>
 </li>
@@ -450,13 +468,13 @@ TL:DR
 </div>
 <section id="what-is-the-domain" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-domain">What is the Domain?</h2>
-<p>The standard dictionary dictionary definition of domain is: “A sphere of knowledge or activity”. In software engineering, the domain commonly referes to the subject area on which the application is intended to apply.</p>
+<p>The standard dictionary dictionary definition of domain is: “A sphere of knowledge or activity”. In software engineering, the domain commonly refers to the subject area on which the application is intended to apply.</p>
 <p>In other words, during appliaction development, the <strong>domain</strong> is the <strong>sphere of knowledge and activity around which the application logic resolves.</strong></p>
 <p>The domain layer or domain logic is better known as the <strong>business logic</strong>. The business logic of an application refers to the higher-level rules for how buisness objects interact with one another to create and modify modeled data.</p>
 </section>
 <section id="what-is-domain-driven-design" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-domain-driven-design">What is Domain-Driven Design?</h2>
-<p>DDD aims to ease the creation of complex applicatoins by connecting the related pieces of software into an ever-evolving model.</p>
+<p>DDD aims to ease the creation of complex applications by connecting the related pieces of software into an ever-evolving model.</p>
 <p>DDD focueses on three core principles:</p>
 <ul>
 <li>Focus on the core domain and domain logic</li>
@@ -467,7 +485,16 @@ TL:DR
 </section>
 <section id="where-to-begin" class="level1">
 <h1>Where to begin?</h1>
-<p>The following list describes a few common terms that are useful when describing and discussing DDD practices: * <strong>Context:</strong> The setting in which a word or statement appears determines its meaning. Statements about a model can only be understood in a context * <strong>Model:</strong> A system of abstractions that describes selected aspects of a domain and can be used to solve problems related to that domain * <strong>Ubiquitous Language:</strong> A language structured around the domain model and used by all team members to connect all the activities of the team with the software * This means that all team memmbers must know the domain vocabulary and understand what the other members are talking about * <strong>Bounded Context</strong></p>
+<p>The following list describes a few common terms that are useful when describing and discussing DDD practices:</p>
+<ul>
+<li><strong>Context:</strong> The setting in which a word or statement appears determines its meaning. Statements about a model can only be understood in a context</li>
+<li><strong>Model:</strong> A system of abstractions that describes selected aspects of a domain and can be used to solve problems related to that domain</li>
+<li><strong>Ubiquitous Language:</strong> A language structured around the domain model and used by all team members to connect all the activities of the team with the software
+<ul>
+<li>This means that all team memmbers must know the domain vocabulary and understand what the other members are talking about</li>
+</ul></li>
+<li><strong>Bounded Context:</strong> A description of a boundary (typically a subsystem or the work of a specific team) within which a particular model is defined and applicable.</li>
+</ul>
 <section id="building-blocks" class="level2">
 <h2 class="anchored" data-anchor-id="building-blocks">Building Blocks</h2>
 <p>Domain-driven design also defines several high-level concepts that can be used in conjunction with one another to create and modify domain models:</p>

@@ -244,6 +244,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-2.html">
+ <span class="dropdown-text">LAB#SE00-1: Maven Clinic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-1.html">
+ <span class="dropdown-text">LAB#SE00-1: Maven Person</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
  <span class="dropdown-text">LAB#SE01-1</span></a>
   </li>  
@@ -433,6 +441,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#openldap-phpldapadmin" id="toc-openldap-phpldapadmin" class="nav-link" data-scroll-target="#openldap-phpldapadmin">OpenLDAP + phpLDAPadmin</a></li>
   <li><a href="#freeipa" id="toc-freeipa" class="nav-link" data-scroll-target="#freeipa">FreeIPA</a></li>
   </ul></li>
+  <li><a href="#code-analysis" id="toc-code-analysis" class="nav-link" data-scroll-target="#code-analysis">Code analysis</a>
+  <ul class="collapse">
+  <li><a href="#sonarqube" id="toc-sonarqube" class="nav-link" data-scroll-target="#sonarqube">SonarQube</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/self-hosted-project/docker-software-deployment.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -581,6 +593,101 @@ Be patient with the OpenProject initialization
 <h3 class="anchored" data-anchor-id="freeipa">FreeIPA</h3>
 <p>Follow this tutorial:</p>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/lH7I-omZ4PA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+</section>
+<section id="code-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="code-analysis">Code analysis</h2>
+<section id="sonarqube" class="level3">
+<h3 class="anchored" data-anchor-id="sonarqube">SonarQube</h3>
+<ul>
+<li><p>Use the following <a href="https://github.com/SonarSource/docker-sonarqube/find/master">docker-compose.yml</a> as a starting point.</p></li>
+<li><p>Sonarqube uses ElasticSearch, and it requires some system params changes, we have to change it inside the docker container. We’ll use an <code>init</code> container for that:</p>
+<ul>
+<li>Add the following code snippet as a <code>service</code> inside the <code>docker-compose.yml</code>:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>docker-compose.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">service</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="at">    </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">    # Init container for system parameter changes</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="at">        </span><span class="fu">image</span><span class="kw">:</span><span class="at"> bash</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="at">        </span><span class="fu">privileged</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="at">        </span><span class="fu">user</span><span class="kw">:</span><span class="at"> root</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="at">        </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="at">        </span><span class="kw">-</span><span class="at"> ./scripts/init.sh:/mnt/init.sh</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="at">        </span><span class="fu">command</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"sh"</span><span class="kw">,</span><span class="at"> </span><span class="st">"-e"</span><span class="kw">,</span><span class="at"> </span><span class="st">"/mnt/init.sh"</span><span class="kw">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Create a <code>scripts/init.sh</code> file that changes some limits:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>scripts/init.sh</strong></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">sysctl</span> <span class="at">-w</span> vm.max_map_count=524288</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">sysctl</span> <span class="at">-w</span> fs.file-max=131072</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>If we want SonarQube to use LDAP authentication, we need to add custom config properties:</p>
+<ul>
+<li>We must edit its properties file <code>$SONARQUBE_HOME/conf/sonar.properties</code> (change the values according to your LDAP server):</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>$SONARQUBE_HOME/conf/sonar.properties</strong></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># LDAP configuration</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># General Configuration</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="at">sonar.security.realm=LDAP</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="at">ldap.url=ldap://myserver.mycompany.com</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="at">ldap.bindDn=my_bind_dn</span><span class="co"> # i.e: cn=admin,dc=mycompany,dc=com</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="at">ldap.bindPassword=my_bind_password</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># User Configuration</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="at">ldap.user.baseDn=ou=Users,dc=mycompany,dc=com</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="at">ldap.user.request=(&amp;(objectClass=inetOrgPerson)(uid={login}))</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="at">ldap.user.realNameAttribute=cn</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="at">ldap.user.emailAttribute=mail</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># Group Configuration</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="at">ldap.group.baseDn=ou=Groups,dc=sonarsource,dc=com</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="at">ldap.group.request=(&amp;(objectClass=groupOfUniqueNames)(memberUid={uid}))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Add both a <code>conf</code> volume and the <code>sonar.properties</code> inside the SonarQube app:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>$PWD/conf/sonar.properties</strong></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="at">    </span><span class="fu">sonarqube</span><span class="kw">:</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="at">        </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="at">        </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="at">        </span><span class="kw">-</span><span class="at"> sonarqube_conf:/opt/sonarqube/conf</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="at">        </span><span class="kw">-</span><span class="at"> $PWD/conf/sonar.properties:/opt/sonarqube/conf/sonar.properties</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="at">    </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="at">    </span><span class="fu">sonarqube_conf</span><span class="kw">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Obfuscate LDAP credentials somehow!</p>
+</div>
+</div>
 
 
 </section>
