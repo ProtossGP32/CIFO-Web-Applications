@@ -1,0 +1,88 @@
+---
+title: "LAB#SE00-1: Maven Person"
+---
+# Maven Person
+
+::: {.panel-tabset}
+## Context
+**Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
+
+**Knowledge of algotighms and data structures** to implement the required classes.
+
+## Goal
+**Create multiple classes in Java** (`Person`, `Student`, `Book`, `Car` and `Author`) using the most convenient entity relationship between them.
+
+**Test these classes** using JUnit.
+
+## Tasks
+(@) Create **a new Maven or Gradle project** and setting up the project structure
+(@) Modify the project's `pom.xml` or `build.gradle` file to import necessary dependencies, including **JUnit** for testing
+(@) Implement the required classes in Java
+(@) Implement two basic patter-designs: **singleton** and **think about factory**
+(@) Write **JUnit tests** to verify that classes work as expected
+
+## Optional
+*   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
+:::
+
+## Approach 1
+### UML diagram
+
+:::{.callout-warning}
+## TODO
+Pending to create UML diagram
+:::
+
+### Classes specifications
+#### Person
+
+:::{.callout-note collapse="true"}
+## Person class
+```{.java filename="Person.java" include="../../../../java-exercises/lab-se-00-1/approach_1/src/main/java/org/labse00part1/domain/Person.java"}
+
+```
+:::
+
+#### Student
+
+:::{.callout-note collapse="true"}
+## Student class
+```{.java filename="Student.java" include="../../../../java-exercises/lab-se-00-1/approach_1/src/main/java/org/labse00part1/domain/Student.java"}
+
+```
+:::
+
+#### Author
+
+:::{.callout-note collapse="true"}
+## Author class
+```{.java filename="Author.java" include="../../../../java-exercises/lab-se-00-1/approach_1/src/main/java/org/labse00part1/domain/Author.java"}
+
+```
+:::
+
+#### Car
+
+:::{.callout-note collapse="true"}
+## Car class
+```{.java filename="Car.java" include="../../../../java-exercises/lab-se-00-1/approach_1/src/main/java/org/labse00part1/domain/Car.java"}
+
+```
+:::
+
+#### Book
+
+:::{.callout-note collapse="true"}
+## Book class
+```{.java filename="Book.java" include="../../../../java-exercises/lab-se-00-1/approach_1/src/main/java/org/labse00part1/domain/Book.java"}
+
+```
+:::
+
+### Tests
+
+:::{.callout-tip}
+## Use the Code Coverage feature!
+When launching tests, do it with Code Coverage to know how much of your code is being tested. Just click on the button next to the _Run_ one when executing a batch of tests or right-click on the _Play_ button next to each test:
+![IntelliJ - Code Coverage](../../images/java-labs/lab-se00-part1-code-coverage.png)
+:::

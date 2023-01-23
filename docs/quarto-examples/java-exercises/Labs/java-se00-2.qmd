@@ -1,0 +1,76 @@
+---
+title: "LAB#SE00-1: Maven Clinic"
+---
+# Maven Clinic
+
+::: {.panel-tabset}
+## Context
+**Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
+
+**Knowledge of algotighms and data structures** to implement the required classes.
+
+## Goal
+**Create multiple classes in Java** (`Person`, `Clinic` and `MyDate`) using the most convenient entity relationship between them.
+
+**Test these classes** using JUnit.
+
+## Tasks
+(@) Create **a new Maven or Gradle project** and setting up the project structure
+(@) Modify the project's `pom.xml` or `build.gradle` file to import necessary dependencies, including **JUnit** for testing
+(@) Implement the required classes in Java
+(@) Implement two basic patter-designs: **singleton** and **think about factory**
+(@) Write **JUnit tests** to verify that classes work as expected
+
+## Optional
+*   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
+:::
+
+## Approach 1
+### UML diagram
+
+:::{.callout-warning}
+## TODO
+Pending to create UML diagram
+:::
+
+### Classes specifications
+#### Person
+
+:::{.callout-note collapse="true"}
+## Person class
+```{.java filename="Person.java" include="../../../../java-exercises/lab-se-00-2/approach_1/src/main/java/org/labse00part2/domain/Person.java"}
+
+```
+:::
+
+#### MyDate
+
+:::{.callout-note collapse="true"}
+## MyDate class
+```{.java filename="MyDate.java" include="../../../../java-exercises/lab-se-00-2/approach_1/src/main/java/org/labse00part2/domain/MyDate.java"}
+
+```
+:::
+
+#### Clinic
+
+:::{.callout-note collapse="true"}
+## Clinic class
+```{.java filename="Clinic.java" include="../../../../java-exercises/lab-se-00-2/approach_1/src/main/java/org/labse00part2/domain/Clinic.java"}
+
+```
+:::
+
+
+### Tests
+
+:::{.callout-warning}
+## TODO
+Missing tests for `Person` and `MyDate` classes
+:::
+
+:::{.callout-tip}
+## Use the Code Coverage feature!
+When launching tests, do it with Code Coverage to know how much of your code is being tested. Just click on the button next to the _Run_ one when executing a batch of tests or right-click on the _Play_ button next to each test:
+![IntelliJ - Code Coverage](../../images/java-labs/lab-se00-part1-code-coverage.png)
+:::

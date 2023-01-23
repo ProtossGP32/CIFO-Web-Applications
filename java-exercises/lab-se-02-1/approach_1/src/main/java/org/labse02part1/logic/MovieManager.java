@@ -1,4 +1,4 @@
-package org.labSe02Part1.logic;
+package org.labse02part1.logic;
 
 public class MovieManager {
 

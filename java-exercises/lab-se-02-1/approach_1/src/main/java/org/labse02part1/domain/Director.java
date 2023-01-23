@@ -1,4 +1,4 @@
-package org.labSe02Part1.domain;
+package org.labse02part1.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
