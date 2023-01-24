@@ -1,5 +1,6 @@
 ---
 title: "LAB#SE01-1"
+categories: [javase, lab]
 ---
 # Maven/Gradle Person and Account
 

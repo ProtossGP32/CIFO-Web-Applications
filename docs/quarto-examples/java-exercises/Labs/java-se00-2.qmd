@@ -1,5 +1,6 @@
 ---
 title: "LAB#SE00-1: Maven Clinic"
+categories: [javase, lab]
 ---
 # Maven Clinic
 
