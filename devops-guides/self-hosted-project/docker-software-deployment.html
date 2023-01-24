@@ -649,19 +649,19 @@ Be patient with the OpenProject initialization
 <span id="cb5-9"><a href="#cb5-9"></a><span class="co"># User Configuration</span></span>
 <span id="cb5-10"><a href="#cb5-10"></a><span class="at">ldap.user.baseDn=ou=Users,dc=mycompany,dc=com</span></span>
 <span id="cb5-11"><a href="#cb5-11"></a><span class="at">ldap.user.request=(&amp;(objectClass=inetOrgPerson)(uid={login}))</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="at">ldap.user.realNameAttribute=cn</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="at">ldap.user.realNameAttribute=displayName</span></span>
 <span id="cb5-13"><a href="#cb5-13"></a><span class="at">ldap.user.emailAttribute=mail</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a></span>
 <span id="cb5-15"><a href="#cb5-15"></a><span class="co"># Group Configuration</span></span>
 <span id="cb5-16"><a href="#cb5-16"></a><span class="at">ldap.group.baseDn=ou=Groups,dc=sonarsource,dc=com</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="at">ldap.group.request=(&amp;(objectClass=groupOfUniqueNames)(memberUid={uid}))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="at">ldap.group.request=(&amp;(objectClass=groupOfUniqueNames)(uniqueMember={dn}))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Add both a <code>conf</code> volume and the <code>sonar.properties</code> inside the SonarQube app:</li>
+<li>Add both a <code>conf</code> volume and the <code>sonar.properties</code> inside the SonarQube docker-compose file:</li>
 </ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>$PWD/conf/sonar.properties</strong></pre>
+<pre><strong>$PWD/docker-compose.yml</strong></pre>
 </div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="at">    </span><span class="fu">sonarqube</span><span class="kw">:</span></span>
