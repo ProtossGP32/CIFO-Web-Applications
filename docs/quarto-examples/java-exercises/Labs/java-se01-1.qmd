@@ -1,8 +1,8 @@
 ---
-title: "LAB#SE01-1"
+title: "LAB#SE01-1: Maven Person and Account"
 categories: [javase, lab]
 ---
-# Maven/Gradle Person and Account
+# Maven Person and Account
 
 ::: {.panel-tabset}
 ## Context
@@ -80,10 +80,11 @@ classDiagram
 
 ```
 :::
-
+ 
 #### AccountManager
 :::{.callout-note collapse="true"}
-```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/AccountManager.java
+```{.java include="../../../../java-exercises/lab-se-01-1/approach_1/src/main/java/org/labSe01Part1/AccountManager.java"}
+
 ```
 :::
 
