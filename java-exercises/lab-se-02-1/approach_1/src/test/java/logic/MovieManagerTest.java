@@ -11,12 +11,12 @@ public class MovieManagerTest {
     Faker faker;
 
     @BeforeEach
-    public void Initialize() {
+    public void initialize() {
         faker = new Faker();
     }
 
     @Test
-    public void MovieManagerClassExists() {
+    public void movieManagerClassExists() {
         fail("Test pending to implement");
     }
 }

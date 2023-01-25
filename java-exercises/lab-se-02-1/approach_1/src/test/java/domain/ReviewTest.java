@@ -13,22 +13,22 @@ public class ReviewTest {
     Faker faker;
 
     @BeforeEach
-    public void Initialize() {
+    public void initialize() {
         faker = new Faker();
     }
 
     @Test
-    public void ReviewClassExists() {
+    public void reviewClassExists() {
         fail("Test pending to implement");
     }
 
     @Test
-    public void ReviewHasConstructorWithoutParameters() {
+    public void reviewHasConstructorWithoutParameters() {
         fail("Test pending to implement");
     }
 
     @Test
-    public void ReviewHasRequiredAttributes() {
+    public void reviewHasRequiredAttributes() {
         fail("Test pending to implement");
     }
 }

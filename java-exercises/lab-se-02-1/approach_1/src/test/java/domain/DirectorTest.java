@@ -11,22 +11,22 @@ public class DirectorTest {
     Faker faker;
 
     @BeforeEach
-    public void Initialize() {
+    public void initialize() {
         faker = new Faker();
     }
 
     @Test
-    public void DirectorClassExists() {
+    public void directorClassExists() {
         fail("Test pending to implement");
     }
 
     @Test
-    public void DirectorHasConstructorWithoutParameters() {
+    public void directorHasConstructorWithoutParameters() {
         fail("Test pending to implement");
     }
 
     @Test
-    public void DirectorHasRequiredAttributes() {
+    public void directorHasRequiredAttributes() {
         fail("Test pending to implement");
     }
 }
