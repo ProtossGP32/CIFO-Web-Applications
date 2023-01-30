@@ -165,7 +165,7 @@ classDiagram
     direction LR
     Movie "1" *-- "*" Review : may have
     Review "*" o-- "1" Movie : talks about
-    Review "*" o-- "1" Critic : is written by
+    Review "1" o-- "1" Critic : is written by
 
     class Movie {
         -title: String
@@ -259,3 +259,15 @@ Now the `MovieManager` class must take into account all these changes in its met
 :::{.callout-warning}
 ## TODO
 :::
+
+## Create a console User Interface
+:::{.callout-warning}
+## TODO
+:::
+
+## Create tests for each one
+:::{.callout-warning}
+## TODO
+:::
+
+### Tests using InputStreams

@@ -118,3 +118,38 @@ Multiplicity is a combination between **cardinality** and **participation**, whe
 ## One-to-One (1:1)
 ## One-to-Many (1:n)
 ## Many-to-Many (n:m)
+
+Many-to-many requires a middle-man table (assignment table) for both entities to share that info
+
+```{mermaid}
+classDiagram
+    direction TB
+    class User {
+        -int userId
+        -String name
+    }
+
+    class Book {
+        -int bookId
+        -String title
+        -Enumerator bookStatus
+    }
+
+    class Borrows {
+        -User user
+        -Book book
+        -Date initialBorrow
+        -Date endBorrow
+    }
+
+    class bookStatus {
+        <<enumerator>>
+        - Available
+        - Lost
+        - Borrowed
+    }
+
+    User ..> bookStatus
+    User "1" --o "*" Borrows : Who borrows
+    Book "1" --o "*" Borrows : What is borrowed
+```
