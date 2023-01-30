@@ -30,7 +30,7 @@ On a testing environment, if documents aren't opened online, try to go to the Ad
 
 :::{.callout-warning}
 ## Some features are unavailable without an SSL certificate
-Features like video conferences in Talk are disabled
+Features like video conferences in Talk are disabled. When using a service like Cloudflare that creates an HTTPS tunnel towards the application, then this problem is solved.
 :::
 
 :::{.callout-note}
@@ -39,7 +39,13 @@ As an alternative to the built-in Collabora/CODE document server, if you want to
 :::
 
 #### Configuration
-Try to create a `docker-compose.yml` file to ease the nextCloud deployment. The steps are defined in the installation guide.
+Try to create a `docker-compose.yml` file to ease the nextCloud deployment. The steps are defined in the installation guide:
+
+:::{.callout-warning}
+## TODO
+Upload the `docker-compose.yml` of NextCloud and render it here
+
+:::
 
 ## Collaborative tools
 
@@ -66,9 +72,19 @@ Things to consider configuring:
 * **User creation activation:** by default, the `admin` user is responsible of manually activate any new account. This can be changed to automatically activate accounts either instantly or by sending an e-mail
     * The e-mail option requires OpenProject to have an SMTP server available to send mails
 
+:::{.callout-warning}
+## TODO
+Upload the `docker-compose.yml` and `docker-compose.override.yml` files and render them here.
+:::
+
 ## User database and authentication
 ### OpenLDAP + phpLDAPadmin
-We'll be using a bitnami/openldap docker image as it runs as non-privileged user, so that's an additional layer of security.
+We'll be using a bitnami/openldap docker image as it runs as non-privileged user, providing an additional layer of security.
+
+:::{.callout-warning}
+## TODO
+Upload the `docker-compose.yml` file and render it here.
+:::
 
 ### FreeIPA
 Follow this tutorial:
@@ -77,7 +93,7 @@ Follow this tutorial:
 ## Code analysis
 ### SonarQube
 
-* Use the following [docker-compose.yml](https://github.com/SonarSource/docker-sonarqube/find/master) as a starting point.
+* Use the following [docker-compose.yml](https://github.com/SonarSource/docker-sonarqube/blob/master/example-compose-files/sq-with-postgres/docker-compose.yml) as a starting point.
 * Sonarqube uses ElasticSearch, and it requires some system params changes, we have to change it inside the docker container. We'll use an `init` container for that:
     * Add the following code snippet as a `service` inside the `docker-compose.yml`:
 
