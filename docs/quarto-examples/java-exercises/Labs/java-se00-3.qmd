@@ -1,0 +1,149 @@
+---
+title: "LAB#SE00-3: Maven Library"
+categories: [javase, lab]
+---
+# Introduction
+
+::: {.panel-tabset}
+## Context
+**Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
+ssl encryption and is intended to run behind a 
+**Knowledge of algotighms and data structures** to implement the required classes.
+
+## Goal
+**Describe the required models** that might define the solution to a Library implementation.
+**Create multiple classes in Java** using the most convenient entity relationship between them to im.
+
+**Test these classes** using JUnit.
+
+## Tasks
+(@) Create **a new Maven or Gradle project** and setting up the project structure
+(@) Modify the project's `pom.xml` or `build.gradle` file to import necessary dependencies, including **JUnit** for testing
+(@) Implement the required classes in Java
+(@) Implement two basic patter-designs: **singleton** and **think about factory**
+(@) Write **JUnit tests** to verify that classes work as expected
+
+## Optional
+*   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
+:::
+
+# Mock-up
+## User interface
+A terminal menu will show the available options of the Library application
+```bash
+# The interface asks if the user wants to create a borrow
+borrow? YES
+# If answered YES, then proceed with the borrow
+# The interface asks for the user identifier
+User? user@mail.com
+# If the user doesn't exist, then ask again for the user
+Unknown user, try again. User? john.smith@goodmail.com
+# If the user exists, then show info regarding that user
+User exists
+- Name: John Smith
+- User id: XXX
+# The interface asks for the title of the book to borrow
+Book to borrow? "Fake book"
+# If the book doesn't exist, then ask again for another book
+Unknown book, try again. Book? "Title of the book"
+# If the book exists, then show the available issues
+Book exists, there are X available issues
+- Book ID: 001
+- Book ID: 002
+{...}
+- Book ID: 054
+Proceed to borrow? YES
+# Use the first available issue of that book and show the Borrow information
+New borrow created:
+- Borrow ID: 001
+- Book: "Title of the book" (Book ID: 001)
+- Initial Borrow: 2023-01-31
+- Due Date: 2023-02-14
+# Ask again if the user wants to borrow something new
+borrow? NO
+# If answered NO, then exit the program
+BYE!
+```
+```{mermaid}
+flowchart
+    direction TB
+    id1{Borrow?} -- "YES" --> id2[User?]
+    id2 -- "user@fakemail.com" -->id3[Unknown user, try again]
+    id3 -- "Ask the user again" --> id2
+    id2 -- "john.smith@goodmail.com" --> id4[User exists:\n- Username: John Smith\n- User ID: XXX]
+    id4 -- "Ask for a Book name" --> id5[Book?]
+    id5 -- "Fake book" --> id6[Unknown book, try again] --> id5
+    id5 -- "Title of the book" --> id7[Title of the book exists, there are X available issues:\n- Book ID: 001\n- Book ID: 002\n...\n- Book ID: XXX]
+    id7 --> id8{Proceed to\nborrow?}
+    id8 -- "YES" --> id9[New borrow created:\n- Borrow ID: 001\n- Book: Title of the book Book ID: 001]
+
+```
+
+
+# Domains
+
+## Core domain
+## Logic domain
+## User interface domain
+
+# UML
+
+## Core classes
+
+### Book
+### Person
+### User
+### Author
+### Borrow
+```{mermaid}
+classDiagram
+    class Book {
+    }
+
+    class User {
+    <<Person>>
+        -String userId
+    }
+
+    class Borrow {
+        -Date initialBorrow
+        -Date dueDate
+        -Date returnDate
+        -Book borrowedBook
+    }
+
+    Borrow "1..*" o-- "1" Book : lends
+    Book "1" -- "1..*" Borrow : can be lent
+    User "1" o-- "*" Borrow : can make
+```
+
+
+## Management classes
+### BookManager
+### UserManager
+### BorrowManager
+
+## Storage classes
+### BookStorage
+### UserStorage
+### BorrowStorage
+
+## Object generation classes
+
+# Tests
+## Objects creation
+
+
+## CRUD operations
+
+
+## Integration tests
+### Borrow a book
+Define the required steps to borrow a book:
+
+- Create a User
+- Create a Book
+- Create a Borrow for that User and Book 
+
+### Create an Input of Borrow by console
+Define the required steps to replicate the Borrow test using an input from console.
