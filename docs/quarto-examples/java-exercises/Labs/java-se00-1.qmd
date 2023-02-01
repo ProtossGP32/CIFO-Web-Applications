@@ -7,7 +7,7 @@ categories: [javase, lab]
 ::: {.panel-tabset}
 ## Context
 **Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
-
+ssl encryption and is intended to run behind a 
 **Knowledge of algotighms and data structures** to implement the required classes.
 
 ## Goal

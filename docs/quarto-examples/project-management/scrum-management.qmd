@@ -1,0 +1,177 @@
+---
+title: "Scrum management"
+---
+# Introduction
+Here we'll discuss some key topics regarding Scrum management of projects
+
+# Scrum stages
+## Sprints
+### Sprint 0 (It doesn't exist, really!!)
+
+What this sprint isn't:
+
+- It is not the phase in which the team is put together
+    - In order to conduct a Sprint in the first place, a team must already be in place
+- It is not the phase for setting up infrastructure which should already be implemented or easily implemented on demand, but not as part of a Sprint Zero
+- It should not involve adding products to a backlog or Consider Planning as classical project with Gantt Diagrams plannings
+
+The main goal of a Sprint Zero is **to deliver some usable value that can be built upon by the next team.**
+
+Sprint Zeroes are required to:
+
+- Create the project's **skeleton**, including research spikes
+- **Keep design minimal**
+- Develop a small number of **stories** to completion
+- Be low velocity and lightweight
+
+More specifically, the deliverables of a Sprint Zero should be as follows:
+
+- A **usable** piece of code, however small
+- A **minimal** environment for writing code
+- A **prioritization** of features or a list of stories
+- A **release plan** assigning each story to a Sprint
+- A plan for the most likely implementation of **features**
+
+#### Keywords of a Sprint Zero:
+
+Let's take the example of the Library Laboratory SE03-01
+```{dot}
+graph sprintZero {
+    graph [
+        layout = twopi
+        #layout = neato
+        ranksep = 2.7
+        label = "Sprint Zero"
+        labelloc = b
+        fontname = "Helvetica,Arial,sans-serif"
+        start = regular
+        normalize = false
+        overlap="compress"
+    ]
+
+    node [
+        shape = circle
+        style = filled
+        color = "#00000088"
+        width = 1.2
+        fontname = "Helvetica,Arial,sans-serif"
+    ]
+
+    edge [
+        len = 2
+		color = "#00000088"
+		fontname = "Helvetica,Arial,sans-serif"
+    ]
+    
+    subgraph Stages {
+        node [fontcolor = white width = 1.4]
+        "Sprint Zero" [fillcolor = olive]
+        "Sprint Zero" -- {
+            "1 - Project" [fillcolor = orange fontcolor = black]
+            "2 - DDD" [fillcolor = black]
+            "3 - UML" [fillcolor = green]
+            "4 - Code" [fillcolor = blue]
+        }
+    }
+
+    subgraph Project {
+        node [fillcolor = gold fontcolor = black]
+        "1 - Project" -- {
+            "Use Case"
+            "Documentation"
+            "Mock-up"
+            "Open\nProject?"
+        }
+    }
+
+    subgraph ProjectSubItems {
+        node [fillcolor = peachpuff]
+        "Use Case" -- "User Stories"
+        "Documentation" -- "Quarto"
+        "Documentation" -- "Obsidian"
+        "Mock-up" -- "New Feature"
+    }
+    
+    subgraph DDD {
+        node [fontcolor = white]
+        "2 - DDD" -- {
+            "Vocabulary"
+            "Packages"
+            "Model"
+            "Controller"
+            "Refactor\nDomain"
+        }
+        "Vocabulary" -- "Common\nLanguage"
+        "Refactor\nDomain" -- "If there is\nLegacy Code"
+    }
+
+    subgraph UML {
+        node [fillcolor = yellowgreen fontcolor = black]
+        "3 - UML" -- {
+            "Relationships"
+        }
+
+
+    }
+
+    subgraph UMLActions {
+        node [fillcolor = "0.250 .2 1"]
+        "Relationships" -- {
+            "Composition"
+            "Inheritance"
+            "Multiplicity"
+        }
+
+        
+    }
+    
+    subgraph Code {
+        node [fillcolor = deepskyblue fontcolor = white]
+        "4 - Code" -- {
+            "Utilities"
+            "Core model"
+            "Managers"
+            "Dependencies"
+            "Maven"
+            "Refactor\nCode"
+            "Test"
+            "Git"
+        }
+    }
+
+    subgraph CodeActions {
+        node [fillcolor = cornflowerblue fontcolor = white]
+        "Core model" -- {
+            "Book"
+            "Borrow"
+            "User"
+        }
+        "Test" -- "Make Borrow"
+        "Git" -- "GitHub"
+    }
+
+    subgraph Dependencies {
+        node [fillcolor = cornflowerblue fontcolor = white]
+        "Dependencies" -- {
+            "lombok"
+            "JUnit"
+            "Jupiter"
+            "faker"
+        }
+    }
+    subgraph FakerActions {
+        node [fillcolor = lightskyblue]
+        "faker" -- "Create"
+        "Create" -- {
+            "100 books"
+            "100 users"
+        }
+    }
+
+    subgraph Interdependencies {
+        edge [style=dotted]
+        "Controller" -- "Managers"
+        "Refactor\nDomain" -- "Refactor\nCode"
+    }
+}
+```
