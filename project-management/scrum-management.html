@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>CIFO - Web Applications - Scrum management</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CIFO - Web Applications</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-devops-guides" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">DevOps guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-devops-guides">    
+        <li>
+    <a class="dropdown-item" href="../devops-guides/software-installation.html">
+ <span class="dropdown-text">Software installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../devops-guides/mint-vm-provisioning.html">
+ <span class="dropdown-text">Virtual Machine Provisioning</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Documentation</li>
+        <li>
+    <a class="dropdown-item" href="../devops-guides/documentation/quarto-quick-guide.html">
+ <span class="dropdown-text">Quarto - Quick guide</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Self Hosted Project</li>
+        <li>
+    <a class="dropdown-item" href="../devops-guides/self-hosted-project/docker-software-deployment.html">
+ <span class="dropdown-text">Docker software deployment</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Version Control Software</li>
+        <li>
+    <a class="dropdown-item" href="../devops-guides/version-control-software/git-useful-tips.html">
+ <span class="dropdown-text">GIT useful tips</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Virtualization</li>
+        <li>
+    <a class="dropdown-item" href="../devops-guides/virtualization/harvester.html">
+ <span class="dropdown-text">Harvester</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../devops-guides/virtualization/proxmox.html">
+ <span class="dropdown-text">Proxmox VE</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-java-exercises" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Java exercises</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-java-exercises">    
+        <li class="dropdown-header">Concepts</li>
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/object-creation.html">
+ <span class="dropdown-text">Object creation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-a-class.html">
+ <span class="dropdown-text">What is a class?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-a-model.html">
+ <span class="dropdown-text">What is a model?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-coupling-and-cohesion.html">
+ <span class="dropdown-text">What is coupling and cohesion?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-ddd.html">
+ <span class="dropdown-text">What is DDD?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-maven.html">
+ <span class="dropdown-text">What is Maven?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-spring-boot.html">
+ <span class="dropdown-text">What is SpringBoot?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-tdd.html">
+ <span class="dropdown-text">What is TDD?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-the-static-modifier.html">
+ <span class="dropdown-text">What is the static modifier?</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Design Patterns</li>
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Design-patterns/uml.html">
+ <span class="dropdown-text">UML</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Labs</li>
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Labs/java-se00-2.html">
+ <span class="dropdown-text">LAB#SE00-1: Maven Clinic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Labs/java-se00-1.html">
+ <span class="dropdown-text">LAB#SE00-1: Maven Person</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Labs/java-se00-3.html">
+ <span class="dropdown-text">LAB#SE00-3: Maven Library</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Labs/java-se01-1.html">
+ <span class="dropdown-text">LAB#SE01-1: Maven Person and Account</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Labs/java-se02-1.html">
+ <span class="dropdown-text">LAB#SE02-1: Movie/Review, model</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Principles</li>
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Principles/01-abstraction.html">
+ <span class="dropdown-text">Abstraction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Principles/00-encapsulation.html">
+ <span class="dropdown-text">Encapsulation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Principles/02-inheritance.html">
+ <span class="dropdown-text">Inheritance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Principles/03-polymorphism.html">
+ <span class="dropdown-text">Polymorphism</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-team-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Team projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-team-projects">    
+        <li>
+    <a class="dropdown-item" href="../team-projects/00-game-tracker.html">
+ <span class="dropdown-text">First project - GameTracker</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-walkthrough" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Walkthrough</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-walkthrough">    
+        <li>
+    <a class="dropdown-item" href="../walkthrough/walkthrough.html">
+ <span class="dropdown-text">Hello, Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/protossgp32"><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#scrum-stages" id="toc-scrum-stages" class="nav-link" data-scroll-target="#scrum-stages">Scrum stages</a>
+  <ul class="collapse">
+  <li><a href="#sprints" id="toc-sprints" class="nav-link" data-scroll-target="#sprints">Sprints</a>
+  <ul class="collapse">
+  <li><a href="#sprint-0-it-doesnt-exist-really" id="toc-sprint-0-it-doesnt-exist-really" class="nav-link" data-scroll-target="#sprint-0-it-doesnt-exist-really">Sprint 0 (It doesn’t exist, really!!)</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/project-management/scrum-management.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Scrum management</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Here we’ll discuss some key topics regarding Scrum management of projects</p>
+</section>
+<section id="scrum-stages" class="level1">
+<h1>Scrum stages</h1>
+<section id="sprints" class="level2">
+<h2 class="anchored" data-anchor-id="sprints">Sprints</h2>
+<section id="sprint-0-it-doesnt-exist-really" class="level3">
+<h3 class="anchored" data-anchor-id="sprint-0-it-doesnt-exist-really">Sprint 0 (It doesn’t exist, really!!)</h3>
+<p>What this sprint isn’t:</p>
+<ul>
+<li>It is not the phase in which the team is put together
+<ul>
+<li>In order to conduct a Sprint in the first place, a team must already be in place</li>
+</ul></li>
+<li>It is not the phase for setting up infrastructure which should already be implemented or easily implemented on demand, but not as part of a Sprint Zero</li>
+<li>It should not involve adding products to a backlog or Consider Planning as classical project with Gantt Diagrams plannings</li>
+</ul>
+<p>The main goal of a Sprint Zero is <strong>to deliver some usable value that can be built upon by the next team.</strong></p>
+<p>Sprint Zeroes are required to:</p>
+<ul>
+<li>Create the project’s <strong>skeleton</strong>, including research spikes</li>
+<li><strong>Keep design minimal</strong></li>
+<li>Develop a small number of <strong>stories</strong> to completion</li>
+<li>Be low velocity and lightweight</li>
+</ul>
+<p>More specifically, the deliverables of a Sprint Zero should be as follows:</p>
+<ul>
+<li>A <strong>usable</strong> piece of code, however small</li>
+<li>A <strong>minimal</strong> environment for writing code</li>
+<li>A <strong>prioritization</strong> of features or a list of stories</li>
+<li>A <strong>release plan</strong> assigning each story to a Sprint</li>
+<li>A plan for the most likely implementation of <strong>features</strong></li>
+</ul>
+<section id="keywords-of-a-sprint-zero" class="level4">
+<h4 class="anchored" data-anchor-id="keywords-of-a-sprint-zero">Keywords of a Sprint Zero:</h4>
+<p>Let’s take the example of the Library Laboratory SE03-01</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="672" height="480" viewbox="0.00 0.00 1242.31 1608.67" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1604.67)">
+<title>
+sprintZero
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1604.67 1238.31,-1604.67 1238.31,4 -4,4"></polygon> <text text-anchor="middle" x="617.16" y="-8.2" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Sprint Zero</text> <!-- Sprint Zero --> <g id="node1" class="node">
+<title>
+Sprint Zero
+</title>
+<ellipse fill="olive" stroke="#000000" stroke-opacity="0.533333" cx="610.76" cy="-998.97" rx="50.5" ry="50.5"></ellipse> <text text-anchor="middle" x="610.76" y="-994.77" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Sprint Zero</text> </g> <!-- 1 &#45; Project --> <g id="node2" class="node">
+<title>
+1 - Project
+</title>
+<ellipse fill="orange" stroke="#000000" stroke-opacity="0.533333" cx="773.18" cy="-1105.79" rx="50.5" ry="50.5"></ellipse> <text text-anchor="middle" x="773.18" y="-1101.59" font-family="Helvetica,Arial,sans-serif" font-size="14.00">1 - Project</text> </g> <!-- Sprint Zero&#45;&#45;1 &#45; Project --> <g id="edge1" class="edge">
+<title>
+Sprint Zero–1 - Project
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M653.01,-1026.75C676.98,-1042.52 706.88,-1062.18 730.86,-1077.96"></path> </g> <!-- 2 &#45; DDD --> <g id="node3" class="node">
+<title>
+2 - DDD
+</title>
+<ellipse fill="black" stroke="#000000" stroke-opacity="0.533333" cx="577.01" cy="-1190.41" rx="50.5" ry="50.5"></ellipse> <text text-anchor="middle" x="577.01" y="-1186.21" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">2 - DDD</text> </g> <!-- Sprint Zero&#45;&#45;2 &#45; DDD --> <g id="edge2" class="edge">
+<title>
+Sprint Zero–2 - DDD
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M601.98,-1048.77C597,-1077.02 590.79,-1112.26 585.8,-1140.53"></path> </g> <!-- 3 &#45; UML --> <g id="node4" class="node">
+<title>
+3 - UML
+</title>
+<ellipse fill="green" stroke="#000000" stroke-opacity="0.533333" cx="437.04" cy="-1086.21" rx="50.5" ry="50.5"></ellipse> <text text-anchor="middle" x="437.04" y="-1082.01" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">3 - UML</text> </g> <!-- Sprint Zero&#45;&#45;3 &#45; UML --> <g id="edge3" class="edge">
+<title>
+Sprint Zero–3 - UML
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M565.57,-1021.66C539.94,-1034.54 507.95,-1050.6 482.31,-1063.48"></path> </g> <!-- 4 &#45; Code --> <g id="node5" class="node">
+<title>
+4 - Code
+</title>
+<ellipse fill="blue" stroke="#000000" stroke-opacity="0.533333" cx="599.46" cy="-804.89" rx="50.5" ry="50.5"></ellipse> <text text-anchor="middle" x="599.46" y="-800.69" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">4 - Code</text> </g> <!-- Sprint Zero&#45;&#45;4 &#45; Code --> <g id="edge4" class="edge">
+<title>
+Sprint Zero–4 - Code
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M607.82,-948.48C606.16,-919.84 604.07,-884.11 602.41,-855.46"></path> </g> <!-- Use Case --> <g id="node6" class="node">
+<title>
+Use Case
+</title>
+<ellipse fill="gold" stroke="#000000" stroke-opacity="0.533333" cx="996.93" cy="-1044.1" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="996.93" y="-1039.9" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Use Case</text> </g> <!-- 1 &#45; Project&#45;&#45;Use Case --> <g id="edge5" class="edge">
+<title>
+1 - Project–Use Case
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M822.01,-1092.33C861.87,-1081.34 917.59,-1065.98 955.35,-1055.57"></path> </g> <!-- Documentation --> <g id="node7" class="node">
+<title>
+Documentation
+</title>
+<ellipse fill="gold" stroke="#000000" stroke-opacity="0.533333" cx="958.21" cy="-1173.46" rx="53.35" ry="53.35"></ellipse> <text text-anchor="middle" x="958.21" y="-1169.26" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Documentation</text> </g> <!-- 1 &#45; Project&#45;&#45;Documentation --> <g id="edge6" class="edge">
+<title>
+1 - Project–Documentation
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M820.83,-1123.22C847.49,-1132.97 880.71,-1145.12 907.81,-1155.03"></path> </g> <!-- Mock&#45;up --> <g id="node8" class="node">
+<title>
+Mock-up
+</title>
+<ellipse fill="gold" stroke="#000000" stroke-opacity="0.533333" cx="877.57" cy="-1281.77" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="877.57" y="-1277.57" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Mock-up</text> </g> <!-- 1 &#45; Project&#45;&#45;Mock&#45;up --> <g id="edge7" class="edge">
+<title>
+1 - Project–Mock-up
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M798.99,-1149.29C816.38,-1178.6 839.07,-1216.86 855.59,-1244.72"></path> </g> <!-- Open\nProject? --> <g id="node9" class="node">
+<title>
+Open?
+</title>
+<ellipse fill="gold" stroke="#000000" stroke-opacity="0.533333" cx="805.16" cy="-1335.68" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="805.16" y="-1339.88" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Open</text> <text text-anchor="middle" x="805.16" y="-1323.08" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Project?</text> </g> <!-- 1 &#45; Project&#45;&#45;Open\nProject? --> <g id="edge8" class="edge">
+<title>
+1 - Project–Open?
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M780.16,-1155.96C785.86,-1196.91 793.82,-1254.16 799.22,-1292.95"></path> </g> <!-- Vocabulary --> <g id="node14" class="node">
+<title>
+Vocabulary
+</title>
+<ellipse fill="#000000" fill-opacity="0.533333" stroke="#000000" stroke-opacity="0.533333" cx="722.27" cy="-1371.43" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="722.27" y="-1367.23" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Vocabulary</text> </g> <!-- 2 &#45; DDD&#45;&#45;Vocabulary --> <g id="edge13" class="edge">
+<title>
+2 - DDD–Vocabulary
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M608.89,-1230.14C634.78,-1262.4 670.88,-1307.39 695.34,-1337.87"></path> </g> <!-- Packages --> <g id="node15" class="node">
+<title>
+Packages
+</title>
+<ellipse fill="#000000" fill-opacity="0.533333" stroke="#000000" stroke-opacity="0.533333" cx="633.37" cy="-1387.11" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="633.37" y="-1382.91" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Packages</text> </g> <!-- 2 &#45; DDD&#45;&#45;Packages --> <g id="edge14" class="edge">
+<title>
+2 - DDD–Packages
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M590.94,-1239.03C600.33,-1271.8 612.58,-1314.55 621.5,-1345.69"></path> </g> <!-- Model --> <g id="node16" class="node">
+<title>
+Model
+</title>
+<ellipse fill="#000000" fill-opacity="0.533333" stroke="#000000" stroke-opacity="0.533333" cx="543.25" cy="-1381.86" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="543.25" y="-1377.66" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Model</text> </g> <!-- 2 &#45; DDD&#45;&#45;Model --> <g id="edge15" class="edge">
+<title>
+2 - DDD–Model
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M568.22,-1240.21C562.79,-1271.01 555.9,-1310.13 550.73,-1339.44"></path> </g> <!-- Controller --> <g id="node17" class="node">
+<title>
+Controller
+</title>
+<ellipse fill="#000000" fill-opacity="0.533333" stroke="#000000" stroke-opacity="0.533333" cx="456.77" cy="-1355.97" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="456.77" y="-1351.77" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Controller</text> </g> <!-- 2 &#45; DDD&#45;&#45;Controller --> <g id="edge16" class="edge">
+<title>
+2 - DDD–Controller
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M547.28,-1231.34C527.26,-1258.91 501.12,-1294.9 482.08,-1321.11"></path> </g> <!-- Refactor\nDomain --> <g id="node18" class="node">
+<title>
+Refactor
+</title>
+<ellipse fill="#000000" fill-opacity="0.533333" stroke="#000000" stroke-opacity="0.533333" cx="378.59" cy="-1310.83" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="378.59" y="-1315.03" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Refactor</text> <text text-anchor="middle" x="378.59" y="-1298.23" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Domain</text> </g> <!-- 2 &#45; DDD&#45;&#45;Refactor\nDomain --> <g id="edge17" class="edge">
+<title>
+2 - DDD–Refactor
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M533.46,-1216.84C498.1,-1238.3 448.78,-1268.23 415.37,-1288.51"></path> </g> <!-- Relationships --> <g id="node21" class="node">
+<title>
+Relationships
+</title>
+<ellipse fill="yellowgreen" stroke="#000000" stroke-opacity="0.533333" cx="263.32" cy="-1173.46" rx="48.31" ry="48.31"></ellipse> <text text-anchor="middle" x="263.32" y="-1169.26" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Relationships</text> </g> <!-- 3 &#45; UML&#45;&#45;Relationships --> <g id="edge20" class="edge">
+<title>
+3 - UML–Relationships
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M391.85,-1108.91C365.51,-1122.14 332.47,-1138.73 306.49,-1151.78"></path> </g> <!-- Utilities --> <g id="node25" class="node">
+<title>
+Utilities
+</title>
+<ellipse fill="deepskyblue" stroke="#000000" stroke-opacity="0.533333" cx="221.96" cy="-998.97" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="221.96" y="-994.77" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Utilities</text> </g> <!-- 4 &#45; Code&#45;&#45;Utilities --> <g id="edge24" class="edge">
+<title>
+4 - Code–Utilities
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M554.3,-828.11C479.35,-866.65 330.56,-943.13 260.35,-979.23"></path> </g> <!-- Core model --> <g id="node26" class="node">
+<title>
+Core model
+</title>
+<ellipse fill="deepskyblue" stroke="#000000" stroke-opacity="0.533333" cx="263.32" cy="-824.47" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="263.32" y="-820.27" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Core model</text> </g> <!-- 4 &#45; Code&#45;&#45;Core model --> <g id="edge25" class="edge">
+<title>
+4 - Code–Core model
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M548.77,-807.85C482.75,-811.69 368.45,-818.35 306.4,-821.96"></path> </g> <!-- Managers --> <g id="node27" class="node">
+<title>
+Managers
+</title>
+<ellipse fill="deepskyblue" stroke="#000000" stroke-opacity="0.533333" cx="378.59" cy="-687.1" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="378.59" y="-682.9" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Managers</text> </g> <!-- 4 &#45; Code&#45;&#45;Managers --> <g id="edge26" class="edge">
+<title>
+4 - Code–Managers
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M554.76,-781.06C514.17,-759.41 454.96,-727.83 416.6,-707.37"></path> </g> <!-- Dependencies --> <g id="node28" class="node">
+<title>
+Dependencies
+</title>
+<ellipse fill="deepskyblue" stroke="#000000" stroke-opacity="0.533333" cx="633.37" cy="-610.82" rx="49.21" ry="49.21"></ellipse> <text text-anchor="middle" x="633.37" y="-606.62" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Dependencies</text> </g> <!-- 4 &#45; Code&#45;&#45;Dependencies --> <g id="edge27" class="edge">
+<title>
+4 - Code–Dependencies
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M608.19,-754.92C613.31,-725.6 619.76,-688.73 624.84,-659.63"></path> </g> <!-- Maven --> <g id="node29" class="node">
+<title>
+Maven
+</title>
+<ellipse fill="deepskyblue" stroke="#000000" stroke-opacity="0.533333" cx="877.57" cy="-716.16" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="877.57" y="-711.96" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Maven</text> </g> <!-- 4 &#45; Code&#45;&#45;Maven --> <g id="edge28" class="edge">
+<title>
+4 - Code–Maven
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M647.59,-789.54C700.91,-772.53 786.01,-745.38 836.37,-729.31"></path> </g> <!-- Refactor\nCode --> <g id="node30" class="node">
+<title>
+Refactor
+</title>
+<ellipse fill="deepskyblue" stroke="#000000" stroke-opacity="0.533333" cx="935.6" cy="-785.32" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="935.6" y="-789.52" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Refactor</text> <text text-anchor="middle" x="935.6" y="-772.72" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Code</text> </g> <!-- 4 &#45; Code&#45;&#45;Refactor\nCode --> <g id="edge29" class="edge">
+<title>
+4 - Code–Refactor
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M650.15,-801.94C716.17,-798.1 830.47,-791.44 892.52,-787.83"></path> </g> <!-- Test --> <g id="node31" class="node">
+<title>
+Test
+</title>
+<ellipse fill="deepskyblue" stroke="#000000" stroke-opacity="0.533333" cx="976.12" cy="-865.99" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="976.12" y="-861.79" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Test</text> </g> <!-- 4 &#45; Code&#45;&#45;Test --> <g id="edge30" class="edge">
+<title>
+4 - Code–Test
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M649.48,-813.01C724.12,-825.11 863.36,-847.7 933.47,-859.07"></path> </g> <!-- Git --> <g id="node32" class="node">
+<title>
+Git
+</title>
+<ellipse fill="deepskyblue" stroke="#000000" stroke-opacity="0.533333" cx="996.93" cy="-953.83" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="996.93" y="-949.63" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Git</text> </g> <!-- 4 &#45; Code&#45;&#45;Git --> <g id="edge31" class="edge">
+<title>
+4 - Code–Git
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M647.01,-822.71C725.93,-852.28 882.59,-910.98 956.52,-938.68"></path> </g> <!-- User Stories --> <g id="node10" class="node">
+<title>
+User Stories
+</title>
+<ellipse fill="peachpuff" stroke="#000000" stroke-opacity="0.533333" cx="1190.02" cy="-1066.67" rx="44.09" ry="44.09"></ellipse> <text text-anchor="middle" x="1190.02" y="-1062.47" font-family="Helvetica,Arial,sans-serif" font-size="14.00">User Stories</text> </g> <!-- Use Case&#45;&#45;User Stories --> <g id="edge9" class="edge">
+<title>
+Use Case–User Stories
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M1039.79,-1049.11C1071.34,-1052.8 1114.11,-1057.8 1145.95,-1061.52"></path> </g> <!-- Quarto --> <g id="node11" class="node">
+<title>
+Quarto
+</title>
+<ellipse fill="peachpuff" stroke="#000000" stroke-opacity="0.533333" cx="1158.79" cy="-1198.43" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="1158.79" y="-1194.23" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Quarto</text> </g> <!-- Documentation&#45;&#45;Quarto --> <g id="edge10" class="edge">
+<title>
+Documentation–Quarto
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M1011.43,-1180.09C1044.16,-1184.16 1085.54,-1189.31 1116.11,-1193.12"></path> </g> <!-- Obsidian --> <g id="node12" class="node">
+<title>
+Obsidian
+</title>
+<ellipse fill="peachpuff" stroke="#000000" stroke-opacity="0.533333" cx="1098.02" cy="-1319.44" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="1098.02" y="-1315.24" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Obsidian</text> </g> <!-- Documentation&#45;&#45;Obsidian --> <g id="edge11" class="edge">
+<title>
+Documentation–Obsidian
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M995.31,-1212.2C1018.12,-1236.02 1046.96,-1266.13 1068.27,-1288.38"></path> </g> <!-- New Feature --> <g id="node13" class="node">
+<title>
+New Feature
+</title>
+<ellipse fill="peachpuff" stroke="#000000" stroke-opacity="0.533333" cx="1010.98" cy="-1423.17" rx="45.81" ry="45.81"></ellipse> <text text-anchor="middle" x="1010.98" y="-1418.97" font-family="Helvetica,Arial,sans-serif" font-size="14.00">New Feature</text> </g> <!-- Mock&#45;up&#45;&#45;New Feature --> <g id="edge12" class="edge">
+<title>
+Mock-up–New Feature
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M907.18,-1313.15C928.6,-1335.85 957.5,-1366.48 979.36,-1389.66"></path> </g> <!-- Common\nLanguage --> <g id="node19" class="node">
+<title>
+Common
+</title>
+<ellipse fill="#000000" fill-opacity="0.533333" stroke="#000000" stroke-opacity="0.533333" cx="778.03" cy="-1557.67" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="778.03" y="-1561.87" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Common</text> <text text-anchor="middle" x="778.03" y="-1545.07" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Language</text> </g> <!-- Vocabulary&#45;&#45;Common\nLanguage --> <g id="edge18" class="edge">
+<title>
+Vocabulary–Common
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M734.65,-1412.76C743.89,-1443.63 756.46,-1485.62 765.69,-1516.45"></path> </g> <!-- Controller&#45;&#45;Managers --> <g id="edge44" class="edge">
+<title>
+Controller–Managers
+</title>
+<path fill="none" stroke="#000000" stroke-dasharray="1,5" stroke-opacity="0.533333" d="M451.76,-1313.11C437.65,-1192.44 397.72,-850.79 383.61,-730.03"></path> </g> <!-- If there is\nLegacy Code --> <g id="node20" class="node">
+<title>
+If there isCode
+</title>
+<ellipse fill="#000000" fill-opacity="0.533333" stroke="#000000" stroke-opacity="0.533333" cx="262.5" cy="-1466.76" rx="51.61" ry="51.61"></ellipse> <text text-anchor="middle" x="262.5" y="-1470.96" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">If there is</text> <text text-anchor="middle" x="262.5" y="-1454.16" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Legacy Code</text> </g> <!-- Refactor\nDomain&#45;&#45;If there is\nLegacy Code --> <g id="edge19" class="edge">
+<title>
+Refactor–If there isCode
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M352.82,-1345.44C335.26,-1369.04 311.9,-1400.4 293.35,-1425.33"></path> </g> <!-- Refactor\nDomain&#45;&#45;Refactor\nCode --> <g id="edge45" class="edge">
+<title>
+Refactor–Refactor
+</title>
+<path fill="none" stroke="#000000" stroke-dasharray="1,5" stroke-opacity="0.533333" d="M410.13,-1281.07C508.06,-1188.68 806.14,-907.46 904.06,-815.07"></path> </g> <!-- Composition --> <g id="node22" class="node">
+<title>
+Composition
+</title>
+<ellipse fill="#e5ffcc" stroke="#000000" stroke-opacity="0.533333" cx="164.01" cy="-1373.84" rx="46.26" ry="46.26"></ellipse> <text text-anchor="middle" x="164.01" y="-1369.64" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Composition</text> </g> <!-- Relationships&#45;&#45;Composition --> <g id="edge21" class="edge">
+<title>
+Relationships–Composition
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M241.77,-1216.94C224.77,-1251.24 201.22,-1298.76 184.5,-1332.5"></path> </g> <!-- Inheritance --> <g id="node23" class="node">
+<title>
+Inheritance
+</title>
+<ellipse fill="#e5ffcc" stroke="#000000" stroke-opacity="0.533333" cx="89.6" cy="-1260.71" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="89.6" y="-1256.51" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Inheritance</text> </g> <!-- Relationships&#45;&#45;Inheritance --> <g id="edge22" class="edge">
+<title>
+Relationships–Inheritance
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M219.93,-1195.25C191.79,-1209.38 155.45,-1227.63 128.29,-1241.27"></path> </g> <!-- Multiplicity --> <g id="node24" class="node">
+<title>
+Multiplicity
+</title>
+<ellipse fill="#e5ffcc" stroke="#000000" stroke-opacity="0.533333" cx="43.28" cy="-1133.46" rx="43.07" ry="43.07"></ellipse> <text text-anchor="middle" x="43.28" y="-1129.26" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Multiplicity</text> </g> <!-- Relationships&#45;&#45;Multiplicity --> <g id="edge23" class="edge">
+<title>
+Relationships–Multiplicity
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M215.85,-1164.83C177.31,-1157.82 123.45,-1148.03 86.2,-1141.26"></path> </g> <!-- Book --> <g id="node33" class="node">
+<title>
+Book
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="43.28" cy="-864.47" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="43.28" y="-860.27" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Book</text> </g> <!-- Core model&#45;&#45;Book --> <g id="edge32" class="edge">
+<title>
+Core model–Book
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M220.89,-832.18C182.06,-839.24 124.87,-849.64 85.95,-856.71"></path> </g> <!-- Borrow --> <g id="node34" class="node">
+<title>
+Borrow
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="89.6" cy="-737.23" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="89.6" y="-733.03" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Borrow</text> </g> <!-- Core model&#45;&#45;Borrow --> <g id="edge33" class="edge">
+<title>
+Core model–Borrow
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M224.76,-805.11C195.98,-790.65 156.81,-770.98 128.04,-756.53"></path> </g> <!-- User --> <g id="node35" class="node">
+<title>
+User
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="164.01" cy="-624.09" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="164.01" y="-619.89" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">User</text> </g> <!-- Core model&#45;&#45;User --> <g id="edge34" class="edge">
+<title>
+Core model–User
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M244.17,-785.84C226.64,-750.47 200.83,-698.39 183.27,-662.95"></path> </g> <!-- lombok --> <g id="node38" class="node">
+<title>
+lombok
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="379.77" cy="-463.46" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="379.77" y="-459.26" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">lombok</text> </g> <!-- Dependencies&#45;&#45;lombok --> <g id="edge37" class="edge">
+<title>
+Dependencies–lombok
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M590.64,-585.99C542.08,-557.78 463.58,-512.16 417.3,-485.27"></path> </g> <!-- JUnit --> <g id="node39" class="node">
+<title>
+JUnit
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="509.49" cy="-424.63" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="509.49" y="-420.43" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">JUnit</text> </g> <!-- Dependencies&#45;&#45;JUnit --> <g id="edge38" class="edge">
+<title>
+Dependencies–JUnit
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M605.88,-569.5C584.14,-536.82 554.09,-491.67 533.36,-460.5"></path> </g> <!-- Jupiter --> <g id="node40" class="node">
+<title>
+Jupiter
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="644.67" cy="-416.75" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="644.67" y="-412.55" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Jupiter</text> </g> <!-- Dependencies&#45;&#45;Jupiter --> <g id="edge39" class="edge">
+<title>
+Dependencies–Jupiter
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M636.25,-561.35C638.08,-530.02 640.41,-489.9 642.16,-459.87"></path> </g> <!-- faker --> <g id="node41" class="node">
+<title>
+faker
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="841.76" cy="-463.46" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="841.76" y="-459.26" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">faker</text> </g> <!-- Dependencies&#45;&#45;faker --> <g id="edge40" class="edge">
+<title>
+Dependencies–faker
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M674.04,-582.06C712.54,-554.84 769.74,-514.39 806.39,-488.47"></path> </g> <!-- Make Borrow --> <g id="node36" class="node">
+<title>
+Make Borrow
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="1158.79" cy="-799.5" rx="49.33" ry="49.33"></ellipse> <text text-anchor="middle" x="1158.79" y="-795.3" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">Make Borrow</text> </g> <!-- Test&#45;&#45;Make Borrow --> <g id="edge35" class="edge">
+<title>
+Test–Make Borrow
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M1016.66,-851.23C1045.04,-840.9 1083.01,-827.08 1112.57,-816.32"></path> </g> <!-- GitHub --> <g id="node37" class="node">
+<title>
+GitHub
+</title>
+<ellipse fill="cornflowerblue" stroke="#000000" stroke-opacity="0.533333" cx="1190.02" cy="-931.26" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="1190.02" y="-927.06" font-family="Helvetica,Arial,sans-serif" font-size="14.00" fill="white">GitHub</text> </g> <!-- Git&#45;&#45;GitHub --> <g id="edge36" class="edge">
+<title>
+Git–GitHub
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M1039.79,-948.82C1071.78,-945.08 1115.32,-939.99 1147.29,-936.26"></path> </g> <!-- Create --> <g id="node42" class="node">
+<title>
+Create
+</title>
+<ellipse fill="lightskyblue" stroke="#000000" stroke-opacity="0.533333" cx="918.75" cy="-284.96" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="918.75" y="-280.76" font-family="Helvetica,Arial,sans-serif" font-size="14.00">Create</text> </g> <!-- faker&#45;&#45;Create --> <g id="edge41" class="edge">
+<title>
+faker–Create
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M858.85,-423.85C871.61,-394.27 888.97,-354.02 901.71,-324.47"></path> </g> <!-- 100 books --> <g id="node43" class="node">
+<title>
+100 books
+</title>
+<ellipse fill="lightskyblue" stroke="#000000" stroke-opacity="0.533333" cx="889.54" cy="-67.8" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="889.54" y="-63.6" font-family="Helvetica,Arial,sans-serif" font-size="14.00">100 books</text> </g> <!-- Create&#45;&#45;100 books --> <g id="edge42" class="edge">
+<title>
+Create–100 books
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M913.02,-242.32C907.9,-204.27 900.44,-148.85 895.31,-110.72"></path> </g> <!-- 100 users --> <g id="node44" class="node">
+<title>
+100 users
+</title>
+<ellipse fill="lightskyblue" stroke="#000000" stroke-opacity="0.533333" cx="1096.76" cy="-157.19" rx="43" ry="43"></ellipse> <text text-anchor="middle" x="1096.76" y="-152.99" font-family="Helvetica,Arial,sans-serif" font-size="14.00">100 users</text> </g> <!-- Create&#45;&#45;100 users --> <g id="edge43" class="edge">
+<title>
+Create–100 users
+</title>
+<path fill="none" stroke="#000000" stroke-opacity="0.533333" d="M953.92,-259.72C985.13,-237.32 1030.48,-204.76 1061.67,-182.38"></path> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">
+        <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+</ul>
+      </div>
+  </div>
+</footer>
+
+
+
+</body></html>

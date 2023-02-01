@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CIFO - Web Applications - UML</title>
+<title>CIFO - Web Applications - LAB#SE00-3: Maven Library</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -30,8 +93,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Labs/java-se00-2.html" rel="next">
-<link href="../../java-exercises/Concepts/what-is-the-static-modifier.html" rel="prev">
+<link href="../../java-exercises/Labs/java-se01-1.html" rel="next">
+<link href="../../java-exercises/Labs/java-se00-1.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed slimcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -271,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">UML</h1>
+      <h1 class="quarto-secondary-nav-title">LAB#SE00-3: Maven Library</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -349,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link active">UML</a>
+  <a href="../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link">UML</a>
   </div>
 </li>
       </ul>
@@ -374,7 +437,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">LAB#SE00-3: Maven Library</a>
+  <a href="../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link active">LAB#SE00-3: Maven Library</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -429,31 +492,64 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#class-diagram-and-relationships" id="toc-class-diagram-and-relationships" class="nav-link" data-scroll-target="#class-diagram-and-relationships">Class diagram and relationships</a>
+  <li><a href="#mock-up" id="toc-mock-up" class="nav-link" data-scroll-target="#mock-up">Mock-up</a>
   <ul class="collapse">
-  <li><a href="#inheritance" id="toc-inheritance" class="nav-link" data-scroll-target="#inheritance">Inheritance</a></li>
-  <li><a href="#composition" id="toc-composition" class="nav-link" data-scroll-target="#composition">Composition</a></li>
-  <li><a href="#aggregation" id="toc-aggregation" class="nav-link" data-scroll-target="#aggregation">Aggregation</a></li>
-  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association">Association</a></li>
-  <li><a href="#dependency" id="toc-dependency" class="nav-link" data-scroll-target="#dependency">Dependency</a></li>
-  <li><a href="#use-realization" id="toc-use-realization" class="nav-link" data-scroll-target="#use-realization">Use / Realization</a></li>
+  <li><a href="#user-interface" id="toc-user-interface" class="nav-link" data-scroll-target="#user-interface">User interface</a></li>
   </ul></li>
-  <li><a href="#entity-realtionship-types-multiplicity" id="toc-entity-realtionship-types-multiplicity" class="nav-link" data-scroll-target="#entity-realtionship-types-multiplicity">Entity realtionship types: multiplicity</a>
+  <li><a href="#domains" id="toc-domains" class="nav-link" data-scroll-target="#domains">Domains</a>
   <ul class="collapse">
-  <li><a href="#one-to-one-11" id="toc-one-to-one-11" class="nav-link" data-scroll-target="#one-to-one-11">One-to-One (1:1)</a></li>
-  <li><a href="#one-to-many-1n" id="toc-one-to-many-1n" class="nav-link" data-scroll-target="#one-to-many-1n">One-to-Many (1:n)</a></li>
-  <li><a href="#many-to-many-nm" id="toc-many-to-many-nm" class="nav-link" data-scroll-target="#many-to-many-nm">Many-to-Many (n:m)</a></li>
+  <li><a href="#core-domain" id="toc-core-domain" class="nav-link" data-scroll-target="#core-domain">Core domain</a></li>
+  <li><a href="#logic-domain" id="toc-logic-domain" class="nav-link" data-scroll-target="#logic-domain">Logic domain</a></li>
+  <li><a href="#user-interface-domain" id="toc-user-interface-domain" class="nav-link" data-scroll-target="#user-interface-domain">User interface domain</a></li>
+  </ul></li>
+  <li><a href="#uml" id="toc-uml" class="nav-link" data-scroll-target="#uml">UML</a>
+  <ul class="collapse">
+  <li><a href="#core-classes" id="toc-core-classes" class="nav-link" data-scroll-target="#core-classes">Core classes</a>
+  <ul class="collapse">
+  <li><a href="#book" id="toc-book" class="nav-link" data-scroll-target="#book">Book</a></li>
+  <li><a href="#person" id="toc-person" class="nav-link" data-scroll-target="#person">Person</a></li>
+  <li><a href="#user" id="toc-user" class="nav-link" data-scroll-target="#user">User</a></li>
+  <li><a href="#author" id="toc-author" class="nav-link" data-scroll-target="#author">Author</a></li>
+  <li><a href="#borrow" id="toc-borrow" class="nav-link" data-scroll-target="#borrow">Borrow</a></li>
+  </ul></li>
+  <li><a href="#management-classes" id="toc-management-classes" class="nav-link" data-scroll-target="#management-classes">Management classes</a>
+  <ul class="collapse">
+  <li><a href="#bookmanager" id="toc-bookmanager" class="nav-link" data-scroll-target="#bookmanager">BookManager</a></li>
+  <li><a href="#usermanager" id="toc-usermanager" class="nav-link" data-scroll-target="#usermanager">UserManager</a></li>
+  <li><a href="#borrowmanager" id="toc-borrowmanager" class="nav-link" data-scroll-target="#borrowmanager">BorrowManager</a></li>
+  </ul></li>
+  <li><a href="#storage-classes" id="toc-storage-classes" class="nav-link" data-scroll-target="#storage-classes">Storage classes</a>
+  <ul class="collapse">
+  <li><a href="#bookstorage" id="toc-bookstorage" class="nav-link" data-scroll-target="#bookstorage">BookStorage</a></li>
+  <li><a href="#userstorage" id="toc-userstorage" class="nav-link" data-scroll-target="#userstorage">UserStorage</a></li>
+  <li><a href="#borrowstorage" id="toc-borrowstorage" class="nav-link" data-scroll-target="#borrowstorage">BorrowStorage</a></li>
+  </ul></li>
+  <li><a href="#object-generation-classes" id="toc-object-generation-classes" class="nav-link" data-scroll-target="#object-generation-classes">Object generation classes</a></li>
+  </ul></li>
+  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests">Tests</a>
+  <ul class="collapse">
+  <li><a href="#objects-creation" id="toc-objects-creation" class="nav-link" data-scroll-target="#objects-creation">Objects creation</a></li>
+  <li><a href="#crud-operations" id="toc-crud-operations" class="nav-link" data-scroll-target="#crud-operations">CRUD operations</a></li>
+  <li><a href="#integration-tests" id="toc-integration-tests" class="nav-link" data-scroll-target="#integration-tests">Integration tests</a>
+  <ul class="collapse">
+  <li><a href="#borrow-a-book" id="toc-borrow-a-book" class="nav-link" data-scroll-target="#borrow-a-book">Borrow a book</a></li>
+  <li><a href="#create-an-input-of-borrow-by-console" id="toc-create-an-input-of-borrow-by-console" class="nav-link" data-scroll-target="#create-an-input-of-borrow-by-console">Create an Input of Borrow by console</a></li>
+  </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Design-patterns/uml.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se00-3.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">UML</h1>
-</div>
+<h1 class="title d-none d-lg-block">LAB#SE00-3: Maven Library</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">javase</div>
+    <div class="quarto-category">lab</div>
+  </div>
+  </div>
 
 
 
@@ -469,44 +565,85 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Context</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Goal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Tasks</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Optional</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project. ssl encryption and is intended to run behind a <strong>Knowledge of algotighms and data structures</strong> to implement the required classes.</p>
 </div>
-<div class="callout-caption-container flex-fill">
-Class notes’ definition
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><strong>Describe the required models</strong> that might define the solution to a Library implementation. <strong>Create multiple classes in Java</strong> using the most convenient entity relationship between them to im.</p>
+<p><strong>Test these classes</strong> using JUnit.</p>
 </div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<ol class="example" type="1">
+<li>Create <strong>a new Maven or Gradle project</strong> and setting up the project structure</li>
+<li>Modify the project’s <code>pom.xml</code> or <code>build.gradle</code> file to import necessary dependencies, including <strong>JUnit</strong> for testing</li>
+<li>Implement the required classes in Java</li>
+<li>Implement two basic patter-designs: <strong>singleton</strong> and <strong>think about factory</strong></li>
+<li>Write <strong>JUnit tests</strong> to verify that classes work as expected</li>
+</ol>
 </div>
-<div class="callout-body-container callout-body">
-<p><strong>UML</strong> stands for <strong>Unified Modeling Language.</strong> It is a standardized <strong>visual language for specifying, constructing, visualizing, and documenting the artifacts of software systems,</strong> as well as for business modeling and other non-software systems.</p>
-<p>UML is used by software <strong>developers, business analysts, and system engineers</strong> to model the design of a system and communicate that design to others.</p>
-</div>
-</div>
-<p>Why is it useful?</p>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <ul>
-<li>It allows all team members to be on the same page by providing a common language; thus, people from different disciplines can understand and discuss system design in a concise and precise way (13)</li>
-<li>It allows to identify issues either in the design or in the team dynamics (13)</li>
-<li>It allows to solve any found issue even before coding the system (13)</li>
-<li>It helps understanding the problem to solve, the client requirements, the market needs, the core, etc… (21)</li>
-<li>It serves as a project documentation (13)</li>
+<li><strong>Allow the user to input data via the console</strong>, rather than using <code>hard-coded test data</code> in JUnit tests</li>
 </ul>
+</div>
+</div>
+</div>
 </section>
-<section id="class-diagram-and-relationships" class="level1 page-columns page-full">
-<h1>Class diagram and relationships</h1>
-<section id="inheritance" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="inheritance">Inheritance</h2>
-<div class="cell page-columns page-full">
-
-<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<section id="mock-up" class="level1">
+<h1>Mock-up</h1>
+<section id="user-interface" class="level2">
+<h2 class="anchored" data-anchor-id="user-interface">User interface</h2>
+<p>A terminal menu will show the available options of the Library application</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># The interface asks if the user wants to create a borrow</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">borrow?</span> YES</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># If answered YES, then proceed with the borrow</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># The interface asks for the user identifier</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">User?</span> user@mail.com</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># If the user doesn't exist, then ask again for the user</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="ex">Unknown</span> user, try again. User<span class="pp">?</span> john.smith@goodmail.com</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># If the user exists, then show info regarding that user</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ex">User</span> exists</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="ex">-</span> Name: John Smith</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="ex">-</span> User id: XXX</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># The interface asks for the title of the book to borrow</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="ex">Book</span> to borrow<span class="pp">?</span> <span class="st">"Fake book"</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># If the book doesn't exist, then ask again for another book</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="ex">Unknown</span> book, try again. Book<span class="pp">?</span> <span class="st">"Title of the book"</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co"># If the book exists, then show the available issues</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="ex">Book</span> exists, there are X available issues</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="ex">-</span> Book ID: 001</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="ex">-</span> Book ID: 002</span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="ex">{...}</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="ex">-</span> Book ID: 054</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="ex">Proceed</span> to borrow<span class="pp">?</span> YES</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co"># Use the first available issue of that book and show the Borrow information</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="ex">New</span> borrow created:</span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="ex">-</span> Borrow ID: 001</span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="ex">-</span> Book: <span class="st">"Title of the book"</span> <span class="er">(</span><span class="ex">Book</span> ID: 001<span class="kw">)</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="ex">-</span> Initial Borrow: 2023-01-31</span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="ex">-</span> Due Date: 2023-02-14</span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># Ask again if the user wants to borrow something new</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="ex">borrow?</span> NO</span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co"># If answered NO, then exit the program</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="ex">BYE!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">classDiagram
-    class SuperClass {
-    }
-    class SubClass {
-    }
-    SuperClass &lt;|-- SubClass : Inheritance
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart
+    direction TB
+    id1{Borrow?} -- "YES" --&gt; id2[User?]
+    id2 -- "user@fakemail.com" --&gt;id3[Unknown user, try again]
+    id3 -- "Ask the user again" --&gt; id2
+    id2 -- "john.smith@goodmail.com" --&gt; id4[User exists:\n- Username: John Smith\n- User ID: XXX]
+    id4 -- "Ask for a Book name" --&gt; id5[Book?]
+    id5 -- "Fake book" --&gt; id6[Unknown book, try again] --&gt; id5
+    id5 -- "Title of the book" --&gt; id7[Title of the book exists, there are X available issues:\n- Book ID: 001\n- Book ID: 002\n...\n- Book ID: XXX]
+    id7 --&gt; id8{Proceed to\nborrow?}
+    id8 -- "YES" --&gt; id9[New borrow created:\n- Borrow ID: 001\n- Book: Title of the book Book ID: 001]
 
 </pre>
 <div id="mermaid-tooltip-1" class="mermaidTooltip">
@@ -514,194 +651,126 @@ Class notes’ definition
 </div>
 <p></p>
 </div>
-</div></div></div>
-<p>Inheritance is a relationship between classes, where <strong>one class is a subclass of another class</strong> and inherits the properties and behavioral of the superclass. This is represented in UML by a <strong>solid line with a closed, filled arrowhead pointing from the subclass to the superclass</strong>:</p>
+</div>
+</div>
 </section>
-<section id="composition" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="composition">Composition</h2>
-<div class="cell page-columns page-full">
-
-<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+</section>
+<section id="domains" class="level1">
+<h1>Domains</h1>
+<section id="core-domain" class="level2">
+<h2 class="anchored" data-anchor-id="core-domain">Core domain</h2>
+</section>
+<section id="logic-domain" class="level2">
+<h2 class="anchored" data-anchor-id="logic-domain">Logic domain</h2>
+</section>
+<section id="user-interface-domain" class="level2">
+<h2 class="anchored" data-anchor-id="user-interface-domain">User interface domain</h2>
+</section>
+</section>
+<section id="uml" class="level1">
+<h1>UML</h1>
+<section id="core-classes" class="level2">
+<h2 class="anchored" data-anchor-id="core-classes">Core classes</h2>
+<section id="book" class="level3">
+<h3 class="anchored" data-anchor-id="book">Book</h3>
+</section>
+<section id="person" class="level3">
+<h3 class="anchored" data-anchor-id="person">Person</h3>
+</section>
+<section id="user" class="level3">
+<h3 class="anchored" data-anchor-id="user">User</h3>
+</section>
+<section id="author" class="level3">
+<h3 class="anchored" data-anchor-id="author">Author</h3>
+</section>
+<section id="borrow" class="level3">
+<h3 class="anchored" data-anchor-id="borrow">Borrow</h3>
+<div class="cell">
+<div class="cell-output-display">
 <div>
 <p>
 </p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">classDiagram
-    class Client {
-    }
-    class BankAccount {
+    class Book {
     }
 
-    Client o-- BankAccount : Composition
+    class User {
+    &lt;&lt;Person&gt;&gt;
+        -String userId
+    }
 
+    class Borrow {
+        -Date initialBorrow
+        -Date dueDate
+        -Date returnDate
+        -Book borrowedBook
+    }
+
+    Borrow "1..*" o-- "1" Book : lends
+    Book "1" -- "1..*" Borrow : can be lent
+    User "1" o-- "*" Borrow : can make
 </pre>
 <div id="mermaid-tooltip-2" class="mermaidTooltip">
 
 </div>
 <p></p>
 </div>
-</div></div></div>
-<p>Composition is a <strong>strong type</strong> of association that represents a whole-part relationship between two classes, <strong>where the parts cannot exist independently of the whole</strong>. This is represented in UML by a <strong>solid line with a closed diamond shape pointing from the whole to the part</strong>.</p>
-</section>
-<section id="aggregation" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="aggregation">Aggregation</h2>
-<div class="cell page-columns page-full">
-
-<div class="no-row-height column-margin column-container"><div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">classDiagram
-    class Person {
-    }
-    class Hand {
-    }
-
-    Person *-- Hand : Aggregation
-
-</pre>
-<div id="mermaid-tooltip-3" class="mermaidTooltip">
-
 </div>
-<p></p>
 </div>
-</div></div></div>
-<p>Aggregation is a <strong>weaker</strong> type of association that represents a <strong>whole-part relationship between two classes, where the parts can exist independently of the whole</strong>. Thisis represented in UML by a <strong>solid line with an open diamond shape pointing from the whole to the part</strong>.</p>
-</section>
-<section id="association" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="association">Association</h2>
-<div class="cell page-columns page-full">
-
-<div class="no-row-height column-margin column-container"><div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">classDiagram
-    class Customer {
-    }
-    class Ticket {
-    }
-
-    Customer --&gt; Ticket : Association
-
-</pre>
-<div id="mermaid-tooltip-4" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div></div></div>
-<p>Association is a relationship between two classes that <strong>represents a connection or relationship between them</strong> (as in generic relationship). This is represented in UML by a <strong>solid line with an open arrowhead pointing from one class to the other</strong>.</p>
-</section>
-<section id="dependency" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="dependency">Dependency</h2>
-<div class="cell page-columns page-full">
-
-<div class="no-row-height column-margin column-container"><div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">classDiagram
-    class MovieManager {
-    }
-    class Movie {
-    }
-
-    MovieManager ..&gt; Movie : Dependency
-</pre>
-<div id="mermaid-tooltip-5" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div></div></div>
-<p>Dependency is a relationship between two classes that indicates that <strong>one class depends on the other for its functionality</strong>. This is represented in UML by a <strong>dashed line with an open arrowhead pointing from the dependenet class to the class it depends on</strong>.</p>
-</section>
-<section id="use-realization" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="use-realization">Use / Realization</h2>
-<div class="cell page-columns page-full">
-
-<div class="no-row-height column-margin column-container"><div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-6">classDiagram
-    class ShoppingList {
-    }
-    class Item {
-    }
-    
-    ShoppingList ..|&gt; Item : Use / Realization
-</pre>
-<div id="mermaid-tooltip-6" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div></div></div>
-<p>Use is a relationship between two classes that indicates that <strong>one class uses the other in some way</strong>. This is represented in UML by a <strong>dashed line with an open, unfilled arrowhead pointing from the using class to the class being used</strong>.</p>
 </section>
 </section>
-<section id="entity-realtionship-types-multiplicity" class="level1">
-<h1>Entity realtionship types: multiplicity</h1>
+<section id="management-classes" class="level2">
+<h2 class="anchored" data-anchor-id="management-classes">Management classes</h2>
+<section id="bookmanager" class="level3">
+<h3 class="anchored" data-anchor-id="bookmanager">BookManager</h3>
+</section>
+<section id="usermanager" class="level3">
+<h3 class="anchored" data-anchor-id="usermanager">UserManager</h3>
+</section>
+<section id="borrowmanager" class="level3">
+<h3 class="anchored" data-anchor-id="borrowmanager">BorrowManager</h3>
+</section>
+</section>
+<section id="storage-classes" class="level2">
+<h2 class="anchored" data-anchor-id="storage-classes">Storage classes</h2>
+<section id="bookstorage" class="level3">
+<h3 class="anchored" data-anchor-id="bookstorage">BookStorage</h3>
+</section>
+<section id="userstorage" class="level3">
+<h3 class="anchored" data-anchor-id="userstorage">UserStorage</h3>
+</section>
+<section id="borrowstorage" class="level3">
+<h3 class="anchored" data-anchor-id="borrowstorage">BorrowStorage</h3>
+</section>
+</section>
+<section id="object-generation-classes" class="level2">
+<h2 class="anchored" data-anchor-id="object-generation-classes">Object generation classes</h2>
+</section>
+</section>
+<section id="tests" class="level1">
+<h1>Tests</h1>
+<section id="objects-creation" class="level2">
+<h2 class="anchored" data-anchor-id="objects-creation">Objects creation</h2>
+</section>
+<section id="crud-operations" class="level2">
+<h2 class="anchored" data-anchor-id="crud-operations">CRUD operations</h2>
+</section>
+<section id="integration-tests" class="level2">
+<h2 class="anchored" data-anchor-id="integration-tests">Integration tests</h2>
+<section id="borrow-a-book" class="level3">
+<h3 class="anchored" data-anchor-id="borrow-a-book">Borrow a book</h3>
+<p>Define the required steps to borrow a book:</p>
 <ul>
-<li><em>What is it?</em> A way to define relationship between different types of entities using cardinality (cuantitative method)</li>
-<li><em>Why is it required?</em> It helps programmers to understand and go deep within the problem</li>
-<li><em>What is it for?</em> It is used as tool that allows us to propose solutions to our problem at the coding stage</li>
-<li><em>How is it used?</em> It is used when taking decisions regarding the necessity of each entity within the proposed solution</li>
+<li>Create a User</li>
+<li>Create a Book</li>
+<li>Create a Borrow for that User and Book</li>
 </ul>
-<p>Multiplicity is a combination between <strong>cardinality</strong> and <strong>participation</strong>, where:</p>
-<ul>
-<li>Cardinality denotes the maximum number of possible relationship ocurrences in which a certain entity can participate in (in simple terms: at most)</li>
-<li>Participation: denotes if all or only some entity ocurrences participate in a relationship (in simple terms: at least)</li>
-</ul>
-<section id="one-to-one-11" class="level2">
-<h2 class="anchored" data-anchor-id="one-to-one-11">One-to-One (1:1)</h2>
 </section>
-<section id="one-to-many-1n" class="level2">
-<h2 class="anchored" data-anchor-id="one-to-many-1n">One-to-Many (1:n)</h2>
+<section id="create-an-input-of-borrow-by-console" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-input-of-borrow-by-console">Create an Input of Borrow by console</h3>
+<p>Define the required steps to replicate the Borrow test using an input from console.</p>
+
+
 </section>
-<section id="many-to-many-nm" class="level2">
-<h2 class="anchored" data-anchor-id="many-to-many-nm">Many-to-Many (n:m)</h2>
-<p>Many-to-many requires a middle-man table (assignment table) for both entities to share that info</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-7">classDiagram
-    direction TB
-    class User {
-        -int userId
-        -String name
-    }
-
-    class Book {
-        -int bookId
-        -String title
-        -Enumerator bookStatus
-    }
-
-    class Borrows {
-        -User user
-        -Book book
-        -Date initialBorrow
-        -Date endBorrow
-    }
-
-    class bookStatus {
-        &lt;&lt;enumerator&gt;&gt;
-        - Available
-        - Lost
-        - Borrowed
-    }
-
-    User ..&gt; bookStatus
-    User "1" --o "*" Borrows : Who borrows
-    Book "1" --o "*" Borrows : What is borrowed
-</pre>
-<div id="mermaid-tooltip-7" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-
-
 </section>
 </section>
 
@@ -956,13 +1025,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Concepts/what-is-the-static-modifier.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is the static modifier?</span>
+      <a href="../../java-exercises/Labs/java-se00-1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">LAB#SE00-1: Maven Person</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Labs/java-se00-2.html" class="pagination-link">
-        <span class="nav-page-text">LAB#SE00-1: Maven Clinic</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../java-exercises/Labs/java-se01-1.html" class="pagination-link">
+        <span class="nav-page-text">LAB#SE01-1: Maven Person and Account</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

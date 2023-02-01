@@ -255,8 +255,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">LAB#SE00-1: Maven Person</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-3.html">
+ <span class="dropdown-text">LAB#SE00-3: Maven Library</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
- <span class="dropdown-text">LAB#SE01-1</span></a>
+ <span class="dropdown-text">LAB#SE01-1: Maven Person and Account</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se02-1.html">
@@ -433,7 +437,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">LAB#SE01-1</a>
+  <a href="../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">LAB#SE00-3: Maven Library</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">LAB#SE01-1: Maven Person and Account</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -507,6 +516,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#changes-in-domain" id="toc-changes-in-domain" class="nav-link" data-scroll-target="#changes-in-domain">Changes in Domain</a></li>
   <li><a href="#logic-1" id="toc-logic-1" class="nav-link" data-scroll-target="#logic-1">Logic</a></li>
   <li><a href="#uml-diagram-3" id="toc-uml-diagram-3" class="nav-link" data-scroll-target="#uml-diagram-3">UML diagram</a></li>
+  </ul></li>
+  <li><a href="#create-a-console-user-interface" id="toc-create-a-console-user-interface" class="nav-link" data-scroll-target="#create-a-console-user-interface">Create a console User Interface</a></li>
+  <li><a href="#create-tests-for-each-one" id="toc-create-tests-for-each-one" class="nav-link" data-scroll-target="#create-tests-for-each-one">Create tests for each one</a>
+  <ul class="collapse">
+  <li><a href="#tests-using-inputstreams" id="toc-tests-using-inputstreams" class="nav-link" data-scroll-target="#tests-using-inputstreams">Tests using InputStreams</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -752,7 +766,7 @@ Quarto bug
     direction LR
     Movie "1" *-- "*" Review : may have
     Review "*" o-- "1" Movie : talks about
-    Review "*" o-- "1" Critic : is written by
+    Review "1" o-- "1" Critic : is written by
 
     class Movie {
         -title: String
@@ -939,6 +953,41 @@ TODO
 
 </div>
 </div>
+</section>
+</section>
+<section id="create-a-console-user-interface" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-console-user-interface">Create a console User Interface</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="create-tests-for-each-one" class="level2">
+<h2 class="anchored" data-anchor-id="create-tests-for-each-one">Create tests for each one</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<section id="tests-using-inputstreams" class="level3">
+<h3 class="anchored" data-anchor-id="tests-using-inputstreams">Tests using InputStreams</h3>
 
 
 </section>
@@ -1197,7 +1246,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../java-exercises/Labs/java-se01-1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">LAB#SE01-1</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">LAB#SE01-1: Maven Person and Account</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

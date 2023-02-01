@@ -252,8 +252,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">LAB#SE00-1: Maven Person</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-3.html">
+ <span class="dropdown-text">LAB#SE00-3: Maven Library</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
- <span class="dropdown-text">LAB#SE01-1</span></a>
+ <span class="dropdown-text">LAB#SE01-1: Maven Person and Account</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se02-1.html">
@@ -521,7 +525,7 @@ Some features are unavailable without an SSL certificate
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Features like video conferences in Talk are disabled</p>
+<p>Features like video conferences in Talk are disabled. When using a service like Cloudflare that creates an HTTPS tunnel towards the application, then this problem is solved.</p>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -540,7 +544,20 @@ OnlyOffice + NextCloud integration
 </section>
 <section id="configuration" class="level4">
 <h4 class="anchored" data-anchor-id="configuration">Configuration</h4>
-<p>Try to create a <code>docker-compose.yml</code> file to ease the nextCloud deployment. The steps are defined in the installation guide.</p>
+<p>Try to create a <code>docker-compose.yml</code> file to ease the nextCloud deployment. The steps are defined in the installation guide:</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Upload the <code>docker-compose.yml</code> of NextCloud and render it here</p>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -580,6 +597,19 @@ Be patient with the OpenProject initialization
 <li>The e-mail option requires OpenProject to have an SMTP server available to send mails</li>
 </ul></li>
 </ul>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Upload the <code>docker-compose.yml</code> and <code>docker-compose.override.yml</code> files and render them here.</p>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -587,7 +617,20 @@ Be patient with the OpenProject initialization
 <h2 class="anchored" data-anchor-id="user-database-and-authentication">User database and authentication</h2>
 <section id="openldap-phpldapadmin" class="level3">
 <h3 class="anchored" data-anchor-id="openldap-phpldapadmin">OpenLDAP + phpLDAPadmin</h3>
-<p>We’ll be using a bitnami/openldap docker image as it runs as non-privileged user, so that’s an additional layer of security.</p>
+<p>We’ll be using a bitnami/openldap docker image as it runs as non-privileged user, providing an additional layer of security.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Upload the <code>docker-compose.yml</code> file and render it here.</p>
+</div>
+</div>
 </section>
 <section id="freeipa" class="level3">
 <h3 class="anchored" data-anchor-id="freeipa">FreeIPA</h3>
@@ -600,7 +643,7 @@ Be patient with the OpenProject initialization
 <section id="sonarqube" class="level3">
 <h3 class="anchored" data-anchor-id="sonarqube">SonarQube</h3>
 <ul>
-<li><p>Use the following <a href="https://github.com/SonarSource/docker-sonarqube/find/master">docker-compose.yml</a> as a starting point.</p></li>
+<li><p>Use the following <a href="https://github.com/SonarSource/docker-sonarqube/blob/master/example-compose-files/sq-with-postgres/docker-compose.yml">docker-compose.yml</a> as a starting point.</p></li>
 <li><p>Sonarqube uses ElasticSearch, and it requires some system params changes, we have to change it inside the docker container. We’ll use an <code>init</code> container for that:</p>
 <ul>
 <li>Add the following code snippet as a <code>service</code> inside the <code>docker-compose.yml</code>:</li>
