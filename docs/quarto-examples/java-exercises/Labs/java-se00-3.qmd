@@ -1,5 +1,5 @@
 ---
-title: "LAB#SE00-3: Maven Library"
+title: "LAB#SE00-3: Maven Library model"
 categories: [javase, lab]
 ---
 # Introduction

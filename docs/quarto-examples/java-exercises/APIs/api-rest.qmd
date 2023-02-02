@@ -1,0 +1,32 @@
+---
+title: "API REST"
+---
+
+# Introduction
+Teacher's definition:
+
+> _REST is an architecture style for building web services. It is based on a client-server model, where a client sends a `request` to a server and the server sends a `response`._
+>
+> _RESTful APIs use HTTP requests to POST (create), PUT (update), GET (read) and DELETE (delete) data._
+>
+> _A RESTful API is a simple, consistent, and easy-to-use way for applications to communicate with each other over the internet._
+
+## What exactly is a REST API?
+It is the common language between a client and a server, so the client knows what operations are available in the server.
+Common REST API operations
+
+- POST (Create)
+- GET (Read)
+- PUT (Update)
+- DELETE (Delete)
+
+So the base operations are the classic CRUD, but can be expanded. In fact, [it is a set of definitions and protocols](https://www.redhat.com/en/topics/api/what-is-a-rest-api), sometimes referred to as a **contract** between an **information provider** and an **Information user**.
+
+This contract (API Rest _style_) establishing the content required from the consumer (the call) and the content required by the producer (the response).
+
+:::{.callout-note}
+## API Weather example
+The API design for a weather service could ask the user for a zip code as a `request`and then return a `response` in the form of a 2-part answer, being the first one the high temperature and the second one the low temperature.
+:::
+
+## What should we take into account when creating a Rest API
