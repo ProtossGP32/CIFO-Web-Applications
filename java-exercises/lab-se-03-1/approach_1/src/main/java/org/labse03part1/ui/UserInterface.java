@@ -1,26 +1,29 @@
 package org.labse03part1.ui;
 
+import org.labse03part1.logic.BorrowManager;
+import org.labse03part1.utils.InterfaceUtils;
+
 import java.util.Scanner;
 
 public class UserInterface {
 
     public static void start() {
+
         Scanner reader = new Scanner(System.in);
+        // Show the available options of Library management
+        menu();
+        BorrowManager.printOptions();
+        String option;
         while (true) {
-            // Show the available options of Library management
-            menu();
+            option = InterfaceUtils.askString(reader, "- Select option:");
+            System.out.println("Selected option is " + option);
             break;
         }
+        System.out.println("Bye!");
     }
 
     private static void menu() {
-        StringBuilder menuText = new StringBuilder();
-        menuText.append("1 - Add Book\n");
-        menuText.append("2 - Delete Book\n");
-        menuText.append("3 - Get one Book\n");
-        menuText.append("4 - Get all Books\n");
-        menuText.append("5 - Update Book\n");
-        menuText.append("6 - Quit\n");
-        System.out.println(menuText);
+        System.out.println("Welcome to the Library!");
+        // TODO: Create a general menu for other Library options
     }
 }

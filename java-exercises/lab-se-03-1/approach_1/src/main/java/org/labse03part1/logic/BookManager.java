@@ -24,6 +24,5 @@ public class BookManager {
         // TODO: Secure case where bookYear is not an integer
         int bookYear = InterfaceUtils.askInt(reader, "Enter year of the new book: ");
 
-
     }
 }

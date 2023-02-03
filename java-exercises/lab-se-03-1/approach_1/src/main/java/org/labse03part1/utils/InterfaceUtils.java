@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class InterfaceUtils {
-
     public static String askString (Scanner reader, String question){
         System.out.println(question);
         String result = reader.nextLine();
@@ -17,7 +16,6 @@ public class InterfaceUtils {
         return result;
     }
 
-
     public static String createUUID () {
 
         UUID uuid = UUID.randomUUID();
@@ -25,6 +23,5 @@ public class InterfaceUtils {
         System.out.println("UUID Version - " + uuid.version());
         String id = uuid.toString();
         return id;
-
     }
 }
