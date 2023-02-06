@@ -13,11 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClinicTest {
 
     private String fakeName;
-    private double fakeLowestWeightIndex;
     private List<Person> fakeMembers;
 
     private Clinic fakeClinic;
-    private Faker clinicFaker = new Faker();
+    private final Faker clinicFaker = new Faker();
 
     @BeforeEach
     void initialize() {
@@ -60,15 +59,17 @@ class ClinicTest {
 
     @Test
     void testToString() {
-        StringBuilder membersBuilder = new StringBuilder("");
+        StringBuilder membersBuilder = new StringBuilder();
         for (Person member : this.fakeMembers) {
-            membersBuilder.append(member + "\n");
+            membersBuilder.append(member).append("\n");
         }
         String expectedToString = "Clinic: " + this.fakeName + "\n"
                 + "Lowest Weight Index: " + this.getLowestWeightIndex() + "\n"
                 + "Members: " + membersBuilder;
 
-        assertEquals(expectedToString, this.fakeClinic);
+        // assertEquals must be between the same type, can't compare String with Clinic
+        // even though toString() is implicitly invoked
+        assertEquals(expectedToString, this.fakeClinic.toString());
     }
 
     // Test utilities
