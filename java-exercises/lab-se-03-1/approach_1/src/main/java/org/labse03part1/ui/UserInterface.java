@@ -1,29 +1,92 @@
 package org.labse03part1.ui;
 
+import org.labse03part1.logic.AuthorManager;
+import org.labse03part1.logic.BookManager;
 import org.labse03part1.logic.BorrowManager;
 import org.labse03part1.utils.InterfaceUtils;
 
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class UserInterface {
 
+    private enum userInterfaceOptionsEnum {
+        AUTHOR_MANAGER("Manage authors"),
+        BOOK_MANAGER("Manage books"),
+        BORROW_MANAGER("Manage borrows");
+
+        private final String action;
+        userInterfaceOptionsEnum(String action) {
+            this.action = action;
+        }
+
+        private String getAction() {
+            return this.action;
+        }
+
+        public static Stream<userInterfaceOptionsEnum> stream() {
+            return Stream.of(userInterfaceOptionsEnum.values());
+        }
+    }
     public static void start() {
 
+        // For testing purposes we are going to initialize fake authors and books
+        AuthorManager.initializeRandomActors();
+        BookManager.initializeRandomBooks();
+
+        // Initialize local variables
         Scanner reader = new Scanner(System.in);
-        // Show the available options of Library management
-        menu();
-        BorrowManager.printOptions();
-        String option;
+        String optionStr;
+
         while (true) {
-            option = InterfaceUtils.askString(reader, "- Select option:");
-            System.out.println("Selected option is " + option);
-            break;
+            // Show the available options of Library management
+            menu();
+            optionStr = InterfaceUtils.askString(reader, "- Select option ('Quit' to exit):");
+            if (optionStr.equals("Quit")) {
+                break;
+            }
+            executeOption(reader, optionStr);
+            // Blank line to separate executions
+            System.out.println();
         }
         System.out.println("Bye!");
     }
 
     private static void menu() {
         System.out.println("Welcome to the Library!");
-        // TODO: Create a general menu for other Library options
+        printOptions();
+    }
+
+    private static void printOptions() {
+        // Print all the available Borrow options
+        System.out.println("Available options:");
+        userInterfaceOptionsEnum.stream()
+                .map(userInterfaceOptionsEnum::getAction)
+                .forEach(System.out::println);
+    }
+
+    private static userInterfaceOptionsEnum getOption(String action) {
+        for (userInterfaceOptionsEnum option : userInterfaceOptionsEnum.values()) {
+            if (option.getAction().equals(action)) {
+                return option;
+            }
+        }
+        return null;
+    }
+
+    private static void executeOption(Scanner reader, String input) {
+        // Convert selected option into enum value
+        userInterfaceOptionsEnum option = getOption(input);
+        // Execute the corresponding manager
+        if (option != null) {
+            switch (option) {
+                case AUTHOR_MANAGER -> AuthorManager.start(reader);
+                case BOOK_MANAGER -> BookManager.start(reader);
+                case BORROW_MANAGER -> BorrowManager.start(reader);
+                default -> System.out.println("Unknown option!");
+            }
+        } else {
+            System.out.println("Empty option!");
+        }
     }
 }
