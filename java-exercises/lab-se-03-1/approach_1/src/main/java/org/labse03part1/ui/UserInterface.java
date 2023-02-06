@@ -11,10 +11,26 @@ import java.util.stream.Stream;
 public class UserInterface {
 
     private enum userInterfaceOptionsEnum {
-        AUTHOR_MANAGER("Manage authors"),
-        BOOK_MANAGER("Manage books"),
-        BORROW_MANAGER("Manage borrows");
+        AUTHOR_MANAGER("Manage authors") {
+            @Override
+            void start(Scanner reader) {
+                AuthorManager.start(reader);
+            }
+        },
+        BOOK_MANAGER("Manage books") {
+            @Override
+            void start(Scanner reader) {
+                BookManager.start(reader);
+            }
+        },
+        BORROW_MANAGER("Manage borrows") {
+            @Override
+            void start(Scanner reader) {
+                BorrowManager.start(reader);
+            }
+        };
 
+        abstract void start(Scanner reader);
         private final String action;
         userInterfaceOptionsEnum(String action) {
             this.action = action;
@@ -41,7 +57,7 @@ public class UserInterface {
         while (true) {
             // Show the available options of Library management
             menu();
-            optionStr = InterfaceUtils.askString(reader, "- Select option ('Quit' to exit):");
+            optionStr = InterfaceUtils.askString(reader, "- Select option ('Quit' to exit): ");
             if (optionStr.equals("Quit")) {
                 break;
             }
@@ -59,7 +75,7 @@ public class UserInterface {
 
     private static void printOptions() {
         // Print all the available Borrow options
-        System.out.println("Available options:");
+        System.out.println("[Library] Available options:");
         userInterfaceOptionsEnum.stream()
                 .map(userInterfaceOptionsEnum::getAction)
                 .forEach(System.out::println);
@@ -79,14 +95,10 @@ public class UserInterface {
         userInterfaceOptionsEnum option = getOption(input);
         // Execute the corresponding manager
         if (option != null) {
-            switch (option) {
-                case AUTHOR_MANAGER -> AuthorManager.start(reader);
-                case BOOK_MANAGER -> BookManager.start(reader);
-                case BORROW_MANAGER -> BorrowManager.start(reader);
-                default -> System.out.println("Unknown option!");
-            }
+            // Each enum option has its own start method
+            option.start(reader);
         } else {
-            System.out.println("Empty option!");
+            System.out.println("Invalid option!");
         }
     }
 }

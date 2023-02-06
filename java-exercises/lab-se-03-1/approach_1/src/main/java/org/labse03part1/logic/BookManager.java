@@ -10,23 +10,51 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+import static org.labse03part1.utils.InterfaceUtils.askString;
+
 public class BookManager {
     private static final HashMap<String, Book> books = new HashMap<>();
 
     private enum bookOptionsEnum {
-        ADD_BOOK("Add book"),
-        DELETE_BOOK("Delete book"),
-        GET_BOOK("Get book"),
-        LIST_BOOKS("List books"),
-        UPDATE_BOOK("Update book");
+        ADD_BOOK("Add book") {
+            @Override
+            void action(Scanner reader) {
+                addBook(reader);
+            }
+        },
+        DELETE_BOOK("Delete book") {
+            @Override
+            void action(Scanner reader) {
+                deleteBook(reader);
+            }
+        },
+        CHECK_BOOK("Check book") {
+            @Override
+            void action(Scanner reader) {
+                checkBook(reader);
+            }
+        },
+        LIST_BOOKS("List books") {
+            @Override
+            void action(Scanner reader) {
+                listBooks();
+            }
+        },
+        UPDATE_BOOK("Update book") {
+            @Override
+            void action(Scanner reader) {
+                updateBook(reader);
+            }
+        };
 
-        private final String action;
+        abstract void action(Scanner reader);
+        private final String description;
 
-        bookOptionsEnum(String action) {
-            this.action = action;
+        bookOptionsEnum(String description) {
+            this.description = description;
         }
-        private String getAction() {
-            return this.action;
+        private String getDescription() {
+            return this.description;
         }
         public static Stream<bookOptionsEnum> stream() {
             return Stream.of(bookOptionsEnum.values());
@@ -43,63 +71,43 @@ public class BookManager {
     public static void start(Scanner reader) {
         // Print the available options
         printOptions();
-        String option = InterfaceUtils.askString(reader, "- Select option:");
-        Object result = executeOption(reader, option);
-        // TODO: Process the result of the method
+        String description = InterfaceUtils.askString(reader, "[Manage books] - Select option: ");
+        while (!description.equals("Quit")) {
+            executeOption(reader, description);
+            System.out.println();
+            printOptions();
+            description = InterfaceUtils.askString(reader, "[Manage books] - Select option: ");
+        }
     }
 
+    // Private methods
     private static void printOptions() {
         // Print all the available Borrow options
-        System.out.println("Available options:");
+        System.out.println("[Manage books] Available options:");
         bookOptionsEnum.stream()
-                .map(bookOptionsEnum::getAction)
+                .map(bookOptionsEnum::getDescription)
                 .forEach(System.out::println);
     }
 
-
-
     private static bookOptionsEnum getOption(String action) {
         for (bookOptionsEnum option : bookOptionsEnum.values()) {
-            if (option.getAction().equals(action)) {
+            if (option.getDescription().equals(action)) {
                 return option;
             }
         }
         return null;
     }
 
-    private static Object executeOption(Scanner reader, String action) {
+    private static void executeOption(Scanner reader, String action) {
         // compare the action with the available enum and see if it is a valid option
         bookOptionsEnum option = getOption(action);
         // execute the desired option
         if (option != null) {
-            switch (option) {
-
-                case ADD_BOOK -> {
-                    return addBook(reader);
-                }
-                case DELETE_BOOK -> {
-                    return deleteBook(reader);
-                }
-                case GET_BOOK -> {
-                    return getBook(reader);
-                }
-                case LIST_BOOKS -> {
-                    return listBooks(reader);
-                }
-                case UPDATE_BOOK -> {
-                }
-            }
+            option.action(reader);
         }
         else {
-            System.out.println("Unknown option, try again");
-            return false;
+            System.out.println("[Manage books] Invalid option, try again");
         }
-        return null;
-    }
-
-    public static void initializeRandom() {
-        Random randomNum = new Random();
-        createFakeBooks(randomNum.nextInt(0, 10));
     }
 
     private static void createFakeBooks(int number) {
@@ -114,6 +122,7 @@ public class BookManager {
             newBook.setTitle(fakeBook.title());
             newBook.setPages(faker.number().numberBetween(10, 2000));
             newBook.setYear(faker.number().numberBetween(0, 2023));
+            newBook.setISBN(faker.code().isbn13());
             // Get a fake author
             // Mandatory initialization of AuthorManager prior to this
             newBook.setAuthor(AuthorManager.getRandomAuthor());
@@ -122,59 +131,109 @@ public class BookManager {
         }
     }
 
-    private static boolean addBook(Scanner reader) {
+    private static void addBook(Scanner reader) {
         // Create a book
-        String bookTitle = InterfaceUtils.askString(reader, "Enter name of the new book: ");
+        String bookTitle = askString(reader, "[Add book] Enter name of the new book ('Quit' to exit): ");
         // The book title is candidate to be inserted
         while (books.containsKey(bookTitle)) {
+            if (bookTitle.equals("Quit")) {
+                System.out.println("[Add book] Add book cancelled");
+                break;
+            }
             System.out.println("Book " + bookTitle + " already exists!");
-            bookTitle = InterfaceUtils.askString(reader, "- Enter name of the new book: ");
+            bookTitle = askString(reader, "[Add book] Enter name of the new book ('Quit' to exit): ");
         }
 
         // TODO: Secure the rest of the parameters
-        int bookYear = InterfaceUtils.askInt(reader, "- Enter year of the new book: ");
-        int bookPages = InterfaceUtils.askInt(reader, "- Enter number of pages of the book:");
-        String bookISBN = InterfaceUtils.askString(reader, "- Enter book ISBN:");
-        System.out.println("Available authors:");
-        AuthorManager.listAuthors();
-        String authorName = InterfaceUtils.askString(reader, "- Enter author's name:");
+        int bookYear = InterfaceUtils.askInt(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter year of the new book: ");
+        int bookPages = InterfaceUtils.askInt(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter number of pages of the book: ");
+        String bookISBN = askString(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter book ISBN: ");
+
+        // The user selects one of the available authors
         Author bookAuthor = AuthorManager.getAuthor(reader);
+        // Add the book into the system
         books.put(bookTitle, new Book(bookTitle, bookPages, bookYear, bookISBN, bookAuthor));
 
-        System.out.println("Book " + bookTitle + " added!");
-        return true;
+        System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Book " + bookTitle + " added!");
     }
 
-    private static boolean deleteBook(Scanner reader) {
-        String bookTitle;
-        bookTitle = InterfaceUtils.askString(reader, "Enter name of the book to delete: ");
+    private static void deleteBook(Scanner reader) {
+        String bookTitle = askString(reader, "[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Enter name of the book to delete ('Quit' to exit): ");
         while (!books.containsKey(bookTitle)) {
-            System.out.println("Book " + bookTitle + "doesn't exist in the system!");
-            bookTitle = InterfaceUtils.askString(reader, "Enter name of the book to delete: ");
+            if (bookTitle.equals("Quit")) {
+                System.out.println("[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Delete book cancelled");
+                break;
+            }
+            System.out.println("[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Book " + bookTitle + "doesn't exist in the system!");
+            bookTitle = askString(reader, "[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Enter name of the book to delete ('Quit' to exit): ");
         }
         books.remove(bookTitle);
-        System.out.println("Book " + bookTitle + " deleted!");
-        return true;
+        System.out.println("[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Book " + bookTitle + " deleted!");
     }
 
-    private static Book getBook(Scanner reader) {
-        String bookTitle;
-        bookTitle = InterfaceUtils.askString(reader, "Enter name of the book you want: ");
+    private static void checkBook(Scanner reader) {
+        String bookTitle = askString(reader, "[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Enter name of the book you want ('Quit' to exit): ");
         while (!books.containsKey(bookTitle)) {
-            System.out.println("Book " + bookTitle + "doesn't exist in the system!");
-            bookTitle = InterfaceUtils.askString(reader, "Enter name of the book you want: ");
+            if (bookTitle.equals("Quit")) {
+                System.out.println("[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Check book cancelled");
+                break;
+            }
+            System.out.println("[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Book " + bookTitle + "doesn't exist in the system!");
+            bookTitle = askString(reader, "[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Enter name of the book you want ('Quit' to exit): ");
         }
-
-        return books.get(bookTitle);
+        // Print the book information
+        System.out.println(books.get(bookTitle));
     }
 
-    private static boolean listBooks(Scanner reader) {
-        books.keySet().stream()
-                .forEach(book -> System.out.println(book));
-        return true;
+    private static void listBooks() {
+        System.out.println("[" + bookOptionsEnum.LIST_BOOKS.getDescription() + "] Available books:");
+        books.keySet()
+                .forEach(System.out::println);
     }
 
-    private static boolean updateBook(Scanner reader) {
-        return false;
+    private static void updateBook(Scanner reader) {
+        String bookTitle = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter name of the book to update ('Quit' to exit): ");
+        while (!books.containsKey(bookTitle)) {
+            if (bookTitle.equals("Quit")) {
+                System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Update book cancelled");
+                break;
+            }
+            System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Book " + bookTitle + "doesn't exist in the system!");
+            bookTitle = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter name of the book to update ('Quit' to exit): ");
+        }
+        Book bookToUpdate = books.get(bookTitle);
+        System.out.println(bookToUpdate);
+
+        // Once book is found, ask for the parameter to change
+        String parameter = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter the parameter to modify ('Quit' to exit): ");
+        Object value;
+        while (!parameter.equals("Quit")) {
+            switch (parameter) {
+                case "title" -> {
+                    value = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter the new title of the book: ");
+                    bookToUpdate.setTitle(value.toString());
+                    System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Title set to " + value);
+                }
+                case "pages" -> {
+                    value = InterfaceUtils.askInt(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter the new pages of the book: ");
+                    bookToUpdate.setPages((int) value);
+                    System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Pages set to " + value);
+                }
+                case "year" -> {
+                    value = InterfaceUtils.askInt(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter the new year of the book: ");
+                    bookToUpdate.setYear((int) value);
+                    System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Year set to " + value);
+                }
+                case "author" -> {
+                    // Ask the user for a new author
+                    Author newAuthor = AuthorManager.getAuthor(reader);
+                    // Set the new author
+                    bookToUpdate.setAuthor(newAuthor);
+                    System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Author set to " + bookToUpdate.getAuthor().getFirstName() + " " + bookToUpdate.getAuthor().getLastName());
+                }
+                default -> System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Invalid parameter, try again");
+            }
+            parameter = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Insert the parameter to modify ('Quit' to exit): ");
+        }
     }
 }
