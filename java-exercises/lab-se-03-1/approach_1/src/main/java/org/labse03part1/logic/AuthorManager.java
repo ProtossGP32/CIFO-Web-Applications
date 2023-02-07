@@ -63,12 +63,12 @@ public class AuthorManager {
     // Entrypoint of the manager
     public static void start(Scanner reader) {
         printOptions();
-        String action = askString(reader, "[Manage authors] Select option: ");
+        String action = askString(reader, "[Manage authors] Select option ('Quit' to exit): ");
         while (!action.equals("Quit")) {
             executeOption(reader, action);
             System.out.println();
             printOptions();
-            action = InterfaceUtils.askString(reader, "[Manage authors] Select option: ");
+            action = InterfaceUtils.askString(reader, "[Manage authors] Select option ('Quit' to exit): ");
         }
     }
 
@@ -76,12 +76,12 @@ public class AuthorManager {
     public static Author getAuthor(Scanner reader) {
         listAuthors();
         String authorFullName = askString(reader, "Enter author's full name: ");
-        while(getAuthor(authorFullName) == null) {
+        while(!authors.containsKey(authorFullName)) {
             System.out.println("Invalid author name!");
             authorFullName = askString(reader, "Enter author's full name: ");
         }
 
-        return getAuthor(authorFullName);
+        return authors.get(authorFullName);
     }
 
     public static void initializeRandomActors() {
@@ -156,6 +156,7 @@ public class AuthorManager {
                 int authorAge = askInt(reader, "[" + authorOptionsEnum.ADD_AUTHOR.getDescription() + "] Enter author's age: ");
                 String authorGenre = askString(reader, "[" + authorOptionsEnum.ADD_AUTHOR.getDescription() + "] Enter author's main genre: ");
                 authors.put(authorFirstName + " " + authorLastName, new Author(authorFirstName, authorLastName, authorAge, authorGenre));
+                System.out.println("[" + authorOptionsEnum.ADD_AUTHOR.getDescription() + "] Author " + authorFullName + " added!");
                 break;
             }
             System.out.println("[" + authorOptionsEnum.ADD_AUTHOR.getDescription() + "] Author" + authorFullName + " already exists! Enter a new one");
@@ -164,17 +165,12 @@ public class AuthorManager {
     private static void checkAuthor(Scanner reader) {
         listAuthors();
         String authorFullName = askString(reader, "[" + authorOptionsEnum.CHECK_AUTHOR.getDescription() + "] Enter author's full name: ");
-        while(getAuthor(authorFullName) == null) {
+        while(!authors.containsKey(authorFullName)) {
             System.out.println("[" + authorOptionsEnum.CHECK_AUTHOR.getDescription() + "] Invalid author name!");
             authorFullName = askString(reader, "[" + authorOptionsEnum.CHECK_AUTHOR.getDescription() + "] Enter author's full name: ");
         }
 
-        System.out.println(getAuthor(authorFullName));
-    }
-
-    private static Author getAuthor(String authorFullName) {
-        // Return null by default if the author doesn't exist in our storage
-        return authors.getOrDefault(authorFullName, null);
+        System.out.println(authors.get(authorFullName));
     }
 
     private static void listAuthors() {
@@ -205,31 +201,31 @@ public class AuthorManager {
         Object value;
 
         while(!parameter.equals("Quit")) {
-            switch(parameter) {
+            switch (parameter) {
                 case "firstName" -> {
-                    value = askString(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Enter the new author's first name: ");
+                    value = askString(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Enter the author's new first name: ");
                     authorToUpdate.setFirstName(value.toString());
                     System.out.println("[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] First name set to " + value);
                 }
                 case "lastName" -> {
-                    value = askString(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Enter the new author's last name: ");
+                    value = askString(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Enter the author's new last name: ");
                     authorToUpdate.setLastName(value.toString());
                     System.out.println("[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Last name set to " + value);
                 }
                 case "age" -> {
-                    value = askInt(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Enter the new author's age: ");
+                    value = askInt(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Enter the author's new age: ");
                     authorToUpdate.setAge((int) value);
                     System.out.println("[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Age set to " + value);
                 }
                 case "genre" -> {
-                    value = askString(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Enter the new author's main genre: ");
+                    value = askString(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Enter the author's new main genre: ");
                     authorToUpdate.setGenre(value.toString());
                     System.out.println("[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Genre set to " + value);
                 }
-                default -> System.out.println("[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Invalid parameter, try again");
+                default -> System.out.println("[Manage authors] " + parameter + " is a read-only parameter, choose another one");
             }
             // Ask for another parameter to update
-            parameter = askString(reader, "[" + authorOptionsEnum.UPDATE_AUTHOR.getDescription() + "] Insert the parameter to modify ('Quit' to exit): ");
+            parameter = askString(reader, "[Manage authors] Insert the parameter to modify ('Quit' to exit): ");
         }
     }
 

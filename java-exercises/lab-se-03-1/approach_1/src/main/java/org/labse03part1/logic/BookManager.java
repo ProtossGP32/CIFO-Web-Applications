@@ -133,15 +133,15 @@ public class BookManager {
 
     private static void addBook(Scanner reader) {
         // Create a book
-        String bookTitle = askString(reader, "[Add book] Enter name of the new book ('Quit' to exit): ");
+        String bookTitle = askString(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter name of the new book ('Quit' to exit): ");
         // The book title is candidate to be inserted
         while (books.containsKey(bookTitle)) {
             if (bookTitle.equals("Quit")) {
-                System.out.println("[Add book] Add book cancelled");
+                System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Add book cancelled");
                 break;
             }
-            System.out.println("Book " + bookTitle + " already exists!");
-            bookTitle = askString(reader, "[Add book] Enter name of the new book ('Quit' to exit): ");
+            System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Book " + bookTitle + " already exists!");
+            bookTitle = askString(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter name of the new book ('Quit' to exit): ");
         }
 
         // TODO: Secure the rest of the parameters
@@ -231,7 +231,7 @@ public class BookManager {
                     bookToUpdate.setAuthor(newAuthor);
                     System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Author set to " + bookToUpdate.getAuthor().getFirstName() + " " + bookToUpdate.getAuthor().getLastName());
                 }
-                default -> System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Invalid parameter, try again");
+                default -> System.out.println("[Manage books] " + parameter + " is a read-only parameter, choose another one");
             }
             parameter = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Insert the parameter to modify ('Quit' to exit): ");
         }

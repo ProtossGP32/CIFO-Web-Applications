@@ -3,6 +3,7 @@ package org.labse03part1.ui;
 import org.labse03part1.logic.AuthorManager;
 import org.labse03part1.logic.BookManager;
 import org.labse03part1.logic.BorrowManager;
+import org.labse03part1.logic.StudentManager;
 import org.labse03part1.utils.InterfaceUtils;
 
 import java.util.Scanner;
@@ -21,6 +22,12 @@ public class UserInterface {
             @Override
             void start(Scanner reader) {
                 BookManager.start(reader);
+            }
+        },
+        STUDENT_MANAGER("Manage students") {
+            @Override
+            void start(Scanner reader) {
+                StudentManager.start(reader);
             }
         },
         BORROW_MANAGER("Manage borrows") {
