@@ -1,4 +1,4 @@
 ---
-title: "LAB#SE02-1: Library/Book core model"
+title: "LAB#SE03-1: Library/Book core model"
 categories: [javase, lab]
 ---

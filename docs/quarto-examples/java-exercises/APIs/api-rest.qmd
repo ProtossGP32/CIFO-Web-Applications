@@ -30,3 +30,8 @@ The API design for a weather service could ask the user for a zip code as a `req
 :::
 
 ## What should we take into account when creating a Rest API
+
+:::{.callout-warning}
+## TODO
+Pending to elaborate!
+:::

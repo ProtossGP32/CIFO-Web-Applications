@@ -175,3 +175,59 @@ graph sprintZero {
     }
 }
 ```
+
+### Sprint 1
+We'll define multiple tasks in the backlog and assign priorities and complexity to each of them. Don't worry about defining tasks that might not be needed, they should be removed if they aren't addressed after some sprints:
+
+Template --> Task name (priority) (complexity)
+
+- Spring backlog:
+    - Project:
+        - Business Model (21) (13)
+        - Use cases (21) (13)
+        - Define Release Plan:
+            - Number of Sprints (21) (8)
+            - Goal for each Sprint (21) (8)
+        - Mock-ups (13) (13)
+        - Deployment:
+            - Programming languages and versions
+            - Dependencies
+            - Pipeline
+        - Documentation: (21) (13)
+            - Git:
+                - Technology to use (GitHub, GitLab) (8) (5)
+                - Stylebook: (13) (13)
+                    - Branch names
+                    - Commit texts and labels
+                - Roles (13) (8)
+                    - Who reviews pull requests?
+                    - Who can merge code?
+                    - Who can push to production?
+        - Scrum concepts: (13) (8)
+            - Define "Done" task
+
+    - Domains:
+        - Common language (21) (13)
+        - Rethink Test Borrow by Console (5) (21)
+    - UML:
+        - Functional diagram (21) (13)
+        - Core classes (21) (13)
+        - Manager classes (13) (13)
+    - Code:
+        - Sandbox: (21) (8)
+        - Git:
+            - Initialization (21) (8)
+        - Refactor user interface (13) (13)
+        - Test Borrow (13) (13)
+        - Book Manager (13) (8)
+        - Borrow Manager (13) (21)
+        - User Manager (13) (8)
+        - Create fakers for each Manager (13) (13)
+        - Deployment (21) (21)
+
+After that, we'll work with a Kanban table to keep track of the status of each task:
+
+- Options:
+    - GitHub projects
+    - OpenProject
+

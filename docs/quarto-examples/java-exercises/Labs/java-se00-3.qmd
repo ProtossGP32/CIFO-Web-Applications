@@ -120,8 +120,21 @@ classDiagram
 
 ## Management classes
 ### BookManager
-### UserManager
+
+```{.java filename="BookManager.java" include="../../../../java-exercises/lab-se-03-1/approach_1/src/main/java/org/labse03part1/logic/BookManager.java"}
+```
+
+### AuthorManager
+```{.java filename="BookManager.java" include="../../../../java-exercises/lab-se-03-1/approach_1/src/main/java/org/labse03part1/logic/AuthorManager.java"}
+```
+
+### StudentManager
+```{.java filename="BookManager.java" include="../../../../java-exercises/lab-se-03-1/approach_1/src/main/java/org/labse03part1/logic/StudentManager.java"}
+```
+
 ### BorrowManager
+```{.java filename="BookManager.java" include="../../../../java-exercises/lab-se-03-1/approach_1/src/main/java/org/labse03part1/logic/BorrowManager.java"}
+```
 
 ## Storage classes
 ### BookStorage
