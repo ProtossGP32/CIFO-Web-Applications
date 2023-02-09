@@ -189,10 +189,11 @@ Template --> Task name (priority) (complexity)
             - Number of Sprints (21) (8)
             - Goal for each Sprint (21) (8)
         - Mock-ups (13) (13)
+        - Security (21) (21)
         - Deployment:
-            - Programming languages and versions
-            - Dependencies
-            - Pipeline
+            - Programming languages and versions () ()
+            - Dependencies () ()
+            - Pipeline () ()
         - Documentation: (21) (13)
             - Git:
                 - Technology to use (GitHub, GitLab) (8) (5)

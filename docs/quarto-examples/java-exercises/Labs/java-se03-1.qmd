@@ -2,3 +2,40 @@
 title: "LAB#SE03-1: Library/Book core model"
 categories: [javase, lab]
 ---
+# Introduction
+
+::: {.panel-tabset}
+## Context
+**Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
+ssl encryption and is intended to run behind a 
+**Knowledge of algotighms and data structures** to implement the required classes.
+
+## Goal
+**Describe the required models** that might define the solution to a Library implementation.
+**Create multiple classes in Java** using the most convenient entity relationship between them to implement the solution.
+
+**Test these classes** using JUnit.
+
+## Tasks
+(@) Create **a new Maven or Gradle project** and setting up the project structure
+(@) Modify the project's `pom.xml` or `build.gradle` file to import necessary dependencies, including **JUnit** for testing
+(@) Implement the required classes in Java
+(@) Implement User interactive interfaces for each manager
+(@) Write **JUnit tests** to verify that classes work as expected
+
+## Optional
+*   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
+:::
+
+# Library interface
+We'll take it from where we left Lab SE00-3. The new goal is to implement interactive interfaces to navigate through the available options in our model (manage books, manage authors, manage students and manage borrows).
+
+## Refactoring code
+Right now, the interfaces are coded within the managers, thus creating bad cohesion (interactive interfaces should be separated from logic as it could be created in any other language).
+
+### Request handlers
+The interface redirects the user to the corresponding manager by calling request handlers:
+
+#### BookRequestHandler
+#### UserRequestHandler
+#### BorrowRequestHandler

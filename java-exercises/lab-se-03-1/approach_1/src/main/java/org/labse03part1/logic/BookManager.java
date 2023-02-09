@@ -10,6 +10,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+import static org.labse03part1.utils.InterfaceUtils.askInt;
 import static org.labse03part1.utils.InterfaceUtils.askString;
 
 public class BookManager {
@@ -145,14 +146,14 @@ public class BookManager {
         }
 
         // TODO: Secure the rest of the parameters
-        int bookYear = InterfaceUtils.askInt(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter year of the new book: ");
-        int bookPages = InterfaceUtils.askInt(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter number of pages of the book: ");
+        int bookYear = askInt(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter year of the new book: ");
+        int bookPages = askInt(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter number of pages of the book: ");
         String bookISBN = askString(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter book ISBN: ");
 
         // The user selects one of the available authors
         Author bookAuthor = AuthorManager.getAuthor(reader);
         // Add the book into the system
-        books.put(bookTitle, new Book(bookTitle, bookPages, bookYear, bookISBN, bookAuthor));
+        books.put(bookTitle, new Book(bookTitle, bookPages, bookYear, bookISBN, bookAuthor, true));
 
         System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Book " + bookTitle + " added!");
     }
@@ -215,12 +216,12 @@ public class BookManager {
                     System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Title set to " + value);
                 }
                 case "pages" -> {
-                    value = InterfaceUtils.askInt(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter the new pages of the book: ");
+                    value = askInt(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter the new pages of the book: ");
                     bookToUpdate.setPages((int) value);
                     System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Pages set to " + value);
                 }
                 case "year" -> {
-                    value = InterfaceUtils.askInt(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter the new year of the book: ");
+                    value = askInt(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter the new year of the book: ");
                     bookToUpdate.setYear((int) value);
                     System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Year set to " + value);
                 }
@@ -230,6 +231,15 @@ public class BookManager {
                     // Set the new author
                     bookToUpdate.setAuthor(newAuthor);
                     System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Author set to " + bookToUpdate.getAuthor().getFirstName() + " " + bookToUpdate.getAuthor().getLastName());
+                }
+                case "available" -> {
+                    String newAvailable = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter new availability of the book (true or false)");
+                    // Check that the input is a boolean
+                    while (!Boolean.getBoolean(newAvailable)) {
+                        newAvailable = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Invalid value. Enter new availability of the book (true or false)");
+                    }
+                    // Set the new boolean value
+                    bookToUpdate.setAvailable(Boolean.getBoolean(newAvailable));
                 }
                 default -> System.out.println("[Manage books] " + parameter + " is a read-only parameter, choose another one");
             }

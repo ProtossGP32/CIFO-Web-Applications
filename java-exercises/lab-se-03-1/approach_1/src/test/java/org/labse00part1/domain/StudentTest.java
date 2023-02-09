@@ -149,7 +149,7 @@ class StudentTest {
                 studentFaker.number().numberBetween(0, 99),
                 fakeBook.genre()
         );
-        Book newBook = new Book(fakeBook.title(), studentFaker.number().numberBetween(0, 2000), studentFaker.number().numberBetween(0, 2023), studentFaker.code().isbn13(), fakeAuthor);
+        Book newBook = new Book(fakeBook.title(), studentFaker.number().numberBetween(0, 2000), studentFaker.number().numberBetween(0, 2023), studentFaker.code().isbn13(), fakeAuthor, studentFaker.bool().bool());
         return newBook;
     }
 

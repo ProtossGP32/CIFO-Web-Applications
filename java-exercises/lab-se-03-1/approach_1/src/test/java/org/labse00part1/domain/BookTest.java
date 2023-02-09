@@ -15,6 +15,7 @@ class BookTest {
     private String fakeISBN;
     private int fakeYear;
     private Author fakeAuthor;
+    private boolean fakeAvailable;
     private Book book1Test;
     private Book book2Test;
     Faker bookFaker = new Faker();
@@ -29,8 +30,9 @@ class BookTest {
         int fakeAuthorAge = bookFaker.number().numberBetween(0, 99);
         String fakeGenre = bookFaker.book().genre();
         this.fakeAuthor = new Author(fakeAuthorName[0], fakeAuthorName[1], fakeAuthorAge, fakeGenre);
+        this.fakeAvailable = bookFaker.bool().bool();
 
-        this.book1Test = new Book(this.fakeTitle, this.fakePages, this.fakeYear, this.fakeISBN, this.fakeAuthor);
+        this.book1Test = new Book(this.fakeTitle, this.fakePages, this.fakeYear, this.fakeISBN, this.fakeAuthor, this.fakeAvailable);
         this.book2Test = new Book();
     }
 
