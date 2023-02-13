@@ -206,7 +206,7 @@ public class StudentManager {
     }
 
     // StudentManager utilities
-    private static String getStudentFullName(Scanner reader) {
+    public static String getStudentFullName(Scanner reader) {
         studentOptionsEnum.LIST_STUDENTS.action(reader);
         String studentFullName = askString(reader, "- Enter student's full name: ");
         while (!students.containsKey(studentFullName)) {
@@ -215,5 +215,6 @@ public class StudentManager {
         }
         return studentFullName;
     }
+
 
 }

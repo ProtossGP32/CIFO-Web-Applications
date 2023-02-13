@@ -13,6 +13,5 @@ public class Book {
     private int year;
     private String ISBN;
     private Author author;
-    // TODO: Add an availability attribute
     private boolean available;
 }
