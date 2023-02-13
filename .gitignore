@@ -1,5 +1,5 @@
 # Quarto
-**/*.html
+#**/*.html
 **/_site
 
 # VSCode
