@@ -1,0 +1,47 @@
+---
+title: "01 - Creating a Spring Boot project"
+categories: [springboot, web, REST]
+---
+
+# Introduction
+Springboot is a Java framework that uses annotations to add functionalities to the SE packages
+
+# Spring boot project
+## Creating a new project
+Go to the [Spring initializr](https://start.spring.io/) page to prepare a simple Maven project with the required dependencies:
+
+- Spring Web
+- Spring Boot DevTools
+- Lombok
+- Thymeleaf
+- H2 Database
+- etc...
+
+After that, click the `Generate` button to download a `Zip` file with the project structure.
+
+## Creating controllers
+### REST controller
+Use the following annotations to create a REST controller:
+
+```{.java filename="HelloRestController.java" include="../../../../../java-exercises/spring-boot-projects/myfirstspring/src/main/java/com/protoss/myfirstspring/controllers/HelloRestController.java"}
+```
+
+where:
+
+- `@RestController`: this marks the class as the root of the REST controller
+- `@GetMapping("/${action}")`: maps the method to the given REST `action`
+
+
+### Web controller
+Use the following annotations to create a Web controller:
+
+```{.java filename=HelloWebController.java include=../../../../../java-exercises/spring-boot-projects/myfirstspring/src/main/java/com/protoss/myfirstspring/controllers/HelloWebController.java}
+```
+
+where:
+
+- `@Controller`: this marks the class as the root of the Web controller
+- `@RequestMapping("/${page.html}")`: maps the method to the given `page.html` located in the `src/main/resources/templates` path
+
+## Testing controllers
+### Automating endpoints testing

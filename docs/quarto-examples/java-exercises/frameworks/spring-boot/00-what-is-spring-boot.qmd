@@ -1,5 +1,6 @@
 ---
-title: "What is SpringBoot?"
+title: "00 - What is Spring Boot?"
+categories: [springboot, web]
 ---
 # Introduction
 
@@ -45,3 +46,34 @@ Spring Boot helps developers create applications that _just run_.
 
 * It lets you **create standalone applications that run on their own**, without relying on an external web server, by embedding a web server such as Tomcat or Netty into your app during the initialization process
 * As a result, you can launch your application on any platform by simply hitting th Run command
+
+## Fundamentals
+Some of the key concepts of Spring Boot and how it works include:
+
+- **Beans**: a Java object managed by the Spring container
+    - Beans are typically defined in configuration files, and the Spring container is responsible for instantiating, configuring, and managing the lifecycle of these beans
+- **Dependency Injection**: Spring uses dependency injection to manage the dependencies between beans
+    - This means that instead of instantiating and configureing dependencies manually, you can use **annotations** or configuration files to tell the Spring container which dependencies a bean has and how they should be instantiated
+- **Object-Oriented Programming**: it uses interfaces and inheritance to create a modular and reusable codebase
+- **Aspect-Oriented Programming**: this allows to separate cross-cutting concerns such as logging, security, and transaction management from the core business logic of your application
+- **Data Access**: Spring Boot provides a set of starters and libraries for connecting to databases and performing data access operations.
+    - It also provides support for Object-Relational-Mapping (ORM) frameworks such as Hibernate and JPA
+- **Web Development**: Spring Boot provides a set of starters and libraries for building web applications and RESTful web services.
+    - It also provides support for web technoligies such as Spring MVC and Thymeleaf
+- **Annotations**: Spring Boot uses annotations extensively to configure beans and manage dependencies
+    - Understanding the different annotations available in Spring, such as `@Bean`, `@Autowired`, `@Component`, can help you effectively use the framework
+- **MVC (Model-View-Controller)**: Spring Boot provides support for the MVC architectural pattern, which separates the application into three layers:
+    - The model (data)
+    - The view (presentation)
+    - The controller (logic)
+
+    Understanding how MVC works in Spring boot can help you structure your appliication effectively. See [model entry](../../Concepts/what-is-a-model.qmd) for more details regarding MVC.
+- **REST (Representational State Transfer)**: Spring Boot provides support for building RESTful web services.
+    - Understanding the principles of REST and how to create RESTful web services using Spring Boot can help you effectively use the framework
+
+:::{.callout-note}
+## To sum up
+Overall, Spring Boot works by providing **a set of pre-configured options and defaults, as well as a set of tools for quickly creating and running an application using the Spring Framework**.
+
+It uses concepts such as _beans_, _dependency injection_ and _OOP_ to make it easy to build and run a Spring-based application, with minimal configuration and setup required.
+:::
