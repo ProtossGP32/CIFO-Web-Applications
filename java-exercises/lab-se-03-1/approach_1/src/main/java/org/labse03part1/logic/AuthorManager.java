@@ -98,6 +98,16 @@ public class AuthorManager {
         return authors.get(randomAuthor);
     }
 
+    public static void clear(Scanner reader) {
+        String response = askString(reader, "Are you sure you want to clear all authors? This action can't be undone [YES/NO]");
+        if (response.equals("YES")) {
+            clear();
+            System.out.println("All authors removed");
+        } else {
+            System.out.println("Aborting clear");
+        }
+    }
+
     // Private methods
     private static authorOptionsEnum getOption(String action) {
         for (authorOptionsEnum option : authorOptionsEnum.values()) {
@@ -251,5 +261,9 @@ public class AuthorManager {
         // Remove the author from the database
         authors.remove(authorFullName);
         System.out.println("[" + authorOptionsEnum.DELETE_AUTHOR.getDescription() + "] Author " + authorFullName + " deleted!");
+    }
+
+    protected static void clear() {
+        authors.clear();
     }
 }

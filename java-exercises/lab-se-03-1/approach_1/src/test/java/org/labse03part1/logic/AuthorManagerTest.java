@@ -7,8 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AuthorManagerTest {
 
+    // TODO: Define the use-cases required here
     @BeforeEach
     void setUp() {
+        AuthorManager.clear();
     }
 
     @Test

@@ -25,17 +25,11 @@ public class BookManager {
             void addBook(Scanner reader) {
                 // Create a book
                 String bookTitle = askString(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter name of the new book ('Quit' to exit): ");
-                // The book title is candidate to be inserted
-                while (books.containsKey(bookTitle)) {
-                    if (bookTitle.equals("Quit")) {
-                        System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Add book cancelled");
-                        break;
-                    }
-                    System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Book " + bookTitle + " already exists!");
-                    bookTitle = askString(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter name of the new book ('Quit' to exit): ");
+                if (bookTitle.equals("Quit")) {
+                    System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Add book cancelled");
+                    return;
                 }
 
-                // TODO: Secure the rest of the parameters
                 int bookYear = askInt(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter year of the new book: ");
                 int bookPages = askInt(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter number of pages of the book: ");
                 String bookISBN = askString(reader, "[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Enter book ISBN: ");
@@ -43,9 +37,10 @@ public class BookManager {
                 // The user selects one of the available authors
                 Author bookAuthor = AuthorManager.getAuthor(reader);
                 // Add the book into the system
-                books.put(bookTitle, new Book(bookTitle, bookPages, bookYear, bookISBN, bookAuthor, true));
+                Book newBook = new Book(bookTitle, bookPages, bookYear, bookISBN, bookAuthor, true);
+                books.put(newBook.getBookID(), newBook);
 
-                System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Book " + bookTitle + " added!");
+                System.out.println("[" + bookOptionsEnum.ADD_BOOK.getDescription() + "] Book " + bookTitle + " added! ID: " + newBook.getBookID());
             }
         },
         DELETE_BOOK("Delete book") {
@@ -55,17 +50,19 @@ public class BookManager {
             }
 
             void deleteBook(Scanner reader) {
-                String bookTitle = askString(reader, "[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Enter name of the book to delete ('Quit' to exit): ");
-                while (!books.containsKey(bookTitle)) {
-                    if (bookTitle.equals("Quit")) {
+                // List the available books
+                bookOptionsEnum.LIST_BOOKS.action(reader);
+                String bookID = askString(reader, "[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Enter ID of the book to delete ('Quit' to exit): ");
+                while (!books.containsKey(bookID)) {
+                    if (bookID.equals("Quit")) {
                         System.out.println("[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Delete book cancelled");
-                        break;
+                        return;
                     }
-                    System.out.println("[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Book " + bookTitle + "doesn't exist in the system!");
-                    bookTitle = askString(reader, "[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Enter name of the book to delete ('Quit' to exit): ");
+                    System.out.println("[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Book " + bookID + "doesn't exist in the system!");
+                    bookID = askString(reader, "[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Enter name of the book to delete ('Quit' to exit): ");
                 }
-                books.remove(bookTitle);
-                System.out.println("[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Book " + bookTitle + " deleted!");
+                books.remove(bookID);
+                System.out.println("[" + bookOptionsEnum.DELETE_BOOK.getDescription() + "] Book " + bookID + " deleted!");
             }
         },
         CHECK_BOOK("Check book") {
@@ -75,17 +72,19 @@ public class BookManager {
             }
 
             void checkBook(Scanner reader) {
-                String bookTitle = askString(reader, "[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Enter name of the book you want ('Quit' to exit): ");
-                while (!books.containsKey(bookTitle)) {
-                    if (bookTitle.equals("Quit")) {
+                // List the available books
+                bookOptionsEnum.LIST_BOOKS.action(reader);
+                String bookID = askString(reader, "[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Enter book ID ('Quit' to exit): ");
+                while (!books.containsKey(bookID)) {
+                    if (bookID.equals("Quit")) {
                         System.out.println("[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Check book cancelled");
-                        break;
+                        return;
                     }
-                    System.out.println("[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Book " + bookTitle + "doesn't exist in the system!");
-                    bookTitle = askString(reader, "[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Enter name of the book you want ('Quit' to exit): ");
+                    System.out.println("[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Book " + bookID + "doesn't exist in the system!");
+                    bookID = askString(reader, "[" + bookOptionsEnum.CHECK_BOOK.getDescription() + "] Enter book ID ('Quit' to exit): ");
                 }
                 // Print the book information
-                System.out.println(books.get(bookTitle));
+                System.out.println(books.get(bookID));
             }
         },
         LIST_BOOKS("List books") {
@@ -96,8 +95,7 @@ public class BookManager {
 
             void listBooks() {
                 System.out.println("[" + bookOptionsEnum.LIST_BOOKS.getDescription() + "] Available books:");
-                books.keySet()
-                        .forEach(System.out::println);
+                books.forEach((bookID, book) -> System.out.println(bookID + ": " + book.getTitle()));
             }
         },
         UPDATE_BOOK("Update book") {
@@ -107,16 +105,18 @@ public class BookManager {
             }
 
             void updateBook(Scanner reader) {
-                String bookTitle = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter name of the book to update ('Quit' to exit): ");
-                while (!books.containsKey(bookTitle)) {
-                    if (bookTitle.equals("Quit")) {
+                // List the available books
+                bookOptionsEnum.LIST_BOOKS.action(reader);
+                String bookID = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter book ID to update ('Quit' to exit): ");
+                while (!books.containsKey(bookID)) {
+                    if (bookID.equals("Quit")) {
                         System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Update book cancelled");
-                        break;
+                        return;
                     }
-                    System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Book " + bookTitle + "doesn't exist in the system!");
-                    bookTitle = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter name of the book to update ('Quit' to exit): ");
+                    System.out.println("[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Book " + bookID + " doesn't exist in the system!");
+                    bookID = askString(reader, "[" + bookOptionsEnum.UPDATE_BOOK.getDescription() + "] Enter book ID to update ('Quit' to exit): ");
                 }
-                Book bookToUpdate = books.get(bookTitle);
+                Book bookToUpdate = books.get(bookID);
                 System.out.println(bookToUpdate);
 
                 // Once book is found, ask for the parameter to change
@@ -245,16 +245,17 @@ public class BookManager {
             // Set a random availability status
             newBook.setAvailable(faker.bool().bool());
             // Put the fake book to the storage
-            books.put(newBook.getTitle(), newBook);
+            books.put(newBook.getBookID(), newBook);
         }
     }
 
     // Public methods
-    public static String getBookTitle(Scanner reader) {
-        String bookTitle = askString(reader, "[Manage books] Enter book title:");
-        while (!books.containsKey(bookTitle)) {
-            bookTitle = askString(reader, "[Manage books] Invalid book title. Enter book title:");
+    public static String getBookID(Scanner reader) {
+        bookOptionsEnum.LIST_BOOKS.action(reader);
+        String bookID = askString(reader, "[Manage books] Enter book ID:");
+        while (!books.containsKey(bookID)) {
+            bookID = askString(reader, "[Manage books] Invalid book ID. Enter book ID:");
         }
-        return bookTitle;
+        return bookID;
     }
 }

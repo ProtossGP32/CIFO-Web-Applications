@@ -39,11 +39,6 @@ class CarTest {
     }
 
     @Test
-    void canEqual() {
-        fail("Test still not implemented");
-    }
-
-    @Test
     void testHashCode() {
         this.car2Test.setDoors(this.fakeDoors);
         this.car2Test.setSeats(this.fakeSeats);

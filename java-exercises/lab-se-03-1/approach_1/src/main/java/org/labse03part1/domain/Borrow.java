@@ -1,22 +1,45 @@
 package org.labse03part1.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.labse03part1.utils.InterfaceUtils;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
 public class Borrow {
     private enum borrowStatus {
-        IN_PROGRESS("In progress"),
-        LATE("Late"),
-        CLOSED("Closed");
+        IN_PROGRESS("In progress") {
+            @Override
+            boolean update(Borrow borrowToUpdate) {
+                // Update the due date 15 days from today
+                borrowToUpdate.setDueBorrowDate(LocalDate.now().plusDays(15));
+                return true;
+            }
+        },
+        LATE("Late") {
+            @Override
+            boolean update(Borrow borrowToUpdate) {
+                return true;
+            }
+        },
+        CLOSED("Closed") {
+            @Override
+            boolean update(Borrow borrowToUpdate) {
+                borrowToUpdate.setReturnDate(LocalDate.now());
+                return true;
+            }
+        };
 
         private final String description;
+
+        abstract boolean update(Borrow borrowToUpdate);
 
         borrowStatus(String description) {
             this.description = description;
@@ -35,23 +58,24 @@ public class Borrow {
             return null;
         }
     }
-    private String studentName;
-    private String bookName;
-    private Date startBorrowDate;
-    private Date dueBorrowDate;
-    private Date returnDate;
-    private String borrowId;
+    private String studentID;
+    private String bookID;
+    private LocalDate startBorrowDate;
+    private LocalDate dueBorrowDate;
+    private LocalDate returnDate;
+    private String borrowID;
     private borrowStatus status;
 
-    public Borrow(String studentName, String bookName) {
-        this.studentName = studentName;
-        this.bookName = bookName;
+    public Borrow(String studentID, String bookID) {
+        this.studentID = studentID;
+        this.bookID = bookID;
         // TODO: Automatically created attributes
-        this.startBorrowDate = new Date();
+        this.startBorrowDate = LocalDate.now();
         // dueBorrowDate is 15 days after startBorrowDate
+        this.dueBorrowDate = this.startBorrowDate.plusDays(15);
         // returnDate is empty?
         this.status = borrowStatus.IN_PROGRESS;
-        this.borrowId = InterfaceUtils.createUUID();
+        this.borrowID = InterfaceUtils.createUUID();
     }
 
     // Additional public setters and getters
@@ -59,9 +83,24 @@ public class Borrow {
         // get the enum value matching the newStatus description
         borrowStatus newEnum = borrowStatus.getEnum(newStatus);
         if (newEnum != null) {
-            this.status = borrowStatus.getEnum(newStatus);
+            // Execute the action related to that newStatus
+            if (newEnum.update(this)) {
+                this.status = borrowStatus.getEnum(newStatus);
+            } else {
+                System.out.println("[Borrow] Something wrong when tryint to update status from " + this.status + " to " + newEnum);
+            }
         } else {
             System.out.println("[Borrow] Status " + newStatus + " does not exist!");
         }
+    }
+
+    public void setDueBorrowDate(LocalDate newDueBorrowDate) {
+        this.dueBorrowDate = newDueBorrowDate;
+    }
+
+    public void setDueBorrowDate(String newDueDate) {
+        // New due date input shall have the following format: "yyyy/MM/dd", then converted to LocalDate
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        this.dueBorrowDate = LocalDate.parse(newDueDate, formatter);
     }
 }

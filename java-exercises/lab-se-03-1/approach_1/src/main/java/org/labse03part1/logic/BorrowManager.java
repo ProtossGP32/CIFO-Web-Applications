@@ -9,6 +9,8 @@ import org.labse03part1.utils.InterfaceUtils;
 import java.util.*;
 import java.util.stream.Stream;
 
+import static org.labse03part1.utils.InterfaceUtils.askString;
+
 @Data
 @Getter
 @Setter
@@ -24,15 +26,18 @@ public class BorrowManager {
             }
 
             void createBorrow(Scanner reader) {
-                System.out.println("[" + borrowOptionsEnum.CREATE_BORROW.getDescription() + "] Coming soon!");
+                System.out.println("[" + borrowOptionsEnum.CREATE_BORROW.getDescription() + "] Creating new borrow...");
                 // Ask for the Student name through the StudentManager?
-                String studentName = StudentManager.getStudentFullName(reader);
+                String studentID = StudentManager.getStudentID(reader);
                 // Ask for the Book name through the BookManager?
-                String bookName = BookManager.getBookTitle(reader);
-                Date startDate = new Date();
+                String bookID = BookManager.getBookID(reader);
                 // Create a borrow
-                Borrow newBorrow = new Borrow();
+                Borrow newBorrow = new Borrow(studentID, bookID);
                 // Store the borrow
+                borrows.put(newBorrow.getBorrowID(), newBorrow);
+                System.out.println("[" + borrowOptionsEnum.CREATE_BORROW.getDescription() + "] New borrow created:");
+                System.out.println("- Borrow ID: " + newBorrow.getBorrowID());
+                System.out.println("- Borrow details: " + newBorrow);
             }
         },
         DELETE_BORROW("Delete borrow") {
@@ -42,10 +47,20 @@ public class BorrowManager {
             }
 
             void deleteBorrow(Scanner reader) {
-                System.out.println("[" + borrowOptionsEnum.DELETE_BORROW.getDescription() + "] Coming soon!");
+                borrowOptionsEnum.LIST_BORROWS.action(reader);
                 // Option 1.- Ask for the borrow ID
-                // Option 2.- Ask for the Student name and the Borrowed book
+                String borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.DELETE_BORROW.getDescription() + "] Enter borrow ID ('Quit' to exit): ");
+                while (!borrows.containsKey(borrowID)) {
+                    if (borrowID.equals("Quit")) {
+                        System.out.println("[" + borrowOptionsEnum.DELETE_BORROW.getDescription() + "] Delete borrow cancelled.");
+                        return;
 
+                    }
+                    borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.DELETE_BORROW.getDescription() + "] Unknown ID. Enter borrow ID ('Quit' to exit): ");
+                }
+
+                Borrow deletedBorrow = borrows.remove(borrowID);
+                System.out.println("[" + borrowOptionsEnum.DELETE_BORROW.getDescription() + "] Borrow " + deletedBorrow.getBorrowID() + " deleted!");
             }
         },
         CHECK_BORROW("Check borrow") {
@@ -55,8 +70,19 @@ public class BorrowManager {
             }
 
             void checkBorrow(Scanner reader) {
-                System.out.println("[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Coming soon!");
+                borrowOptionsEnum.LIST_BORROWS.action(reader);
                 // Option 1.- Ask for the borrow ID
+                String borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Enter borrow ID ('Quit' to exit): ");
+                while (!borrows.containsKey(borrowID)) {
+                    if (borrowID.equals("Quit")) {
+                        System.out.println("[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Check borrow cancelled.");
+                        return;
+                    }
+                    borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Unknown ID. Enter borrow ID ('Quit' to exit): ");
+                }
+                // Print the borrow information
+                System.out.println(borrows.get(borrowID));
+
             }
         },
         LIST_BORROWS("List borrows") {
@@ -66,9 +92,9 @@ public class BorrowManager {
             }
 
             void listBorrows() {
-                System.out.println("[" + borrowOptionsEnum.LIST_BORROWS.getDescription() + "] Coming soon!");
+                System.out.println("[" + borrowOptionsEnum.LIST_BORROWS.getDescription() + "] Available borrows:");
                 // Print all the borrows in a defined format
-
+                borrows.forEach((borrowID, borrow) -> System.out.println(borrowID + ": " + borrow));
             }
         },
         UPDATE_BORROW("Update borrow") {
@@ -78,10 +104,42 @@ public class BorrowManager {
             }
 
             void updateBorrow(Scanner reader) {
-                System.out.println("[" + borrowOptionsEnum.UPDATE_BORROW.getDescription() + "] Coming soon!");
+
                 // Ask for the borrow id
+                borrowOptionsEnum.LIST_BORROWS.action(reader);
+                // Option 1.- Ask for the borrow ID
+                String borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Enter borrow ID ('Quit' to exit): ");
+                while (!borrows.containsKey(borrowID)) {
+                    if (borrowID.equals("Quit")) {
+                        System.out.println("[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Check borrow cancelled.");
+                        return;
+                    }
+                    borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Unknown ID. Enter borrow ID ('Quit' to exit): ");
+                }
+
+                Borrow borrowToUpdate = borrows.get(borrowID);
+                System.out.println(borrowToUpdate);
                 // Ask what field to change
                 // - Allowed fields to update: status, due date, return date, etc...
+                System.out.println("[" + borrowOptionsEnum.UPDATE_BORROW.getDescription() + "] Coming soon!");
+                String parameter = askString(reader, "[" + borrowOptionsEnum.UPDATE_BORROW.getDescription() + "] Enter the parameter to modify ('Quit' to exit): ");
+                Object value;
+                while (!parameter.equals("Quit")) {
+                    switch(parameter) {
+                        case "status" -> {
+                            value = askString(reader, "[" + borrowOptionsEnum.UPDATE_BORROW.getDescription() + "] Change the status to 'In Progress', 'Late' or 'Closed': ");
+                            borrowToUpdate.setStatus(String.valueOf(value));
+                        }
+                        case "dueBorrowDate" -> {
+                            value = askString(reader, "[" + borrowOptionsEnum.UPDATE_BORROW.getDescription() + "] Enter the new due date in a YYYY/mm/dd format: ");
+                            borrowToUpdate.setDueBorrowDate(String.valueOf(value));
+                        }
+                        default -> {
+                            System.out.println("[" + borrowOptionsEnum.UPDATE_BORROW.getDescription() + "] " + parameter + "is a read-only parameter, choose another one");
+                        }
+                    }
+                    parameter = askString(reader, "[" + borrowOptionsEnum.UPDATE_BORROW.getDescription() + "] Insert the parameter to modify ('Quit' to exit): ");
+                }
             }
         };
 

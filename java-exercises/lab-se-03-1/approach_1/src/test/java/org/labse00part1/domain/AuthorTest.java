@@ -84,10 +84,4 @@ class AuthorTest {
 
         assertEquals(expectedToString, this.author1Test.toString());
     }
-
-    @Test
-    void builder() {
-        fail("Pending to know how to implement this test");
-    }
-
 }

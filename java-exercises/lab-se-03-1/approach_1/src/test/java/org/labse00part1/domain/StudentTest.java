@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labse03part1.domain.Author;
 import org.labse03part1.domain.Book;
-import org.labse03part1.domain.Car;
 import org.labse03part1.domain.Student;
 
 import java.util.ArrayList;
@@ -20,11 +19,11 @@ class StudentTest {
     private String fakeFirstName;
     private String fakeLastName;
     private int fakeAge;
+    private String fakeStudentID;
     private String fakeUniversity;
     private List<Book> fakeBooks;
-    private Car fakeCar;
 
-    private Faker studentFaker = new Faker();
+    private final Faker studentFaker = new Faker();
 
     @BeforeEach
     void initialize() {
@@ -38,8 +37,9 @@ class StudentTest {
             this.fakeBooks.add(createBook());
         }
 
-        this.fakeCar =createCar();
-        this.student1Test = new Student(this.fakeFirstName, this.fakeLastName, this.fakeAge, this.fakeUniversity, this.fakeBooks, this.fakeCar);
+        this.student1Test = new Student(this.fakeFirstName, this.fakeLastName, this.fakeAge, this.fakeUniversity, this.fakeBooks);
+        // Retrieve the studentID from the newly created object
+        this.fakeStudentID = this.student1Test.getStudentID();
         // Create an empty Student object for student2Test and assign its values depending on the current test
         this.student2Test = new Student();
     }
@@ -49,17 +49,12 @@ class StudentTest {
         // Same values for person2Test
         this.student2Test.setFirstName(this.fakeFirstName);
         this.student2Test.setLastName(this.fakeLastName);
+        this.student2Test.setStudentID(this.fakeStudentID);
         this.student2Test.setAge(this.fakeAge);
         this.student2Test.setUniversity(this.fakeUniversity);
         this.student2Test.setBooks(this.fakeBooks);
-        this.student2Test.setCar(this.fakeCar);
 
         assertEquals(this.student1Test, this.student2Test);
-    }
-
-    @Test
-    void canEqual() {
-        fail("Test still not implemented");
     }
 
     @Test
@@ -67,10 +62,10 @@ class StudentTest {
         // Same values for person2Test
         this.student2Test.setFirstName(this.fakeFirstName);
         this.student2Test.setLastName(this.fakeLastName);
+        this.student2Test.setStudentID(this.fakeStudentID);
         this.student2Test.setAge(this.fakeAge);
         this.student2Test.setUniversity(this.fakeUniversity);
         this.student2Test.setBooks(this.fakeBooks);
-        this.student2Test.setCar(this.fakeCar);
 
         assertEquals(this.student1Test.hashCode(), this.student2Test.hashCode());
     }
@@ -78,7 +73,7 @@ class StudentTest {
     @Test
     void testToString() {
         // Compose the expected lombok toString output
-        String expectedToString = "Student(super=Person(firstName=" + this.fakeFirstName + ", lastName=" + this.fakeLastName + ", age=" + this.fakeAge + "), university=" + this.fakeUniversity + ", books=" + this.fakeBooks + ", car=" + this.fakeCar + ")";
+        String expectedToString = "Student(super=Person(firstName=" + this.fakeFirstName + ", lastName=" + this.fakeLastName + ", age=" + this.fakeAge + "), studentID=" + this.fakeStudentID + ", university=" + this.fakeUniversity + ", books=" + this.fakeBooks + ")";
 
         assertEquals(expectedToString, this.student1Test.toString());
     }
@@ -94,11 +89,6 @@ class StudentTest {
         this.student1Test.setUniversity(newUniversity);
 
         assertEquals(newUniversity, this.student1Test.getUniversity());
-    }
-
-    @Test
-    void builder() {
-        fail("Pending to know how to implement this test");
     }
 
     @Test
@@ -127,19 +117,6 @@ class StudentTest {
         assertTrue(this.student1Test.getBooks().contains(newBook));
     }
 
-    @Test
-    void getCar() {
-        assertEquals(this.fakeCar, this.student1Test.getCar());
-    }
-
-    @Test
-    void setCar() {
-        Car newCar = createCar();
-        this.student1Test.setCar(newCar);
-
-        assertEquals(newCar, this.student1Test.getCar());
-    }
-
     // Test utilities
     Book createBook() {
         com.github.javafaker.Book fakeBook = studentFaker.book();
@@ -149,15 +126,6 @@ class StudentTest {
                 studentFaker.number().numberBetween(0, 99),
                 fakeBook.genre()
         );
-        Book newBook = new Book(fakeBook.title(), studentFaker.number().numberBetween(0, 2000), studentFaker.number().numberBetween(0, 2023), studentFaker.code().isbn13(), fakeAuthor, studentFaker.bool().bool());
-        return newBook;
-    }
-
-    Car createCar() {
-        int fakeDoors = studentFaker.number().numberBetween(2,5);
-        int fakeSeats = studentFaker.number().numberBetween(2,10);
-        String fakeColor = studentFaker.color().name();
-
-        return new Car(fakeDoors, fakeSeats, fakeColor);
+        return new Book(fakeBook.title(), studentFaker.number().numberBetween(0, 2000), studentFaker.number().numberBetween(0, 2023), studentFaker.code().isbn13(), fakeAuthor, studentFaker.bool().bool());
     }
 }

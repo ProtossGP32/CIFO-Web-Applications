@@ -36,11 +36,6 @@ class PersonTest {
     }
 
     @Test
-    void canEqual() {
-        fail("Test still not implemented");
-    }
-
-    @Test
     void testHashCode() {
         // Same values for person2Test
         this.person2Test.setFirstName(this.fakeFirstName);

@@ -5,10 +5,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labse03part1.domain.Author;
 import org.labse03part1.domain.Book;
+import org.labse03part1.utils.InterfaceUtils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookTest {
+    private String fakeBookID;
     private String fakeTitle;
     private int fakePages;
     private String fakeISBN;
@@ -32,11 +34,14 @@ class BookTest {
         this.fakeAvailable = bookFaker.bool().bool();
 
         this.book1Test = new Book(this.fakeTitle, this.fakePages, this.fakeYear, this.fakeISBN, this.fakeAuthor, this.fakeAvailable);
+        // Retrieve the bookID from the recently created object
+        this.fakeBookID = this.book1Test.getBookID();
         this.book2Test = new Book();
     }
 
     @Test
     void testEquals() {
+        this.book2Test.setBookID(this.fakeBookID);
         this.book2Test.setTitle(this.fakeTitle);
         this.book2Test.setPages(this.fakePages);
         this.book2Test.setYear(this.fakeYear);
@@ -47,20 +52,8 @@ class BookTest {
     }
 
     @Test
-    void canEqual() {
-        this.book2Test.setTitle(this.fakeTitle);
-        this.book2Test.setPages(this.fakePages);
-        this.book2Test.setYear(this.fakeYear);
-        this.book2Test.setISBN(this.fakeISBN);
-        this.book2Test.setAuthor(this.fakeAuthor);
-
-        // TODO: Is this the right way to test 'canEqual' method?
-        Object objectBook = (Object) this.book2Test;
-        assertTrue(this.book1Test.canEqual(objectBook));
-    }
-
-    @Test
     void testHashCode() {
+        this.book2Test.setBookID(this.fakeBookID);
         this.book2Test.setTitle(this.fakeTitle);
         this.book2Test.setPages(this.fakePages);
         this.book2Test.setYear(this.fakeYear);
@@ -72,11 +65,15 @@ class BookTest {
 
     @Test
     void testToString() {
-        String expectedToString = "Book(title=" + this.fakeTitle + ", pages=" + this.fakePages + ", year=" + this.fakeYear + ", ISBN="
+        String expectedToString = "Book(bookID=" + this.fakeBookID +  ", title=" + this.fakeTitle + ", pages=" + this.fakePages + ", year=" + this.fakeYear + ", ISBN="
                 + this.fakeISBN + ", author=" + this.fakeAuthor + ", available=" + this.fakeAvailable +  ")";
         assertEquals(expectedToString, this.book1Test.toString());
     }
 
+    @Test
+    void getBookID() {
+        assertEquals(this.fakeBookID, this.book1Test.getBookID());
+    }
     @Test
     void getTitle() {
         assertEquals(this.fakeTitle, this.book1Test.getTitle());
@@ -100,6 +97,14 @@ class BookTest {
     @Test
     void getAuthor() {
         assertEquals(this.fakeAuthor, this.book1Test.getAuthor());
+    }
+
+    @Test
+    void setBookID() {
+        String newBookID = InterfaceUtils.createUUID();
+        this.book1Test.setBookID(newBookID);
+
+        assertEquals(newBookID, this.book1Test.getBookID());
     }
 
     @Test

@@ -1,7 +1,6 @@
 package org.labse03part1.logic;
 
 import org.labse03part1.domain.Book;
-import org.labse03part1.domain.Car;
 import org.labse03part1.domain.Student;
 
 import java.util.*;
@@ -30,14 +29,15 @@ public class StudentManager {
                     // Ask for the rest of the student's information
                     String studentLastName = askString(reader, "[" + studentOptionsEnum.ADD_STUDENT.getDescription() + "] Enter student's last name ('Quit' to exit): ");
                     String studentFullName = studentFirstName + " " + studentLastName;
-                    if (!students.containsKey(studentFullName)) {
-                        int studentAge = askInt(reader, "[" + studentOptionsEnum.ADD_STUDENT.getDescription() + "] Enter student's age ('Quit' to exit): ");
-                        String studentUniversity = askString(reader, "[" + studentOptionsEnum.ADD_STUDENT.getDescription() + "] Enter student's university ('Quit' to exit): ");
-                        List<Book> studentBooks = new ArrayList<>();
-                        // TODO: Select an available car or create a new one from start
-                        Car studentCar = new Car();
-                        // Insert the student into the storage - Key: studentFullName
-                        students.put(studentFullName, new Student(studentFirstName, studentLastName, studentAge, studentUniversity, studentBooks, studentCar));
+                    int studentAge = askInt(reader, "[" + studentOptionsEnum.ADD_STUDENT.getDescription() + "] Enter student's age ('Quit' to exit): ");
+                    String studentUniversity = askString(reader, "[" + studentOptionsEnum.ADD_STUDENT.getDescription() + "] Enter student's university ('Quit' to exit): ");
+                    List<Book> studentBooks = new ArrayList<>();
+                    // Create the new student object
+                    Student newStudent = new Student(studentFirstName, studentLastName, studentAge, studentUniversity, studentBooks);
+                    // Check if the student already exists inside the students hashmap
+                    if (!students.containsValue(newStudent)) {
+                        // Insert the student into the storage - Key: studentID
+                        students.put(newStudent.getStudentID(), newStudent);
                         System.out.println("[" + studentOptionsEnum.ADD_STUDENT.getDescription() + "] Student " + studentFullName + " added!");
                         break;
                     }
@@ -53,10 +53,17 @@ public class StudentManager {
 
             private void deleteStudent(Scanner reader) {
                 studentOptionsEnum.LIST_STUDENTS.action(reader);
-                String studentFullName = getStudentFullName(reader);
-
-                students.remove(studentFullName);
-                System.out.println("[" + studentOptionsEnum.DELETE_STUDENT.getDescription() + "] Student " + studentFullName + " deleted!");
+                // Ask for the student ID
+                String studentID = askString(reader, "Enter the student ID: ");
+                while (!students.containsKey(studentID)) {
+                    if (studentID.equals("Quit")) {
+                        System.out.println("Delete student cancelled");
+                        return;
+                    }
+                    studentID = askString(reader, "Incorrect ID. Enter the student ID: ");
+                }
+                Student deletedStudent = students.remove(studentID);
+                System.out.println("[" + studentOptionsEnum.DELETE_STUDENT.getDescription() + "] Student " + deletedStudent.getFirstName() + " " + deletedStudent.getLastName() + " deleted!");
             }
 
         },
@@ -68,9 +75,10 @@ public class StudentManager {
 
             private void checkStudent(Scanner reader) {
                 studentOptionsEnum.LIST_STUDENTS.action(reader);
-                String studentFullName = getStudentFullName(reader);
+                // Ask for the student ID
+                String studentID = askString(reader, "Enter the student ID: ");
 
-                System.out.println(students.get(studentFullName));
+                System.out.println(students.get(studentID));
             }
         },
         LIST_STUDENTS("List students") {
@@ -81,8 +89,7 @@ public class StudentManager {
 
             private void listStudents(Scanner reader) {
                 System.out.println("[" + studentOptionsEnum.CHECK_STUDENT.getDescription() + "] Available students:");
-                students.keySet()
-                        .forEach(System.out::println);
+                students.forEach((studentID, student) -> System.out.println(studentID + ": " + student.getFirstName() + " " + student.getLastName()));
             }
         },
         UPDATE_STUDENT("Update student") {
@@ -92,12 +99,14 @@ public class StudentManager {
             }
 
             private void updateStudent(Scanner reader) {
+                // TODO: Ask for the student ID instead of the full name
                 // Ask for the student name
                 studentOptionsEnum.LIST_STUDENTS.action(reader);
-                String studentFullName = getStudentFullName(reader);
+                //String studentFullName = getStudentFullName(reader);
+                String studentID = askString(reader, "Enter the student ID: ");
 
                 // Retrieve the student to update
-                Student studentToUpdate = students.get(studentFullName);
+                Student studentToUpdate = students.get(studentID);
                 System.out.println(studentToUpdate);
 
                 // Once the student is found, ask for the parameter to change
@@ -133,13 +142,6 @@ public class StudentManager {
                             System.out.println("Books Management coming soon!");
                             //value = askString(reader, "[" + studentOptionsEnum.UPDATE_STUDENT.getDescription() + "] Enter the student's new car: ");
                             // Some BookManager logic
-                            //System.out.println("[" + studentOptionsEnum.UPDATE_STUDENT.getDescription() + "] Car set to " + value);
-                        }
-                        case "car" -> {
-                            // TODO: Access the CarManager to retrieve a new car, similar to what's being done with the books and its Author
-                            System.out.println("Car Management coming soon!");
-                            //value = askString(reader, "[" + studentOptionsEnum.UPDATE_STUDENT.getDescription() + "] Enter the student's new car: ");
-                            // Some CarManager logic
                             //System.out.println("[" + studentOptionsEnum.UPDATE_STUDENT.getDescription() + "] Car set to " + value);
                         }
                         default -> System.out.println("[Manage students] " + parameter + " is a read-only parameter, choose another one");
@@ -206,14 +208,14 @@ public class StudentManager {
     }
 
     // StudentManager utilities
-    public static String getStudentFullName(Scanner reader) {
+    public static String getStudentID(Scanner reader) {
         studentOptionsEnum.LIST_STUDENTS.action(reader);
-        String studentFullName = askString(reader, "- Enter student's full name: ");
-        while (!students.containsKey(studentFullName)) {
-            System.out.println("- Invalid student name!");
-            studentFullName = askString(reader, "- Enter student's full name: ");
+        String studentID = askString(reader, "- Enter student ID: ");
+        while (!students.containsKey(studentID)) {
+            System.out.println("- Invalid student ID!");
+            studentID = askString(reader, "- Enter student ID: ");
         }
-        return studentFullName;
+        return studentID;
     }
 
 
