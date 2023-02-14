@@ -1,12 +1,12 @@
 package org.labse00part1.domain;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labse03part1.domain.Author;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AuthorTest {
 
@@ -43,7 +43,14 @@ class AuthorTest {
 
     @Test
     void canEqual() {
-        fail("Test still not implemented");
+        // Same values for person2Test
+        this.author2Test.setFirstName(this.fakeFirstName);
+        this.author2Test.setLastName(this.fakeLastName);
+        this.author2Test.setAge(this.fakeAge);
+        this.author2Test.setGenre(this.fakeGenre);
+
+        Object objectAuthor = (Object) this.author2Test;
+        assertTrue(this.author1Test.canEqual(objectAuthor));
     }
 
     @Test
@@ -82,4 +89,5 @@ class AuthorTest {
     void builder() {
         fail("Pending to know how to implement this test");
     }
+
 }

@@ -21,7 +21,6 @@ public class Student extends Person{
         super(firstName, lastName, age);
         this.university = university;
         this.books = new ArrayList<>();
-        this.car = new Car();
     }
 
     @Builder
@@ -29,7 +28,6 @@ public class Student extends Person{
         super(firstName, lastName, age);
         this.university = university;
         this.books = books;
-        this.car = new Car();
     }
 
     @Builder
@@ -37,7 +35,6 @@ public class Student extends Person{
         super(firstName, lastName, age);
         this.university = university;
         this.books = books;
-        this.car = car;
     }
 
     public void addBook(Book newBook) {

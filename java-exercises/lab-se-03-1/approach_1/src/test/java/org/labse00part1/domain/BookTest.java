@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.labse03part1.domain.Author;
 import org.labse03part1.domain.Book;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BookTest {
     private String fakeTitle;
@@ -49,7 +48,15 @@ class BookTest {
 
     @Test
     void canEqual() {
-        fail("Test still not implemented");
+        this.book2Test.setTitle(this.fakeTitle);
+        this.book2Test.setPages(this.fakePages);
+        this.book2Test.setYear(this.fakeYear);
+        this.book2Test.setISBN(this.fakeISBN);
+        this.book2Test.setAuthor(this.fakeAuthor);
+
+        // TODO: Is this the right way to test 'canEqual' method?
+        Object objectBook = (Object) this.book2Test;
+        assertTrue(this.book1Test.canEqual(objectBook));
     }
 
     @Test
@@ -66,7 +73,7 @@ class BookTest {
     @Test
     void testToString() {
         String expectedToString = "Book(title=" + this.fakeTitle + ", pages=" + this.fakePages + ", year=" + this.fakeYear + ", ISBN="
-                + this.fakeISBN + ", author=" + this.fakeAuthor + ")";
+                + this.fakeISBN + ", author=" + this.fakeAuthor + ", available=" + this.fakeAvailable +  ")";
         assertEquals(expectedToString, this.book1Test.toString());
     }
 
