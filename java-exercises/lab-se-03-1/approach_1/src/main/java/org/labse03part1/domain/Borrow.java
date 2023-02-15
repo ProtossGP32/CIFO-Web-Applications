@@ -79,6 +79,11 @@ public class Borrow {
     }
 
     // Additional public setters and getters
+    public String getStatusDescription() {
+        // return the status description
+        return this.getStatus().getDescription();
+    }
+
     public void setStatus(String newStatus) {
         // get the enum value matching the newStatus description
         borrowStatus newEnum = borrowStatus.getEnum(newStatus);
@@ -87,7 +92,7 @@ public class Borrow {
             if (newEnum.update(this)) {
                 this.status = borrowStatus.getEnum(newStatus);
             } else {
-                System.out.println("[Borrow] Something wrong when tryint to update status from " + this.status + " to " + newEnum);
+                System.out.println("[Borrow] Something wrong when trying to update status from " + this.status + " to " + newEnum);
             }
         } else {
             System.out.println("[Borrow] Status " + newStatus + " does not exist!");
@@ -95,12 +100,14 @@ public class Borrow {
     }
 
     public void setDueBorrowDate(LocalDate newDueBorrowDate) {
+
         this.dueBorrowDate = newDueBorrowDate;
+        this.setStatus("In progress");
     }
 
     public void setDueBorrowDate(String newDueDate) {
         // New due date input shall have the following format: "yyyy/MM/dd", then converted to LocalDate
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        this.dueBorrowDate = LocalDate.parse(newDueDate, formatter);
+        this.setDueBorrowDate(LocalDate.parse(newDueDate, formatter));
     }
 }

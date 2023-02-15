@@ -5,6 +5,7 @@ import org.labse03part1.domain.Author;
 import org.labse03part1.domain.Book;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Stream;
@@ -250,12 +251,30 @@ public class BookManager {
     }
 
     // Public methods
-    public static String getBookID(Scanner reader) {
-        bookOptionsEnum.LIST_BOOKS.action(reader);
+    public static String getAvailableBookID(Scanner reader) {
+        //bookOptionsEnum.LIST_BOOKS.action(reader);
+        // List only the available books
+        System.out.println("[Book Manager] Available books:");
+        for (Map.Entry<String, Book> entry : books.entrySet()) {
+            Book book = entry.getValue();
+            if (book.isAvailable()) {
+                System.out.println(book.getBookID() + " - " + book.getTitle());
+            }
+        }
         String bookID = askString(reader, "[Manage books] Enter book ID:");
         while (!books.containsKey(bookID)) {
             bookID = askString(reader, "[Manage books] Invalid book ID. Enter book ID:");
         }
         return bookID;
     }
+
+    // TODO: Analyse if this method is correct compared to the enum approach
+    public static String getBookTitle(String bookID) {
+        return books.getOrDefault(bookID, null).getTitle();
+    }
+
+    public static void setBookAvailability(String bookID, boolean newAvailability) {
+        books.get(bookID).setAvailable(newAvailability);
+    }
+
 }
