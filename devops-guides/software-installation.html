@@ -558,7 +558,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Installation command:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>sudo apt-get install vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">sudo</span> apt-get install vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sublime-text" class="level3">
 <h3 class="anchored" data-anchor-id="sublime-text">Sublime Text</h3>
@@ -576,7 +576,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Installation command:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>sudo apt-get install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">sudo</span> apt-get install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="github" class="level3">
 <h3 class="anchored" data-anchor-id="github">GitHub</h3>
@@ -758,7 +758,7 @@ software_installation.sh
 <span id="cb3-109"><a href="#cb3-109"></a><span class="bu">echo</span> <span class="st">"========================================"</span></span>
 <span id="cb3-110"><a href="#cb3-110"></a><span class="co"># Jetbrains Toolbox: once installed, use it to install IntelliJ IDEA</span></span>
 <span id="cb3-111"><a href="#cb3-111"></a><span class="bu">echo</span> <span class="st">"- Jetbrains Toolbox"</span></span>
-<span id="cb3-112"><a href="#cb3-112"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$(</span><span class="bu">command</span> <span class="at">-v</span> jetbrains-toolbox<span class="va">)</span> <span class="bu">]</span> <span class="kw">&amp;&amp;</span> <span class="bu">[</span> <span class="ot">-f</span> tools/jetbrains-toolbox.sh <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb3-112"><a href="#cb3-112"></a><span class="cf">if</span> <span class="ot">! </span><span class="bu">[</span> <span class="va">$(</span><span class="bu">command</span> <span class="at">-v</span> jetbrains-toolbox<span class="va">)</span> <span class="bu">]</span> <span class="kw">&amp;&amp;</span> <span class="bu">[</span> <span class="ot">-f</span> tools/jetbrains-toolbox.sh <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
 <span id="cb3-113"><a href="#cb3-113"></a>    <span class="co"># Install toolbox as ROOT and execute it as the current user</span></span>
 <span id="cb3-114"><a href="#cb3-114"></a>    <span class="co"># This is required as jetbrains toolbox configures the installation paths based on the 'home' folder of the user that executes it</span></span>
 <span id="cb3-115"><a href="#cb3-115"></a>    <span class="ex">./tools/jetbrains-toolbox.sh</span> <span class="kw">&amp;&amp;</span> <span class="fu">su</span> <span class="at">-c</span> jetbrains-toolbox <span class="va">$SUDO_USER</span></span>
