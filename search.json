@@ -161,6 +161,55 @@
     "text": "Updating local checkouts\n\nRetrieve latest changes in remote repositories\ngit fetch\n\nThis command downloads the git objects (blobs, trees and commits), it doesn’t merge the changes into the local checkouts.\n\nThis means that the files in local branches are still behind the latest commits, they must be merged or fast-forwarded\n\n\n\n\nUpdate local branches\ngit merge <remote-branch> <local-branch>\n\n\nOverwrite local branches with remote repositories\ngit pull"
   },
   {
+    "objectID": "devops-guides/version-control-software/github-credentials.html",
+    "href": "devops-guides/version-control-software/github-credentials.html",
+    "title": "GitHub - Configuring SSH credentials",
+    "section": "",
+    "text": "This page explains how to configure your development environment to authenticate against GitHub using SSH keys. This removes the need of entering the username and password each time we want to push our changes to the remote repositories."
+  },
+  {
+    "objectID": "devops-guides/version-control-software/github-credentials.html#setting-username-and-email",
+    "href": "devops-guides/version-control-software/github-credentials.html#setting-username-and-email",
+    "title": "GitHub - Configuring SSH credentials",
+    "section": "Setting username and email",
+    "text": "Setting username and email\nFrom Linuxize:\nOur commits should appear in the repository history with the same username and email as our GitHub user. In order to do so, we can globally change these like so:\n\n\nGit username and email global config\n\n$ git config --global user.name \"Your GitHub Username\"\n$ git config --global user.email \"YourPrivateGitHubMail@users.noreply.github.com\"\n\nwhere:\n\nuser.name: use your GitHub username\nuser.email: is the email that GitHub assigns to each user for web-based Git operations, like edits and merges\n\nYou can find it in your GitHub account -> Settings -> Access/Emails. It appears both in the Primary email address and the Keep my email addresses private sections, and it matches the following format:\n\n<random-number-sequence>+<Your-GitHub-username>@users.noreply.github.com\n\nThese changes are stored in your home directory, inside the ~/.gitconfig file\nIf you only want to use this configuration for a single repository, execute the same commands without the --global\n\n\nGit username and email config for single repository\n\n$ git config user.name \"Your GitHub Username\"\n$ git config user.email \"YourPrivateGitHubMail@users.noreply.github.com\"\n\nIn this case, these config changes are stored in the .git/config file within the repository."
+  },
+  {
+    "objectID": "devops-guides/version-control-software/github-credentials.html#check-for-existing-ssh-keys",
+    "href": "devops-guides/version-control-software/github-credentials.html#check-for-existing-ssh-keys",
+    "title": "GitHub - Configuring SSH credentials",
+    "section": "Check for existing SSH keys",
+    "text": "Check for existing SSH keys\nIf you’re using a shared machine or a cloned VM, it’s always safer to create new SSH keys, but you can check if you already have some by looking at the following path:\n\n\n~/.ssh\n\n$ ls -la ~/.ssh\n\nGitHub supports the following public keys’ filenames:\n\nid_rsa.pub\nid_ecdsa.pub\nid_ed25519.pub"
+  },
+  {
+    "objectID": "devops-guides/version-control-software/github-credentials.html#generate-a-new-ssh-key",
+    "href": "devops-guides/version-control-software/github-credentials.html#generate-a-new-ssh-key",
+    "title": "GitHub - Configuring SSH credentials",
+    "section": "Generate a new SSH key",
+    "text": "Generate a new SSH key\nLaunch the following command, replacing the email value with the GitHub mail:\n\n\nSSH key generation, ed25519\n\n$ ssh-keygen -t rsa -b 4096 -C \"your_email@example.com\"\n\nJust accept everything, and don’t enter a passphrase or you’ll be prompted to enter it each time you git something.\nThe new SSH key is stored in ~/.ssh/id_ed25519 and ~/.ssh/id_ed25519.pub. The second one is the public key that we’ll share with GitHub."
+  },
+  {
+    "objectID": "devops-guides/version-control-software/github-credentials.html#add-the-new-ssh-key-to-the-ssh-agent",
+    "href": "devops-guides/version-control-software/github-credentials.html#add-the-new-ssh-key-to-the-ssh-agent",
+    "title": "GitHub - Configuring SSH credentials",
+    "section": "Add the new SSH key to the ssh-agent",
+    "text": "Add the new SSH key to the ssh-agent\nThis allows your local ssh client to make use of this key to authenticate against GitHub. Just launch the following commands:\n\n\nStart the ssh-agent in the background\n\n$ eval \"$(ssh-agent -s)\"\n> Agent pid 59566\n\n\n\nAdd your SSH private key to the ssh-agent\n\n$ ssh-add ~/.ssh/id_ed25519"
+  },
+  {
+    "objectID": "devops-guides/version-control-software/github-credentials.html#add-the-ssh-public-key-to-your-github-account",
+    "href": "devops-guides/version-control-software/github-credentials.html#add-the-ssh-public-key-to-your-github-account",
+    "title": "GitHub - Configuring SSH credentials",
+    "section": "Add the SSH public key to your GitHub account",
+    "text": "Add the SSH public key to your GitHub account\nLink to this step\nFirst, we need the content of the public key:\n\n\nGet the public key value\n\n$ cat ~/.ssh/id_ed25519.pub\n  # It will output the content of the file\n\nThen go to your GitHub account via browser to:\n\nSettings –> Access –> SSH and GPG keys\n\nThen, click New SSH key or Add SSH key:\n\nIn “Title”, add a descriptive label for the new key (i.e: “Personal laptop”)\nLeave the Key type as Authentication Key\nPaste your public key into the Key field\nFinish by clicking the Add SSH key button\nIf prompted, confirm access to your account on GitHub"
+  },
+  {
+    "objectID": "devops-guides/version-control-software/github-credentials.html#testing-your-ssh-connection",
+    "href": "devops-guides/version-control-software/github-credentials.html#testing-your-ssh-connection",
+    "title": "GitHub - Configuring SSH credentials",
+    "section": "Testing your SSH connection",
+    "text": "Testing your SSH connection\nThe last thing to do is test that we can authenticate against github using ssh:\n\n\nGitHub SSh connection test\n\n$ ssh -T git@github.com\n# This attempts to ssh to GitHub and a warning related to an unknown host appears\n> The authenticity of host 'github.com (IP ADDRESS)' can\\'t be established.\n> RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.\n> Are you sure you want to continue connecting (yes/no)?\n\n# Just Accept the connection by typing 'yes'\n\nHi USERNAME! You\\'ve successfully authenticated, but GitHub does not\nprovide shell access.\n# This message proves that the connection has been successful!"
+  },
+  {
     "objectID": "devops-guides/virtualization/proxmox.html",
     "href": "devops-guides/virtualization/proxmox.html",
     "title": "Proxmox VE",
