@@ -21,7 +21,7 @@ Its main purpose is to ease Java applications development. It also has a nice Gi
 One of the most popular terminal IDEs for Linux, useful when no Desktop application is available or quick changes on files have to be done from a terminal.
 
 - Installation command:
-```{bash}
+```{.bash}
 sudo apt-get install vim
 ```
 
@@ -35,7 +35,7 @@ A good text editor which features can be expanded by installing additional exten
 This is the main tool to manage git repositories, any other software uses it on background or includes it within the app. Available by default in the default Linux Package Repositories.
 
 - Installation command:
-```{bash}
+```{.bash}
 sudo apt-get install git
 ```
 
@@ -100,12 +100,12 @@ If the GitHub CLI package is installed, then this can be used to retrieve the la
 
 :::{.callout-note collapse="true"}
 ## gh releases download
-```bash
+```{.bash}
 # Download the latest release
 gh release download --repo ${GH_USER}/${GH_REPO} --pattern '*.deb'
 ```
 Example:
-```bash
+```{.bash}
 gh release download --repo quarto-dev/quarto-cli --pattern '*.deb'
 ```
 :::
