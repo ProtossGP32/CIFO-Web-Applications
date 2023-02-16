@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CIFO - Web Applications - Encapsulation</title>
+<title>CIFO - Web Applications - API REST</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Principles/02-inheritance.html" rel="next">
-<link href="../../java-exercises/Principles/01-abstraction.html" rel="prev">
+<link href="../../java-exercises/Concepts/object-creation.html" rel="next">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -303,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Encapsulation</h1>
+      <h1 class="quarto-secondary-nav-title">API REST</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -326,7 +325,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link">API REST</a>
+  <a href="../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link active">API REST</a>
   </div>
 </li>
       </ul>
@@ -481,7 +480,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link active">Encapsulation</a>
+  <a href="../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link">Encapsulation</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -501,14 +500,24 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#what-exactly-is-a-rest-api" id="toc-what-exactly-is-a-rest-api" class="nav-link" data-scroll-target="#what-exactly-is-a-rest-api">What exactly is a REST API?</a></li>
+  <li><a href="#what-should-we-take-into-account-when-creating-a-rest-api" id="toc-what-should-we-take-into-account-when-creating-a-rest-api" class="nav-link" data-scroll-target="#what-should-we-take-into-account-when-creating-a-rest-api">What should we take into account when creating a Rest API</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/APIs/api-rest.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Encapsulation</h1>
+<h1 class="title d-none d-lg-block">API REST</h1>
 </div>
 
 
@@ -523,20 +532,41 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Teacher’s definition:</p>
+<blockquote class="blockquote">
+<p><em>REST is an architecture style for building web services. It is based on a client-server model, where a client sends a <code>request</code> to a server and the server sends a <code>response</code>.</em></p>
+<p><em>RESTful APIs use HTTP requests to POST (create), PUT (update), GET (read) and DELETE (delete) data.</em></p>
+<p><em>A RESTful API is a simple, consistent, and easy-to-use way for applications to communicate with each other over the internet.</em></p>
+</blockquote>
+<section id="what-exactly-is-a-rest-api" class="level2">
+<h2 class="anchored" data-anchor-id="what-exactly-is-a-rest-api">What exactly is a REST API?</h2>
+<p>It is the common language between a client and a server, so the client knows what operations are available in the server. Common REST API operations</p>
+<ul>
+<li>POST (Create)</li>
+<li>GET (Read)</li>
+<li>PUT (Update)</li>
+<li>DELETE (Delete)</li>
+</ul>
+<p>So the base operations are the classic CRUD, but can be expanded. In fact, <a href="https://www.redhat.com/en/topics/api/what-is-a-rest-api">it is a set of definitions and protocols</a>, sometimes referred to as a <strong>contract</strong> between an <strong>information provider</strong> and an <strong>Information user</strong>.</p>
+<p>This contract (API Rest <em>style</em>) establishing the content required from the consumer (the call) and the content required by the producer (the response).</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Class notes definition
+API Weather example
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Encapsulation</strong> is the process of wrapping data and methods that operate on a data into a single unit. In other words, it is the process of hiding the implementation details of an object from the outside world.</p>
-<p>In Java, <strong>encapsulation</strong> is achieved through the use of access modifiers like <code>private</code>, <code>public</code> and <code>protected</code>.</p>
+<p>The API design for a weather service could ask the user for a zip code as a <code>request</code>and then return a <code>response</code> in the form of a 2-part answer, being the first one the high temperature and the second one the low temperature.</p>
 </div>
 </div>
+</section>
+<section id="what-should-we-take-into-account-when-creating-a-rest-api" class="level2">
+<h2 class="anchored" data-anchor-id="what-should-we-take-into-account-when-creating-a-rest-api">What should we take into account when creating a Rest API</h2>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -547,12 +577,13 @@ TODO
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Create your own definition of <strong>encapsulation</strong></p>
+<p>Pending to elaborate!</p>
 </div>
 </div>
-<p>The main purpose of <strong>encapsulation</strong> is to divide the code and create blocks of functionality.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -805,13 +836,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Principles/01-abstraction.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Abstraction</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Principles/02-inheritance.html" class="pagination-link">
-        <span class="nav-page-text">Inheritance</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../java-exercises/Concepts/object-creation.html" class="pagination-link">
+        <span class="nav-page-text">Object creation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -135,6 +135,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Java exercises</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-java-exercises">    
+        <li class="dropdown-header">APIs</li>
+        <li>
+    <a class="dropdown-item" href="../java-exercises/APIs/api-rest.html">
+ <span class="dropdown-text">API REST</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Concepts</li>
         <li>
     <a class="dropdown-item" href="../java-exercises/Concepts/object-creation.html">
@@ -161,10 +167,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">What is Maven?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../java-exercises/Concepts/what-is-spring-boot.html">
- <span class="dropdown-text">What is SpringBoot?</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../java-exercises/Concepts/what-is-tdd.html">
  <span class="dropdown-text">What is TDD?</span></a>
   </li>  
@@ -179,6 +181,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">UML</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Frameworks</li>
+        <li>
+    <a class="dropdown-item" href="../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">
+ <span class="dropdown-text">Spring Boot</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
     <a class="dropdown-item" href="../java-exercises/Labs/java-se00-2.html">
@@ -190,19 +198,19 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../java-exercises/Labs/java-se00-3.html">
- <span class="dropdown-text">LAB#SE00-3: Maven Library</span></a>
+ <span class="dropdown-text">LAB#SE00-3: Maven Library model</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../java-exercises/Labs/java-se01-1.html">
  <span class="dropdown-text">LAB#SE01-1: Maven Person and Account</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../java-exercises/Labs/java-se03-1.html">
- <span class="dropdown-text">LAB#SE02-1: Library model</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../java-exercises/Labs/java-se02-1.html">
  <span class="dropdown-text">LAB#SE02-1: Movie/Review, model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../java-exercises/Labs/java-se03-1.html">
+ <span class="dropdown-text">LAB#SE03-1: Library/Book core model</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Principles</li>
@@ -343,6 +351,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sprints" id="toc-sprints" class="nav-link" data-scroll-target="#sprints">Sprints</a>
   <ul class="collapse">
   <li><a href="#sprint-0-it-doesnt-exist-really" id="toc-sprint-0-it-doesnt-exist-really" class="nav-link" data-scroll-target="#sprint-0-it-doesnt-exist-really">Sprint 0 (It doesn’t exist, really!!)</a></li>
+  <li><a href="#sprint-1" id="toc-sprint-1" class="nav-link" data-scroll-target="#sprint-1">Sprint 1</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -777,9 +786,93 @@ Create–100 users
 </div>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="sprint-1" class="level3">
+<h3 class="anchored" data-anchor-id="sprint-1">Sprint 1</h3>
+<p>We’ll define multiple tasks in the backlog and assign priorities and complexity to each of them. Don’t worry about defining tasks that might not be needed, they should be removed if they aren’t addressed after some sprints:</p>
+<p>Template –&gt; Task name (priority) (complexity)</p>
+<ul>
+<li>Spring backlog:
+<ul>
+<li>Project:
+<ul>
+<li>Business Model (21) (13)</li>
+<li>Use cases (21) (13)</li>
+<li>Define Release Plan:
+<ul>
+<li>Number of Sprints (21) (8)</li>
+<li>Goal for each Sprint (21) (8)</li>
+</ul></li>
+<li>Mock-ups (13) (13)</li>
+<li>Security (21) (21)</li>
+<li>Deployment:
+<ul>
+<li>Programming languages and versions () ()</li>
+<li>Dependencies () ()</li>
+<li>Pipeline () ()</li>
+</ul></li>
+<li>Documentation: (21) (13)
+<ul>
+<li>Git:
+<ul>
+<li>Technology to use (GitHub, GitLab) (8) (5)</li>
+<li>Stylebook: (13) (13)
+<ul>
+<li>Branch names</li>
+<li>Commit texts and labels</li>
+</ul></li>
+<li>Roles (13) (8)
+<ul>
+<li>Who reviews pull requests?</li>
+<li>Who can merge code?</li>
+<li>Who can push to production?</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Scrum concepts: (13) (8)
+<ul>
+<li>Define “Done” task</li>
+</ul></li>
+</ul></li>
+<li>Domains:
+<ul>
+<li>Common language (21) (13)</li>
+<li>Rethink Test Borrow by Console (5) (21)</li>
+</ul></li>
+<li>UML:
+<ul>
+<li>Functional diagram (21) (13)</li>
+<li>Core classes (21) (13)</li>
+<li>Manager classes (13) (13)</li>
+</ul></li>
+<li>Code:
+<ul>
+<li>Sandbox: (21) (8)</li>
+<li>Git:
+<ul>
+<li>Initialization (21) (8)</li>
+</ul></li>
+<li>Refactor user interface (13) (13)</li>
+<li>Test Borrow (13) (13)</li>
+<li>Book Manager (13) (8)</li>
+<li>Borrow Manager (13) (21)</li>
+<li>User Manager (13) (8)</li>
+<li>Create fakers for each Manager (13) (13)</li>
+<li>Deployment (21) (21)</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>After that, we’ll work with a Kanban table to keep track of the status of each task:</p>
+<ul>
+<li>Options:
+<ul>
+<li>GitHub projects</li>
+<li>OpenProject</li>
+</ul></li>
+</ul>
+
+
 </section>
 </section>
 </section>

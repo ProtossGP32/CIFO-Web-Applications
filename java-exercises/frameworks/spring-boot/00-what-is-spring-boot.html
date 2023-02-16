@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CIFO - Web Applications - Encapsulation</title>
+<title>CIFO - Web Applications - 00 - What is Spring Boot?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +23,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Principles/02-inheritance.html" rel="next">
-<link href="../../java-exercises/Principles/01-abstraction.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" rel="next">
+<link href="../../../java-exercises/Design-patterns/uml.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -64,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">CIFO - Web Applications</span>
     </a>
   </div>
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -93,39 +93,39 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-devops-guides">    
         <li>
-    <a class="dropdown-item" href="../../devops-guides/software-installation.html">
+    <a class="dropdown-item" href="../../../devops-guides/software-installation.html">
  <span class="dropdown-text">Software installation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../devops-guides/mint-vm-provisioning.html">
+    <a class="dropdown-item" href="../../../devops-guides/mint-vm-provisioning.html">
  <span class="dropdown-text">Virtual Machine Provisioning</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Documentation</li>
         <li>
-    <a class="dropdown-item" href="../../devops-guides/documentation/quarto-quick-guide.html">
+    <a class="dropdown-item" href="../../../devops-guides/documentation/quarto-quick-guide.html">
  <span class="dropdown-text">Quarto - Quick guide</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Self Hosted Project</li>
         <li>
-    <a class="dropdown-item" href="../../devops-guides/self-hosted-project/docker-software-deployment.html">
+    <a class="dropdown-item" href="../../../devops-guides/self-hosted-project/docker-software-deployment.html">
  <span class="dropdown-text">Docker software deployment</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Version Control Software</li>
         <li>
-    <a class="dropdown-item" href="../../devops-guides/version-control-software/git-useful-tips.html">
+    <a class="dropdown-item" href="../../../devops-guides/version-control-software/git-useful-tips.html">
  <span class="dropdown-text">GIT useful tips</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Virtualization</li>
         <li>
-    <a class="dropdown-item" href="../../devops-guides/virtualization/harvester.html">
+    <a class="dropdown-item" href="../../../devops-guides/virtualization/harvester.html">
  <span class="dropdown-text">Harvester</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../devops-guides/virtualization/proxmox.html">
+    <a class="dropdown-item" href="../../../devops-guides/virtualization/proxmox.html">
  <span class="dropdown-text">Proxmox VE</span></a>
   </li>  
     </ul>
@@ -137,97 +137,97 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-java-exercises">    
         <li class="dropdown-header">APIs</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/APIs/api-rest.html">
+    <a class="dropdown-item" href="../../../java-exercises/APIs/api-rest.html">
  <span class="dropdown-text">API REST</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Concepts</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/object-creation.html">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/object-creation.html">
  <span class="dropdown-text">Object creation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-class.html">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-a-class.html">
  <span class="dropdown-text">What is a class?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-model.html">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-a-model.html">
  <span class="dropdown-text">What is a model?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-coupling-and-cohesion.html">
  <span class="dropdown-text">What is coupling and cohesion?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-ddd.html">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-ddd.html">
  <span class="dropdown-text">What is DDD?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-maven.html">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-maven.html">
  <span class="dropdown-text">What is Maven?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-tdd.html">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-tdd.html">
  <span class="dropdown-text">What is TDD?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-static-modifier.html">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-the-static-modifier.html">
  <span class="dropdown-text">What is the static modifier?</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Design Patterns</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Design-patterns/uml.html">
+    <a class="dropdown-item" href="../../../java-exercises/Design-patterns/uml.html">
  <span class="dropdown-text">UML</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Frameworks</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">
+    <a class="dropdown-item" href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">
  <span class="dropdown-text">Spring Boot</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-2.html">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-2.html">
  <span class="dropdown-text">LAB#SE00-1: Maven Clinic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-1.html">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-1.html">
  <span class="dropdown-text">LAB#SE00-1: Maven Person</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-3.html">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-3.html">
  <span class="dropdown-text">LAB#SE00-3: Maven Library model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se01-1.html">
  <span class="dropdown-text">LAB#SE01-1: Maven Person and Account</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se02-1.html">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se02-1.html">
  <span class="dropdown-text">LAB#SE02-1: Movie/Review, model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-1.html">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se03-1.html">
  <span class="dropdown-text">LAB#SE03-1: Library/Book core model</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Principles</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Principles/01-abstraction.html">
+    <a class="dropdown-item" href="../../../java-exercises/Principles/01-abstraction.html">
  <span class="dropdown-text">Abstraction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Principles/00-encapsulation.html">
+    <a class="dropdown-item" href="../../../java-exercises/Principles/00-encapsulation.html">
  <span class="dropdown-text">Encapsulation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Principles/02-inheritance.html">
+    <a class="dropdown-item" href="../../../java-exercises/Principles/02-inheritance.html">
  <span class="dropdown-text">Inheritance</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Principles/03-polymorphism.html">
+    <a class="dropdown-item" href="../../../java-exercises/Principles/03-polymorphism.html">
  <span class="dropdown-text">Polymorphism</span></a>
   </li>  
     </ul>
@@ -238,19 +238,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-project-management">    
         <li>
-    <a class="dropdown-item" href="../../project-management/decision-making.html">
+    <a class="dropdown-item" href="../../../project-management/decision-making.html">
  <span class="dropdown-text">Decision Making</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../project-management/scrum-management.html">
+    <a class="dropdown-item" href="../../../project-management/scrum-management.html">
  <span class="dropdown-text">Scrum management</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../project-management/useful-questions.html">
+    <a class="dropdown-item" href="../../../project-management/useful-questions.html">
  <span class="dropdown-text">Useful questions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../project-management/project-life-cycle.html">
+    <a class="dropdown-item" href="../../../project-management/project-life-cycle.html">
  <span class="dropdown-text">What is the project lifecycle?</span></a>
   </li>  
     </ul>
@@ -261,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-team-projects">    
         <li>
-    <a class="dropdown-item" href="../../team-projects/00-game-tracker.html">
+    <a class="dropdown-item" href="../../../team-projects/00-game-tracker.html">
  <span class="dropdown-text">First project - GameTracker</span></a>
   </li>  
     </ul>
@@ -272,13 +272,13 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-walkthrough">    
         <li>
-    <a class="dropdown-item" href="../../walkthrough/walkthrough.html">
+    <a class="dropdown-item" href="../../../walkthrough/walkthrough.html">
  <span class="dropdown-text">Hello, Quarto</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
+    <a class="nav-link" href="../../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -303,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Encapsulation</h1>
+      <h1 class="quarto-secondary-nav-title">00 - What is Spring Boot?</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -326,7 +326,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link">API REST</a>
+  <a href="../../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link">API REST</a>
   </div>
 </li>
       </ul>
@@ -341,42 +341,42 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/object-creation.html" class="sidebar-item-text sidebar-link">Object creation</a>
+  <a href="../../../java-exercises/Concepts/object-creation.html" class="sidebar-item-text sidebar-link">Object creation</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-class.html" class="sidebar-item-text sidebar-link">What is a class?</a>
+  <a href="../../../java-exercises/Concepts/what-is-a-class.html" class="sidebar-item-text sidebar-link">What is a class?</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link">What is a model?</a>
+  <a href="../../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link">What is a model?</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="sidebar-item-text sidebar-link">What is coupling and cohesion?</a>
+  <a href="../../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="sidebar-item-text sidebar-link">What is coupling and cohesion?</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link">What is DDD?</a>
+  <a href="../../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link">What is DDD?</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-maven.html" class="sidebar-item-text sidebar-link">What is Maven?</a>
+  <a href="../../../java-exercises/Concepts/what-is-maven.html" class="sidebar-item-text sidebar-link">What is Maven?</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-tdd.html" class="sidebar-item-text sidebar-link">What is TDD?</a>
+  <a href="../../../java-exercises/Concepts/what-is-tdd.html" class="sidebar-item-text sidebar-link">What is TDD?</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-the-static-modifier.html" class="sidebar-item-text sidebar-link">What is the static modifier?</a>
+  <a href="../../../java-exercises/Concepts/what-is-the-static-modifier.html" class="sidebar-item-text sidebar-link">What is the static modifier?</a>
   </div>
 </li>
       </ul>
@@ -391,7 +391,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link">UML</a>
+  <a href="../../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link">UML</a>
   </div>
 </li>
       </ul>
@@ -406,20 +406,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Spring Boot</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Spring Boot</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" class="sidebar-item-text sidebar-link">00 - What is Spring Boot?</a>
+  <a href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" class="sidebar-item-text sidebar-link active">00 - What is Spring Boot?</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">01 - Creating a Spring Boot project</a>
+  <a href="../../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">01 - Creating a Spring Boot project</a>
   </div>
 </li>
       </ul>
@@ -436,32 +436,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Clinic</a>
+  <a href="../../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Clinic</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-1.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Person</a>
+  <a href="../../../java-exercises/Labs/java-se00-1.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Person</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">LAB#SE00-3: Maven Library model</a>
+  <a href="../../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">LAB#SE00-3: Maven Library model</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">LAB#SE01-1: Maven Person and Account</a>
+  <a href="../../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">LAB#SE01-1: Maven Person and Account</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link">LAB#SE02-1: Movie/Review, model</a>
+  <a href="../../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link">LAB#SE02-1: Movie/Review, model</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se03-1.html" class="sidebar-item-text sidebar-link">LAB#SE03-1: Library/Book core model</a>
+  <a href="../../../java-exercises/Labs/java-se03-1.html" class="sidebar-item-text sidebar-link">LAB#SE03-1: Library/Book core model</a>
   </div>
 </li>
       </ul>
@@ -476,22 +476,22 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/01-abstraction.html" class="sidebar-item-text sidebar-link">Abstraction</a>
+  <a href="../../../java-exercises/Principles/01-abstraction.html" class="sidebar-item-text sidebar-link">Abstraction</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link active">Encapsulation</a>
+  <a href="../../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link">Encapsulation</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link">Inheritance</a>
+  <a href="../../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link">Inheritance</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/03-polymorphism.html" class="sidebar-item-text sidebar-link">Polymorphism</a>
+  <a href="../../../java-exercises/Principles/03-polymorphism.html" class="sidebar-item-text sidebar-link">Polymorphism</a>
   </div>
 </li>
       </ul>
@@ -501,15 +501,35 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features:</a></li>
+  <li><a href="#capabilities" id="toc-capabilities" class="nav-link" data-scroll-target="#capabilities">Capabilities:</a>
+  <ul class="collapse">
+  <li><a href="#autoconfiguration" id="toc-autoconfiguration" class="nav-link" data-scroll-target="#autoconfiguration">Autoconfiguration:</a></li>
+  <li><a href="#opinionated-approach" id="toc-opinionated-approach" class="nav-link" data-scroll-target="#opinionated-approach">Opinionated approach</a></li>
+  <li><a href="#standalone-applications" id="toc-standalone-applications" class="nav-link" data-scroll-target="#standalone-applications">Standalone applications</a></li>
+  </ul></li>
+  <li><a href="#fundamentals" id="toc-fundamentals" class="nav-link" data-scroll-target="#fundamentals">Fundamentals</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/00-what-is-spring-boot.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Encapsulation</h1>
-</div>
+<h1 class="title d-none d-lg-block">00 - What is Spring Boot?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">springboot</div>
+    <div class="quarto-category">web</div>
+  </div>
+  </div>
 
 
 
@@ -523,36 +543,113 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p><em><a href="https://spring.io/projects/spring-boot">From spring.io:</a></em></p>
+<blockquote class="blockquote">
+<p>Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”.</p>
+</blockquote>
+<section id="features" class="level2">
+<h2 class="anchored" data-anchor-id="features">Features:</h2>
+<ul>
+<li>Create stand-alone Spring applications</li>
+<li>Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)</li>
+<li>Provide opinionated ‘starter’ dependencies to simplify your build configuration</li>
+<li>Automatically configure Spring and 3rd party libraries whenever possible</li>
+<li>Provide production-ready features such as metrics, health checks, and externalized configuration</li>
+<li>Absolutely no code generation and no requirements for XML configuration</li>
+</ul>
+<p>IBM has an article about why Spring Framework is so popular and how Spring Boot eases the creation of Spring projects: <a href="https://ibm.com/topics/java-spring-boot"><em>From ibm.com:</em></a></p>
+<blockquote class="blockquote">
+<p>Spring Framework offers a <em>dependency injection</em> feature that lets objects define their own dependencies that the Spring container later injects into them. This enables developers to create modular applications consisting of loosely coupled components that are ideal for <a href="https://www.ibm.com/topics/microservices">microservices</a> and distributed network applications.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>As capable as comprehensive as Spring Framework is, it still requires significant time and knowledge to configure, set up, and deploy Spring applications. Spring Boot mitigates this effort with three important capabilities.</p>
+</blockquote>
+</section>
+<section id="capabilities" class="level2">
+<h2 class="anchored" data-anchor-id="capabilities">Capabilities:</h2>
+<section id="autoconfiguration" class="level3">
+<h3 class="anchored" data-anchor-id="autoconfiguration">Autoconfiguration:</h3>
+<p>Autoconfiguration means that <strong>applications are initialized with pre-set dependencies that you don’t have to configure manually</strong>.</p>
+<ul>
+<li>As Java Spring Boot comes with built-in autoconfiguration capabilities, it automatically configures both the underlying Spring Framework and third-party packages based on your settings (and based on best practices, which helps avoid errors)</li>
+<li>Even though you can override these defaults once the initialization is complete, Java Spring Boot’s autoconfiguration feature enables you to start developing your Spring-based applications fast and <strong>reduces the possibility of human errors</strong>.</li>
+</ul>
+</section>
+<section id="opinionated-approach" class="level3">
+<h3 class="anchored" data-anchor-id="opinionated-approach">Opinionated approach</h3>
+<p>Spring Boot uses an opinionated approach to <strong>adding and configuring starter dependencies, based on the needs of your project</strong>.</p>
+<ul>
+<li>Following its own judgement, <strong>Spring Boot chooses which packages to install and which default values to use</strong>, rather than requiring you to make all those decisions yourself and set up everything manually.</li>
+<li>You can <strong>define the needs of your projects during the initialization process</strong>, during which you choose among multiple starter dependencies –called _Spring Starters– that cover typical use cases. You run Spring Boot Initializr by filling out a simple web form, without any codingYou can define the needs of</li>
+</ul>
+</section>
+<section id="standalone-applications" class="level3">
+<h3 class="anchored" data-anchor-id="standalone-applications">Standalone applications</h3>
+<p>Spring Boot helps developers create applications that <em>just run</em>.</p>
+<ul>
+<li>It lets you <strong>create standalone applications that run on their own</strong>, without relying on an external web server, by embedding a web server such as Tomcat or Netty into your app during the initialization process</li>
+<li>As a result, you can launch your application on any platform by simply hitting th Run command</li>
+</ul>
+</section>
+</section>
+<section id="fundamentals" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentals">Fundamentals</h2>
+<p>Some of the key concepts of Spring Boot and how it works include:</p>
+<ul>
+<li><strong>Beans</strong>: a Java object managed by the Spring container
+<ul>
+<li>Beans are typically defined in configuration files, and the Spring container is responsible for instantiating, configuring, and managing the lifecycle of these beans</li>
+</ul></li>
+<li><strong>Dependency Injection</strong>: Spring uses dependency injection to manage the dependencies between beans
+<ul>
+<li>This means that instead of instantiating and configureing dependencies manually, you can use <strong>annotations</strong> or configuration files to tell the Spring container which dependencies a bean has and how they should be instantiated</li>
+</ul></li>
+<li><strong>Object-Oriented Programming</strong>: it uses interfaces and inheritance to create a modular and reusable codebase</li>
+<li><strong>Aspect-Oriented Programming</strong>: this allows to separate cross-cutting concerns such as logging, security, and transaction management from the core business logic of your application</li>
+<li><strong>Data Access</strong>: Spring Boot provides a set of starters and libraries for connecting to databases and performing data access operations.
+<ul>
+<li>It also provides support for Object-Relational-Mapping (ORM) frameworks such as Hibernate and JPA</li>
+</ul></li>
+<li><strong>Web Development</strong>: Spring Boot provides a set of starters and libraries for building web applications and RESTful web services.
+<ul>
+<li>It also provides support for web technoligies such as Spring MVC and Thymeleaf</li>
+</ul></li>
+<li><strong>Annotations</strong>: Spring Boot uses annotations extensively to configure beans and manage dependencies
+<ul>
+<li>Understanding the different annotations available in Spring, such as <code>@Bean</code>, <code>@Autowired</code>, <code>@Component</code>, can help you effectively use the framework</li>
+</ul></li>
+<li><strong>MVC (Model-View-Controller)</strong>: Spring Boot provides support for the MVC architectural pattern, which separates the application into three layers:
+<ul>
+<li>The model (data)</li>
+<li>The view (presentation)</li>
+<li>The controller (logic)</li>
+</ul>
+Understanding how MVC works in Spring boot can help you structure your appliication effectively. See <a href="../../../java-exercises/Concepts/what-is-a-model.html">model entry</a> for more details regarding MVC.</li>
+<li><strong>REST (Representational State Transfer)</strong>: Spring Boot provides support for building RESTful web services.
+<ul>
+<li>Understanding the principles of REST and how to create RESTful web services using Spring Boot can help you effectively use the framework</li>
+</ul></li>
+</ul>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Class notes definition
+To sum up
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Encapsulation</strong> is the process of wrapping data and methods that operate on a data into a single unit. In other words, it is the process of hiding the implementation details of an object from the outside world.</p>
-<p>In Java, <strong>encapsulation</strong> is achieved through the use of access modifiers like <code>private</code>, <code>public</code> and <code>protected</code>.</p>
+<p>Overall, Spring Boot works by providing <strong>a set of pre-configured options and defaults, as well as a set of tools for quickly creating and running an application using the Spring Framework</strong>.</p>
+<p>It uses concepts such as <em>beans</em>, <em>dependency injection</em> and <em>OOP</em> to make it easy to build and run a Spring-based application, with minimal configuration and setup required.</p>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Create your own definition of <strong>encapsulation</strong></p>
-</div>
-</div>
-<p>The main purpose of <strong>encapsulation</strong> is to divide the code and create blocks of functionality.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -805,13 +902,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Principles/01-abstraction.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Abstraction</span>
+      <a href="../../../java-exercises/Design-patterns/uml.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">UML</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Principles/02-inheritance.html" class="pagination-link">
-        <span class="nav-page-text">Inheritance</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="pagination-link">
+        <span class="nav-page-text">01 - Creating a Spring Boot project</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -821,7 +918,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">
         <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../../about.html">About</a>
+    <a class="nav-link" href="../../../about.html">About</a>
   </li>  
 </ul>
       </div>
