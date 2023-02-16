@@ -125,6 +125,10 @@ public class BorrowManager {
                 Borrow borrowToUpdate = borrows.get(borrowID);
                 */
                 Borrow borrowToUpdate = findBorrow(reader);
+                if (borrowToUpdate == null) {
+                    System.out.println("Error finding the borrow. Exiting...");
+                }
+
                 System.out.println(borrowToUpdate);
                 // Ask what field to change
                 // - Allowed fields to update: status, due date, return date, etc...
@@ -162,6 +166,10 @@ public class BorrowManager {
             private void returnBook(Scanner reader) {
                 // Find the borrow of the book
                 Borrow borrowToUpdate = findBorrow(reader);
+                if (borrowToUpdate == null) {
+                    System.out.println("Error finding the borrow. Exiting...");
+                    return;
+                }
                 // Set the borrow status to "Close"
                 borrowToUpdate.setStatus("Closed");
                 // Set the book availability to True
@@ -264,7 +272,7 @@ public class BorrowManager {
     }
 
     public static Borrow findBorrowByUserID(Scanner reader, String userID) {
-        // Find all borrows of that user
+        // 1.- Find all borrows of that user
         List<Borrow> userBorrows = new ArrayList<>();
         for (Map.Entry<String, Borrow> entry : borrows.entrySet()) {
             Borrow borrow = entry.getValue();
@@ -273,13 +281,14 @@ public class BorrowManager {
             }
         }
 
-        // Show all available borrows
+        // 2.- Text-only: show all available borrows
         for (Borrow borrow : userBorrows) {
             if (borrow.getStatusDescription().equals("In progress") || borrow.getStatusDescription().equals("Late")) {
-                System.out.println("ID: " + borrow.getBorrowID() + ", book: " + BookManager.getBookTitle(borrow.getBookID()) + ", status: " + borrow.getStatusDescription());
+                System.out.println("Borrow ID: " + borrow.getBorrowID() + ", book: " + BookManager.getBookTitle(borrow.getBookID()) + ", status: " + borrow.getStatusDescription());
             }
         }
-        // Let the user decide what borrow to get
+
+        // 3.- Let the user decide what borrow to get
         String selectedBorrow = askString(reader, "[Borrow Manager] Enter the user's borrow ID");
         while (!borrows.containsKey(selectedBorrow)) {
             if (selectedBorrow.equals("Quit")) {
@@ -288,7 +297,8 @@ public class BorrowManager {
             }
             selectedBorrow = askString(reader, "[Borrow Manager] Unknown ID. Enter the user's borrow ID");
         }
-        // Return the borrow
+
+        // 4.- Return the borrow
         return borrows.get(selectedBorrow);
     }
 }
