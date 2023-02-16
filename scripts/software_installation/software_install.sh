@@ -109,7 +109,7 @@ echo "Installing software not in repositories:"
 echo "========================================"
 # Jetbrains Toolbox: once installed, use it to install IntelliJ IDEA
 echo "- Jetbrains Toolbox"
-if [ $(command -v jetbrains-toolbox) ] && [ -f tools/jetbrains-toolbox.sh ]; then
+if ! [ $(command -v jetbrains-toolbox) ] && [ -f tools/jetbrains-toolbox.sh ]; then
     # Install toolbox as ROOT and execute it as the current user
     # This is required as jetbrains toolbox configures the installation paths based on the 'home' folder of the user that executes it
     ./tools/jetbrains-toolbox.sh && su -c jetbrains-toolbox $SUDO_USER
