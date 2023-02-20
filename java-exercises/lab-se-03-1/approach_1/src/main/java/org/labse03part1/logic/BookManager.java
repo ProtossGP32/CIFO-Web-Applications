@@ -261,9 +261,9 @@ public class BookManager {
                 System.out.println(book.getBookID() + " - " + book.getTitle());
             }
         }
-        String bookID = askString(reader, "[Manage books] Enter book ID:");
+        String bookID = askString(reader, "[Manage books] Enter book ID: ");
         while (!books.containsKey(bookID)) {
-            bookID = askString(reader, "[Manage books] Invalid book ID. Enter book ID:");
+            bookID = askString(reader, "[Manage books] Invalid book ID. Enter book ID: ");
         }
         return bookID;
     }

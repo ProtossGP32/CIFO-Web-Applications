@@ -97,9 +97,12 @@ public class BorrowManager {
             }
 
             void listBorrows() {
-                System.out.println("[" + borrowOptionsEnum.LIST_BORROWS.getDescription() + "] Available borrows:");
+                System.out.println("[" + borrowOptionsEnum.LIST_BORROWS.getDescription() + "] Available 'In progress' borrows:");
                 // Print all the borrows in a defined format
-                borrows.forEach((borrowID, borrow) -> System.out.println(borrowID + ": " + borrow));
+                borrows.entrySet().stream()
+                        .filter(entry -> entry.getValue().getStatusDescription().equals("In progress"))
+                        .map(x -> x.getKey() + ": " + x.getValue())
+                        .forEach(x -> System.out.println(x));
             }
         },
         UPDATE_BORROW("Update borrow") {
@@ -112,7 +115,7 @@ public class BorrowManager {
 
                 // Ask for the borrow id
                 borrowOptionsEnum.LIST_BORROWS.action(reader);
-                // Option 1.- Ask for the borrow ID
+                // Option 1. Ask for the borrow ID
                 /*
                 String borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Enter borrow ID ('Quit' to exit): ");
                 while (!borrows.containsKey(borrowID)) {
@@ -124,6 +127,7 @@ public class BorrowManager {
                 }
                 Borrow borrowToUpdate = borrows.get(borrowID);
                 */
+                // Option 2. Invoke a borrow finding method
                 Borrow borrowToUpdate = findBorrow(reader);
                 if (borrowToUpdate == null) {
                     System.out.println("Error finding the borrow. Exiting...");
@@ -146,7 +150,7 @@ public class BorrowManager {
                             }
                         }
                         case "dueBorrowDate" -> {
-                            // Due borrow date is updated to a later date
+                            // The due borrow date is updated to a later date
                             value = askString(reader, "[" + borrowOptionsEnum.UPDATE_BORROW.getDescription() + "] Enter the new due date in a YYYY/mm/dd format: ");
                             borrowToUpdate.setDueBorrowDate(String.valueOf(value));
                             //
@@ -229,6 +233,8 @@ public class BorrowManager {
         String action = InterfaceUtils.askString(reader, "[Manage borrows] Select option ('Quit' to exit): ");
         while (!action.equals("Quit")) {
             borrowOptionsEnum.executeOption(reader, action);
+            System.out.println();
+            borrowOptionsEnum.printOptions();
             action = InterfaceUtils.askString(reader, "[Manage borrows] Select option ('Quit' to exit): ");
         }
     }
@@ -272,7 +278,7 @@ public class BorrowManager {
     }
 
     public static Borrow findBorrowByUserID(Scanner reader, String userID) {
-        // 1.- Find all borrows of that user
+        // 1. Find all borrows of that user
         List<Borrow> userBorrows = new ArrayList<>();
         for (Map.Entry<String, Borrow> entry : borrows.entrySet()) {
             Borrow borrow = entry.getValue();
@@ -288,17 +294,17 @@ public class BorrowManager {
             }
         }
 
-        // 3.- Let the user decide what borrow to get
-        String selectedBorrow = askString(reader, "[Borrow Manager] Enter the user's borrow ID");
+        // 3. Let the user decide what borrow to get
+        String selectedBorrow = askString(reader, "[Borrow Manager] Enter the user's borrow ID: ");
         while (!borrows.containsKey(selectedBorrow)) {
             if (selectedBorrow.equals("Quit")) {
                 System.out.println("[Borrow Manager] Find borrow cancelled.");
                 return null;
             }
-            selectedBorrow = askString(reader, "[Borrow Manager] Unknown ID. Enter the user's borrow ID");
+            selectedBorrow = askString(reader, "[Borrow Manager] Unknown ID. Enter the user's borrow ID: ");
         }
 
-        // 4.- Return the borrow
+        // 4. Return the borrow
         return borrows.get(selectedBorrow);
     }
 }

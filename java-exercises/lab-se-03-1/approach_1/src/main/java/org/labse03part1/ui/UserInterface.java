@@ -56,6 +56,7 @@ public class UserInterface {
         // For testing purposes we are going to initialize fake authors and books
         AuthorManager.initializeRandomActors();
         BookManager.initializeRandomBooks();
+        StudentManager.initializeRandomStudents();
 
         // Initialize local variables
         Scanner reader = new Scanner(System.in);

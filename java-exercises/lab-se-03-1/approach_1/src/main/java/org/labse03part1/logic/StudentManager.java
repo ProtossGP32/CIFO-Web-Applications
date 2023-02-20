@@ -1,5 +1,6 @@
 package org.labse03part1.logic;
 
+import com.github.javafaker.Faker;
 import org.labse03part1.domain.Book;
 import org.labse03part1.domain.Student;
 
@@ -11,6 +12,30 @@ import static org.labse03part1.utils.InterfaceUtils.askString;
 
 public class StudentManager {
     private static final Map<String, Student> students = new HashMap<>();
+
+    public static void initializeRandomStudents() {
+        if (students.isEmpty()) {
+            Random randomNum = new Random();
+            createFakeStudents(randomNum.nextInt(1, 10));
+        }
+    }
+
+    private static void createFakeStudents(int number) {
+        Faker faker = new Faker();
+        Student newStudent;
+        // Create as many new Students as requested
+        for (int i = 0; i < number; i++) {
+            newStudent = new Student();
+            newStudent.setFirstName(faker.name().firstName());
+            newStudent.setLastName(faker.name().lastName());
+            newStudent.setAge(faker.number().numberBetween(10, 99));
+            newStudent.setUniversity(faker.university().name());
+            newStudent.setBooks(new ArrayList<>());
+
+            // Put the fake student into the storage
+            students.put(newStudent.getStudentID(), newStudent);
+        }
+    }
 
     private enum studentOptionsEnum {
         ADD_STUDENT("Add student") {
@@ -211,9 +236,8 @@ public class StudentManager {
     public static String getStudentID(Scanner reader) {
         studentOptionsEnum.LIST_STUDENTS.action(reader);
         String studentID = askString(reader, "- Enter student ID: ");
-        while (!students.containsKey(studentID)) {
-            System.out.println("- Invalid student ID!");
-            studentID = askString(reader, "- Enter student ID: ");
+        while (!students.containsKey(studentID)) {;
+            studentID = askString(reader, "- Invalid student ID! Enter student ID: ");
         }
         return studentID;
     }
