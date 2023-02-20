@@ -9,11 +9,57 @@ title: "GIT useful tips"
 git clone <git-repository-url>
 ```
 
+When authenticating with SSH, use the appropriate SSH url.
+
 ### Update list of repository's remote branches
 ```bash
-git remote update origin --prune
+git remote update <remote-repo> --prune
 ```
 - `--prune` removes any local reference to non-existing remote branches
+
+If we have other remotes, just repeat the process changing the remote name:
+
+```bash
+git remote update <another-remote-repo> --prune
+```
+
+### Set the remote repository branch to track
+
+:::{.callout-warning}
+
+## ATTENTION!
+This command hasn't been fully tested yet. The results aren't the expected ones, so use it with caution
+:::
+
+```{.bash}
+git remote --set-upstream-to <remote-repo>:<remote-branch>
+```
+
+### Check repository tracking config
+You can always check what branches are tracked for each local branch in the `.git/config` file:
+
+```{.conf}
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+[remote "origin"]
+        url = git@github.com:ProtossGP32/gameBoardStats.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+        remote = origin
+        merge = refs/heads/main
+[remote "upstream"]
+        url = git@github.com:cifoteam/gameBoardStats.git
+        fetch = +refs/heads/main:refs/remotes/upstream/main
+[branch "task/59-create-gamescollectionmanager-class"]
+        remote = origin
+        merge = refs/heads/task/59-create-gamescollectionmanager-class
+[branch "task/66-modify-gamescollection-class-to-include-info-related-to-the-games-usage"]
+        remote = origin
+        merge = refs/heads/task/66-modify-gamescollection-class-to-include-info-related-to-the-games-usage
+```
 
 ## Branches
 ### Show available branches
@@ -62,4 +108,20 @@ git merge <remote-branch> <local-branch>
 ### Overwrite local branches with remote repositories
 ```bash
 git pull
+```
+
+## Pushing local checkouts
+### Push a local branch to a remote repository
+When pushing a branch for the first time, it has to be created in the remote repository. This is done during `push` with the following command:
+
+```{.bash}
+git push --set-upstream <remote-repo> <local-branch>
+```
+
+- `--set-upstream` automatically sets up the tracking information for that branch
+
+If the branch is already created in the remote repository, you can simply push it to the desired remote by executing:
+
+```{.bash}
+git push <remote-repo>
 ```
