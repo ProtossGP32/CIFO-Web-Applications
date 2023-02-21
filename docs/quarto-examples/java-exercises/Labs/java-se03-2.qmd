@@ -1,0 +1,159 @@
+---
+title: "LAB#SE03-2: Library/Book, Expand Model"
+categories: [javase, lab, inherence]
+author: ProtossGP32
+date: 2023/02/20
+---
+::: {.panel-tabset}
+## Context
+**Basic understanding of Java programming language is required**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.
+
+**Use of Interfaces and Abstract classes** to implement features.
+
+## Goal
+**Describe the required models** that might define the solution to a Library implementation.
+**Create multiple classes in Java** using the most convenient entity relationship between them to implement the solution.
+
+**Test these classes** using JUnit.
+
+## Tasks
+(@) Create **a new Maven or Gradle project** and setting up the project structure
+(@) Modify the project's `pom.xml` or `build.gradle` file to import necessary dependencies, including **JUnit** for testing
+(@) Implement the required classes in Java
+(@) Implement User interactive interfaces for each manager
+(@) Write **JUnit tests** to verify that classes work as expected
+
+## Optional
+*   **Allow the user to input data via the console**, rather than using `hard-coded test data` in JUnit tests
+:::
+
+# Introduction
+In `LibraryProject`, the `User` and `Staff` classes could have different `operations` that they are authorized/able to perform.
+
+The `User` class could have the following operations:
+
+- Search for books
+- Borrow a book
+- Return a book
+- Check the status of borrowed books
+- Update personal information
+
+The `Staff` class could have the following operations:
+
+- Add a new book
+- Remove a book
+- Update the book details
+- Register a new user
+- Remove a user
+- Update the user details
+- Generate reports on library operations
+
+To `implement` these operations, we could define three separate `interfaces`:
+
+- UserOperations
+- StaffOperations
+- GeneralOperations
+
+## Interfaces
+The three interfaces `GeneralOperations`, `UserOperations` and `StaffOperations` provide a clear separation of concerns and responsibilities within the library management system.
+
+> `GeneralOperations` `interface` provides methods that are commonly used by both users and staff, such as searching for books and creating an account.
+
+> `UserOperations` `interface` includes methods that are specific to users, such as updating personal information, borrowing and returning books, and checking their borrowed books.
+
+> `StaffOperations` `interface` includes methods that are specific to staff members, such as adding, removing, and updating book details, as well as registering and updating user details and generationg reports.
+
+By separating these different functionailities into interfaces, **it becomes easier to implement and maintain the system.**
+
+Interfaces allow the developers to implement their features knowing beforehand the expected available methods of future classes.
+
+## Abstract class
+Finally, the `LibraryMember` abstract class is a parent class for users and staff members, which includes common fields such as id, address, and phoneNumber.
+
+By defining these fields in an `abstract` class, it allows for different types of users and staff members to inherit them and **avoid duplication of code.**
+
+
+
+## UML
+### Previous drafts
+The **two UML diagrams** describe the **core features** of a libraryProject, specifically the **use cases** for borrowing and issuing books, as well as the roles and responsibilities of users and librarians/staff members.
+
+> The first diagram, `Core features: borrow and issue`, depicts the **interaction** between the user and the system, as well as the system and the librarian:
+
+:::{.callout-important}
+## TODO
+Create link to the previous UML
+:::
+
+> The second diagram, `Core features: user and librarian (staff)`, expands on the **roles** and **responsibilities** of users and librarians/staff members.
+
+:::{.callout-important}
+## TODO
+Create link to the previous UML
+:::
+
+### Current UML
+
+:::{.callout-important}
+## TODO
+Create new UML
+:::
+
+#### Publications
+
+```{mermaid}
+classDiagram
+    direction BT
+    %% Interface
+    class Publication {
+    }
+    <<interface>> Publication
+    %% Publication Entity classes
+    class Book {
+    }
+    class CD {
+    }
+    class DVD {
+    }
+
+    Book ..> Publication
+    CD ..> Publication
+    DVD ..> Publication
+
+```
+
+#### Library Members
+```{mermaid}
+classDiagram
+    direction BT
+    %% Interfaces
+    class GeneralOperations {
+    }
+    <<interface>> GeneralOperations
+
+    class UserOperations {
+    }
+    <<interface>> UserOperations
+    class StaffOperations {
+    }
+    <<interface>> StaffOperations
+
+    %% Interfaces relationships
+
+    User ..> UserOperations
+    Staff ..> StaffOperations
+
+    %% Abstract class
+    class LibraryMember {
+        + id: String
+        + address: String
+        + phoneNumber: String
+    }
+    <<abstract>> LibraryMember
+
+    %% LibraryMember Entity classes
+    User ..o LibraryMember
+    Staff ..o LibraryMember
+
+```
+

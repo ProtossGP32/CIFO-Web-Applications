@@ -25,14 +25,8 @@ git remote update <another-remote-repo> --prune
 
 ### Set the remote repository branch to track
 
-:::{.callout-warning}
-
-## ATTENTION!
-This command hasn't been fully tested yet. The results aren't the expected ones, so use it with caution
-:::
-
 ```{.bash}
-git remote --set-upstream-to <remote-repo>:<remote-branch>
+git branch -u <remote-repo>/<remote-branch>
 ```
 
 ### Check repository tracking config
