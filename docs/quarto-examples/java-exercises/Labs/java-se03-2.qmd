@@ -54,6 +54,17 @@ To `implement` these operations, we could define three separate `interfaces`:
 - StaffOperations
 - GeneralOperations
 
+:::{.callout-note}
+## In case of doubt...
+Remember, **Interfaces** have no state, thus they don't have variables (any attribute defined in an Interface is treated as a constant), and they are responsible of telling the classes that implement it what methods to support.
+
+If you need to keep track of the state of your instances (i.e. attributes), then go for the **abstract class** and extend it to the required subclasses.
+
+Here are some good points regarding Interfaces and Abstract classes:
+
+- [Instance variables in interface:](https://coderanch.com/t/178630/certification/Instance-variables-interface) It's a risky approach because they aren't treated as variables but `final static` (i.e, constants). If you need to define variables for your classes as well as mandatory methods implementation, then go for the **Abstract class approach**
+:::
+
 ## Interfaces
 The three interfaces `GeneralOperations`, `UserOperations` and `StaffOperations` provide a clear separation of concerns and responsibilities within the library management system.
 
@@ -105,15 +116,46 @@ Create new UML
 classDiagram
     direction BT
     %% Interface
-    class Publication {
+    class PublicationOperations {
+        <<interface>>
+        + publish() void
     }
-    <<interface>> Publication
+    %% Abstract class
+    class Publication {
+        <<abstract>>
+        - String id
+        - String title
+        - Author author
+        - LocalDate publicationDate
+        - String format
+        + getId() String
+        + getTitle() String
+        + getAuthor() Author
+        + getPublicationDate() LocalDate
+        + getFormat() String
+    }
+
+    Publication ..> PublicationOperations
+
     %% Publication Entity classes
     class Book {
+        - String ISBN
+        - int pages
+        - int genre
+        + getISBN() String
+        + getPages() int
+        + getGenre() String
+
     }
     class CD {
+        - int duration
+        - int numberOfTracks
+        + getDuration() int
+        + getNumberOfTracks() int
     }
     class DVD {
+        - int duration
+        + getDuration() int
     }
 
     Book ..> Publication
@@ -126,34 +168,81 @@ classDiagram
 ```{mermaid}
 classDiagram
     direction BT
+
+    %% Relationships
+    LibraryMember ..> GeneralOperations
+    LibraryMember ..> Person
+
+    Staff ..o StaffMember
+    StaffMember ..> StaffOperations
+    StaffMember ..> LibraryMember
+
+    User ..o LibraryMember
+    User ..> BorrowOperations
+    
+    Librarian ..o StaffMember
+    Librarian ..> BorrowOperations
+
+
+
     %% Interfaces
     class GeneralOperations {
+        <<interface>>
+        + createAccount(): void
+        + searchPublications(query: String): void
     }
-    <<interface>> GeneralOperations
 
-    class UserOperations {
+    class BorrowOperations {
+        <<interface>>
+        + createBorrow(item: Publication) void
+        + returnBorrow(item: Publication) void
+        + updateBorrow(item: Publication) void
+
     }
-    <<interface>> UserOperations
+
     class StaffOperations {
+        <<interface>>
+        + addPublication(item: Publication) void
+        + removePublication(item: Publication) void
+        + updatePublication(item: Publication) void
+        + registerMember(member: LibraryMember) void
+        + removeMember(member: LibraryMember) void
+        + updateMember(member: LibraryMember) void
+        + generateReports() void
     }
-    <<interface>> StaffOperations
-
-    %% Interfaces relationships
-
-    User ..> UserOperations
-    Staff ..> StaffOperations
 
     %% Abstract class
-    class LibraryMember {
-        + id: String
-        + address: String
-        + phoneNumber: String
+    class Person {
+        <<abstract>>
+        - firstName: String
+        - lastName: String
+        - nationality: String
+        - birthdate: LocalDate
     }
-    <<abstract>> LibraryMember
 
-    %% LibraryMember Entity classes
-    User ..o LibraryMember
-    Staff ..o LibraryMember
+    class LibraryMember {
+        <<abstract>>
+        - id: String
+        - address: String
+        - phoneNumber: String
+    }
+
+    class StaffMember {
+        <<abstract>>
+        - double: salary
+    }
+
+    %% Entities
+    class User {
+        - String: mail
+        - String: password
+    }
+
+    class Staff {
+    }
+
+    class Librarian {
+    }
 
 ```
 
