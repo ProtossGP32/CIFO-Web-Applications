@@ -627,6 +627,24 @@ ul.task-list li input[type="checkbox"] {
 <li>StaffOperations</li>
 <li>GeneralOperations</li>
 </ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+In case of doubt…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember, <strong>Interfaces</strong> have no state, thus they don’t have variables (any attribute defined in an Interface is treated as a constant), and they are responsible of telling the classes that implement it what methods to support.</p>
+<p>If you need to keep track of the state of your instances (i.e.&nbsp;attributes), then go for the <strong>abstract class</strong> and extend it to the required subclasses.</p>
+<p>Here are some good points regarding Interfaces and Abstract classes:</p>
+<ul>
+<li><a href="https://coderanch.com/t/178630/certification/Instance-variables-interface">Instance variables in interface:</a> It’s a risky approach because they aren’t treated as variables but <code>final static</code> (i.e, constants). If you need to define variables for your classes as well as mandatory methods implementation, then go for the <strong>Abstract class approach</strong></li>
+</ul>
+</div>
+</div>
 <section id="interfaces" class="level2">
 <h2 class="anchored" data-anchor-id="interfaces">Interfaces</h2>
 <p>The three interfaces <code>GeneralOperations</code>, <code>UserOperations</code> and <code>StaffOperations</code> provide a clear separation of concerns and responsibilities within the library management system.</p>
@@ -709,15 +727,46 @@ TODO
 </p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">classDiagram
     direction BT
     %% Interface
-    class Publication {
+    class PublicationOperations {
+        &lt;&lt;interface&gt;&gt;
+        + publish() void
     }
-    &lt;&lt;interface&gt;&gt; Publication
+    %% Abstract class
+    class Publication {
+        &lt;&lt;abstract&gt;&gt;
+        - String id
+        - String title
+        - Author author
+        - LocalDate publicationDate
+        - String format
+        + getId() String
+        + getTitle() String
+        + getAuthor() Author
+        + getPublicationDate() LocalDate
+        + getFormat() String
+    }
+
+    Publication ..&gt; PublicationOperations
+
     %% Publication Entity classes
     class Book {
+        - String ISBN
+        - int pages
+        - int genre
+        + getISBN() String
+        + getPages() int
+        + getGenre() String
+
     }
     class CD {
+        - int duration
+        - int numberOfTracks
+        + getDuration() int
+        + getNumberOfTracks() int
     }
     class DVD {
+        - int duration
+        + getDuration() int
     }
 
     Book ..&gt; Publication
@@ -741,34 +790,81 @@ TODO
 <p>
 </p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">classDiagram
     direction BT
+
+    %% Relationships
+    LibraryMember ..&gt; GeneralOperations
+    LibraryMember ..&gt; Person
+
+    Staff ..o StaffMember
+    StaffMember ..&gt; StaffOperations
+    StaffMember ..&gt; LibraryMember
+
+    User ..o LibraryMember
+    User ..&gt; BorrowOperations
+    
+    Librarian ..o StaffMember
+    Librarian ..&gt; BorrowOperations
+
+
+
     %% Interfaces
     class GeneralOperations {
+        &lt;&lt;interface&gt;&gt;
+        + createAccount(): void
+        + searchPublications(query: String): void
     }
-    &lt;&lt;interface&gt;&gt; GeneralOperations
 
-    class UserOperations {
+    class BorrowOperations {
+        &lt;&lt;interface&gt;&gt;
+        + createBorrow(item: Publication) void
+        + returnBorrow(item: Publication) void
+        + updateBorrow(item: Publication) void
+
     }
-    &lt;&lt;interface&gt;&gt; UserOperations
+
     class StaffOperations {
+        &lt;&lt;interface&gt;&gt;
+        + addPublication(item: Publication) void
+        + removePublication(item: Publication) void
+        + updatePublication(item: Publication) void
+        + registerMember(member: LibraryMember) void
+        + removeMember(member: LibraryMember) void
+        + updateMember(member: LibraryMember) void
+        + generateReports() void
     }
-    &lt;&lt;interface&gt;&gt; StaffOperations
-
-    %% Interfaces relationships
-
-    User ..&gt; UserOperations
-    Staff ..&gt; StaffOperations
 
     %% Abstract class
-    class LibraryMember {
-        + id: String
-        + address: String
-        + phoneNumber: String
+    class Person {
+        &lt;&lt;abstract&gt;&gt;
+        - firstName: String
+        - lastName: String
+        - nationality: String
+        - birthdate: LocalDate
     }
-    &lt;&lt;abstract&gt;&gt; LibraryMember
 
-    %% LibraryMember Entity classes
-    User ..o LibraryMember
-    Staff ..o LibraryMember
+    class LibraryMember {
+        &lt;&lt;abstract&gt;&gt;
+        - id: String
+        - address: String
+        - phoneNumber: String
+    }
+
+    class StaffMember {
+        &lt;&lt;abstract&gt;&gt;
+        - double: salary
+    }
+
+    %% Entities
+    class User {
+        - String: mail
+        - String: password
+    }
+
+    class Staff {
+    }
+
+    class Librarian {
+    }
 
 </pre>
 <div id="mermaid-tooltip-2" class="mermaidTooltip">
