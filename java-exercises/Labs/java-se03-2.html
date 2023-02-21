@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="ProtossGP32">
+<meta name="dcterms.date" content="2023-02-20">
 
-<title>CIFO - Web Applications - Inheritance</title>
+<title>CIFO - Web Applications - LAB#SE03-2: Library/Book, Expand Model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Principles/03-polymorphism.html" rel="next">
-<link href="../../java-exercises/Principles/00-encapsulation.html" rel="prev">
+<link href="../../java-exercises/Principles/01-abstraction.html" rel="next">
+<link href="../../java-exercises/Labs/java-se03-1.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -311,7 +313,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Inheritance</h1>
+      <h1 class="quarto-secondary-nav-title">LAB#SE03-2: Library/Book, Expand Model</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -474,7 +476,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se03-2.html" class="sidebar-item-text sidebar-link">LAB#SE03-2: Library/Book, Expand Model</a>
+  <a href="../../java-exercises/Labs/java-se03-2.html" class="sidebar-item-text sidebar-link active">LAB#SE03-2: Library/Book, Expand Model</a>
   </div>
 </li>
       </ul>
@@ -499,7 +501,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link active">Inheritance</a>
+  <a href="../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link">Inheritance</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -514,21 +516,53 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#interfaces" id="toc-interfaces" class="nav-link" data-scroll-target="#interfaces">Interfaces</a></li>
+  <li><a href="#abstract-class" id="toc-abstract-class" class="nav-link" data-scroll-target="#abstract-class">Abstract class</a></li>
+  <li><a href="#uml" id="toc-uml" class="nav-link" data-scroll-target="#uml">UML</a>
+  <ul class="collapse">
+  <li><a href="#previous-drafts" id="toc-previous-drafts" class="nav-link" data-scroll-target="#previous-drafts">Previous drafts</a></li>
+  <li><a href="#current-uml" id="toc-current-uml" class="nav-link" data-scroll-target="#current-uml">Current UML</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se03-2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Inheritance</h1>
-</div>
+<h1 class="title d-none d-lg-block">LAB#SE03-2: Library/Book, Expand Model</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">javase</div>
+    <div class="quarto-category">lab</div>
+    <div class="quarto-category">inherence</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ProtossGP32 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 20, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -536,20 +570,89 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Context</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Goal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Tasks</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Optional</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project.</p>
+<p><strong>Use of Interfaces and Abstract classes</strong> to implement features.</p>
 </div>
-<div class="callout-caption-container flex-fill">
-Class notes definition
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><strong>Describe the required models</strong> that might define the solution to a Library implementation. <strong>Create multiple classes in Java</strong> using the most convenient entity relationship between them to implement the solution.</p>
+<p><strong>Test these classes</strong> using JUnit.</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<ol class="example" type="1">
+<li>Create <strong>a new Maven or Gradle project</strong> and setting up the project structure</li>
+<li>Modify the project’s <code>pom.xml</code> or <code>build.gradle</code> file to import necessary dependencies, including <strong>JUnit</strong> for testing</li>
+<li>Implement the required classes in Java</li>
+<li>Implement User interactive interfaces for each manager</li>
+<li>Write <strong>JUnit tests</strong> to verify that classes work as expected</li>
+</ol>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<ul>
+<li><strong>Allow the user to input data via the console</strong>, rather than using <code>hard-coded test data</code> in JUnit tests</li>
+</ul>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p><strong>Inheritance</strong> is a fundamental concept in object-oriented programming. It is the process of <strong>creating new classes from existing classes.</strong></p>
 </div>
-</div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In <code>LibraryProject</code>, the <code>User</code> and <code>Staff</code> classes could have different <code>operations</code> that they are authorized/able to perform.</p>
+<p>The <code>User</code> class could have the following operations:</p>
+<ul>
+<li>Search for books</li>
+<li>Borrow a book</li>
+<li>Return a book</li>
+<li>Check the status of borrowed books</li>
+<li>Update personal information</li>
+</ul>
+<p>The <code>Staff</code> class could have the following operations:</p>
+<ul>
+<li>Add a new book</li>
+<li>Remove a book</li>
+<li>Update the book details</li>
+<li>Register a new user</li>
+<li>Remove a user</li>
+<li>Update the user details</li>
+<li>Generate reports on library operations</li>
+</ul>
+<p>To <code>implement</code> these operations, we could define three separate <code>interfaces</code>:</p>
+<ul>
+<li>UserOperations</li>
+<li>StaffOperations</li>
+<li>GeneralOperations</li>
+</ul>
+<section id="interfaces" class="level2">
+<h2 class="anchored" data-anchor-id="interfaces">Interfaces</h2>
+<p>The three interfaces <code>GeneralOperations</code>, <code>UserOperations</code> and <code>StaffOperations</code> provide a clear separation of concerns and responsibilities within the library management system.</p>
+<blockquote class="blockquote">
+<p><code>GeneralOperations</code> <code>interface</code> provides methods that are commonly used by both users and staff, such as searching for books and creating an account.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><code>UserOperations</code> <code>interface</code> includes methods that are specific to users, such as updating personal information, borrowing and returning books, and checking their borrowed books.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><code>StaffOperations</code> <code>interface</code> includes methods that are specific to staff members, such as adding, removing, and updating book details, as well as registering and updating user details and generationg reports.</p>
+</blockquote>
+<p>By separating these different functionailities into interfaces, <strong>it becomes easier to implement and maintain the system.</strong></p>
+<p>Interfaces allow the developers to implement their features knowing beforehand the expected available methods of future classes.</p>
+</section>
+<section id="abstract-class" class="level2">
+<h2 class="anchored" data-anchor-id="abstract-class">Abstract class</h2>
+<p>Finally, the <code>LibraryMember</code> abstrac class is a parent class for users and staff members, which includes common fields such as id, address, and phoneNumber.</p>
+<p>By defining these fields in an <code>abstract</code> class, it allows for different types of users and staff members to inherit them and <strong>avoid duplication of code.</strong></p>
+</section>
+<section id="uml" class="level2">
+<h2 class="anchored" data-anchor-id="uml">UML</h2>
+<section id="previous-drafts" class="level3">
+<h3 class="anchored" data-anchor-id="previous-drafts">Previous drafts</h3>
+<p>The <strong>two UML diagrams</strong> describe the <strong>core features</strong> of a libraryProject, specifically the <strong>use cases</strong> for borrowing and issuing books, as well as the roles and responsibilities of users and librarians/staff members.</p>
+<blockquote class="blockquote">
+<p>The first diagram, <code>Core features: borrow and issue</code>, depicts the <strong>interaction</strong> between the user and the system, as well as the system and the librarian:</p>
+</blockquote>
+<div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -559,12 +662,46 @@ TODO
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Create your own definition of <strong>inheritance</strong></p>
+<p>Create link to the previous UML</p>
 </div>
 </div>
-<p>The main purpose of <strong>inheritance</strong> is to reuse your code the most.</p>
+<blockquote class="blockquote">
+<p>The second diagram, <code>Core features: user and librarian (staff)</code>, expands on the <strong>roles</strong> and <strong>responsibilities</strong> of users and librarians/staff members.</p>
+</blockquote>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Create link to the previous UML</p>
+</div>
+</div>
+</section>
+<section id="current-uml" class="level3">
+<h3 class="anchored" data-anchor-id="current-uml">Current UML</h3>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Create new UML</p>
+</div>
+</div>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -817,13 +954,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Principles/00-encapsulation.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Encapsulation</span>
+      <a href="../../java-exercises/Labs/java-se03-1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">LAB#SE03-1: Library/Book core model</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Principles/03-polymorphism.html" class="pagination-link">
-        <span class="nav-page-text">Polymorphism</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../java-exercises/Principles/01-abstraction.html" class="pagination-link">
+        <span class="nav-page-text">Abstraction</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

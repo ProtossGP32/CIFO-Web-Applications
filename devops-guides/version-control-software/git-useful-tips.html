@@ -279,6 +279,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-1.html">
  <span class="dropdown-text">LAB#SE03-1: Library/Book core model</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-2.html">
+ <span class="dropdown-text">LAB#SE03-2: Library/Book, Expand Model</span></a>
+  </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Principles</li>
         <li>
@@ -479,6 +483,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#get-a-copy-of-a-remote-repository" id="toc-get-a-copy-of-a-remote-repository" class="nav-link" data-scroll-target="#get-a-copy-of-a-remote-repository">Get a copy of a remote repository</a></li>
   <li><a href="#update-list-of-repositorys-remote-branches" id="toc-update-list-of-repositorys-remote-branches" class="nav-link" data-scroll-target="#update-list-of-repositorys-remote-branches">Update list of repository’s remote branches</a></li>
+  <li><a href="#set-the-remote-repository-branch-to-track" id="toc-set-the-remote-repository-branch-to-track" class="nav-link" data-scroll-target="#set-the-remote-repository-branch-to-track">Set the remote repository branch to track</a></li>
+  <li><a href="#check-repository-tracking-config" id="toc-check-repository-tracking-config" class="nav-link" data-scroll-target="#check-repository-tracking-config">Check repository tracking config</a></li>
   </ul></li>
   <li><a href="#branches" id="toc-branches" class="nav-link" data-scroll-target="#branches">Branches</a>
   <ul class="collapse">
@@ -493,6 +499,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#retrieve-latest-changes-in-remote-repositories" id="toc-retrieve-latest-changes-in-remote-repositories" class="nav-link" data-scroll-target="#retrieve-latest-changes-in-remote-repositories">Retrieve latest changes in remote repositories</a></li>
   <li><a href="#update-local-branches" id="toc-update-local-branches" class="nav-link" data-scroll-target="#update-local-branches">Update local branches</a></li>
   <li><a href="#overwrite-local-branches-with-remote-repositories" id="toc-overwrite-local-branches-with-remote-repositories" class="nav-link" data-scroll-target="#overwrite-local-branches-with-remote-repositories">Overwrite local branches with remote repositories</a></li>
+  </ul></li>
+  <li><a href="#pushing-local-checkouts" id="toc-pushing-local-checkouts" class="nav-link" data-scroll-target="#pushing-local-checkouts">Pushing local checkouts</a>
+  <ul class="collapse">
+  <li><a href="#push-a-local-branch-to-a-remote-repository" id="toc-push-a-local-branch-to-a-remote-repository" class="nav-link" data-scroll-target="#push-a-local-branch-to-a-remote-repository">Push a local branch to a remote repository</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -528,47 +538,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="get-a-copy-of-a-remote-repository" class="level3">
 <h3 class="anchored" data-anchor-id="get-a-copy-of-a-remote-repository">Get a copy of a remote repository</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>git-repository-url<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When authenticating with SSH, use the appropriate SSH url.</p>
 </section>
 <section id="update-list-of-repositorys-remote-branches" class="level3">
 <h3 class="anchored" data-anchor-id="update-list-of-repositorys-remote-branches">Update list of repository’s remote branches</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">git</span> remote update origin <span class="at">--prune</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">git</span> remote update <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span> --prune</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>--prune</code> removes any local reference to non-existing remote branches</li>
 </ul>
+<p>If we have other remotes, just repeat the process changing the remote name:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">git</span> remote update <span class="op">&lt;</span>another-remote-repo<span class="op">&gt;</span> --prune</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="set-the-remote-repository-branch-to-track" class="level3">
+<h3 class="anchored" data-anchor-id="set-the-remote-repository-branch-to-track">Set the remote repository branch to track</h3>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+ATTENTION!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This command hasn’t been fully tested yet. The results aren’t the expected ones, so use it with caution</p>
+</div>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">git</span> remote <span class="at">--set-upstream-to</span> <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span>:<span class="op">&lt;</span>remote-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="check-repository-tracking-config" class="level3">
+<h3 class="anchored" data-anchor-id="check-repository-tracking-config">Check repository tracking config</h3>
+<p>You can always check what branches are tracked for each local branch in the <code>.git/config</code> file:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource conf number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>[core]</span>
+<span id="cb5-2"><a href="#cb5-2"></a>        repositoryformatversion = 0</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        filemode = false</span>
+<span id="cb5-4"><a href="#cb5-4"></a>        bare = false</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        logallrefupdates = true</span>
+<span id="cb5-6"><a href="#cb5-6"></a>[remote "origin"]</span>
+<span id="cb5-7"><a href="#cb5-7"></a>        url = git@github.com:ProtossGP32/gameBoardStats.git</span>
+<span id="cb5-8"><a href="#cb5-8"></a>        fetch = +refs/heads/*:refs/remotes/origin/*</span>
+<span id="cb5-9"><a href="#cb5-9"></a>[branch "main"]</span>
+<span id="cb5-10"><a href="#cb5-10"></a>        remote = origin</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        merge = refs/heads/main</span>
+<span id="cb5-12"><a href="#cb5-12"></a>[remote "upstream"]</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        url = git@github.com:cifoteam/gameBoardStats.git</span>
+<span id="cb5-14"><a href="#cb5-14"></a>        fetch = +refs/heads/main:refs/remotes/upstream/main</span>
+<span id="cb5-15"><a href="#cb5-15"></a>[branch "task/59-create-gamescollectionmanager-class"]</span>
+<span id="cb5-16"><a href="#cb5-16"></a>        remote = origin</span>
+<span id="cb5-17"><a href="#cb5-17"></a>        merge = refs/heads/task/59-create-gamescollectionmanager-class</span>
+<span id="cb5-18"><a href="#cb5-18"></a>[branch "task/66-modify-gamescollection-class-to-include-info-related-to-the-games-usage"]</span>
+<span id="cb5-19"><a href="#cb5-19"></a>        remote = origin</span>
+<span id="cb5-20"><a href="#cb5-20"></a>        merge = refs/heads/task/66-modify-gamescollection-class-to-include-info-related-to-the-games-usage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="branches" class="level2">
 <h2 class="anchored" data-anchor-id="branches">Branches</h2>
 <section id="show-available-branches" class="level3">
 <h3 class="anchored" data-anchor-id="show-available-branches">Show available branches</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">git</span> branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">git</span> branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Also show remote branches:</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">git</span> branch <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> branch <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="clone-an-existing-branch" class="level3">
 <h3 class="anchored" data-anchor-id="clone-an-existing-branch">Clone an existing branch</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="create-a-new-branch" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-new-branch">Create a new branch</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>new-branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>new-branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="delete-a-local-branch" class="level3">
 <h3 class="anchored" data-anchor-id="delete-a-local-branch">Delete a local branch</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> branch <span class="at">--delete</span> <span class="op">&lt;</span>branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> branch <span class="at">--delete</span> <span class="op">&lt;</span>branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="delete-a-remote-branch" class="level3">
 <h3 class="anchored" data-anchor-id="delete-a-remote-branch">Delete a remote branch</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> push origin <span class="at">--delete</span> feature/login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">git</span> push origin <span class="at">--delete</span> feature/login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="updating-local-checkouts" class="level2">
 <h2 class="anchored" data-anchor-id="updating-local-checkouts">Updating local checkouts</h2>
 <section id="retrieve-latest-changes-in-remote-repositories" class="level3">
 <h3 class="anchored" data-anchor-id="retrieve-latest-changes-in-remote-repositories">Retrieve latest changes in remote repositories</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">git</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">git</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>This command downloads the git objects (blobs, trees and commits), it doesn’t <code>merge</code> the changes into the local checkouts.
 <ul>
@@ -578,11 +632,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="update-local-branches" class="level3">
 <h3 class="anchored" data-anchor-id="update-local-branches">Update local branches</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>remote-branch<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>remote-branch<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="overwrite-local-branches-with-remote-repositories" class="level3">
 <h3 class="anchored" data-anchor-id="overwrite-local-branches-with-remote-repositories">Overwrite local branches with remote repositories</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="pushing-local-checkouts" class="level2">
+<h2 class="anchored" data-anchor-id="pushing-local-checkouts">Pushing local checkouts</h2>
+<section id="push-a-local-branch-to-a-remote-repository" class="level3">
+<h3 class="anchored" data-anchor-id="push-a-local-branch-to-a-remote-repository">Push a local branch to a remote repository</h3>
+<p>When pushing a branch for the first time, it has to be created in the remote repository. This is done during <code>push</code> with the following command:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>--set-upstream</code> automatically sets up the tracking information for that branch</li>
+</ul>
+<p>If the branch is already created in the remote repository, you can simply push it to the desired remote by executing:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

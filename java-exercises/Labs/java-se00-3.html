@@ -282,6 +282,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-1.html">
  <span class="dropdown-text">LAB#SE03-1: Library/Book core model</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-2.html">
+ <span class="dropdown-text">LAB#SE03-2: Library/Book, Expand Model</span></a>
+  </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Principles</li>
         <li>
@@ -532,6 +536,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../java-exercises/Labs/java-se03-1.html" class="sidebar-item-text sidebar-link">LAB#SE03-1: Library/Book core model</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../java-exercises/Labs/java-se03-2.html" class="sidebar-item-text sidebar-link">LAB#SE03-2: Library/Book, Expand Model</a>
   </div>
 </li>
       </ul>
@@ -1074,9 +1083,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-261"><a href="#cb2-261"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>book<span class="op">.</span><span class="fu">getBookID</span><span class="op">()</span> <span class="op">+</span> <span class="st">" - "</span> <span class="op">+</span> book<span class="op">.</span><span class="fu">getTitle</span><span class="op">());</span></span>
 <span id="cb2-262"><a href="#cb2-262"></a>            <span class="op">}</span></span>
 <span id="cb2-263"><a href="#cb2-263"></a>        <span class="op">}</span></span>
-<span id="cb2-264"><a href="#cb2-264"></a>        <span class="bu">String</span> bookID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage books] Enter book ID:"</span><span class="op">);</span></span>
+<span id="cb2-264"><a href="#cb2-264"></a>        <span class="bu">String</span> bookID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage books] Enter book ID: "</span><span class="op">);</span></span>
 <span id="cb2-265"><a href="#cb2-265"></a>        <span class="cf">while</span> <span class="op">(!</span>books<span class="op">.</span><span class="fu">containsKey</span><span class="op">(</span>bookID<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb2-266"><a href="#cb2-266"></a>            bookID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage books] Invalid book ID. Enter book ID:"</span><span class="op">);</span></span>
+<span id="cb2-266"><a href="#cb2-266"></a>            bookID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage books] Invalid book ID. Enter book ID: "</span><span class="op">);</span></span>
 <span id="cb2-267"><a href="#cb2-267"></a>        <span class="op">}</span></span>
 <span id="cb2-268"><a href="#cb2-268"></a>        <span class="cf">return</span> bookID<span class="op">;</span></span>
 <span id="cb2-269"><a href="#cb2-269"></a>    <span class="op">}</span></span>
@@ -1378,226 +1387,250 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">logic</span><span class="op">;</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">domain</span><span class="op">.</span><span class="im">Book</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">domain</span><span class="op">.</span><span class="im">Student</span><span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">stream</span><span class="op">.</span><span class="im">Stream</span><span class="op">;</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">utils</span><span class="op">.</span><span class="im">InterfaceUtils</span><span class="op">.</span><span class="im">askInt</span><span class="op">;</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">utils</span><span class="op">.</span><span class="im">InterfaceUtils</span><span class="op">.</span><span class="im">askString</span><span class="op">;</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="kw">public</span> <span class="kw">class</span> StudentManager <span class="op">{</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="bu">Map</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> Student<span class="op">&gt;</span> students <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;&gt;();</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a></span>
-<span id="cb4-15"><a href="#cb4-15"></a>    <span class="kw">private</span> <span class="kw">enum</span> studentOptionsEnum <span class="op">{</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a>        <span class="fu">ADD_STUDENT</span><span class="op">(</span><span class="st">"Add student"</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a>            <span class="at">@Override</span></span>
-<span id="cb4-18"><a href="#cb4-18"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a>                <span class="fu">addStudent</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>            <span class="op">}</span></span>
-<span id="cb4-21"><a href="#cb4-21"></a></span>
-<span id="cb4-22"><a href="#cb4-22"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">addStudent</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-23"><a href="#cb4-23"></a>                <span class="cf">while</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-24"><a href="#cb4-24"></a>                    <span class="co">// Ask for the student's details</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a>                    <span class="bu">String</span> studentFirstName <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter student's first name ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a>                    <span class="cf">if</span> <span class="op">(</span>studentFirstName<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>                        <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb4-28"><a href="#cb4-28"></a>                    <span class="op">}</span></span>
-<span id="cb4-29"><a href="#cb4-29"></a>                    <span class="co">// Ask for the rest of the student's information</span></span>
-<span id="cb4-30"><a href="#cb4-30"></a>                    <span class="bu">String</span> studentLastName <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter student's last name ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb4-31"><a href="#cb4-31"></a>                    <span class="bu">String</span> studentFullName <span class="op">=</span> studentFirstName <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> studentLastName<span class="op">;</span></span>
-<span id="cb4-32"><a href="#cb4-32"></a>                    <span class="dt">int</span> studentAge <span class="op">=</span> <span class="fu">askInt</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter student's age ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb4-33"><a href="#cb4-33"></a>                    <span class="bu">String</span> studentUniversity <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter student's university ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb4-34"><a href="#cb4-34"></a>                    <span class="bu">List</span><span class="op">&lt;</span><span class="bu">Book</span><span class="op">&gt;</span> studentBooks <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
-<span id="cb4-35"><a href="#cb4-35"></a>                    <span class="co">// Create the new student object</span></span>
-<span id="cb4-36"><a href="#cb4-36"></a>                    Student newStudent <span class="op">=</span> <span class="kw">new</span> <span class="fu">Student</span><span class="op">(</span>studentFirstName<span class="op">,</span> studentLastName<span class="op">,</span> studentAge<span class="op">,</span> studentUniversity<span class="op">,</span> studentBooks<span class="op">);</span></span>
-<span id="cb4-37"><a href="#cb4-37"></a>                    <span class="co">// Check if the student already exists inside the students hashmap</span></span>
-<span id="cb4-38"><a href="#cb4-38"></a>                    <span class="cf">if</span> <span class="op">(!</span>students<span class="op">.</span><span class="fu">containsValue</span><span class="op">(</span>newStudent<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb4-39"><a href="#cb4-39"></a>                        <span class="co">// Insert the student into the storage - Key: studentID</span></span>
-<span id="cb4-40"><a href="#cb4-40"></a>                        students<span class="op">.</span><span class="fu">put</span><span class="op">(</span>newStudent<span class="op">.</span><span class="fu">getStudentID</span><span class="op">(),</span> newStudent<span class="op">);</span></span>
-<span id="cb4-41"><a href="#cb4-41"></a>                        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Student "</span> <span class="op">+</span> studentFullName <span class="op">+</span> <span class="st">" added!"</span><span class="op">);</span></span>
-<span id="cb4-42"><a href="#cb4-42"></a>                        <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb4-43"><a href="#cb4-43"></a>                    <span class="op">}</span></span>
-<span id="cb4-44"><a href="#cb4-44"></a>                    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Student "</span> <span class="op">+</span> studentFullName <span class="op">+</span> <span class="st">" already exists! Enter a new one"</span><span class="op">);</span></span>
-<span id="cb4-45"><a href="#cb4-45"></a>                <span class="op">}</span></span>
-<span id="cb4-46"><a href="#cb4-46"></a>            <span class="op">}</span></span>
-<span id="cb4-47"><a href="#cb4-47"></a>        <span class="op">},</span></span>
-<span id="cb4-48"><a href="#cb4-48"></a>        <span class="fu">DELETE_STUDENT</span><span class="op">(</span><span class="st">"Delete student"</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-49"><a href="#cb4-49"></a>            <span class="at">@Override</span></span>
-<span id="cb4-50"><a href="#cb4-50"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-51"><a href="#cb4-51"></a>                <span class="fu">deleteStudent</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-52"><a href="#cb4-52"></a>            <span class="op">}</span></span>
-<span id="cb4-53"><a href="#cb4-53"></a></span>
-<span id="cb4-54"><a href="#cb4-54"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">deleteStudent</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-55"><a href="#cb4-55"></a>                studentOptionsEnum<span class="op">.</span><span class="fu">LIST_STUDENTS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-56"><a href="#cb4-56"></a>                <span class="co">// Ask for the student ID</span></span>
-<span id="cb4-57"><a href="#cb4-57"></a>                <span class="bu">String</span> studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"Enter the student ID: "</span><span class="op">);</span></span>
-<span id="cb4-58"><a href="#cb4-58"></a>                <span class="cf">while</span> <span class="op">(!</span>students<span class="op">.</span><span class="fu">containsKey</span><span class="op">(</span>studentID<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb4-59"><a href="#cb4-59"></a>                    <span class="cf">if</span> <span class="op">(</span>studentID<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb4-60"><a href="#cb4-60"></a>                        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Delete student cancelled"</span><span class="op">);</span></span>
-<span id="cb4-61"><a href="#cb4-61"></a>                        <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb4-62"><a href="#cb4-62"></a>                    <span class="op">}</span></span>
-<span id="cb4-63"><a href="#cb4-63"></a>                    studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"Incorrect ID. Enter the student ID: "</span><span class="op">);</span></span>
-<span id="cb4-64"><a href="#cb4-64"></a>                <span class="op">}</span></span>
-<span id="cb4-65"><a href="#cb4-65"></a>                Student deletedStudent <span class="op">=</span> students<span class="op">.</span><span class="fu">remove</span><span class="op">(</span>studentID<span class="op">);</span></span>
-<span id="cb4-66"><a href="#cb4-66"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">DELETE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Student "</span> <span class="op">+</span> deletedStudent<span class="op">.</span><span class="fu">getFirstName</span><span class="op">()</span> <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> deletedStudent<span class="op">.</span><span class="fu">getLastName</span><span class="op">()</span> <span class="op">+</span> <span class="st">" deleted!"</span><span class="op">);</span></span>
-<span id="cb4-67"><a href="#cb4-67"></a>            <span class="op">}</span></span>
-<span id="cb4-68"><a href="#cb4-68"></a></span>
-<span id="cb4-69"><a href="#cb4-69"></a>        <span class="op">},</span></span>
-<span id="cb4-70"><a href="#cb4-70"></a>        <span class="fu">CHECK_STUDENT</span><span class="op">(</span><span class="st">"Check student"</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-71"><a href="#cb4-71"></a>            <span class="at">@Override</span></span>
-<span id="cb4-72"><a href="#cb4-72"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-73"><a href="#cb4-73"></a>                <span class="fu">checkStudent</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-74"><a href="#cb4-74"></a>            <span class="op">}</span></span>
-<span id="cb4-75"><a href="#cb4-75"></a></span>
-<span id="cb4-76"><a href="#cb4-76"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">checkStudent</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-77"><a href="#cb4-77"></a>                studentOptionsEnum<span class="op">.</span><span class="fu">LIST_STUDENTS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-78"><a href="#cb4-78"></a>                <span class="co">// Ask for the student ID</span></span>
-<span id="cb4-79"><a href="#cb4-79"></a>                <span class="bu">String</span> studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"Enter the student ID: "</span><span class="op">);</span></span>
-<span id="cb4-80"><a href="#cb4-80"></a></span>
-<span id="cb4-81"><a href="#cb4-81"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>students<span class="op">.</span><span class="fu">get</span><span class="op">(</span>studentID<span class="op">));</span></span>
-<span id="cb4-82"><a href="#cb4-82"></a>            <span class="op">}</span></span>
-<span id="cb4-83"><a href="#cb4-83"></a>        <span class="op">},</span></span>
-<span id="cb4-84"><a href="#cb4-84"></a>        <span class="fu">LIST_STUDENTS</span><span class="op">(</span><span class="st">"List students"</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-85"><a href="#cb4-85"></a>            <span class="at">@Override</span></span>
-<span id="cb4-86"><a href="#cb4-86"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-87"><a href="#cb4-87"></a>                <span class="fu">listStudents</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-88"><a href="#cb4-88"></a>            <span class="op">}</span></span>
-<span id="cb4-89"><a href="#cb4-89"></a></span>
-<span id="cb4-90"><a href="#cb4-90"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">listStudents</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-91"><a href="#cb4-91"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">CHECK_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Available students:"</span><span class="op">);</span></span>
-<span id="cb4-92"><a href="#cb4-92"></a>                students<span class="op">.</span><span class="fu">forEach</span><span class="op">((</span>studentID<span class="op">,</span> student<span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>studentID <span class="op">+</span> <span class="st">": "</span> <span class="op">+</span> student<span class="op">.</span><span class="fu">getFirstName</span><span class="op">()</span> <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> student<span class="op">.</span><span class="fu">getLastName</span><span class="op">()));</span></span>
-<span id="cb4-93"><a href="#cb4-93"></a>            <span class="op">}</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">import</span> <span class="im">com</span><span class="op">.</span><span class="im">github</span><span class="op">.</span><span class="im">javafaker</span><span class="op">.</span><span class="im">Faker</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">domain</span><span class="op">.</span><span class="im">Book</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">domain</span><span class="op">.</span><span class="im">Student</span><span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">stream</span><span class="op">.</span><span class="im">Stream</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">utils</span><span class="op">.</span><span class="im">InterfaceUtils</span><span class="op">.</span><span class="im">askInt</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">labse03part1</span><span class="op">.</span><span class="im">utils</span><span class="op">.</span><span class="im">InterfaceUtils</span><span class="op">.</span><span class="im">askString</span><span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="kw">public</span> <span class="kw">class</span> StudentManager <span class="op">{</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="bu">Map</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> Student<span class="op">&gt;</span> students <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">initializeRandomStudents</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>        <span class="cf">if</span> <span class="op">(</span>students<span class="op">.</span><span class="fu">isEmpty</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>            <span class="bu">Random</span> randomNum <span class="op">=</span> <span class="kw">new</span> <span class="bu">Random</span><span class="op">();</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>            <span class="fu">createFakeStudents</span><span class="op">(</span>randomNum<span class="op">.</span><span class="fu">nextInt</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">10</span><span class="op">));</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>        <span class="op">}</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="op">}</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a></span>
+<span id="cb4-23"><a href="#cb4-23"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">createFakeStudents</span><span class="op">(</span><span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>        Faker faker <span class="op">=</span> <span class="kw">new</span> <span class="fu">Faker</span><span class="op">();</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a>        Student newStudent<span class="op">;</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>        <span class="co">// Create as many new Students as requested</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> number<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>            newStudent <span class="op">=</span> <span class="kw">new</span> <span class="fu">Student</span><span class="op">();</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>            newStudent<span class="op">.</span><span class="fu">setFirstName</span><span class="op">(</span>faker<span class="op">.</span><span class="fu">name</span><span class="op">().</span><span class="fu">firstName</span><span class="op">());</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>            newStudent<span class="op">.</span><span class="fu">setLastName</span><span class="op">(</span>faker<span class="op">.</span><span class="fu">name</span><span class="op">().</span><span class="fu">lastName</span><span class="op">());</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>            newStudent<span class="op">.</span><span class="fu">setAge</span><span class="op">(</span>faker<span class="op">.</span><span class="fu">number</span><span class="op">().</span><span class="fu">numberBetween</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">99</span><span class="op">));</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>            newStudent<span class="op">.</span><span class="fu">setUniversity</span><span class="op">(</span>faker<span class="op">.</span><span class="fu">university</span><span class="op">().</span><span class="fu">name</span><span class="op">());</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a>            newStudent<span class="op">.</span><span class="fu">setBooks</span><span class="op">(</span><span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;());</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a></span>
+<span id="cb4-35"><a href="#cb4-35"></a>            <span class="co">// Put the fake student into the storage</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>            students<span class="op">.</span><span class="fu">put</span><span class="op">(</span>newStudent<span class="op">.</span><span class="fu">getStudentID</span><span class="op">(),</span> newStudent<span class="op">);</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>        <span class="op">}</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>    <span class="op">}</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a></span>
+<span id="cb4-40"><a href="#cb4-40"></a>    <span class="kw">private</span> <span class="kw">enum</span> studentOptionsEnum <span class="op">{</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a>        <span class="fu">ADD_STUDENT</span><span class="op">(</span><span class="st">"Add student"</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a>            <span class="at">@Override</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a>                <span class="fu">addStudent</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>            <span class="op">}</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a></span>
+<span id="cb4-47"><a href="#cb4-47"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">addStudent</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-48"><a href="#cb4-48"></a>                <span class="cf">while</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>                    <span class="co">// Ask for the student's details</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>                    <span class="bu">String</span> studentFirstName <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter student's first name ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>                    <span class="cf">if</span> <span class="op">(</span>studentFirstName<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb4-52"><a href="#cb4-52"></a>                        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb4-53"><a href="#cb4-53"></a>                    <span class="op">}</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a>                    <span class="co">// Ask for the rest of the student's information</span></span>
+<span id="cb4-55"><a href="#cb4-55"></a>                    <span class="bu">String</span> studentLastName <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter student's last name ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb4-56"><a href="#cb4-56"></a>                    <span class="bu">String</span> studentFullName <span class="op">=</span> studentFirstName <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> studentLastName<span class="op">;</span></span>
+<span id="cb4-57"><a href="#cb4-57"></a>                    <span class="dt">int</span> studentAge <span class="op">=</span> <span class="fu">askInt</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter student's age ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb4-58"><a href="#cb4-58"></a>                    <span class="bu">String</span> studentUniversity <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter student's university ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb4-59"><a href="#cb4-59"></a>                    <span class="bu">List</span><span class="op">&lt;</span><span class="bu">Book</span><span class="op">&gt;</span> studentBooks <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb4-60"><a href="#cb4-60"></a>                    <span class="co">// Create the new student object</span></span>
+<span id="cb4-61"><a href="#cb4-61"></a>                    Student newStudent <span class="op">=</span> <span class="kw">new</span> <span class="fu">Student</span><span class="op">(</span>studentFirstName<span class="op">,</span> studentLastName<span class="op">,</span> studentAge<span class="op">,</span> studentUniversity<span class="op">,</span> studentBooks<span class="op">);</span></span>
+<span id="cb4-62"><a href="#cb4-62"></a>                    <span class="co">// Check if the student already exists inside the students hashmap</span></span>
+<span id="cb4-63"><a href="#cb4-63"></a>                    <span class="cf">if</span> <span class="op">(!</span>students<span class="op">.</span><span class="fu">containsValue</span><span class="op">(</span>newStudent<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb4-64"><a href="#cb4-64"></a>                        <span class="co">// Insert the student into the storage - Key: studentID</span></span>
+<span id="cb4-65"><a href="#cb4-65"></a>                        students<span class="op">.</span><span class="fu">put</span><span class="op">(</span>newStudent<span class="op">.</span><span class="fu">getStudentID</span><span class="op">(),</span> newStudent<span class="op">);</span></span>
+<span id="cb4-66"><a href="#cb4-66"></a>                        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Student "</span> <span class="op">+</span> studentFullName <span class="op">+</span> <span class="st">" added!"</span><span class="op">);</span></span>
+<span id="cb4-67"><a href="#cb4-67"></a>                        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb4-68"><a href="#cb4-68"></a>                    <span class="op">}</span></span>
+<span id="cb4-69"><a href="#cb4-69"></a>                    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">ADD_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Student "</span> <span class="op">+</span> studentFullName <span class="op">+</span> <span class="st">" already exists! Enter a new one"</span><span class="op">);</span></span>
+<span id="cb4-70"><a href="#cb4-70"></a>                <span class="op">}</span></span>
+<span id="cb4-71"><a href="#cb4-71"></a>            <span class="op">}</span></span>
+<span id="cb4-72"><a href="#cb4-72"></a>        <span class="op">},</span></span>
+<span id="cb4-73"><a href="#cb4-73"></a>        <span class="fu">DELETE_STUDENT</span><span class="op">(</span><span class="st">"Delete student"</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-74"><a href="#cb4-74"></a>            <span class="at">@Override</span></span>
+<span id="cb4-75"><a href="#cb4-75"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-76"><a href="#cb4-76"></a>                <span class="fu">deleteStudent</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-77"><a href="#cb4-77"></a>            <span class="op">}</span></span>
+<span id="cb4-78"><a href="#cb4-78"></a></span>
+<span id="cb4-79"><a href="#cb4-79"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">deleteStudent</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-80"><a href="#cb4-80"></a>                studentOptionsEnum<span class="op">.</span><span class="fu">LIST_STUDENTS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-81"><a href="#cb4-81"></a>                <span class="co">// Ask for the student ID</span></span>
+<span id="cb4-82"><a href="#cb4-82"></a>                <span class="bu">String</span> studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"Enter the student ID: "</span><span class="op">);</span></span>
+<span id="cb4-83"><a href="#cb4-83"></a>                <span class="cf">while</span> <span class="op">(!</span>students<span class="op">.</span><span class="fu">containsKey</span><span class="op">(</span>studentID<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb4-84"><a href="#cb4-84"></a>                    <span class="cf">if</span> <span class="op">(</span>studentID<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb4-85"><a href="#cb4-85"></a>                        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Delete student cancelled"</span><span class="op">);</span></span>
+<span id="cb4-86"><a href="#cb4-86"></a>                        <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb4-87"><a href="#cb4-87"></a>                    <span class="op">}</span></span>
+<span id="cb4-88"><a href="#cb4-88"></a>                    studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"Incorrect ID. Enter the student ID: "</span><span class="op">);</span></span>
+<span id="cb4-89"><a href="#cb4-89"></a>                <span class="op">}</span></span>
+<span id="cb4-90"><a href="#cb4-90"></a>                Student deletedStudent <span class="op">=</span> students<span class="op">.</span><span class="fu">remove</span><span class="op">(</span>studentID<span class="op">);</span></span>
+<span id="cb4-91"><a href="#cb4-91"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">DELETE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Student "</span> <span class="op">+</span> deletedStudent<span class="op">.</span><span class="fu">getFirstName</span><span class="op">()</span> <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> deletedStudent<span class="op">.</span><span class="fu">getLastName</span><span class="op">()</span> <span class="op">+</span> <span class="st">" deleted!"</span><span class="op">);</span></span>
+<span id="cb4-92"><a href="#cb4-92"></a>            <span class="op">}</span></span>
+<span id="cb4-93"><a href="#cb4-93"></a></span>
 <span id="cb4-94"><a href="#cb4-94"></a>        <span class="op">},</span></span>
-<span id="cb4-95"><a href="#cb4-95"></a>        <span class="fu">UPDATE_STUDENT</span><span class="op">(</span><span class="st">"Update student"</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-95"><a href="#cb4-95"></a>        <span class="fu">CHECK_STUDENT</span><span class="op">(</span><span class="st">"Check student"</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb4-96"><a href="#cb4-96"></a>            <span class="at">@Override</span></span>
 <span id="cb4-97"><a href="#cb4-97"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-98"><a href="#cb4-98"></a>                <span class="fu">updateStudent</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-98"><a href="#cb4-98"></a>                <span class="fu">checkStudent</span><span class="op">(</span>reader<span class="op">);</span></span>
 <span id="cb4-99"><a href="#cb4-99"></a>            <span class="op">}</span></span>
 <span id="cb4-100"><a href="#cb4-100"></a></span>
-<span id="cb4-101"><a href="#cb4-101"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">updateStudent</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-102"><a href="#cb4-102"></a>                <span class="co">// </span><span class="al">TODO</span><span class="co">: Ask for the student ID instead of the full name</span></span>
-<span id="cb4-103"><a href="#cb4-103"></a>                <span class="co">// Ask for the student name</span></span>
-<span id="cb4-104"><a href="#cb4-104"></a>                studentOptionsEnum<span class="op">.</span><span class="fu">LIST_STUDENTS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-105"><a href="#cb4-105"></a>                <span class="co">//String studentFullName = getStudentFullName(reader);</span></span>
-<span id="cb4-106"><a href="#cb4-106"></a>                <span class="bu">String</span> studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"Enter the student ID: "</span><span class="op">);</span></span>
-<span id="cb4-107"><a href="#cb4-107"></a></span>
-<span id="cb4-108"><a href="#cb4-108"></a>                <span class="co">// Retrieve the student to update</span></span>
-<span id="cb4-109"><a href="#cb4-109"></a>                Student studentToUpdate <span class="op">=</span> students<span class="op">.</span><span class="fu">get</span><span class="op">(</span>studentID<span class="op">);</span></span>
-<span id="cb4-110"><a href="#cb4-110"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>studentToUpdate<span class="op">);</span></span>
-<span id="cb4-111"><a href="#cb4-111"></a></span>
-<span id="cb4-112"><a href="#cb4-112"></a>                <span class="co">// Once the student is found, ask for the parameter to change</span></span>
-<span id="cb4-113"><a href="#cb4-113"></a>                <span class="bu">String</span> parameter <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the parameter to modify ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb4-101"><a href="#cb4-101"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">checkStudent</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-102"><a href="#cb4-102"></a>                studentOptionsEnum<span class="op">.</span><span class="fu">LIST_STUDENTS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-103"><a href="#cb4-103"></a>                <span class="co">// Ask for the student ID</span></span>
+<span id="cb4-104"><a href="#cb4-104"></a>                <span class="bu">String</span> studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"Enter the student ID: "</span><span class="op">);</span></span>
+<span id="cb4-105"><a href="#cb4-105"></a></span>
+<span id="cb4-106"><a href="#cb4-106"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>students<span class="op">.</span><span class="fu">get</span><span class="op">(</span>studentID<span class="op">));</span></span>
+<span id="cb4-107"><a href="#cb4-107"></a>            <span class="op">}</span></span>
+<span id="cb4-108"><a href="#cb4-108"></a>        <span class="op">},</span></span>
+<span id="cb4-109"><a href="#cb4-109"></a>        <span class="fu">LIST_STUDENTS</span><span class="op">(</span><span class="st">"List students"</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-110"><a href="#cb4-110"></a>            <span class="at">@Override</span></span>
+<span id="cb4-111"><a href="#cb4-111"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-112"><a href="#cb4-112"></a>                <span class="fu">listStudents</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-113"><a href="#cb4-113"></a>            <span class="op">}</span></span>
 <span id="cb4-114"><a href="#cb4-114"></a></span>
-<span id="cb4-115"><a href="#cb4-115"></a>                <span class="co">// Define an Object variable to store the different types of answers</span></span>
-<span id="cb4-116"><a href="#cb4-116"></a>                <span class="bu">Object</span> value<span class="op">;</span></span>
-<span id="cb4-117"><a href="#cb4-117"></a></span>
-<span id="cb4-118"><a href="#cb4-118"></a>                <span class="cf">while</span> <span class="op">(!</span>parameter<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb4-119"><a href="#cb4-119"></a>                    <span class="cf">switch</span> <span class="op">(</span>parameter<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-120"><a href="#cb4-120"></a>                        <span class="cf">case</span> <span class="st">"firstName"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb4-121"><a href="#cb4-121"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the student's new first name: "</span><span class="op">);</span></span>
-<span id="cb4-122"><a href="#cb4-122"></a>                            studentToUpdate<span class="op">.</span><span class="fu">setFirstName</span><span class="op">(</span>value<span class="op">.</span><span class="fu">toString</span><span class="op">());</span></span>
-<span id="cb4-123"><a href="#cb4-123"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] First name set to "</span> <span class="op">+</span> value<span class="op">);</span></span>
-<span id="cb4-124"><a href="#cb4-124"></a>                        <span class="op">}</span></span>
-<span id="cb4-125"><a href="#cb4-125"></a>                        <span class="cf">case</span> <span class="st">"lastName"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb4-126"><a href="#cb4-126"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the student's new last name: "</span><span class="op">);</span></span>
-<span id="cb4-127"><a href="#cb4-127"></a>                            studentToUpdate<span class="op">.</span><span class="fu">setLastName</span><span class="op">(</span>value<span class="op">.</span><span class="fu">toString</span><span class="op">());</span></span>
-<span id="cb4-128"><a href="#cb4-128"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Last name set to "</span> <span class="op">+</span> value<span class="op">);</span></span>
-<span id="cb4-129"><a href="#cb4-129"></a>                        <span class="op">}</span></span>
-<span id="cb4-130"><a href="#cb4-130"></a>                        <span class="cf">case</span> <span class="st">"age"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb4-131"><a href="#cb4-131"></a>                            value <span class="op">=</span> <span class="fu">askInt</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the student's new age: "</span><span class="op">);</span></span>
-<span id="cb4-132"><a href="#cb4-132"></a>                            studentToUpdate<span class="op">.</span><span class="fu">setAge</span><span class="op">((</span><span class="dt">int</span><span class="op">)</span> value<span class="op">);</span></span>
-<span id="cb4-133"><a href="#cb4-133"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Age set to "</span> <span class="op">+</span> value<span class="op">);</span></span>
-<span id="cb4-134"><a href="#cb4-134"></a>                        <span class="op">}</span></span>
-<span id="cb4-135"><a href="#cb4-135"></a>                        <span class="cf">case</span> <span class="st">"university"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb4-136"><a href="#cb4-136"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the student's new university: "</span><span class="op">);</span></span>
-<span id="cb4-137"><a href="#cb4-137"></a>                            studentToUpdate<span class="op">.</span><span class="fu">setUniversity</span><span class="op">(</span>value<span class="op">.</span><span class="fu">toString</span><span class="op">());</span></span>
-<span id="cb4-138"><a href="#cb4-138"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] University set to "</span> <span class="op">+</span> value<span class="op">);</span></span>
-<span id="cb4-139"><a href="#cb4-139"></a>                        <span class="op">}</span></span>
-<span id="cb4-140"><a href="#cb4-140"></a>                        <span class="cf">case</span> <span class="st">"books"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb4-141"><a href="#cb4-141"></a>                            <span class="co">// </span><span class="al">TODO</span><span class="co">: Call a book manager for the student's list of books. Maybe a public static method in BookManager that accepts an ArrayList of Books?</span></span>
-<span id="cb4-142"><a href="#cb4-142"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Books Management coming soon!"</span><span class="op">);</span></span>
-<span id="cb4-143"><a href="#cb4-143"></a>                            <span class="co">//value = askString(reader, "[" + studentOptionsEnum.UPDATE_STUDENT.getDescription() + "] Enter the student's new car: ");</span></span>
-<span id="cb4-144"><a href="#cb4-144"></a>                            <span class="co">// Some BookManager logic</span></span>
-<span id="cb4-145"><a href="#cb4-145"></a>                            <span class="co">//System.out.println("[" + studentOptionsEnum.UPDATE_STUDENT.getDescription() + "] Car set to " + value);</span></span>
-<span id="cb4-146"><a href="#cb4-146"></a>                        <span class="op">}</span></span>
-<span id="cb4-147"><a href="#cb4-147"></a>                        <span class="kw">default</span> <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage students] "</span> <span class="op">+</span> parameter <span class="op">+</span> <span class="st">" is a read-only parameter, choose another one"</span><span class="op">);</span></span>
-<span id="cb4-148"><a href="#cb4-148"></a>                    <span class="op">}</span></span>
-<span id="cb4-149"><a href="#cb4-149"></a>                <span class="op">}</span></span>
-<span id="cb4-150"><a href="#cb4-150"></a>            <span class="op">}</span></span>
-<span id="cb4-151"><a href="#cb4-151"></a>        <span class="op">};</span></span>
-<span id="cb4-152"><a href="#cb4-152"></a>        </span>
-<span id="cb4-153"><a href="#cb4-153"></a>        <span class="kw">abstract</span> <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">);</span></span>
-<span id="cb4-154"><a href="#cb4-154"></a></span>
-<span id="cb4-155"><a href="#cb4-155"></a>        <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> description<span class="op">;</span></span>
-<span id="cb4-156"><a href="#cb4-156"></a></span>
-<span id="cb4-157"><a href="#cb4-157"></a>        <span class="fu">studentOptionsEnum</span><span class="op">(</span><span class="bu">String</span> description<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-158"><a href="#cb4-158"></a>            <span class="kw">this</span><span class="op">.</span><span class="fu">description</span> <span class="op">=</span> description<span class="op">;</span></span>
-<span id="cb4-159"><a href="#cb4-159"></a>        <span class="op">}</span></span>
-<span id="cb4-160"><a href="#cb4-160"></a></span>
-<span id="cb4-161"><a href="#cb4-161"></a>        <span class="kw">private</span> <span class="bu">String</span> <span class="fu">getDescription</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb4-162"><a href="#cb4-162"></a>            <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">description</span><span class="op">;</span></span>
-<span id="cb4-163"><a href="#cb4-163"></a>        <span class="op">}</span></span>
-<span id="cb4-164"><a href="#cb4-164"></a></span>
-<span id="cb4-165"><a href="#cb4-165"></a>        <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">printOptions</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb4-166"><a href="#cb4-166"></a>            <span class="co">// Print all the available Student options</span></span>
-<span id="cb4-167"><a href="#cb4-167"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage students] Available options:"</span><span class="op">);</span></span>
-<span id="cb4-168"><a href="#cb4-168"></a>            studentOptionsEnum<span class="op">.</span><span class="fu">stream</span><span class="op">()</span></span>
-<span id="cb4-169"><a href="#cb4-169"></a>                    <span class="op">.</span><span class="fu">map</span><span class="op">(</span>studentOptionsEnum<span class="op">::</span>getDescription<span class="op">)</span></span>
-<span id="cb4-170"><a href="#cb4-170"></a>                    <span class="op">.</span><span class="fu">forEach</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">::</span>println<span class="op">);</span></span>
-<span id="cb4-171"><a href="#cb4-171"></a>        <span class="op">}</span></span>
-<span id="cb4-172"><a href="#cb4-172"></a></span>
-<span id="cb4-173"><a href="#cb4-173"></a>        <span class="kw">private</span> <span class="dt">static</span> studentOptionsEnum <span class="fu">getOption</span><span class="op">(</span><span class="bu">String</span> action<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-174"><a href="#cb4-174"></a>            <span class="cf">for</span> <span class="op">(</span>studentOptionsEnum option <span class="op">:</span> studentOptionsEnum<span class="op">.</span><span class="fu">values</span><span class="op">())</span> <span class="op">{</span></span>
-<span id="cb4-175"><a href="#cb4-175"></a>                <span class="cf">if</span> <span class="op">(</span>option<span class="op">.</span><span class="fu">getDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>action<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb4-176"><a href="#cb4-176"></a>                    <span class="cf">return</span> option<span class="op">;</span></span>
-<span id="cb4-177"><a href="#cb4-177"></a>                <span class="op">}</span></span>
-<span id="cb4-178"><a href="#cb4-178"></a>            <span class="op">}</span></span>
-<span id="cb4-179"><a href="#cb4-179"></a>            <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb4-180"><a href="#cb4-180"></a>        <span class="op">}</span></span>
+<span id="cb4-115"><a href="#cb4-115"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">listStudents</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-116"><a href="#cb4-116"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">CHECK_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Available students:"</span><span class="op">);</span></span>
+<span id="cb4-117"><a href="#cb4-117"></a>                students<span class="op">.</span><span class="fu">forEach</span><span class="op">((</span>studentID<span class="op">,</span> student<span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>studentID <span class="op">+</span> <span class="st">": "</span> <span class="op">+</span> student<span class="op">.</span><span class="fu">getFirstName</span><span class="op">()</span> <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> student<span class="op">.</span><span class="fu">getLastName</span><span class="op">()));</span></span>
+<span id="cb4-118"><a href="#cb4-118"></a>            <span class="op">}</span></span>
+<span id="cb4-119"><a href="#cb4-119"></a>        <span class="op">},</span></span>
+<span id="cb4-120"><a href="#cb4-120"></a>        <span class="fu">UPDATE_STUDENT</span><span class="op">(</span><span class="st">"Update student"</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-121"><a href="#cb4-121"></a>            <span class="at">@Override</span></span>
+<span id="cb4-122"><a href="#cb4-122"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-123"><a href="#cb4-123"></a>                <span class="fu">updateStudent</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-124"><a href="#cb4-124"></a>            <span class="op">}</span></span>
+<span id="cb4-125"><a href="#cb4-125"></a></span>
+<span id="cb4-126"><a href="#cb4-126"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">updateStudent</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-127"><a href="#cb4-127"></a>                <span class="co">// </span><span class="al">TODO</span><span class="co">: Ask for the student ID instead of the full name</span></span>
+<span id="cb4-128"><a href="#cb4-128"></a>                <span class="co">// Ask for the student name</span></span>
+<span id="cb4-129"><a href="#cb4-129"></a>                studentOptionsEnum<span class="op">.</span><span class="fu">LIST_STUDENTS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-130"><a href="#cb4-130"></a>                <span class="co">//String studentFullName = getStudentFullName(reader);</span></span>
+<span id="cb4-131"><a href="#cb4-131"></a>                <span class="bu">String</span> studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"Enter the student ID: "</span><span class="op">);</span></span>
+<span id="cb4-132"><a href="#cb4-132"></a></span>
+<span id="cb4-133"><a href="#cb4-133"></a>                <span class="co">// Retrieve the student to update</span></span>
+<span id="cb4-134"><a href="#cb4-134"></a>                Student studentToUpdate <span class="op">=</span> students<span class="op">.</span><span class="fu">get</span><span class="op">(</span>studentID<span class="op">);</span></span>
+<span id="cb4-135"><a href="#cb4-135"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>studentToUpdate<span class="op">);</span></span>
+<span id="cb4-136"><a href="#cb4-136"></a></span>
+<span id="cb4-137"><a href="#cb4-137"></a>                <span class="co">// Once the student is found, ask for the parameter to change</span></span>
+<span id="cb4-138"><a href="#cb4-138"></a>                <span class="bu">String</span> parameter <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the parameter to modify ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb4-139"><a href="#cb4-139"></a></span>
+<span id="cb4-140"><a href="#cb4-140"></a>                <span class="co">// Define an Object variable to store the different types of answers</span></span>
+<span id="cb4-141"><a href="#cb4-141"></a>                <span class="bu">Object</span> value<span class="op">;</span></span>
+<span id="cb4-142"><a href="#cb4-142"></a></span>
+<span id="cb4-143"><a href="#cb4-143"></a>                <span class="cf">while</span> <span class="op">(!</span>parameter<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb4-144"><a href="#cb4-144"></a>                    <span class="cf">switch</span> <span class="op">(</span>parameter<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-145"><a href="#cb4-145"></a>                        <span class="cf">case</span> <span class="st">"firstName"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb4-146"><a href="#cb4-146"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the student's new first name: "</span><span class="op">);</span></span>
+<span id="cb4-147"><a href="#cb4-147"></a>                            studentToUpdate<span class="op">.</span><span class="fu">setFirstName</span><span class="op">(</span>value<span class="op">.</span><span class="fu">toString</span><span class="op">());</span></span>
+<span id="cb4-148"><a href="#cb4-148"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] First name set to "</span> <span class="op">+</span> value<span class="op">);</span></span>
+<span id="cb4-149"><a href="#cb4-149"></a>                        <span class="op">}</span></span>
+<span id="cb4-150"><a href="#cb4-150"></a>                        <span class="cf">case</span> <span class="st">"lastName"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb4-151"><a href="#cb4-151"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the student's new last name: "</span><span class="op">);</span></span>
+<span id="cb4-152"><a href="#cb4-152"></a>                            studentToUpdate<span class="op">.</span><span class="fu">setLastName</span><span class="op">(</span>value<span class="op">.</span><span class="fu">toString</span><span class="op">());</span></span>
+<span id="cb4-153"><a href="#cb4-153"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Last name set to "</span> <span class="op">+</span> value<span class="op">);</span></span>
+<span id="cb4-154"><a href="#cb4-154"></a>                        <span class="op">}</span></span>
+<span id="cb4-155"><a href="#cb4-155"></a>                        <span class="cf">case</span> <span class="st">"age"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb4-156"><a href="#cb4-156"></a>                            value <span class="op">=</span> <span class="fu">askInt</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the student's new age: "</span><span class="op">);</span></span>
+<span id="cb4-157"><a href="#cb4-157"></a>                            studentToUpdate<span class="op">.</span><span class="fu">setAge</span><span class="op">((</span><span class="dt">int</span><span class="op">)</span> value<span class="op">);</span></span>
+<span id="cb4-158"><a href="#cb4-158"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Age set to "</span> <span class="op">+</span> value<span class="op">);</span></span>
+<span id="cb4-159"><a href="#cb4-159"></a>                        <span class="op">}</span></span>
+<span id="cb4-160"><a href="#cb4-160"></a>                        <span class="cf">case</span> <span class="st">"university"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb4-161"><a href="#cb4-161"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the student's new university: "</span><span class="op">);</span></span>
+<span id="cb4-162"><a href="#cb4-162"></a>                            studentToUpdate<span class="op">.</span><span class="fu">setUniversity</span><span class="op">(</span>value<span class="op">.</span><span class="fu">toString</span><span class="op">());</span></span>
+<span id="cb4-163"><a href="#cb4-163"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> studentOptionsEnum<span class="op">.</span><span class="fu">UPDATE_STUDENT</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] University set to "</span> <span class="op">+</span> value<span class="op">);</span></span>
+<span id="cb4-164"><a href="#cb4-164"></a>                        <span class="op">}</span></span>
+<span id="cb4-165"><a href="#cb4-165"></a>                        <span class="cf">case</span> <span class="st">"books"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb4-166"><a href="#cb4-166"></a>                            <span class="co">// </span><span class="al">TODO</span><span class="co">: Call a book manager for the student's list of books. Maybe a public static method in BookManager that accepts an ArrayList of Books?</span></span>
+<span id="cb4-167"><a href="#cb4-167"></a>                            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Books Management coming soon!"</span><span class="op">);</span></span>
+<span id="cb4-168"><a href="#cb4-168"></a>                            <span class="co">//value = askString(reader, "[" + studentOptionsEnum.UPDATE_STUDENT.getDescription() + "] Enter the student's new car: ");</span></span>
+<span id="cb4-169"><a href="#cb4-169"></a>                            <span class="co">// Some BookManager logic</span></span>
+<span id="cb4-170"><a href="#cb4-170"></a>                            <span class="co">//System.out.println("[" + studentOptionsEnum.UPDATE_STUDENT.getDescription() + "] Car set to " + value);</span></span>
+<span id="cb4-171"><a href="#cb4-171"></a>                        <span class="op">}</span></span>
+<span id="cb4-172"><a href="#cb4-172"></a>                        <span class="kw">default</span> <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage students] "</span> <span class="op">+</span> parameter <span class="op">+</span> <span class="st">" is a read-only parameter, choose another one"</span><span class="op">);</span></span>
+<span id="cb4-173"><a href="#cb4-173"></a>                    <span class="op">}</span></span>
+<span id="cb4-174"><a href="#cb4-174"></a>                <span class="op">}</span></span>
+<span id="cb4-175"><a href="#cb4-175"></a>            <span class="op">}</span></span>
+<span id="cb4-176"><a href="#cb4-176"></a>        <span class="op">};</span></span>
+<span id="cb4-177"><a href="#cb4-177"></a>        </span>
+<span id="cb4-178"><a href="#cb4-178"></a>        <span class="kw">abstract</span> <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">);</span></span>
+<span id="cb4-179"><a href="#cb4-179"></a></span>
+<span id="cb4-180"><a href="#cb4-180"></a>        <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> description<span class="op">;</span></span>
 <span id="cb4-181"><a href="#cb4-181"></a></span>
-<span id="cb4-182"><a href="#cb4-182"></a>        <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">executeOption</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">,</span> <span class="bu">String</span> description<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-183"><a href="#cb4-183"></a>            studentOptionsEnum option <span class="op">=</span> <span class="fu">getOption</span><span class="op">(</span>description<span class="op">);</span></span>
-<span id="cb4-184"><a href="#cb4-184"></a>            <span class="cf">if</span> <span class="op">(</span>option <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-185"><a href="#cb4-185"></a>                option<span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-186"><a href="#cb4-186"></a>            <span class="op">}</span></span>
-<span id="cb4-187"><a href="#cb4-187"></a>            <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb4-188"><a href="#cb4-188"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage students] Invalid option! Try again."</span><span class="op">);</span></span>
-<span id="cb4-189"><a href="#cb4-189"></a>            <span class="op">}</span></span>
-<span id="cb4-190"><a href="#cb4-190"></a>        <span class="op">}</span></span>
-<span id="cb4-191"><a href="#cb4-191"></a></span>
-<span id="cb4-192"><a href="#cb4-192"></a>        <span class="kw">private</span> <span class="dt">static</span> Stream<span class="op">&lt;</span>studentOptionsEnum<span class="op">&gt;</span> <span class="fu">stream</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb4-193"><a href="#cb4-193"></a>            <span class="cf">return</span> Stream<span class="op">.</span><span class="fu">of</span><span class="op">(</span>studentOptionsEnum<span class="op">.</span><span class="fu">values</span><span class="op">());</span></span>
-<span id="cb4-194"><a href="#cb4-194"></a>        <span class="op">}</span></span>
-<span id="cb4-195"><a href="#cb4-195"></a>    <span class="op">}</span></span>
-<span id="cb4-196"><a href="#cb4-196"></a></span>
-<span id="cb4-197"><a href="#cb4-197"></a>    <span class="co">// Entrypoint of Student Manager</span></span>
-<span id="cb4-198"><a href="#cb4-198"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-199"><a href="#cb4-199"></a>        <span class="co">// Print available options</span></span>
-<span id="cb4-200"><a href="#cb4-200"></a>        studentOptionsEnum<span class="op">.</span><span class="fu">printOptions</span><span class="op">();</span></span>
-<span id="cb4-201"><a href="#cb4-201"></a>        <span class="bu">String</span> description <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage students] Select option ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb4-202"><a href="#cb4-202"></a>        <span class="cf">while</span> <span class="op">(!</span>description<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb4-203"><a href="#cb4-203"></a>            studentOptionsEnum<span class="op">.</span><span class="fu">executeOption</span><span class="op">(</span>reader<span class="op">,</span> description<span class="op">);</span></span>
-<span id="cb4-204"><a href="#cb4-204"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
-<span id="cb4-205"><a href="#cb4-205"></a>            studentOptionsEnum<span class="op">.</span><span class="fu">printOptions</span><span class="op">();</span></span>
-<span id="cb4-206"><a href="#cb4-206"></a>            description <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage students] Select option ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb4-207"><a href="#cb4-207"></a>        <span class="op">}</span></span>
-<span id="cb4-208"><a href="#cb4-208"></a>    <span class="op">}</span></span>
-<span id="cb4-209"><a href="#cb4-209"></a></span>
-<span id="cb4-210"><a href="#cb4-210"></a>    <span class="co">// StudentManager utilities</span></span>
-<span id="cb4-211"><a href="#cb4-211"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getStudentID</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-212"><a href="#cb4-212"></a>        studentOptionsEnum<span class="op">.</span><span class="fu">LIST_STUDENTS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb4-213"><a href="#cb4-213"></a>        <span class="bu">String</span> studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"- Enter student ID: "</span><span class="op">);</span></span>
-<span id="cb4-214"><a href="#cb4-214"></a>        <span class="cf">while</span> <span class="op">(!</span>students<span class="op">.</span><span class="fu">containsKey</span><span class="op">(</span>studentID<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb4-215"><a href="#cb4-215"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"- Invalid student ID!"</span><span class="op">);</span></span>
-<span id="cb4-216"><a href="#cb4-216"></a>            studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"- Enter student ID: "</span><span class="op">);</span></span>
-<span id="cb4-217"><a href="#cb4-217"></a>        <span class="op">}</span></span>
-<span id="cb4-218"><a href="#cb4-218"></a>        <span class="cf">return</span> studentID<span class="op">;</span></span>
-<span id="cb4-219"><a href="#cb4-219"></a>    <span class="op">}</span></span>
-<span id="cb4-220"><a href="#cb4-220"></a></span>
+<span id="cb4-182"><a href="#cb4-182"></a>        <span class="fu">studentOptionsEnum</span><span class="op">(</span><span class="bu">String</span> description<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-183"><a href="#cb4-183"></a>            <span class="kw">this</span><span class="op">.</span><span class="fu">description</span> <span class="op">=</span> description<span class="op">;</span></span>
+<span id="cb4-184"><a href="#cb4-184"></a>        <span class="op">}</span></span>
+<span id="cb4-185"><a href="#cb4-185"></a></span>
+<span id="cb4-186"><a href="#cb4-186"></a>        <span class="kw">private</span> <span class="bu">String</span> <span class="fu">getDescription</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-187"><a href="#cb4-187"></a>            <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">description</span><span class="op">;</span></span>
+<span id="cb4-188"><a href="#cb4-188"></a>        <span class="op">}</span></span>
+<span id="cb4-189"><a href="#cb4-189"></a></span>
+<span id="cb4-190"><a href="#cb4-190"></a>        <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">printOptions</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-191"><a href="#cb4-191"></a>            <span class="co">// Print all the available Student options</span></span>
+<span id="cb4-192"><a href="#cb4-192"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage students] Available options:"</span><span class="op">);</span></span>
+<span id="cb4-193"><a href="#cb4-193"></a>            studentOptionsEnum<span class="op">.</span><span class="fu">stream</span><span class="op">()</span></span>
+<span id="cb4-194"><a href="#cb4-194"></a>                    <span class="op">.</span><span class="fu">map</span><span class="op">(</span>studentOptionsEnum<span class="op">::</span>getDescription<span class="op">)</span></span>
+<span id="cb4-195"><a href="#cb4-195"></a>                    <span class="op">.</span><span class="fu">forEach</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">::</span>println<span class="op">);</span></span>
+<span id="cb4-196"><a href="#cb4-196"></a>        <span class="op">}</span></span>
+<span id="cb4-197"><a href="#cb4-197"></a></span>
+<span id="cb4-198"><a href="#cb4-198"></a>        <span class="kw">private</span> <span class="dt">static</span> studentOptionsEnum <span class="fu">getOption</span><span class="op">(</span><span class="bu">String</span> action<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-199"><a href="#cb4-199"></a>            <span class="cf">for</span> <span class="op">(</span>studentOptionsEnum option <span class="op">:</span> studentOptionsEnum<span class="op">.</span><span class="fu">values</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb4-200"><a href="#cb4-200"></a>                <span class="cf">if</span> <span class="op">(</span>option<span class="op">.</span><span class="fu">getDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>action<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb4-201"><a href="#cb4-201"></a>                    <span class="cf">return</span> option<span class="op">;</span></span>
+<span id="cb4-202"><a href="#cb4-202"></a>                <span class="op">}</span></span>
+<span id="cb4-203"><a href="#cb4-203"></a>            <span class="op">}</span></span>
+<span id="cb4-204"><a href="#cb4-204"></a>            <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb4-205"><a href="#cb4-205"></a>        <span class="op">}</span></span>
+<span id="cb4-206"><a href="#cb4-206"></a></span>
+<span id="cb4-207"><a href="#cb4-207"></a>        <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">executeOption</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">,</span> <span class="bu">String</span> description<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-208"><a href="#cb4-208"></a>            studentOptionsEnum option <span class="op">=</span> <span class="fu">getOption</span><span class="op">(</span>description<span class="op">);</span></span>
+<span id="cb4-209"><a href="#cb4-209"></a>            <span class="cf">if</span> <span class="op">(</span>option <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-210"><a href="#cb4-210"></a>                option<span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-211"><a href="#cb4-211"></a>            <span class="op">}</span></span>
+<span id="cb4-212"><a href="#cb4-212"></a>            <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb4-213"><a href="#cb4-213"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage students] Invalid option! Try again."</span><span class="op">);</span></span>
+<span id="cb4-214"><a href="#cb4-214"></a>            <span class="op">}</span></span>
+<span id="cb4-215"><a href="#cb4-215"></a>        <span class="op">}</span></span>
+<span id="cb4-216"><a href="#cb4-216"></a></span>
+<span id="cb4-217"><a href="#cb4-217"></a>        <span class="kw">private</span> <span class="dt">static</span> Stream<span class="op">&lt;</span>studentOptionsEnum<span class="op">&gt;</span> <span class="fu">stream</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-218"><a href="#cb4-218"></a>            <span class="cf">return</span> Stream<span class="op">.</span><span class="fu">of</span><span class="op">(</span>studentOptionsEnum<span class="op">.</span><span class="fu">values</span><span class="op">());</span></span>
+<span id="cb4-219"><a href="#cb4-219"></a>        <span class="op">}</span></span>
+<span id="cb4-220"><a href="#cb4-220"></a>    <span class="op">}</span></span>
 <span id="cb4-221"><a href="#cb4-221"></a></span>
-<span id="cb4-222"><a href="#cb4-222"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-222"><a href="#cb4-222"></a>    <span class="co">// Entrypoint of Student Manager</span></span>
+<span id="cb4-223"><a href="#cb4-223"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-224"><a href="#cb4-224"></a>        <span class="co">// Print available options</span></span>
+<span id="cb4-225"><a href="#cb4-225"></a>        studentOptionsEnum<span class="op">.</span><span class="fu">printOptions</span><span class="op">();</span></span>
+<span id="cb4-226"><a href="#cb4-226"></a>        <span class="bu">String</span> description <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage students] Select option ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb4-227"><a href="#cb4-227"></a>        <span class="cf">while</span> <span class="op">(!</span>description<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb4-228"><a href="#cb4-228"></a>            studentOptionsEnum<span class="op">.</span><span class="fu">executeOption</span><span class="op">(</span>reader<span class="op">,</span> description<span class="op">);</span></span>
+<span id="cb4-229"><a href="#cb4-229"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
+<span id="cb4-230"><a href="#cb4-230"></a>            studentOptionsEnum<span class="op">.</span><span class="fu">printOptions</span><span class="op">();</span></span>
+<span id="cb4-231"><a href="#cb4-231"></a>            description <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage students] Select option ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb4-232"><a href="#cb4-232"></a>        <span class="op">}</span></span>
+<span id="cb4-233"><a href="#cb4-233"></a>    <span class="op">}</span></span>
+<span id="cb4-234"><a href="#cb4-234"></a></span>
+<span id="cb4-235"><a href="#cb4-235"></a>    <span class="co">// StudentManager utilities</span></span>
+<span id="cb4-236"><a href="#cb4-236"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getStudentID</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-237"><a href="#cb4-237"></a>        studentOptionsEnum<span class="op">.</span><span class="fu">LIST_STUDENTS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb4-238"><a href="#cb4-238"></a>        <span class="bu">String</span> studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"- Enter student ID: "</span><span class="op">);</span></span>
+<span id="cb4-239"><a href="#cb4-239"></a>        <span class="cf">while</span> <span class="op">(!</span>students<span class="op">.</span><span class="fu">containsKey</span><span class="op">(</span>studentID<span class="op">))</span> <span class="op">{;</span></span>
+<span id="cb4-240"><a href="#cb4-240"></a>            studentID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"- Invalid student ID! Enter student ID: "</span><span class="op">);</span></span>
+<span id="cb4-241"><a href="#cb4-241"></a>        <span class="op">}</span></span>
+<span id="cb4-242"><a href="#cb4-242"></a>        <span class="cf">return</span> studentID<span class="op">;</span></span>
+<span id="cb4-243"><a href="#cb4-243"></a>    <span class="op">}</span></span>
+<span id="cb4-244"><a href="#cb4-244"></a></span>
+<span id="cb4-245"><a href="#cb4-245"></a></span>
+<span id="cb4-246"><a href="#cb4-246"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="borrowmanager" class="level3">
@@ -1705,211 +1738,217 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-97"><a href="#cb5-97"></a>            <span class="op">}</span></span>
 <span id="cb5-98"><a href="#cb5-98"></a></span>
 <span id="cb5-99"><a href="#cb5-99"></a>            <span class="dt">void</span> <span class="fu">listBorrows</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb5-100"><a href="#cb5-100"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">LIST_BORROWS</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Available borrows:"</span><span class="op">);</span></span>
+<span id="cb5-100"><a href="#cb5-100"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">LIST_BORROWS</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Available 'In progress' borrows:"</span><span class="op">);</span></span>
 <span id="cb5-101"><a href="#cb5-101"></a>                <span class="co">// Print all the borrows in a defined format</span></span>
-<span id="cb5-102"><a href="#cb5-102"></a>                borrows<span class="op">.</span><span class="fu">forEach</span><span class="op">((</span>borrowID<span class="op">,</span> borrow<span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>borrowID <span class="op">+</span> <span class="st">": "</span> <span class="op">+</span> borrow<span class="op">));</span></span>
-<span id="cb5-103"><a href="#cb5-103"></a>            <span class="op">}</span></span>
-<span id="cb5-104"><a href="#cb5-104"></a>        <span class="op">},</span></span>
-<span id="cb5-105"><a href="#cb5-105"></a>        <span class="fu">UPDATE_BORROW</span><span class="op">(</span><span class="st">"Update borrow"</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-106"><a href="#cb5-106"></a>            <span class="at">@Override</span></span>
-<span id="cb5-107"><a href="#cb5-107"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-108"><a href="#cb5-108"></a>                <span class="fu">updateBorrow</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb5-109"><a href="#cb5-109"></a>            <span class="op">}</span></span>
-<span id="cb5-110"><a href="#cb5-110"></a></span>
-<span id="cb5-111"><a href="#cb5-111"></a>            <span class="dt">void</span> <span class="fu">updateBorrow</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-112"><a href="#cb5-112"></a></span>
-<span id="cb5-113"><a href="#cb5-113"></a>                <span class="co">// Ask for the borrow id</span></span>
-<span id="cb5-114"><a href="#cb5-114"></a>                borrowOptionsEnum<span class="op">.</span><span class="fu">LIST_BORROWS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb5-115"><a href="#cb5-115"></a>                <span class="co">// Option 1.- Ask for the borrow ID</span></span>
-<span id="cb5-116"><a href="#cb5-116"></a>                <span class="co">/*</span></span>
-<span id="cb5-117"><a href="#cb5-117"></a><span class="co">                String borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Enter borrow ID ('Quit' to exit): ");</span></span>
-<span id="cb5-118"><a href="#cb5-118"></a><span class="co">                while (!borrows.containsKey(borrowID)) {</span></span>
-<span id="cb5-119"><a href="#cb5-119"></a><span class="co">                    if (borrowID.equals("Quit")) {</span></span>
-<span id="cb5-120"><a href="#cb5-120"></a><span class="co">                        System.out.println("[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Check borrow cancelled.");</span></span>
-<span id="cb5-121"><a href="#cb5-121"></a><span class="co">                        return;</span></span>
-<span id="cb5-122"><a href="#cb5-122"></a><span class="co">                    }</span></span>
-<span id="cb5-123"><a href="#cb5-123"></a><span class="co">                    borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Unknown ID. Enter borrow ID ('Quit' to exit): ");</span></span>
-<span id="cb5-124"><a href="#cb5-124"></a><span class="co">                }</span></span>
-<span id="cb5-125"><a href="#cb5-125"></a><span class="co">                Borrow borrowToUpdate = borrows.get(borrowID);</span></span>
-<span id="cb5-126"><a href="#cb5-126"></a><span class="co">                */</span></span>
-<span id="cb5-127"><a href="#cb5-127"></a>                Borrow borrowToUpdate <span class="op">=</span> <span class="fu">findBorrow</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb5-128"><a href="#cb5-128"></a>                <span class="cf">if</span> <span class="op">(</span>borrowToUpdate <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-129"><a href="#cb5-129"></a>                    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Error finding the borrow. Exiting..."</span><span class="op">);</span></span>
-<span id="cb5-130"><a href="#cb5-130"></a>                <span class="op">}</span></span>
-<span id="cb5-131"><a href="#cb5-131"></a></span>
-<span id="cb5-132"><a href="#cb5-132"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>borrowToUpdate<span class="op">);</span></span>
-<span id="cb5-133"><a href="#cb5-133"></a>                <span class="co">// Ask what field to change</span></span>
-<span id="cb5-134"><a href="#cb5-134"></a>                <span class="co">// - Allowed fields to update: status, due date, return date, etc...</span></span>
-<span id="cb5-135"><a href="#cb5-135"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Coming soon!"</span><span class="op">);</span></span>
-<span id="cb5-136"><a href="#cb5-136"></a>                <span class="bu">String</span> parameter <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the parameter to modify ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb5-137"><a href="#cb5-137"></a>                <span class="bu">Object</span> value<span class="op">;</span></span>
-<span id="cb5-138"><a href="#cb5-138"></a>                <span class="cf">while</span> <span class="op">(!</span>parameter<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-139"><a href="#cb5-139"></a>                    <span class="cf">switch</span><span class="op">(</span>parameter<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-140"><a href="#cb5-140"></a>                        <span class="cf">case</span> <span class="st">"status"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb5-141"><a href="#cb5-141"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Change the status to 'In Progress', 'Late' or 'Closed': "</span><span class="op">);</span></span>
-<span id="cb5-142"><a href="#cb5-142"></a>                            borrowToUpdate<span class="op">.</span><span class="fu">setStatus</span><span class="op">(</span><span class="bu">String</span><span class="op">.</span><span class="fu">valueOf</span><span class="op">(</span>value<span class="op">));</span></span>
-<span id="cb5-143"><a href="#cb5-143"></a>                            <span class="co">// </span><span class="al">TODO</span><span class="co">: If status is set to "Closed", then book availability must be set to true</span></span>
-<span id="cb5-144"><a href="#cb5-144"></a>                            <span class="cf">if</span> <span class="op">(</span>borrowToUpdate<span class="op">.</span><span class="fu">getStatusDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Closed"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-145"><a href="#cb5-145"></a>                                BookManager<span class="op">.</span><span class="fu">setBookAvailability</span><span class="op">(</span>borrowToUpdate<span class="op">.</span><span class="fu">getBookID</span><span class="op">(),</span> <span class="kw">true</span><span class="op">);</span></span>
-<span id="cb5-146"><a href="#cb5-146"></a>                            <span class="op">}</span></span>
-<span id="cb5-147"><a href="#cb5-147"></a>                        <span class="op">}</span></span>
-<span id="cb5-148"><a href="#cb5-148"></a>                        <span class="cf">case</span> <span class="st">"dueBorrowDate"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb5-149"><a href="#cb5-149"></a>                            <span class="co">// Due borrow date is updated to a later date</span></span>
-<span id="cb5-150"><a href="#cb5-150"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the new due date in a YYYY/mm/dd format: "</span><span class="op">);</span></span>
-<span id="cb5-151"><a href="#cb5-151"></a>                            borrowToUpdate<span class="op">.</span><span class="fu">setDueBorrowDate</span><span class="op">(</span><span class="bu">String</span><span class="op">.</span><span class="fu">valueOf</span><span class="op">(</span>value<span class="op">));</span></span>
-<span id="cb5-152"><a href="#cb5-152"></a>                            <span class="co">//</span></span>
-<span id="cb5-153"><a href="#cb5-153"></a>                        <span class="op">}</span></span>
-<span id="cb5-154"><a href="#cb5-154"></a>                        <span class="kw">default</span> <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] "</span> <span class="op">+</span> parameter <span class="op">+</span> <span class="st">"is a read-only parameter, choose another one"</span><span class="op">);</span></span>
-<span id="cb5-155"><a href="#cb5-155"></a>                    <span class="op">}</span></span>
-<span id="cb5-156"><a href="#cb5-156"></a>                    parameter <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Insert the parameter to modify ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb5-157"><a href="#cb5-157"></a>                <span class="op">}</span></span>
-<span id="cb5-158"><a href="#cb5-158"></a>            <span class="op">}</span></span>
-<span id="cb5-159"><a href="#cb5-159"></a>        <span class="op">},</span></span>
-<span id="cb5-160"><a href="#cb5-160"></a>        <span class="fu">RETURN_BOOK</span><span class="op">(</span><span class="st">"Return book"</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-161"><a href="#cb5-161"></a>            <span class="at">@Override</span></span>
-<span id="cb5-162"><a href="#cb5-162"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-163"><a href="#cb5-163"></a>                <span class="fu">returnBook</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb5-164"><a href="#cb5-164"></a>            <span class="op">}</span></span>
-<span id="cb5-165"><a href="#cb5-165"></a></span>
-<span id="cb5-166"><a href="#cb5-166"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">returnBook</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-167"><a href="#cb5-167"></a>                <span class="co">// Find the borrow of the book</span></span>
-<span id="cb5-168"><a href="#cb5-168"></a>                Borrow borrowToUpdate <span class="op">=</span> <span class="fu">findBorrow</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb5-169"><a href="#cb5-169"></a>                <span class="cf">if</span> <span class="op">(</span>borrowToUpdate <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-170"><a href="#cb5-170"></a>                    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Error finding the borrow. Exiting..."</span><span class="op">);</span></span>
-<span id="cb5-171"><a href="#cb5-171"></a>                    <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb5-172"><a href="#cb5-172"></a>                <span class="op">}</span></span>
-<span id="cb5-173"><a href="#cb5-173"></a>                <span class="co">// Set the borrow status to "Close"</span></span>
-<span id="cb5-174"><a href="#cb5-174"></a>                borrowToUpdate<span class="op">.</span><span class="fu">setStatus</span><span class="op">(</span><span class="st">"Closed"</span><span class="op">);</span></span>
-<span id="cb5-175"><a href="#cb5-175"></a>                <span class="co">// Set the book availability to True</span></span>
-<span id="cb5-176"><a href="#cb5-176"></a>                BookManager<span class="op">.</span><span class="fu">setBookAvailability</span><span class="op">(</span>borrowToUpdate<span class="op">.</span><span class="fu">getBookID</span><span class="op">(),</span> <span class="kw">true</span><span class="op">);</span></span>
-<span id="cb5-177"><a href="#cb5-177"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">RETURN_BOOK</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Book "</span> <span class="op">+</span> BookManager<span class="op">.</span><span class="fu">getBookTitle</span><span class="op">(</span>borrowToUpdate<span class="op">.</span><span class="fu">getBookID</span><span class="op">()));</span></span>
-<span id="cb5-178"><a href="#cb5-178"></a>            <span class="op">}</span></span>
-<span id="cb5-179"><a href="#cb5-179"></a>        <span class="op">};</span></span>
-<span id="cb5-180"><a href="#cb5-180"></a></span>
-<span id="cb5-181"><a href="#cb5-181"></a>        <span class="kw">abstract</span> <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">);</span></span>
-<span id="cb5-182"><a href="#cb5-182"></a>        <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> description<span class="op">;</span></span>
-<span id="cb5-183"><a href="#cb5-183"></a>        <span class="fu">borrowOptionsEnum</span><span class="op">(</span><span class="bu">String</span> action<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-184"><a href="#cb5-184"></a>            <span class="kw">this</span><span class="op">.</span><span class="fu">description</span> <span class="op">=</span> action<span class="op">;</span></span>
-<span id="cb5-185"><a href="#cb5-185"></a>        <span class="op">}</span></span>
-<span id="cb5-186"><a href="#cb5-186"></a></span>
-<span id="cb5-187"><a href="#cb5-187"></a>        <span class="kw">private</span> <span class="bu">String</span> <span class="fu">getDescription</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb5-188"><a href="#cb5-188"></a>            <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">description</span><span class="op">;</span></span>
+<span id="cb5-102"><a href="#cb5-102"></a>                borrows<span class="op">.</span><span class="fu">entrySet</span><span class="op">().</span><span class="fu">stream</span><span class="op">()</span></span>
+<span id="cb5-103"><a href="#cb5-103"></a>                        <span class="op">.</span><span class="fu">filter</span><span class="op">(</span>entry <span class="op">-&gt;</span> entry<span class="op">.</span><span class="fu">getValue</span><span class="op">().</span><span class="fu">getStatusDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">"In progress"</span><span class="op">))</span></span>
+<span id="cb5-104"><a href="#cb5-104"></a>                        <span class="op">.</span><span class="fu">map</span><span class="op">(</span>x <span class="op">-&gt;</span> x<span class="op">.</span><span class="fu">getKey</span><span class="op">()</span> <span class="op">+</span> <span class="st">": "</span> <span class="op">+</span> x<span class="op">.</span><span class="fu">getValue</span><span class="op">())</span></span>
+<span id="cb5-105"><a href="#cb5-105"></a>                        <span class="op">.</span><span class="fu">forEach</span><span class="op">(</span>x <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>x<span class="op">));</span></span>
+<span id="cb5-106"><a href="#cb5-106"></a>            <span class="op">}</span></span>
+<span id="cb5-107"><a href="#cb5-107"></a>        <span class="op">},</span></span>
+<span id="cb5-108"><a href="#cb5-108"></a>        <span class="fu">UPDATE_BORROW</span><span class="op">(</span><span class="st">"Update borrow"</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-109"><a href="#cb5-109"></a>            <span class="at">@Override</span></span>
+<span id="cb5-110"><a href="#cb5-110"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-111"><a href="#cb5-111"></a>                <span class="fu">updateBorrow</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb5-112"><a href="#cb5-112"></a>            <span class="op">}</span></span>
+<span id="cb5-113"><a href="#cb5-113"></a></span>
+<span id="cb5-114"><a href="#cb5-114"></a>            <span class="dt">void</span> <span class="fu">updateBorrow</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-115"><a href="#cb5-115"></a></span>
+<span id="cb5-116"><a href="#cb5-116"></a>                <span class="co">// Ask for the borrow id</span></span>
+<span id="cb5-117"><a href="#cb5-117"></a>                borrowOptionsEnum<span class="op">.</span><span class="fu">LIST_BORROWS</span><span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb5-118"><a href="#cb5-118"></a>                <span class="co">// Option 1. Ask for the borrow ID</span></span>
+<span id="cb5-119"><a href="#cb5-119"></a>                <span class="co">/*</span></span>
+<span id="cb5-120"><a href="#cb5-120"></a><span class="co">                String borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Enter borrow ID ('Quit' to exit): ");</span></span>
+<span id="cb5-121"><a href="#cb5-121"></a><span class="co">                while (!borrows.containsKey(borrowID)) {</span></span>
+<span id="cb5-122"><a href="#cb5-122"></a><span class="co">                    if (borrowID.equals("Quit")) {</span></span>
+<span id="cb5-123"><a href="#cb5-123"></a><span class="co">                        System.out.println("[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Check borrow cancelled.");</span></span>
+<span id="cb5-124"><a href="#cb5-124"></a><span class="co">                        return;</span></span>
+<span id="cb5-125"><a href="#cb5-125"></a><span class="co">                    }</span></span>
+<span id="cb5-126"><a href="#cb5-126"></a><span class="co">                    borrowID = InterfaceUtils.askString(reader, "[" + borrowOptionsEnum.CHECK_BORROW.getDescription() + "] Unknown ID. Enter borrow ID ('Quit' to exit): ");</span></span>
+<span id="cb5-127"><a href="#cb5-127"></a><span class="co">                }</span></span>
+<span id="cb5-128"><a href="#cb5-128"></a><span class="co">                Borrow borrowToUpdate = borrows.get(borrowID);</span></span>
+<span id="cb5-129"><a href="#cb5-129"></a><span class="co">                */</span></span>
+<span id="cb5-130"><a href="#cb5-130"></a>                <span class="co">// Option 2. Invoke a borrow finding method</span></span>
+<span id="cb5-131"><a href="#cb5-131"></a>                Borrow borrowToUpdate <span class="op">=</span> <span class="fu">findBorrow</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb5-132"><a href="#cb5-132"></a>                <span class="cf">if</span> <span class="op">(</span>borrowToUpdate <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-133"><a href="#cb5-133"></a>                    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Error finding the borrow. Exiting..."</span><span class="op">);</span></span>
+<span id="cb5-134"><a href="#cb5-134"></a>                <span class="op">}</span></span>
+<span id="cb5-135"><a href="#cb5-135"></a></span>
+<span id="cb5-136"><a href="#cb5-136"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>borrowToUpdate<span class="op">);</span></span>
+<span id="cb5-137"><a href="#cb5-137"></a>                <span class="co">// Ask what field to change</span></span>
+<span id="cb5-138"><a href="#cb5-138"></a>                <span class="co">// - Allowed fields to update: status, due date, return date, etc...</span></span>
+<span id="cb5-139"><a href="#cb5-139"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Coming soon!"</span><span class="op">);</span></span>
+<span id="cb5-140"><a href="#cb5-140"></a>                <span class="bu">String</span> parameter <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the parameter to modify ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb5-141"><a href="#cb5-141"></a>                <span class="bu">Object</span> value<span class="op">;</span></span>
+<span id="cb5-142"><a href="#cb5-142"></a>                <span class="cf">while</span> <span class="op">(!</span>parameter<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-143"><a href="#cb5-143"></a>                    <span class="cf">switch</span><span class="op">(</span>parameter<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-144"><a href="#cb5-144"></a>                        <span class="cf">case</span> <span class="st">"status"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb5-145"><a href="#cb5-145"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Change the status to 'In Progress', 'Late' or 'Closed': "</span><span class="op">);</span></span>
+<span id="cb5-146"><a href="#cb5-146"></a>                            borrowToUpdate<span class="op">.</span><span class="fu">setStatus</span><span class="op">(</span><span class="bu">String</span><span class="op">.</span><span class="fu">valueOf</span><span class="op">(</span>value<span class="op">));</span></span>
+<span id="cb5-147"><a href="#cb5-147"></a>                            <span class="co">// </span><span class="al">TODO</span><span class="co">: If status is set to "Closed", then book availability must be set to true</span></span>
+<span id="cb5-148"><a href="#cb5-148"></a>                            <span class="cf">if</span> <span class="op">(</span>borrowToUpdate<span class="op">.</span><span class="fu">getStatusDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Closed"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-149"><a href="#cb5-149"></a>                                BookManager<span class="op">.</span><span class="fu">setBookAvailability</span><span class="op">(</span>borrowToUpdate<span class="op">.</span><span class="fu">getBookID</span><span class="op">(),</span> <span class="kw">true</span><span class="op">);</span></span>
+<span id="cb5-150"><a href="#cb5-150"></a>                            <span class="op">}</span></span>
+<span id="cb5-151"><a href="#cb5-151"></a>                        <span class="op">}</span></span>
+<span id="cb5-152"><a href="#cb5-152"></a>                        <span class="cf">case</span> <span class="st">"dueBorrowDate"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb5-153"><a href="#cb5-153"></a>                            <span class="co">// The due borrow date is updated to a later date</span></span>
+<span id="cb5-154"><a href="#cb5-154"></a>                            value <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Enter the new due date in a YYYY/mm/dd format: "</span><span class="op">);</span></span>
+<span id="cb5-155"><a href="#cb5-155"></a>                            borrowToUpdate<span class="op">.</span><span class="fu">setDueBorrowDate</span><span class="op">(</span><span class="bu">String</span><span class="op">.</span><span class="fu">valueOf</span><span class="op">(</span>value<span class="op">));</span></span>
+<span id="cb5-156"><a href="#cb5-156"></a>                            <span class="co">//</span></span>
+<span id="cb5-157"><a href="#cb5-157"></a>                        <span class="op">}</span></span>
+<span id="cb5-158"><a href="#cb5-158"></a>                        <span class="kw">default</span> <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] "</span> <span class="op">+</span> parameter <span class="op">+</span> <span class="st">"is a read-only parameter, choose another one"</span><span class="op">);</span></span>
+<span id="cb5-159"><a href="#cb5-159"></a>                    <span class="op">}</span></span>
+<span id="cb5-160"><a href="#cb5-160"></a>                    parameter <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">UPDATE_BORROW</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Insert the parameter to modify ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb5-161"><a href="#cb5-161"></a>                <span class="op">}</span></span>
+<span id="cb5-162"><a href="#cb5-162"></a>            <span class="op">}</span></span>
+<span id="cb5-163"><a href="#cb5-163"></a>        <span class="op">},</span></span>
+<span id="cb5-164"><a href="#cb5-164"></a>        <span class="fu">RETURN_BOOK</span><span class="op">(</span><span class="st">"Return book"</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-165"><a href="#cb5-165"></a>            <span class="at">@Override</span></span>
+<span id="cb5-166"><a href="#cb5-166"></a>            <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-167"><a href="#cb5-167"></a>                <span class="fu">returnBook</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb5-168"><a href="#cb5-168"></a>            <span class="op">}</span></span>
+<span id="cb5-169"><a href="#cb5-169"></a></span>
+<span id="cb5-170"><a href="#cb5-170"></a>            <span class="kw">private</span> <span class="dt">void</span> <span class="fu">returnBook</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-171"><a href="#cb5-171"></a>                <span class="co">// Find the borrow of the book</span></span>
+<span id="cb5-172"><a href="#cb5-172"></a>                Borrow borrowToUpdate <span class="op">=</span> <span class="fu">findBorrow</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb5-173"><a href="#cb5-173"></a>                <span class="cf">if</span> <span class="op">(</span>borrowToUpdate <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-174"><a href="#cb5-174"></a>                    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Error finding the borrow. Exiting..."</span><span class="op">);</span></span>
+<span id="cb5-175"><a href="#cb5-175"></a>                    <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb5-176"><a href="#cb5-176"></a>                <span class="op">}</span></span>
+<span id="cb5-177"><a href="#cb5-177"></a>                <span class="co">// Set the borrow status to "Close"</span></span>
+<span id="cb5-178"><a href="#cb5-178"></a>                borrowToUpdate<span class="op">.</span><span class="fu">setStatus</span><span class="op">(</span><span class="st">"Closed"</span><span class="op">);</span></span>
+<span id="cb5-179"><a href="#cb5-179"></a>                <span class="co">// Set the book availability to True</span></span>
+<span id="cb5-180"><a href="#cb5-180"></a>                BookManager<span class="op">.</span><span class="fu">setBookAvailability</span><span class="op">(</span>borrowToUpdate<span class="op">.</span><span class="fu">getBookID</span><span class="op">(),</span> <span class="kw">true</span><span class="op">);</span></span>
+<span id="cb5-181"><a href="#cb5-181"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"["</span> <span class="op">+</span> borrowOptionsEnum<span class="op">.</span><span class="fu">RETURN_BOOK</span><span class="op">.</span><span class="fu">getDescription</span><span class="op">()</span> <span class="op">+</span> <span class="st">"] Book "</span> <span class="op">+</span> BookManager<span class="op">.</span><span class="fu">getBookTitle</span><span class="op">(</span>borrowToUpdate<span class="op">.</span><span class="fu">getBookID</span><span class="op">()));</span></span>
+<span id="cb5-182"><a href="#cb5-182"></a>            <span class="op">}</span></span>
+<span id="cb5-183"><a href="#cb5-183"></a>        <span class="op">};</span></span>
+<span id="cb5-184"><a href="#cb5-184"></a></span>
+<span id="cb5-185"><a href="#cb5-185"></a>        <span class="kw">abstract</span> <span class="dt">void</span> <span class="fu">action</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">);</span></span>
+<span id="cb5-186"><a href="#cb5-186"></a>        <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> description<span class="op">;</span></span>
+<span id="cb5-187"><a href="#cb5-187"></a>        <span class="fu">borrowOptionsEnum</span><span class="op">(</span><span class="bu">String</span> action<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-188"><a href="#cb5-188"></a>            <span class="kw">this</span><span class="op">.</span><span class="fu">description</span> <span class="op">=</span> action<span class="op">;</span></span>
 <span id="cb5-189"><a href="#cb5-189"></a>        <span class="op">}</span></span>
 <span id="cb5-190"><a href="#cb5-190"></a></span>
-<span id="cb5-191"><a href="#cb5-191"></a>        <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">printOptions</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb5-192"><a href="#cb5-192"></a>            <span class="co">// Print all the available Borrow options</span></span>
-<span id="cb5-193"><a href="#cb5-193"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage borrows] Available options:"</span><span class="op">);</span></span>
-<span id="cb5-194"><a href="#cb5-194"></a>            borrowOptionsEnum<span class="op">.</span><span class="fu">stream</span><span class="op">()</span></span>
-<span id="cb5-195"><a href="#cb5-195"></a>                    <span class="op">.</span><span class="fu">map</span><span class="op">(</span>borrowOptionsEnum<span class="op">::</span>getDescription<span class="op">)</span></span>
-<span id="cb5-196"><a href="#cb5-196"></a>                    <span class="op">.</span><span class="fu">forEach</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">::</span>println<span class="op">);</span></span>
-<span id="cb5-197"><a href="#cb5-197"></a>        <span class="op">}</span></span>
-<span id="cb5-198"><a href="#cb5-198"></a></span>
-<span id="cb5-199"><a href="#cb5-199"></a>        <span class="co">// Use private methods to manipulate borrows as they have sensitive data</span></span>
-<span id="cb5-200"><a href="#cb5-200"></a>        <span class="kw">private</span> <span class="dt">static</span> borrowOptionsEnum <span class="fu">getOption</span><span class="op">(</span><span class="bu">String</span> action<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-201"><a href="#cb5-201"></a>            <span class="cf">for</span> <span class="op">(</span>borrowOptionsEnum option <span class="op">:</span> borrowOptionsEnum<span class="op">.</span><span class="fu">values</span><span class="op">())</span> <span class="op">{</span></span>
-<span id="cb5-202"><a href="#cb5-202"></a>                <span class="cf">if</span> <span class="op">(</span>option<span class="op">.</span><span class="fu">getDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>action<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-203"><a href="#cb5-203"></a>                    <span class="cf">return</span> option<span class="op">;</span></span>
-<span id="cb5-204"><a href="#cb5-204"></a>                <span class="op">}</span></span>
-<span id="cb5-205"><a href="#cb5-205"></a>            <span class="op">}</span></span>
-<span id="cb5-206"><a href="#cb5-206"></a>            <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb5-207"><a href="#cb5-207"></a>        <span class="op">}</span></span>
-<span id="cb5-208"><a href="#cb5-208"></a></span>
-<span id="cb5-209"><a href="#cb5-209"></a>        <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">executeOption</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">,</span> <span class="bu">String</span> action<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-210"><a href="#cb5-210"></a>            <span class="co">// compare the action with the available enum and see if it is a valid option</span></span>
-<span id="cb5-211"><a href="#cb5-211"></a>            borrowOptionsEnum option <span class="op">=</span> <span class="fu">getOption</span><span class="op">(</span>action<span class="op">);</span></span>
-<span id="cb5-212"><a href="#cb5-212"></a>            <span class="co">// execute the desired option</span></span>
-<span id="cb5-213"><a href="#cb5-213"></a>            <span class="cf">if</span> <span class="op">(</span>option <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-214"><a href="#cb5-214"></a>                option<span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
-<span id="cb5-215"><a href="#cb5-215"></a>            <span class="op">}</span></span>
-<span id="cb5-216"><a href="#cb5-216"></a>            <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb5-217"><a href="#cb5-217"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage borrows] Unknown option, try again"</span><span class="op">);</span></span>
-<span id="cb5-218"><a href="#cb5-218"></a>            <span class="op">}</span></span>
-<span id="cb5-219"><a href="#cb5-219"></a>        <span class="op">}</span></span>
-<span id="cb5-220"><a href="#cb5-220"></a></span>
-<span id="cb5-221"><a href="#cb5-221"></a>        <span class="kw">public</span> <span class="dt">static</span> Stream<span class="op">&lt;</span>borrowOptionsEnum<span class="op">&gt;</span> <span class="fu">stream</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb5-222"><a href="#cb5-222"></a>            <span class="cf">return</span> Stream<span class="op">.</span><span class="fu">of</span><span class="op">(</span>borrowOptionsEnum<span class="op">.</span><span class="fu">values</span><span class="op">());</span></span>
+<span id="cb5-191"><a href="#cb5-191"></a>        <span class="kw">private</span> <span class="bu">String</span> <span class="fu">getDescription</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-192"><a href="#cb5-192"></a>            <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">description</span><span class="op">;</span></span>
+<span id="cb5-193"><a href="#cb5-193"></a>        <span class="op">}</span></span>
+<span id="cb5-194"><a href="#cb5-194"></a></span>
+<span id="cb5-195"><a href="#cb5-195"></a>        <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">printOptions</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-196"><a href="#cb5-196"></a>            <span class="co">// Print all the available Borrow options</span></span>
+<span id="cb5-197"><a href="#cb5-197"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage borrows] Available options:"</span><span class="op">);</span></span>
+<span id="cb5-198"><a href="#cb5-198"></a>            borrowOptionsEnum<span class="op">.</span><span class="fu">stream</span><span class="op">()</span></span>
+<span id="cb5-199"><a href="#cb5-199"></a>                    <span class="op">.</span><span class="fu">map</span><span class="op">(</span>borrowOptionsEnum<span class="op">::</span>getDescription<span class="op">)</span></span>
+<span id="cb5-200"><a href="#cb5-200"></a>                    <span class="op">.</span><span class="fu">forEach</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">::</span>println<span class="op">);</span></span>
+<span id="cb5-201"><a href="#cb5-201"></a>        <span class="op">}</span></span>
+<span id="cb5-202"><a href="#cb5-202"></a></span>
+<span id="cb5-203"><a href="#cb5-203"></a>        <span class="co">// Use private methods to manipulate borrows as they have sensitive data</span></span>
+<span id="cb5-204"><a href="#cb5-204"></a>        <span class="kw">private</span> <span class="dt">static</span> borrowOptionsEnum <span class="fu">getOption</span><span class="op">(</span><span class="bu">String</span> action<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-205"><a href="#cb5-205"></a>            <span class="cf">for</span> <span class="op">(</span>borrowOptionsEnum option <span class="op">:</span> borrowOptionsEnum<span class="op">.</span><span class="fu">values</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb5-206"><a href="#cb5-206"></a>                <span class="cf">if</span> <span class="op">(</span>option<span class="op">.</span><span class="fu">getDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>action<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-207"><a href="#cb5-207"></a>                    <span class="cf">return</span> option<span class="op">;</span></span>
+<span id="cb5-208"><a href="#cb5-208"></a>                <span class="op">}</span></span>
+<span id="cb5-209"><a href="#cb5-209"></a>            <span class="op">}</span></span>
+<span id="cb5-210"><a href="#cb5-210"></a>            <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb5-211"><a href="#cb5-211"></a>        <span class="op">}</span></span>
+<span id="cb5-212"><a href="#cb5-212"></a></span>
+<span id="cb5-213"><a href="#cb5-213"></a>        <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">executeOption</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">,</span> <span class="bu">String</span> action<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-214"><a href="#cb5-214"></a>            <span class="co">// compare the action with the available enum and see if it is a valid option</span></span>
+<span id="cb5-215"><a href="#cb5-215"></a>            borrowOptionsEnum option <span class="op">=</span> <span class="fu">getOption</span><span class="op">(</span>action<span class="op">);</span></span>
+<span id="cb5-216"><a href="#cb5-216"></a>            <span class="co">// execute the desired option</span></span>
+<span id="cb5-217"><a href="#cb5-217"></a>            <span class="cf">if</span> <span class="op">(</span>option <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-218"><a href="#cb5-218"></a>                option<span class="op">.</span><span class="fu">action</span><span class="op">(</span>reader<span class="op">);</span></span>
+<span id="cb5-219"><a href="#cb5-219"></a>            <span class="op">}</span></span>
+<span id="cb5-220"><a href="#cb5-220"></a>            <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb5-221"><a href="#cb5-221"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Manage borrows] Unknown option, try again"</span><span class="op">);</span></span>
+<span id="cb5-222"><a href="#cb5-222"></a>            <span class="op">}</span></span>
 <span id="cb5-223"><a href="#cb5-223"></a>        <span class="op">}</span></span>
-<span id="cb5-224"><a href="#cb5-224"></a>    <span class="op">}</span></span>
-<span id="cb5-225"><a href="#cb5-225"></a></span>
-<span id="cb5-226"><a href="#cb5-226"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-227"><a href="#cb5-227"></a>        <span class="co">// Print the available options</span></span>
-<span id="cb5-228"><a href="#cb5-228"></a>        borrowOptionsEnum<span class="op">.</span><span class="fu">printOptions</span><span class="op">();</span></span>
-<span id="cb5-229"><a href="#cb5-229"></a>        <span class="bu">String</span> action <span class="op">=</span> InterfaceUtils<span class="op">.</span><span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage borrows] Select option ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb5-230"><a href="#cb5-230"></a>        <span class="cf">while</span> <span class="op">(!</span>action<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-231"><a href="#cb5-231"></a>            borrowOptionsEnum<span class="op">.</span><span class="fu">executeOption</span><span class="op">(</span>reader<span class="op">,</span> action<span class="op">);</span></span>
-<span id="cb5-232"><a href="#cb5-232"></a>            action <span class="op">=</span> InterfaceUtils<span class="op">.</span><span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage borrows] Select option ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb5-233"><a href="#cb5-233"></a>        <span class="op">}</span></span>
-<span id="cb5-234"><a href="#cb5-234"></a>    <span class="op">}</span></span>
-<span id="cb5-235"><a href="#cb5-235"></a></span>
-<span id="cb5-236"><a href="#cb5-236"></a>    <span class="kw">public</span> <span class="dt">static</span> Borrow <span class="fu">findBorrow</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-237"><a href="#cb5-237"></a>        <span class="bu">String</span> knownObject <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Borrow Manager] Enter known object name ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb5-238"><a href="#cb5-238"></a>        <span class="cf">while</span> <span class="op">(!</span>knownObject<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"book"</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span>knownObject<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"user"</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span>knownObject<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"borrow"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-239"><a href="#cb5-239"></a>            <span class="cf">if</span> <span class="op">(</span>knownObject<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-240"><a href="#cb5-240"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Find Borrow cancelled"</span><span class="op">);</span></span>
-<span id="cb5-241"><a href="#cb5-241"></a>                <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb5-242"><a href="#cb5-242"></a>            <span class="op">}</span></span>
-<span id="cb5-243"><a href="#cb5-243"></a>            knownObject <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Borrow Manager] Unknown object. Enter known object name ('Quit' to exit): "</span><span class="op">);</span></span>
-<span id="cb5-244"><a href="#cb5-244"></a>        <span class="op">}</span></span>
-<span id="cb5-245"><a href="#cb5-245"></a></span>
-<span id="cb5-246"><a href="#cb5-246"></a>        <span class="bu">String</span> objectID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Book Manager] Enter "</span> <span class="op">+</span> knownObject <span class="op">+</span> <span class="st">" ID: "</span><span class="op">);</span></span>
-<span id="cb5-247"><a href="#cb5-247"></a>        <span class="cf">switch</span><span class="op">(</span>knownObject<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-248"><a href="#cb5-248"></a>            <span class="cf">case</span> <span class="st">"book"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb5-249"><a href="#cb5-249"></a>                <span class="cf">return</span> <span class="fu">findBorrowByBookID</span><span class="op">(</span>objectID<span class="op">);</span></span>
-<span id="cb5-250"><a href="#cb5-250"></a>            <span class="op">}</span></span>
-<span id="cb5-251"><a href="#cb5-251"></a>            <span class="cf">case</span> <span class="st">"user"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb5-252"><a href="#cb5-252"></a>                <span class="cf">return</span> <span class="fu">findBorrowByUserID</span><span class="op">(</span>reader<span class="op">,</span> objectID<span class="op">);</span></span>
-<span id="cb5-253"><a href="#cb5-253"></a>            <span class="op">}</span></span>
-<span id="cb5-254"><a href="#cb5-254"></a>            <span class="cf">case</span> <span class="st">"borrow"</span> <span class="op">-&gt;</span>  <span class="op">{</span></span>
-<span id="cb5-255"><a href="#cb5-255"></a>                <span class="co">// Just return the borrow if it exists</span></span>
-<span id="cb5-256"><a href="#cb5-256"></a>                <span class="cf">return</span> borrows<span class="op">.</span><span class="fu">getOrDefault</span><span class="op">(</span>objectID<span class="op">,</span> <span class="kw">null</span><span class="op">);</span></span>
-<span id="cb5-257"><a href="#cb5-257"></a>            <span class="op">}</span></span>
-<span id="cb5-258"><a href="#cb5-258"></a>            <span class="kw">default</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb5-259"><a href="#cb5-259"></a>                <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb5-260"><a href="#cb5-260"></a>            <span class="op">}</span></span>
-<span id="cb5-261"><a href="#cb5-261"></a>        <span class="op">}</span></span>
-<span id="cb5-262"><a href="#cb5-262"></a>    <span class="op">}</span></span>
-<span id="cb5-263"><a href="#cb5-263"></a></span>
-<span id="cb5-264"><a href="#cb5-264"></a>    <span class="kw">public</span> <span class="dt">static</span> Borrow <span class="fu">findBorrowByBookID</span><span class="op">(</span><span class="bu">String</span> bookID<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-265"><a href="#cb5-265"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">Map</span><span class="op">.</span><span class="fu">Entry</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> Borrow<span class="op">&gt;</span> entry <span class="op">:</span> borrows<span class="op">.</span><span class="fu">entrySet</span><span class="op">())</span> <span class="op">{</span></span>
-<span id="cb5-266"><a href="#cb5-266"></a>            Borrow borrow <span class="op">=</span> entry<span class="op">.</span><span class="fu">getValue</span><span class="op">();</span></span>
-<span id="cb5-267"><a href="#cb5-267"></a>            <span class="cf">if</span> <span class="op">(</span>borrow<span class="op">.</span><span class="fu">getBookID</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>bookID<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-268"><a href="#cb5-268"></a>                <span class="cf">return</span> borrow<span class="op">;</span></span>
-<span id="cb5-269"><a href="#cb5-269"></a>            <span class="op">}</span></span>
-<span id="cb5-270"><a href="#cb5-270"></a>        <span class="op">}</span></span>
-<span id="cb5-271"><a href="#cb5-271"></a>        <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb5-272"><a href="#cb5-272"></a>    <span class="op">}</span></span>
-<span id="cb5-273"><a href="#cb5-273"></a></span>
-<span id="cb5-274"><a href="#cb5-274"></a>    <span class="kw">public</span> <span class="dt">static</span> Borrow <span class="fu">findBorrowByUserID</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">,</span> <span class="bu">String</span> userID<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-275"><a href="#cb5-275"></a>        <span class="co">// 1.- Find all borrows of that user</span></span>
-<span id="cb5-276"><a href="#cb5-276"></a>        <span class="bu">List</span><span class="op">&lt;</span>Borrow<span class="op">&gt;</span> userBorrows <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
-<span id="cb5-277"><a href="#cb5-277"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">Map</span><span class="op">.</span><span class="fu">Entry</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> Borrow<span class="op">&gt;</span> entry <span class="op">:</span> borrows<span class="op">.</span><span class="fu">entrySet</span><span class="op">())</span> <span class="op">{</span></span>
-<span id="cb5-278"><a href="#cb5-278"></a>            Borrow borrow <span class="op">=</span> entry<span class="op">.</span><span class="fu">getValue</span><span class="op">();</span></span>
-<span id="cb5-279"><a href="#cb5-279"></a>            <span class="cf">if</span> <span class="op">(</span>borrow<span class="op">.</span><span class="fu">getStudentID</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>userID<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-280"><a href="#cb5-280"></a>                userBorrows<span class="op">.</span><span class="fu">add</span><span class="op">(</span>borrow<span class="op">);</span></span>
-<span id="cb5-281"><a href="#cb5-281"></a>            <span class="op">}</span></span>
-<span id="cb5-282"><a href="#cb5-282"></a>        <span class="op">}</span></span>
-<span id="cb5-283"><a href="#cb5-283"></a></span>
-<span id="cb5-284"><a href="#cb5-284"></a>        <span class="co">// 2.- Text-only: show all available borrows</span></span>
-<span id="cb5-285"><a href="#cb5-285"></a>        <span class="cf">for</span> <span class="op">(</span>Borrow borrow <span class="op">:</span> userBorrows<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-286"><a href="#cb5-286"></a>            <span class="cf">if</span> <span class="op">(</span>borrow<span class="op">.</span><span class="fu">getStatusDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">"In progress"</span><span class="op">)</span> <span class="op">||</span> borrow<span class="op">.</span><span class="fu">getStatusDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Late"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-287"><a href="#cb5-287"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Borrow ID: "</span> <span class="op">+</span> borrow<span class="op">.</span><span class="fu">getBorrowID</span><span class="op">()</span> <span class="op">+</span> <span class="st">", book: "</span> <span class="op">+</span> BookManager<span class="op">.</span><span class="fu">getBookTitle</span><span class="op">(</span>borrow<span class="op">.</span><span class="fu">getBookID</span><span class="op">())</span> <span class="op">+</span> <span class="st">", status: "</span> <span class="op">+</span> borrow<span class="op">.</span><span class="fu">getStatusDescription</span><span class="op">());</span></span>
-<span id="cb5-288"><a href="#cb5-288"></a>            <span class="op">}</span></span>
-<span id="cb5-289"><a href="#cb5-289"></a>        <span class="op">}</span></span>
-<span id="cb5-290"><a href="#cb5-290"></a></span>
-<span id="cb5-291"><a href="#cb5-291"></a>        <span class="co">// 3.- Let the user decide what borrow to get</span></span>
-<span id="cb5-292"><a href="#cb5-292"></a>        <span class="bu">String</span> selectedBorrow <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Borrow Manager] Enter the user's borrow ID"</span><span class="op">);</span></span>
-<span id="cb5-293"><a href="#cb5-293"></a>        <span class="cf">while</span> <span class="op">(!</span>borrows<span class="op">.</span><span class="fu">containsKey</span><span class="op">(</span>selectedBorrow<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-294"><a href="#cb5-294"></a>            <span class="cf">if</span> <span class="op">(</span>selectedBorrow<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb5-295"><a href="#cb5-295"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Borrow Manager] Find borrow cancelled."</span><span class="op">);</span></span>
-<span id="cb5-296"><a href="#cb5-296"></a>                <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb5-297"><a href="#cb5-297"></a>            <span class="op">}</span></span>
-<span id="cb5-298"><a href="#cb5-298"></a>            selectedBorrow <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Borrow Manager] Unknown ID. Enter the user's borrow ID"</span><span class="op">);</span></span>
-<span id="cb5-299"><a href="#cb5-299"></a>        <span class="op">}</span></span>
-<span id="cb5-300"><a href="#cb5-300"></a></span>
-<span id="cb5-301"><a href="#cb5-301"></a>        <span class="co">// 4.- Return the borrow</span></span>
-<span id="cb5-302"><a href="#cb5-302"></a>        <span class="cf">return</span> borrows<span class="op">.</span><span class="fu">get</span><span class="op">(</span>selectedBorrow<span class="op">);</span></span>
-<span id="cb5-303"><a href="#cb5-303"></a>    <span class="op">}</span></span>
-<span id="cb5-304"><a href="#cb5-304"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-224"><a href="#cb5-224"></a></span>
+<span id="cb5-225"><a href="#cb5-225"></a>        <span class="kw">public</span> <span class="dt">static</span> Stream<span class="op">&lt;</span>borrowOptionsEnum<span class="op">&gt;</span> <span class="fu">stream</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-226"><a href="#cb5-226"></a>            <span class="cf">return</span> Stream<span class="op">.</span><span class="fu">of</span><span class="op">(</span>borrowOptionsEnum<span class="op">.</span><span class="fu">values</span><span class="op">());</span></span>
+<span id="cb5-227"><a href="#cb5-227"></a>        <span class="op">}</span></span>
+<span id="cb5-228"><a href="#cb5-228"></a>    <span class="op">}</span></span>
+<span id="cb5-229"><a href="#cb5-229"></a></span>
+<span id="cb5-230"><a href="#cb5-230"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-231"><a href="#cb5-231"></a>        <span class="co">// Print the available options</span></span>
+<span id="cb5-232"><a href="#cb5-232"></a>        borrowOptionsEnum<span class="op">.</span><span class="fu">printOptions</span><span class="op">();</span></span>
+<span id="cb5-233"><a href="#cb5-233"></a>        <span class="bu">String</span> action <span class="op">=</span> InterfaceUtils<span class="op">.</span><span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage borrows] Select option ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb5-234"><a href="#cb5-234"></a>        <span class="cf">while</span> <span class="op">(!</span>action<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-235"><a href="#cb5-235"></a>            borrowOptionsEnum<span class="op">.</span><span class="fu">executeOption</span><span class="op">(</span>reader<span class="op">,</span> action<span class="op">);</span></span>
+<span id="cb5-236"><a href="#cb5-236"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
+<span id="cb5-237"><a href="#cb5-237"></a>            borrowOptionsEnum<span class="op">.</span><span class="fu">printOptions</span><span class="op">();</span></span>
+<span id="cb5-238"><a href="#cb5-238"></a>            action <span class="op">=</span> InterfaceUtils<span class="op">.</span><span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Manage borrows] Select option ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb5-239"><a href="#cb5-239"></a>        <span class="op">}</span></span>
+<span id="cb5-240"><a href="#cb5-240"></a>    <span class="op">}</span></span>
+<span id="cb5-241"><a href="#cb5-241"></a></span>
+<span id="cb5-242"><a href="#cb5-242"></a>    <span class="kw">public</span> <span class="dt">static</span> Borrow <span class="fu">findBorrow</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-243"><a href="#cb5-243"></a>        <span class="bu">String</span> knownObject <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Borrow Manager] Enter known object name ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb5-244"><a href="#cb5-244"></a>        <span class="cf">while</span> <span class="op">(!</span>knownObject<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"book"</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span>knownObject<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"user"</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span>knownObject<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"borrow"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-245"><a href="#cb5-245"></a>            <span class="cf">if</span> <span class="op">(</span>knownObject<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-246"><a href="#cb5-246"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Find Borrow cancelled"</span><span class="op">);</span></span>
+<span id="cb5-247"><a href="#cb5-247"></a>                <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb5-248"><a href="#cb5-248"></a>            <span class="op">}</span></span>
+<span id="cb5-249"><a href="#cb5-249"></a>            knownObject <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Borrow Manager] Unknown object. Enter known object name ('Quit' to exit): "</span><span class="op">);</span></span>
+<span id="cb5-250"><a href="#cb5-250"></a>        <span class="op">}</span></span>
+<span id="cb5-251"><a href="#cb5-251"></a></span>
+<span id="cb5-252"><a href="#cb5-252"></a>        <span class="bu">String</span> objectID <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Book Manager] Enter "</span> <span class="op">+</span> knownObject <span class="op">+</span> <span class="st">" ID: "</span><span class="op">);</span></span>
+<span id="cb5-253"><a href="#cb5-253"></a>        <span class="cf">switch</span><span class="op">(</span>knownObject<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-254"><a href="#cb5-254"></a>            <span class="cf">case</span> <span class="st">"book"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb5-255"><a href="#cb5-255"></a>                <span class="cf">return</span> <span class="fu">findBorrowByBookID</span><span class="op">(</span>objectID<span class="op">);</span></span>
+<span id="cb5-256"><a href="#cb5-256"></a>            <span class="op">}</span></span>
+<span id="cb5-257"><a href="#cb5-257"></a>            <span class="cf">case</span> <span class="st">"user"</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb5-258"><a href="#cb5-258"></a>                <span class="cf">return</span> <span class="fu">findBorrowByUserID</span><span class="op">(</span>reader<span class="op">,</span> objectID<span class="op">);</span></span>
+<span id="cb5-259"><a href="#cb5-259"></a>            <span class="op">}</span></span>
+<span id="cb5-260"><a href="#cb5-260"></a>            <span class="cf">case</span> <span class="st">"borrow"</span> <span class="op">-&gt;</span>  <span class="op">{</span></span>
+<span id="cb5-261"><a href="#cb5-261"></a>                <span class="co">// Just return the borrow if it exists</span></span>
+<span id="cb5-262"><a href="#cb5-262"></a>                <span class="cf">return</span> borrows<span class="op">.</span><span class="fu">getOrDefault</span><span class="op">(</span>objectID<span class="op">,</span> <span class="kw">null</span><span class="op">);</span></span>
+<span id="cb5-263"><a href="#cb5-263"></a>            <span class="op">}</span></span>
+<span id="cb5-264"><a href="#cb5-264"></a>            <span class="kw">default</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb5-265"><a href="#cb5-265"></a>                <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb5-266"><a href="#cb5-266"></a>            <span class="op">}</span></span>
+<span id="cb5-267"><a href="#cb5-267"></a>        <span class="op">}</span></span>
+<span id="cb5-268"><a href="#cb5-268"></a>    <span class="op">}</span></span>
+<span id="cb5-269"><a href="#cb5-269"></a></span>
+<span id="cb5-270"><a href="#cb5-270"></a>    <span class="kw">public</span> <span class="dt">static</span> Borrow <span class="fu">findBorrowByBookID</span><span class="op">(</span><span class="bu">String</span> bookID<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-271"><a href="#cb5-271"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">Map</span><span class="op">.</span><span class="fu">Entry</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> Borrow<span class="op">&gt;</span> entry <span class="op">:</span> borrows<span class="op">.</span><span class="fu">entrySet</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb5-272"><a href="#cb5-272"></a>            Borrow borrow <span class="op">=</span> entry<span class="op">.</span><span class="fu">getValue</span><span class="op">();</span></span>
+<span id="cb5-273"><a href="#cb5-273"></a>            <span class="cf">if</span> <span class="op">(</span>borrow<span class="op">.</span><span class="fu">getBookID</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>bookID<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-274"><a href="#cb5-274"></a>                <span class="cf">return</span> borrow<span class="op">;</span></span>
+<span id="cb5-275"><a href="#cb5-275"></a>            <span class="op">}</span></span>
+<span id="cb5-276"><a href="#cb5-276"></a>        <span class="op">}</span></span>
+<span id="cb5-277"><a href="#cb5-277"></a>        <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb5-278"><a href="#cb5-278"></a>    <span class="op">}</span></span>
+<span id="cb5-279"><a href="#cb5-279"></a></span>
+<span id="cb5-280"><a href="#cb5-280"></a>    <span class="kw">public</span> <span class="dt">static</span> Borrow <span class="fu">findBorrowByUserID</span><span class="op">(</span><span class="bu">Scanner</span> reader<span class="op">,</span> <span class="bu">String</span> userID<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-281"><a href="#cb5-281"></a>        <span class="co">// 1. Find all borrows of that user</span></span>
+<span id="cb5-282"><a href="#cb5-282"></a>        <span class="bu">List</span><span class="op">&lt;</span>Borrow<span class="op">&gt;</span> userBorrows <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb5-283"><a href="#cb5-283"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">Map</span><span class="op">.</span><span class="fu">Entry</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> Borrow<span class="op">&gt;</span> entry <span class="op">:</span> borrows<span class="op">.</span><span class="fu">entrySet</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb5-284"><a href="#cb5-284"></a>            Borrow borrow <span class="op">=</span> entry<span class="op">.</span><span class="fu">getValue</span><span class="op">();</span></span>
+<span id="cb5-285"><a href="#cb5-285"></a>            <span class="cf">if</span> <span class="op">(</span>borrow<span class="op">.</span><span class="fu">getStudentID</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>userID<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-286"><a href="#cb5-286"></a>                userBorrows<span class="op">.</span><span class="fu">add</span><span class="op">(</span>borrow<span class="op">);</span></span>
+<span id="cb5-287"><a href="#cb5-287"></a>            <span class="op">}</span></span>
+<span id="cb5-288"><a href="#cb5-288"></a>        <span class="op">}</span></span>
+<span id="cb5-289"><a href="#cb5-289"></a></span>
+<span id="cb5-290"><a href="#cb5-290"></a>        <span class="co">// 2.- Text-only: show all available borrows</span></span>
+<span id="cb5-291"><a href="#cb5-291"></a>        <span class="cf">for</span> <span class="op">(</span>Borrow borrow <span class="op">:</span> userBorrows<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-292"><a href="#cb5-292"></a>            <span class="cf">if</span> <span class="op">(</span>borrow<span class="op">.</span><span class="fu">getStatusDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">"In progress"</span><span class="op">)</span> <span class="op">||</span> borrow<span class="op">.</span><span class="fu">getStatusDescription</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Late"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-293"><a href="#cb5-293"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Borrow ID: "</span> <span class="op">+</span> borrow<span class="op">.</span><span class="fu">getBorrowID</span><span class="op">()</span> <span class="op">+</span> <span class="st">", book: "</span> <span class="op">+</span> BookManager<span class="op">.</span><span class="fu">getBookTitle</span><span class="op">(</span>borrow<span class="op">.</span><span class="fu">getBookID</span><span class="op">())</span> <span class="op">+</span> <span class="st">", status: "</span> <span class="op">+</span> borrow<span class="op">.</span><span class="fu">getStatusDescription</span><span class="op">());</span></span>
+<span id="cb5-294"><a href="#cb5-294"></a>            <span class="op">}</span></span>
+<span id="cb5-295"><a href="#cb5-295"></a>        <span class="op">}</span></span>
+<span id="cb5-296"><a href="#cb5-296"></a></span>
+<span id="cb5-297"><a href="#cb5-297"></a>        <span class="co">// 3. Let the user decide what borrow to get</span></span>
+<span id="cb5-298"><a href="#cb5-298"></a>        <span class="bu">String</span> selectedBorrow <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Borrow Manager] Enter the user's borrow ID: "</span><span class="op">);</span></span>
+<span id="cb5-299"><a href="#cb5-299"></a>        <span class="cf">while</span> <span class="op">(!</span>borrows<span class="op">.</span><span class="fu">containsKey</span><span class="op">(</span>selectedBorrow<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-300"><a href="#cb5-300"></a>            <span class="cf">if</span> <span class="op">(</span>selectedBorrow<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">"Quit"</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-301"><a href="#cb5-301"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"[Borrow Manager] Find borrow cancelled."</span><span class="op">);</span></span>
+<span id="cb5-302"><a href="#cb5-302"></a>                <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb5-303"><a href="#cb5-303"></a>            <span class="op">}</span></span>
+<span id="cb5-304"><a href="#cb5-304"></a>            selectedBorrow <span class="op">=</span> <span class="fu">askString</span><span class="op">(</span>reader<span class="op">,</span> <span class="st">"[Borrow Manager] Unknown ID. Enter the user's borrow ID: "</span><span class="op">);</span></span>
+<span id="cb5-305"><a href="#cb5-305"></a>        <span class="op">}</span></span>
+<span id="cb5-306"><a href="#cb5-306"></a></span>
+<span id="cb5-307"><a href="#cb5-307"></a>        <span class="co">// 4. Return the borrow</span></span>
+<span id="cb5-308"><a href="#cb5-308"></a>        <span class="cf">return</span> borrows<span class="op">.</span><span class="fu">get</span><span class="op">(</span>selectedBorrow<span class="op">);</span></span>
+<span id="cb5-309"><a href="#cb5-309"></a>    <span class="op">}</span></span>
+<span id="cb5-310"><a href="#cb5-310"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
