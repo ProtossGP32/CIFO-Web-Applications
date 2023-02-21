@@ -64,6 +64,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -641,7 +644,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="abstract-class" class="level2">
 <h2 class="anchored" data-anchor-id="abstract-class">Abstract class</h2>
-<p>Finally, the <code>LibraryMember</code> abstrac class is a parent class for users and staff members, which includes common fields such as id, address, and phoneNumber.</p>
+<p>Finally, the <code>LibraryMember</code> abstract class is a parent class for users and staff members, which includes common fields such as id, address, and phoneNumber.</p>
 <p>By defining these fields in an <code>abstract</code> class, it allows for different types of users and staff members to inherit them and <strong>avoid duplication of code.</strong></p>
 </section>
 <section id="uml" class="level2">
@@ -697,8 +700,87 @@ TODO
 <p>Create new UML</p>
 </div>
 </div>
+<section id="publications" class="level4">
+<h4 class="anchored" data-anchor-id="publications">Publications</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">classDiagram
+    direction BT
+    %% Interface
+    class Publication {
+    }
+    &lt;&lt;interface&gt;&gt; Publication
+    %% Publication Entity classes
+    class Book {
+    }
+    class CD {
+    }
+    class DVD {
+    }
+
+    Book ..&gt; Publication
+    CD ..&gt; Publication
+    DVD ..&gt; Publication
+
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="library-members" class="level4">
+<h4 class="anchored" data-anchor-id="library-members">Library Members</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">classDiagram
+    direction BT
+    %% Interfaces
+    class GeneralOperations {
+    }
+    &lt;&lt;interface&gt;&gt; GeneralOperations
+
+    class UserOperations {
+    }
+    &lt;&lt;interface&gt;&gt; UserOperations
+    class StaffOperations {
+    }
+    &lt;&lt;interface&gt;&gt; StaffOperations
+
+    %% Interfaces relationships
+
+    User ..&gt; UserOperations
+    Staff ..&gt; StaffOperations
+
+    %% Abstract class
+    class LibraryMember {
+        + id: String
+        + address: String
+        + phoneNumber: String
+    }
+    &lt;&lt;abstract&gt;&gt; LibraryMember
+
+    %% LibraryMember Entity classes
+    User ..o LibraryMember
+    Staff ..o LibraryMember
+
+</pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 </section>
