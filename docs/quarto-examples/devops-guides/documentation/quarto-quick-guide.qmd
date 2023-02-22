@@ -32,3 +32,29 @@ editor:
 ```bash
 quarto publish gh-pages --no-render
 ```
+
+# GitHub Actions
+We can configure GitHub Actions to do the rendering and publishing for us any time that a new change in our documents folder has been pushed.
+
+First of all, create the following path in your repository root:
+
+```{.bash}
+${REPO_PATH}/.github/workflows
+```
+
+Then create the following file inside this path:
+
+```{.yaml filename=".github/workflows/quarto-publish.yml" include="../../../../.github/workflows/quarto-publish.yml"}
+
+```
+
+where the important fields to modify are the following ones:
+
+- `on.push.paths` is the Quarto project root directory where GitHub will check if any pushes have been done to execute this action
+    - In my case, my Quarto project is inside the `docs/quarto-examples` path. The `**` at the end means that any changed file within that dir will trigger the action
+- `with.path` in the `Publish to GitHub Pages (and render)` again is the root path of our Quarto project
+    - In my case, my Quarto project is inside the `docs/quarto-examples` path
+
+Once done, commit and push these changes. GitHub will automatically render and publish the Quarto project the next time you push a project change:
+
+![Quarto workflow executed via GitHub actions](../../images/devops-guides/documentation/quarto-github-action.png)
