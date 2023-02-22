@@ -246,6 +246,9 @@ classDiagram
 
 ```
 
+# Migrating to SpringBoot
+With the core model defined and its functionalities, let's migrate the project to a SpringBoot project to enable Web features, so we can use REST controllers to access the application and its databases.
+
 ## User interface
 Let's define the different __domains__ that are accessible through a user interface.
 

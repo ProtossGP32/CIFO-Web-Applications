@@ -5,16 +5,38 @@ categories: [springboot, web, REST]
 date: 2023/02/22
 ---
 # Introduction
-Follow [this guide](https://albertprofe.github.io/wiki/springboot/boot-what-create-th-h2.html) and try to implement [this project]()
+Follow [this guide](https://albertprofe.github.io/wiki/springboot/boot-what-create-th-h2.html) and try to implement [this project](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library1) with [its documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library1:-API-Rest-Book-CRUD-with-Postman-Swagger).
 
 # Getting Started
 ## Download and initialize H2
 [Quick start guide](https://www.h2database.com/html/quickstart.html)
 
-Access the DB web manager through
+You can also download the latest version from the GitHub repository, in the release branch, by executing the following command:
+
+```{.bash}
+gh release download --repo h2database/h2database -p 'h2-*.zip'
+```
+
+Unzip the file and execute the script in the `bin` folder:
+
+```{.bash}
+# Unzip the downloaded file
+unzip h2-YYYY-mm-dd.zip
+# Change directory
+cd bin
+# Execute the script
+./h2.sh
+```
+
+Now a H2 Database Engine icon shall appear in the task bar of your desktop and a new browser window will appear pointing to `http://127.0.1.1:8082`, the H2 web console:
+
+![H2 Database Engine](../../../images/java-labs/h2-database-engine.png)
+
+![H2 console](../../../images/java-labs/h2-console.png)
+
 
 ## Create a new database
-The DB will be locally created
+The DB will be locally created.
 This will provide us with a new URL to access from the web console manager.
 
 :::{.callout-note}
@@ -36,10 +58,10 @@ Modify the `application.properties` to include the H2 Datasources parameters (an
 
 ```{.conf}
 # H2 parameters
-spring.datasource.url=""
-spring.datasource.username=""
-spring.datasource.password=""
-spring.datasource.driver-class-name=""
+spring.datasource.url=jdbc:h2:test
+spring.datasource.username=<db-username>
+spring.datasource.password=<db-password>
+spring.datasource.driver-class-name=org.h2.Driver
 
 # DDL
 spring.jpa.hibernate.ddl-auto=update
@@ -47,7 +69,7 @@ spring.jpa.hibernate.ddl-auto=update
 
 ## Adapting project to SpringBoot
 
-Take as an example the `Book` class from the [Lab SE03-2](../../../../Labs/java-se03-2.qmd). Now we'll include annotations to define what `@Entity` does it represent and in what `@Table` does it exist. Also, for each attribute we'll define its DB field name.
+Take as an example the `Book` class from the [Lab SE03-2](../../Labs/java-se03-2.qmd). Now we'll include annotations to define what `@Entity` does it represent and in what `@Table` does it exist. Also, for each attribute we'll define its DB field name.
 
 ## Dependency injection (`@Autowired`)
 What is a dependency injection? It's a SpringBoot feature that automatically wires a bean from the Spring application context into a class field or method.

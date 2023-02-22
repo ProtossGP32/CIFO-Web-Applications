@@ -34,6 +34,8 @@ quarto publish gh-pages --no-render
 ```
 
 # GitHub Actions
+_Check the [official Quarto Actions repository](https://github.com/quarto-dev/quarto-actions)_
+
 We can configure GitHub Actions to do the rendering and publishing for us any time that a new change in our documents folder has been pushed.
 
 First of all, create the following path in your repository root:
