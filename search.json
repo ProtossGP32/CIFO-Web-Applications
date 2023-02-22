@@ -179,28 +179,28 @@
     "href": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html",
     "title": "01 - Creating a Spring Boot project with H2 and ThyMeLeaf",
     "section": "",
-    "text": "Follow this guide and try to implement this project"
+    "text": "Follow this guide and try to implement this project with its documentation."
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#download-and-initialize-h2",
     "href": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#download-and-initialize-h2",
     "title": "01 - Creating a Spring Boot project with H2 and ThyMeLeaf",
     "section": "Download and initialize H2",
-    "text": "Download and initialize H2\nQuick start guide\nAccess the DB web manager through"
+    "text": "Download and initialize H2\nQuick start guide\nYou can also download the latest version from the GitHub repository, in the release branch, by executing the following command:\ngh release download --repo h2database/h2database -p 'h2-*.zip'\nUnzip the file and execute the script in the bin folder:\n# Unzip the downloaded file\nunzip h2-YYYY-mm-dd.zip\n# Change directory\ncd bin\n# Execute the script\n./h2.sh\nNow a H2 Database Engine icon shall appear in the task bar of your desktop and a new browser window will appear pointing to http://127.0.1.1:8082, the H2 web console:\n\n\n\nH2 Database Engine\n\n\n\n\n\nH2 console"
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#create-a-new-database",
     "href": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#create-a-new-database",
     "title": "01 - Creating a Spring Boot project with H2 and ThyMeLeaf",
     "section": "Create a new database",
-    "text": "Create a new database\nThe DB will be locally created This will provide us with a new URL to access from the web console manager.\n\n\n\n\n\n\nCopy the JDBC URL\n\n\n\nThis is required to login into the DB from the H2 web server\n\n\nLogin:\n\nSaved settings: Generic H2 (Server)\nSetting Name: Generic H2 (Server)\nDriver Class: org.h2.Driver\nJDBC URL: jdbc:h2:test\nUser Name: <db-username>\nPassword: <db-password>"
+    "text": "Create a new database\nThe DB will be locally created. This will provide us with a new URL to access from the web console manager.\n\n\n\n\n\n\nCopy the JDBC URL\n\n\n\nThis is required to login into the DB from the H2 web server\n\n\nLogin:\n\nSaved settings: Generic H2 (Server)\nSetting Name: Generic H2 (Server)\nDriver Class: org.h2.Driver\nJDBC URL: jdbc:h2:test\nUser Name: <db-username>\nPassword: <db-password>"
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#configuring-spring-boot-project",
     "href": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#configuring-spring-boot-project",
     "title": "01 - Creating a Spring Boot project with H2 and ThyMeLeaf",
     "section": "Configuring Spring Boot project",
-    "text": "Configuring Spring Boot project\nModify the application.properties to include the H2 Datasources parameters (and also the JPA ones):\n# H2 parameters\nspring.datasource.url=\"\"\nspring.datasource.username=\"\"\nspring.datasource.password=\"\"\nspring.datasource.driver-class-name=\"\"\n\n# DDL\nspring.jpa.hibernate.ddl-auto=update"
+    "text": "Configuring Spring Boot project\nModify the application.properties to include the H2 Datasources parameters (and also the JPA ones):\n# H2 parameters\nspring.datasource.url=jdbc:h2:test\nspring.datasource.username=<db-username>\nspring.datasource.password=<db-password>\nspring.datasource.driver-class-name=org.h2.Driver\n\n# DDL\nspring.jpa.hibernate.ddl-auto=update"
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#adapting-project-to-springboot",
