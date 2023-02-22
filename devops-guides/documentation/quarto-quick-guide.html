@@ -484,6 +484,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#ensure-that-any-.qmd-file-within-the-quarto-project-is-rendered-on-save" id="toc-ensure-that-any-.qmd-file-within-the-quarto-project-is-rendered-on-save" class="nav-link" data-scroll-target="#ensure-that-any-.qmd-file-within-the-quarto-project-is-rendered-on-save">Ensure that any <code>.qmd</code> file within the Quarto project is rendered on save</a></li>
   <li><a href="#when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save" id="toc-when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save" class="nav-link" data-scroll-target="#when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save">When publishing, don’t render again the <code>.qmd</code> files (already rendered on save)</a></li>
   </ul></li>
+  <li><a href="#github-actions" id="toc-github-actions" class="nav-link" data-scroll-target="#github-actions">GitHub Actions</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/documentation/quarto-quick-guide.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -531,9 +532,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save" class="level2">
 <h2 class="anchored" data-anchor-id="when-publishing-dont-render-again-the-.qmd-files-already-rendered-on-save">When publishing, don’t render again the <code>.qmd</code> files (already rendered on save)</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">quarto</span> publish gh-pages <span class="at">--no-render</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+</section>
+<section id="github-actions" class="level1">
+<h1>GitHub Actions</h1>
+<p>We can configure GitHub Actions to do the rendering and publishing for us any time that a new change in our documents folder has been pushed.</p>
+<p>First of all, create the following path in your repository root:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="va">${REPO_PATH}</span><span class="ex">/.github/workflows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then create the following file inside this path:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.github/workflows/quarto-publish.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="at">      </span><span class="kw">-</span><span class="at"> main</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="at">    </span><span class="fu">paths</span><span class="kw">:</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="at">      </span><span class="kw">-</span><span class="at"> docs/quarto-examples/**</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Quarto Render and Publish</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="at">  </span><span class="fu">build-deploy</span><span class="kw">:</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Check out repository</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="at">        </span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Set up Quarto</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">          # To install LaTeX to build PDF book </span></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="at">          </span><span class="fu">tinytex</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="at"> </span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="co">          # uncomment below and fill to pin a version</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co">          # version: SPECIFIC-QUARTO-VERSION-HERE</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="at">      </span></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="co">      # add software dependencies here</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install Jupyter</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb6-28"><a href="#cb6-28"></a>          python3 -m pip install jupyter</span>
+<span id="cb6-29"><a href="#cb6-29"></a></span>
+<span id="cb6-30"><a href="#cb6-30"></a><span class="co">      # Publish to GitHub Pages</span></span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Publish to GitHub Pages (and render)</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/publish@v2</span></span>
+<span id="cb6-33"><a href="#cb6-33"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb6-34"><a href="#cb6-34"></a><span class="at">          </span><span class="fu">target</span><span class="kw">:</span><span class="at"> gh-pages</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a><span class="at">          </span><span class="fu">path</span><span class="kw">:</span><span class="at"> docs/quarto-examples</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb6-37"><a href="#cb6-37"></a><span class="at">          </span><span class="fu">GITHUB_TOKEN</span><span class="kw">:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span><span class="co"> # this secret is always available for github actions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>where the important fields to modify are the following ones:</p>
+<ul>
+<li><code>on.push.paths</code> is the Quarto project root directory where GitHub will check if any pushes have been done to execute this action
+<ul>
+<li>In my case, my Quarto project is inside the <code>docs/quarto-examples</code> path. The <code>**</code> at the end means that any changed file within that dir will trigger the action</li>
+</ul></li>
+<li><code>with.path</code> in the <code>Publish to GitHub Pages (and render)</code> again is the root path of our Quarto project
+<ul>
+<li>In my case, my Quarto project is inside the <code>docs/quarto-examples</code> path</li>
+</ul></li>
+</ul>
+<p>Once done, commit and push these changes. GitHub will automatically render and publish the Quarto project the next time you push a project change:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/devops-guides/documentation/quarto-github-action.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Quarto workflow executed via GitHub actions</figcaption><p></p>
+</figure>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
