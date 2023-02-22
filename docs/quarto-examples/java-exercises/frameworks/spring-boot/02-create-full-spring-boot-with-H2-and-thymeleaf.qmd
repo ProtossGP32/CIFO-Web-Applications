@@ -1,0 +1,67 @@
+---
+title: "01 - Creating a Spring Boot project with H2 and ThyMeLeaf"
+author: ProtossGP32
+categories: [springboot, web, REST]
+date: 2023/02/22
+---
+# Introduction
+Follow [this guide](https://albertprofe.github.io/wiki/springboot/boot-what-create-th-h2.html) and try to implement [this project]()
+
+# Getting Started
+## Download and initialize H2
+[Quick start guide](https://www.h2database.com/html/quickstart.html)
+
+Access the DB web manager through
+
+## Create a new database
+The DB will be locally created
+This will provide us with a new URL to access from the web console manager.
+
+:::{.callout-note}
+## Copy the JDBC URL
+This is required to login into the DB from the H2 web server
+:::
+
+Login:
+
+- Saved settings: Generic H2 (Server)
+- Setting Name: Generic H2 (Server)
+- Driver Class: org.h2.Driver
+- JDBC URL: jdbc:h2:test
+- User Name: `<db-username>`
+- Password: `<db-password>`
+
+## Configuring Spring Boot project
+Modify the `application.properties` to include the H2 Datasources parameters (and also the JPA ones):
+
+```{.conf}
+# H2 parameters
+spring.datasource.url=""
+spring.datasource.username=""
+spring.datasource.password=""
+spring.datasource.driver-class-name=""
+
+# DDL
+spring.jpa.hibernate.ddl-auto=update
+```
+
+## Adapting project to SpringBoot
+
+Take as an example the `Book` class from the [Lab SE03-2](../../../../Labs/java-se03-2.qmd). Now we'll include annotations to define what `@Entity` does it represent and in what `@Table` does it exist. Also, for each attribute we'll define its DB field name.
+
+## Dependency injection (`@Autowired`)
+What is a dependency injection? It's a SpringBoot feature that automatically wires a bean from the Spring application context into a class field or method.
+
+:::{.callout-important}
+## TODO
+Explain what is a dependency injection
+:::
+
+## Preparing the frontend
+ThyMeLeaf
+
+
+## Launching the server
+
+## Accessing the server
+Access th

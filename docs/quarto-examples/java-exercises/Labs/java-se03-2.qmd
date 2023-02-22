@@ -246,3 +246,32 @@ classDiagram
 
 ```
 
+## User interface
+Let's define the different __domains__ that are accessible through a user interface.
+
+- In a web interface, domains could be:
+    - `/user` with a private access, only available to Library Users
+    - `/librarian` with a private access, only available to Librarians
+    - `/web` with a public access, available to any person that access the webpage
+
+## Controllers
+
+In the backend, we need controllers for `user` and `librarian`, with access to the Library `db`.
+
+Requests can be of multiple forms, such as API Rest, HTML, websockets...
+
+Required methods to resolve the requests coming from the frontend must be implemented into each actor (`user` and `library`). These methods invoke other classes like `@Service` and `@Repository`, that have the `utils` required to resolve the requests.
+
+:::{.callout-note}
+## `@Service` and `@Repository` here are like the `Manager` classes
+We treat them as the source of all utilities that execute the response logic 
+:::
+
+## Databases
+
+For this project, we'll be using H2. H2 is a Java SQL database with the following main features:
+
+- Very fast, open source, JDBC API
+- Embedded and serer modes; in-memory databases
+- Browser based Console application
+- Small footprint: around 2.5 MB jar file size
