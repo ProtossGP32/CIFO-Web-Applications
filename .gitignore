@@ -14,5 +14,7 @@
 # Vim
 **/*.swp
 
+# Databases
+**/*.db
 
 /.luarc.json
