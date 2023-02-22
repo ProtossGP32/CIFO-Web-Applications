@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -435,6 +435,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">01 - Creating a Spring Boot project</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="sidebar-item-text sidebar-link">01 - Creating a Spring Boot project with H2 and ThyMeLeaf</a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -532,6 +537,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#previous-drafts" id="toc-previous-drafts" class="nav-link" data-scroll-target="#previous-drafts">Previous drafts</a></li>
   <li><a href="#current-uml" id="toc-current-uml" class="nav-link" data-scroll-target="#current-uml">Current UML</a></li>
   </ul></li>
+  <li><a href="#user-interface" id="toc-user-interface" class="nav-link" data-scroll-target="#user-interface">User interface</a></li>
+  <li><a href="#controllers" id="toc-controllers" class="nav-link" data-scroll-target="#controllers">Controllers</a></li>
+  <li><a href="#databases" id="toc-databases" class="nav-link" data-scroll-target="#databases">Databases</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se03-2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -874,10 +882,51 @@ TODO
 </div>
 </div>
 </div>
-
-
 </section>
 </section>
+</section>
+<section id="user-interface" class="level2">
+<h2 class="anchored" data-anchor-id="user-interface">User interface</h2>
+<p>Let’s define the different <strong>domains</strong> that are accessible through a user interface.</p>
+<ul>
+<li>In a web interface, domains could be:
+<ul>
+<li><code>/user</code> with a private access, only available to Library Users</li>
+<li><code>/librarian</code> with a private access, only available to Librarians</li>
+<li><code>/web</code> with a public access, available to any person that access the webpage</li>
+</ul></li>
+</ul>
+</section>
+<section id="controllers" class="level2">
+<h2 class="anchored" data-anchor-id="controllers">Controllers</h2>
+<p>In the backend, we need controllers for <code>user</code> and <code>librarian</code>, with access to the Library <code>db</code>.</p>
+<p>Requests can be of multiple forms, such as API Rest, HTML, websockets…</p>
+<p>Required methods to resolve the requests coming from the frontend must be implemented into each actor (<code>user</code> and <code>library</code>). These methods invoke other classes like <code>@Service</code> and <code>@Repository</code>, that have the <code>utils</code> required to resolve the requests.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<code>@Service</code> and <code>@Repository</code> here are like the <code>Manager</code> classes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We treat them as the source of all utilities that execute the response logic</p>
+</div>
+</div>
+</section>
+<section id="databases" class="level2">
+<h2 class="anchored" data-anchor-id="databases">Databases</h2>
+<p>For this project, we’ll be using H2. H2 is a Java SQL database with the following main features:</p>
+<ul>
+<li>Very fast, open source, JDBC API</li>
+<li>Embedded and serer modes; in-memory databases</li>
+<li>Browser based Console application</li>
+<li>Small footprint: around 2.5 MB jar file size</li>
+</ul>
+
+
 </section>
 </section>
 
