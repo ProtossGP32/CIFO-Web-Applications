@@ -172,7 +172,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "This site is a compilation of all the knowledge achieved during CIFO courses, such as DevOps or Web Applications with Java."
+    "text": "Page description\nThis site is a compilation of all the knowledge achieved during CIFO courses, such as DevOps or Web Applications with Java.\n\n\nAbout the author\nHi! My name is Marc Palacín and I’m a Data Engineer, Software Engineer and hopefully a future DevOps engineer!\nI love tinkering with electronics and hardware, and process automation is my passion."
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html",
