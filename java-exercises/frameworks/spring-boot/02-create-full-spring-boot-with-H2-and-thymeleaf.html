@@ -9,7 +9,7 @@
 <meta name="author" content="ProtossGP32">
 <meta name="dcterms.date" content="2023-02-22">
 
-<title>CIFO - Web Applications - 01 - Creating a Spring Boot project with H2 and ThyMeLeaf</title>
+<title>CIFO - Web Applications - 02 - Creating a Spring Boot project with H2 and ThyMeLeaf</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -376,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">01 - Creating a Spring Boot project with H2 and ThyMeLeaf</h1>
+      <h1 class="quarto-secondary-nav-title">02 - Creating a Spring Boot project with H2 and ThyMeLeaf</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -497,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="sidebar-item-text sidebar-link active">01 - Creating a Spring Boot project with H2 and ThyMeLeaf</a>
+  <a href="../../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="sidebar-item-text sidebar-link active">02 - Creating a Spring Boot project with H2 and ThyMeLeaf</a>
   </div>
 </li>
       </ul>
@@ -608,7 +608,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">01 - Creating a Spring Boot project with H2 and ThyMeLeaf</h1>
+<h1 class="title d-none d-lg-block">02 - Creating a Spring Boot project with H2 and ThyMeLeaf</h1>
   <div class="quarto-categories">
     <div class="quarto-category">springboot</div>
     <div class="quarto-category">web</div>
@@ -712,7 +712,7 @@ Copy the JDBC URL
 </section>
 <section id="adapting-project-to-springboot" class="level2">
 <h2 class="anchored" data-anchor-id="adapting-project-to-springboot">Adapting project to SpringBoot</h2>
-<p>Take as an example the <code>Book</code> class from the <a href="../../../java-exercises/Labs/java-se03-2.html">Lab SE03-2</a>. Now we’ll include annotations to define what <code>@Entity</code> does it represent and in what <code>@Table</code> does it exist. Also, for each attribute we’ll define its DB field name.</p>
+<p>Take as an example the <code>Book</code> class from the <a href="../../../java-exercises/Labs/java-se03-2.html">Lab SE03-2</a>. Now we’ll include annotations to define what <code>@Entity</code> does it represent and in what <code>@Table</code> does it exist. Also, for each attribute we’ll define its DB field name using <code>@Column</code> or in case of other entities, <code>@ManyToMany</code>, <code>@OneToMany</code> or <code>@ManyToOne</code>.</p>
 </section>
 <section id="dependency-injection-autowired" class="level2">
 <h2 class="anchored" data-anchor-id="dependency-injection-autowired">Dependency injection (<code>@Autowired</code>)</h2>
@@ -733,14 +733,27 @@ TODO
 </section>
 <section id="preparing-the-frontend" class="level2">
 <h2 class="anchored" data-anchor-id="preparing-the-frontend">Preparing the frontend</h2>
-<p>ThyMeLeaf</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explain ThyMeLeaf</p>
+</div>
+</div>
 </section>
 <section id="launching-the-server" class="level2">
 <h2 class="anchored" data-anchor-id="launching-the-server">Launching the server</h2>
+<p>Run the application from IntelliJ for now. Later on we’ll explain how to build and package it for deployment.</p>
 </section>
 <section id="accessing-the-server" class="level2">
 <h2 class="anchored" data-anchor-id="accessing-the-server">Accessing the server</h2>
-<p>Access th</p>
+<p>Server will be available through the declared server port in the <code>application.properties</code> or <code>application.yml</code> file. If not defined, as springboot is using Tomcat, the default port will be 8080.</p>
 
 
 </section>
