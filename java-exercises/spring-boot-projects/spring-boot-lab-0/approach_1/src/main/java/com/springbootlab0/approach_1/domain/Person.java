@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.JOINED)
 abstract class Person {
     @Column(name="PERSON_FIRSTNAME")
     private String firstName;

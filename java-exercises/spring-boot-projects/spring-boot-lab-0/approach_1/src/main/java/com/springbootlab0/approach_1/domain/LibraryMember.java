@@ -7,11 +7,15 @@ import com.springbootlab0.approach_1.utils.Helper;
 
 import java.time.LocalDate;
 
+// Lombok annotations
 @Getter
 @ToString(callSuper = true)
 @SuperBuilder(toBuilder = true)
-@Entity(name="LibraryMember")
+// JPA Annotations
+@Entity
 @Table(name="LIBRARYMEMBER_TABLE")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "MEMBER_TYPE", discriminatorType = DiscriminatorType.STRING)
 abstract class LibraryMember extends Person implements GeneralOperations {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

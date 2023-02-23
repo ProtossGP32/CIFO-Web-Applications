@@ -21,6 +21,7 @@ class DVDTest {
         assertNotNull(this.testDVD.getId());
         assertNull(this.testDVD.getTitle());
         assertNull(this.testDVD.getPublicationDate());
+        assertNull(this.testDVD.getStatus());
         assertEquals(0, this.testDVD.getDuration());
     }
 
@@ -29,6 +30,7 @@ class DVDTest {
         assertNotNull(this.testDVD.getId());
         assertNotNull(this.testDVD.getTitle());
         assertNotNull(this.testDVD.getPublicationDate());
+        assertNotNull(this.testDVD.getStatus());
         assertTrue(this.testDVD.getDuration() > 0);
     }
 

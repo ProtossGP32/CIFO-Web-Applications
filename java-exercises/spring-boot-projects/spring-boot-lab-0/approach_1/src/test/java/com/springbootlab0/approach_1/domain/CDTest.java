@@ -22,6 +22,7 @@ class CDTest {
         assertNotNull(this.testCD.getId());
         assertNull(this.testCD.getTitle());
         assertNull(this.testCD.getPublicationDate());
+        assertNull(this.testCD.getStatus());
         assertEquals(0, this.testCD.getDuration());
         assertEquals(0, this.testCD.getNumberOfTracks());
     }
@@ -31,6 +32,7 @@ class CDTest {
         assertNotNull(this.testCD.getId());
         assertNotNull(this.testCD.getTitle());
         assertNotNull(this.testCD.getPublicationDate());
+        assertNotNull(this.testCD.getStatus());
         assertTrue(this.testCD.getDuration() > 0);
         assertTrue(this.testCD.getNumberOfTracks() > 0);
     }

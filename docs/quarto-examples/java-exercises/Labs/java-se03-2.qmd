@@ -278,3 +278,22 @@ For this project, we'll be using H2. H2 is a Java SQL database with the followin
 - Embedded and serer modes; in-memory databases
 - Browser based Console application
 - Small footprint: around 2.5 MB jar file size
+
+### Creating entities
+We need to define entities that will persist inside DB:
+- Any `Publication` subclass object
+- Any `LibraryManager` subclass object
+- `Borrows` objects
+
+Each entity must define its primary key with the `@Id` annotation. When inheritance is present, then the parent class should define it as well as the `@Inheritance` type.
+
+- If `SINGLE_TABLE` is selected, then the parent class must define `@DiscriminatorColumn` with a name and its value type. Child classes must then define the proper `@DiscriminatorValue` that will be inserted in the previous column when inserted into the table
+
+When there's a composition relationship between classes, then we have to define its multiplicity using the `@ManyToMany`, `@OneToOne`, `@ManyToOne` or `@OneToMany` annotations.
+
+:::{.callout-important}
+## ERROR when defining `@ManyToOne` relation
+```{.bash}
+j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Association 'com.springbootlab0.approach_1.domain.Publication.author' targets an unknown entity named 'com.springbootlab0.approach_1.domain.Author'
+```
+:::

@@ -1,12 +1,18 @@
 package com.springbootlab0.approach_1.domain;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Getter
+@Setter
 @ToString(callSuper = true)
+@Entity(name = "Book")
+@DiscriminatorValue(value = "BOOK")
 public class Book extends Publication {
     private String ISBN;
     private int pages;
@@ -16,7 +22,7 @@ public class Book extends Publication {
         super();
     }
 
-    public Book(String title, Author author, LocalDate publicationDate, String format, String status, String ISBN, int pages, String genre) {
+    public Book(String title, Author author, LocalDate publicationDate, String format, Status status, String ISBN, int pages, String genre) {
         super(title, author, publicationDate, format, status);
         this.ISBN = ISBN;
         this.pages = pages;

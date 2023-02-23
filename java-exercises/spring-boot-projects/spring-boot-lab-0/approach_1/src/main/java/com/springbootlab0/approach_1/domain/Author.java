@@ -4,18 +4,21 @@ import com.springbootlab0.approach_1.utils.Helper;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 
 @Getter
 @ToString(callSuper = true)
 @SuperBuilder(toBuilder = true)
+@MappedSuperclass
 @Entity(name="Author")
 @Table(name="AUTHOR_TABLE")
 public class Author extends Person{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="AUTHOR_ID")
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Column(name="AUTHOR_ID", updatable = false, nullable = false)
     private String id;
     @Column(name="AUTHOR_PENNAME")
     private String penName;

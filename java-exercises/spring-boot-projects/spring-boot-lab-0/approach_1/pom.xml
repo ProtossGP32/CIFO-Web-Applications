@@ -8,7 +8,7 @@
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.spring-boot-lab-0</groupId>
+	<groupId>com.springbootlab0</groupId>
 	<artifactId>approach_1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>approach_1</name>

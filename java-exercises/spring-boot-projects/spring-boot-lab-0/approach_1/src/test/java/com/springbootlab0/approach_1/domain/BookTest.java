@@ -27,6 +27,7 @@ class BookTest {
         // The rest of fields are null or zero
         assertNull(this.testBook.getTitle());
         assertNull(this.testBook.getPublicationDate());
+        assertNull(this.testBook.getStatus());
         assertNull(this.testBook.getISBN());
         assertEquals(0, this.testBook.getPages());
         assertNull(this.testBook.getGenre());
@@ -38,6 +39,7 @@ class BookTest {
         assertEquals(UUID.fromString(this.testBook.getId()).toString(), this.testBook.getId());
         assertNotNull(this.testBook.getTitle());
         assertNotNull(this.testBook.getPublicationDate());
+        assertNotNull(this.testBook.getStatus());
         assertNotNull(this.testBook.getISBN());
         assertTrue(this.testBook.getPages() > 0);
         assertNotNull(this.testBook.getGenre());
