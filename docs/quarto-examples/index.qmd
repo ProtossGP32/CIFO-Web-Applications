@@ -2,4 +2,34 @@
 title: "Index"
 ---
 
-CIFO Web Applications course documentation
+## CIFO Web Applications course documentation.
+
+What is included in this page:
+
+- DevOps guides:
+- Java exercises: compilation of classnotes and Java laboratories
+- Project Management: entries related to management frameworks, such as Scrum and Agile
+- Team projects: summary of all group projects done during the class
+- Walkthrough: some Quarto sandbox pages
+- About: page about the author
+
+## GitHub Stats
+### Number of commits:
+```{ojs}
+// | echo: false
+
+d3 = require('d3')
+contributors = await d3.json(
+  "https://api.github.com/repos/protossgp32/CIFO-Web-Applications/stats/contributors"
+)
+
+commits = contributors.map(contributor => {
+  const author = contributor.author;
+  return {
+    "Author": author.login,
+    "Number of commits": contributor.total
+  }
+})
+
+Inputs.table(commits, { sort: "value", reverse: true })
+```
