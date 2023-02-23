@@ -739,7 +739,14 @@
     "href": "index.html",
     "title": "Index",
     "section": "",
-    "text": "CIFO Web Applications course documentation"
+    "text": "What is included in this page:\n\nDevOps guides:\nJava exercises: compilation of classnotes and Java laboratories\nProject Management: entries related to management frameworks, such as Scrum and Agile\nTeam projects: summary of all group projects done during the class\nWalkthrough: some Quarto sandbox pages\nAbout: page about the author"
+  },
+  {
+    "objectID": "index.html#github-stats",
+    "href": "index.html#github-stats",
+    "title": "Index",
+    "section": "GitHub Stats",
+    "text": "GitHub Stats\n\nNumber of commits:\n\nd3 = require('d3')\ncontributors = await d3.json(\n  \"https://api.github.com/repos/protossgp32/CIFO-Web-Applications/stats/contributors\"\n)\n\ncommits = contributors.map(contributor => {\n  const author = contributor.author;\n  return {\n    \"Author\": author.login,\n    \"Number of commits\": contributor.total\n  }\n})\n\nInputs.table(commits, { sort: \"value\", reverse: true })"
   },
   {
     "objectID": "devops-guides/virtualization/proxmox.html",
