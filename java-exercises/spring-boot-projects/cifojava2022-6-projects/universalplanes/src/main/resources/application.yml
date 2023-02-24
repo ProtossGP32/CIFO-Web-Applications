@@ -1,0 +1,26 @@
+# Server config
+server:
+  port: 8086
+
+# Spring config
+spring:
+  main:
+    banner-mode: off
+
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
