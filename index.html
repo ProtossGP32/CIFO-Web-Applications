@@ -93,6 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -123,9 +125,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-devops-listings .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      page: 5,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-title","listing-date"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-devops-listings'] = new List('listing-devops-listings', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-java-listings .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      page: 5,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-title","listing-date"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-java-listings'] = new List('listing-java-listings', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-project-listings .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-date"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-project-listings'] = new List('listing-project-listings', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-team-listings .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-date"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-team-listings'] = new List('listing-team-listings', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -387,9 +505,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#number-of-commits" id="toc-number-of-commits" class="nav-link" data-scroll-target="#number-of-commits">Number of commits:</a></li>
   </ul></li>
+  <li><a href="#devops-entries" id="toc-devops-entries" class="nav-link" data-scroll-target="#devops-entries">DevOps entries</a></li>
+  <li><a href="#java-entries" id="toc-java-entries" class="nav-link" data-scroll-target="#java-entries">Java entries</a></li>
+  <li><a href="#project-management-entries" id="toc-project-management-entries" class="nav-link" data-scroll-target="#project-management-entries">Project Management entries</a></li>
+  <li><a href="#team-projects-entries" id="toc-team-projects-entries" class="nav-link" data-scroll-target="#team-projects-entries">Team projects entries</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(37)</span></div><div class="category" data-category="Credentials">Credentials <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Git">Git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="GitHub">GitHub <span class="quarto-category-count">(1)</span></div><div class="category" data-category="REST">REST <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SSH">SSH <span class="quarto-category-count">(1)</span></div><div class="category" data-category="inherence">inherence <span class="quarto-category-count">(1)</span></div><div class="category" data-category="javase">javase <span class="quarto-category-count">(7)</span></div><div class="category" data-category="lab">lab <span class="quarto-category-count">(7)</span></div><div class="category" data-category="springboot">springboot <span class="quarto-category-count">(3)</span></div><div class="category" data-category="web">web <span class="quarto-category-count">(3)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -427,20 +549,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="number-of-commits" class="level3">
 <h3 class="anchored" data-anchor-id="number-of-commits">Number of commits:</h3>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="21" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 20;"><span id="cb1-21"><a href="#cb1-21"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">'d3'</span>)</span>
-<span id="cb1-22"><a href="#cb1-22"></a>contributors <span class="op">=</span> <span class="cf">await</span> d3<span class="op">.</span><span class="fu">json</span>(</span>
-<span id="cb1-23"><a href="#cb1-23"></a>  <span class="st">"https://api.github.com/repos/protossgp32/CIFO-Web-Applications/stats/contributors"</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>)</span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a>commits <span class="op">=</span> contributors<span class="op">.</span><span class="fu">map</span>(contributor <span class="kw">=&gt;</span> {</span>
-<span id="cb1-27"><a href="#cb1-27"></a>  <span class="kw">const</span> author <span class="op">=</span> contributor<span class="op">.</span><span class="at">author</span><span class="op">;</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>  <span class="cf">return</span> {</span>
-<span id="cb1-29"><a href="#cb1-29"></a>    <span class="st">"Author"</span><span class="op">:</span> author<span class="op">.</span><span class="at">login</span><span class="op">,</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a>    <span class="st">"Number of commits"</span><span class="op">:</span> contributor<span class="op">.</span><span class="at">total</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>  }</span>
-<span id="cb1-32"><a href="#cb1-32"></a>})</span>
-<span id="cb1-33"><a href="#cb1-33"></a></span>
-<span id="cb1-34"><a href="#cb1-34"></a>Inputs<span class="op">.</span><span class="fu">table</span>(commits<span class="op">,</span> { <span class="dt">sort</span><span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="73" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 72;"><span id="cb1-73"><a href="#cb1-73"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">'d3'</span>)</span>
+<span id="cb1-74"><a href="#cb1-74"></a>contributors <span class="op">=</span> <span class="cf">await</span> d3<span class="op">.</span><span class="fu">json</span>(</span>
+<span id="cb1-75"><a href="#cb1-75"></a>  <span class="st">"https://api.github.com/repos/protossgp32/CIFO-Web-Applications/stats/contributors"</span></span>
+<span id="cb1-76"><a href="#cb1-76"></a>)</span>
+<span id="cb1-77"><a href="#cb1-77"></a></span>
+<span id="cb1-78"><a href="#cb1-78"></a>commits <span class="op">=</span> contributors<span class="op">.</span><span class="fu">map</span>(contributor <span class="kw">=&gt;</span> {</span>
+<span id="cb1-79"><a href="#cb1-79"></a>  <span class="kw">const</span> author <span class="op">=</span> contributor<span class="op">.</span><span class="at">author</span><span class="op">;</span></span>
+<span id="cb1-80"><a href="#cb1-80"></a>  <span class="cf">return</span> {</span>
+<span id="cb1-81"><a href="#cb1-81"></a>    <span class="st">"Author"</span><span class="op">:</span> author<span class="op">.</span><span class="at">login</span><span class="op">,</span></span>
+<span id="cb1-82"><a href="#cb1-82"></a>    <span class="st">"Number of commits"</span><span class="op">:</span> contributor<span class="op">.</span><span class="at">total</span></span>
+<span id="cb1-83"><a href="#cb1-83"></a>  }</span>
+<span id="cb1-84"><a href="#cb1-84"></a>})</span>
+<span id="cb1-85"><a href="#cb1-85"></a></span>
+<span id="cb1-86"><a href="#cb1-86"></a>Inputs<span class="op">.</span><span class="fu">table</span>(commits<span class="op">,</span> { <span class="dt">sort</span><span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -470,9 +592,1210 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="devops-entries" class="level1">
+<h1>DevOps entries</h1>
+<div id="listing-devops-listings" class="quarto-listing quarto-listing-container-default">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-devops-listings-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-devops-listings'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1677237197768" data-listing-reading-time-sort="5.555">
+<div class="thumbnail">
+<p><a href="./devops-guides/mint-vm-provisioning.html"> <img src="./images/devops-guides/vbox-create-new-vm.png " class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./devops-guides/mint-vm-provisioning.html">
+<h3 class="no-anchor listing-title" data-anchor-id="devops-entries">
+Virtual Machine Provisioning
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+In this page we’re going to define the steps to create and install all the required software for the CIFO Web Application course. At the end of the process we’ll have…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./devops-guides/mint-vm-provisioning.html">
+<div class="listing-reading-time">
+5 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1677237197768" data-listing-reading-time-sort="3.51">
+<div class="thumbnail">
+<a href="./devops-guides/software-installation.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./devops-guides/software-installation.html"></a></p>
+</div>
+<div class="body">
+<a href="./devops-guides/software-installation.html">
+<h3 class="no-anchor listing-title">
+Software installation
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+This page explains the automation procedure for the software installation required for the CIFO courses
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./devops-guides/software-installation.html">
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1677237197768" data-listing-reading-time-sort="1.28">
+<div class="thumbnail">
+<p><a href="./devops-guides/documentation/quarto-quick-guide.html"> <img src="./images/devops-guides/documentation/quarto-github-action.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./devops-guides/documentation/quarto-quick-guide.html">
+<h3 class="no-anchor listing-title">
+Quarto - Quick guide
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Here we’ll describe some useful tips to reduce time and resources when creating Quarto projects
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./devops-guides/documentation/quarto-quick-guide.html">
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1677237197768" data-listing-reading-time-sort="2.1">
+<div class="thumbnail">
+<p><a href="./devops-guides/virtualization/proxmox.html"> <img src="./images/devops-guides/virtualization/proxmox-ve-configuration-00-warning-subscription.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./devops-guides/virtualization/proxmox.html">
+<h3 class="no-anchor listing-title">
+Proxmox VE
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<em>From Proxmox page:</em>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./devops-guides/virtualization/proxmox.html">
+<div class="listing-reading-time">
+2 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1677237197768" data-listing-reading-time-sort="0.005">
+<div class="thumbnail">
+<a href="./devops-guides/virtualization/harvester.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./devops-guides/virtualization/harvester.html"></a></p>
+</div>
+<div class="body">
+<a href="./devops-guides/virtualization/harvester.html">
+<h3 class="no-anchor listing-title">
+Harvester
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./devops-guides/virtualization/harvester.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="Git,GitHub,SSH,Credentials" data-listing-file-modified-sort="1677237197768" data-listing-reading-time-sort="4.1">
+<div class="thumbnail">
+<a href="./devops-guides/version-control-software/github-credentials.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./devops-guides/version-control-software/github-credentials.html"></a></p>
+</div>
+<div class="body">
+<a href="./devops-guides/version-control-software/github-credentials.html">
+<h3 class="no-anchor listing-title">
+GitHub - Configuring SSH credentials
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+This page explains how to configure your development…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./devops-guides/version-control-software/github-credentials.html">
+<div class="listing-reading-time">
+4 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1677237197768" data-listing-reading-time-sort="2.04">
+<div class="thumbnail">
+<a href="./devops-guides/version-control-software/git-useful-tips.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./devops-guides/version-control-software/git-useful-tips.html"></a></p>
+</div>
+<div class="body">
+<a href="./devops-guides/version-control-software/git-useful-tips.html">
+<h3 class="no-anchor listing-title">
+GIT useful tips
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+When authenticating with SSH, use the appropriate SSH url.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./devops-guides/version-control-software/git-useful-tips.html">
+<div class="listing-reading-time">
+2 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1677237197768" data-listing-reading-time-sort="4.24">
+<div class="thumbnail">
+<a href="./devops-guides/self-hosted-project/docker-software-deployment.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./devops-guides/self-hosted-project/docker-software-deployment.html"></a></p>
+</div>
+<div class="body">
+<a href="./devops-guides/self-hosted-project/docker-software-deployment.html">
+<h3 class="no-anchor listing-title">
+Docker software deployment
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Follow the Docker deployment installation guide for a quick nextCloud deployment. After that, create the required configurations to ensure persistence.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./devops-guides/self-hosted-project/docker-software-deployment.html">
+<div class="listing-reading-time">
+4 min
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+<nav id="devops-listings-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div>
+</section>
+<section id="java-entries" class="level1">
+<h1>Java entries</h1>
+<div id="listing-java-listings" class="quarto-listing quarto-listing-container-default">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-java-listings-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-java-listings'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="javase,lab,inherence" data-listing-date-sort="1676851200000" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="8.825">
+<div class="thumbnail">
+<a href="./java-exercises/Labs/java-se03-2.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Labs/java-se03-2.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Labs/java-se03-2.html">
+<h3 class="no-anchor listing-title" data-anchor-id="java-entries">
+LAB#SE03-2: Library/Book, Expand Model
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Labs/java-se03-2.html">
+<div class="listing-date">
+Feb 20, 2023
+</div>
+<div class="listing-author">
+ProtossGP32
+</div>
+<div class="listing-reading-time">
+8 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="springboot,web,REST" data-listing-date-sort="1677024000000" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="1.605">
+<div class="thumbnail">
+<p><a href="./java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html"> <img src="./images/java-labs/h2-database-engine.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html">
+<h3 class="no-anchor listing-title">
+02 - Creating a Spring Boot project with H2 and ThyMeLeaf
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Follow this guide and try to implement this project with its documentation.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html">
+<div class="listing-date">
+Feb 22, 2023
+</div>
+<div class="listing-author">
+ProtossGP32
+</div>
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.075">
+<div class="thumbnail">
+<a href="./java-exercises/Concepts/what-is-the-static-modifier.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Concepts/what-is-the-static-modifier.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Concepts/what-is-the-static-modifier.html">
+<h3 class="no-anchor listing-title">
+What is the static modifier?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+The <code>static</code> modifier defines the access scope of any element of the object-oriented domain (?)
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Concepts/what-is-the-static-modifier.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.345">
+<div class="thumbnail">
+<a href="./java-exercises/Concepts/what-is-coupling-and-cohesion.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Concepts/what-is-coupling-and-cohesion.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Concepts/what-is-coupling-and-cohesion.html">
+<h3 class="no-anchor listing-title">
+What is coupling and cohesion?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Coupling and cohesion are important concepts when proposing software solutions during design time.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Concepts/what-is-coupling-and-cohesion.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="3.685">
+<div class="thumbnail">
+<p><a href="./java-exercises/Concepts/what-is-a-model.html"> <img src="https://developer.mozilla.org/en-US/docs/Glossary/MVC/model-view-controller-light-blue.png " class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Concepts/what-is-a-model.html">
+<h3 class="no-anchor listing-title">
+What is a model?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+A <strong>model</strong> is…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Concepts/what-is-a-model.html">
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="1.49">
+<div class="thumbnail">
+<a href="./java-exercises/Concepts/what-is-a-class.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Concepts/what-is-a-class.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Concepts/what-is-a-class.html">
+<h3 class="no-anchor listing-title">
+What is a class?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+A <em>class</em> is a set of parameters and methods that define the abstraction of an object. A <em>class</em> has the following elements:
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Concepts/what-is-a-class.html">
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.575">
+<div class="thumbnail">
+<a href="./java-exercises/Concepts/what-is-tdd.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Concepts/what-is-tdd.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Concepts/what-is-tdd.html">
+<h3 class="no-anchor listing-title">
+What is TDD?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Test-driven Domain (TDD) is a software development process in which <strong>tests are written for a piece of code before the code itself is written</strong>.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Concepts/what-is-tdd.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="1.04">
+<div class="thumbnail">
+<a href="./java-exercises/Concepts/what-is-maven.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Concepts/what-is-maven.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Concepts/what-is-maven.html">
+<h3 class="no-anchor listing-title">
+What is Maven?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<em>Maven</em> is a Java dependency manager
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Concepts/what-is-maven.html">
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="5.95">
+<div class="thumbnail">
+<a href="./java-exercises/Concepts/what-is-ddd.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Concepts/what-is-ddd.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Concepts/what-is-ddd.html">
+<h3 class="no-anchor listing-title">
+What is DDD?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<em>From Airbrake:</em>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Concepts/what-is-ddd.html">
+<div class="listing-reading-time">
+5 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="4.665">
+<div class="thumbnail">
+<a href="./java-exercises/Design-patterns/uml.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Design-patterns/uml.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Design-patterns/uml.html">
+<h3 class="no-anchor listing-title">
+UML
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>UML</strong> stands for <strong>Unified Modeling Language.</strong> It is a standardized <strong>visual language for specifying, constructing, visualizing, and documenting the artifacts of software systems,</strong> as well as for business modeling and other non-software…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Design-patterns/uml.html">
+<div class="listing-reading-time">
+4 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.26">
+<div class="thumbnail">
+<a href="./java-exercises/Principles/03-polymorphism.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Principles/03-polymorphism.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Principles/03-polymorphism.html">
+<h3 class="no-anchor listing-title">
+Polymorphism
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Polymorphism</strong> is a fundamental concept in object-oriented programming. It is the ability of an object to take on different forms.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Principles/03-polymorphism.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.98">
+<div class="thumbnail">
+<a href="./java-exercises/Concepts/object-creation.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Concepts/object-creation.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Concepts/object-creation.html">
+<h3 class="no-anchor listing-title">
+Object creation
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+
+
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Concepts/object-creation.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="javase,lab" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="1.17">
+<div class="thumbnail">
+<a href="./java-exercises/Labs/java-se03-1.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Labs/java-se03-1.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Labs/java-se03-1.html">
+<h3 class="no-anchor listing-title">
+LAB#SE03-1: Library/Book core model
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project. ssl…<strong></strong>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Labs/java-se03-1.html">
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="javase,lab" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="5.74">
+<div class="thumbnail">
+<a href="./java-exercises/Labs/java-se02-1.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Labs/java-se02-1.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Labs/java-se02-1.html">
+<h3 class="no-anchor listing-title">
+LAB#SE02-1: Movie/Review, model
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Labs/java-se02-1.html">
+<div class="listing-reading-time">
+5 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="14" data-categories="javase,lab" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="6.13">
+<div class="thumbnail">
+<a href="./java-exercises/Labs/java-se01-1.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Labs/java-se01-1.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Labs/java-se01-1.html">
+<h3 class="no-anchor listing-title">
+LAB#SE01-1: Maven Person and Account
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Labs/java-se01-1.html">
+<div class="listing-reading-time">
+6 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="15" data-categories="javase,lab" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="3.355">
+<div class="thumbnail">
+<a href="./java-exercises/Labs/java-se00-3.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Labs/java-se00-3.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Labs/java-se00-3.html">
+<h3 class="no-anchor listing-title">
+LAB#SE00-3: Maven Library model
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project. ssl…<strong></strong>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Labs/java-se00-3.html">
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="16" data-categories="javase,lab" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="1.18">
+<div class="thumbnail">
+<p><a href="./java-exercises/Labs/java-se00-1.html"> <img data-src="./images/java-labs/lab-se00-part1-code-coverage.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Labs/java-se00-1.html">
+<h3 class="no-anchor listing-title">
+LAB#SE00-1: Maven Person
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project. ssl…<strong></strong>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Labs/java-se00-1.html">
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="17" data-categories="javase,lab" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="1.1">
+<div class="thumbnail">
+<p><a href="./java-exercises/Labs/java-se00-2.html"> <img data-src="./images/java-labs/lab-se00-part1-code-coverage.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Labs/java-se00-2.html">
+<h3 class="no-anchor listing-title">
+LAB#SE00-1: Maven Clinic
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Labs/java-se00-2.html">
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="18" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.18">
+<div class="thumbnail">
+<a href="./java-exercises/Principles/02-inheritance.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Principles/02-inheritance.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Principles/02-inheritance.html">
+<h3 class="no-anchor listing-title">
+Inheritance
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Inheritance</strong> is a fundamental concept in object-oriented programming. It is the process of <strong>creating new classes from existing classes.</strong>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Principles/02-inheritance.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="19" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.36">
+<div class="thumbnail">
+<a href="./java-exercises/Principles/00-encapsulation.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Principles/00-encapsulation.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Principles/00-encapsulation.html">
+<h3 class="no-anchor listing-title">
+Encapsulation
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Encapsulation</strong> is the process of wrapping…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Principles/00-encapsulation.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="20" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.155">
+<div class="thumbnail">
+<a href="./java-exercises/Principles/01-abstraction.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/Principles/01-abstraction.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/Principles/01-abstraction.html">
+<h3 class="no-anchor listing-title">
+Abstraction
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<strong>Abstraction</strong> is the process of focusing on the essential characteristics of an object, while ignoring the non-essential details.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/Principles/01-abstraction.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="21" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="1.115">
+<div class="thumbnail">
+<a href="./java-exercises/APIs/api-rest.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/APIs/api-rest.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/APIs/api-rest.html">
+<h3 class="no-anchor listing-title">
+API REST
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Teacher’s definition:
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/APIs/api-rest.html">
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="22" data-categories="springboot,web,REST" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.69">
+<div class="thumbnail">
+<a href="./java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html">
+<h3 class="no-anchor listing-title">
+01 - Creating a Spring Boot project
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Springboot is a Java framework that uses annotations to add functionalities to the SE packages
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="23" data-categories="springboot,web" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="4.11">
+<div class="thumbnail">
+<a href="./java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html"></a></p>
+</div>
+<div class="body">
+<a href="./java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">
+<h3 class="no-anchor listing-title">
+00 - What is Spring Boot?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<em>From spring.io:</em>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">
+<div class="listing-reading-time">
+4 min
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+<nav id="java-listings-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div>
+</section>
+<section id="project-management-entries" class="level1">
+<h1>Project Management entries</h1>
+<div id="listing-project-listings" class="quarto-listing quarto-listing-container-default">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-project-listings-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-project-listings'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<a href="./project-management/project-life-cycle.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./project-management/project-life-cycle.html"></a></p>
+</div>
+<div class="body">
+<a href="./project-management/project-life-cycle.html">
+<h3 class="no-anchor listing-title" data-anchor-id="project-management-entries">
+What is the project lifecycle?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+The <strong>software development lifecycle (SDLC)</strong> is a process that describes the stages involved in creating and deployng software.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./project-management/project-life-cycle.html">
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="0.955">
+<div class="thumbnail">
+<a href="./project-management/useful-questions.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./project-management/useful-questions.html"></a></p>
+</div>
+<div class="body">
+<a href="./project-management/useful-questions.html">
+<h3 class="no-anchor listing-title">
+Useful questions
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Questions that begin with the words <strong>why, who, what and how</strong> are necessary and paramount because they help to <strong>clarify…</strong><strong></strong>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./project-management/useful-questions.html">
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="10.295">
+<div class="thumbnail">
+<a href="./project-management/scrum-management.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./project-management/scrum-management.html"></a></p>
+</div>
+<div class="body">
+<a href="./project-management/scrum-management.html">
+<h3 class="no-anchor listing-title">
+Scrum management
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Here we’ll discuss some key topics regarding Scrum management of projects
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./project-management/scrum-management.html">
+<div class="listing-reading-time">
+10 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="2.325">
+<div class="thumbnail">
+<p><a href="./project-management/decision-making.html"> <img src="https://pxl-umassdedu.terminalfour.net/fit-in/945x600/filters:format(webp" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./project-management/decision-making.html">
+<h3 class="no-anchor listing-title">
+Decision Making
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<em>From UMass Darthmouth:</em>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./project-management/decision-making.html">
+<div class="listing-reading-time">
+2 min
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="team-projects-entries" class="level1">
+<h1>Team projects entries</h1>
+<div id="listing-team-listings" class="quarto-listing quarto-listing-container-default">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-team-listings-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-team-listings'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1677237197776" data-listing-reading-time-sort="3.665">
+<div class="thumbnail">
+<a href="./team-projects/00-game-tracker.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./team-projects/00-game-tracker.html"></a></p>
+</div>
+<div class="body">
+<a href="./team-projects/00-game-tracker.html">
+<h3 class="no-anchor listing-title" data-anchor-id="team-projects-entries">
+First project - GameTracker
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+For the Java Web Applications course team projects, at least 3 proposals of…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./team-projects/00-game-tracker.html">
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+
+
+
 </section>
 
 </main> <!-- /main -->
