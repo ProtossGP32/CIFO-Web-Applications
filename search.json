@@ -175,6 +175,13 @@
     "text": "Page description\nThis site is a compilation of all the knowledge achieved during CIFO courses, such as DevOps or Web Applications with Java.\n\n\nAbout the author\nHi! My name is Marc Palacín and I’m a Data Engineer, Software Engineer and hopefully a future DevOps engineer!\nI love tinkering with electronics and hardware, and process automation is my passion."
   },
   {
+    "objectID": "java-exercises/frameworks/spring-boot/03-spring-security.html#password-encoding",
+    "href": "java-exercises/frameworks/spring-boot/03-spring-security.html#password-encoding",
+    "title": "03 - Spring Security",
+    "section": "Password encoding",
+    "text": "Password encoding\nSee this Baeldung article on how to encode passwords."
+  },
+  {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html",
     "href": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html",
     "title": "02 - Creating a Spring Boot project with H2 and ThyMeLeaf",
