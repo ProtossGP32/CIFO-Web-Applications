@@ -1,5 +1,57 @@
 ---
 title: "Index"
+listing:
+  - id: devops-listings
+    filter-ui: [title, date]
+    sort-ui: true
+    categories: true
+    contents:
+      - "devops-guides/**/*.qmd"
+    fields: [image, date, title, description, author, reading-time]
+    sort:
+      - "date"
+      - "title desc"
+    page-size: 5
+    date-format: medium
+
+  - id: java-listings
+    filter-ui: [title, date]
+    sort-ui: true
+    categories: true
+    contents:
+      - "java-exercises/**/*.qmd"
+    fields: [image, date, title, description, author, reading-time]
+    sort:
+      - "date"
+      - "title desc"
+    page-size: 5
+    date-format: medium
+  
+  - id: project-listings
+    filter-ui: [title, date]
+    sort-ui: true
+    categories: true
+    contents:
+      - "project-management/**/*.qmd"
+    fields: [image, date, title, description, author, reading-time]
+    sort:
+      - "date"
+      - "title desc"
+    page-size: 5
+    date-format: medium
+  
+  - id: team-listings
+    filter-ui: [title, date]
+    sort-ui: true
+    categories: true
+    contents:
+      - "team-projects/**/*.qmd"
+    fields: [image, date, title, description, author, reading-time]
+    sort:
+      - "date"
+      - "title desc"
+    page-size: 5
+    date-format: medium
 ---
 
 ## CIFO Web Applications course documentation.
@@ -33,3 +85,24 @@ commits = contributors.map(contributor => {
 
 Inputs.table(commits, { sort: "value", reverse: true })
 ```
+
+
+# DevOps entries
+
+::: {#devops-listings}
+:::
+
+# Java entries
+
+::: {#java-listings}
+:::
+
+# Project Management entries
+
+::: {#project-listings}
+:::
+
+# Team projects entries
+
+::: {#team-listings}
+:::
