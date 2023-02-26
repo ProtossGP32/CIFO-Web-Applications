@@ -1,6 +1,6 @@
 ---
 title: "LAB#SE03-2: Library/Book, Expand Model"
-categories: [javase, lab, inherence]
+categories: [javase, lab, inheritance, JPA, H2, Spring Boot]
 author: ProtossGP32
 date: 2023/02/20
 ---
