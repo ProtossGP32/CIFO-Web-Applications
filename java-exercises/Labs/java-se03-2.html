@@ -1005,10 +1005,20 @@ TODO
 </ul>
 <section id="creating-entities" class="level3">
 <h3 class="anchored" data-anchor-id="creating-entities">Creating entities</h3>
-<p>We need to define entities that will persist inside DB: - Any <code>Publication</code> subclass object - Any <code>LibraryManager</code> subclass object - <code>Borrows</code> objects</p>
+<p>We need to define entities that will persist inside DB: - Any <code>Publication</code> subclass object - Any <code>LibraryMember</code> subclass object: - This includes <code>User</code>, <code>Librarian</code> and <code>Staff</code> - <code>Borrows</code> objects</p>
 <p>Each entity must define its primary key with the <code>@Id</code> annotation. When inheritance is present, then the parent class should define it as well as the <code>@Inheritance</code> type.</p>
 <ul>
+<li>If the parent class isn’t going to be instantiated, only define the <code>@MappedSuperClass</code> annotation to allow subclasses to inherit its JPA attibutes</li>
+<li>Each first class that defines a new DB table where to store this’ or their subclasses’ instances must define the following annotations:
+<ul>
+<li><code>@Entity</code>, even though this class doesn’t create instances (mandatori for its subclasses)</li>
+<li><code>@Table</code> name where to store all instances</li>
+<li><code>@Inheritance</code> strategy, such as <code>SINGLE_TABLE</code> to store all subclass entities into this single table
+<ul>
 <li>If <code>SINGLE_TABLE</code> is selected, then the parent class must define <code>@DiscriminatorColumn</code> with a name and its value type. Child classes must then define the proper <code>@DiscriminatorValue</code> that will be inserted in the previous column when inserted into the table</li>
+<li>If <code>TABLE_PER_CLASS</code> is selected, then each subclass will create its own <code>@Table</code> inside the DB. If no <code>@Table</code> annotation is defined in subclasses, then the subclass name is used as its table name</li>
+</ul></li>
+</ul></li>
 </ul>
 <p>When there’s a composition relationship between classes, then we have to define its multiplicity using the <code>@ManyToMany</code>, <code>@OneToOne</code>, <code>@ManyToOne</code> or <code>@OneToMany</code> annotations.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
@@ -1022,6 +1032,146 @@ ERROR when defining <code>@ManyToOne</code> relation
 </div>
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">j.LocalContainerEntityManagerFactoryBean</span> : Failed to initialize JPA EntityManagerFactory: Association <span class="st">'com.springbootlab0.approach_1.domain.Publication.author'</span> targets an unknown entity named <span class="st">'com.springbootlab0.approach_1.domain.Author'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This error is due to bad annotations between inherited classes, not a <code>@ManyToOne</code> issue. <code>Publication</code> class couldn’t find the <code>Author</code> entity because <code>Person</code> superclass and its subclass <code>Author</code> were conflicting with the <code>@Inheritance</code> and <code>@MappedSuperClass</code> annotations.</p>
+<p>Once fixed, an <code>AUTHOR_TABLE</code> is created in the H2 DB and <code>Publication</code> instance can correctly map the <code>Author</code> attribute to the <code>AUTHOR_ID</code> field in the previous table.</p>
+</div>
+</div>
+<p>The final JPA entity and inheritance diagram is as follows:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">classDiagram
+    direction BT
+    %% Abstract class
+    class Publication {
+        \@Entity(name = "Publication")
+        \@Table(name = "PUBLICATION_TABLE")
+        \@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+        \@DiscriminatorColumn(name = "PUBLICATION_TYPE", discriminatorType = DiscriminatorType.STRING)
+    }
+
+    %% Publication Entity classes
+    class Book {
+        \@Entity(name = "Book")
+        \@DiscriminatorValue(value = "BOOK")
+    }
+    class CD {
+        \@Entity(name = "CD")
+        \@DiscriminatorValue(value = "CD")
+    }
+    class DVD {
+        \@Entity(name = "DVD")
+        \@DiscriminatorValue(value = "DVD")
+    }
+
+    Book ..&gt; Publication
+    CD ..&gt; Publication
+    DVD ..&gt; Publication
+
+</pre>
+<div id="mermaid-tooltip-3" class="mermaidTooltip">
+
+</div>
+<p></p>
+<p>Publication JPA annotations</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">classDiagram
+    direction BT
+
+    %% Relationships
+    LibraryMember ..&gt; Person
+    Author ..&gt; Person
+
+    Staff ..o StaffMember
+    StaffMember ..&gt; LibraryMember
+
+    User ..o LibraryMember
+    
+    Librarian ..o StaffMember
+
+    class Person {
+        @MappedSuperClass
+    }
+
+    class Author {
+        \@Entity(name = "Author")
+        \@Table(name = "AUTHOR_TABLE")
+    }
+
+    class LibraryMember {
+        \@Entity(name = "LibraryMember")
+        \@Table(name = "LIBRARYMEMBER_TABLE")
+        \@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+        \@DiscriminatorColumn(name = "MEMBER_TYPE", discriminatorType = discriminatorType.STRING)
+    }
+
+    class StaffMember {
+        @MappedSuperClass
+    }
+
+    class User {
+        \@Entity(name = "User")
+        \@DiscriminatorValue(value = "USER")
+    }
+
+    class Staff {
+        \@Entity(name = "Staff")
+        \@DiscriminatorValue(value = "STAFF")
+    }
+
+    class Librarian {
+        \@Entity(name = "Librarian")
+        \@DiscriminatorValue(value = "LIBRARIAN")
+    }
+</pre>
+<div id="mermaid-tooltip-4" class="mermaidTooltip">
+
+</div>
+<p></p>
+<p>LibraryMember JPA annotations</p>
+</div>
+</div>
+</div>
+<p>The resulting tables in the DB are as follow:</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../../images/java-labs/h2-library-tables.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Library DB tables</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: center;">
+<ul>
+<li><code>AUTHOR_TABLE</code>: Inherits <code>Person</code> fields and adds its own <code>Id</code> and <code>penName</code></li>
+<li><code>LIBRARY_MEMBER</code>: Here it inherits:
+<ul>
+<li><code>Person</code> fields</li>
+<li>Adds its own <code>Id</code>, <code>address</code> and <code>phoneNumber</code> fields</li>
+<li>Adds the <code>StaffMember</code>’s <code>salary</code> field</li>
+<li>And also adds the <code>User</code>’s <code>mail</code> and <code>password</code> fields</li>
+</ul></li>
+<li><code>PUBLICATION_TABLE</code>: Here the inheritance is as follows:
+<ul>
+<li>Adds its own <code>Publication</code> fields, including the <code>Id</code> field</li>
+<li>Adds the <code>Book</code>’s fields</li>
+<li>Adds the <code>CD</code>’s fields</li>
+<li>Adds the <code>DVD</code> fields, even though they overlap with the <code>CD</code> ones</li>
+<li>And also adds the <code>Author ID</code> of that publication, coming from the <code>Author</code> entity. The <code>@ManyToOne</code> annotation can be verified in the Indexes of <code>PUBLICATION_TABLE</code>, where <code>AUTHOR_ID</code> appears as <em>Not unique</em></li>
+</ul></li>
+</ul>
+</div>
 </div>
 </div>
 

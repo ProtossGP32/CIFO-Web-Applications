@@ -596,7 +596,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
   <ul class="collapse">
-  <li><a href="#download-and-initialize-h2" id="toc-download-and-initialize-h2" class="nav-link" data-scroll-target="#download-and-initialize-h2">Download and initialize H2</a></li>
+  <li><a href="#download-and-initialize-h2-in-console-mode" id="toc-download-and-initialize-h2-in-console-mode" class="nav-link" data-scroll-target="#download-and-initialize-h2-in-console-mode">Download and initialize H2 in Console mode</a></li>
   <li><a href="#create-a-new-database" id="toc-create-a-new-database" class="nav-link" data-scroll-target="#create-a-new-database">Create a new database</a></li>
   <li><a href="#configuring-spring-boot-project" id="toc-configuring-spring-boot-project" class="nav-link" data-scroll-target="#configuring-spring-boot-project">Configuring Spring Boot project</a></li>
   <li><a href="#adapting-project-to-springboot" id="toc-adapting-project-to-springboot" class="nav-link" data-scroll-target="#adapting-project-to-springboot">Adapting project to SpringBoot</a></li>
@@ -651,8 +651,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="getting-started" class="level1">
 <h1>Getting Started</h1>
-<section id="download-and-initialize-h2" class="level2">
-<h2 class="anchored" data-anchor-id="download-and-initialize-h2">Download and initialize H2</h2>
+<section id="download-and-initialize-h2-in-console-mode" class="level2">
+<h2 class="anchored" data-anchor-id="download-and-initialize-h2-in-console-mode">Download and initialize H2 in Console mode</h2>
 <p><a href="https://www.h2database.com/html/quickstart.html">Quick start guide</a></p>
 <p>You can also download the latest version from the GitHub repository, in the release branch, by executing the following command:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">gh</span> release download <span class="at">--repo</span> h2database/h2database <span class="at">-p</span> <span class="st">'h2-*.zip'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -676,21 +676,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">H2 console</figcaption><p></p>
 </figure>
 </div>
+<p>With this, you can initialize a local DB file and interact with it through the H2 console. When the H2 Console is stopped, the H2 database file can then be accessed through any IDE, like IntelliJ IDEA</p>
 </section>
 <section id="create-a-new-database" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-new-database">Create a new database</h2>
 <p>The DB will be locally created. This will provide us with a new URL to access from the web console manager.</p>
+<p>The JDBC URL should be something like <code>jdbc:h2:./&lt;db-name&gt;</code>, being it a relative route to the h2 <code>jar</code> file.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Copy the JDBC URL
+H2 is now running in console mode
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This is required to login into the DB from the H2 web server</p>
+<p>The shell script launches the H2 <code>jar</code> in Console mode, thus it isn’t accessible as a H2 server. If you want to use it as server, you must launch the H2 application like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">$</span> java <span class="at">-cp</span> h2<span class="pp">*</span>.jar org.h2.tools.Server</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">TCP</span> server running at tcp://127.0.1.1:9092 <span class="er">(</span><span class="ex">only</span> local connections<span class="kw">)</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">PG</span> server running at pg://127.0.1.1:5435 <span class="er">(</span><span class="ex">only</span> local connections<span class="kw">)</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="ex">Web</span> Console server running at http://127.0.1.1:8082 <span class="er">(</span><span class="ex">only</span> local connections<span class="kw">)</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="ex">S</span><span class="st">'està obrint a la sessió actual del navegador</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>You can’t connect with a web browser to the <code>jdbc:h2:tcp://localhost/~/&lt;db-name&gt;</code> URL, this is only achievable using a H2 client (over JDBC).</strong></p>
 </div>
 </div>
 <p>Login:</p>
@@ -698,26 +706,65 @@ Copy the JDBC URL
 <li>Saved settings: Generic H2 (Server)</li>
 <li>Setting Name: Generic H2 (Server)</li>
 <li>Driver Class: org.h2.Driver</li>
-<li>JDBC URL: jdbc:h2:test</li>
+<li>JDBC URL: jdbc:h2:./<code>&lt;db-name&gt;</code></li>
 <li>User Name: <code>&lt;db-username&gt;</code></li>
 <li>Password: <code>&lt;db-password&gt;</code></li>
 </ul>
 </section>
 <section id="configuring-spring-boot-project" class="level2">
 <h2 class="anchored" data-anchor-id="configuring-spring-boot-project">Configuring Spring Boot project</h2>
-<p>Modify the <code>application.properties</code> to include the H2 Datasources parameters (and also the JPA ones):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource conf number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a># H2 parameters</span>
-<span id="cb3-2"><a href="#cb3-2"></a>spring.datasource.url=jdbc:h2:test</span>
-<span id="cb3-3"><a href="#cb3-3"></a>spring.datasource.username=&lt;db-username&gt;</span>
-<span id="cb3-4"><a href="#cb3-4"></a>spring.datasource.password=&lt;db-password&gt;</span>
-<span id="cb3-5"><a href="#cb3-5"></a>spring.datasource.driver-class-name=org.h2.Driver</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a># DDL</span>
-<span id="cb3-8"><a href="#cb3-8"></a>spring.jpa.hibernate.ddl-auto=update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Modify the <code>application.yml</code> to include the H2 Datasources parameters (and also the JPA ones):</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Only one connection at a time is allowed in Console mode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure you stop the H2 Console before trying to connect via IDE, or launch the H2 jar as Server and access the DB through a <code>jdbc:h2:tcp://localhost:port/&lt;db-path&gt;</code> URL to allow multiple connections at the same time.</p>
+</div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>application.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">spring</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="at">  </span><span class="fu">main</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="at">    </span><span class="fu">banner-mode</span><span class="kw">:</span><span class="at"> </span><span class="ch">off</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="at">  </span><span class="fu">application</span><span class="kw">:</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> spring-lab-0-approach-1</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="at">  </span><span class="fu">h2</span><span class="kw">:</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="at">    </span><span class="fu">console</span><span class="kw">:</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="at">      </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="st">'true'</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="at">  </span><span class="fu">datasource</span><span class="kw">:</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">    #url: jdbc:h2:mem:mydb # Creates the DB in memory</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">    #url: jdbc:h2:file:~/demodb # Creates the DB file in "/home/$USER/demodb.mv.db"</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">    # In order to access local DB, we must enter the absolute or relative path to the file</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">    # Ex: if the DB file is allocated in the root of the project --&gt; jdbc:h2:./&lt;db-name&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">    # Ex: if the DB file is in the home directory --&gt; jdbc:h2:~/&lt;db-name&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">    #url: jdbc:h2:/media/protoss/Dades/github/CIFO/CIFO-Web-Applications/java-exercises/spring-boot-projects/h2/library;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co">    # Accessing remote H2 servers:</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co">    # DB files are stored in the same path as the h2 .jar file</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="at">    </span><span class="fu">url</span><span class="kw">:</span><span class="at"> jdbc:h2:tcp://localhost:9092/library;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="at">    </span><span class="fu">username</span><span class="kw">:</span><span class="at"> cifoweb</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="at">    </span><span class="fu">password</span><span class="kw">:</span><span class="at"> cifotest</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="at">    </span><span class="fu">driverClassName</span><span class="kw">:</span><span class="at"> org.h2.Driver</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a><span class="at">  </span><span class="fu">jpa</span><span class="kw">:</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="at">    </span><span class="fu">database-platform</span><span class="kw">:</span><span class="at"> org.hibernate.dialect.H2Dialect</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="at">    </span><span class="fu">hibernate</span><span class="kw">:</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="at">      </span><span class="fu">dialect</span><span class="kw">:</span><span class="at"> org.hibernate.dialect.H2Dialect</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="at">      </span><span class="fu">ddl-auto</span><span class="kw">:</span><span class="at"> create</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="at">  </span><span class="fu">mvc</span><span class="kw">:</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="at">    </span><span class="fu">pathmatch</span><span class="kw">:</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="at">      </span><span class="fu">matching-strategy</span><span class="kw">:</span><span class="at"> ant-path-matcher</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="adapting-project-to-springboot" class="level2">
 <h2 class="anchored" data-anchor-id="adapting-project-to-springboot">Adapting project to SpringBoot</h2>
-<p>Take as an example the <code>Book</code> class from the <a href="../../../java-exercises/Labs/java-se03-2.html">Lab SE03-2</a>. Now we’ll include annotations to define what <code>@Entity</code> does it represent and in what <code>@Table</code> does it exist. Also, for each attribute we’ll define its DB field name using <code>@Column</code> or in case of other entities, <code>@ManyToMany</code>, <code>@OneToMany</code> or <code>@ManyToOne</code>.</p>
+<p>Take as an example the <code>Book</code> class from the <a href="../../../java-exercises/Labs/java-se03-2.html">Lab SE03-2</a>. Now we’ll include annotations to define what <code>@Entity</code> it represents and in what <code>@Table</code> it must persist. Also, for each attribute we’ll define its DB field name using <code>@Column</code> or in case of other entities, <code>@ManyToMany</code>, <code>@OneToMany</code>, <code>@OneToOne</code> or <code>@ManyToOne</code>.</p>
 </section>
 <section id="dependency-injection-autowired" class="level2">
 <h2 class="anchored" data-anchor-id="dependency-injection-autowired">Dependency injection (<code>@Autowired</code>)</h2>
@@ -732,7 +779,7 @@ TODO
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Explain what is a dependency injection</p>
+<p>Explain what a dependency injection is</p>
 </div>
 </div>
 </section>
