@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import com.springbootlab0.approach_1.utils.Helper;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 
@@ -18,8 +19,9 @@ import java.time.LocalDate;
 @DiscriminatorColumn(name = "MEMBER_TYPE", discriminatorType = DiscriminatorType.STRING)
 abstract class LibraryMember extends Person implements GeneralOperations {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="LIBRARYMEMBER_ID")
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Column(name="LIBRARYMEMBER_ID", updatable = false, nullable = false)
     private String id;
     @Column(name="LIBRARYMEMBER_ADDRESS")
     private String address;
@@ -40,11 +42,11 @@ abstract class LibraryMember extends Person implements GeneralOperations {
 
     @Override
     public void createAccount() {
-        System.out.println("Creating account...");
+        System.out.println("[" + this.getClass().getSimpleName() + "] Creating account...");
     }
 
     @Override
     public void searchPublications(String query) {
-        System.out.println("Searching publications...");
+        System.out.println("[" + this.getClass().getSimpleName() + "] Searching publications...");
     }
 }

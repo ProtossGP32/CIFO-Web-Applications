@@ -1,5 +1,7 @@
 package com.springbootlab0.approach_1.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
@@ -9,6 +11,8 @@ import java.time.LocalDate;
 @Getter
 @ToString(callSuper = true)
 @SuperBuilder(toBuilder = true)
+// JPA annotations
+@MappedSuperclass
 abstract class StaffMember extends LibraryMember implements StaffOperations {
     private double salary;
 

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
+// Required for subclasses to inherit its JPA fields
 @MappedSuperclass
 abstract class Person {
     @Column(name="PERSON_FIRSTNAME")

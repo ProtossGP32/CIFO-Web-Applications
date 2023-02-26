@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @ToString
 @Getter
 // JPA annotations
+// - Even though we don't create instances of abstract class Publication, this is required for its subclasses
 @Entity(name="Publication")
 @Table(name="PUBLICATION_TABLE")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -26,8 +27,7 @@ abstract class Publication implements PublicationOperations{
     @Column(name="PUBLICATION_TITLE", nullable = false)
     private String title;
 
-    //@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-
+    // TODO: Author entity table isn't being created, thus the app fails if the author field is enabled here
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
@@ -47,7 +47,7 @@ abstract class Publication implements PublicationOperations{
     public Publication(String title, Author author, LocalDate publicationDate, String format, Status status) {
         this();
         this.title = title;
-        this.author = author;
+        //this.author = author;
         this.publicationDate = publicationDate;
         this.format = format;
         this.status = status;

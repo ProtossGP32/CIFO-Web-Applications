@@ -282,12 +282,20 @@ For this project, we'll be using H2. H2 is a Java SQL database with the followin
 ### Creating entities
 We need to define entities that will persist inside DB:
 - Any `Publication` subclass object
-- Any `LibraryManager` subclass object
+- Any `LibraryMember` subclass object:
+    - This includes `User`, `Librarian` and `Staff`
 - `Borrows` objects
 
 Each entity must define its primary key with the `@Id` annotation. When inheritance is present, then the parent class should define it as well as the `@Inheritance` type.
 
-- If `SINGLE_TABLE` is selected, then the parent class must define `@DiscriminatorColumn` with a name and its value type. Child classes must then define the proper `@DiscriminatorValue` that will be inserted in the previous column when inserted into the table
+- If the parent class isn't going to be instantiated, only define the `@MappedSuperClass` annotation to allow subclasses to inherit its JPA attibutes
+- Each first class that defines a new DB table where to store this' or their subclasses' instances must define the following annotations:
+    - `@Entity`, even though this class doesn't create instances (mandatori for its subclasses)
+    - `@Table` name where to store all instances
+    - `@Inheritance` strategy, such as `SINGLE_TABLE` to store all subclass entities into this single table
+        - If `SINGLE_TABLE` is selected, then the parent class must define `@DiscriminatorColumn` with a name and its value type. Child classes must then define the proper `@DiscriminatorValue` that will be inserted in the previous column when inserted into the table
+        - If `TABLE_PER_CLASS` is selected, then each subclass will create its own `@Table` inside the DB. If no `@Table` annotation is defined in subclasses, then the subclass name is used as its table name
+
 
 When there's a composition relationship between classes, then we have to define its multiplicity using the `@ManyToMany`, `@OneToOne`, `@ManyToOne` or `@OneToMany` annotations.
 
@@ -296,4 +304,115 @@ When there's a composition relationship between classes, then we have to define 
 ```{.bash}
 j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Association 'com.springbootlab0.approach_1.domain.Publication.author' targets an unknown entity named 'com.springbootlab0.approach_1.domain.Author'
 ```
+
+This error is due to bad annotations between inherited classes, not a `@ManyToOne` issue. `Publication` class couldn't find the `Author` entity because `Person` superclass and its subclass `Author` were conflicting with the `@Inheritance` and `@MappedSuperClass` annotations.
+
+Once fixed, an `AUTHOR_TABLE` is created in the H2 DB and `Publication` instance can correctly map the `Author` attribute to the `AUTHOR_ID` field in the previous table.
+:::
+
+The final JPA entity and inheritance diagram is as follows:
+
+```{mermaid}
+%%| fig-cap: Publication JPA annotations
+classDiagram
+    direction BT
+    %% Abstract class
+    class Publication {
+        \@Entity(name = "Publication")
+        \@Table(name = "PUBLICATION_TABLE")
+        \@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+        \@DiscriminatorColumn(name = "PUBLICATION_TYPE", discriminatorType = DiscriminatorType.STRING)
+    }
+
+    %% Publication Entity classes
+    class Book {
+        \@Entity(name = "Book")
+        \@DiscriminatorValue(value = "BOOK")
+    }
+    class CD {
+        \@Entity(name = "CD")
+        \@DiscriminatorValue(value = "CD")
+    }
+    class DVD {
+        \@Entity(name = "DVD")
+        \@DiscriminatorValue(value = "DVD")
+    }
+
+    Book ..> Publication
+    CD ..> Publication
+    DVD ..> Publication
+
+```
+
+```{mermaid}
+%%| fig-cap: LibraryMember JPA annotations
+classDiagram
+    direction BT
+
+    %% Relationships
+    LibraryMember ..> Person
+    Author ..> Person
+
+    Staff ..o StaffMember
+    StaffMember ..> LibraryMember
+
+    User ..o LibraryMember
+    
+    Librarian ..o StaffMember
+
+    class Person {
+        @MappedSuperClass
+    }
+
+    class Author {
+        \@Entity(name = "Author")
+        \@Table(name = "AUTHOR_TABLE")
+    }
+
+    class LibraryMember {
+        \@Entity(name = "LibraryMember")
+        \@Table(name = "LIBRARYMEMBER_TABLE")
+        \@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+        \@DiscriminatorColumn(name = "MEMBER_TYPE", discriminatorType = discriminatorType.STRING)
+    }
+
+    class StaffMember {
+        @MappedSuperClass
+    }
+
+    class User {
+        \@Entity(name = "User")
+        \@DiscriminatorValue(value = "USER")
+    }
+
+    class Staff {
+        \@Entity(name = "Staff")
+        \@DiscriminatorValue(value = "STAFF")
+    }
+
+    class Librarian {
+        \@Entity(name = "Librarian")
+        \@DiscriminatorValue(value = "LIBRARIAN")
+    }
+```
+
+The resulting tables in the DB are as follow:
+
+:::{layout="[30, 70]" layout-valign="top"}
+
+![Library DB tables](../../images/java-labs/h2-library-tables.png){fig-align="left"}
+
+- `AUTHOR_TABLE`: Inherits `Person` fields and adds its own `Id` and `penName`
+- `LIBRARY_MEMBER`: Here it inherits:
+    - `Person` fields
+    - Adds its own `Id`, `address` and `phoneNumber` fields
+    - Adds the `StaffMember`'s `salary` field
+    - And also adds the `User`'s `mail` and `password` fields
+- `PUBLICATION_TABLE`: Here the inheritance is as follows:
+    - Adds its own `Publication` fields, including the `Id` field
+    - Adds the `Book`'s fields
+    - Adds the `CD`'s fields
+    - Adds the `DVD` fields, even though they overlap with the `CD` ones
+    - And also adds the `Author ID` of that publication, coming from the `Author` entity. The `@ManyToOne` annotation can be verified in the Indexes of `PUBLICATION_TABLE`, where `AUTHOR_ID` appears as _Not unique_
+
 :::

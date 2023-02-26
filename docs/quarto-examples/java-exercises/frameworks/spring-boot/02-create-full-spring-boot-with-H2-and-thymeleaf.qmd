@@ -8,7 +8,7 @@ date: 2023/02/22
 Follow [this guide](https://albertprofe.github.io/wiki/springboot/boot-what-create-th-h2.html) and try to implement [this project](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library1) with [its documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library1:-API-Rest-Book-CRUD-with-Postman-Swagger).
 
 # Getting Started
-## Download and initialize H2
+## Download and initialize H2 in Console mode
 [Quick start guide](https://www.h2database.com/html/quickstart.html)
 
 You can also download the latest version from the GitHub repository, in the release branch, by executing the following command:
@@ -34,14 +34,28 @@ Now a H2 Database Engine icon shall appear in the task bar of your desktop and a
 
 ![H2 console](../../../images/java-labs/h2-console.png)
 
+With this, you can initialize a local DB file and interact with it through the H2 console. When the H2 Console is stopped, the H2 database file can then be accessed through any IDE, like IntelliJ IDEA
 
 ## Create a new database
 The DB will be locally created.
 This will provide us with a new URL to access from the web console manager.
 
+The JDBC URL should be something like `jdbc:h2:./<db-name>`, being it a relative route to the h2 `jar` file.
+
 :::{.callout-note}
-## Copy the JDBC URL
-This is required to login into the DB from the H2 web server
+## H2 is now running in console mode
+The shell script launches the H2 `jar` in Console mode, thus it isn't accessible as a H2 server.
+If you want to use it as server, you must launch the H2 application like this:
+
+```{.bash}
+$ java -cp h2*.jar org.h2.tools.Server
+TCP server running at tcp://127.0.1.1:9092 (only local connections)
+PG server running at pg://127.0.1.1:5435 (only local connections)
+Web Console server running at http://127.0.1.1:8082 (only local connections)
+S'està obrint a la sessió actual del navegador
+```
+
+**You can't connect with a web browser to the `jdbc:h2:tcp://localhost/~/<db-name>` URL, this is only achievable using a H2 client (over JDBC).**
 :::
 
 Login:
@@ -49,34 +63,60 @@ Login:
 - Saved settings: Generic H2 (Server)
 - Setting Name: Generic H2 (Server)
 - Driver Class: org.h2.Driver
-- JDBC URL: jdbc:h2:test
+- JDBC URL: jdbc:h2:./`<db-name>`
 - User Name: `<db-username>`
 - Password: `<db-password>`
 
 ## Configuring Spring Boot project
-Modify the `application.properties` to include the H2 Datasources parameters (and also the JPA ones):
+Modify the `application.yml` to include the H2 Datasources parameters (and also the JPA ones):
 
-```{.conf}
-# H2 parameters
-spring.datasource.url=jdbc:h2:test
-spring.datasource.username=<db-username>
-spring.datasource.password=<db-password>
-spring.datasource.driver-class-name=org.h2.Driver
+:::{.callout-warning}
+## Only one connection at a time is allowed in Console mode
+Make sure you stop the H2 Console before trying to connect via IDE, or launch the H2 jar as Server and access the DB through a `jdbc:h2:tcp://localhost:port/<db-path>` URL to allow multiple connections at the same time.
+:::
 
-# DDL
-spring.jpa.hibernate.ddl-auto=update
+```{.yml filename="application.yml"}
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: spring-lab-0-approach-1
+  h2:
+    console:
+      enabled: 'true'
+  datasource:
+    #url: jdbc:h2:mem:mydb # Creates the DB in memory
+    #url: jdbc:h2:file:~/demodb # Creates the DB file in "/home/$USER/demodb.mv.db"
+    # In order to access local DB, we must enter the absolute or relative path to the file
+    # Ex: if the DB file is allocated in the root of the project --> jdbc:h2:./<db-name>
+    # Ex: if the DB file is in the home directory --> jdbc:h2:~/<db-name>
+    #url: jdbc:h2:/media/protoss/Dades/github/CIFO/CIFO-Web-Applications/java-exercises/spring-boot-projects/h2/library;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO
+    # Accessing remote H2 servers:
+    # DB files are stored in the same path as the h2 .jar file
+    url: jdbc:h2:tcp://localhost:9092/library;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO
+    username: cifoweb
+    password: cifotest
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      dialect: org.hibernate.dialect.H2Dialect
+      ddl-auto: create
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
 ```
 
 ## Adapting project to SpringBoot
 
-Take as an example the `Book` class from the [Lab SE03-2](../../Labs/java-se03-2.qmd). Now we'll include annotations to define what `@Entity` does it represent and in what `@Table` does it exist. Also, for each attribute we'll define its DB field name using `@Column` or in case of other entities, `@ManyToMany`, `@OneToMany` or `@ManyToOne`.
+Take as an example the `Book` class from the [Lab SE03-2](../../Labs/java-se03-2.qmd). Now we'll include annotations to define what `@Entity` it represents and in what `@Table` it must persist. Also, for each attribute we'll define its DB field name using `@Column` or in case of other entities, `@ManyToMany`, `@OneToMany`, `@OneToOne` or `@ManyToOne`.
 
 ## Dependency injection (`@Autowired`)
 What is a dependency injection? It's a SpringBoot feature that automatically wires a bean from the Spring application context into a class field or method.
 
 :::{.callout-important}
 ## TODO
-Explain what is a dependency injection
+Explain what a dependency injection is
 :::
 
 ## Preparing the frontend

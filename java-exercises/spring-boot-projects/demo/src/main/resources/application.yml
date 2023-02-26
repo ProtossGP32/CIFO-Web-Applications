@@ -2,17 +2,6 @@ server:
   port: 9090
 
 spring:
-  main:
-    banner-mode: off
-  #security:
-  #  user: protoss
-  #  password: 1234
-  #  roles: user
-  application:
-    name: spring-lab-0-approach-1
-  h2:
-    console:
-      enabled: 'true'
   datasource:
     #url: jdbc:h2:mem:mydb # Creates the DB in memory
     #url: jdbc:h2:file:~/demodb # Creates the DB file in "/home/$USER/demodb.mv.db"

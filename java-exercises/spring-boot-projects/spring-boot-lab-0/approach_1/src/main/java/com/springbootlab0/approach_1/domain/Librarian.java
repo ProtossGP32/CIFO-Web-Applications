@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 @ToString(callSuper = true)
 @SuperBuilder(toBuilder = true)
-@MappedSuperclass
 @Entity(name = "Librarian")
 @DiscriminatorValue(value = "LIBRARIAN")
 public class Librarian extends StaffMember implements BorrowOperations {
@@ -34,30 +33,30 @@ public class Librarian extends StaffMember implements BorrowOperations {
     @Override
     public void createBorrow() {
         // Create a borrow by asking for user and book information
-        System.out.println("A librarian is trying to create a borrow");
+        System.out.println("A " + this.getClass().getSimpleName() + " is trying to create a borrow");
     }
 
     @Override
     public void findBorrow() {
         // Find a borrow by asking for user and book information
-        System.out.println("A librarian is trying to find a borrow");
+        System.out.println("A " + this.getClass().getSimpleName() + " is trying to find a borrow");
     }
 
     @Override
     public void removeBorrow() {
         // Remove a borrow by asking for user and book information
-        System.out.println("A librarian is trying to remove a borrow");
+        System.out.println("A " + this.getClass().getSimpleName() + " is trying to remove a borrow");
     }
 
     @Override
     public void updateBorrow() {
         // Extend a borrow by asking for user and book information
-        System.out.println("A librarian is trying to update a borrow");
+        System.out.println("A " + this.getClass().getSimpleName() + " is trying to update a borrow");
     }
 
     @Override
     public void listBorrows() {
         // List all borrows by asking for user and book information
-        System.out.println("A librarian is trying to list all borrows");
+        System.out.println("A " + this.getClass().getSimpleName() + " is trying to list all borrows");
     }
 }
