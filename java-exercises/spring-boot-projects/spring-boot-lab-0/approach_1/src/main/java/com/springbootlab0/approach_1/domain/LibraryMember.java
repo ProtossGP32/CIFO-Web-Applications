@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Table(name="LIBRARYMEMBER_TABLE")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "MEMBER_TYPE", discriminatorType = DiscriminatorType.STRING)
-abstract class LibraryMember extends Person implements GeneralOperations {
+public abstract class LibraryMember extends Person implements GeneralOperations {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")

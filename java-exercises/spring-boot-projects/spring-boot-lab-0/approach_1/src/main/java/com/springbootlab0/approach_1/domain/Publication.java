@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Table(name="PUBLICATION_TABLE")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "PUBLICATION_TYPE", discriminatorType = DiscriminatorType.STRING)
-abstract class Publication implements PublicationOperations{
+public abstract class Publication implements PublicationOperations{
     // Required fields
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -39,7 +39,6 @@ abstract class Publication implements PublicationOperations{
     @Enumerated(EnumType.STRING)
     private Status status;
 
-
     public Publication() {
         this.id = Helper.createUUID();
     }
@@ -47,7 +46,8 @@ abstract class Publication implements PublicationOperations{
     public Publication(String title, Author author, LocalDate publicationDate, String format, Status status) {
         this();
         this.title = title;
-        //this.author = author;
+
+        this.author = author;
         this.publicationDate = publicationDate;
         this.format = format;
         this.status = status;

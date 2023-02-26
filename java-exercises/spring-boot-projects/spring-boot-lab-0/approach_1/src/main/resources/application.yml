@@ -1,18 +1,25 @@
 server:
   port: 9090
 
+# Spring properties
 spring:
+  security:
+    # Here you can change the default username and password
+    user:
+      name: protoss
+      password: 1234
+      role: user
+
   main:
     banner-mode: off
-  #security:
-  #  user: protoss
-  #  password: 1234
-  #  roles: user
+
   application:
     name: spring-lab-0-approach-1
+
   h2:
     console:
       enabled: 'true'
+
   datasource:
     #url: jdbc:h2:mem:mydb # Creates the DB in memory
     #url: jdbc:h2:file:~/demodb # Creates the DB file in "/home/$USER/demodb.mv.db"
@@ -20,17 +27,26 @@ spring:
     # Ex: if the DB file is allocated in the root of the project --> jdbc:h2:./<db-name>
     # Ex: if the DB file is in the home directory --> jdbc:h2:~/<db-name>
     #url: jdbc:h2:/media/protoss/Dades/github/CIFO/CIFO-Web-Applications/java-exercises/spring-boot-projects/h2/library;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO
-    # Accessing remote H2 servers:
+    # Accessing remote H2 servers --> jdbc:h2:tcp://<h2-server-ip>:<port>/<relative-or-absolute-path>/<db-name>
+    # Ex: jdbc:h2:tcp://localhost:9092/./library --> Library is allocated in the same path as the H2 server working dir
     # DB files are stored in the same path as the h2 .jar file
-    url: jdbc:h2:tcp://localhost:9092/library;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO
+    url: jdbc:h2:tcp://localhost:9092/./library;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO
     username: cifoweb
     password: cifotest
     driverClassName: org.h2.Driver
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       dialect: org.hibernate.dialect.H2Dialect
-      ddl-auto: create
+      ddl-auto: update
+    # Some deprecated default values must be overridden
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: ENABLE_SELECTIVE
+
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher

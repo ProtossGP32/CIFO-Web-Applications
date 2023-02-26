@@ -10,7 +10,29 @@ import java.util.List;
 public class FakeDataGenerator {
     private static final Faker faker = new Faker();
 
-    public List<Book> createFakeBooks(int numBooks) {
+    public static List<Publication> createFakePublications(int numPublications) {
+        List<Publication> fakePublications = new ArrayList<>();
+        int factoryNum;
+        for (int i = 0; i < numPublications; i++) {
+            factoryNum = faker.number().numberBetween(0, 2);
+            switch (factoryNum) {
+                case 0 ->
+                    // 0 - New book
+                        fakePublications.add(createFakeBook());
+                case 1 ->
+                    // 1 - New CD
+                        fakePublications.add(createFakeCD());
+                case 2 ->
+                    // 2 - New DVD
+                        fakePublications.add(createFakeDVD());
+                default -> System.out.println("unknown value");
+            }
+        }
+
+        return fakePublications;
+    }
+
+    public static List<Book> createFakeBooks(int numBooks) {
         // Define local fake variables
 
         List<Book> fakeBooks = new ArrayList<>();
@@ -67,17 +89,37 @@ public class FakeDataGenerator {
 
     public static Author createFakeAuthor() {
         String[] authorName = faker.book().author().split(" ");
-        return new Author(
-                authorName[0],
-                authorName[1],
-                faker.country().name(),
-                faker
+        return Author.builder()
+                .firstName(authorName[0])
+                .lastName(authorName[1])
+                .nationality(faker.country().name())
+                .birthDate(faker
                     .date()
                     .birthday()
                     .toInstant()
                     .atZone(ZoneId.systemDefault())
-                    .toLocalDate(),
-                faker.funnyName().name());
+                    .toLocalDate())
+                .penName(faker.funnyName().name())
+                .build();
+    }
+
+    public static List<LibraryMember> createFakeLibraryMembers(int numMembers) {
+        List<LibraryMember> fakeMembers = new ArrayList<>();
+        int factoryNum;
+        for (int i = 0; i < numMembers; i++) {
+            factoryNum = faker.number().numberBetween(0, 1);
+            switch (factoryNum) {
+                case 0 ->
+                    // 0 - New User
+                        fakeMembers.add(createFakeUser());
+                case 1 ->
+                    // 1 - New Librarian
+                        fakeMembers.add(createFakeLibrarian());
+                default -> System.out.println("unknown value");
+            }
+        }
+
+        return fakeMembers;
     }
 
     public static User createFakeUser() {

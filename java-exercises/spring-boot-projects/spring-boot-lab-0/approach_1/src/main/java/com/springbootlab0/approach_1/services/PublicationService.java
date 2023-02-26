@@ -1,0 +1,57 @@
+package com.springbootlab0.approach_1.services;
+
+import com.springbootlab0.approach_1.domain.Author;
+import com.springbootlab0.approach_1.domain.Publication;
+import com.springbootlab0.approach_1.repository.AuthorRepository;
+import com.springbootlab0.approach_1.repository.PublicationRepository;
+import com.springbootlab0.approach_1.utils.FakeDataGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class PublicationService {
+    @Autowired
+    PublicationRepository publicationRepository;
+    @Autowired
+    AuthorRepository authorRepository;
+
+    public Iterable<Publication> getAllPublications() {
+        return publicationRepository.findAll();
+    }
+
+    // CRUD
+    public Publication createPublication(Publication publication) {
+        Publication publicationCreated = publicationRepository.save(publication);
+        return publicationCreated;
+    }
+
+    public Optional<Publication> findPublicationById(String id) {
+        return publicationRepository.findById(id);
+    }
+
+    public Optional<Publication> findPublicationByTitle(String title) {
+        return publicationRepository.findPublicationByTitle(title);
+    }
+
+    public void deletePublicationById(String id) {
+        publicationRepository.deleteById(id);
+    }
+
+    public Publication updatePublication(Publication publication) {
+        // Same procedure as in createPublication
+        return publicationRepository.save(publication);
+    }
+
+    public void deletePublication(Publication publication) {
+        publicationRepository.delete(publication);
+    }
+
+    public void deleteAll() {
+        publicationRepository.deleteAll();
+    }
+
+
+}
