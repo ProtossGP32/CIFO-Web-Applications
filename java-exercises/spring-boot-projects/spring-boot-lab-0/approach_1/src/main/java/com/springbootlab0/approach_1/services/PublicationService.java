@@ -1,10 +1,7 @@
 package com.springbootlab0.approach_1.services;
 
-import com.springbootlab0.approach_1.domain.Author;
 import com.springbootlab0.approach_1.domain.Publication;
-import com.springbootlab0.approach_1.repository.AuthorRepository;
 import com.springbootlab0.approach_1.repository.PublicationRepository;
-import com.springbootlab0.approach_1.utils.FakeDataGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +12,6 @@ import java.util.Optional;
 public class PublicationService {
     @Autowired
     PublicationRepository publicationRepository;
-    @Autowired
-    AuthorRepository authorRepository;
 
     public Iterable<Publication> getAllPublications() {
         return publicationRepository.findAll();

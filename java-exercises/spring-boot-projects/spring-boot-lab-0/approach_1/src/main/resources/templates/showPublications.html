@@ -12,38 +12,69 @@
         <h5>Table of publications from @Controller @Service @Repository and H2 DB</h5>
     </div>
     <br>
-    <!-- Create a button to populate the Publications database -->
+    <!-- Fake creation database -->
     <div>
-        <p><a th:href="@{/createFakePublications(qtyPublications=10)}" class="w3-button w3-cyan">Create 10 fake publications on H2</a></p>
+        <!-- Create a button to populate the Publications database -->
+        <p><a th:href="@{/library/createFakePublications(qtyPublications=10)}" class="w3-button w3-cyan">Create 10 fake publications on H2</a></p>
+        <!-- Create a button to populate the LibraryMember database -->
+        <p><a th:href="@{/library/createFakeLibraryMembers(qtyMembers=10)}" class="w3-button w3-cyan">Create 10 fake library members on H2</a></p>
     </div>
 
-    <!-- Create another button to clean the Publications database -->
+    <!-- Clear buttons -->
     <div>
-        <p><a th:href="@{/clearPublications}" class="w3-button w3-cyan">Clear all publications</a></p>
+        <p>
+            <!-- Create another button to clear the Publications database -->
+            <a th:href="@{/library/clearPublications}" class="w3-button w3-red">Clear all Publications</a>
+            <!-- Create another button to clear the Authors database -->
+            <a th:href="@{/library/clearAuthors}" class="w3-button w3-red">Clear all Authors</a>
+            <!-- Create another button to clear the LibraryMembers database -->
+            <a th:href="@{/library/clearLibraryMembers}" class="w3-button w3-red">Clear all Library Members</a>
+        </p>
     </div>
 
-    <!-- Show all Publications -->
-    <table class="w3-table-all w3-hoverable">
-        <!-- The first row is the table header-->
-        <tr>
-            <td>Publication ID</td>
-            <td>Title</td>
-            <td>Author</td>
-            <td>Publication date</td>
-            <td>Publication format</td>
-            <td>Status</td>
-        </tr>
 
-        <!-- Now we loop over all the available publications -->
-        <!-- TODO: Add the DiscriminatorValue to differentiate between publications -->
-        <tr th:each="publication:${publicationsFromController}">
-            <td th:text="${publication.id}" />
-            <td th:text="${publication.title}"/>
-            <td th:text="${publication.author.firstName + ' ' + publication.author.lastName}"/>
-            <td th:text="${publication.publicationDate}"/>
-            <td th:text="${publication.format}"/>
-            <td th:text="${publication.status}"/>
-        </tr>
-    </table>
+    <div>
+        <h2>Available publications</h2>
+        <!-- Show all Publications -->
+        <table class="w3-table-all w3-hoverable">
+            <!-- The first row is the table header-->
+            <tr>
+                <td>Publication ID</td>
+                <td>Title</td>
+                <td>Author</td>
+                <td>Publication date</td>
+                <td>Publication format</td>
+                <td>Status</td>
+            </tr>
+
+            <!-- Now we loop over all the available publications -->
+            <!-- TODO: Add the DiscriminatorValue to differentiate between publications -->
+            <tr th:each="publication:${publicationsFromController}">
+                <td th:text="${publication.id}" />
+                <td th:text="${publication.title}"/>
+                <td th:text="${publication.author.firstName + ' ' + publication.author.lastName}"/>
+                <td th:text="${publication.publicationDate}"/>
+                <td th:text="${publication.format}"/>
+                <td th:text="${publication.status}"/>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <h2>Available members</h2>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+                </div>
+                <div class="flip-card-back">
+                    <h1>John Doe</h1>
+                    <p>Architect & Engineer</p>
+                    <p>We love that guy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

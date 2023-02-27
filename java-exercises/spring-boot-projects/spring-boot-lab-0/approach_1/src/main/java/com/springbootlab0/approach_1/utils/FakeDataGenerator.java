@@ -14,7 +14,7 @@ public class FakeDataGenerator {
         List<Publication> fakePublications = new ArrayList<>();
         int factoryNum;
         for (int i = 0; i < numPublications; i++) {
-            factoryNum = faker.number().numberBetween(0, 2);
+            factoryNum = faker.number().numberBetween(0, 3);
             switch (factoryNum) {
                 case 0 ->
                     // 0 - New book
@@ -107,7 +107,7 @@ public class FakeDataGenerator {
         List<LibraryMember> fakeMembers = new ArrayList<>();
         int factoryNum;
         for (int i = 0; i < numMembers; i++) {
-            factoryNum = faker.number().numberBetween(0, 1);
+            factoryNum = faker.number().numberBetween(0, 2);
             switch (factoryNum) {
                 case 0 ->
                     // 0 - New User
