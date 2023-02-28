@@ -1,7 +1,6 @@
 package com.springbootlab0.approach_1.services;
 
 import com.springbootlab0.approach_1.domain.LibraryMember;
-import com.springbootlab0.approach_1.repository.AuthorRepository;
 import com.springbootlab0.approach_1.repository.LibraryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +11,10 @@ import java.util.Optional;
 public class LibraryMemberService {
     @Autowired
     LibraryMemberRepository libraryMemberRepository;
-    @Autowired
-    private AuthorRepository authorRepository;
 
     // CRUD
     public LibraryMember createLibraryMember(LibraryMember libraryMember) {
-        LibraryMember memberCreated = libraryMemberRepository.save(libraryMember);
-        return memberCreated;
+        return libraryMemberRepository.save(libraryMember);
     }
 
     public Optional<LibraryMember> findLibraryMemberById(String id) {
@@ -39,5 +35,9 @@ public class LibraryMemberService {
 
     public void deleteAll() {
         libraryMemberRepository.deleteAll();
+    }
+
+    public Iterable<LibraryMember> getAllLibraryMembers() {
+        return libraryMemberRepository.findAll();
     }
 }

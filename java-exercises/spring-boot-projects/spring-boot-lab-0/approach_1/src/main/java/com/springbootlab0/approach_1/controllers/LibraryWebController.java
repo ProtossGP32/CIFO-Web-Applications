@@ -34,8 +34,13 @@ public class LibraryWebController {
     public String getPublicationsWeb(Model containerToView) {
         // Compose the container with all the information that the showPublications.html
         // requires on render time
+        // 1. Retrieve all publications
         containerToView.addAttribute("publicationsFromController",
                 publicationService.getAllPublications());
+        // 2. Retrieve all library members
+        containerToView.addAttribute("libraryMembersFromController",
+                libraryMemberService.getAllLibraryMembers());
+
         return "showPublications";
     }
 
