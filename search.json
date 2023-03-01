@@ -228,7 +228,7 @@
     "href": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#preparing-the-frontend",
     "title": "02 - Creating a Spring Boot project with H2 and ThyMeLeaf",
     "section": "Preparing the frontend",
-    "text": "Preparing the frontend\n\n\n\n\n\n\nTODO\n\n\n\nExplain ThyMeLeaf"
+    "text": "Preparing the frontend\nThe frontend is rendered using Thymeleaf engine to easily allow requests to the Spring Boot controller.\n\n\n\n\n\n\n\n\n\n\n\nTODO\n\n\n\nExplain Thymeleaf"
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#launching-the-server",
