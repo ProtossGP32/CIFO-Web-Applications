@@ -11,6 +11,7 @@
     <div>
     <!-- Show a Member form -->
     <form action="#" th:action="@{/library/createUser}" th:object="${newUser}" method="post">
+        <p th:text="${'New user ID: ' + newUser.id}" />
         <p>First name: <input type="text" th:field="*{firstName}" /></p>
         <p>Last name: <input type="text" th:field="*{lastName}" /></p>
         <p>

@@ -1,7 +1,6 @@
 package com.springbootlab0.approach_1.controllers;
 
 import com.springbootlab0.approach_1.domain.User;
-import com.springbootlab0.approach_1.repository.UserRepository;
 import com.springbootlab0.approach_1.services.AuthorService;
 import com.springbootlab0.approach_1.services.DemoService;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
@@ -43,6 +42,10 @@ public class LibraryWebController {
         containerToView.addAttribute("libraryMembersFromController",
                 libraryMemberService.getAllLibraryMembers());
 
+        // 3. For testing purposes, retrieve only Users from Library Members
+        containerToView.addAttribute("usersFromController",
+                libraryMemberService.getAllUsers());
+
         return "showPublications";
     }
 
@@ -73,7 +76,8 @@ public class LibraryWebController {
 
     // Entities creation
     /**
-     *
+     * TODO: Avoid creating a User object in this method or any other LibraryMember subclass object
+     * With pure HTML here we wouldn't need to previously specify an object to fill
      */
     @GetMapping(value = "/createUser")
     public String memberForm(Model userModel) {

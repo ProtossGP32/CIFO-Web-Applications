@@ -5,7 +5,6 @@ import com.springbootlab0.approach_1.repository.PublicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,8 +18,7 @@ public class PublicationService {
 
     // CRUD
     public Publication createPublication(Publication publication) {
-        Publication publicationCreated = publicationRepository.save(publication);
-        return publicationCreated;
+        return publicationRepository.save(publication);
     }
 
     public Optional<Publication> findPublicationById(String id) {

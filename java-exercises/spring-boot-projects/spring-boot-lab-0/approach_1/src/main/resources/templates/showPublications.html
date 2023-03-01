@@ -48,6 +48,7 @@
             <!-- The first row is the table header-->
             <tr>
                 <td>Publication ID</td>
+                <td>Publication type</td>
                 <td>Title</td>
                 <td>Author</td>
                 <td>Publication date</td>
@@ -56,9 +57,10 @@
             </tr>
 
             <!-- Now we loop over all the available publications -->
-            <!-- TODO: Add the DiscriminatorValue to differentiate between publications -->
+            <!-- Instead of the DiscriminatorValue, we just simply print the class simple name -->
             <tr th:each="publication:${publicationsFromController}">
-                <td th:text="${publication.id}" />
+                <td th:text="${publication.id}"/>
+                <td th:text="${publication.class.simpleName}"/>
                 <td th:text="${publication.title}"/>
                 <td th:text="${publication.author.firstName + ' ' + publication.author.lastName}"/>
                 <td th:text="${publication.publicationDate}"/>
@@ -79,8 +81,29 @@
                 </div>
                 <div class="flip-card-back">
                     <h1 th:text="${libraryMember.firstName + ' ' + libraryMember.lastName}"/>
+                    <h2 th:text="${libraryMember.class.simpleName}"/>
                     <p th:text="${libraryMember.address}"/>
                     <p th:text="${libraryMember.phoneNumber}"/>
+                    <p th:text="${idx.index}"/>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- Only Users flip-cards -->
+        <div class="header">
+            <h2>Only users flip-cards</h2>
+        </div>
+        <div class="flip-card standalone" th:each="user, idx:${usersFromController}">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+                </div>
+                <div class="flip-card-back">
+                    <h1 th:text="${user.firstName + ' ' + user.lastName}"/>
+                    <h2 th:text="${user.class.simpleName}"/>
+                    <p th:text="${user.address}"/>
+                    <p th:text="${user.phoneNumber}"/>
                     <p th:text="${idx.index}"/>
                 </div>
             </div>
