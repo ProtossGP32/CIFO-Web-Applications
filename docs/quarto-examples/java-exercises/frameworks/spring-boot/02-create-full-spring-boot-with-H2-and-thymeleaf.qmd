@@ -120,10 +120,13 @@ Explain what a dependency injection is
 :::
 
 ## Preparing the frontend
+The frontend is rendered using [Thymeleaf](../../frontend/engines/00-thymeleaf.qmd) engine to easily allow requests to the Spring Boot controller.
+
+![](https://github.com/thymeleaf/thymeleaf-org/raw/main/artwork/thymeleaf%202016/thymeleaf_logo_transparent.png){width=80% fig-align="center"}
 
 :::{.callout-important}
 ## TODO
-Explain ThyMeLeaf
+Explain Thymeleaf
 :::
 
 ## Launching the server

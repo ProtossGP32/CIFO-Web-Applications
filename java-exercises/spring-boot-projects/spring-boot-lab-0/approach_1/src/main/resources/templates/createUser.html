@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>User creation form</title>
+</head>
+<body>
+    <h1>Member form</h1>
+    <div>
+    <!-- Show a Member form -->
+    <form action="#" th:action="@{/library/createUser}" th:object="${newUser}" method="post">
+        <p>First name: <input type="text" th:field="*{firstName}" /></p>
+        <p>Last name: <input type="text" th:field="*{lastName}" /></p>
+        <p>
+            <input type="submit" value="Submit member" />
+            <input type="reset" value="Reset fields" />
+        </p>
+    </form>
+    <!-- Create a button to go to the User Form creation -->
+    <p>
+        <a th:href="@{/library/publications}" class="w3-button w3-red">Return to publications</a>
+    </p>
+        <p>Submit results:</p>
+        <p th:text="${'New user ID: ' + newUser.id}" />
+        <p th:text="${'New user first name: ' + newUser.firstName}" />
+        <p th:text="${'New user last name: ' + newUser.lastName}" />
+    </div>
+</body>
+</html>

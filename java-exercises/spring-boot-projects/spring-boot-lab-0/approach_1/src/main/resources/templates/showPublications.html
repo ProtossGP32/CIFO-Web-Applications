@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <!-- Remember to define absolute paths for CSS! Also, cascading priority is from top to bottom -->
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -33,6 +33,12 @@
                 <!-- Create another button to clear the LibraryMembers database -->
                 <a th:href="@{/library/clearLibraryMembers}" class="w3-button w3-red">Clear all Library Members</a>
             </p>
+        </div>
+        <br>
+        <!-- Forms buttons -->
+        <div>
+            <!-- Create a button to go to the User Form creation -->
+            <p><a th:href="@{/library/createUser}" class="w3-button w3-green">Create a new user</a></p>
         </div>
         <br>
         <!-- Available publications -->

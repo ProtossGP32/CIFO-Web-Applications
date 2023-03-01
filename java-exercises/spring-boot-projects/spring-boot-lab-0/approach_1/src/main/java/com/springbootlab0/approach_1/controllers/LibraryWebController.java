@@ -1,5 +1,7 @@
 package com.springbootlab0.approach_1.controllers;
 
+import com.springbootlab0.approach_1.domain.User;
+import com.springbootlab0.approach_1.repository.UserRepository;
 import com.springbootlab0.approach_1.services.AuthorService;
 import com.springbootlab0.approach_1.services.DemoService;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
@@ -7,8 +9,7 @@ import com.springbootlab0.approach_1.services.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/library")
@@ -22,6 +23,7 @@ public class LibraryWebController {
     @Autowired
     LibraryMemberService libraryMemberService;
 
+    // Demo service - Only for demo purposes!
     @Autowired
     DemoService demoService;
 
@@ -68,6 +70,32 @@ public class LibraryWebController {
         // Redirect to the Publications page
         return "redirect:publications";
     }
+
+    // Entities creation
+    /**
+     *
+     */
+    @GetMapping(value = "/createUser")
+    public String memberForm(Model userModel) {
+        // Instantiate a new User object
+        userModel.addAttribute("newUser", new User());
+        // In GET methods, we invoke the same method
+        return "createUser";
+    }
+
+    @PostMapping("/createUser")
+    public String userSubmit(@ModelAttribute User newUser, Model containerToView) {
+
+        // Insert the new User to the database
+        libraryMemberService.createLibraryMember(newUser);
+        // TODO: Add logic to know if the received LibraryMember is a User, a Librarian or a Staff member
+        // Add the newUser again to the containerToView
+        containerToView.addAttribute("newUser", newUser);
+
+        // Return to the createUser page
+        return "createUser";
+    }
+
 
     /**
      * Demo purposes: Create the number of expected publications
