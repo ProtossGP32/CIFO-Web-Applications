@@ -287,6 +287,13 @@
     "text": "Teacher’s definition:\n\nREST is an architecture style for building web services. It is based on a client-server model, where a client sends a request to a server and the server sends a response.\nRESTful APIs use HTTP requests to POST (create), PUT (update), GET (read) and DELETE (delete) data.\nA RESTful API is a simple, consistent, and easy-to-use way for applications to communicate with each other over the internet.\n\n\n\nIt is the common language between a client and a server, so the client knows what operations are available in the server. Common REST API operations\n\nPOST (Create)\nGET (Read)\nPUT (Update)\nDELETE (Delete)\n\nSo the base operations are the classic CRUD, but can be expanded. In fact, it is a set of definitions and protocols, sometimes referred to as a contract between an information provider and an Information user.\nThis contract (API Rest style) establishing the content required from the consumer (the call) and the content required by the producer (the response).\n\n\n\n\n\n\nAPI Weather example\n\n\n\nThe API design for a weather service could ask the user for a zip code as a requestand then return a response in the form of a 2-part answer, being the first one the high temperature and the second one the low temperature.\n\n\n\n\n\n\n\n\n\n\n\nTODO\n\n\n\nPending to elaborate!"
   },
   {
+    "objectID": "java-exercises/frontend/engines/00-thymeleaf.html",
+    "href": "java-exercises/frontend/engines/00-thymeleaf.html",
+    "title": "01 - Java template engine - Thymeleaf",
+    "section": "",
+    "text": "Introduction\n\n\nGetting started:\nFollow this article to know the basics of configuring and using Thymeleaf inside a Spring Boot project"
+  },
+  {
     "objectID": "java-exercises/Labs/java-se00-2.html",
     "href": "java-exercises/Labs/java-se00-2.html",
     "title": "LAB#SE00-1: Maven Clinic",
