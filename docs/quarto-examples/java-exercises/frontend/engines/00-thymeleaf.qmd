@@ -1,0 +1,14 @@
+---
+title: "01 - Java template engine - Thymeleaf"
+description: Render HTML pages with Java objects
+author: ProtossGP32
+categories: [Java, web, Thymeleaf, HTML]
+date: 2023/03/01
+---
+
+![](https://github.com/thymeleaf/thymeleaf-org/raw/main/artwork/thymeleaf%202016/thymeleaf_logo_transparent.png){width=80% fig-align="center"}
+
+# Introduction
+
+# Getting started:
+Follow [this article](https://albertprofe.github.io/wiki/springboot/boot-concepts-th.html) to know the basics of configuring and using Thymeleaf inside a Spring Boot project
