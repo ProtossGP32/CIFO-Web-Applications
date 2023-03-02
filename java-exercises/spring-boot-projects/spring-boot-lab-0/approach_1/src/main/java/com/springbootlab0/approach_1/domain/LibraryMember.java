@@ -19,7 +19,7 @@ import java.time.LocalDate;
 @DiscriminatorColumn(name = "MEMBER_TYPE", discriminatorType = DiscriminatorType.STRING)
 public abstract class LibraryMember extends Person implements GeneralOperations {
     @Id
-    @GeneratedValue(generator = "system-uuid")
+    //@GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name="LIBRARYMEMBER_ID", updatable = false, nullable = false)
     private String id;

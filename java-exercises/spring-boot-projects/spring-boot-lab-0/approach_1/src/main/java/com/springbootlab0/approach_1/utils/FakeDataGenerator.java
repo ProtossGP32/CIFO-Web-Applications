@@ -89,18 +89,17 @@ public class FakeDataGenerator {
 
     public static Author createFakeAuthor() {
         String[] authorName = faker.book().author().split(" ");
-        return Author.builder()
-                .firstName(authorName[0])
-                .lastName(authorName[1])
-                .nationality(faker.country().name())
-                .birthDate(faker
+        return new Author(
+                authorName[0],
+                authorName[1],
+                faker.country().name(),
+                faker
                     .date()
                     .birthday()
                     .toInstant()
                     .atZone(ZoneId.systemDefault())
-                    .toLocalDate())
-                .penName(faker.funnyName().name())
-                .build();
+                    .toLocalDate(),
+                faker.funnyName().name());
     }
 
     public static List<LibraryMember> createFakeLibraryMembers(int numMembers) {

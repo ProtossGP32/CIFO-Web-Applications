@@ -20,7 +20,7 @@ import java.time.LocalDate;
 public abstract class Publication implements PublicationOperations{
     // Required fields
     @Id
-    @GeneratedValue(generator = "system-uuid")
+    //@GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name="PUBLICATION_ID", updatable = false, nullable = false)
     private String id;

@@ -11,8 +11,6 @@ import java.time.LocalDate;
 @Getter
 @ToString(callSuper = true)
 @SuperBuilder(toBuilder = true)
-@NoArgsConstructor
-@AllArgsConstructor
 // JPA Annotations
 @Entity(name="Author")
 @Table(name="AUTHOR_TABLE")
@@ -20,14 +18,14 @@ import java.time.LocalDate;
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Author extends Person{
     @Id
-    @GeneratedValue(generator = "system-uuid")
+    //@GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name="AUTHOR_ID", updatable = false, nullable = false)
     private String id;
     @Column(name="AUTHOR_PENNAME")
     private String penName;
 
-    /*
+
     public Author() {
         super();
         this.id = Helper.createUUID();
@@ -38,5 +36,4 @@ public class Author extends Person{
         this.id = Helper.createUUID();
         this.penName = penName;
     }
-    */
 }

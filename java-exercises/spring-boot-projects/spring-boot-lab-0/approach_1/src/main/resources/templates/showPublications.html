@@ -84,6 +84,7 @@
                     <h2 th:text="${libraryMember.class.simpleName}"/>
                     <p th:text="${libraryMember.address}"/>
                     <p th:text="${libraryMember.phoneNumber}"/>
+                    <p th:if="${libraryMember.class.simpleName == 'User'}" th:text="${libraryMember.mail}"/>
                     <p th:text="${idx.index}"/>
                 </div>
             </div>
