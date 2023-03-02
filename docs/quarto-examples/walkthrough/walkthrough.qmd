@@ -274,4 +274,6 @@ filtered = data.filter(function(entry) {
 :::{.callout-warning}
 ## TODO: Do some more data engineering on data
 Right now there's no simple way to represent the data as is, some aggregation/grouping should be done before
+
+Check [official ObservableHQ documentation](https://observablehq.com/@observablehq/plot-bar) to finish this example
 :::
