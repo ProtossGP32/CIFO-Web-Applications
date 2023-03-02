@@ -37,10 +37,15 @@ You can insert Observable code snippets in your Quarto document.
 
 First, load the data with the [FileAttachment](https://observablehq.com/@observablehq/file-attachments) method. We'll be using a dataset from [the New Zealand's official data agency](https://stats.govt.nz/large-datasets/csv-files-for-download/), specifically the [Occupied and unoccupaied dwellings census](https://www3.stats.govt.nz/2018census/Occupied-dwellings-unoccupied-dwellings-dwellings-under-construction-private-and-non-private-dwellings-2006-2013-2018-Censuses-RC-TA-SA2-DHB.zip?_ga=2.45968608.514034696.1677755511-1169319431.1677755511):
 
+:::{.callout-note}
+## Correctly format your data!
+Right now, integer columns are formatted as string, they should converted to a number. For the sake of simplicity, we'll be applying the `{typed: true}` option when parsing the CSV files.
+:::
+
 
 ```{ojs}
 // Load the CSV file
-data = FileAttachment("../data/Data8278.csv").csv()
+data = FileAttachment("../data/Data8278.csv").csv({typed: true})
 // Print the data columns
 data.columns
 
@@ -68,18 +73,20 @@ First load in separate tables each lookup table:
 
 ```{ojs}
 // Load the DwellRecType lookup Table
-dwell_rec_type_lookup = FileAttachment("../data/DimenLookupDwellRecType8278.csv").csv()
+dwell_rec_type_lookup = FileAttachment("../data/DimenLookupDwellRecType8278.csv").csv({typed: true})
 
 // Load the DwellStatus lookup table
-dwell_status_lookup = FileAttachment("../data/DimenLookupDwellStatus8278.csv").csv()
+dwell_status_lookup = FileAttachment("../data/DimenLookupDwellStatus8278.csv").csv({typed: true})
 
 // Load the Area lookup Table
-area_lookup = FileAttachment("../data/DimenLookupArea8278.csv").csv()
+area_lookup = FileAttachment("../data/DimenLookupArea8278.csv").csv({typed: true})
 
 ```
 
 Check its contents:
+
 - Dwell Rec Type lookup:
+
 ```{ojs}
 viewof dwell_rec_type_lookup_table = Inputs.table(dwell_rec_type_lookup)
 ```
@@ -119,7 +126,7 @@ function join(lookupTable, mainTable, lookupKey, mainKey, select) {
 }
 ```
 
-Let's try it with a simple example:
+Let's try it with a simple example first, as shown in the page:
 
 ```{ojs}
 // Create a mainTable called articles
@@ -171,13 +178,14 @@ join(brands, articles, "id", "brand_id", function(article, brand) {
 
 ```
 
-Now we try to join each lookup table with the main data table:
+
+Now that we know that the function works, we join each lookup table with the main data table one at a time:
 
 ```{ojs}
 // Join Dwell DwellRecType with data
-join(dwell_rec_type_lookup, data, "Code", "DwellRecType", function(item, dwell_rec_type) {
+first_join_table = join(dwell_rec_type_lookup, data, "Code", "DwellRecType", function(item, dwell_rec_type) {
     return {
-        year: item.Year,
+        Year: item.Year,
         DwellRecType: item.DwellRecType,
         DwellRec: dwell_rec_type.Description,
         DwellStatus: item.DwellStatus,
@@ -186,4 +194,84 @@ join(dwell_rec_type_lookup, data, "Code", "DwellRecType", function(item, dwell_r
     };
 })
 
+// Join Dwell Status with first join
+status_join_table = join(dwell_status_lookup, first_join_table, "Code", "DwellStatus", function(item, dwell_status) {
+    return {
+        Year: item.Year,
+        DwellRecType: item.DwellRecType,
+        DwellRec: item.DwellRec,
+        DwellStatus: item.DwellStatus,
+        DwellStatusDesc: dwell_status.Description,
+        Area: item.Area,
+        Count: item.Count
+    };
+})
+
+// Join Area description with second join
+area_join_table = join(area_lookup, status_join_table, "Code", "Area", function(item, area) {
+    return {
+        Year: item.Year,
+        DwellRecType: item.DwellRecType,
+        DwellRec: item.DwellRec,
+        DwellStatus: item.DwellStatus,
+        DwellStatusDesc: item.DwellStatusDesc,
+        Area: item.Area,
+        AreaDesc: area.Description,
+        Count: item.Count
+    };
+})
 ```
+
+With that done, we can show the resulting table:
+
+```{ojs}
+Inputs.table(area_join_table)
+```
+
+Data needs to be further manipulated to be plottable. First we'll start by getting the unique values of some of the columns:
+
+```{ojs}
+// Get the unique areas
+unique_areas = [...new Set(area_join_table
+    .flatMap((entry) => entry.AreaDesc))]
+
+// Get the unique Dwell Recs
+unique_dwell_recs = [...new Set(area_join_table
+    .flatMap((entry) => entry.DwellRec))]
+```
+
+After that, define some inputs to filter what results will be shown in the graph
+
+:::{.callout-note}
+## Output cell disabled due to high list of areas
+:::
+
+```{ojs}
+// | eval: false
+
+// Define a checkbox input for the Areas
+viewof area_select = Inputs.checkbox(
+    unique_areas,
+    {
+        label: "Area:"
+    }
+)
+
+// Define a checkbox input for the Dwell Recs
+viewof dwell_rec_select = Inputs.checkbox(
+    unique_dwell_recs,
+    {
+        label: "Dwell Rec:"
+    }
+)
+
+// Write the filtering function
+filtered = data.filter(function(entry) {
+    return area_select.includes(entry.AreaDesc) && dwell_rec_select.includes(entry.DwellRec);
+})
+```
+
+:::{.callout-warning}
+## TODO: Do some more data engineering on data
+Right now there's no simple way to represent the data as is, some aggregation/grouping should be done before
+:::
