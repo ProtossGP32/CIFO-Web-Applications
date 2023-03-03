@@ -1,6 +1,5 @@
 package com.springbootlab0.approach_1.controllers;
 
-import com.springbootlab0.approach_1.domain.User;
 import com.springbootlab0.approach_1.services.AuthorService;
 import com.springbootlab0.approach_1.services.DemoService;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
@@ -26,7 +25,7 @@ public class LibraryWebController {
     @Autowired
     DemoService demoService;
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = {"", "/", "/index"})
     public String index() {
         return "index";
     }
@@ -74,32 +73,14 @@ public class LibraryWebController {
         return "redirect:publications";
     }
 
-    // Entities creation
     /**
-     * TODO: Avoid creating a User object in this method or any other LibraryMember subclass object
-     * With pure HTML here we wouldn't need to previously specify an object to fill
+     * Library Members Management request
+     * @return redirect to libraryMembers page
      */
-    @GetMapping(value = "/createUser")
-    public String memberForm(Model userModel) {
-        // Instantiate a new User object
-        userModel.addAttribute("newUser", new User());
-        // In GET methods, we invoke the same method
-        return "createUser";
+    @RequestMapping(value = "/libraryMemberManagement")
+    public String goToLibraryMemberManagement() {
+        return "redirect:/libraryMembers/";
     }
-
-    @PostMapping("/createUser")
-    public String userSubmit(@ModelAttribute User newUser, Model containerToView) {
-
-        // Insert the new User to the database
-        libraryMemberService.createLibraryMember(newUser);
-        // TODO: Add logic to know if the received LibraryMember is a User, a Librarian or a Staff member
-        // Add the newUser again to the containerToView
-        containerToView.addAttribute("newUser", newUser);
-
-        // Return to the createUser page
-        return "createUser";
-    }
-
 
     /**
      * Demo purposes: Create the number of expected publications

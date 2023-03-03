@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Remember to define absolute paths for CSS! Also, cascading priority is from top to bottom -->
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <head>
+        <title>Library Members Management</title>
+    </head>
+    <body>
+        <!-- Forms buttons -->
+        <div>
+            <!-- Create a button to go to the User Form creation -->
+            <p><a th:href="@{/libraryMembers/createUser}" class="w3-button w3-green">Create a new user</a></p>
+        </div>
+        <div>
+            <!-- Create a button to go to the Member Form creation -->
+            <p><a th:href="@{/libraryMembers/memberForm}" class="w3-button w3-green">Create a new member</a></p>
+        </div>
+        <br>
+    </body>
+</html>

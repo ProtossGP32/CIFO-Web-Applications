@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Member creation form</title>
+</head>
+<body>
+    <h1>Member form</h1>
+    <div class="w3-card-40" style="width:50%">
+        <header class="w3-container w3-light-grey">
+            <p>Create new member</p>
+        </header>
+        <!-- Show a Member form -->
+        <div class="w3-container">
+            <form action="#" th:action="@{/libraryMembers/createMember}">
+                <!-- Person fields -->
+                <p>
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" class="w3-input" id="firstName" required />
+                </p>
+                <p>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" class="w3-input" id="lastName" required />
+                </p>
+                <p>
+                    <label for="nationality">Nationality</label>
+                    <input type="text" name="nationality" class="w3-input" id="nationality" />
+                </p>
+                <p>
+                    <label for="birthDate">Birth Date</label>
+                    <input type="date" name="birthDate" class="w3-input" id="birthDate" required />
+                </p>
+                <!-- LibraryMember fields -->
+                <p>
+                    <label for="address">Address</label>
+                    <input type="text" name="address" class="w3-input" id="address" />
+                </p>
+                <p>
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" name="phoneNumber" class="w3-input" id="phoneNumber" />
+                </p>
+                <!-- User fields -->
+                <p>
+                    <label for="mail">Mail</label>
+                    <input type="email" name="mail" class="w3-input" id="mail" pattern=".+@[a-z]+\.[a-z]+" />
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="w3-input" id="password" />
+                </p>
+                <!-- Form buttons -->
+                <p>
+                    <input type="submit" value="Submit member" />
+                    <input type="reset" value="Reset fields" />
+                </p>
+            </form>
+        </div>
+
+        <!-- Create a button to go to the User Form creation -->
+        <p>
+            <a th:href="@{/library/publications}" class="w3-button w3-red">Return to publications</a>
+        </p>
+        <br>
+        <!-- Incompatible lines without GET/POST methods
+        <p>Submit results:</p>
+        <p th:text="${'New user ID: ' + newUser.id}" />
+        <p th:text="${'New user first name: ' + newUser.firstName}" />
+        <p th:text="${'New user last name: ' + newUser.lastName}" />
+        <p th:text="${'New user birth date: ' + #temporals.format(newUser.birthDate, 'dd/MM/yyyy')}" />
+        <p th:text="${'New user address: ' + newUser.address}" />
+        <p th:text="${'New user phone number: ' + newUser.phoneNumber}" />
+        <p th:text="${'New user mail: ' + newUser.mail}" />
+        <p th:text="${'New user password: ' + newUser.password}" />
+        <br>
+        <h3>Debug:</h3>
+        <p th:text="${newUser}" />
+        -->
+    </div>
+</body>
+</html>

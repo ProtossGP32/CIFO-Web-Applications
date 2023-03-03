@@ -1,7 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<!-- Remember to define absolute paths for CSS! Also, cascading priority is from top to bottom -->
 <link rel="stylesheet" href="/css/styles.css" type="text/css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
+
+    <div>
+        <!-- Create a button to go to the Publications -->
+        <p><a th:href="@{/library/publications}" class="w3-button w3-green">Show publications</a></p>
+        <!-- Create a button to go to the Library Members Management -->
+        <p><a th:href="@{/libraryMembers/}" class="w3-button w3-green">Manage Library Members</a></p>
+    </div>
 
     <!-- Header -->
     <div class="header">
