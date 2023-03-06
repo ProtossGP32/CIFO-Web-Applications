@@ -416,3 +416,12 @@ The resulting tables in the DB are as follow:
     - And also adds the `Author ID` of that publication, coming from the `Author` entity. The `@ManyToOne` annotation can be verified in the Indexes of `PUBLICATION_TABLE`, where `AUTHOR_ID` appears as _Not unique_
 
 :::
+
+## Defining the use cases
+### Creating a publication
+
+```{mermaid}
+flowchart:
+```
+
+### Creating a Libary Member
