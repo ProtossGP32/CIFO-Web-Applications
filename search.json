@@ -273,6 +273,27 @@
     "text": "Testing controllers\n\nAutomating endpoints testing"
   },
   {
+    "objectID": "java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html",
+    "href": "java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html",
+    "title": "04 - Spring Boot with JPA and H2",
+    "section": "",
+    "text": "This entry extends the material explained in the previous post about persisting entities in H2 using JPA and Spring Boot. Here we’ll talk about persisting classes with inheritance as well as coupling with other classes."
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html#table-per-class-strategy",
+    "href": "java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html#table-per-class-strategy",
+    "title": "04 - Spring Boot with JPA and H2",
+    "section": "Table per Class strategy",
+    "text": "Table per Class strategy\nCheck the following video for a quick example:"
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html#single-table-strategy",
+    "href": "java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html#single-table-strategy",
+    "title": "04 - Spring Boot with JPA and H2",
+    "section": "Single Table strategy",
+    "text": "Single Table strategy\nCheck the following video for a quick example:"
+  },
+  {
     "objectID": "java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html",
     "href": "java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html",
     "title": "00 - What is Spring Boot?",
@@ -466,7 +487,7 @@
     "href": "java-exercises/Labs/java-se03-2.html#defining-the-use-cases",
     "title": "LAB#SE03-2: Library/Book, Expand Model",
     "section": "Defining the use cases",
-    "text": "Defining the use cases\n\nCreating a publication\n\n\n\n\nflowchart:\n\n\n\n\n\n\n\n\n\n\nCreating a Libary Member"
+    "text": "Defining the use cases\n\nCreating a publication\nIt seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution.\n\n\nCreating a Libary Member\nInheritance is causing issues when trying to save the attributes of child classes:\n\nOnly Person attributes and the id created in the abstract LibraryMember are considered when Thymeleaf sends the form values to the @Controller, still don’t know why\nThis doesn’t happen with the current Publication implementation, where all fields, including @Many-to-one and enum types when creating a new Book from the Publication Form View"
   },
   {
     "objectID": "java-exercises/Labs/java-se02-1.html",

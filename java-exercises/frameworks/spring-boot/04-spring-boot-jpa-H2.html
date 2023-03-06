@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="ProtossGP32">
+<meta name="dcterms.date" content="2023-03-06">
 
-<title>CIFO - Web Applications - 01 - Creating a Spring Boot project</title>
+<title>CIFO - Web Applications - 04 - Spring Boot with JPA and H2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,69 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -93,8 +32,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" rel="next">
-<link href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" rel="prev">
+<link href="../../../java-exercises/frontend/engines/00-thymeleaf.html" rel="next">
+<link href="../../../java-exercises/frameworks/spring-boot/03-spring-security.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -380,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">01 - Creating a Spring Boot project</h1>
+      <h1 class="quarto-secondary-nav-title">04 - Spring Boot with JPA and H2</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -496,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link active">01 - Creating a Spring Boot project</a>
+  <a href="../../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">01 - Creating a Spring Boot project</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -511,7 +450,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link">04 - Spring Boot with JPA and H2</a>
+  <a href="../../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link active">04 - Spring Boot with JPA and H2</a>
   </div>
 </li>
       </ul>
@@ -628,32 +567,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#spring-boot-project" id="toc-spring-boot-project" class="nav-link" data-scroll-target="#spring-boot-project">Spring boot project</a>
+  <li><a href="#types-of-inheritance-strategies-in-jpa" id="toc-types-of-inheritance-strategies-in-jpa" class="nav-link" data-scroll-target="#types-of-inheritance-strategies-in-jpa">Types of inheritance strategies in JPA</a>
   <ul class="collapse">
-  <li><a href="#creating-a-new-project" id="toc-creating-a-new-project" class="nav-link" data-scroll-target="#creating-a-new-project">Creating a new project</a></li>
-  <li><a href="#creating-controllers" id="toc-creating-controllers" class="nav-link" data-scroll-target="#creating-controllers">Creating controllers</a>
-  <ul class="collapse">
-  <li><a href="#rest-controller" id="toc-rest-controller" class="nav-link" data-scroll-target="#rest-controller">REST controller</a></li>
-  <li><a href="#web-controller" id="toc-web-controller" class="nav-link" data-scroll-target="#web-controller">Web controller</a></li>
-  </ul></li>
-  <li><a href="#testing-controllers" id="toc-testing-controllers" class="nav-link" data-scroll-target="#testing-controllers">Testing controllers</a>
-  <ul class="collapse">
-  <li><a href="#automating-endpoints-testing" id="toc-automating-endpoints-testing" class="nav-link" data-scroll-target="#automating-endpoints-testing">Automating endpoints testing</a></li>
-  </ul></li>
+  <li><a href="#table-per-class-strategy" id="toc-table-per-class-strategy" class="nav-link" data-scroll-target="#table-per-class-strategy">Table per Class strategy</a></li>
+  <li><a href="#single-table-strategy" id="toc-single-table-strategy" class="nav-link" data-scroll-target="#single-table-strategy">Single Table strategy</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/01-create-spring-boot-project.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">01 - Creating a Spring Boot project</h1>
+<h1 class="title d-none d-lg-block">04 - Spring Boot with JPA and H2</h1>
   <div class="quarto-categories">
     <div class="quarto-category">springboot</div>
-    <div class="quarto-category">web</div>
-    <div class="quarto-category">REST</div>
+    <div class="quarto-category">JPA</div>
+    <div class="quarto-category">H2</div>
+    <div class="quarto-category">Repositories</div>
+    <div class="quarto-category">Inheritance</div>
   </div>
   </div>
 
@@ -661,7 +594,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ProtossGP32 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 6, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -671,88 +616,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Springboot is a Java framework that uses annotations to add functionalities to the SE packages</p>
+<p>This entry extends the material explained in the <a href="../../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html">previous post</a> about persisting entities in H2 using JPA and Spring Boot. Here we’ll talk about persisting classes with inheritance as well as coupling with other classes.</p>
 </section>
-<section id="spring-boot-project" class="level1">
-<h1>Spring boot project</h1>
-<section id="creating-a-new-project" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-new-project">Creating a new project</h2>
-<p>Go to the <a href="https://start.spring.io/">Spring initializr</a> page to prepare a simple Maven project with the required dependencies:</p>
-<ul>
-<li>Spring Web</li>
-<li>Spring Boot DevTools</li>
-<li>Lombok</li>
-<li>Thymeleaf</li>
-<li>H2 Database</li>
-<li>etc…</li>
-</ul>
-<p>After that, click the <code>Generate</code> button to download a <code>Zip</code> file with the project structure.</p>
+<section id="types-of-inheritance-strategies-in-jpa" class="level1">
+<h1>Types of inheritance strategies in JPA</h1>
+<p>Thorben Janssen does a very good job at explaining the differences between each JPA inheritance strategy <a href="https://thorben-janssen.com/complete-guide-inheritance-strategies-jpa-hibernate/">in this article</a>.</p>
+<section id="table-per-class-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="table-per-class-strategy">Table per Class strategy</h2>
+<p>Check the following video for a quick example:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/YHA3LEwBMEE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
-<section id="creating-controllers" class="level2">
-<h2 class="anchored" data-anchor-id="creating-controllers">Creating controllers</h2>
-<section id="rest-controller" class="level3">
-<h3 class="anchored" data-anchor-id="rest-controller">REST controller</h3>
-<p>Use the following annotations to create a REST controller:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>HelloRestController.java</strong></pre>
-</div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">protoss</span><span class="op">.</span><span class="im">myfirstspring</span><span class="op">.</span><span class="im">controllers</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">web</span><span class="op">.</span><span class="im">bind</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">GetMapping</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">web</span><span class="op">.</span><span class="im">bind</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">RestController</span><span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="at">@RestController</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">public</span> <span class="kw">class</span> HelloRestController <span class="op">{</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>    <span class="at">@GetMapping</span><span class="op">(</span><span class="st">"/hellorest"</span><span class="op">)</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">HelloWorld</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>        <span class="cf">return</span> <span class="st">"Hello World from the REST Controller!"</span><span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>    <span class="op">}</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>where:</p>
-<ul>
-<li><code>@RestController</code>: this marks the class as the root of the REST controller</li>
-<li><code>@GetMapping("/${action}")</code>: maps the method to the given REST <code>action</code></li>
-</ul>
-</section>
-<section id="web-controller" class="level3">
-<h3 class="anchored" data-anchor-id="web-controller">Web controller</h3>
-<p>Use the following annotations to create a Web controller:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>HelloWebController.java</strong></pre>
-</div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">protoss</span><span class="op">.</span><span class="im">myfirstspring</span><span class="op">.</span><span class="im">controllers</span><span class="op">;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">stereotype</span><span class="op">.</span><span class="im">Controller</span><span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">web</span><span class="op">.</span><span class="im">bind</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">RequestMapping</span><span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="at">@Controller</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">public</span> <span class="kw">class</span> HelloWebController <span class="op">{</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="co">// define handled path</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="at">@RequestMapping</span><span class="op">(</span><span class="st">"/helloweb"</span><span class="op">)</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">helloHandler</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>        <span class="cf">return</span> <span class="st">"hello.html"</span><span class="op">;</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>    <span class="op">}</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>where:</p>
-<ul>
-<li><code>@Controller</code>: this marks the class as the root of the Web controller</li>
-<li><code>@RequestMapping("/${page.html}")</code>: maps the method to the given <code>page.html</code> located in the <code>src/main/resources/templates</code> path</li>
-</ul>
-</section>
-</section>
-<section id="testing-controllers" class="level2">
-<h2 class="anchored" data-anchor-id="testing-controllers">Testing controllers</h2>
-<section id="automating-endpoints-testing" class="level3">
-<h3 class="anchored" data-anchor-id="automating-endpoints-testing">Automating endpoints testing</h3>
+<section id="single-table-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="single-table-strategy">Single Table strategy</h2>
+<p>Check the following video for a quick example:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/7dBijbBdgbc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 
 
-</section>
 </section>
 </section>
 
@@ -1007,13 +886,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00 - What is Spring Boot?</span>
+      <a href="../../../java-exercises/frameworks/spring-boot/03-spring-security.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">03 - Spring Security</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="pagination-link">
-        <span class="nav-page-text">02 - Creating a Spring Boot project with H2 and ThyMeLeaf</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../java-exercises/frontend/engines/00-thymeleaf.html" class="pagination-link">
+        <span class="nav-page-text">01 - Java template engine - Thymeleaf</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

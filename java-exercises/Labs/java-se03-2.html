@@ -514,6 +514,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../java-exercises/frameworks/spring-boot/03-spring-security.html" class="sidebar-item-text sidebar-link">03 - Spring Security</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link">04 - Spring Boot with JPA and H2</a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -1219,22 +1224,15 @@ ERROR when defining <code>@ManyToOne</code> relation
 <h2 class="anchored" data-anchor-id="defining-the-use-cases">Defining the use cases</h2>
 <section id="creating-a-publication" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-publication">Creating a publication</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">flowchart:
-</pre>
-<div id="mermaid-tooltip-5" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
+<p>It seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution.</p>
 </section>
 <section id="creating-a-libary-member" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-libary-member">Creating a Libary Member</h3>
+<p>Inheritance is causing issues when trying to save the attributes of child classes:</p>
+<ul>
+<li>Only <code>Person</code> attributes and the <code>id</code> created in the abstract <code>LibraryMember</code> are considered when Thymeleaf sends the form values to the <code>@Controller</code>, still don’t know why</li>
+<li>This doesn’t happen with the current <code>Publication</code> implementation, where all fields, including <code>@Many-to-one</code> and <code>enum</code> types when creating a new <code>Book</code> from the Publication Form View</li>
+</ul>
 
 
 </section>
