@@ -26,6 +26,7 @@ public class LibraryMemberController {
     @GetMapping(value = "/createUser")
     public String memberForm(Model userModel) {
         // Instantiate a new User object
+        // TODO: the Member form should initialize a LibraryMember-like object, not a User
         userModel.addAttribute("newUser", new User());
         // In GET methods, we invoke the same method
         return "libraryMembers/createUser";
@@ -50,8 +51,9 @@ public class LibraryMemberController {
     }
 
     @RequestMapping("/createMember")
-    public String createMember() {
-        // TODO: Logic to create a LibraryMember
+    public String createMember(User newMember) {
+        // TODO: Logic to create a LibraryMember, not just a User
+        libraryMemberService.createLibraryMember(newMember);
         return "libraryMembers/createMember";
     }
 }
