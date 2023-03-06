@@ -20,6 +20,7 @@ class DVDTest {
         assertNotNull(this.testDVD);
         assertNotNull(this.testDVD.getId());
         assertNull(this.testDVD.getTitle());
+        assertNull(this.testDVD.getAuthor());
         assertNull(this.testDVD.getPublicationDate());
         assertNull(this.testDVD.getStatus());
         assertEquals(0, this.testDVD.getDuration());
@@ -29,6 +30,7 @@ class DVDTest {
     void testConstructorPopulatesAllFields() {
         assertNotNull(this.testDVD.getId());
         assertNotNull(this.testDVD.getTitle());
+        assertNotNull(this.testDVD.getAuthor());
         assertNotNull(this.testDVD.getPublicationDate());
         assertNotNull(this.testDVD.getStatus());
         assertTrue(this.testDVD.getDuration() > 0);

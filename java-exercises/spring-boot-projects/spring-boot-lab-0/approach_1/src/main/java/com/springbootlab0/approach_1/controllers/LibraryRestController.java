@@ -31,27 +31,27 @@ public class LibraryRestController {
     }
 
     @GetMapping("books")
-    public Iterable<Book> getAllBooks() {
+    public Iterable<Publication> getAllBooks() {
         return bookRepository.findAll();
     }
 
     @GetMapping("cd")
-    public Iterable<CD> getAllCD() {
+    public Iterable<Publication> getAllCD() {
         return cdRepository.findAll();
     }
 
     @GetMapping("dvd")
-    public Iterable<DVD> getAllDVD() {
+    public Iterable<Publication> getAllDVD() {
         return dvdRepository.findAll();
     }
 
     @GetMapping("librarians")
-    public Iterable<Librarian> getAllLibrarians() {
+    public Iterable<LibraryMember> getAllLibrarians() {
         return librarianRepository.findAll();
     }
 
     @GetMapping("users")
-    public Iterable<User> getAllUsers() {
+    public Iterable<LibraryMember> getAllUsers() {
         return userRepository.findAll();
     }
 

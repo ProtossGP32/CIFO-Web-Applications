@@ -1,10 +1,12 @@
 package com.springbootlab0.approach_1.controllers;
 
+import com.springbootlab0.approach_1.domain.LibraryMember;
 import com.springbootlab0.approach_1.domain.User;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -33,7 +35,7 @@ public class LibraryMemberController {
     }
 
     @PostMapping("/createUser")
-    public String userSubmit(@ModelAttribute User newUser, Model containerToView) {
+    public String userSubmit(@ModelAttribute("newUser") User newUser, Model containerToView) {
 
         // Insert the new User to the database
         libraryMemberService.createLibraryMember(newUser);
@@ -51,8 +53,11 @@ public class LibraryMemberController {
     }
 
     @RequestMapping("/createMember")
-    public String createMember(User newMember) {
-        // TODO: Logic to create a LibraryMember, not just a User
+    public String createMember(@ModelAttribute("newMember") User newMember, BindingResult result) {
+        // TODO: Logic to create any LibraryMember, not just a User
+        if (result.hasErrors()) {
+            System.out.println(result);
+        }
         libraryMemberService.createLibraryMember(newMember);
         return "libraryMembers/createMember";
     }

@@ -39,4 +39,8 @@ public class AuthorService {
         authorRepository.deleteAll();
     }
 
+    public Iterable<Author> getAllAuthors() {
+        return authorRepository.findAll();
+    }
+
 }

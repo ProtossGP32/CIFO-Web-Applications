@@ -21,6 +21,7 @@ class CDTest {
         assertNotNull(this.testCD);
         assertNotNull(this.testCD.getId());
         assertNull(this.testCD.getTitle());
+        assertNull(this.testCD.getAuthor());
         assertNull(this.testCD.getPublicationDate());
         assertNull(this.testCD.getStatus());
         assertEquals(0, this.testCD.getDuration());
@@ -31,6 +32,7 @@ class CDTest {
     void testAllArgsConstructorPopulatesAllFields() {
         assertNotNull(this.testCD.getId());
         assertNotNull(this.testCD.getTitle());
+        assertNotNull(this.testCD.getAuthor());
         assertNotNull(this.testCD.getPublicationDate());
         assertNotNull(this.testCD.getStatus());
         assertTrue(this.testCD.getDuration() > 0);

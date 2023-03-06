@@ -1,7 +1,7 @@
 package com.springbootlab0.approach_1.repository;
 
-import com.springbootlab0.approach_1.domain.Staff;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
-public interface StaffRepository extends CrudRepository<Staff, String> {
+@NoRepositoryBean
+public interface StaffRepository extends LibraryMemberRepository {
 }
