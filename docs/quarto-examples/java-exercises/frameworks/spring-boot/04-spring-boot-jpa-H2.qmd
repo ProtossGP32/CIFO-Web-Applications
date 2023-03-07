@@ -2,6 +2,7 @@
 title: "04 - Spring Boot with JPA and H2"
 author: ProtossGP32
 categories: [springboot, JPA, H2, Repositories, Inheritance]
+description: "Extra information regarding persistence in JPA"
 date: 2023/03/06
 ---
 # Introduction
@@ -9,6 +10,8 @@ This entry extends the material explained in the [previous post](02-create-full-
 
 # Types of inheritance strategies in JPA
 Thorben Janssen does a very good job at explaining the differences between each JPA inheritance strategy [in this article](https://thorben-janssen.com/complete-guide-inheritance-strategies-jpa-hibernate/).
+
+Also, [check this Baeldung article](https://www.baeldung.com/hibernate-tips-how-to-map-an-inheritance-hierarchy-to-one-table) defining some tips on how to map an inheritance hierarchy to a single table.
 
 ## Table per Class strategy
 Check the following video for a quick example:

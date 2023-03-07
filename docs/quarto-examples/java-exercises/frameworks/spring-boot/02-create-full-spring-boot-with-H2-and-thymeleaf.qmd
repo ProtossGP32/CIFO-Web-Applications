@@ -2,10 +2,19 @@
 title: "02 - Creating a Spring Boot project with H2 and ThyMeLeaf"
 author: ProtossGP32
 categories: [springboot, web, REST]
+description: "Entry-level of Spring Boot and data persistence"
 date: 2023/02/22
 ---
 # Introduction
 Follow [this guide](https://albertprofe.github.io/wiki/springboot/boot-what-create-th-h2.html) and try to implement [this project](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library1) with [its documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library1:-API-Rest-Book-CRUD-with-Postman-Swagger).
+
+Be sure to select at least these dependencies for H2, JPA and JDBC compatibility:
+
+- Spring Web
+- Spring Boot DevTools
+- Spring Data JPA
+- H2 Database
+- Spring JDBC
 
 # Getting Started
 ## Download and initialize H2 in Console mode

@@ -2,6 +2,7 @@
 title: "05 - Spring Boot and Rest API"
 author: ProtossGP32
 categories: [springboot, JPA, Rest API]
+description: "A deeper explanation on Rest API usage"
 date: 2023/03/07
 ---
 # Introduction

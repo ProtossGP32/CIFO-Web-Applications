@@ -1,6 +1,7 @@
 ---
 title: "01 - Creating a Spring Boot project"
 categories: [springboot, web, REST]
+description: "Getting started with Spring Boot"
 ---
 
 # Introduction
@@ -15,6 +16,7 @@ Go to the [Spring initializr](https://start.spring.io/) page to prepare a simple
 - Lombok
 - Thymeleaf
 - H2 Database
+- Spring JDBC
 - etc...
 
 After that, click the `Generate` button to download a `Zip` file with the project structure.

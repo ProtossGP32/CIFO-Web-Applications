@@ -2,6 +2,7 @@
 title: "03 - Spring Security"
 author: ProtossGP32
 categories: [springboot, JPA, password, security]
+description: "Secure the access to your application"
 date: 2023/02/23
 ---
 # Introduction

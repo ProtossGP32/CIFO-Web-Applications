@@ -1,6 +1,7 @@
 ---
 title: "00 - What is Spring Boot?"
 categories: [springboot, web]
+description: "Features of this framework"
 ---
 # Introduction
 

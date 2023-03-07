@@ -2,6 +2,7 @@
 title: "05 - Spring Boot and JPA composition"
 author: ProtossGP32
 categories: [springboot, JPA, H2, Repositories, Composition]
+description: "Different types of composition used in JPA"
 date: 2023/03/07
 ---
 # Introduction

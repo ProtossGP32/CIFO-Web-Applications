@@ -1,0 +1,24 @@
+---
+title: "07 - Configure Spring Boot Test Profiles"
+author: ProtossGP32
+categories: [springboot, Test, Profiles]
+description: "Define custom properties for testing environments"
+date: 2023/03/07
+---
+# Introduction
+When developing an application, tests should have their own environment. To achieve this, we can define a specific `application.yml` within the `test` domain:
+
+Follow the explanation in this [StackOverflow answer](https://stackoverflow.com/a/66324710) to configure it.
+
+# Getting started
+First we need to define the `application.yml` file for the main applications in its `src/main/resources` path. This file will contain all the global parameters shared with any profile.
+
+After that, create the path `src/test/resources/config`. Inside this path, create another `application.yml` file with the `test` properties that will override the default ones.
+
+The finishing results should look like this:
+
+![Spring Boot - Test properties](../../../images/spring-boot/test-application-properties.png)
+
+Where:
+
+- The tests logs show that we are indeed executing tests against an embedded in-memory database instead of the one defined for production
