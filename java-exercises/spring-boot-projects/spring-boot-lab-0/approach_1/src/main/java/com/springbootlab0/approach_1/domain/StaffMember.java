@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 @Getter
 @ToString(callSuper = true)
-@SuperBuilder(toBuilder = true)
 // JPA annotations
 @MappedSuperclass
 abstract class StaffMember extends LibraryMember implements StaffOperations {

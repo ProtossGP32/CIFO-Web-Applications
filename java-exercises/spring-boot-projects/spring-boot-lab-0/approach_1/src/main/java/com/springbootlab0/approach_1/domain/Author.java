@@ -10,12 +10,9 @@ import java.time.LocalDate;
 
 @Getter
 @ToString(callSuper = true)
-@SuperBuilder(toBuilder = true)
 // JPA Annotations
 @Entity(name="Author")
 @Table(name="AUTHOR_TABLE")
-// Inheritance strategy is not required as no other classes extend Author
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Author extends Person{
     @Id
     //@GeneratedValue(generator = "system-uuid")

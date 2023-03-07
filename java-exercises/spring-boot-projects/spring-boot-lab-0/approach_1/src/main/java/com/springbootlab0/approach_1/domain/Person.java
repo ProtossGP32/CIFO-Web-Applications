@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 // Required for subclasses to inherit its JPA fields

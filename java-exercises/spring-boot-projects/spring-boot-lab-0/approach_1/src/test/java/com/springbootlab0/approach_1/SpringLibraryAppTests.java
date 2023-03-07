@@ -41,15 +41,21 @@ class SpringLibraryAppTests {
 	void createObjects() {
 		// Create a Book object
 		Book book1 = FakeDataGenerator.createFakeBook();
+		// Save the author into the database
+		authorRepository.save(book1.getAuthor());
 		// Save the Book object into the repository
 		bookRepository.save(book1);
 
 		// Same with a CD
 		CD cd1 = FakeDataGenerator.createFakeCD();
+		// Save the author into the database
+		authorRepository.save(cd1.getAuthor());
 		cdRepository.save(cd1);
 
 		// Same with a DVD
 		DVD dvd1 = FakeDataGenerator.createFakeDVD();
+		// Save the author into the database
+		authorRepository.save(dvd1.getAuthor());
 		dvdRepository.save(dvd1);
 	}
 

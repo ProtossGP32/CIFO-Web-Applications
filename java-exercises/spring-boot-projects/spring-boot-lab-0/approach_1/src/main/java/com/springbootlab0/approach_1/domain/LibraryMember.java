@@ -2,7 +2,6 @@ package com.springbootlab0.approach_1.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 import com.springbootlab0.approach_1.utils.Helper;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -11,7 +10,6 @@ import java.time.LocalDate;
 // Lombok annotations
 @Getter
 @ToString(callSuper = true)
-@SuperBuilder(toBuilder = true)
 // JPA Annotations
 @Entity
 @Table(name="LIBRARYMEMBER_TABLE")

@@ -12,7 +12,6 @@ import java.time.LocalDate;
 
 @Getter
 @ToString(callSuper = true)
-@SuperBuilder(toBuilder = true)
 @Entity(name = "User")
 @DiscriminatorValue(value = "USER")
 public class User extends LibraryMember implements BorrowOperations{

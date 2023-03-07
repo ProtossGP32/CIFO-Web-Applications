@@ -2,14 +2,11 @@ package com.springbootlab0.approach_1.domain;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.MappedSuperclass;
 import lombok.ToString;
-import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
 @ToString(callSuper = true)
-@SuperBuilder(toBuilder = true)
 @Entity(name = "Librarian")
 @DiscriminatorValue(value = "LIBRARIAN")
 public class Librarian extends StaffMember implements BorrowOperations {

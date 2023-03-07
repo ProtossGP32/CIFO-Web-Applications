@@ -1,5 +1,6 @@
 package com.springbootlab0.approach_1.controllers;
 
+import com.springbootlab0.approach_1.domain.Author;
 import com.springbootlab0.approach_1.domain.Book;
 import com.springbootlab0.approach_1.services.AuthorService;
 import com.springbootlab0.approach_1.services.PublicationService;
@@ -26,7 +27,7 @@ public class PublicationController {
         return "/publications/publicationsIndex";
     }
 
-    @RequestMapping("/form")
+    @RequestMapping("/publicationForm")
     public String publicationForm(ModelMap containerToView) {
         containerToView.addAttribute("newBook", new Book());
         containerToView.addAttribute("authors", authorService.getAllAuthors());
@@ -48,5 +49,25 @@ public class PublicationController {
             containerToView.addAttribute("responseMessage", "Book " + newBook.getTitle() + " from " + newBook.getAuthor().getFirstName() + " " + newBook.getAuthor().getLastName() + " saved.");
         }
         return "publications/publicationForm";
+    }
+
+    @RequestMapping("/authorForm")
+    public String authorForm(ModelMap containerToView) {
+        containerToView.addAttribute("newAuthor", new Author());
+        containerToView.addAttribute("responseMessage", null);
+        return "/publications/authorForm";
+    }
+
+    @RequestMapping("/createAuthor")
+    public String createAuthor(@ModelAttribute("newAuthor") Author newAuthor, ModelMap containerToView, BindingResult result) {
+        if (result.hasErrors()) {
+            containerToView.addAttribute("responseMessage", "Invalid author object! Review the fields");
+        }
+        else {
+            authorService.createAuthor(newAuthor);
+            containerToView.addAttribute("newAuthor", new Author());
+            containerToView.addAttribute("responseMessage", "Author " + newAuthor.getFirstName() + " " + newAuthor.getLastName() + " saved!");
+        }
+        return "publications/authorForm";
     }
 }

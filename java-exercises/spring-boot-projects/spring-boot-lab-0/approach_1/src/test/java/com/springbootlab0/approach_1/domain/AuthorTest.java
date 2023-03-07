@@ -43,30 +43,6 @@ class AuthorTest {
     }
 
     @Test
-    @Disabled
-    /**
-     * This test doesn't apply anymore as we need to initialize the Author ID within the constructor
-     * TODO: Come back when JPA annotations are understood. Maybe ID is automatically generated
-     */
-    void testBuilder() {
-        Faker faker = new Faker();
-        this.testAuthor = Author.builder()
-                .firstName(faker.name().firstName())
-                .lastName(faker.name().lastName())
-                .nationality(faker.country().name())
-                .birthDate(faker
-                        .date()
-                        .birthday()
-                        .toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate())
-                .penName(faker.funnyName().name())
-                .build();
-
-        assertNotNull(this.testAuthor.getId());
-    }
-
-    @Test
     void testToString() {
 
         assertNotNull(this.testAuthor);

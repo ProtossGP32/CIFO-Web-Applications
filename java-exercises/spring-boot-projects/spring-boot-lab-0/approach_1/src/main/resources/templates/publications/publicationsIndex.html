@@ -10,12 +10,16 @@
 <body>
 <!-- Forms buttons -->
 <div>
-  <!-- Create a button to go to the Publication Form creation -->
+  <!-- Create a button to go to the Publication List page -->
   <p><a th:href="@{/library/publications}" class="w3-button w3-green">Show all publications</a></p>
 </div>
 <div>
   <!-- Create a button to go to the Publication Form creation -->
-  <p><a th:href="@{/publications/form}" class="w3-button w3-green">Add a new publication</a></p>
+  <p><a th:href="@{/publications/publicationForm}" class="w3-button w3-green">Add a new publication</a></p>
+</div>
+<div>
+  <!-- Create a button to go to the Author Form creation -->
+  <p><a th:href="@{/publications/authorForm}" class="w3-button w3-green">Add a new author</a></p>
 </div>
 <br>
 </body>

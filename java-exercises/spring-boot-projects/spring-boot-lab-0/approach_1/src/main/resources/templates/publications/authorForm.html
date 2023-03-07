@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/styles.css" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Author creation form</title>
+</head>
+<body>
+<h1>Author form</h1>
+<div class="w3-card-40" style="width:50%">
+  <header class="w3-container w3-light-grey">
+    <p>Create new author</p>
+  </header>
+  <!-- Show a Member form -->
+  <div class="w3-container">
+    <form th:action="@{/publications/createAuthor}" th:object="${newAuthor}">
+      <!-- Person fields -->
+      <p>
+        <label for="firstName">First name</label>
+        <input th:field="*{firstName}" type="text" name="firstName" class="w3-input" id="firstName" required />
+      </p>
+      <p>
+        <label for="lastName">Last name</label>
+        <input th:field="*{lastName}" type="text" name="lastName" class="w3-input" id="lastName" required />
+      </p>
+      <p>
+        <label for="nationality">Nationality</label>
+        <input th:field="*{nationality}" type="text" name="nationality" class="w3-input" id="nationality" />
+      </p>
+      <p>
+        <label for="birthDate">Birth Date</label>
+        <input th:field="*{birthDate}" type="date" name="birthDate" class="w3-input" id="birthDate" />
+      </p>
+
+
+      <!-- Author fields -->
+      <p>
+        <label for="penName">Pen name</label>
+        <input th:field="*{penName}" type="text" name="penName" class="w3-input" id="penName" />
+      </p>
+      <!-- Form buttons -->
+      <p>
+        <input type="submit" value="Submit author" />
+        <input type="reset" value="Reset fields" />
+      </p>
+    </form>
+  </div>
+
+  <!-- Print the response message -->
+  <p th:if="${responseMessage != null}" th:text="${responseMessage}" />
+
+  <!-- Create a button to go to the User Form creation -->
+  <p>
+    <a th:href="@{/library/publications}" class="w3-button w3-red">Return to publications</a>
+  </p>
+  <br>
+</div>
+</body>
+</html>
