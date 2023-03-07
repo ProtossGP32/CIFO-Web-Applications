@@ -186,7 +186,7 @@
     "href": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html",
     "title": "02 - Creating a Spring Boot project with H2 and ThyMeLeaf",
     "section": "",
-    "text": "Follow this guide and try to implement this project with its documentation."
+    "text": "Follow this guide and try to implement this project with its documentation.\nBe sure to select at least these dependencies for H2, JPA and JDBC compatibility:\n\nSpring Web\nSpring Boot DevTools\nSpring Data JPA\nH2 Database\nSpring JDBC"
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html#download-and-initialize-h2-in-console-mode",
@@ -263,7 +263,7 @@
     "href": "java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html#creating-a-new-project",
     "title": "01 - Creating a Spring Boot project",
     "section": "Creating a new project",
-    "text": "Creating a new project\nGo to the Spring initializr page to prepare a simple Maven project with the required dependencies:\n\nSpring Web\nSpring Boot DevTools\nLombok\nThymeleaf\nH2 Database\netc…\n\nAfter that, click the Generate button to download a Zip file with the project structure."
+    "text": "Creating a new project\nGo to the Spring initializr page to prepare a simple Maven project with the required dependencies:\n\nSpring Web\nSpring Boot DevTools\nLombok\nThymeleaf\nH2 Database\nSpring JDBC\netc…\n\nAfter that, click the Generate button to download a Zip file with the project structure."
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html#creating-controllers",
@@ -299,6 +299,13 @@
     "title": "04 - Spring Boot with JPA and H2",
     "section": "Single Table strategy",
     "text": "Single Table strategy\nCheck the following video for a quick example:"
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html",
+    "href": "java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html",
+    "title": "07 - Configure Spring Boot Test Profiles",
+    "section": "",
+    "text": "Introduction\nWhen developing an application, tests should have their own environment. To achieve this, we can define a specific application.yml within the test domain:\nFollow the explanation in this StackOverflow answer to configure it.\n\n\nGetting started\nFirst we need to define the application.yml file for the main applications in its src/main/resources path. This file will contain all the global parameters shared with any profile.\nAfter that, create the path src/test/resources/config. Inside this path, create another application.yml file with the test properties that will override the default ones.\nThe finishing results should look like this:\n\n\n\nSpring Boot - Test properties\n\n\nWhere:\n\nThe tests logs show that we are indeed executing tests against an embedded in-memory database instead of the one defined for production"
   },
   {
     "objectID": "java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html",
@@ -501,7 +508,7 @@
     "href": "java-exercises/Labs/java-se03-2.html#defining-the-use-cases",
     "title": "LAB#SE03-2: Library/Book, Expand Model",
     "section": "Defining the use cases",
-    "text": "Defining the use cases\n\nCreating a publication\nIt seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution, but the inheritance is well solved in the Thymeleaf form and the object is correctly composed when the request reaches the PublicationController.\n\n\nCreating a Libary Member\nInheritance is causing issues when trying to save the attributes of child classes:\n\nOnly Person attributes and the id created in the abstract LibraryMember are considered when Thymeleaf sends the form values to the @Controller, still don’t know why\nThis doesn’t happen with the current Publication implementation, where all fields, including @Many-to-one and enum types when creating a new Book from the Publication Form View"
+    "text": "Defining the use cases\n\nCreating a publication\nIt seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution, but the inheritance is well solved in the Thymeleaf form and the object is correctly composed when the request reaches the PublicationController.\n\n\nCreating a Libary Member\nInheritance is causing issues when trying to save the attributes of child classes:\n\nOnly Person attributes and the id created in the abstract LibraryMember are considered when Thymeleaf sends the form values to the @Controller, still don’t know why\nThis doesn’t happen with the current Publication implementation, where all fields, including @Many-to-one and enum types when creating a new Book from the Publication Form View\n\n\n\n\n\n\n\nAvoid JPA inheritance of non-entity classes!!\n\n\n\nAs discussed in this StackOverflow thread,the only way to do this is by removing the inheritance from these classes and mark the previously parent class as @Embeddable, while defining new parent class attribute to each of the previously called child classes and annotating them as @Embedded.\nThis doesn’t make it easier to maintain as shown in this Baeldung example, and in the OOP realm we would have to access a new Person object for each derivated class.\nAlso, this Baeldung article explains that when using @MappedSuperclass, ancestors cannot contain associations with other entities. This might be the reason why it doesn’t work well with Librarian and User?"
   },
   {
     "objectID": "java-exercises/Labs/java-se02-1.html",
