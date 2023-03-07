@@ -1,0 +1,27 @@
+---
+title: "Differences between a POJO, a JavaBean and an Entity"
+author: ProtossGP32
+categories: [springboot, POJO, JavaBean, Entity]
+date: 2023/03/07
+---
+# Introduction
+_[From Baeldung article:](https://www.baeldung.com/java-pojo-class)_
+
+# Plain Old Java Objects (POJO)
+## Description
+
+## Reflection with POJO
+
+# JavaBean
+## Description
+
+## Reflection
+
+# Entity
+## Description
+
+# Tradeoffs when using JavaBeans
+
+- Mutability
+- Boilerplate
+- Zero-argument Constructor

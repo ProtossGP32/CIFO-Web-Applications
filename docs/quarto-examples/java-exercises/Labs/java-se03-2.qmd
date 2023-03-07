@@ -419,7 +419,7 @@ The resulting tables in the DB are as follow:
 
 ## Defining the use cases
 ### Creating a publication
-It seems that we'll have to work with particular publications instead of creating a one-size-fits-all solution.
+It seems that we'll have to work with particular publications instead of creating a one-size-fits-all solution, but the inheritance is well solved in the Thymeleaf form and the object is correctly composed when the request reaches the `PublicationController`.
 
 ### Creating a Libary Member
 Inheritance is causing issues when trying to save the attributes of child classes:
