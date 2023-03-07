@@ -245,6 +245,13 @@
     "text": "Accessing the server\nServer will be available through the declared server port in the application.properties or application.yml file. If not defined, as springboot is using Tomcat, the default port will be 8080."
   },
   {
+    "objectID": "java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html",
+    "href": "java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html",
+    "title": "05 - Spring Boot and JPA composition",
+    "section": "",
+    "text": "Introduction\n\n\nComposition types"
+  },
+  {
     "objectID": "java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html",
     "href": "java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html",
     "title": "01 - Creating a Spring Boot project",
@@ -299,6 +306,13 @@
     "title": "00 - What is Spring Boot?",
     "section": "",
     "text": "From spring.io:\n\nSpring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”.\n\n\n\n\nCreate stand-alone Spring applications\nEmbed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)\nProvide opinionated ‘starter’ dependencies to simplify your build configuration\nAutomatically configure Spring and 3rd party libraries whenever possible\nProvide production-ready features such as metrics, health checks, and externalized configuration\nAbsolutely no code generation and no requirements for XML configuration\n\nIBM has an article about why Spring Framework is so popular and how Spring Boot eases the creation of Spring projects: From ibm.com:\n\nSpring Framework offers a dependency injection feature that lets objects define their own dependencies that the Spring container later injects into them. This enables developers to create modular applications consisting of loosely coupled components that are ideal for microservices and distributed network applications.\n\n\nAs capable as comprehensive as Spring Framework is, it still requires significant time and knowledge to configure, set up, and deploy Spring applications. Spring Boot mitigates this effort with three important capabilities.\n\n\n\n\n\n\nAutoconfiguration means that applications are initialized with pre-set dependencies that you don’t have to configure manually.\n\nAs Java Spring Boot comes with built-in autoconfiguration capabilities, it automatically configures both the underlying Spring Framework and third-party packages based on your settings (and based on best practices, which helps avoid errors)\nEven though you can override these defaults once the initialization is complete, Java Spring Boot’s autoconfiguration feature enables you to start developing your Spring-based applications fast and reduces the possibility of human errors.\n\n\n\n\nSpring Boot uses an opinionated approach to adding and configuring starter dependencies, based on the needs of your project.\n\nFollowing its own judgement, Spring Boot chooses which packages to install and which default values to use, rather than requiring you to make all those decisions yourself and set up everything manually.\nYou can define the needs of your projects during the initialization process, during which you choose among multiple starter dependencies –called _Spring Starters– that cover typical use cases. You run Spring Boot Initializr by filling out a simple web form, without any codingYou can define the needs of\n\n\n\n\nSpring Boot helps developers create applications that just run.\n\nIt lets you create standalone applications that run on their own, without relying on an external web server, by embedding a web server such as Tomcat or Netty into your app during the initialization process\nAs a result, you can launch your application on any platform by simply hitting th Run command\n\n\n\n\n\nSome of the key concepts of Spring Boot and how it works include:\n\nBeans: a Java object managed by the Spring container\n\nBeans are typically defined in configuration files, and the Spring container is responsible for instantiating, configuring, and managing the lifecycle of these beans\n\nDependency Injection: Spring uses dependency injection to manage the dependencies between beans\n\nThis means that instead of instantiating and configureing dependencies manually, you can use annotations or configuration files to tell the Spring container which dependencies a bean has and how they should be instantiated\n\nObject-Oriented Programming: it uses interfaces and inheritance to create a modular and reusable codebase\nAspect-Oriented Programming: this allows to separate cross-cutting concerns such as logging, security, and transaction management from the core business logic of your application\nData Access: Spring Boot provides a set of starters and libraries for connecting to databases and performing data access operations.\n\nIt also provides support for Object-Relational-Mapping (ORM) frameworks such as Hibernate and JPA\n\nWeb Development: Spring Boot provides a set of starters and libraries for building web applications and RESTful web services.\n\nIt also provides support for web technoligies such as Spring MVC and Thymeleaf\n\nAnnotations: Spring Boot uses annotations extensively to configure beans and manage dependencies\n\nUnderstanding the different annotations available in Spring, such as @Bean, @Autowired, @Component, can help you effectively use the framework\n\nMVC (Model-View-Controller): Spring Boot provides support for the MVC architectural pattern, which separates the application into three layers:\n\nThe model (data)\nThe view (presentation)\nThe controller (logic)\n\nUnderstanding how MVC works in Spring boot can help you structure your appliication effectively. See model entry for more details regarding MVC.\nREST (Representational State Transfer): Spring Boot provides support for building RESTful web services.\n\nUnderstanding the principles of REST and how to create RESTful web services using Spring Boot can help you effectively use the framework\n\n\n\n\n\n\n\n\nTo sum up\n\n\n\nOverall, Spring Boot works by providing a set of pre-configured options and defaults, as well as a set of tools for quickly creating and running an application using the Spring Framework.\nIt uses concepts such as beans, dependency injection and OOP to make it easy to build and run a Spring-based application, with minimal configuration and setup required."
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html",
+    "href": "java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html",
+    "title": "05 - Spring Boot and Rest API",
+    "section": "",
+    "text": "Introduction\n\n\nRest API"
   },
   {
     "objectID": "java-exercises/APIs/api-rest.html",
@@ -487,7 +501,7 @@
     "href": "java-exercises/Labs/java-se03-2.html#defining-the-use-cases",
     "title": "LAB#SE03-2: Library/Book, Expand Model",
     "section": "Defining the use cases",
-    "text": "Defining the use cases\n\nCreating a publication\nIt seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution.\n\n\nCreating a Libary Member\nInheritance is causing issues when trying to save the attributes of child classes:\n\nOnly Person attributes and the id created in the abstract LibraryMember are considered when Thymeleaf sends the form values to the @Controller, still don’t know why\nThis doesn’t happen with the current Publication implementation, where all fields, including @Many-to-one and enum types when creating a new Book from the Publication Form View"
+    "text": "Defining the use cases\n\nCreating a publication\nIt seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution, but the inheritance is well solved in the Thymeleaf form and the object is correctly composed when the request reaches the PublicationController.\n\n\nCreating a Libary Member\nInheritance is causing issues when trying to save the attributes of child classes:\n\nOnly Person attributes and the id created in the abstract LibraryMember are considered when Thymeleaf sends the form values to the @Controller, still don’t know why\nThis doesn’t happen with the current Publication implementation, where all fields, including @Many-to-one and enum types when creating a new Book from the Publication Form View"
   },
   {
     "objectID": "java-exercises/Labs/java-se02-1.html",
@@ -558,6 +572,48 @@
     "title": "What is coupling and cohesion?",
     "section": "",
     "text": "Coupling and cohesion are important concepts when proposing software solutions during design time.\n\n\n\n\n\n\n\n\nCustom definition\n\n\n\nCoupling is the degree of dependency between classes.\n\n\nWhen designing the model of a project, the level of dependency or coupling between classes shall be the lesser possible. High coupling between classes is bad because if a class must be modified, then all the other classes that are tightly coupled to it will be affected."
+  },
+  {
+    "objectID": "java-exercises/Concepts/pojo-bean-entity.html",
+    "href": "java-exercises/Concepts/pojo-bean-entity.html",
+    "title": "Differences between a POJO, a JavaBean and an Entity",
+    "section": "",
+    "text": "From Baeldung article:"
+  },
+  {
+    "objectID": "java-exercises/Concepts/pojo-bean-entity.html#description",
+    "href": "java-exercises/Concepts/pojo-bean-entity.html#description",
+    "title": "Differences between a POJO, a JavaBean and an Entity",
+    "section": "Description",
+    "text": "Description"
+  },
+  {
+    "objectID": "java-exercises/Concepts/pojo-bean-entity.html#reflection-with-pojo",
+    "href": "java-exercises/Concepts/pojo-bean-entity.html#reflection-with-pojo",
+    "title": "Differences between a POJO, a JavaBean and an Entity",
+    "section": "Reflection with POJO",
+    "text": "Reflection with POJO"
+  },
+  {
+    "objectID": "java-exercises/Concepts/pojo-bean-entity.html#description-1",
+    "href": "java-exercises/Concepts/pojo-bean-entity.html#description-1",
+    "title": "Differences between a POJO, a JavaBean and an Entity",
+    "section": "Description",
+    "text": "Description"
+  },
+  {
+    "objectID": "java-exercises/Concepts/pojo-bean-entity.html#reflection",
+    "href": "java-exercises/Concepts/pojo-bean-entity.html#reflection",
+    "title": "Differences between a POJO, a JavaBean and an Entity",
+    "section": "Reflection",
+    "text": "Reflection"
+  },
+  {
+    "objectID": "java-exercises/Concepts/pojo-bean-entity.html#description-2",
+    "href": "java-exercises/Concepts/pojo-bean-entity.html#description-2",
+    "title": "Differences between a POJO, a JavaBean and an Entity",
+    "section": "Description",
+    "text": "Description"
   },
   {
     "objectID": "java-exercises/Concepts/what-is-the-static-modifier.html",

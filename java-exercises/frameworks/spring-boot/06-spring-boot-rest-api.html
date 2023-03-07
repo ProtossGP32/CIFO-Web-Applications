@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ProtossGP32">
-<meta name="dcterms.date" content="2023-03-06">
+<meta name="dcterms.date" content="2023-03-07">
 
-<title>CIFO - Web Applications - 04 - Spring Boot with JPA and H2</title>
+<title>CIFO - Web Applications - 05 - Spring Boot and Rest API</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,8 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" rel="next">
-<link href="../../../java-exercises/frameworks/spring-boot/03-spring-security.html" rel="prev">
+<link href="../../../java-exercises/frontend/engines/00-thymeleaf.html" rel="next">
+<link href="../../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -323,7 +323,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">04 - Spring Boot with JPA and H2</h1>
+      <h1 class="quarto-secondary-nav-title">05 - Spring Boot and Rest API</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -459,7 +459,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link active">04 - Spring Boot with JPA and H2</a>
+  <a href="../../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link">04 - Spring Boot with JPA and H2</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -469,7 +469,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" class="sidebar-item-text sidebar-link">05 - Spring Boot and Rest API</a>
+  <a href="../../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" class="sidebar-item-text sidebar-link active">05 - Spring Boot and Rest API</a>
   </div>
 </li>
       </ul>
@@ -586,26 +586,20 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#types-of-inheritance-strategies-in-jpa" id="toc-types-of-inheritance-strategies-in-jpa" class="nav-link" data-scroll-target="#types-of-inheritance-strategies-in-jpa">Types of inheritance strategies in JPA</a>
-  <ul class="collapse">
-  <li><a href="#table-per-class-strategy" id="toc-table-per-class-strategy" class="nav-link" data-scroll-target="#table-per-class-strategy">Table per Class strategy</a></li>
-  <li><a href="#single-table-strategy" id="toc-single-table-strategy" class="nav-link" data-scroll-target="#single-table-strategy">Single Table strategy</a></li>
-  </ul></li>
+  <li><a href="#rest-api" id="toc-rest-api" class="nav-link" data-scroll-target="#rest-api">Rest API</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">04 - Spring Boot with JPA and H2</h1>
+<h1 class="title d-none d-lg-block">05 - Spring Boot and Rest API</h1>
   <div class="quarto-categories">
     <div class="quarto-category">springboot</div>
     <div class="quarto-category">JPA</div>
-    <div class="quarto-category">H2</div>
-    <div class="quarto-category">Repositories</div>
-    <div class="quarto-category">Inheritance</div>
+    <div class="quarto-category">Rest API</div>
   </div>
   </div>
 
@@ -623,7 +617,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 6, 2023</p>
+      <p class="date">March 7, 2023</p>
     </div>
   </div>
   
@@ -635,23 +629,11 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This entry extends the material explained in the <a href="../../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html">previous post</a> about persisting entities in H2 using JPA and Spring Boot. Here we’ll talk about persisting classes with inheritance as well as coupling with other classes.</p>
 </section>
-<section id="types-of-inheritance-strategies-in-jpa" class="level1">
-<h1>Types of inheritance strategies in JPA</h1>
-<p>Thorben Janssen does a very good job at explaining the differences between each JPA inheritance strategy <a href="https://thorben-janssen.com/complete-guide-inheritance-strategies-jpa-hibernate/">in this article</a>.</p>
-<section id="table-per-class-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="table-per-class-strategy">Table per Class strategy</h2>
-<p>Check the following video for a quick example:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/YHA3LEwBMEE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section>
-<section id="single-table-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="single-table-strategy">Single Table strategy</h2>
-<p>Check the following video for a quick example:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/7dBijbBdgbc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="rest-api" class="level1">
+<h1>Rest API</h1>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -905,13 +887,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../java-exercises/frameworks/spring-boot/03-spring-security.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">03 - Spring Security</span>
+      <a href="../../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">05 - Spring Boot and JPA composition</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" class="pagination-link">
-        <span class="nav-page-text">05 - Spring Boot and JPA composition</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../java-exercises/frontend/engines/00-thymeleaf.html" class="pagination-link">
+        <span class="nav-page-text">01 - Java template engine - Thymeleaf</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
