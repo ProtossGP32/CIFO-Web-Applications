@@ -543,6 +543,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html" class="sidebar-item-text sidebar-link">07 - Configure Spring Boot Test Profiles</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="sidebar-item-text sidebar-link">08 - Configure Spring Boot Controllers</a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -1257,19 +1262,33 @@ ERROR when defining <code>@ManyToOne</code> relation
 <li>Only <code>Person</code> attributes and the <code>id</code> created in the abstract <code>LibraryMember</code> are considered when Thymeleaf sends the form values to the <code>@Controller</code>, still don’t know why</li>
 <li>This doesn’t happen with the current <code>Publication</code> implementation, where all fields, including <code>@Many-to-one</code> and <code>enum</code> types when creating a new <code>Book</code> from the Publication Form View</li>
 </ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Error found!! Missing <code>@Setter</code> annotations in all <code>@Entity</code> classes!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I forgot to add the <code>@Setter</code> annotation in all <code>@Entity</code> classes except the parent one! <span class="emoji" data-emoji="disappointed_relieved">😥</span></p>
+<p>Once added the <code>@Setter</code> annotation, tables are correctly populated!</p>
+</div>
+</div>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Avoid JPA inheritance of non-entity classes!!
+Extra: Avoid JPA inheritance of non-entity classes!!
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>As discussed <a href="https://stackoverflow.com/questions/57536887/jpa-inheritance-attributes-from-non-entity-class">in this StackOverflow thread</a>,the only way to do this is by removing the inheritance from these classes and mark the previously parent class as <code>@Embeddable</code>, while defining new parent class attribute to each of the previously called child classes and annotating them as <code>@Embedded</code>.</p>
 <p>This doesn’t make it easier to maintain as shown <a href="https://www.baeldung.com/jpa-embedded-embeddable">in this Baeldung example</a>, and in the OOP realm we would have to access a new Person object for each derivated class.</p>
-<p>Also, <a href="https://www.baeldung.com/hibernate-inheritance#mappedsuperclass">this Baeldung article</a> explains that when using <code>@MappedSuperclass</code>, ancestors cannot contain associations with other entities. This might be the reason why it doesn’t work well with <code>Librarian</code> and <code>User</code>?</p>
+<p>Also, <a href="https://www.baeldung.com/hibernate-inheritance#mappedsuperclass">this Baeldung article</a> explains that when using <code>@MappedSuperclass</code>, ancestors cannot contain associations with other entities. <del>This might be the reason why it doesn’t work well with <code>Librarian</code> and <code>User</code>?</del></p>
 </div>
 </div>
 

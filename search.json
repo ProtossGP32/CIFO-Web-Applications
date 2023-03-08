@@ -182,6 +182,27 @@
     "text": "Password encoding\nSee this Baeldung article on how to encode passwords."
   },
   {
+    "objectID": "java-exercises/frameworks/spring-boot/08-spring-boot-controller.html#requestmapping",
+    "href": "java-exercises/frameworks/spring-boot/08-spring-boot-controller.html#requestmapping",
+    "title": "08 - Configure Spring Boot Controllers",
+    "section": "@RequestMapping",
+    "text": "@RequestMapping"
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/08-spring-boot-controller.html#requestparam",
+    "href": "java-exercises/frameworks/spring-boot/08-spring-boot-controller.html#requestparam",
+    "title": "08 - Configure Spring Boot Controllers",
+    "section": "@RequestParam",
+    "text": "@RequestParam"
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/08-spring-boot-controller.html#pathvariable",
+    "href": "java-exercises/frameworks/spring-boot/08-spring-boot-controller.html#pathvariable",
+    "title": "08 - Configure Spring Boot Controllers",
+    "section": "@PathVariable",
+    "text": "@PathVariable\n\n\n\n\n\n\nDifferences between @RequestParam and @PathVariable\n\n\n\nThis article explains when it is useful to use one or the other and how they are sent along with the URI path."
+  },
+  {
     "objectID": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html",
     "href": "java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html",
     "title": "02 - Creating a Spring Boot project with H2 and ThyMeLeaf",
@@ -508,7 +529,7 @@
     "href": "java-exercises/Labs/java-se03-2.html#defining-the-use-cases",
     "title": "LAB#SE03-2: Library/Book, Expand Model",
     "section": "Defining the use cases",
-    "text": "Defining the use cases\n\nCreating a publication\nIt seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution, but the inheritance is well solved in the Thymeleaf form and the object is correctly composed when the request reaches the PublicationController.\n\n\nCreating a Libary Member\nInheritance is causing issues when trying to save the attributes of child classes:\n\nOnly Person attributes and the id created in the abstract LibraryMember are considered when Thymeleaf sends the form values to the @Controller, still don’t know why\nThis doesn’t happen with the current Publication implementation, where all fields, including @Many-to-one and enum types when creating a new Book from the Publication Form View\n\n\n\n\n\n\n\nAvoid JPA inheritance of non-entity classes!!\n\n\n\nAs discussed in this StackOverflow thread,the only way to do this is by removing the inheritance from these classes and mark the previously parent class as @Embeddable, while defining new parent class attribute to each of the previously called child classes and annotating them as @Embedded.\nThis doesn’t make it easier to maintain as shown in this Baeldung example, and in the OOP realm we would have to access a new Person object for each derivated class.\nAlso, this Baeldung article explains that when using @MappedSuperclass, ancestors cannot contain associations with other entities. This might be the reason why it doesn’t work well with Librarian and User?"
+    "text": "Defining the use cases\n\nCreating a publication\nIt seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution, but the inheritance is well solved in the Thymeleaf form and the object is correctly composed when the request reaches the PublicationController.\n\n\nCreating a Libary Member\nInheritance is causing issues when trying to save the attributes of child classes:\n\nOnly Person attributes and the id created in the abstract LibraryMember are considered when Thymeleaf sends the form values to the @Controller, still don’t know why\nThis doesn’t happen with the current Publication implementation, where all fields, including @Many-to-one and enum types when creating a new Book from the Publication Form View\n\n\n\n\n\n\n\nError found!! Missing @Setter annotations in all @Entity classes!!\n\n\n\nI forgot to add the @Setter annotation in all @Entity classes except the parent one! 😥\nOnce added the @Setter annotation, tables are correctly populated!\n\n\n\n\n\n\n\n\nExtra: Avoid JPA inheritance of non-entity classes!!\n\n\n\nAs discussed in this StackOverflow thread,the only way to do this is by removing the inheritance from these classes and mark the previously parent class as @Embeddable, while defining new parent class attribute to each of the previously called child classes and annotating them as @Embedded.\nThis doesn’t make it easier to maintain as shown in this Baeldung example, and in the OOP realm we would have to access a new Person object for each derivated class.\nAlso, this Baeldung article explains that when using @MappedSuperclass, ancestors cannot contain associations with other entities. This might be the reason why it doesn’t work well with Librarian and User?"
   },
   {
     "objectID": "java-exercises/Labs/java-se02-1.html",
