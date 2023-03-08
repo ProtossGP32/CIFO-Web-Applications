@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import java.time.LocalDate;
 
 @Getter
+@Setter
 @ToString(callSuper = true)
 // JPA Annotations
 @Entity(name="Author")

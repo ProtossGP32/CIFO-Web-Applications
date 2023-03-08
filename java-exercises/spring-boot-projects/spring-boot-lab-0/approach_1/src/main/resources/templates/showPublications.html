@@ -73,6 +73,8 @@
                 <td th:text="${publication.publicationDate}"/>
                 <td th:text="${publication.format}"/>
                 <td th:text="${publication.status}"/>
+                <!-- Create a button to go to the Publications -->
+                <td> <a th:href="@{/publications/updatePublication(id=${publication.id})}" class="w3-button w3-green">Update publication</a> </td>
             </tr>
         </table>
         <br>

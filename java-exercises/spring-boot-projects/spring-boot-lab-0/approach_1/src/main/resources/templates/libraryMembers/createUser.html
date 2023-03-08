@@ -28,23 +28,15 @@
                 <input type="reset" value="Reset fields" />
             </p>
         </form>
+
+        <!-- Print the response message -->
+        <p th:if="${responseMessage != null}" th:text="${responseMessage}" />
+
         <!-- Create a button to go to the User Form creation -->
         <p>
             <a th:href="@{/library/publications}" class="w3-button w3-red">Return to publications</a>
         </p>
         <br>
-        <p>Submit results:</p>
-        <p th:text="${'New user ID: ' + newUser.id}" />
-        <p th:text="${'New user first name: ' + newUser.firstName}" />
-        <p th:text="${'New user last name: ' + newUser.lastName}" />
-        <p th:text="${'New user birth date: ' + #temporals.format(newUser.birthDate, 'dd/MM/yyyy')}" />
-        <p th:text="${'New user address: ' + newUser.address}" />
-        <p th:text="${'New user phone number: ' + newUser.phoneNumber}" />
-        <p th:text="${'New user mail: ' + newUser.mail}" />
-        <p th:text="${'New user password: ' + newUser.password}" />
-        <br>
-        <h3>Debug:</h3>
-        <p th:text="${newUser}" />
     </div>
 </body>
 </html>

@@ -5,12 +5,14 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
 @Getter
+@Setter
 @ToString(callSuper = true)
 @Entity(name = "User")
 @DiscriminatorValue(value = "USER")

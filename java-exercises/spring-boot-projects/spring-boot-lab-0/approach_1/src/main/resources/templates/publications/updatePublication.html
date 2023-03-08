@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/styles.css" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Publication update form</title>
+</head>
+<body>
+<h1>Publication form</h1>
+<div class="w3-card-40" style="width:50%">
+  <header class="w3-container w3-light-grey">
+    <p>Update publication</p>
+  </header>
+  <!-- Show a Member form -->
+  <div class="w3-container">
+    <form th:action="@{/publications/updatePublication/{id}(id=${publicationToUpdate.id})}" th:object="${publicationToUpdate}" method="post">
+      <!-- Publication fields -->
+      <p th:text="*{id}" />
+      <p>
+        <label for="title">Title</label>
+        <input th:field="*{title}" type="text" name="title" class="w3-input" id="title" required />
+      </p>
+      <p>
+        <label for="author">Author</label>
+        <select th:field="*{author}" class="form-control" id="author">
+          <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName + ' ' + author.lastName}"></option>
+        </select>
+      </p>
+      <p>
+        <label for="publicationDate">Publication Date</label>
+        <input th:field="*{publicationDate}" type="date" name="publicationDate" class="w3-input" id="publicationDate" />
+      </p>
+      <p>
+        <label for="format">Publication Format</label>
+        <input th:field="*{format}" type="text" name="format" class="w3-input" id="format" />
+      </p>
+      <p>
+        <label for="status">Publication Status</label>
+        <select th:field="*{status}" class="form-control" id="status">
+          <option th:each="statusType : ${T(com.springbootlab0.approach_1.domain.Status).values()}" th:value="${statusType}" th:text="${statusType}"></option>
+        </select>
+      </p>
+      <!-- Book fields -->
+      <p>
+        <label for="ISBN">ISBN</label>
+        <input th:field="*{ISBN}" type="text" name="ISBN" class="w3-input" id="ISBN" />
+      </p>
+      <p>
+        <label for="pages">Pages</label>
+        <input th:field="*{pages}" type="number" name="pages" class="w3-input" id="pages" />
+      </p>
+      <p>
+        <label for="genre">Genre</label>
+        <input th:field="*{genre}" type="text" name="genre" class="w3-input" id="genre" />
+      </p>
+      <!-- TODO: CD fields -->
+      <!-- TODO: DVD fields -->
+      <!-- Form buttons -->
+      <p>
+        <input type="submit" value="Submit publication" />
+        <input type="reset" value="Reset fields" />
+      </p>
+    </form>
+  </div>
+
+  <!-- Print the response message -->
+  <p th:if="${responseMessage != null}" th:text="${responseMessage}" />
+
+  <!-- Create a button to go to the User Form creation -->
+  <p>
+    <a th:href="@{/library/publications}" class="w3-button w3-red">Return to publications</a>
+  </p>
+  <br>
+</div>
+</body>
+</html>

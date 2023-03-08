@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 // Lombok annotations
 @Getter
+@Setter
 @ToString(callSuper = true)
 // JPA Annotations
 @Entity

@@ -2,6 +2,8 @@ package com.springbootlab0.approach_1.controllers;
 
 import com.springbootlab0.approach_1.domain.Author;
 import com.springbootlab0.approach_1.domain.Book;
+import com.springbootlab0.approach_1.domain.Publication;
+import com.springbootlab0.approach_1.domain.User;
 import com.springbootlab0.approach_1.services.AuthorService;
 import com.springbootlab0.approach_1.services.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/publications")
@@ -32,7 +35,7 @@ public class PublicationController {
         containerToView.addAttribute("newBook", new Book());
         containerToView.addAttribute("authors", authorService.getAllAuthors());
         containerToView.addAttribute("responseMessage", null);
-        return "/publications/publicationForm";
+        return "publications/publicationForm";
     }
 
     @RequestMapping("/createPublication")
@@ -51,11 +54,44 @@ public class PublicationController {
         return "publications/publicationForm";
     }
 
+    @RequestMapping("/updatePublication")
+    public String updatePublication(@RequestParam("id") String id, ModelMap containerToView) {
+        // Retrieve the publication based on the received ID
+        Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
+        if (publicationToUpdate.isPresent()) {
+            containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
+            System.out.println("Available publication in DB: " + publicationToUpdate);
+            containerToView.addAttribute("authors", authorService.getAllAuthors());
+            containerToView.addAttribute("responseMessage", null);
+            return "publications/updatePublication";
+        }
+        else return "notFound";
+    }
+
+    @PostMapping("/updatePublication/{id}")
+    public String updatePublication(@PathVariable("id") String id, Optional<Book> updatedPublication, ModelMap containerToView) {
+        // Retrieve the publication based on the received ID
+        System.out.println("Received publication: " + updatedPublication);
+        Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
+        System.out.println("Available publication in DB: " + publicationToUpdate);
+        // Check if the publication is already inserted
+        if (publicationToUpdate.isPresent()) {
+            publicationService.createPublication(updatedPublication.get());
+            containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
+            containerToView.addAttribute("authors", authorService.getAllAuthors());
+            containerToView.addAttribute("responseMessage", "Publication " + publicationToUpdate.get().getTitle() + " updated!");
+            return "publications/updatePublication";
+        }
+        return "notFound";
+    }
+
+
+
     @RequestMapping("/authorForm")
     public String authorForm(ModelMap containerToView) {
         containerToView.addAttribute("newAuthor", new Author());
         containerToView.addAttribute("responseMessage", null);
-        return "/publications/authorForm";
+        return "publications/authorForm";
     }
 
     @RequestMapping("/createAuthor")
