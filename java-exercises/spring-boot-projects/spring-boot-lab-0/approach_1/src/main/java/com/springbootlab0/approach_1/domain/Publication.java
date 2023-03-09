@@ -28,7 +28,6 @@ public abstract class Publication implements PublicationOperations{
     @Column(name="PUBLICATION_TITLE", nullable = false)
     private String title;
 
-    // TODO: Author entity table isn't being created, thus the app fails if the author field is enabled here
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
