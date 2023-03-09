@@ -50,6 +50,8 @@
 
         <!-- Available publications -->
         <h2>Available publications</h2>
+        <!-- Show results messages of any operation -->
+        <p th:if="${responseMessage} != null" th:text="${responseMessage}"/>
         <!-- Show all Publications -->
         <table class="w3-table-all w3-hoverable">
             <!-- The first row is the table header-->
@@ -73,8 +75,9 @@
                 <td th:text="${publication.publicationDate}"/>
                 <td th:text="${publication.format}"/>
                 <td th:text="${publication.status}"/>
-                <!-- Create a button to go to the Publications -->
-                <td> <a th:href="@{/publications/updatePublication(id=${publication.id})}" class="w3-button w3-green">Update publication</a> </td>
+                <!-- Create buttons to update or delete a Publication -->
+                <td> <a th:href="@{/publications/updatePublication/{id}(id = ${publication.id})}" class="w3-button w3-green">Update</a> </td>
+                <td> <a th:href="@{/publications/deletePublication/{id}(id = ${publication.id})}" class="w3-button w3-red">Delete</a> </td>
             </tr>
         </table>
         <br>
@@ -114,6 +117,7 @@
                     <h2 th:text="${user.class.simpleName}"/>
                     <p th:text="${user.address}"/>
                     <p th:text="${user.phoneNumber}"/>
+                    <p th:text="${user.mail}"/>
                     <p th:text="${idx.index}"/>
                 </div>
             </div>

@@ -1,9 +1,6 @@
 package com.springbootlab0.approach_1.controllers;
 
-import com.springbootlab0.approach_1.domain.Author;
-import com.springbootlab0.approach_1.domain.Book;
-import com.springbootlab0.approach_1.domain.Publication;
-import com.springbootlab0.approach_1.domain.User;
+import com.springbootlab0.approach_1.domain.*;
 import com.springbootlab0.approach_1.services.AuthorService;
 import com.springbootlab0.approach_1.services.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -30,6 +28,7 @@ public class PublicationController {
         return "/publications/publicationsIndex";
     }
 
+    // TODO: Unify all methods that access the same forms (i.e: Publication, Author, etc...)
     @RequestMapping("/publicationForm")
     public String publicationForm(ModelMap containerToView) {
         containerToView.addAttribute("newBook", new Book());
@@ -54,8 +53,15 @@ public class PublicationController {
         return "publications/publicationForm";
     }
 
-    @RequestMapping("/updatePublication")
-    public String updatePublication(@RequestParam("id") String id, ModelMap containerToView) {
+    /**
+     * Retrieve the publication object based on the provided ID and shows the corresponding publication
+     * form ready to update it.
+     * @param id is the publication id to update
+     * @param containerToView contains the attributes Thymeleaf requires to render the HTML template
+     * @return the HTML path of the publication form
+     */
+    @GetMapping("/updatePublication/{id}")
+    public String updatePublication(@PathVariable("id") String id, ModelMap containerToView) {
         // Retrieve the publication based on the received ID
         Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
         if (publicationToUpdate.isPresent()) {
@@ -68,24 +74,81 @@ public class PublicationController {
         else return "notFound";
     }
 
-    @PostMapping("/updatePublication/{id}")
-    public String updatePublication(@PathVariable("id") String id, Optional<Book> updatedPublication, ModelMap containerToView) {
+    /**
+     * Given an updated publication with an ID, rewrite it in the DB if it is already present
+     * @param id is the publication id to update
+     * @param updatedPublication is the Publication object with the updated fields
+     * @param containerToView contains the attributes Thymeleaf requires to render the HTML template
+     * @return the HTML path of the publication form
+     */
+    @PostMapping("/updatePublication/Book/{id}")
+    public String updateBook(@PathVariable("id") String id, Optional<Book> updatedPublication, ModelMap containerToView) {
         // Retrieve the publication based on the received ID
         System.out.println("Received publication: " + updatedPublication);
         Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
         System.out.println("Available publication in DB: " + publicationToUpdate);
-        // Check if the publication is already inserted
+        // Check if the Book is already inserted
         if (publicationToUpdate.isPresent()) {
             publicationService.createPublication(updatedPublication.get());
             containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
             containerToView.addAttribute("authors", authorService.getAllAuthors());
-            containerToView.addAttribute("responseMessage", "Publication " + publicationToUpdate.get().getTitle() + " updated!");
+            containerToView.addAttribute("responseMessage", "Book " + publicationToUpdate.get().getTitle() + " updated!");
             return "publications/updatePublication";
         }
         return "notFound";
     }
 
+    @PostMapping("/updatePublication/CD/{id}")
+    public String updateCD(@PathVariable("id") String id, Optional<CD> updatedPublication, ModelMap containerToView) {
+        // Retrieve the publication based on the received ID
+        System.out.println("Received publication: " + updatedPublication);
+        Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
+        System.out.println("Available publication in DB: " + publicationToUpdate);
+        // Check if the CD is already inserted
+        if (publicationToUpdate.isPresent()) {
+            publicationService.createPublication(updatedPublication.get());
+            containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
+            containerToView.addAttribute("authors", authorService.getAllAuthors());
+            containerToView.addAttribute("responseMessage", "CD " + publicationToUpdate.get().getTitle() + " updated!");
+            return "publications/updatePublication";
+        }
+        return "notFound";
+    }
 
+    @PostMapping("/updatePublication/DVD/{id}")
+    public String updateDVD(@PathVariable("id") String id, Optional<DVD> updatedPublication, ModelMap containerToView) {
+        // Retrieve the publication based on the received ID
+        System.out.println("Received publication: " + updatedPublication);
+        Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
+        System.out.println("Available publication in DB: " + publicationToUpdate);
+        // Check if the DVD is already inserted
+        if (publicationToUpdate.isPresent()) {
+            publicationService.createPublication(updatedPublication.get());
+            containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
+            containerToView.addAttribute("authors", authorService.getAllAuthors());
+            containerToView.addAttribute("responseMessage", "DVD " + publicationToUpdate.get().getTitle() + " updated!");
+            return "publications/updatePublication";
+        }
+        return "notFound";
+    }
+
+    /**
+     * Given a Publication ID, delete that entry from the DB
+     * @param id is the Publication id to delete
+     * @param redirectAttrs contains the attributes Thymeleaf requires to render on redirection time
+     * @return a redirection to the main publications HTML page
+     */
+    @GetMapping("/deletePublication/{id}")
+    public String deletePublication(@PathVariable("id") String id, RedirectAttributes redirectAttrs) {
+        // Retrieve the publication based on the received ID
+        Optional<Publication> publicationToDelete =  publicationService.findPublicationById(id);
+        if (publicationToDelete.isPresent()) {
+            publicationService.deletePublicationById(id);
+            redirectAttrs.addFlashAttribute("responseMessage", "Publication " + publicationToDelete.get().getTitle() + " deleted");
+            return "redirect:/library/publications";
+        }
+        else return "notFound";
+    }
 
     @RequestMapping("/authorForm")
     public String authorForm(ModelMap containerToView) {

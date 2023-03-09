@@ -4,6 +4,7 @@ import com.springbootlab0.approach_1.utils.Helper;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -32,6 +33,7 @@ public abstract class Publication implements PublicationOperations{
     @JoinColumn(name = "author_id")
     private Author author;
     @Column(name="PUBLICATION_DATE")
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private LocalDate publicationDate;
     @Column(name="PUBLICATION_FORMAT")
     private String format;

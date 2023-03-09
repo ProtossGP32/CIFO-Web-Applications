@@ -14,7 +14,7 @@
   </header>
   <!-- Show a Member form -->
   <div class="w3-container">
-    <form th:action="@{/publications/updatePublication/{id}(id=${publicationToUpdate.id})}" th:object="${publicationToUpdate}" method="post">
+    <form th:action="@{/publications/updatePublication/{publicationClass}/{id}(publicationClass=${publicationToUpdate.class.simpleName}, id=${publicationToUpdate.id})}" th:object="${publicationToUpdate}" method="post">
       <!-- Publication fields -->
       <p th:text="*{id}" />
       <p>
@@ -42,21 +42,36 @@
         </select>
       </p>
       <!-- Book fields -->
-      <p>
-        <label for="ISBN">ISBN</label>
-        <input th:field="*{ISBN}" type="text" name="ISBN" class="w3-input" id="ISBN" />
-      </p>
-      <p>
-        <label for="pages">Pages</label>
-        <input th:field="*{pages}" type="number" name="pages" class="w3-input" id="pages" />
-      </p>
-      <p>
-        <label for="genre">Genre</label>
-        <input th:field="*{genre}" type="text" name="genre" class="w3-input" id="genre" />
-      </p>
-      <!-- TODO: CD fields -->
-      <!-- TODO: DVD fields -->
-      <!-- Form buttons -->
+      <span th:if="*{class.simpleName == 'Book'}">
+        <p >
+          <label for="ISBN">ISBN</label>
+          <input th:field="*{ISBN}" type="text" name="ISBN" class="w3-input" id="ISBN" />
+        </p>
+        <p>
+          <label for="pages">Pages</label>
+          <input th:field="*{pages}" type="number" name="pages" class="w3-input" id="pages" />
+        </p>
+        <p>
+          <label for="genre">Genre</label>
+          <input th:field="*{genre}" type="text" name="genre" class="w3-input" id="genre" />
+        </p>
+      </span>
+
+      <!-- CD and DVD common fields -->
+      <span th:if="*{class.simpleName.matches('CD|DVD')}">
+        <p >
+          <label for="duration">Duration</label>
+          <input th:field="*{duration}" type="number" name="duration" class="w3-input" id="duration" />
+        </p>
+      </span>
+      <!-- CD fields -->
+      <span th:if="*{class.simpleName == 'CD'}">
+        <p>
+          <label for="numberOfTracks">Number of Tracks</label>
+          <input th:field="*{numberOfTracks}" type="number" name="numberOfTracks" class="w3-input" id="numberOfTracks" />
+        </p>
+      </span>
+
       <p>
         <input type="submit" value="Submit publication" />
         <input type="reset" value="Reset fields" />
