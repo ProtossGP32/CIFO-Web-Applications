@@ -19,3 +19,8 @@ date: 2023/03/08
 [This article](https://www.baeldung.com/spring-requestparam-vs-pathvariable) explains when it is useful to use one or the other and how they are sent along with the URI path.
 :::
 
+# Spring Boot data types
+## `Model` and `ModelMap`
+
+## `RedirectAttributes`
+
