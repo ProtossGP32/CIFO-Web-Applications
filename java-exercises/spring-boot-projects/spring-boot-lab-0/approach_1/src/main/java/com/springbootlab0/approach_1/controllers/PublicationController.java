@@ -90,7 +90,7 @@ public class PublicationController {
         // Check if the Book is already inserted
         if (publicationToUpdate.isPresent()) {
             publicationService.createPublication(updatedPublication.get());
-            containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
+            containerToView.addAttribute("publicationToUpdate", updatedPublication.get());
             containerToView.addAttribute("authors", authorService.getAllAuthors());
             containerToView.addAttribute("responseMessage", "Book " + publicationToUpdate.get().getTitle() + " updated!");
             return "publications/updatePublication";
