@@ -684,6 +684,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#creating-a-publication" id="toc-creating-a-publication" class="nav-link" data-scroll-target="#creating-a-publication">Creating a publication</a></li>
   <li><a href="#creating-a-libary-member" id="toc-creating-a-libary-member" class="nav-link" data-scroll-target="#creating-a-libary-member">Creating a Libary Member</a></li>
   </ul></li>
+  <li><a href="#updating-publications-or-library-members" id="toc-updating-publications-or-library-members" class="nav-link" data-scroll-target="#updating-publications-or-library-members">Updating publications or library members</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se03-2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -1254,6 +1255,20 @@ ERROR when defining <code>@ManyToOne</code> relation
 <section id="creating-a-publication" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-publication">Creating a publication</h3>
 <p>It seems that we’ll have to work with particular publications instead of creating a one-size-fits-all solution, but the inheritance is well solved in the Thymeleaf form and the object is correctly composed when the request reaches the <code>PublicationController</code>.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Attention when creating new entities!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Spring boot controller sends a new empty Publication object to the thymeleaf engine with its already generated ID, but if the ID isn’t assigned again in the creation form, then the Controller recreates the object with a new ID!</p>
+<p>Make sure to add a <code>th:field=*{id}</code> entry in the form to make sure that later <code>@Setter</code> methods will re-assign that value to the object</p>
+</div>
+</div>
 </section>
 <section id="creating-a-libary-member" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-libary-member">Creating a Libary Member</h3>
@@ -1291,9 +1306,26 @@ Extra: Avoid JPA inheritance of non-entity classes!!
 <p>Also, <a href="https://www.baeldung.com/hibernate-inheritance#mappedsuperclass">this Baeldung article</a> explains that when using <code>@MappedSuperclass</code>, ancestors cannot contain associations with other entities. <del>This might be the reason why it doesn’t work well with <code>Librarian</code> and <code>User</code>?</del></p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="updating-publications-or-library-members" class="level2">
+<h2 class="anchored" data-anchor-id="updating-publications-or-library-members">Updating publications or library members</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+ID is correctly transfered to the <code>Optional&lt;Subclass&gt;</code> when dealing with Publication updates
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This requires further investigation because, while using a very similar form, it looks like the Parent class ID is safely transfered when recreating the object on the <code>@Controller</code> side. This doesn’t happen when the recreated class doesn’t inherit the ID from another class.</p>
+<p>Also, this ID problem also appears on subclasses creation forms. Does it have something to do with the GET/POST or RequestMapping annotations?</p>
+</div>
+</div>
+
+
 </section>
 </section>
 
