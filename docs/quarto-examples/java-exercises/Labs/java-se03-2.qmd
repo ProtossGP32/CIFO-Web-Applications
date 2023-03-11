@@ -422,6 +422,13 @@ The resulting tables in the DB are as follow:
 ### Creating a publication
 It seems that we'll have to work with particular publications instead of creating a one-size-fits-all solution, but the inheritance is well solved in the Thymeleaf form and the object is correctly composed when the request reaches the `PublicationController`.
 
+:::{.callout-important}
+## Attention when creating new entities!
+The Spring boot controller sends a new empty Publication object to the thymeleaf engine with its already generated ID, but if the ID isn't assigned again in the creation form, then the Controller recreates the object with a new ID!
+
+Make sure to add a `th:field=*{id}` entry in the form to make sure that later `@Setter` methods will re-assign that value to the object
+:::
+
 ### Creating a Libary Member
 Inheritance is causing issues when trying to save the attributes of child classes:
 
@@ -442,4 +449,13 @@ As discussed [in this StackOverflow thread](https://stackoverflow.com/questions/
 This doesn't make it easier to maintain as shown [in this Baeldung example](https://www.baeldung.com/jpa-embedded-embeddable), and in the OOP realm we would have to access a new Person object for each derivated class.
 
 Also, [this Baeldung article](https://www.baeldung.com/hibernate-inheritance#mappedsuperclass) explains that when using `@MappedSuperclass`, ancestors cannot contain associations with other entities. ~~This might be the reason why it doesn't work well with `Librarian` and `User`?~~
+:::
+
+## Updating publications or library members
+
+:::{.callout-warning}
+## ID is correctly transfered to the `Optional<Subclass>` when dealing with Publication updates
+This requires further investigation because, while using a very similar form, it looks like the Parent class ID is safely transfered when recreating the object on the `@Controller` side. This doesn't happen when the recreated class doesn't inherit the ID from another class.
+
+Also, this ID problem also appears on subclasses creation forms. Does it have something to do with the GET/POST or RequestMapping annotations?
 :::
