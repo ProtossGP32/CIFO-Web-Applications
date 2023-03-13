@@ -210,6 +210,20 @@
     "text": "Teacher’s definition:\n\nREST is an architecture style for building web services. It is based on a client-server model, where a client sends a request to a server and the server sends a response.\nRESTful APIs use HTTP requests to POST (create), PUT (update), GET (read) and DELETE (delete) data.\nA RESTful API is a simple, consistent, and easy-to-use way for applications to communicate with each other over the internet.\n\n\n\nIt is the common language between a client and a server, so the client knows what operations are available in the server. Common REST API operations\n\nPOST (Create)\nGET (Read)\nPUT (Update)\nDELETE (Delete)\n\nSo the base operations are the classic CRUD, but can be expanded. In fact, it is a set of definitions and protocols, sometimes referred to as a contract between an information provider and an Information user.\nThis contract (API Rest style) establishing the content required from the consumer (the call) and the content required by the producer (the response).\n\n\n\n\n\n\nAPI Weather example\n\n\n\nThe API design for a weather service could ask the user for a zip code as a requestand then return a response in the form of a 2-part answer, being the first one the high temperature and the second one the low temperature.\n\n\n\n\n\n\n\n\n\n\n\nTODO\n\n\n\nPending to elaborate!"
   },
   {
+    "objectID": "java-exercises/frameworks/quarkus/00-what-is-quarkus.html",
+    "href": "java-exercises/frameworks/quarkus/00-what-is-quarkus.html",
+    "title": "00 - What is Quarkus?",
+    "section": "",
+    "text": "From Quarkus official page:\n\nQuarkus is a Kubernetes-native Java framework tailored for GraaalVM and HotSpot, craftet from best-of-breed Java libraries and standards. The goal is to make Java the leading platform in Kubernetes and serverless environments while offering developers a framework to address a wider range of distributed application architecture."
+  },
+  {
+    "objectID": "java-exercises/frameworks/quarkus/00-what-is-quarkus.html#creating-a-new-project",
+    "href": "java-exercises/frameworks/quarkus/00-what-is-quarkus.html#creating-a-new-project",
+    "title": "00 - What is Quarkus?",
+    "section": "Creating a new project",
+    "text": "Creating a new project\n\nQuarkus application initializator: Quarkus uses extensions, similar to project dependencies."
+  },
+  {
     "objectID": "java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html",
     "href": "java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html",
     "title": "00 - What is Spring Boot?",
@@ -390,6 +404,41 @@
     "title": "03 - Spring Security",
     "section": "Password encoding",
     "text": "Password encoding\nSee this Baeldung article on how to encode passwords."
+  },
+  {
+    "objectID": "java-exercises/frontend/00-Introduction.html",
+    "href": "java-exercises/frontend/00-Introduction.html",
+    "title": "00 - Frontend - Introduction",
+    "section": "",
+    "text": "TODO"
+  },
+  {
+    "objectID": "java-exercises/frontend/00-Introduction.html#javaserver-faces-jsf",
+    "href": "java-exercises/frontend/00-Introduction.html#javaserver-faces-jsf",
+    "title": "00 - Frontend - Introduction",
+    "section": "JavaServer Faces (JSF)",
+    "text": "JavaServer Faces (JSF)\nLibraries:\n\nPrimeFaces"
+  },
+  {
+    "objectID": "java-exercises/frontend/00-Introduction.html#react",
+    "href": "java-exercises/frontend/00-Introduction.html#react",
+    "title": "00 - Frontend - Introduction",
+    "section": "React",
+    "text": "React"
+  },
+  {
+    "objectID": "java-exercises/frontend/00-Introduction.html#vue",
+    "href": "java-exercises/frontend/00-Introduction.html#vue",
+    "title": "00 - Frontend - Introduction",
+    "section": "Vue",
+    "text": "Vue"
+  },
+  {
+    "objectID": "java-exercises/frontend/00-Introduction.html#vaadin",
+    "href": "java-exercises/frontend/00-Introduction.html#vaadin",
+    "title": "00 - Frontend - Introduction",
+    "section": "Vaadin",
+    "text": "Vaadin\nVaadin is an open-source web application development platform for Java. It includes a set of Web Components, a Java web framework, and a set of tools that enable developers to implement modern web graphical user interfaces (GUI) using the Java programming language only (instead of HTML and JavaScript), TypeScript only, or a combination of both.\n\nVaadin Flow (Java API)\nVaadin Flow (formerly Vaadin Framework) is a Java web framework for building web applications and websites. Vaadin Flow’s programming model allows developers to user Java as the programming language for implementing User Interfaces (UIs) without having to directly use HTML or JavaScript."
   },
   {
     "objectID": "java-exercises/frontend/engines/00-thymeleaf.html",

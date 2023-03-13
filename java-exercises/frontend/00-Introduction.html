@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="ProtossGP32">
+<meta name="dcterms.date" content="2023-03-13">
+<meta name="description" content="What is Frontend and popular frameworks">
 
-<title>CIFO - Web Applications - Encapsulation</title>
+<title>CIFO - Web Applications - 00 - Frontend - Introduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Principles/02-inheritance.html" rel="next">
-<link href="../../java-exercises/Principles/01-abstraction.html" rel="prev">
+<link href="../../java-exercises/frontend/engines/00-thymeleaf.html" rel="next">
+<link href="../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -329,7 +332,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Encapsulation</h1>
+      <h1 class="quarto-secondary-nav-title">00 - Frontend - Introduction</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -517,7 +520,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frontend/00-Introduction.html" class="sidebar-item-text sidebar-link">00 - Frontend - Introduction</a>
+  <a href="../../java-exercises/frontend/00-Introduction.html" class="sidebar-item-text sidebar-link active">00 - Frontend - Introduction</a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -597,7 +600,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link active">Encapsulation</a>
+  <a href="../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link">Encapsulation</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -617,21 +620,62 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#frontend-frameworks" id="toc-frontend-frameworks" class="nav-link" data-scroll-target="#frontend-frameworks">Frontend frameworks</a>
+  <ul class="collapse">
+  <li><a href="#javaserver-faces-jsf" id="toc-javaserver-faces-jsf" class="nav-link" data-scroll-target="#javaserver-faces-jsf">JavaServer Faces (JSF)</a></li>
+  <li><a href="#react" id="toc-react" class="nav-link" data-scroll-target="#react">React</a></li>
+  <li><a href="#vue" id="toc-vue" class="nav-link" data-scroll-target="#vue">Vue</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
+  <li><a href="#other-full-stack-tools" id="toc-other-full-stack-tools" class="nav-link" data-scroll-target="#other-full-stack-tools">Other Full-Stack tools</a>
+  <ul class="collapse">
+  <li><a href="#vaadin" id="toc-vaadin" class="nav-link" data-scroll-target="#vaadin">Vaadin</a>
+  <ul class="collapse">
+  <li><a href="#vaadin-flow-java-api" id="toc-vaadin-flow-java-api" class="nav-link" data-scroll-target="#vaadin-flow-java-api">Vaadin Flow (Java API)</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frontend/00-Introduction.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Encapsulation</h1>
-</div>
+<h1 class="title d-none d-lg-block">00 - Frontend - Introduction</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">frontend</div>
+    <div class="quarto-category">frameworks</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    What is Frontend and popular frameworks
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ProtossGP32 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 13, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -639,20 +683,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Class notes definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Encapsulation</strong> is the process of wrapping data and methods that operate on a data into a single unit. In other words, it is the process of hiding the implementation details of an object from the outside world.</p>
-<p>In Java, <strong>encapsulation</strong> is achieved through the use of access modifiers like <code>private</code>, <code>public</code> and <code>protected</code>.</p>
-</div>
-</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -663,12 +695,42 @@ TODO
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Create your own definition of <strong>encapsulation</strong></p>
+
 </div>
 </div>
-<p>The main purpose of <strong>encapsulation</strong> is to divide the code and create blocks of functionality.</p>
+</section>
+<section id="frontend-frameworks" class="level1">
+<h1>Frontend frameworks</h1>
+<section id="javaserver-faces-jsf" class="level2">
+<h2 class="anchored" data-anchor-id="javaserver-faces-jsf">JavaServer Faces (JSF)</h2>
+<p>Libraries:</p>
+<ul>
+<li><a href="https://www.primefaces.org/">PrimeFaces</a></li>
+</ul>
+</section>
+<section id="react" class="level2">
+<h2 class="anchored" data-anchor-id="react">React</h2>
+</section>
+<section id="vue" class="level2">
+<h2 class="anchored" data-anchor-id="vue">Vue</h2>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+</section>
+</section>
+<section id="other-full-stack-tools" class="level1">
+<h1>Other Full-Stack tools</h1>
+<section id="vaadin" class="level2">
+<h2 class="anchored" data-anchor-id="vaadin">Vaadin</h2>
+<p><a href="https://vaadin.com/">Vaadin</a> is an open-source web application development platform for Java. It includes a set of Web Components, a Java web framework, and a set of tools that enable developers to implement modern web graphical user interfaces (GUI) using the Java programming language only (instead of HTML and JavaScript), TypeScript only, or a combination of both.</p>
+<section id="vaadin-flow-java-api" class="level3">
+<h3 class="anchored" data-anchor-id="vaadin-flow-java-api">Vaadin Flow (Java API)</h3>
+<p>Vaadin Flow (formerly Vaadin Framework) is a Java web framework for building web applications and websites. Vaadin Flow’s programming model allows developers to user Java as the programming language for implementing User Interfaces (UIs) without having to directly use HTML or JavaScript.</p>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -921,13 +983,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Principles/01-abstraction.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Abstraction</span>
+      <a href="../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">08 - Configure Spring Boot Controllers</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Principles/02-inheritance.html" class="pagination-link">
-        <span class="nav-page-text">Inheritance</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../java-exercises/frontend/engines/00-thymeleaf.html" class="pagination-link">
+        <span class="nav-page-text">01 - Java template engine - Thymeleaf</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
