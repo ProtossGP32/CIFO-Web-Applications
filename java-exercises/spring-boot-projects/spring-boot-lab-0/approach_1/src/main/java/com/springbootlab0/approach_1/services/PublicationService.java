@@ -1,6 +1,7 @@
 package com.springbootlab0.approach_1.services;
 
 import com.springbootlab0.approach_1.domain.Publication;
+import com.springbootlab0.approach_1.domain.Status;
 import com.springbootlab0.approach_1.repository.PublicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,10 @@ public class PublicationService {
 
     public Iterable<Publication> getAllPublications() {
         return publicationRepository.findAll();
+    }
+
+    public Iterable<Publication> getAvailablePublications() {
+        return publicationRepository.findByStatus(Status.HOME);
     }
 
     // CRUD

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Borrow creation form</title>
+</head>
+<body>
+<h1>Borrow form</h1>
+<div class="w3-card-40" style="width:50%">
+    <header class="w3-container w3-light-grey">
+        <p>Create new borrow</p>
+    </header>
+    <div class="w2-container">
+        <form th:action="@{/borrows/createBorrow/{userId}(userId = ${borrowUser.id})" th:object="${borrowUser}">
+            <p>
+                <label>Available publications</label>
+                <th:block th:each="publication : ${publications}">
+                    <input type="checkbox" name="publicationsToBorrow" th:value="${publication.id}" th:text="${publication.title}"/>
+                </th:block>
+                <select th:field="${publications}" class="form-control" id="author">
+                    <option th:each="publication : ${publications}" th:value="${publication.id}" th:text="${publication.title}"></option>
+                </select>
+            </p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

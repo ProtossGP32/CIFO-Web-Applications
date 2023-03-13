@@ -82,6 +82,35 @@
         </table>
         <br>
 
+        <!-- Available members -->
+        <h2>Available members</h2>
+        <!-- Show all Publications -->
+        <table class="w3-table-all w3-hoverable">
+            <!-- The first row is the table header-->
+            <tr>
+                <td>User ID</td>
+                <td>User type</td>
+                <td>First name</td>
+                <td>Last name</td>
+            </tr>
+
+            <!-- Now we loop over all the available publications -->
+            <!-- Instead of the DiscriminatorValue, we just simply print the class simple name -->
+            <tr th:each="libraryMember:${libraryMembersFromController}">
+                <td th:text="${libraryMember.id}"/>
+                <td th:text="${libraryMember.class.simpleName}"/>
+                <td th:text="${libraryMember.firstName}"/>
+                <td th:text="${libraryMember.lastName}"/>
+                <!-- TODO: Create buttons to update or delete a user
+                <td> <a th:href="@{/libraryMember/update/{id}(id = ${libraryMember.id})}" class="w3-button w3-green">Update</a> </td>
+                <td> <a th:href="@{/libraryMember/delete/{id}(id = ${libraryMember.id})}" class="w3-button w3-red">Delete</a> </td>
+                -->
+                <!-- Create a borrow -->
+                <td> <a th:href="@{/borrows/create/{id}(id = ${libraryMember.id})}" class="w3-button w3-red">Create a borrow</a> </td>
+            </tr>
+        </table>
+        <br>
+
         <!-- Library Members flip-cards -->
         <div class="header">
             <h2>Library Members flip-cards</h2>
