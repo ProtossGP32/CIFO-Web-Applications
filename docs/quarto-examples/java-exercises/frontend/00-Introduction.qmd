@@ -1,0 +1,32 @@
+---
+title: "00 - Frontend - Introduction"
+author: ProtossGP32
+categories: [frontend, frameworks]
+description: "What is Frontend and popular frameworks"
+date: 2023/03/13
+---
+# Introduction
+
+:::{.callout-warning}
+## TODO
+:::
+
+# Frontend frameworks
+## JavaServer Faces (JSF)
+
+Libraries:
+
+- [PrimeFaces](https://www.primefaces.org/)
+
+## React
+
+## Vue
+
+## 
+
+# Other Full-Stack tools
+## Vaadin
+[Vaadin](https://vaadin.com/) is an open-source web application development platform for Java. It includes a set of Web Components, a Java web framework, and a set of tools that enable developers to implement modern web graphical user interfaces (GUI) using the Java programming language only (instead of HTML and JavaScript), TypeScript only, or a combination of both.
+
+### Vaadin Flow (Java API)
+Vaadin Flow (formerly Vaadin Framework) is a Java web framework for building web applications and websites. Vaadin Flow's programming model allows developers to user Java as the programming language for implementing User Interfaces (UIs) without having to directly use HTML or JavaScript.

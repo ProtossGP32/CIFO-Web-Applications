@@ -1,0 +1,16 @@
+---
+title: "00 - What is Quarkus?"
+author: ProtossGP32
+categories: [Quarkus, Kubernetes]
+description: "Kubernetes-native Java framework"
+date: 2023/03/13
+---
+# Introduction
+_[From Quarkus official page:](https://quarkus.io/about/)_
+
+> Quarkus is a Kubernetes-native Java framework tailored for GraaalVM and HotSpot, craftet from best-of-breed Java libraries and standards. The goal is to make Java the leading platform in Kubernetes and serverless environments while offering developers a framework to address a wider range of distributed application architecture.
+
+# Getting started
+## Creating a new project
+
+- [Quarkus application initializator](https://code.quarkus.io/): Quarkus uses extensions, similar to project dependencies.
