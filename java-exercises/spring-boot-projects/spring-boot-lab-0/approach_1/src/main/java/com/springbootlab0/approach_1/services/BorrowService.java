@@ -13,6 +13,13 @@ public class BorrowService {
     BorrowRepository borrowRepository;
 
     // CRUD
+
+    /**
+     * Create a user's borrow with the given publication
+     * @param borrowUser is the user that makes the borrow
+     * @param borrowedPublication is the publication to be borrowed
+     * @return a copy of the created borrow
+     */
     public Borrow createBorrow(LibraryMember borrowUser, Publication borrowedPublication) {
         // TODO: Check that the user can still make borrows and that the publication is available
         // Create a new borrow
@@ -21,6 +28,14 @@ public class BorrowService {
         // TODO: Check that the borrow has been correctly saved into the DB
         borrowRepository.save(createdBorrow);
         return createdBorrow;
+    }
+
+    /**
+     * Return all borrows from the database
+     * @return all borrows as an Iterable
+     */
+    public Iterable<Borrow> getAllBorrows() {
+        return borrowRepository.findAll();
     }
 
 }

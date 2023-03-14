@@ -18,7 +18,13 @@
         <p>Create new borrow</p>
     </header>
     <div class="w2-container">
-        <form th:action="@{/borrows/create/{userId}(userId = ${borrowUser.id})}" method="post">
+        <form th:action="@{/borrows/create/{id}(id=${userId})}" method="post">
+            <p>
+                <label>Select User</label>
+                <select name="userId" class="form-control" id="author">
+                    <option th:each="user : ${availableUsers}" th:value="${user.id}" th:text="${user.firstName + ' ' + user.lastName}" />
+                </select>
+            </p>
             <p>
                 <label>Available publications:</label>
                 <br>

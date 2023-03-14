@@ -51,7 +51,7 @@ public class FakeDataGenerator {
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate(),
                 "physical",
-                Status.HOME,
+                Status.AVAILABLE,
                 faker.code().isbn13(),
                 faker.number().numberBetween(10, 2000),
                 faker.book().genre()
@@ -67,7 +67,7 @@ public class FakeDataGenerator {
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate(),
                 "physical",
-                Status.HOME,
+                Status.AVAILABLE,
                 faker.number().numberBetween(10, 2000),
                 faker.number().numberBetween(1, 20)
         );
@@ -82,7 +82,7 @@ public class FakeDataGenerator {
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate(),
                 "physical",
-                Status.HOME,
+                Status.AVAILABLE,
                 faker.number().numberBetween(10, 2000)
         );
     }

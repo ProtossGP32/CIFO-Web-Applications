@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Remember to define absolute paths for CSS! Also, cascading priority is from top to bottom -->
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Library borrows</title>
+</head>
+<body>
+<div class="w3-container w3-sand">
+    <h1>Library borrows</h1>
+    <h5>List of current borrows</h5>
+</div>
+<br>
+<!-- Forms buttons -->
+<div>
+    <!-- Create a button to go to the Borrow Form creation -->
+    <p><a th:href="@{/borrows/create/}" class="w3-button w3-green">Create a new borrow</a></p>
+</div>
+<!-- Available borrows -->
+<h2>Available borrows</h2>
+<!-- Show results messages of any operation -->
+<p th:if="${responseMessage} != null" th:text="${responseMessage}"/>
+<!-- Show all Borrows -->
+<table class="w3-table-all w3-hoverable">
+    <!-- The first row is the table header-->
+    <tr>
+        <td>Borrow ID</td>
+        <td>User</td>
+        <td>Publication title</td>
+        <td>Publication type</td>
+        <td>Start date</td>
+        <td>Due date</td>
+        <td>Return date</td>
+        <td>Borrow status</td>
+    </tr>
+
+    <!-- Now we loop over all the available publications -->
+    <!-- Instead of the DiscriminatorValue, we just simply print the class simple name -->
+    <tr th:each="borrow:${currentBorrows}">
+        <td th:text="${borrow.id}"/>
+        <td th:text="${borrow.borrowUser.firstName + ' ' + borrow.borrowUser.lastName}"/>
+        <td th:text="${borrow.borrowedPublication.title}"/>
+        <td th:text="${borrow.borrowedPublication.class.simpleName}"/>
+        <td th:text="${borrow.startBorrowDate}"/>
+        <td th:text="${borrow.dueBorrowDate}"/>
+        <td th:text="${borrow.returnedBorrowDate != null ? borrow.returnedBorrowDate : ''}"/>
+        <td th:text="${borrow.borrowStatus}"/>
+        <!-- Create buttons to update or delete a Publication -->
+        <td> <a th:href="@{/borrows/update/{id}(id = ${borrow.id})}" class="w3-button w3-green">Update</a> </td>
+        <td> <a th:href="@{/borrows/delete/{id}(id = ${borrow.id})}" class="w3-button w3-red">Delete</a> </td>
+    </tr>
+</table>
+<br>
+</body>
+</html>

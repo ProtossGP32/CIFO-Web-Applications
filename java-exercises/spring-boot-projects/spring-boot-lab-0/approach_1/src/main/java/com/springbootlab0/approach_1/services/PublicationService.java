@@ -18,7 +18,7 @@ public class PublicationService {
     }
 
     public Iterable<Publication> getAvailablePublications() {
-        return publicationRepository.findByStatus(Status.HOME);
+        return publicationRepository.findByStatus(Status.AVAILABLE);
     }
 
     // CRUD

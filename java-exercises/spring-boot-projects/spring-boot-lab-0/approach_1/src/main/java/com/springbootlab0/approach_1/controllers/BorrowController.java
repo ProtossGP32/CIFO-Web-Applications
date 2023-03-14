@@ -28,19 +28,40 @@ public class BorrowController {
     BorrowService borrowService;
 
 
+    @GetMapping("/")
+    public String index(Model containerToView) {
+        // Retrieve all borrows:
+        containerToView.addAttribute("currentBorrows", borrowService.getAllBorrows());
+        return "borrows/borrowsIndex";
+    }
+
+    @GetMapping("/create/")
+    public String createBorrow(Model containerToView) {
+        // Retrieve all library members and add them to the model
+        containerToView.addAttribute("availableUsers", libraryMemberService.getAllLibraryMembers());
+        // Retrieve all available publications
+        containerToView.addAttribute("publications", publicationService.getAvailablePublications());
+        return "borrows/emptyBorrowForm";
+    }
+
     @GetMapping("/create/{userId}")
-    public String createBorrow(@PathVariable("userId") String userId, Model containerToView) {
+    public String createBorrow(@PathVariable("userId") String userId, Model containerToView, RedirectAttributes redirectAttributes) {
         // Retrieve the user information based on the received ID
         Optional<LibraryMember> borrowUser = libraryMemberService.findLibraryMemberById(userId);
         // Add the borrow user to the Model
-        containerToView.addAttribute("borrowUser", borrowUser);
-        // Retrieve all available publications
-        containerToView.addAttribute("publications", publicationService.getAvailablePublications());
-        return "borrows/borrowForm";
+        if (borrowUser.isPresent()) {
+            containerToView.addAttribute("borrowUser", borrowUser.get());
+            // Retrieve all available publications
+            containerToView.addAttribute("publications", publicationService.getAvailablePublications());
+            return "borrows/borrowForm";
+        } else {
+            redirectAttributes.addFlashAttribute("responseMessage", "User ID " + userId + " not found in database!");
+            return "redirect:/library/publications";
+        }
     }
 
     @PostMapping("/create/{userId}")
-    public String createBorrow(@PathVariable("userId") String userId, @ModelAttribute List<String> publicationsToBorrow, RedirectAttributes redirectAttributes) {
+    public String createBorrow(@PathVariable("userId") String userId, @RequestParam("publicationsToBorrow") List<String> publicationsToBorrow, RedirectAttributes redirectAttributes) {
         // Initialize an empty list of borrows
         List<Borrow> createdBorrows = new ArrayList<>();
         // Retrieve the user information based on the received ID

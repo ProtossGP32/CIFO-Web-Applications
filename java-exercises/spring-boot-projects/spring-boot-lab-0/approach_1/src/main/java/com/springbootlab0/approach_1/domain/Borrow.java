@@ -42,6 +42,7 @@ public class Borrow {
     private LocalDate returnedBorrowDate;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private BorrowStatus borrowStatus;
 
     public Borrow() {
@@ -57,8 +58,11 @@ public class Borrow {
     public Borrow(LibraryMember borrowUser, Publication borrowedPublication) {
         // Initialize the empty borrow
         this();
-        // Assign the user and the publication
+        // Assign the user
         this.setBorrowUser(borrowUser);
+        // Change the borrowedPublication status to Borrowed
+        borrowedPublication.setStatus(Status.BORROWED);
+        // Assign the publication
         this.setBorrowedPublication(borrowedPublication);
     }
 }
