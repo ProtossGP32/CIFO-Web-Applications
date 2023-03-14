@@ -18,13 +18,25 @@
         <p>Create new borrow</p>
     </header>
     <div class="w2-container">
-        <form th:action="@{/borrows/create/{userId}(userId = ${borrowUser.id})}" method="post">
+        <th:block th:if="${userId == null}">
+            <form th:action="@{/borrows/create/}" method="post">
+        </th:block>
+        <th:block th:unless="${userId == null}">
+            <form th:action="@{/borrows/create/{id}(id = ${pathId})}" method="post">
+        </th:block>
+            <p th:if="${userId == null}">
+                <label for="userId">Select User</label>
+                <select name="userId" class="form-control" id="userId">
+                    <option th:each="user : ${availableUsers}" th:value="${user.id}" th:text="${user.firstName + ' ' + user.lastName}" />
+                </select>
+            </p>
+            <p th:unless="${userId == null}" th:text="|User ID: ${userId}|"/>
             <p>
                 <label>Available publications:</label>
                 <br>
                 <th:block th:each="publication : ${publications}">
                     <!-- Checked items to borrow will be stored in the 'publicationsToBorrow' -->
-                    <input type="checkbox" name="publicationsToBorrow" th:value="${publication.id}" th:text="${publication.title}">Title: </input>
+                    <input type="checkbox" name="publicationsToBorrow" th:value="${publication.id}" th:text="| Title: ${publication.title}|" />
                     <br>
                 </th:block>
             </p>

@@ -44,12 +44,14 @@
             <!-- Create a button to go to the Publications -->
             <p><a th:href="@{/publications/}" class="w3-button w3-green">Manage Publications</a></p>
         </div>
-
-
+        <div>
+            <!-- Create a button to go to the Borrows Management -->
+            <p><a th:href="@{/borrows/}" class="w3-button w3-green">Manage Borrows</a></p>
+        </div>
         <br>
 
-        <!-- Available publications -->
-        <h2>Available publications</h2>
+        <!-- Library publications -->
+        <h2>Library publications</h2>
         <!-- Show results messages of any operation -->
         <p th:if="${responseMessage} != null" th:text="${responseMessage}"/>
         <!-- Show all Publications -->
@@ -82,8 +84,8 @@
         </table>
         <br>
 
-        <!-- Available members -->
-        <h2>Available members</h2>
+        <!-- Library members -->
+        <h2>Library members</h2>
         <!-- Show all Publications -->
         <table class="w3-table-all w3-hoverable">
             <!-- The first row is the table header-->
