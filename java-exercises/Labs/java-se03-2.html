@@ -571,6 +571,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="sidebar-item-text sidebar-link">08 - Configure Spring Boot Controllers</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../java-exercises/frameworks/spring-boot/09-http-session.html" class="sidebar-item-text sidebar-link">09 - HTTP sessions</a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -713,6 +718,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#creating-a-libary-member" id="toc-creating-a-libary-member" class="nav-link" data-scroll-target="#creating-a-libary-member">Creating a Libary Member</a></li>
   </ul></li>
   <li><a href="#updating-publications-or-library-members" id="toc-updating-publications-or-library-members" class="nav-link" data-scroll-target="#updating-publications-or-library-members">Updating publications or library members</a></li>
+  <li><a href="#creating-borrows" id="toc-creating-borrows" class="nav-link" data-scroll-target="#creating-borrows">Creating Borrows</a>
+  <ul class="collapse">
+  <li><a href="#create-borrow-entity-and-repository" id="toc-create-borrow-entity-and-repository" class="nav-link" data-scroll-target="#create-borrow-entity-and-repository">Create Borrow Entity and Repository</a></li>
+  <li><a href="#create-borrow-service-and-controller" id="toc-create-borrow-service-and-controller" class="nav-link" data-scroll-target="#create-borrow-service-and-controller">Create Borrow Service and Controller</a></li>
+  </ul></li>
+  <li><a href="#updating-a-borrow" id="toc-updating-a-borrow" class="nav-link" data-scroll-target="#updating-a-borrow">Updating a <code>Borrow</code></a></li>
+  <li><a href="#using-http-session-to-store-user-information" id="toc-using-http-session-to-store-user-information" class="nav-link" data-scroll-target="#using-http-session-to-store-user-information">Using HTTP session to store User information</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se03-2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -1352,6 +1364,97 @@ ID is correctly transfered to the <code>Optional&lt;Subclass&gt;</code> when dea
 <p>Also, this ID problem also appears on subclasses creation forms. Does it have something to do with the GET/POST or RequestMapping annotations?</p>
 </div>
 </div>
+</section>
+<section id="creating-borrows" class="level2">
+<h2 class="anchored" data-anchor-id="creating-borrows">Creating Borrows</h2>
+<p>The <code>Borrow</code> class contains the information related to a <code>Publication</code> that has been borrowed by a <code>LibraryMember</code>. The instantiated object contains the following fields:</p>
+<ul>
+<li><code>id</code>: the unique ID of that <code>Borrow</code></li>
+<li><code>borrowUser</code>: the user of this <code>Borrow</code></li>
+<li><code>borrowedPublication</code>: the publication borrowed</li>
+<li><code>startBorrowDate</code>: the date where the <code>Borrow</code> was created. It is automatically initialized on <code>Borrow</code> creation</li>
+<li><code>dueBorrowDate</code>: the date where the <code>Borrow</code> should already be returned. It is automatically initialized on <code>Borrow</code> creation, 15 days from the <code>startBorrowDate</code></li>
+<li><code>returnedBorrowDate</code>: the real date where the <code>Borrow</code> has been returned. Initialized as <code>null</code> on <code>Borrow</code> creation.</li>
+<li><code>borrowStatus</code>: The current <code>Borrow</code> status, either <code>IN_PROGRESS</code>, <code>LATE</code> or <code>CLOSED</code>. The <code>borrowStatus</code> should be automatically updated depending on the <code>dueBorrowDate</code> and the current date (<code>IN_PROGRESS</code> or <code>LATE</code>), as well as the <code>returnedBorrowDate</code> (<code>CLOSED</code>)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">classDiagram
+    direction LR
+    Borrow --&gt; Publication
+    Borrow --&gt; LibraryMember
+    Borrow --&gt; BorrowStatus
+    %% Abstract class
+    class Publication {
+        \@Entity(name = "Publication")
+        \@Table(name = "PUBLICATION_TABLE")
+    }
+    class LibraryMember {
+        \@Entity(name = "LibraryMember")
+        \@Table(name = "LIBRARYMEMBER_TABLE")
+    }
+    class Borrow {
+        @Id
+        - id: String
+        @Column
+        - borrowUser: LibraryMember
+        @Column
+        - borrowedPublication: Publication
+        @DateTimeFormat
+        - startBorrowDate: LocalDate
+        @DateTimeFormat
+        - dueBorrowDate: LocalDate
+        @DateTimeFormat
+        - returnedBorrowDate: LocalDate
+        @Enumerate
+        - borrowStatus: BorrowStatus
+    }
+    class BorrowStatus {GameStats
+        IN_PROGRESS
+        LATE
+        CLOSED
+    }
+
+</pre>
+<div id="mermaid-tooltip-5" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<section id="create-borrow-entity-and-repository" class="level3">
+<h3 class="anchored" data-anchor-id="create-borrow-entity-and-repository">Create Borrow Entity and Repository</h3>
+<p><code>Borrow</code> entities are named <code>Borrow</code> and stored in a <code>@Table</code> named <code>BORROW_TABLE</code>. The repository interface is a <code>CrudRepository</code> that will be extended with additional methods whenever required.</p>
+</section>
+<section id="create-borrow-service-and-controller" class="level3">
+<h3 class="anchored" data-anchor-id="create-borrow-service-and-controller">Create Borrow Service and Controller</h3>
+<p>The <code>BorrowController</code> has the following methods:</p>
+<ul>
+<li><code>index</code>: renders the Borrows main page</li>
+<li><code>createBorrow</code> (GET): a <code>GetMapping</code> that prepares <code>Model</code> object with the required attributes for Thymeleaf to render the Borrow creation form.
+<ul>
+<li>If the request doesn’t send a <code>LibraryMember</code> ID, then the response includes a list of <code>LibraryMember</code> objects so Thymeleaf renders a selection list</li>
+<li>If the request sends a <code>LibraryMember</code> ID, then the response sends again that ID and Thymeleaf doesn’t render a list of <code>LibraryMember</code> objects</li>
+</ul></li>
+<li><code>createBorrow</code> (POST): a <code>PostMapping</code> that takes an ID, either as a <code>PathVariable</code> or a <code>RequestParam</code>, and a list of <code>Publication</code> IDs, and creates a Borrow for each one
+<ul>
+<li>If the request doesn’t send a <code>PathVariable</code>, then the received request is from a <code>Borrow</code> form with selectable <code>LibraryMember</code>, and thus the method will redirect to the same selectable <code>LibraryMember</code> form</li>
+<li>Else, the method will redirect to the Borrow form with the same <code>PathVariable</code> ID</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="updating-a-borrow" class="level2">
+<h2 class="anchored" data-anchor-id="updating-a-borrow">Updating a <code>Borrow</code></h2>
+<p>When updating a <code>Borrow</code>, a similar form as when creating one shall appear, but this time allowing the user to modify other fields such as <code>dueBorrowDate</code>, <code>returnedBorrowDate</code> and <code>borrowStatus</code>.</p>
+</section>
+<section id="using-http-session-to-store-user-information" class="level2">
+<h2 class="anchored" data-anchor-id="using-http-session-to-store-user-information">Using HTTP session to store User information</h2>
+<p>We’ll use an HTTP session to show all borrows of a specific user. The user information will be stored in the HTTP session instead of transferred on each request-response cycle as <code>@PathVariable</code> or <code>@RequestParam</code></p>
 
 
 </section>

@@ -336,6 +336,27 @@
     "text": "Introduction\n\n\nRest API"
   },
   {
+    "objectID": "java-exercises/frameworks/spring-boot/09-http-session.html",
+    "href": "java-exercises/frameworks/spring-boot/09-http-session.html",
+    "title": "09 - HTTP sessions",
+    "section": "",
+    "text": "From Baeldung article: HTTP session (or Spring Session in Spring) has the simple goal of free up session management from the limitations of the HTTP session stored in the server.\nThe solution makes it easy to share data between services in the cloud without being tied to a single container (i.e. Tomcat). Additionally, it supports multiple sessions in the same browser and sending sessions in a header."
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/09-http-session.html#httpsession-class",
+    "href": "java-exercises/frameworks/spring-boot/09-http-session.html#httpsession-class",
+    "title": "09 - HTTP sessions",
+    "section": "HttpSession class",
+    "text": "HttpSession class\nSpring Boot automatically generates the HttpSession object when defined as a @RequestMapping method parameter. The HttpSession should be created on user log in time, and then it is available to all the app services. It basically contains the session ID and any other relevant information that are common and requried to serveral domains or services of our app."
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/09-http-session.html#httpservletrequest-class",
+    "href": "java-exercises/frameworks/spring-boot/09-http-session.html#httpservletrequest-class",
+    "title": "09 - HTTP sessions",
+    "section": "HttpServletRequest class",
+    "text": "HttpServletRequest class\nHttpServletRequest class contains all the information of the given HTTP request. Its lifetime is between a request and a response.\nSpring provides an annotation to process this information, @RequestBody."
+  },
+  {
     "objectID": "java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html",
     "href": "java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html",
     "title": "01 - Creating a Spring Boot project",
@@ -579,6 +600,27 @@
     "title": "LAB#SE03-2: Library/Book, Expand Model",
     "section": "Updating publications or library members",
     "text": "Updating publications or library members\n\n\n\n\n\n\nID is correctly transfered to the Optional<Subclass> when dealing with Publication updates\n\n\n\nThis requires further investigation because, while using a very similar form, it looks like the Parent class ID is safely transfered when recreating the object on the @Controller side. This doesn’t happen when the recreated class doesn’t inherit the ID from another class.\nAlso, this ID problem also appears on subclasses creation forms. Does it have something to do with the GET/POST or RequestMapping annotations?"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se03-2.html#creating-borrows",
+    "href": "java-exercises/Labs/java-se03-2.html#creating-borrows",
+    "title": "LAB#SE03-2: Library/Book, Expand Model",
+    "section": "Creating Borrows",
+    "text": "Creating Borrows\nThe Borrow class contains the information related to a Publication that has been borrowed by a LibraryMember. The instantiated object contains the following fields:\n\nid: the unique ID of that Borrow\nborrowUser: the user of this Borrow\nborrowedPublication: the publication borrowed\nstartBorrowDate: the date where the Borrow was created. It is automatically initialized on Borrow creation\ndueBorrowDate: the date where the Borrow should already be returned. It is automatically initialized on Borrow creation, 15 days from the startBorrowDate\nreturnedBorrowDate: the real date where the Borrow has been returned. Initialized as null on Borrow creation.\nborrowStatus: The current Borrow status, either IN_PROGRESS, LATE or CLOSED. The borrowStatus should be automatically updated depending on the dueBorrowDate and the current date (IN_PROGRESS or LATE), as well as the returnedBorrowDate (CLOSED)\n\n\n\n\n\n\nclassDiagram\n    direction LR\n    Borrow --> Publication\n    Borrow --> LibraryMember\n    Borrow --> BorrowStatus\n    %% Abstract class\n    class Publication {\n        \\@Entity(name = \"Publication\")\n        \\@Table(name = \"PUBLICATION_TABLE\")\n    }\n    class LibraryMember {\n        \\@Entity(name = \"LibraryMember\")\n        \\@Table(name = \"LIBRARYMEMBER_TABLE\")\n    }\n    class Borrow {\n        @Id\n        - id: String\n        @Column\n        - borrowUser: LibraryMember\n        @Column\n        - borrowedPublication: Publication\n        @DateTimeFormat\n        - startBorrowDate: LocalDate\n        @DateTimeFormat\n        - dueBorrowDate: LocalDate\n        @DateTimeFormat\n        - returnedBorrowDate: LocalDate\n        @Enumerate\n        - borrowStatus: BorrowStatus\n    }\n    class BorrowStatus {GameStats\n        IN_PROGRESS\n        LATE\n        CLOSED\n    }\n\n\n\n\n\n\n\n\n\n\nCreate Borrow Entity and Repository\nBorrow entities are named Borrow and stored in a @Table named BORROW_TABLE. The repository interface is a CrudRepository that will be extended with additional methods whenever required.\n\n\nCreate Borrow Service and Controller\nThe BorrowController has the following methods:\n\nindex: renders the Borrows main page\ncreateBorrow (GET): a GetMapping that prepares Model object with the required attributes for Thymeleaf to render the Borrow creation form.\n\nIf the request doesn’t send a LibraryMember ID, then the response includes a list of LibraryMember objects so Thymeleaf renders a selection list\nIf the request sends a LibraryMember ID, then the response sends again that ID and Thymeleaf doesn’t render a list of LibraryMember objects\n\ncreateBorrow (POST): a PostMapping that takes an ID, either as a PathVariable or a RequestParam, and a list of Publication IDs, and creates a Borrow for each one\n\nIf the request doesn’t send a PathVariable, then the received request is from a Borrow form with selectable LibraryMember, and thus the method will redirect to the same selectable LibraryMember form\nElse, the method will redirect to the Borrow form with the same PathVariable ID"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se03-2.html#updating-a-borrow",
+    "href": "java-exercises/Labs/java-se03-2.html#updating-a-borrow",
+    "title": "LAB#SE03-2: Library/Book, Expand Model",
+    "section": "Updating a Borrow",
+    "text": "Updating a Borrow\nWhen updating a Borrow, a similar form as when creating one shall appear, but this time allowing the user to modify other fields such as dueBorrowDate, returnedBorrowDate and borrowStatus."
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se03-2.html#using-http-session-to-store-user-information",
+    "href": "java-exercises/Labs/java-se03-2.html#using-http-session-to-store-user-information",
+    "title": "LAB#SE03-2: Library/Book, Expand Model",
+    "section": "Using HTTP session to store User information",
+    "text": "Using HTTP session to store User information\nWe’ll use an HTTP session to show all borrows of a specific user. The user information will be stored in the HTTP session instead of transferred on each request-response cycle as @PathVariable or @RequestParam"
   },
   {
     "objectID": "java-exercises/Labs/java-se01-1.html",
