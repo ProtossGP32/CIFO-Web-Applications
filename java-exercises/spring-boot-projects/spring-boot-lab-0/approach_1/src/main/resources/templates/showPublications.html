@@ -3,11 +3,14 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <!-- Remember to define absolute paths for CSS! Also, cascading priority is from top to bottom -->
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/css/tables.css" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <head>
         <meta charset="UTF-8">
         <title>Library Manager</title>
+        <!-- Import the required javascript sources -->
+        <script type="text/javascript" src="/scripts/filterTables.js"></script>
     </head>
     <body>
         <div class="w3-container w3-sand">
@@ -54,29 +57,35 @@
         <h2>Library publications</h2>
         <!-- Show results messages of any operation -->
         <p th:if="${responseMessage} != null" th:text="${responseMessage}"/>
+        <!-- Create a Publication filter field -->
+        <input type="text" id="titleInput" onkeyup="filterRows(this.id, 'publicationTable', 0)" placeholder="Search for publications...">
+        <input type="text" id="typeInput" onkeyup="filterRows(this.id, 'publicationTable', 1)" placeholder="Search for type...">
+        <input type="text" id="authorInput" onkeyup="filterRows(this.id, 'publicationTable', 2)" placeholder="Search for author...">
+        <input type="text" id="statusInput" onkeyup="filterRows(this.id, 'publicationTable', 5)" placeholder="Search for Status...">
+
         <!-- Show all Publications -->
-        <table class="w3-table-all w3-hoverable">
+        <table id="publicationTable" class="w3-table-all w3-hoverable">
             <!-- The first row is the table header-->
-            <tr>
-                <td>Publication ID</td>
-                <td>Publication type</td>
+            <tr class="header">
                 <td>Title</td>
+                <td>Publication type</td>
                 <td>Author</td>
                 <td>Publication date</td>
                 <td>Publication format</td>
                 <td>Status</td>
+                <td>Publication ID</td>
             </tr>
 
             <!-- Now we loop over all the available publications -->
             <!-- Instead of the DiscriminatorValue, we just simply print the class simple name -->
             <tr th:each="publication:${publicationsFromController}">
-                <td th:text="${publication.id}"/>
-                <td th:text="${publication.class.simpleName}"/>
                 <td th:text="${publication.title}"/>
+                <td th:text="${publication.class.simpleName}"/>
                 <td th:text="${publication.author.firstName + ' ' + publication.author.lastName}"/>
                 <td th:text="${publication.publicationDate}"/>
                 <td th:text="${publication.format}"/>
                 <td th:text="${publication.status}"/>
+                <td th:text="${publication.id}"/>
                 <!-- Create buttons to update or delete a Publication -->
                 <td> <a th:href="@{/publications/updatePublication/{id}(id = ${publication.id})}" class="w3-button w3-green">Update</a> </td>
                 <td> <a th:href="@{/publications/deletePublication/{id}(id = ${publication.id})}" class="w3-button w3-red">Delete</a> </td>
@@ -86,23 +95,27 @@
 
         <!-- Library members -->
         <h2>Library members</h2>
-        <!-- Show all Publications -->
-        <table class="w3-table-all w3-hoverable">
+        <!-- Create a User filter field -->
+        <input type="text" id="userFirstNameInput" onkeyup="filterRows(this.id, 'libraryMemberTable', 0)" placeholder="Search for first name...">
+        <input type="text" id="userLastNameInput" onkeyup="filterRows(this.id, 'libraryMemberTable', 1)" placeholder="Search for last name...">
+        <input type="text" id="userTypeInput" onkeyup="filterRows(this.id, 'libraryMemberTable', 2)" placeholder="Search for type...">
+        <!-- Show all Users -->
+        <table id="libraryMemberTable" class="w3-table-all w3-hoverable">
             <!-- The first row is the table header-->
-            <tr>
-                <td>User ID</td>
-                <td>User type</td>
+            <tr class="header">
                 <td>First name</td>
                 <td>Last name</td>
+                <td>User type</td>
+                <td>User ID</td>
             </tr>
 
             <!-- Now we loop over all the available publications -->
             <!-- Instead of the DiscriminatorValue, we just simply print the class simple name -->
             <tr th:each="libraryMember:${libraryMembersFromController}">
-                <td th:text="${libraryMember.id}"/>
-                <td th:text="${libraryMember.class.simpleName}"/>
                 <td th:text="${libraryMember.firstName}"/>
                 <td th:text="${libraryMember.lastName}"/>
+                <td th:text="${libraryMember.class.simpleName}"/>
+                <td th:text="${libraryMember.id}"/>
                 <!-- TODO: Create buttons to update or delete a user
                 <td> <a th:href="@{/libraryMember/update/{id}(id = ${libraryMember.id})}" class="w3-button w3-green">Update</a> </td>
                 <td> <a th:href="@{/libraryMember/delete/{id}(id = ${libraryMember.id})}" class="w3-button w3-red">Delete</a> </td>

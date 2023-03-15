@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <head>
     <meta charset="UTF-8">
+    <!-- Import the required javascript sources -->
+    <script type="text/javascript" src="/scripts/filterTables.js"></script>
     <title>Library borrows</title>
 </head>
 <body>
@@ -23,11 +25,15 @@
 <h2>Available borrows</h2>
 <!-- Show results messages of any operation -->
 <p th:if="${responseMessage} != null" th:text="${responseMessage}"/>
+<!-- Create a Borrows filter field -->
+<input type="text" id="userInput" onkeyup="filterRows(this.id, 'borrowsTable', 0)" placeholder="Search for user name...">
+<input type="text" id="publicationInput" onkeyup="filterRows(this.id, 'borrowsTable', 1)" placeholder="Search for publication title...">
+<input type="text" id="typeInput" onkeyup="filterRows(this.id, 'borrowsTable', 2)" placeholder="Search for publication type...">
+<input type="text" id="statusInput" onkeyup="filterRows(this.id, 'borrowsTable', 6)" placeholder="Search for borrow status...">
 <!-- Show all Borrows -->
-<table class="w3-table-all w3-hoverable">
+<table id="borrowsTable" class="w3-table-all w3-hoverable">
     <!-- The first row is the table header-->
-    <tr>
-        <td>Borrow ID</td>
+    <tr class="header">
         <td>User</td>
         <td>Publication title</td>
         <td>Publication type</td>
@@ -35,12 +41,12 @@
         <td>Due date</td>
         <td>Return date</td>
         <td>Borrow status</td>
+        <td>Borrow ID</td>
     </tr>
 
     <!-- Now we loop over all the available publications -->
     <!-- Instead of the DiscriminatorValue, we just simply print the class simple name -->
     <tr th:each="borrow:${currentBorrows}">
-        <td th:text="${borrow.id}"/>
         <td th:text="${borrow.borrowUser.firstName + ' ' + borrow.borrowUser.lastName}"/>
         <td th:text="${borrow.borrowedPublication.title}"/>
         <td th:text="${borrow.borrowedPublication.class.simpleName}"/>
@@ -48,6 +54,7 @@
         <td th:text="${borrow.dueBorrowDate}"/>
         <td th:text="${borrow.returnedBorrowDate != null ? borrow.returnedBorrowDate : ''}"/>
         <td th:text="${borrow.borrowStatus}"/>
+        <td th:text="${borrow.id}"/>
         <!-- Create buttons to update or delete a Publication -->
         <td> <a th:href="@{/borrows/update/{id}(id = ${borrow.id})}" class="w3-button w3-green">Update</a> </td>
         <td> <a th:href="@{/borrows/delete/{id}(id = ${borrow.id})}" class="w3-button w3-red">Delete</a> </td>
