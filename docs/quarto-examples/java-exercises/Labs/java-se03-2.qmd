@@ -459,3 +459,74 @@ This requires further investigation because, while using a very similar form, it
 
 Also, this ID problem also appears on subclasses creation forms. Does it have something to do with the GET/POST or RequestMapping annotations?
 :::
+
+## Creating Borrows
+The `Borrow` class contains the information related to a `Publication` that has been borrowed by a `LibraryMember`. The instantiated object contains the following fields:
+
+- `id`: the unique ID of that `Borrow`
+- `borrowUser`: the user of this `Borrow`
+- `borrowedPublication`: the publication borrowed
+- `startBorrowDate`: the date where the `Borrow` was created. It is automatically initialized on `Borrow` creation
+- `dueBorrowDate`: the date where the `Borrow` should already be returned. It is automatically initialized on `Borrow` creation, 15 days from the `startBorrowDate`
+- `returnedBorrowDate`: the real date where the `Borrow` has been returned. Initialized as `null` on `Borrow` creation.
+- `borrowStatus`: The current `Borrow` status, either `IN_PROGRESS`, `LATE` or `CLOSED`. The `borrowStatus` should be automatically updated depending on the `dueBorrowDate` and the current date (`IN_PROGRESS` or `LATE`), as well as the `returnedBorrowDate` (`CLOSED`)
+
+```{mermaid}
+classDiagram
+    direction LR
+    Borrow --> Publication
+    Borrow --> LibraryMember
+    Borrow --> BorrowStatus
+    %% Abstract class
+    class Publication {
+        \@Entity(name = "Publication")
+        \@Table(name = "PUBLICATION_TABLE")
+    }
+    class LibraryMember {
+        \@Entity(name = "LibraryMember")
+        \@Table(name = "LIBRARYMEMBER_TABLE")
+    }
+    class Borrow {
+        @Id
+        - id: String
+        @Column
+        - borrowUser: LibraryMember
+        @Column
+        - borrowedPublication: Publication
+        @DateTimeFormat
+        - startBorrowDate: LocalDate
+        @DateTimeFormat
+        - dueBorrowDate: LocalDate
+        @DateTimeFormat
+        - returnedBorrowDate: LocalDate
+        @Enumerate
+        - borrowStatus: BorrowStatus
+    }
+    class BorrowStatus {GameStats
+        IN_PROGRESS
+        LATE
+        CLOSED
+    }
+
+```
+
+### Create Borrow Entity and Repository
+`Borrow` entities are named `Borrow` and stored in a `@Table` named `BORROW_TABLE`. The repository interface is a `CrudRepository` that will be extended with additional methods whenever required.
+
+### Create Borrow Service and Controller
+The `BorrowController` has the following methods:
+
+- `index`: renders the Borrows main page
+- `createBorrow` (GET): a `GetMapping` that prepares `Model` object with the required attributes for Thymeleaf to render the Borrow creation form.
+    - If the request doesn't send a `LibraryMember` ID, then the response includes a list of `LibraryMember` objects so Thymeleaf renders a selection list
+    - If the request sends a `LibraryMember` ID, then the response sends again that ID and Thymeleaf doesn't render a list of `LibraryMember` objects
+- `createBorrow` (POST): a `PostMapping` that takes an ID, either as a `PathVariable` or a `RequestParam`, and a list of `Publication` IDs, and creates a Borrow for each one
+    - If the request doesn't send a `PathVariable`, then the received request is from a `Borrow` form with selectable `LibraryMember`, and thus the method will redirect to the same selectable `LibraryMember` form
+    - Else, the method will redirect to the Borrow form with the same `PathVariable` ID
+
+## Updating a `Borrow`
+
+When updating a `Borrow`, a similar form as when creating one shall appear, but this time allowing the user to modify other fields such as `dueBorrowDate`, `returnedBorrowDate` and `borrowStatus`.
+
+## Using HTTP session to store User information
+We'll use an HTTP session to show all borrows of a specific user. The user information will be stored in the HTTP session instead of transferred on each request-response cycle as `@PathVariable` or `@RequestParam`

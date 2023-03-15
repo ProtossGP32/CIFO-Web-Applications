@@ -1,0 +1,21 @@
+---
+title: "09 - HTTP sessions"
+author: ProtossGP32
+categories: [springboot, HTTP session]
+description: "Keep track of the user session when changing domains"
+date: 2023/03/08
+---
+# Introduction
+[_From Baeldung article:_](https://www.baeldung.com/spring-session)
+HTTP session (or _Spring Session_ in Spring) has the simple goal of free up session management from the limitations of the HTTP session stored in the server.
+
+The solution makes it easy to share data between services in the cloud without being tied to a single container (i.e. Tomcat). Additionally, **it supports multiple sessions in the same browser and sending sessions in a header**.
+
+# Available Session classes
+## `HttpSession` class
+Spring Boot automatically generates the `HttpSession` object when defined as a `@RequestMapping` method parameter. The `HttpSession` should be created on user log in time, and then it is available to all the app services. It basically contains the session ID and any other relevant information that are common and requried to serveral domains or services of our app.
+
+## `HttpServletRequest` class
+`HttpServletRequest` class contains all the information of the given HTTP request. Its lifetime is between a request and a response.
+
+Spring provides an annotation to process this information, `@RequestBody`.
