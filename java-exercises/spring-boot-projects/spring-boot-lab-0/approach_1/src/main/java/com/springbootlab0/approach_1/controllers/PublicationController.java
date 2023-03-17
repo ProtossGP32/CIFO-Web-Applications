@@ -2,6 +2,7 @@ package com.springbootlab0.approach_1.controllers;
 
 import com.springbootlab0.approach_1.domain.*;
 import com.springbootlab0.approach_1.services.AuthorService;
+import com.springbootlab0.approach_1.services.DemoService;
 import com.springbootlab0.approach_1.services.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,16 @@ public class PublicationController {
     @Autowired
     AuthorService authorService;
 
+    @Autowired
+    DemoService demoService;
+
     @RequestMapping(value = {"/", ""})
-    public String index() {
+    public String index(Model containerToView) {
+        // Compose the container with all the information that the publicationsIndex.html
+        // requires on render time
+        // 1. Retrieve all publications
+        containerToView.addAttribute("publicationsFromController",
+                publicationService.getAllPublications());
         return "/publications/publicationsIndex";
     }
 
@@ -145,7 +154,7 @@ public class PublicationController {
         if (publicationToDelete.isPresent()) {
             publicationService.deletePublicationById(id);
             redirectAttrs.addFlashAttribute("responseMessage", "Publication " + publicationToDelete.get().getTitle() + " deleted");
-            return "redirect:/library/publications";
+            return "redirect:/publications";
         }
         else return "notFound";
     }
@@ -168,5 +177,19 @@ public class PublicationController {
             containerToView.addAttribute("responseMessage", "Author " + newAuthor.getFirstName() + " " + newAuthor.getLastName() + " saved!");
         }
         return "publications/authorForm";
+    }
+
+
+    /**
+     * Demo purposes: Create the number of expected publications
+     * and insert them into the DB
+     */
+    @RequestMapping(value = "/createFakePublications")
+    public String createFakePublications(@RequestParam("qtyPublications") int qty, RedirectAttributes redirectAttributes) {
+        // Call the faker generator
+        demoService.createFakePublications(qty);
+        redirectAttributes.addFlashAttribute("responseMessage", "Added 10 new Publications");
+        // Redirect to the Publications page
+        return "redirect:/publications";
     }
 }

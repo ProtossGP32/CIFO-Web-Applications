@@ -3,9 +3,11 @@ package com.springbootlab0.approach_1.services;
 import com.springbootlab0.approach_1.domain.Borrow;
 import com.springbootlab0.approach_1.domain.LibraryMember;
 import com.springbootlab0.approach_1.domain.Publication;
+import com.springbootlab0.approach_1.domain.Status;
 import com.springbootlab0.approach_1.repository.BorrowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,23 @@ public class BorrowService {
     PublicationService publicationService;
 
     // CRUD
+    // - Get all borrows
+    /**
+     * Return all borrows from the database
+     * @return all borrows as an Iterable
+     */
+    public Iterable<Borrow> getAllBorrows() {
+        return borrowRepository.findAll();
+    }
+
+    // - Get a borrow by its ID
+    public Borrow getBorrowById(String id) {
+        if (borrowRepository.existsById(id)) {
+            return borrowRepository.findById(id).get();
+        }
+        return null;
+    }
+
     // - Create a borrow or multiple borrows at once
     /**
      * Create a user's borrow with the given publication
@@ -63,12 +82,20 @@ public class BorrowService {
         // Return the list of created borrows
         return createdBorrows;
     }
-    /**
-     * Return all borrows from the database
-     * @return all borrows as an Iterable
-     */
-    public Iterable<Borrow> getAllBorrows() {
-        return borrowRepository.findAll();
+
+    public boolean deleteBorrowByID(String borrowId) {
+        // TODO: change the Publication status to available again
+        if (borrowRepository.existsById(borrowId)) {
+            Borrow borrowToDelete = borrowRepository.findById(borrowId).get();
+            // Change the Publication status
+            Publication publication = borrowToDelete.getBorrowedPublication();
+            publication.setStatus(Status.AVAILABLE);
+            // Delete the borrow
+            borrowRepository.deleteById(borrowId);
+            return true;
+
+        }
+        return false;
     }
 
 }

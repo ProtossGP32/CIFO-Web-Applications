@@ -5,22 +5,74 @@
 <link rel="stylesheet" href="/css/styles.css" type="text/css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <head>
+  <meta charset="UTF-8">
   <title>Publications Management</title>
+  <!-- Import the required javascript sources -->
+  <script type="text/javascript" src="/scripts/filterTables.js"></script>
 </head>
 <body>
+<!-- Fake data creation -->
+<div>
+  <p>
+    <!-- Create a button to populate the Publications database -->
+    <a th:href="@{/publications/createFakePublications(qtyPublications=10)}" class="w3-button w3-cyan">Create 10 fake publications on H2</a>
+  </p>
+</div>
+
 <!-- Forms buttons -->
 <div>
-  <!-- Create a button to go to the Publication List page -->
-  <p><a th:href="@{/library/publications}" class="w3-button w3-green">Show all publications</a></p>
+  <p>
+    <!-- Create a button to go to the Publication Form creation -->
+    <a th:href="@{/publications/publicationForm}" class="w3-button w3-green">Add a new publication</a>
+    <!-- Create a button to go to the Author Form creation -->
+    <a th:href="@{/publications/authorForm}" class="w3-button w3-green">Add a new author</a>
+  </p>
 </div>
+
 <div>
-  <!-- Create a button to go to the Publication Form creation -->
-  <p><a th:href="@{/publications/publicationForm}" class="w3-button w3-green">Add a new publication</a></p>
+  <!-- Create a button to go to the Main Menu page -->
+  <p><a th:href="@{/library/main}" class="w3-button w3-red">Return to main menu</a></p>
 </div>
-<div>
-  <!-- Create a button to go to the Author Form creation -->
-  <p><a th:href="@{/publications/authorForm}" class="w3-button w3-green">Add a new author</a></p>
-</div>
+<br>
+
+<!-- Library publications -->
+<h2>Library publications</h2>
+<!-- Show results messages of any operation -->
+<p th:if="${responseMessage} != null" th:text="${responseMessage}"/>
+<!-- Create a Publication filter field -->
+<input type="text" id="titleInput" onkeyup="filterRows(this.id, 'publicationTable', 0)" placeholder="Search for publications...">
+<input type="text" id="typeInput" onkeyup="filterRows(this.id, 'publicationTable', 1)" placeholder="Search for type...">
+<input type="text" id="authorInput" onkeyup="filterRows(this.id, 'publicationTable', 2)" placeholder="Search for author...">
+<input type="text" id="statusInput" onkeyup="filterRows(this.id, 'publicationTable', 5)" placeholder="Search for Status...">
+
+<!-- Show all Publications -->
+<table id="publicationTable" class="w3-table-all w3-hoverable">
+  <!-- The first row is the table header-->
+  <tr class="header">
+    <td>Title</td>
+    <td>Publication type</td>
+    <td>Author</td>
+    <td>Publication date</td>
+    <td>Publication format</td>
+    <td>Status</td>
+    <td>Publication ID</td>
+  </tr>
+
+  <!-- Now we loop over all the available publications -->
+  <!-- Instead of the DiscriminatorValue, we just simply print the class simple name -->
+  <tr th:each="publication:${publicationsFromController}">
+    <td th:text="${publication.title}"/>
+    <td th:text="${publication.class.simpleName}"/>
+    <td th:text="${publication.author.firstName + ' ' + publication.author.lastName}"/>
+    <td th:text="${publication.publicationDate}"/>
+    <td th:text="${publication.format}"/>
+    <td th:text="${publication.status}"/>
+    <td th:text="${publication.id}"/>
+    <!-- Create buttons to update or delete a Publication -->
+    <td> <a th:href="@{/publications/updatePublication/{id}(id = ${publication.id})}" class="w3-button w3-green">Update</a> </td>
+    <td> <a th:href="@{/publications/deletePublication/{id}(id = ${publication.id})}" class="w3-button w3-red">Delete</a> </td>
+  </tr>
+</table>
 <br>
 </body>
 </html>

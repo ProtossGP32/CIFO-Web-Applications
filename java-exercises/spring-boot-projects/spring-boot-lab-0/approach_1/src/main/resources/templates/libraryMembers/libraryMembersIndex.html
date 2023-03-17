@@ -6,8 +6,17 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <head>
         <title>Library Members Management</title>
+        <!-- Import the required javascript sources -->
+        <script type="text/javascript" src="/scripts/filterTables.js"></script>
     </head>
     <body>
+        <!-- Fake creation database -->
+        <div>
+            <p>
+                <!-- Create a button to populate the LibraryMember database -->
+                <a th:href="@{/libraryMembers/createFakeLibraryMembers(qtyMembers=10)}" class="w3-button w3-cyan">Create 10 fake library members on H2</a>
+            </p>
+        </div>
         <!-- Forms buttons -->
         <div>
             <!-- Create a button to go to the User Form creation -->
@@ -16,6 +25,89 @@
         <div>
             <!-- Create a button to go to the Member Form creation -->
             <p><a th:href="@{/libraryMembers/memberForm}" class="w3-button w3-green">Create a new member</a></p>
+        </div>
+        <!-- Create a button to return to the Main menu -->
+        <div>
+            <p>
+                <a th:href="@{/library/main}" class="w3-button w3-red">Return to main menu</a>
+            </p>
+        </div>
+        <br>
+
+        <!-- Library members -->
+        <h2>Library members</h2>
+        <!-- Show results messages of any operation -->
+        <p th:if="${responseMessage} != null" th:text="${responseMessage}"/>
+        <!-- Create a User filter field -->
+        <input type="text" id="userFirstNameInput" onkeyup="filterRows(this.id, 'libraryMemberTable', 0)" placeholder="Search for first name...">
+        <input type="text" id="userLastNameInput" onkeyup="filterRows(this.id, 'libraryMemberTable', 1)" placeholder="Search for last name...">
+        <input type="text" id="userTypeInput" onkeyup="filterRows(this.id, 'libraryMemberTable', 2)" placeholder="Search for type...">
+        <!-- Show all Users -->
+        <table id="libraryMemberTable" class="w3-table-all w3-hoverable">
+            <!-- The first row is the table header-->
+            <tr class="header">
+                <td>First name</td>
+                <td>Last name</td>
+                <td>User type</td>
+                <td>User ID</td>
+            </tr>
+
+            <!-- Now we loop over all the available publications -->
+            <!-- Instead of the DiscriminatorValue, we just simply print the class simple name -->
+            <tr th:each="libraryMember:${libraryMembersFromController}">
+                <td th:text="${libraryMember.firstName}"/>
+                <td th:text="${libraryMember.lastName}"/>
+                <td th:text="${libraryMember.class.simpleName}"/>
+                <td th:text="${libraryMember.id}"/>
+                <!-- TODO: Create buttons to update or delete a user
+                <td> <a th:href="@{/libraryMember/update/{id}(id = ${libraryMember.id})}" class="w3-button w3-green">Update</a> </td>
+                <td> <a th:href="@{/libraryMember/delete/{id}(id = ${libraryMember.id})}" class="w3-button w3-red">Delete</a> </td>
+                -->
+                <!-- Create a borrow -->
+                <td> <a th:href="@{/borrows/create/{id}(id = ${libraryMember.id})}" class="w3-button w3-red">Create a borrow</a> </td>
+            </tr>
+        </table>
+        <br>
+
+        <!-- Library Members flip-cards -->
+        <div class="header">
+            <h2>Library Members flip-cards</h2>
+        </div>
+        <div class="flip-card standalone" th:each="libraryMember, idx:${libraryMembersFromController}">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+                </div>
+                <div class="flip-card-back">
+                    <h1 th:text="${libraryMember.firstName + ' ' + libraryMember.lastName}"/>
+                    <h2 th:text="${libraryMember.class.simpleName}"/>
+                    <p th:text="${libraryMember.address}"/>
+                    <p th:text="${libraryMember.phoneNumber}"/>
+                    <p th:if="${libraryMember.class.simpleName == 'User'}" th:text="${libraryMember.mail}"/>
+                    <p th:text="${idx.index}"/>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- Only Users flip-cards -->
+        <div class="header">
+            <h2>Only users flip-cards</h2>
+        </div>
+        <div class="flip-card standalone" th:each="user, idx:${usersFromController}">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+                </div>
+                <div class="flip-card-back">
+                    <h1 th:text="${user.firstName + ' ' + user.lastName}"/>
+                    <h2 th:text="${user.class.simpleName}"/>
+                    <p th:text="${user.address}"/>
+                    <p th:text="${user.phoneNumber}"/>
+                    <p th:text="${user.mail}"/>
+                    <p th:text="${idx.index}"/>
+                </div>
+            </div>
         </div>
         <br>
     </body>

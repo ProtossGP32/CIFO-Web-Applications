@@ -22,7 +22,7 @@ public class BorrowController {
     BorrowService borrowService;
 
 
-    @GetMapping("/")
+    @GetMapping({"/",""})
     public String index(Model containerToView) {
         // Retrieve all borrows:
         containerToView.addAttribute("currentBorrows", borrowService.getAllBorrows());
@@ -81,5 +81,15 @@ public class BorrowController {
 
         // Redirect with the userId to continue creating borrows for that user
         return "redirect:/borrows/create/" + userId;
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteBorrow(@PathVariable(value = "id") String borrowId, RedirectAttributes redirectAttributes) {
+        if (borrowService.deleteBorrowByID(borrowId)) {
+            redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " deleted!");
+        } else {
+            redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " not found!");
+        }
+        return "redirect:/borrows";
     }
 }

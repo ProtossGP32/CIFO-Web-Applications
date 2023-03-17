@@ -21,31 +21,24 @@ public class LibraryWebController {
     @Autowired
     LibraryMemberService libraryMemberService;
 
-    // Demo service - Only for demo purposes!
-    @Autowired
-    DemoService demoService;
-
     @RequestMapping(value = {"", "/", "/index"})
     public String index() {
         return "index";
     }
 
-    @RequestMapping(value = "/publications")
+    @RequestMapping(value = "/main")
     public String getPublicationsWeb(Model containerToView) {
-        // Compose the container with all the information that the showPublications.html
+        // Compose the container with all the information that the mainMenu.html
         // requires on render time
-        // 1. Retrieve all publications
-        containerToView.addAttribute("publicationsFromController",
-                publicationService.getAllPublications());
-        // 2. Retrieve all library members
+        // 1. Retrieve all library members
         containerToView.addAttribute("libraryMembersFromController",
                 libraryMemberService.getAllLibraryMembers());
 
-        // 3. For testing purposes, retrieve only Users from Library Members
+        // 2. For testing purposes, retrieve only Users from Library Members
         containerToView.addAttribute("usersFromController",
                 libraryMemberService.getAllUsers());
 
-        return "showPublications";
+        return "mainMenu";
     }
 
     // Clear databases methods
@@ -54,7 +47,7 @@ public class LibraryWebController {
         // Clear all the H2 Publications DB
         publicationService.deleteAll();
         // Redirect to the Publications page
-        return "redirect:publications";
+        return "redirect:main";
     }
 
     @RequestMapping(value = "/clearAuthors")
@@ -62,7 +55,7 @@ public class LibraryWebController {
         // Clear all the H2 Authors DB
         authorService.deleteAll();
         // Redirect to the Publications page
-        return "redirect:publications";
+        return "redirect:main";
     }
 
     @RequestMapping(value = "/clearLibraryMembers")
@@ -70,7 +63,7 @@ public class LibraryWebController {
         // Clear all the H2 LibraryMember DB
         libraryMemberService.deleteAll();
         // Redirect to the Publications page
-        return "redirect:publications";
+        return "redirect:main";
     }
 
     /**
@@ -80,29 +73,5 @@ public class LibraryWebController {
     @RequestMapping(value = "/libraryMemberManagement")
     public String goToLibraryMemberManagement() {
         return "redirect:/libraryMembers/";
-    }
-
-    /**
-     * Demo purposes: Create the number of expected publications
-     * and insert them into the DB
-     */
-    @RequestMapping(value = "/createFakePublications")
-    public String createFakePublications(@RequestParam("qtyPublications") int qty) {
-        // Call the faker generator
-        demoService.createFakePublications(qty);
-        // Redirect to the Publications page
-        return "redirect:publications";
-    }
-
-    /**
-     * Demo purposes: Create the number of expected Library Members
-     * and insert them into the DB
-     */
-    @RequestMapping(value = "/createFakeLibraryMembers")
-    public String createFakeLibraryMembers(@RequestParam("qtyMembers") int qty) {
-        // Call the faker generator
-        demoService.createFakeLibraryMembers(qty);
-        // Redirect to the Publications page
-        return "redirect:publications";
     }
 }
