@@ -1,0 +1,46 @@
+---
+title: "01 - Week XX"
+description: "Template"
+categories: ["Time management"]
+author: ProtossGP32
+date: 2023/03/20
+from: markdown+emoji
+---
+# Introduction
+
+## RoadMap: Define what you want, know your energy and yourself
+
+## TO-DO: list all the tasks that you have to do by concepts, technologies, tools, etc...
+Weight the tasks using tools like Poker Planning
+
+## Spring goal: categorize and filter them by importance and urgency based on your roadmap
+
+## Decision-making: plan your week
+Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week:
+
+- Week 1:
+
+| WEEK 1      	| M                          	| T 	                    | W 	                    | T 	                    | F 	|
+|-----------	|---                           	|---	                    |---	                    |---	                    |---	|
+| Morning   	| Weekly planning     	        | Weekly Scrum  	        | Document class exercises  | Document Team Project  	| TBD  	|
+| Afternoon 	| Review Team project status  	| Practise class exercises  | Work on Team project    	| Practice class exercises  | TBD  	|
+| Evening   	| Complete some GitHub tasks  	| Study DevOps tools      	| Complete some GitHub tasks| Study DevOps tools  	    | Weekly retrospective  	|
+
+## Ultimate goal: metrics
+Make a retrospective of the previous week, analyse the results of the planning and take action.
+
+### Completed tasks
+Think about the complexity of the completed tasks and if they matched the expectatives:
+
+- If the task was easier than you thought, move it to lower energies spaces
+- If the task was harder than you though, think about spitting it into less complex tasks
+
+### Unfinished tasks
+Think about the reasons why these tasks aren't done:
+
+- Did you lack some kind of resource (knowledge, tools, etc...) to even start it?
+- Did you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task
+- Is this task something that you've been dragging along for some time? Is it really necessary?
+
+## Retrospective
+Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week

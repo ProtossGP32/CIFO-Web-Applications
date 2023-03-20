@@ -1,0 +1,63 @@
+---
+title: "00 - Mind Management and Getting Thinds Done"
+description: "Tips to get the best out of your time"
+categories: ["Mind management", "Time management"]
+author: ProtossGP32
+date: 2023/03/20
+from: markdown+emoji
+---
+# Introduction
+
+# Steps
+## Define your goal
+- Where do you want to focus your attention?
+- Where do you have your open-loops?
+- What do you need to practice? Decision-making to be able to adapt to changes (SCRUM)
+    - Eisenhower Matrix: define your tasks based on its urgency and its importance. Combine it with your energy management to decide when to execute them
+    ![](https://images.ctfassets.net/dm4oa8qtogq0/6Z0iRvBwjXMLrd28BUzTW4/a3b7838c90a65b26a2edb6814e7430dd/eisenhower-matrix.png?fm=webp)
+    - Decision-making: if tasks can be done in less than 10 minutes, do them! Else, put them on the backlog
+- Fight the FUD (Fear, Uncertainty, and Doubt) and also Anxiety. This can be fought by closing commitments, gaining the sense of accomplishment, even with the smallest tasks
+- Don't forget to rest and feed your soul
+- Create a good inertia law
+
+## Understand your available tools
+- When do you think a task is DONE?
+- What tasks are you DOING?
+- How many TASKS can you manage at the same time?
+- How much ENERGY do you have to accomplish these TASKS?
+
+## Reach your ultimate goal
+- Create metrics to understand the real problems and analyse them
+- Review the status of your tasks and iterate over your planning based on these metrics
+
+## Plan your week
+Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week.
+
+Use your decision-making tools (Eisenhower Matrix, your own roadmap, your capabilities...) to filter tasks to do and organize them into the planning table:
+
+- Example:
+
+| WEEK 1      	| M                          	| T 	                    | W 	                    | T 	                    | F 	|
+|-----------	|---                           	|---	                    |---	                    |---	                    |---	|
+| Morning   	| Review GitHub tasks  	        | Weekly Scrum  	        | Document class exercises  | Document Team Project  	|   	|
+| Afternoon 	| Review Team project status  	| Practise class exercises  | Work on Team project    	| Practice class exercises  |   	|
+| Evening   	| Complete some GitHub tasks  	| Study DevOps tools      	| Complete some GitHub tasks| Study DevOps tools  	    | Document weekly progress  	|
+
+## Ultimate goal: metrics
+Make a retrospective of the previous week, analyse the results of the planning and take action.
+
+### Completed tasks
+Think about the complexity of the completed tasks and if they matched the expectatives:
+
+- If the task was easier than you thought, move it to lower energies spaces
+- If the task was harder than you though, think about spitting it into less complex tasks
+
+### Unfinished tasks
+Think about the reasons why these tasks aren't done:
+
+- Did you lack some kind of resource (knowledge, tools, etc...) to even start it?
+- Did you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task
+- Is this task something that you've been dragging along for some time? Is it really necessary?
+
+## Retrospective
+Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week
