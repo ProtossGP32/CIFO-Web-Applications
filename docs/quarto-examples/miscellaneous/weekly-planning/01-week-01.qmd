@@ -102,7 +102,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 1      	| MONDAY (W16)                 	        | TUESDAY (W29)                         | WEDNESDAY (W24)                       | THURSDAY (W34)                            | FRIDAY (W34)                     	|
 |-----------	|---                           	        |---	                                |---	                                |---	                                    |---	|
-| Morning   	| CP: Review GitHub issues (W3)         | TP: Do a weekly scrum	(W8)            | CP: Update Quarto docs (W3)           | TP: Update OpenProject tasks (W8)         | CI/CD: Learn GitHub Actions (W13)  	|
+| Morning   	| ~~CP: Review GitHub issues (W3)~~         | TP: Do a weekly scrum	(W8)            | CP: Update Quarto docs (W3)           | TP: Update OpenProject tasks (W8)         | CI/CD: Learn GitHub Actions (W13)  	|
 | Afternoon 	| TP: Review Team project status (W5)   | CP: Create Library REST API (W8)      | TP: Finish User Entity (W13)          | CP: Migrate H2 to another database (W13)  | DOL: Install a SMTP server (W13)   	|
 | Evening   	| CP: Finish Borrow Entity (W8)        	| DOL: Learn about observability (W13)  | CP: Create Library REST client (W8)   | TP: Finish Vertical Slicing designs (W13) | PMS: Weekly retrospective (W8)  	|
 
