@@ -1,14 +1,12 @@
 package com.springbootlab0.approach_1.services;
 
-import com.springbootlab0.approach_1.domain.Borrow;
-import com.springbootlab0.approach_1.domain.LibraryMember;
-import com.springbootlab0.approach_1.domain.Publication;
-import com.springbootlab0.approach_1.domain.Status;
+import com.springbootlab0.approach_1.domain.*;
 import com.springbootlab0.approach_1.repository.BorrowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -93,9 +91,33 @@ public class BorrowService {
             // Delete the borrow
             borrowRepository.deleteById(borrowId);
             return true;
-
         }
         return false;
     }
 
+    public boolean updateBorrow(Borrow borrowToUpdate) {
+        if (borrowRepository.existsById(borrowToUpdate.getId())) {
+            Borrow borrowFromDB = borrowRepository.findById(borrowToUpdate.getId()).get();
+            // Check if borrow status has changed
+            if (!borrowToUpdate.getBorrowStatus().equals(borrowFromDB.getBorrowStatus())) {
+                // Check if Borrow has been closed
+                switch (borrowToUpdate.getBorrowStatus()) {
+                    case CLOSED -> {
+                        // Set the Publication status to available
+                        borrowToUpdate.getBorrowedPublication().setStatus(Status.AVAILABLE);
+                        // Set the return date to the current date
+                        borrowToUpdate.setReturnedBorrowDate(LocalDate.now());
+                    }
+                    case LATE -> {
+                        // TODO: define what to do when it is LATE
+                    }
+                    case IN_PROGRESS -> {
+                        // TODO: define the case scenarios where a borrow changes to IN_PROGRESS again
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 }

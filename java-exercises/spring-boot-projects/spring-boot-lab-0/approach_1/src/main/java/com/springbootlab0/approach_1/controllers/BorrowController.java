@@ -1,5 +1,6 @@
 package com.springbootlab0.approach_1.controllers;
 
+import com.springbootlab0.approach_1.domain.Borrow;
 import com.springbootlab0.approach_1.services.BorrowService;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
 import com.springbootlab0.approach_1.services.PublicationService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/borrows")
@@ -48,7 +50,7 @@ public class BorrowController {
             return "borrows/borrowForm";
         } else {
             redirectAttributes.addFlashAttribute("responseMessage", "User ID " + userId + " not found in database!");
-            return "redirect:/library/publications";
+            return "redirect:/borrows/";
         }
     }
 
@@ -81,6 +83,25 @@ public class BorrowController {
 
         // Redirect with the userId to continue creating borrows for that user
         return "redirect:/borrows/create/" + userId;
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateBorrow(@PathVariable("id") String borrowId, Model containerToView, RedirectAttributes redirectAttributes) {
+        Borrow borrowToUpdate = borrowService.getBorrowById(borrowId);
+        if (borrowToUpdate != null) {
+            containerToView.addAttribute("borrowToUpdate", borrowToUpdate);
+            return "borrows/updateBorrowForm";
+        }
+        // If borrowId is not found, redirect to the borrows main page
+        redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " not found!");
+        return "redirect:/borrows";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateBorrow(@PathVariable("id") String borrowId, @RequestParam("borrowToUpdate") Borrow borrowToUpdate, RedirectAttributes redirectAttributes) {
+        if (borrowService.updateBorrow(borrowToUpdate)) {
+            // TODO: complete the method
+        }
     }
 
     @GetMapping("/delete/{id}")
