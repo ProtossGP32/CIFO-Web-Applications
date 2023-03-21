@@ -1445,12 +1445,26 @@ ID is correctly transfered to the <code>Optional&lt;Subclass&gt;</code> when dea
 <li>If the request doesn’t send a <code>PathVariable</code>, then the received request is from a <code>Borrow</code> form with selectable <code>LibraryMember</code>, and thus the method will redirect to the same selectable <code>LibraryMember</code> form</li>
 <li>Else, the method will redirect to the Borrow form with the same <code>PathVariable</code> ID</li>
 </ul></li>
+<li><code>updateBorrow</code> (GET): a <code>GetMapping</code> that retrieves the <code>Borrow</code> object that matches the retrieved <code>id</code> by <code>PathVariable</code> and inserts it into the <code>Model</code> object for Thymeleaf to render.</li>
+<li><code>updateBorrow</code> (POST): a <code>PostMapping</code> that takes an ID as a <code>PathVariable</code> and an <code>Optional&lt;Borrow&gt;</code> object and proceeds to update it in the DataBase, if it exists.</li>
+<li><code>deleteBorrow</code> (GET): a <code>GetMapping</code> that takes an ID as a <code>PathVariable</code> and deletes its corresponding <code>Borrow</code> from the database if it exists.</li>
+</ul>
+<p>The <code>BorrowService</code> has the following methods:</p>
+<ul>
+<li><code>getBorrowById</code>: return a <code>Borrow</code> if the provided ID exists in the database</li>
+<li><code>createBorrow</code>: insert a <code>Borrow</code> in the database if its ID doesn’t exist in the database</li>
+<li><code>createMultipleBorrows</code>: given a <code>User</code> ID and a list of <code>Publication</code> IDs, create and save into the database a <code>Borrow</code> for each <code>Publication</code> assigned to that <code>User</code> and return the list of created <code>Borrows</code></li>
+<li><code>deleteBorrowById</code>: delete a <code>Borrow</code> from the database if the provided ID exists. When deleting the <code>Borrow</code>, its <code>Publication</code> status is set to <code>AVAILABLE</code></li>
+<li><code>updateBorrow</code>: update a <code>Borrow</code> in the database with the updated information from the client request.
+<ul>
+<li>Only <code>borrowStatus</code> should be available for update.</li>
+</ul></li>
 </ul>
 </section>
 </section>
 <section id="updating-a-borrow" class="level2">
 <h2 class="anchored" data-anchor-id="updating-a-borrow">Updating a <code>Borrow</code></h2>
-<p>When updating a <code>Borrow</code>, a similar form as when creating one shall appear, but this time allowing the user to modify other fields such as <code>dueBorrowDate</code>, <code>returnedBorrowDate</code> and <code>borrowStatus</code>.</p>
+<p>When updating a <code>Borrow</code>, a similar form as when creating one shall appear, but only Borrow status should be updatable at the moment (there’s no reason to change neither the borrow user nor the borrowed publication, as well as the borrow dates, which should be automatically updated based on the Borrow status). - If <code>Borrow.borrowStatus</code> is set to <code>IN_PROGRESS</code> and previous value was different, then the <code>dueBorrowDate</code> is set to 15 days from the current time - If <code>Borrow.borrowStatus</code> is set to <code>CLOSED</code> and previous value was different, then the <code>returnedBorrowDate</code> is set to the current time</p>
 </section>
 <section id="using-http-session-to-store-user-information" class="level2">
 <h2 class="anchored" data-anchor-id="using-http-session-to-store-user-information">Using HTTP session to store User information</h2>
