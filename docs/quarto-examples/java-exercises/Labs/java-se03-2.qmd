@@ -523,10 +523,25 @@ The `BorrowController` has the following methods:
 - `createBorrow` (POST): a `PostMapping` that takes an ID, either as a `PathVariable` or a `RequestParam`, and a list of `Publication` IDs, and creates a Borrow for each one
     - If the request doesn't send a `PathVariable`, then the received request is from a `Borrow` form with selectable `LibraryMember`, and thus the method will redirect to the same selectable `LibraryMember` form
     - Else, the method will redirect to the Borrow form with the same `PathVariable` ID
+- `updateBorrow` (GET): a `GetMapping` that retrieves the `Borrow` object that matches the retrieved `id` by `PathVariable` and inserts it into the `Model` object for Thymeleaf to render.
+- `updateBorrow` (POST): a `PostMapping` that takes an ID as a `PathVariable` and an `Optional<Borrow>` object and proceeds to update it in the DataBase, if it exists.
+- `deleteBorrow` (GET): a `GetMapping` that takes an ID as a `PathVariable` and deletes its corresponding `Borrow` from the database if it exists.
+
+The `BorrowService` has the following methods:
+
+- `getBorrowById`: return a `Borrow` if the provided ID exists in the database
+- `createBorrow`: insert a `Borrow` in the database if its ID doesn't exist in the database
+- `createMultipleBorrows`: given a `User` ID and a list of `Publication` IDs, create and save into the database a `Borrow` for each `Publication` assigned to that `User` and return the list of created `Borrows`
+- `deleteBorrowById`: delete a `Borrow` from the database if the provided ID exists. When deleting the `Borrow`, its `Publication` status is set to `AVAILABLE`
+- `updateBorrow`: update a `Borrow` in the database with the updated information from the client request.
+    - Only `borrowStatus` should be available for update.
 
 ## Updating a `Borrow`
 
-When updating a `Borrow`, a similar form as when creating one shall appear, but this time allowing the user to modify other fields such as `dueBorrowDate`, `returnedBorrowDate` and `borrowStatus`.
+When updating a `Borrow`, a similar form as when creating one shall appear, but only Borrow status should be updatable at the moment (there's no reason to change neither the borrow user nor the borrowed publication, as well as the borrow dates, which should be automatically updated based on the Borrow status).
+    - If `Borrow.borrowStatus` is set to `IN_PROGRESS` and previous value was different, then the `dueBorrowDate` is set to 15 days from the current time
+    - If `Borrow.borrowStatus` is set to `CLOSED` and previous value was different, then the `returnedBorrowDate` is set to the current time
+
 
 ## Using HTTP session to store User information
 We'll use an HTTP session to show all borrows of a specific user. The user information will be stored in the HTTP session instead of transferred on each request-response cycle as `@PathVariable` or `@RequestParam`

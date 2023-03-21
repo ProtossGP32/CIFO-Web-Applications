@@ -28,6 +28,7 @@ Things to accomplish:
 | CATEGORY  | TASK                              | WEIGHT    |
 |---        | ---                               | ---:      |
 | CP        | Finish Borrow Entity              | 8         |
+| CP        | Add HTTP session login            | 8         |
 | CP        | Create Library REST API           | 8         |
 | CP        | Create Library REST client        | 5         |
 | CP        | Unify User HTML forms             | 5         |
@@ -68,6 +69,7 @@ Things to accomplish:
 
 - Important but not urgent (16):
     - CP: Create missing Unit Tests (W8)
+    - CP: Add HTTP Session login (W8)
     - CP: Unify User HTML forms (W5)
     - CP: Unify Publications creation (W8)
     - CP: Review GitHub issues (W3)
@@ -124,6 +126,10 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 - If the task was easier than you thought, move it to lower energies spaces
 - If the task was harder than you though, think about spitting it into less complex tasks
+
+Completed tasks:
+
+- CP: Review GitHub issues (W3)
 
 ### Unfinished tasks
 Think about the reasons why these tasks aren't done:
