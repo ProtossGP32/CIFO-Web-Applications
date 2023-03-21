@@ -11,6 +11,54 @@
 <ul>
     <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
 </ul>
-
+<h1>Update borrow</h1>
+<div class="w3-card-40" style="width:50%">
+    <header class="w3-container w3-light-grey">
+        <p>Update borrow</p>
+    </header>
+    <div>
+        <form th:action="@{/borrows/update/{id}(id = ${borrowToUpdate.id})}" th:object="${borrowToUpdate}" method="post">
+            <p>
+                <label for="borrowId" th:text="|Borrow ID: *{id}|" />
+                <input th:field="*{id}" type="hidden" name="borrowId" class="w3-input" id="borrowId" />
+            </p>
+            <p>
+                <label for="borrowUser" th:text="|Borrow user: ${borrowToUpdate.borrowUser.firstName} ${borrowToUpdate.borrowUser.lastName}|" />
+                <input th:field="*{borrowUser}" type="hidden" th:value="*{borrowUser}" class="w3-input" id="borrowUser" />
+            </p>
+            <p>
+                <label for="borrowedPublication" th:text="|Borrowed publication: ${borrowToUpdate.borrowedPublication.title}|" />
+                <input th:field="*{borrowedPublication}" type="hidden" th:value="*{borrowedPublication}" class="w3-input" id="borrowedPublication" />
+            </p>
+            <p>
+                <label for="startBorrowDate" th:text="|Start Borrow Date: *{startBorrowDate}|" />
+                <input th:field="*{startBorrowDate}" type="hidden" th:value="*{startBorrowDate}" class="w3-input" id="startBorrowDate" />
+            </p>
+            <p>
+                <label for="dueBorrowDate" th:text="|Due Borrow Date: *{dueBorrowDate}|" />
+                <input th:field="*{dueBorrowDate}" type="hidden" th:value="*{dueBorrowDate}" class="w3-input" id="dueBorrowDate" />
+            </p>
+            <p>
+                <label for="returnedBorrowDate" th:text="|Returned Borrow Date: *{returnedBorrowDate}|" />
+                <input th:field="*{returnedBorrowDate}" type="hidden" th:value="*{returnedBorrowDate}" class="w3-input" id="returnedBorrowDate" />
+            </p>
+            <p>
+                <label for="borrowStatus">Borrow Status</label>
+                <select th:field="*{borrowStatus}" class="form-control" id="borrowStatus">
+                    <option th:each="statusType : ${T(com.springbootlab0.approach_1.domain.BorrowStatus).values()}" th:value="${statusType}" th:text="${statusType}"></option>
+                </select>
+            </p>
+            <!-- Form buttons -->
+            <p>
+                <input type="submit" value="Submit update" />
+                <input type="reset" value="Reset fields" />
+            </p>
+        </form>
+    </div>
+    <!-- Create a button to go to the Borrows management page -->
+    <p>
+        <a th:href="@{/borrows}" class="w3-button w3-red">Return to borrows management</a>
+    </p>
+</div>
 </body>
 </html>

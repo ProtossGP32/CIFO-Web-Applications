@@ -98,10 +98,18 @@ public class BorrowController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateBorrow(@PathVariable("id") String borrowId, @RequestParam("borrowToUpdate") Borrow borrowToUpdate, RedirectAttributes redirectAttributes) {
-        if (borrowService.updateBorrow(borrowToUpdate)) {
-            // TODO: complete the method
+    public String updateBorrow(@PathVariable("id") String borrowId, Optional<Borrow> borrowToUpdate, RedirectAttributes redirectAttributes) {
+        if (borrowToUpdate.isPresent()) {
+            if (borrowService.updateBorrow(borrowToUpdate.get())) {
+                redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " correctly updated");
+            } else {
+                redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " couldn't be updated!!");
+            }
+        } else {
+            redirectAttributes.addFlashAttribute("responseMessage", "Received object isn't a borrow!");
         }
+        // Redirect to the borrows main page
+        return "redirect:/borrows";
     }
 
     @GetMapping("/delete/{id}")

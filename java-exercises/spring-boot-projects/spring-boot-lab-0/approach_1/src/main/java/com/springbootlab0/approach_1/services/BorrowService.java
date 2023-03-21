@@ -2,9 +2,9 @@ package com.springbootlab0.approach_1.services;
 
 import com.springbootlab0.approach_1.domain.*;
 import com.springbootlab0.approach_1.repository.BorrowRepository;
+import com.springbootlab0.approach_1.repository.PublicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -95,8 +95,14 @@ public class BorrowService {
         return false;
     }
 
+    /**
+     * Update a Borrow into the database
+     * @param borrowToUpdate is the Borrow with the updated fields
+     * @return a boolean value depending on the update results
+     */
     public boolean updateBorrow(Borrow borrowToUpdate) {
         if (borrowRepository.existsById(borrowToUpdate.getId())) {
+            // We'll update fields from the DB entity if they are different
             Borrow borrowFromDB = borrowRepository.findById(borrowToUpdate.getId()).get();
             // Check if borrow status has changed
             if (!borrowToUpdate.getBorrowStatus().equals(borrowFromDB.getBorrowStatus())) {
@@ -104,18 +110,30 @@ public class BorrowService {
                 switch (borrowToUpdate.getBorrowStatus()) {
                     case CLOSED -> {
                         // Set the Publication status to available
-                        borrowToUpdate.getBorrowedPublication().setStatus(Status.AVAILABLE);
+                        borrowFromDB.getBorrowedPublication().setStatus(Status.AVAILABLE);
+                        publicationService.updatePublication(borrowToUpdate.getBorrowedPublication());
                         // Set the return date to the current date
-                        borrowToUpdate.setReturnedBorrowDate(LocalDate.now());
+                        borrowFromDB.setReturnedBorrowDate(LocalDate.now());
                     }
                     case LATE -> {
                         // TODO: define what to do when it is LATE
                     }
                     case IN_PROGRESS -> {
                         // TODO: define the case scenarios where a borrow changes to IN_PROGRESS again
+                        // Update the dueBorrowDate 15 days from now
+                        borrowFromDB.setDueBorrowDate(LocalDate.now().plusDays(15));
+                    }
+                    default -> {
+                        // Unknown borrow status!
+                        return false;
                     }
                 }
+                // Update the status field in the DB entity
+                borrowFromDB.setBorrowStatus(borrowToUpdate.getBorrowStatus());
             }
+            // TODO: Check the rest of the updatable fields
+            // Update the Borrow into the database
+            borrowRepository.save(borrowFromDB);
             return true;
         }
         return false;
