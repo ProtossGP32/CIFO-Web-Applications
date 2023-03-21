@@ -114,7 +114,7 @@ public class BorrowController {
 
     @GetMapping("/delete/{id}")
     public String deleteBorrow(@PathVariable(value = "id") String borrowId, RedirectAttributes redirectAttributes) {
-        if (borrowService.deleteBorrowByID(borrowId)) {
+        if (borrowService.deleteBorrowById(borrowId)) {
             redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " deleted!");
         } else {
             redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " not found!");

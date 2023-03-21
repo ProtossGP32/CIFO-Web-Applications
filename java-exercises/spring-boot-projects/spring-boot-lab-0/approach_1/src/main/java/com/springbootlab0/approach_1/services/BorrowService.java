@@ -2,7 +2,6 @@ package com.springbootlab0.approach_1.services;
 
 import com.springbootlab0.approach_1.domain.*;
 import com.springbootlab0.approach_1.repository.BorrowRepository;
-import com.springbootlab0.approach_1.repository.PublicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -81,7 +80,7 @@ public class BorrowService {
         return createdBorrows;
     }
 
-    public boolean deleteBorrowByID(String borrowId) {
+    public boolean deleteBorrowById(String borrowId) {
         // TODO: change the Publication status to available again
         if (borrowRepository.existsById(borrowId)) {
             Borrow borrowToDelete = borrowRepository.findById(borrowId).get();
