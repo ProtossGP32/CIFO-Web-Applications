@@ -117,8 +117,8 @@ Make a retrospective of the previous week, analyse the results of the planning a
 
 | CATEGORY                  | NUMBER OF PLANNED TASKS   |
 | ---                       | ---:                      |
-| Class Projects (CP)       | 6 (W43)                   |
-| Team Project (TP)         | 5 (W47)                   |
+| Class Projects (CP)       | 7 (W51)                   |
+| Team Project (TP)         | 4 (W34)                   |
 | CI/CD                     | 1 (W13)                   |
 | DevOps Learning (DOL)     | 2 (W26)                   |
 | Planning and MindSet (PMS)| 1 (W8)                    |
