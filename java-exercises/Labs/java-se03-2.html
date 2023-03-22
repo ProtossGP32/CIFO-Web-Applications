@@ -746,6 +746,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#updating-a-borrow" id="toc-updating-a-borrow" class="nav-link" data-scroll-target="#updating-a-borrow">Updating a <code>Borrow</code></a></li>
   <li><a href="#using-http-session-to-store-user-information" id="toc-using-http-session-to-store-user-information" class="nav-link" data-scroll-target="#using-http-session-to-store-user-information">Using HTTP session to store User information</a></li>
+  <li><a href="#log-in-log-out-process" id="toc-log-in-log-out-process" class="nav-link" data-scroll-target="#log-in-log-out-process">Log in / Log out process</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se03-2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -1490,6 +1491,16 @@ ID is correctly transfered to the <code>Optional&lt;Subclass&gt;</code> when dea
 <section id="using-http-session-to-store-user-information" class="level2">
 <h2 class="anchored" data-anchor-id="using-http-session-to-store-user-information">Using HTTP session to store User information</h2>
 <p>We’ll use an HTTP session to show all borrows of a specific user. The user information will be stored in the HTTP session instead of transferred on each request-response cycle as <code>@PathVariable</code> or <code>@RequestParam</code></p>
+<p>On login stage, we’ll store the following session attributes:</p>
+<ul>
+<li><code>isLoggedIn</code>: whether the user has already logged in or not</li>
+<li><code>memberId</code>: the ID of the Library Member logged in</li>
+<li><code>memberClass</code>: the class of the Library Member (User, LibraryMember, Staff…)</li>
+<li><code>memberName</code>: the full name of the Library Member for rendering purposes</li>
+</ul>
+</section>
+<section id="log-in-log-out-process" class="level2">
+<h2 class="anchored" data-anchor-id="log-in-log-out-process">Log in / Log out process</h2>
 
 
 </section>

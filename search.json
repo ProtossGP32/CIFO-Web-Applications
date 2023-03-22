@@ -277,7 +277,14 @@
     "href": "java-exercises/Labs/java-se03-2.html#using-http-session-to-store-user-information",
     "title": "LAB#SE03-2: Library/Book, Expand Model",
     "section": "Using HTTP session to store User information",
-    "text": "Using HTTP session to store User information\nWe’ll use an HTTP session to show all borrows of a specific user. The user information will be stored in the HTTP session instead of transferred on each request-response cycle as @PathVariable or @RequestParam"
+    "text": "Using HTTP session to store User information\nWe’ll use an HTTP session to show all borrows of a specific user. The user information will be stored in the HTTP session instead of transferred on each request-response cycle as @PathVariable or @RequestParam\nOn login stage, we’ll store the following session attributes:\n\nisLoggedIn: whether the user has already logged in or not\nmemberId: the ID of the Library Member logged in\nmemberClass: the class of the Library Member (User, LibraryMember, Staff…)\nmemberName: the full name of the Library Member for rendering purposes"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se03-2.html#log-in-log-out-process",
+    "href": "java-exercises/Labs/java-se03-2.html#log-in-log-out-process",
+    "title": "LAB#SE03-2: Library/Book, Expand Model",
+    "section": "Log in / Log out process",
+    "text": "Log in / Log out process"
   },
   {
     "objectID": "java-exercises/Labs/java-se00-3.html",
