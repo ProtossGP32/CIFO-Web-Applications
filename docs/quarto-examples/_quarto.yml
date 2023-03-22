@@ -27,6 +27,7 @@ website:
       - sidebar:java-exercises
       - sidebar:project-management
       - sidebar:team-projects
+      - sidebar:miscellaneous
       - sidebar:walkthrough
       - text: About
         file: about.qmd
@@ -65,6 +66,11 @@ website:
       title: "Project Management"
       style: "docked"
       contents: project-management/**
+
+    - id: miscellaneous
+      title: "Miscellaneous"
+      style: "docked"
+      contents: miscellaneous/**
 
   # Page Footer
   page-footer:

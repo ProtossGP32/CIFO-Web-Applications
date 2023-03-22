@@ -63,6 +63,7 @@ Things to accomplish:
     - CP: Finish Borrow Entity (W8)
     - TP: Review Team project status (W5)
     - TP: Finish User Entity (W13)
+    - TP: Update functional diagrams (W8)
     - TP: Finish Vertical Slicing designs (W13)
     - DOL: Learn about observability (W13)
     - PMS: Weekly planning (W8)
@@ -79,6 +80,7 @@ Things to accomplish:
     - CP: Migrate H2 to another DB (W13)
     - TP: Do a weekly scrum (W8)
     - TP: Create missing Unit Tests (W8)
+    - TP: Update UMLs (W5)
     - CI/CD: Learn GitHub Actions (W13)
     - CI/CD: Create staging environment (W13)
     - DOL: Deploy workloads on Kubernetes (W13)
@@ -102,11 +104,11 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 - Week 1:
 
-| WEEK 1      	| MONDAY (W16)                 	        | TUESDAY (W29)                         | WEDNESDAY (W24)                       | THURSDAY (W34)                            | FRIDAY (W34)                     	|
+| WEEK 1      	| MONDAY (W16)                 	        | TUESDAY (W24)                         | WEDNESDAY (W24)                       | THURSDAY (W34)                            | FRIDAY (W34)                     	|
 |-----------	|---                           	        |---	                                |---	                                |---	                                    |---	|
-| Morning   	| ~~CP: Review GitHub issues (W3)~~         | TP: Do a weekly scrum	(W8)            | CP: Update Quarto docs (W3)           | TP: Update OpenProject tasks (W8)         | CI/CD: Learn GitHub Actions (W13)  	|
-| Afternoon 	| TP: Review Team project status (W5)   | CP: Create Library REST API (W8)      | TP: Finish User Entity (W13)          | CP: Migrate H2 to another database (W13)  | DOL: Install a SMTP server (W13)   	|
-| Evening   	| CP: Finish Borrow Entity (W8)        	| DOL: Learn about observability (W13)  | CP: Create Library REST client (W8)   | TP: Finish Vertical Slicing designs (W13) | PMS: Weekly retrospective (W8)  	|
+| Morning   	| ~~CP: Review GitHub issues (W3)~~         | TP: Do a weekly scrum	(W8)            | ~~CP: Add HTTP Session login (W8)~~        | TP: Update OpenProject tasks (W8)         | CI/CD: Learn GitHub Actions (W13)  	|
+| Afternoon 	| ~~TP: Review Team project status (W5)~~      | ~~CP: Update Quarto docs (W3)~~      | CP: Create Library REST API (W8)          | CP: Migrate H2 to another database (W13)  | DOL: Install a SMTP server (W13)   	|
+| Evening   	| ~~CP: Finish Borrow Entity (W8)~~        	| DOL: Learn about observability (W13)  | CP: Create Library REST client (W8)   | TP: Finish Vertical Slicing designs (W13) | PMS: Weekly retrospective (W8)  	|
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -130,6 +132,10 @@ Think about the complexity of the completed tasks and if they matched the expect
 Completed tasks:
 
 - CP: Review GitHub issues (W3)
+- TP: Review Team project status (W5) --> Quick check on the OpenProject tasks status
+- CP: Finish Borrow Entity (W8) --> Completed the day after because Monday afternoon and evening I couldn't work
+- CP: Update Quarto docs (W3) --> Already done during previous tasks
+- CP: Add HTTP Session login (W8) --> Completed on Wednesday morning instead of [TP: Finish User Entity (W13)]
 
 ### Unfinished tasks
 Think about the reasons why these tasks aren't done:
@@ -137,6 +143,11 @@ Think about the reasons why these tasks aren't done:
 - Did you lack some kind of resource (knowledge, tools, etc...) to even start it?
 - Did you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task
 - Is this task something that you've been dragging along for some time? Is it really necessary?
+
+- TP: Review Team project status (W5) --> Monday afternoon I wasn't available for work
+- TP: Do a weekly scrum	(W8) --> Tuesday morning the team didn't meet
+- DOL: Learn about observability (W13) --> Tuesday evening I didn't work, no reason at all
+
 
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week
