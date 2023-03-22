@@ -17,6 +17,12 @@
             <h1>Spring Boot Publications Example</h1>
             <h5>Table of publications from @Controller @Service @Repository and H2 DB</h5>
         </div>
+        <!-- Login user information-->
+        <div>
+            <p th:text="|Welcome, ${session.memberName}! Your are a ${session.memberClass}|" />
+            <!-- Create a LogOut button -->
+            <a th:href="@{/library/logout}" class="w3-button w3-red">Log out</a>
+        </div>
         <br>
         <!-- Clear buttons -->
         <div>

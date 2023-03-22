@@ -1,13 +1,20 @@
 package com.springbootlab0.approach_1.controllers;
 
+import com.springbootlab0.approach_1.domain.LibraryMember;
 import com.springbootlab0.approach_1.services.AuthorService;
-import com.springbootlab0.approach_1.services.DemoService;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
 import com.springbootlab0.approach_1.services.PublicationService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/library")
@@ -21,9 +28,57 @@ public class LibraryWebController {
     @Autowired
     LibraryMemberService libraryMemberService;
 
-    @RequestMapping(value = {"", "/", "/index"})
-    public String index() {
-        return "index";
+    private final Set<String> sessionIds = Collections.synchronizedSet(new HashSet<>());
+
+    @GetMapping(value = {"", "/", "/index"})
+    public String index(HttpSession session) {
+        if (session.getAttribute("isLoggedIn") == null || !(boolean) session.getAttribute("isLoggedIn")) {;
+            // Force the login page
+            return "redirect:login";
+        }
+        // Go to the library main page
+        return "redirect:/library/main";
+    }
+
+    @GetMapping("/login")
+    public String login(HttpSession session, Model modelToView) {
+        // Set the session.isLoggedIn attribute to false
+        session.setAttribute("isLoggedIn", false);
+        modelToView.addAttribute("availableUsers", libraryMemberService.getAllUsers());
+        modelToView.addAttribute("availableLibrarians", libraryMemberService.getAllLibrarians());
+        return "login/login";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestParam("libraryMemberId") String libraryMemberId, HttpSession session, RedirectAttributes redirectAttributes) {
+        Optional<LibraryMember> optionalLibraryMember = libraryMemberService.findLibraryMemberById(libraryMemberId);
+        // Only accept login when the session doesn't exist in the sessions set
+        if (optionalLibraryMember.isPresent() && !this.sessionIds.contains(session.getId())) {
+            // Add the HTTP session id to the sessions set
+            this.sessionIds.add(session.getId());
+            // Set the login value to true
+            session.setAttribute("isLoggedIn", true);
+            // Save useful member attributes in the HTTP session
+            session.setAttribute("memberId", libraryMemberId);
+            session.setAttribute("memberClass", optionalLibraryMember.get().getClass().getSimpleName());
+            session.setAttribute("memberName", optionalLibraryMember.get().getFirstName() + " " + optionalLibraryMember.get().getLastName());
+        } else {
+            redirectAttributes.addFlashAttribute("responseMessage", "Can't login as User " + libraryMemberId);
+        }
+        return "redirect:/library/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        // Restart the session attributes
+        session.removeAttribute("isLoggedIn");
+        session.removeAttribute("memberId");
+        session.removeAttribute("memberClass");
+        session.removeAttribute("memberName");
+        // Remove the current session from the sessions set
+        this.sessionIds.remove(session.getId());
+        // Return to the main page and force the login again
+        return "redirect:/library/";
     }
 
     @RequestMapping(value = "/main")

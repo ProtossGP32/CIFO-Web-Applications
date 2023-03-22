@@ -10,4 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface LibraryMemberRepository extends CrudRepository<LibraryMember, String> {
     @Query("from User")
     Iterable<User> findUsers();
+
+    @Query("from Librarian")
+    Iterable<User> findLibrarians();
 }

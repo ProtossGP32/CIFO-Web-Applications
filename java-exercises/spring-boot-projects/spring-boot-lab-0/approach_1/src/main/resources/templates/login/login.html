@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Login screen</title>
+</head>
+<body>
+<h1>Login form</h1>
+<div class="w3-card-40" style="width:50%">
+    <header class="w3-container w3-light-grey">
+        <p>Please login as a User or as a Library Member</p>
+    </header>
+    <div class="w2-container">
+        <form th:action="@{/library/login}" method="post">
+            <p>
+                <label for="userId">Select User</label>
+                <select name="libraryMemberId" class="form-control" id="userId">
+                    <option th:each="user : ${availableUsers}" th:value="${user.id}" th:text="${user.firstName + ' ' + user.lastName}" />
+                </select>
+            </p>
+            <p>
+                <input type="submit" value="Login User" />
+            </p>
+        </form>
+        <form th:action="@{/library/login}" method="post">
+            <p>
+                <label for="librarianId">Select User</label>
+                <select name="libraryMemberId" class="form-control" id="librarianId">
+                    <option th:each="librarian : ${availableLibrarians}" th:value="${librarian.id}" th:text="${librarian.firstName + ' ' + librarian.lastName}" />
+                </select>
+            </p>
+            <p>
+                <input type="submit" value="Login Librarian" />
+            </p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -45,4 +45,8 @@ public class LibraryMemberService {
     public Iterable<User> getAllUsers() {
         return libraryMemberRepository.findUsers();
     }
+
+    public Iterable<User> getAllLibrarians() {
+        return libraryMemberRepository.findLibrarians();
+    }
 }
