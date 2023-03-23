@@ -104,9 +104,9 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 - Week 1:
 
-| WEEK 1      	| MONDAY (W16)                 	        | TUESDAY (W24)                         | WEDNESDAY (W24)                       | THURSDAY (W34)                            | FRIDAY (W34)                     	|
+| WEEK 1      	| MONDAY (W16)                 	        | TUESDAY (W24)                         | WEDNESDAY (W24)                       | THURSDAY (W47)                            | FRIDAY (W34)                     	|
 |-----------	|---                           	        |---	                                |---	                                |---	                                    |---	|
-| Morning   	| ~~CP: Review GitHub issues (W3)~~         | TP: Do a weekly scrum	(W8)            | ~~CP: Add HTTP Session login (W8)~~        | TP: Update OpenProject tasks (W8)         | CI/CD: Learn GitHub Actions (W13)  	|
+| Morning   	| ~~CP: Review GitHub issues (W3)~~         | TP: Do a weekly scrum	(W8)            | ~~CP: Add HTTP Session login (W8)~~        | ~~TP: Update OpenProject tasks (W8)~~ TP: Finish User Entity (W13)         | CI/CD: Learn GitHub Actions (W13)  	|
 | Afternoon 	| ~~TP: Review Team project status (W5)~~      | ~~CP: Update Quarto docs (W3)~~      | CP: Create Library REST API (W8)          | CP: Migrate H2 to another database (W13)  | DOL: Install a SMTP server (W13)   	|
 | Evening   	| ~~CP: Finish Borrow Entity (W8)~~        	| DOL: Learn about observability (W13)  | CP: Create Library REST client (W8)   | TP: Finish Vertical Slicing designs (W13) | PMS: Weekly retrospective (W8)  	|
 
@@ -115,10 +115,10 @@ Make a retrospective of the previous week, analyse the results of the planning a
 
 - Number of planned tasks per category:
 
-| CATEGORY                  | NUMBER OF PLANNED TASKS   |
-| ---                       | ---:                      |
-| Class Projects (CP)       | 7 (W51)                   |
-| Team Project (TP)         | 4 (W34)                   |
+| CATEGORY                  | NUMBER OF PLANNED TASKS   | NUMBER OF COMPLETED TASKS
+| ---                       | ---:                      | ---:
+| Class Projects (CP)       | 7 (W51)                   | 
+| Team Project (TP)         | 5 (W47)                   |
 | CI/CD                     | 1 (W13)                   |
 | DevOps Learning (DOL)     | 2 (W26)                   |
 | Planning and MindSet (PMS)| 1 (W8)                    |
@@ -136,6 +136,7 @@ Completed tasks:
 - CP: Finish Borrow Entity (W8) --> Completed the day after because Monday afternoon and evening I couldn't work
 - CP: Update Quarto docs (W3) --> Already done during previous tasks
 - CP: Add HTTP Session login (W8) --> Completed on Wednesday morning instead of [TP: Finish User Entity (W13)]
+- TP: Update OpenProject tasks (W8) --> Rought review of the tasks status, then added [TP: Finish User Entity (W13)] task in the same slot
 
 ### Unfinished tasks
 Think about the reasons why these tasks aren't done:

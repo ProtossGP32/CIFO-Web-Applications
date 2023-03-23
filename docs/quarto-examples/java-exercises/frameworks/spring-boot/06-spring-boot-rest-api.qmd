@@ -7,4 +7,27 @@ date: 2023/03/07
 ---
 # Introduction
 
-# Rest API
+# Rest API in Spring Boot
+
+## `@RestController`
+The Spring Boot annotation for the REST API controller. This annotation is responsible of converting the returned output to the expected plain-text format defined in the API documentation.
+
+As with the `@Controller`, an endpoint is defined for this REST controller:
+
+```{.java}
+@RequestMapping("/path/to/api/endpoint")
+```
+
+Example:
+
+```{.java}
+@RequestMapping("/api/book")
+```
+
+## REST API services
+
+Types of data that the REST methods will return:
+
+- `ResponseEntity<T Entity>`: It's a container that includes the following data:
+    - `HttpHeaders`: info regarding the API (i.e. version) as well as the operation confirmation
+    - `Body` content: it stores the `Entity` or the collection of `Entity` that we want to return

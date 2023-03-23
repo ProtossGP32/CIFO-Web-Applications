@@ -62,6 +62,11 @@ A Markdown framework that expands the language by adding compatibily with other 
 
 ---
 
+## Debugging
+### Postman
+Postman is a tool to analyse HTTP requests and responses.
+Follow [this guide](https://spring.io/guides/tutorials/rest/) or [this other guide](https://linux.how2shout.com/2-ways-to-install-postman-on-debian-11-bullseye-or-10-buster/) to install Postman.
+
 # Automating the software installation
 Almost all the required software can be installed directly from the command line interface (CLI), so in order to avoid repeating commands and human errors, some scripts are created to automate all the process
 
