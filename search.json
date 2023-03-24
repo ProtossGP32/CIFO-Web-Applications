@@ -802,7 +802,7 @@
     "href": "miscellaneous/00-mind-management-getting-things-done.html#define-your-goal",
     "title": "00 - Mind Management and Getting Thinds Done",
     "section": "Define your goal",
-    "text": "Define your goal\n\nWhere do you want to focus your attention?\nWhere do you have your open-loops?\nWhat do you need to practice? Decision-making to be able to adapt to changes (SCRUM)\n\nEisenhower Matrix: define your tasks based on its urgency and its importance. Combine it with your energy management to decide when to execute them \nDecision-making: if tasks can be done in less than 10 minutes, do them! Else, put them on the backlog\n\nFight the FUD (Fear, Uncertainty, and Doubt) and also Anxiety. This can be fought by closing commitments, gaining the sense of accomplishment, even with the smallest tasks\nDon’t forget to rest and feed your soul\nCreate a good inertia law"
+    "text": "Define your goal\n\nWhere do you want to focus your attention?\nWhere do you have your open-loops?\nWhat do you need to practice? Decision-making to be able to adapt to changes (SCRUM)\n\nEisenhower Matrix: define your tasks based on its urgency and its importance. Combine it with your energy management to decide when to execute them \nDecision-making: if tasks can be done in less than 10 minutes, do them! Else, put them on the backlog\n\nFight the FUD (Fear, Uncertainty, and Doubt) and also Anxiety. This can be fought by closing commitments and gaining the sense of accomplishment, even with the smallest tasks\nDon’t forget to rest and feed your soul\nCreate a good inertia law"
   },
   {
     "objectID": "miscellaneous/00-mind-management-getting-things-done.html#understand-your-available-tools",
@@ -840,11 +840,32 @@
     "text": "Retrospective\nBased on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week"
   },
   {
+    "objectID": "miscellaneous/00-mind-management-getting-things-done.html#treat-with-other-humans",
+    "href": "miscellaneous/00-mind-management-getting-things-done.html#treat-with-other-humans",
+    "title": "00 - Mind Management and Getting Thinds Done",
+    "section": "Treat with other humans",
+    "text": "Treat with other humans"
+  },
+  {
+    "objectID": "miscellaneous/00-mind-management-getting-things-done.html#learn-new-things",
+    "href": "miscellaneous/00-mind-management-getting-things-done.html#learn-new-things",
+    "title": "00 - Mind Management and Getting Thinds Done",
+    "section": "Learn new things",
+    "text": "Learn new things"
+  },
+  {
+    "objectID": "miscellaneous/00-mind-management-getting-things-done.html#planning",
+    "href": "miscellaneous/00-mind-management-getting-things-done.html#planning",
+    "title": "00 - Mind Management and Getting Thinds Done",
+    "section": "Planning",
+    "text": "Planning"
+  },
+  {
     "objectID": "miscellaneous/weekly-planning/00-template.html",
     "href": "miscellaneous/weekly-planning/00-template.html",
-    "title": "01 - Week XX",
+    "title": "00 - Week template",
     "section": "",
-    "text": "Weight the tasks using tools like Poker Planning\n\n\n\n\n\n\nEach week, define tasks for each energy slot of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week:\n\nWeek 1:\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 1\nM\nT\nW\nT\nF\n\n\n\n\nMorning\nWeekly planning\nWeekly Scrum\nDocument class exercises\nDocument Team Project\nTBD\n\n\nAfternoon\nReview Team project status\nPractise class exercises\nWork on Team project\nPractice class exercises\nTBD\n\n\nEvening\nComplete some GitHub tasks\nStudy DevOps tools\nComplete some GitHub tasks\nStudy DevOps tools\nWeekly retrospective\n\n\n\n\n\n\nMake a retrospective of the previous week, analyse the results of the planning and take action.\n\n\nThink about the complexity of the completed tasks and if they matched the expectatives:\n\nIf the task was easier than you thought, move it to lower energies spaces\nIf the task was harder than you though, think about spitting it into less complex tasks\n\n\n\n\nThink about the reasons why these tasks aren’t done:\n\nDid you lack some kind of resource (knowledge, tools, etc…) to even start it?\nDid you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task\nIs this task something that you’ve been dragging along for some time? Is it really necessary?\n\n\n\n\n\nBased on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week"
+    "text": "Weight the tasks using tools like Poker Planning\n\n\n\n\n\n\nEach week, define tasks for each energy slot of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week:\n\nWeek 1:\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 1\nM\nT\nW\nT\nF\n\n\n\n\nMorning\nWeekly planning\nWeekly Scrum\nDocument class exercises\nDocument Team Project\nTBD\n\n\nAfternoon\nReview Team project status\nPractise class exercises\nWork on Team project\nPractice class exercises\nTBD\n\n\nEvening\nComplete some GitHub tasks\nStudy DevOps tools\nComplete some GitHub tasks\nStudy DevOps tools\nWeekly retrospective\n\n\n\n\n\n\nMake a retrospective of the previous week, analyse the results of the planning and take action.\n\n\nThink about the complexity of the completed tasks and if they matched the expectatives:\n\nIf the task was easier than you thought, move it to lower energies spaces\nIf the task was harder than you though, think about spitting it into less complex tasks\n\nAlso, try to identify what pits you’ve avoided during this week while completing tasks:\n\nOverload\nOverthinking\nOverdesire –> fast failure due to unreachable expectations\n\n\n\n\nThink about the reasons why these tasks aren’t done:\n\nDid you lack some kind of resource (knowledge, tools, etc…) to even start it?\nDid you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task\nIs this task something that you’ve been dragging along for some time? Is it really necessary?\n\n\n\n\n\nBased on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week"
   },
   {
     "objectID": "miscellaneous/weekly-planning/01-week-01.html",
