@@ -1,5 +1,5 @@
 ---
-title: "01 - Week XX"
+title: "00 - Week template"
 description: "Template"
 categories: ["Time management"]
 author: ProtossGP32
@@ -34,6 +34,12 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 - If the task was easier than you thought, move it to lower energies spaces
 - If the task was harder than you though, think about spitting it into less complex tasks
+
+Also, try to identify what pits you've avoided during this week while completing tasks:
+
+- Overload
+- Overthinking
+- Overdesire --> fast failure due to unreachable expectations
 
 ### Unfinished tasks
 Think about the reasons why these tasks aren't done:

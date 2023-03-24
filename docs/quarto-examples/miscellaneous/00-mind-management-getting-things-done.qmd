@@ -15,8 +15,8 @@ from: markdown+emoji
 - What do you need to practice? Decision-making to be able to adapt to changes (SCRUM)
     - Eisenhower Matrix: define your tasks based on its urgency and its importance. Combine it with your energy management to decide when to execute them
     ![](https://images.ctfassets.net/dm4oa8qtogq0/6Z0iRvBwjXMLrd28BUzTW4/a3b7838c90a65b26a2edb6814e7430dd/eisenhower-matrix.png?fm=webp)
-    - Decision-making: if tasks can be done in less than 10 minutes, do them! Else, put them on the backlog
-- Fight the FUD (Fear, Uncertainty, and Doubt) and also Anxiety. This can be fought by closing commitments, gaining the sense of accomplishment, even with the smallest tasks
+    - Decision-making: **if tasks can be done in less than 10 minutes, do them!** Else, put them on the backlog
+- Fight the FUD (Fear, Uncertainty, and Doubt) and also Anxiety. This can be fought by **closing commitments** and **gaining the sense of accomplishment**, even with the smallest tasks
 - Don't forget to rest and feed your soul
 - Create a good inertia law
 
@@ -61,3 +61,10 @@ Think about the reasons why these tasks aren't done:
 
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week
+
+# 3 big ordeals
+There are 3 activities that are very high-energy consuming:
+
+## Treat with other humans
+## Learn new things
+## Planning
