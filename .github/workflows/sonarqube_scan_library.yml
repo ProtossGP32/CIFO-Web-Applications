@@ -29,5 +29,6 @@ jobs:
           args: >
             -X
             -Dsonar.verbose=true
+            -Dsonar.projectKey=ProtossGP32_CIFO-Web-Applications_AYcZKPmoYGaZKjBqbseC
           # Set the sonar.projectBaseDir analysis property
-          projectBaseDir: java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src # optional, default is .
+          projectBaseDir: java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1 # optional, default is .
