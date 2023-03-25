@@ -85,7 +85,7 @@ public class LibraryWebController {
         return "redirect:/library/";
     }
 
-    @RequestMapping(value = "/main")
+    @GetMapping(value = "/main")
     public String getPublicationsWeb(Model containerToView) {
         // Compose the container with all the information that the mainMenu.html
         // requires on render time
@@ -101,7 +101,7 @@ public class LibraryWebController {
     }
 
     // Clear databases methods
-    @RequestMapping(value = "/clearPublications")
+    @GetMapping(value = "/clearPublications")
     public String clearPublicationsFromH2() {
         // Clear all the H2 Publications DB
         publicationService.deleteAll();
@@ -109,7 +109,7 @@ public class LibraryWebController {
         return REDIRECT_MAIN;
     }
 
-    @RequestMapping(value = "/clearAuthors")
+    @GetMapping(value = "/clearAuthors")
     public String clearAuthorsFromH2() {
         // Clear all the H2 Authors DB
         authorService.deleteAll();
@@ -117,7 +117,7 @@ public class LibraryWebController {
         return REDIRECT_MAIN;
     }
 
-    @RequestMapping(value = "/clearLibraryMembers")
+    @GetMapping(value = "/clearLibraryMembers")
     public String clearLibraryMembersFromH2() {
         // Clear all the H2 LibraryMember DB
         libraryMemberService.deleteAll();
@@ -129,7 +129,7 @@ public class LibraryWebController {
      * Library Members Management request
      * @return redirect to libraryMembers page
      */
-    @RequestMapping(value = "/libraryMemberManagement")
+    @GetMapping(value = "/libraryMemberManagement")
     public String goToLibraryMemberManagement() {
         return "redirect:/libraryMembers/";
     }

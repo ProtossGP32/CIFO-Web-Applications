@@ -26,7 +26,7 @@ public class LibraryMemberController {
     @Autowired
     DemoService demoService;
 
-    @RequestMapping({"/", ""})
+    @GetMapping({"/", ""})
     public String index(Model containerToView) {
         // 1. Retrieve all library members
         containerToView.addAttribute("libraryMembersFromController",
@@ -64,14 +64,14 @@ public class LibraryMemberController {
         return "libraryMembers/createUser";
     }
 
-    @RequestMapping("/memberForm")
+    @GetMapping("/memberForm")
     public String memberForm(ModelMap containerToView) {
         containerToView.addAttribute("newMember", new User());
         containerToView.addAttribute(RESPONSE_MESSAGE, null);
         return "libraryMembers/memberForm";
     }
 
-    @RequestMapping("/createMember")
+    @GetMapping("/createMember")
     public String createMember(@ModelAttribute("newMember") User newMember, ModelMap containerToView, BindingResult result) {
         // TODO: Logic to create any LibraryMember, not just a User
         if (result.hasErrors()) {
@@ -90,7 +90,7 @@ public class LibraryMemberController {
      * Demo purposes: Create the number of expected Library Members
      * and insert them into the DB
      */
-    @RequestMapping(value = "/createFakeLibraryMembers")
+    @GetMapping(value = "/createFakeLibraryMembers")
     public String createFakeLibraryMembers(@RequestParam("qtyMembers") int qty, RedirectAttributes redirectAttributes) {
         // Call the faker generator
         demoService.createFakeLibraryMembers(qty);

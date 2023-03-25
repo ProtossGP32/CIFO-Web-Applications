@@ -35,7 +35,7 @@ public class PublicationController {
     @Autowired
     DemoService demoService;
 
-    @RequestMapping(value = {"/", ""})
+    @GetMapping(value = {"/", ""})
     public String index(Model containerToView) {
         // Compose the container with all the information that the publicationsIndex.html
         // requires on render time
@@ -46,7 +46,7 @@ public class PublicationController {
     }
 
     // TODO: Unify all methods that access the same forms (i.e: Publication, Author, etc...)
-    @RequestMapping("/publicationForm")
+    @GetMapping("/publicationForm")
     public String publicationForm(ModelMap containerToView) {
         containerToView.addAttribute("newBook", new Book());
         containerToView.addAttribute(AUTHORS_ATTR, authorService.getAllAuthors());
@@ -54,7 +54,7 @@ public class PublicationController {
         return "publications/publicationForm";
     }
 
-    @RequestMapping("/createPublication")
+    @GetMapping("/createPublication")
     public String createPublication(@ModelAttribute("newBook") Book newBook, ModelMap containerToView, BindingResult result) {
         // TODO: Logic to create any Publication, not just a Book
         // TODO: Check if the publication already exists before inserting it again
@@ -160,14 +160,14 @@ public class PublicationController {
         else return NOT_FOUND_HTML;
     }
 
-    @RequestMapping("/authorForm")
+    @GetMapping("/authorForm")
     public String authorForm(ModelMap containerToView) {
         containerToView.addAttribute("newAuthor", new Author());
         containerToView.addAttribute(RESPONSE_MESSAGE, null);
         return "publications/authorForm";
     }
 
-    @RequestMapping("/createAuthor")
+    @GetMapping("/createAuthor")
     public String createAuthor(@ModelAttribute("newAuthor") Author newAuthor, ModelMap containerToView, BindingResult result) {
         if (result.hasErrors()) {
             containerToView.addAttribute(RESPONSE_MESSAGE, "Invalid author object! Review the fields");
@@ -185,7 +185,7 @@ public class PublicationController {
      * Demo purposes: Create the number of expected publications
      * and insert them into the DB
      */
-    @RequestMapping(value = "/createFakePublications")
+    @GetMapping(value = "/createFakePublications")
     public String createFakePublications(@RequestParam("qtyPublications") int qty, RedirectAttributes redirectAttributes) {
         // Call the faker generator
         demoService.createFakePublications(qty);
