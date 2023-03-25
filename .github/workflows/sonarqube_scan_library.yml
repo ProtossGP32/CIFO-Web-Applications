@@ -27,7 +27,6 @@ jobs:
         with:
           # Additional arguments to the sonar-scanner
           args: >
-            -X
             -Dsonar.verbose=true
             -Dsonar.projectKey=ProtossGP32_CIFO-Web-Applications_AYcZKPmoYGaZKjBqbseC
           # Set the sonar.projectBaseDir analysis property
