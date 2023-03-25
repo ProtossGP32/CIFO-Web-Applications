@@ -1,4 +1,4 @@
-name: Library Manager Build
+name: Library Manager Scan
 
 on:
   workflow_dispatch:
