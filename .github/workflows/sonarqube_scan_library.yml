@@ -17,6 +17,26 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          
+      - name: Setup Maven Action
+        uses: s4u/setup-maven-action@v1.7.0
+        with:
+          java-version: 17
+
+      - name: Build Maven project
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROJECT_PATH: "java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/pom.xml"
+        # Avoid verify for now, until workflow is stable
+        run: mvn -B clean compile -f ${PROJECT_PATH}
+
+      - name: Cache SonarQube packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
       - name: Official SonarQube Scan
         # You may pin to the exact commit or the version.
         # uses: SonarSource/sonarqube-scan-action@a6ba0aafc293e03de5437af7edbc97f7d3ebc91a
