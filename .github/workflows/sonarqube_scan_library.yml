@@ -24,5 +24,6 @@ jobs:
           # Additional arguments to the sonar-scanner
           args: >
             -X
+            -Dsonar.verbose=true
           # Set the sonar.projectBaseDir analysis property
           projectBaseDir: java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src # optional, default is .
