@@ -38,4 +38,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ProtossGP32_CIFO-Web-Applications_AYcZKPmoYGaZKjBqbseC -Dsonar.projectBaseDir=java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1
+        run: mvn -X -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ProtossGP32_CIFO-Web-Applications_AYcZKPmoYGaZKjBqbseC -Dsonar.projectBaseDir=java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1
