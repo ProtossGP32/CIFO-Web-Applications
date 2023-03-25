@@ -13,6 +13,10 @@ jobs:
     name: SonarQube scan
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Official SonarQube Scan
         # You may pin to the exact commit or the version.
         # uses: SonarSource/sonarqube-scan-action@a6ba0aafc293e03de5437af7edbc97f7d3ebc91a
