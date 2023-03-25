@@ -32,7 +32,10 @@ public class BorrowService {
     // - Get a borrow by its ID
     public Borrow getBorrowById(String id) {
         if (borrowRepository.existsById(id)) {
-            return borrowRepository.findById(id).get();
+            Optional<Borrow> foundBorrow = borrowRepository.findById(id);
+            if (foundBorrow.isPresent()) {
+                return foundBorrow.get();
+            }
         }
         return null;
     }
@@ -83,13 +86,16 @@ public class BorrowService {
     public boolean deleteBorrowById(String borrowId) {
         // TODO: change the Publication status to available again
         if (borrowRepository.existsById(borrowId)) {
-            Borrow borrowToDelete = borrowRepository.findById(borrowId).get();
-            // Change the Publication status
-            Publication publication = borrowToDelete.getBorrowedPublication();
-            publication.setStatus(Status.AVAILABLE);
-            // Delete the borrow
-            borrowRepository.deleteById(borrowId);
-            return true;
+            Optional<Borrow> borrowToDelete = borrowRepository.findById(borrowId);
+            if (borrowToDelete.isPresent()) {
+                // Change the Publication status
+                Publication publication = borrowToDelete.get().getBorrowedPublication();
+                publication.setStatus(Status.AVAILABLE);
+                // Delete the borrow
+                borrowRepository.deleteById(borrowId);
+                return true;
+            }
+
         }
         return false;
     }
@@ -117,11 +123,11 @@ public class BorrowService {
                     case LATE -> {
                         // TODO: define what to do when it is LATE
                     }
-                    case IN_PROGRESS -> {
+                    case IN_PROGRESS ->
                         // TODO: define the case scenarios where a borrow changes to IN_PROGRESS again
                         // Update the dueBorrowDate 15 days from now
                         borrowFromDB.setDueBorrowDate(LocalDate.now().plusDays(15));
-                    }
+
                     default -> {
                         // Unknown borrow status!
                         return false;

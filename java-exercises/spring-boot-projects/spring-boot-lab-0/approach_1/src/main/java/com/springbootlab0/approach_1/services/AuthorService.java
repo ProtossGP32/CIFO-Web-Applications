@@ -14,8 +14,7 @@ public class AuthorService {
 
     // CRUD
     public Author createAuthor(Author author) {
-        Author authorCreated = authorRepository.save(author);
-        return authorCreated;
+        return authorRepository.save(author);
     }
 
     public Optional<Author> findAuthorById(String id) {

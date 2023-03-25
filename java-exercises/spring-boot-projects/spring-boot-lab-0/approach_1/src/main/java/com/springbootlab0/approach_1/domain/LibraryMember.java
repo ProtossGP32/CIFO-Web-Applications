@@ -27,12 +27,12 @@ public abstract class LibraryMember extends Person implements GeneralOperations 
     @Column(name="LIBRARYMEMBER_PHONENUMBER")
     private String phoneNumber;
 
-    public LibraryMember() {
+    protected LibraryMember() {
         super();
         this.id = Helper.createUUID();
     }
 
-    public LibraryMember(String firstName, String lastName, String nationality, LocalDate birthDate, String address, String phoneNumber) {
+    protected LibraryMember(String firstName, String lastName, String nationality, LocalDate birthDate, String address, String phoneNumber) {
         super(firstName, lastName, nationality, birthDate);
         this.id = Helper.createUUID();
         this.address = address;

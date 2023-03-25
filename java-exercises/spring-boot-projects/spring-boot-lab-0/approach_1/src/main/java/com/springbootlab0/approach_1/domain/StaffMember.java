@@ -1,11 +1,9 @@
 package com.springbootlab0.approach_1.domain;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
@@ -17,11 +15,11 @@ import java.time.LocalDate;
 abstract class StaffMember extends LibraryMember implements StaffOperations {
     private double salary;
 
-    public StaffMember() {
+    protected StaffMember() {
         super();
     }
 
-    public StaffMember(
+    protected StaffMember(
             String firstName,
             String lastName,
             String nationality,

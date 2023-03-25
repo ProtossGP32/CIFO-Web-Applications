@@ -16,6 +16,9 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/borrows")
 public class BorrowController {
+    private static final String RESPONSE_MESSAGE = "responseMessage";
+    private static final String BORROW_ID = "Borrow ID ";
+    private static final String REDIRECT_BORROWS = "redirect:/borrows";
     @Autowired
     LibraryMemberService libraryMemberService;
     @Autowired
@@ -49,8 +52,8 @@ public class BorrowController {
             containerToView.addAttribute("publications", publicationService.getAvailablePublications());
             return "borrows/borrowForm";
         } else {
-            redirectAttributes.addFlashAttribute("responseMessage", "User ID " + userId + " not found in database!");
-            return "redirect:/borrows/";
+            redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, "User ID " + userId + " not found in database!");
+            return REDIRECT_BORROWS;
         }
     }
 
@@ -59,11 +62,11 @@ public class BorrowController {
         // If neither one of the ID exist, return an error
         if (pathId == null && userId == null) {
             redirectAttributes.addFlashAttribute(
-                    "responseMessage",
+                    RESPONSE_MESSAGE,
                     "Something wrong with User IDs on Borrow creation time"
             );
             // Return to the Borrows main page
-            return "redirect:/borrows/";
+            return REDIRECT_BORROWS;
         }
 
         // Assign the pathId value to the userId variable
@@ -78,11 +81,11 @@ public class BorrowController {
 
         // Redirect to the generic borrow creator
         if (pathId == null) {
-            return "redirect:/borrows/create/";
+            return REDIRECT_BORROWS + "/create/";
         }
 
         // Redirect with the userId to continue creating borrows for that user
-        return "redirect:/borrows/create/" + userId;
+        return REDIRECT_BORROWS + "/create/" + userId;
     }
 
     @GetMapping("/update/{id}")
@@ -93,32 +96,32 @@ public class BorrowController {
             return "borrows/updateBorrowForm";
         }
         // If borrowId is not found, redirect to the borrows main page
-        redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " not found!");
-        return "redirect:/borrows";
+        redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, BORROW_ID + borrowId + " not found!");
+        return REDIRECT_BORROWS;
     }
 
     @PostMapping("/update/{id}")
     public String updateBorrow(@PathVariable("id") String borrowId, Optional<Borrow> borrowToUpdate, RedirectAttributes redirectAttributes) {
         if (borrowToUpdate.isPresent()) {
             if (borrowService.updateBorrow(borrowToUpdate.get())) {
-                redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " correctly updated");
+                redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, BORROW_ID + borrowId + " correctly updated");
             } else {
-                redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " couldn't be updated!!");
+                redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, BORROW_ID + borrowId + " couldn't be updated!!");
             }
         } else {
-            redirectAttributes.addFlashAttribute("responseMessage", "Received object isn't a borrow!");
+            redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, "Received object isn't a borrow!");
         }
         // Redirect to the borrows main page
-        return "redirect:/borrows";
+        return REDIRECT_BORROWS;
     }
 
     @GetMapping("/delete/{id}")
     public String deleteBorrow(@PathVariable(value = "id") String borrowId, RedirectAttributes redirectAttributes) {
         if (borrowService.deleteBorrowById(borrowId)) {
-            redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " deleted!");
+            redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, BORROW_ID + borrowId + " deleted!");
         } else {
-            redirectAttributes.addFlashAttribute("responseMessage", "Borrow ID " + borrowId + " not found!");
+            redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, BORROW_ID + borrowId + " not found!");
         }
-        return "redirect:/borrows";
+        return REDIRECT_BORROWS;
     }
 }

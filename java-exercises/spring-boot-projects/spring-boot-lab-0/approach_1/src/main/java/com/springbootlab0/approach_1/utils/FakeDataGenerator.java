@@ -10,6 +10,10 @@ import java.util.List;
 public class FakeDataGenerator {
     private static final Faker faker = new Faker();
 
+    private static final String PHYSICAL = "physical";
+    private FakeDataGenerator() {
+        throw new IllegalStateException("Utility class");
+    }
     public static List<Publication> createFakePublications(int numPublications) {
         List<Publication> fakePublications = new ArrayList<>();
         int factoryNum;
@@ -50,7 +54,7 @@ public class FakeDataGenerator {
                         .toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate(),
-                "physical",
+                PHYSICAL,
                 Status.AVAILABLE,
                 faker.code().isbn13(),
                 faker.number().numberBetween(10, 2000),
@@ -66,7 +70,7 @@ public class FakeDataGenerator {
                         .toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate(),
-                "physical",
+                PHYSICAL,
                 Status.AVAILABLE,
                 faker.number().numberBetween(10, 2000),
                 faker.number().numberBetween(1, 20)
@@ -81,7 +85,7 @@ public class FakeDataGenerator {
                         .toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate(),
-                "physical",
+                PHYSICAL,
                 Status.AVAILABLE,
                 faker.number().numberBetween(10, 2000)
         );

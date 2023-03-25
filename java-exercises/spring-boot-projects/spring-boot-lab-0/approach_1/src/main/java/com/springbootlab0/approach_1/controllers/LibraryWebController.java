@@ -20,6 +20,10 @@ import java.util.Set;
 @RequestMapping("/library")
 public class LibraryWebController {
 
+    private static final String RESPONSE_MESSAGE = "responseMessage";
+    private static final String REDIRECT_MAIN = "redirect:main";
+    private static final String IS_LOGGED_IN = "isLoggedIn";
+
     // Add some autowired references
     @Autowired
     PublicationService publicationService;
@@ -32,7 +36,7 @@ public class LibraryWebController {
 
     @GetMapping(value = {"", "/", "/index"})
     public String index(HttpSession session) {
-        if (session.getAttribute("isLoggedIn") == null || !(boolean) session.getAttribute("isLoggedIn")) {;
+        if (session.getAttribute(IS_LOGGED_IN) == null || !(boolean) session.getAttribute(IS_LOGGED_IN)) {
             // Force the login page
             return "redirect:login";
         }
@@ -43,7 +47,7 @@ public class LibraryWebController {
     @GetMapping("/login")
     public String login(HttpSession session, Model modelToView) {
         // Set the session.isLoggedIn attribute to false
-        session.setAttribute("isLoggedIn", false);
+        session.setAttribute(IS_LOGGED_IN, false);
         modelToView.addAttribute("availableUsers", libraryMemberService.getAllUsers());
         modelToView.addAttribute("availableLibrarians", libraryMemberService.getAllLibrarians());
         return "login/login";
@@ -57,13 +61,13 @@ public class LibraryWebController {
             // Add the HTTP session id to the sessions set
             this.sessionIds.add(session.getId());
             // Set the login value to true
-            session.setAttribute("isLoggedIn", true);
+            session.setAttribute(IS_LOGGED_IN, true);
             // Save useful member attributes in the HTTP session
             session.setAttribute("memberId", libraryMemberId);
             session.setAttribute("memberClass", optionalLibraryMember.get().getClass().getSimpleName());
             session.setAttribute("memberName", optionalLibraryMember.get().getFirstName() + " " + optionalLibraryMember.get().getLastName());
         } else {
-            redirectAttributes.addFlashAttribute("responseMessage", "Can't login as User " + libraryMemberId);
+            redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, "Can't login as User " + libraryMemberId);
         }
         return "redirect:/library/";
     }
@@ -71,7 +75,7 @@ public class LibraryWebController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         // Restart the session attributes
-        session.removeAttribute("isLoggedIn");
+        session.removeAttribute(IS_LOGGED_IN);
         session.removeAttribute("memberId");
         session.removeAttribute("memberClass");
         session.removeAttribute("memberName");
@@ -102,7 +106,7 @@ public class LibraryWebController {
         // Clear all the H2 Publications DB
         publicationService.deleteAll();
         // Redirect to the Publications page
-        return "redirect:main";
+        return REDIRECT_MAIN;
     }
 
     @RequestMapping(value = "/clearAuthors")
@@ -110,7 +114,7 @@ public class LibraryWebController {
         // Clear all the H2 Authors DB
         authorService.deleteAll();
         // Redirect to the Publications page
-        return "redirect:main";
+        return REDIRECT_MAIN;
     }
 
     @RequestMapping(value = "/clearLibraryMembers")
@@ -118,7 +122,7 @@ public class LibraryWebController {
         // Clear all the H2 LibraryMember DB
         libraryMemberService.deleteAll();
         // Redirect to the Publications page
-        return "redirect:main";
+        return REDIRECT_MAIN;
     }
 
     /**

@@ -29,7 +29,7 @@ class BookTest {
         assertNull(this.testBook.getAuthor());
         assertNull(this.testBook.getPublicationDate());
         assertNull(this.testBook.getStatus());
-        assertNull(this.testBook.getISBN());
+        assertNull(this.testBook.getIsbn());
         assertEquals(0, this.testBook.getPages());
         assertNull(this.testBook.getGenre());
     }
@@ -42,7 +42,7 @@ class BookTest {
         assertNotNull(this.testBook.getAuthor());
         assertNotNull(this.testBook.getPublicationDate());
         assertNotNull(this.testBook.getStatus());
-        assertNotNull(this.testBook.getISBN());
+        assertNotNull(this.testBook.getIsbn());
         assertTrue(this.testBook.getPages() > 0);
         assertNotNull(this.testBook.getGenre());
     }

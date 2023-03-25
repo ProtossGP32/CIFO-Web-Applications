@@ -18,6 +18,14 @@ import java.util.Optional;
 @RequestMapping("/publications")
 public class PublicationController {
 
+    private static final String RESPONSE_MESSAGE = "responseMessage";
+    private static final String AUTHORS_ATTR = "authors";
+    private static final String PUBLICATION_TO_UPDATE = "publicationToUpdate";
+    private static final String UPDATED_TEXT = " updated!";
+    private static final String UPDATE_PUBLICATION_HTML = "publications/updatePublication";
+    private static final String NOT_FOUND_HTML = "notFound";
+
+
     @Autowired
     PublicationService publicationService;
 
@@ -41,8 +49,8 @@ public class PublicationController {
     @RequestMapping("/publicationForm")
     public String publicationForm(ModelMap containerToView) {
         containerToView.addAttribute("newBook", new Book());
-        containerToView.addAttribute("authors", authorService.getAllAuthors());
-        containerToView.addAttribute("responseMessage", null);
+        containerToView.addAttribute(AUTHORS_ATTR, authorService.getAllAuthors());
+        containerToView.addAttribute(RESPONSE_MESSAGE, null);
         return "publications/publicationForm";
     }
 
@@ -51,13 +59,13 @@ public class PublicationController {
         // TODO: Logic to create any Publication, not just a Book
         // TODO: Check if the publication already exists before inserting it again
         if (result.hasErrors()) {
-            containerToView.addAttribute("responseMessage", "Invalid book object! Review the fields");
+            containerToView.addAttribute(RESPONSE_MESSAGE, "Invalid book object! Review the fields");
         }
         else {
             publicationService.createPublication(newBook);
             containerToView.addAttribute("newBook", new Book());
-            containerToView.addAttribute("authors", authorService.getAllAuthors());
-            containerToView.addAttribute("responseMessage", "Book " + newBook.getTitle() + " from " + newBook.getAuthor().getFirstName() + " " + newBook.getAuthor().getLastName() + " saved.");
+            containerToView.addAttribute(AUTHORS_ATTR, authorService.getAllAuthors());
+            containerToView.addAttribute(RESPONSE_MESSAGE, "Book " + newBook.getTitle() + " from " + newBook.getAuthor().getFirstName() + " " + newBook.getAuthor().getLastName() + " saved.");
         }
         return "publications/publicationForm";
     }
@@ -74,13 +82,12 @@ public class PublicationController {
         // Retrieve the publication based on the received ID
         Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
         if (publicationToUpdate.isPresent()) {
-            containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
-            System.out.println("Available publication in DB: " + publicationToUpdate);
-            containerToView.addAttribute("authors", authorService.getAllAuthors());
-            containerToView.addAttribute("responseMessage", null);
-            return "publications/updatePublication";
+            containerToView.addAttribute(PUBLICATION_TO_UPDATE, publicationToUpdate.get());
+            containerToView.addAttribute(AUTHORS_ATTR, authorService.getAllAuthors());
+            containerToView.addAttribute(RESPONSE_MESSAGE, null);
+            return UPDATE_PUBLICATION_HTML;
         }
-        else return "notFound";
+        else return NOT_FOUND_HTML;
     }
 
     /**
@@ -93,52 +100,46 @@ public class PublicationController {
     @PostMapping("/updatePublication/Book/{id}")
     public String updateBook(@PathVariable("id") String id, Optional<Book> updatedPublication, ModelMap containerToView) {
         // Retrieve the publication based on the received ID
-        System.out.println("Received publication: " + updatedPublication);
         Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
-        System.out.println("Available publication in DB: " + publicationToUpdate);
         // Check if the Book is already inserted
-        if (publicationToUpdate.isPresent()) {
+        if (publicationToUpdate.isPresent() && updatedPublication.isPresent()) {
             publicationService.createPublication(updatedPublication.get());
-            containerToView.addAttribute("publicationToUpdate", updatedPublication.get());
-            containerToView.addAttribute("authors", authorService.getAllAuthors());
-            containerToView.addAttribute("responseMessage", "Book " + publicationToUpdate.get().getTitle() + " updated!");
-            return "publications/updatePublication";
+            containerToView.addAttribute(PUBLICATION_TO_UPDATE, updatedPublication.get());
+            containerToView.addAttribute(AUTHORS_ATTR, authorService.getAllAuthors());
+            containerToView.addAttribute(RESPONSE_MESSAGE, "Book " + publicationToUpdate.get().getTitle() + UPDATED_TEXT);
+            return UPDATE_PUBLICATION_HTML;
         }
-        return "notFound";
+        return NOT_FOUND_HTML;
     }
 
     @PostMapping("/updatePublication/CD/{id}")
     public String updateCD(@PathVariable("id") String id, Optional<CD> updatedPublication, ModelMap containerToView) {
         // Retrieve the publication based on the received ID
-        System.out.println("Received publication: " + updatedPublication);
         Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
-        System.out.println("Available publication in DB: " + publicationToUpdate);
         // Check if the CD is already inserted
-        if (publicationToUpdate.isPresent()) {
+        if (publicationToUpdate.isPresent() && updatedPublication.isPresent()) {
             publicationService.createPublication(updatedPublication.get());
-            containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
-            containerToView.addAttribute("authors", authorService.getAllAuthors());
-            containerToView.addAttribute("responseMessage", "CD " + publicationToUpdate.get().getTitle() + " updated!");
-            return "publications/updatePublication";
+            containerToView.addAttribute(PUBLICATION_TO_UPDATE, publicationToUpdate.get());
+            containerToView.addAttribute(AUTHORS_ATTR, authorService.getAllAuthors());
+            containerToView.addAttribute(RESPONSE_MESSAGE, "CD " + publicationToUpdate.get().getTitle() + UPDATED_TEXT);
+            return UPDATE_PUBLICATION_HTML;
         }
-        return "notFound";
+        return NOT_FOUND_HTML;
     }
 
     @PostMapping("/updatePublication/DVD/{id}")
     public String updateDVD(@PathVariable("id") String id, Optional<DVD> updatedPublication, ModelMap containerToView) {
         // Retrieve the publication based on the received ID
-        System.out.println("Received publication: " + updatedPublication);
         Optional<Publication> publicationToUpdate =  publicationService.findPublicationById(id);
-        System.out.println("Available publication in DB: " + publicationToUpdate);
         // Check if the DVD is already inserted
-        if (publicationToUpdate.isPresent()) {
+        if (publicationToUpdate.isPresent() && updatedPublication.isPresent()) {
             publicationService.createPublication(updatedPublication.get());
-            containerToView.addAttribute("publicationToUpdate", publicationToUpdate.get());
-            containerToView.addAttribute("authors", authorService.getAllAuthors());
-            containerToView.addAttribute("responseMessage", "DVD " + publicationToUpdate.get().getTitle() + " updated!");
-            return "publications/updatePublication";
+            containerToView.addAttribute(PUBLICATION_TO_UPDATE, publicationToUpdate.get());
+            containerToView.addAttribute(AUTHORS_ATTR, authorService.getAllAuthors());
+            containerToView.addAttribute(RESPONSE_MESSAGE, "DVD " + publicationToUpdate.get().getTitle() + UPDATED_TEXT);
+            return UPDATE_PUBLICATION_HTML;
         }
-        return "notFound";
+        return NOT_FOUND_HTML;
     }
 
     /**
@@ -153,28 +154,28 @@ public class PublicationController {
         Optional<Publication> publicationToDelete =  publicationService.findPublicationById(id);
         if (publicationToDelete.isPresent()) {
             publicationService.deletePublicationById(id);
-            redirectAttrs.addFlashAttribute("responseMessage", "Publication " + publicationToDelete.get().getTitle() + " deleted");
+            redirectAttrs.addFlashAttribute(RESPONSE_MESSAGE, "Publication " + publicationToDelete.get().getTitle() + " deleted");
             return "redirect:/publications";
         }
-        else return "notFound";
+        else return NOT_FOUND_HTML;
     }
 
     @RequestMapping("/authorForm")
     public String authorForm(ModelMap containerToView) {
         containerToView.addAttribute("newAuthor", new Author());
-        containerToView.addAttribute("responseMessage", null);
+        containerToView.addAttribute(RESPONSE_MESSAGE, null);
         return "publications/authorForm";
     }
 
     @RequestMapping("/createAuthor")
     public String createAuthor(@ModelAttribute("newAuthor") Author newAuthor, ModelMap containerToView, BindingResult result) {
         if (result.hasErrors()) {
-            containerToView.addAttribute("responseMessage", "Invalid author object! Review the fields");
+            containerToView.addAttribute(RESPONSE_MESSAGE, "Invalid author object! Review the fields");
         }
         else {
             authorService.createAuthor(newAuthor);
             containerToView.addAttribute("newAuthor", new Author());
-            containerToView.addAttribute("responseMessage", "Author " + newAuthor.getFirstName() + " " + newAuthor.getLastName() + " saved!");
+            containerToView.addAttribute(RESPONSE_MESSAGE, "Author " + newAuthor.getFirstName() + " " + newAuthor.getLastName() + " saved!");
         }
         return "publications/authorForm";
     }
@@ -188,7 +189,7 @@ public class PublicationController {
     public String createFakePublications(@RequestParam("qtyPublications") int qty, RedirectAttributes redirectAttributes) {
         // Call the faker generator
         demoService.createFakePublications(qty);
-        redirectAttributes.addFlashAttribute("responseMessage", "Added 10 new Publications");
+        redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, "Added 10 new Publications");
         // Redirect to the Publications page
         return "redirect:/publications";
     }

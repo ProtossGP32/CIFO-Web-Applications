@@ -16,6 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/libraryMembers")
 public class LibraryMemberController {
+
+    private static final String RESPONSE_MESSAGE = "responseMessage";
+    private static final String NEW_USER = "newUser";
     @Autowired
     LibraryMemberService libraryMemberService;
 
@@ -33,7 +36,7 @@ public class LibraryMemberController {
         containerToView.addAttribute("usersFromController",
                 libraryMemberService.getAllUsers());
         // 3. Add a response message
-        containerToView.addAttribute("responseMessage", null);
+        containerToView.addAttribute(RESPONSE_MESSAGE, null);
         return "libraryMembers/libraryMembersIndex";
     }
 
@@ -45,18 +48,18 @@ public class LibraryMemberController {
     public String memberForm(Model userModel) {
         // Instantiate a new User object
         // TODO: the Member form should initialize a LibraryMember-like object, not a User
-        userModel.addAttribute("newUser", new User());
+        userModel.addAttribute(NEW_USER, new User());
         // In GET methods, we invoke the same method
         return "libraryMembers/createUser";
     }
 
     @PostMapping("/createUser")
-    public String userSubmit(@ModelAttribute("newUser") User newUser, Model containerToView) {
+    public String userSubmit(@ModelAttribute(NEW_USER) User newUser, Model containerToView) {
         // Insert the new User to the database
         libraryMemberService.createLibraryMember(newUser);
         // TODO: Add logic to know if the received LibraryMember is a User, a Librarian or a Staff member
         // Add the newUser again to the containerToView
-        containerToView.addAttribute("newUser", new User());
+        containerToView.addAttribute(NEW_USER, new User());
         // Return to the createUser page
         return "libraryMembers/createUser";
     }
@@ -64,7 +67,7 @@ public class LibraryMemberController {
     @RequestMapping("/memberForm")
     public String memberForm(ModelMap containerToView) {
         containerToView.addAttribute("newMember", new User());
-        containerToView.addAttribute("responseMessage", null);
+        containerToView.addAttribute(RESPONSE_MESSAGE, null);
         return "libraryMembers/memberForm";
     }
 
@@ -72,12 +75,12 @@ public class LibraryMemberController {
     public String createMember(@ModelAttribute("newMember") User newMember, ModelMap containerToView, BindingResult result) {
         // TODO: Logic to create any LibraryMember, not just a User
         if (result.hasErrors()) {
-            containerToView.addAttribute("responseMessage", "Invalid author object! Review the fields");
+            containerToView.addAttribute(RESPONSE_MESSAGE, "Invalid author object! Review the fields");
         }
         else {
             libraryMemberService.createLibraryMember(newMember);
-            containerToView.addAttribute("newUser", new User());
-            containerToView.addAttribute("responseMessage", "User " + newMember.getFirstName() + " " + newMember.getLastName() + " saved!");
+            containerToView.addAttribute(NEW_USER, new User());
+            containerToView.addAttribute(RESPONSE_MESSAGE, "User " + newMember.getFirstName() + " " + newMember.getLastName() + " saved!");
         }
 
         return "libraryMembers/memberForm";
@@ -91,7 +94,7 @@ public class LibraryMemberController {
     public String createFakeLibraryMembers(@RequestParam("qtyMembers") int qty, RedirectAttributes redirectAttributes) {
         // Call the faker generator
         demoService.createFakeLibraryMembers(qty);
-        redirectAttributes.addFlashAttribute("responseMessage", "Added 10 new Library Members");
+        redirectAttributes.addFlashAttribute(RESPONSE_MESSAGE, "Added 10 new Library Members");
         // Redirect to the Library Members main page
         return "redirect:";
     }

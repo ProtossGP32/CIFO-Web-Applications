@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Entity(name = "Book")
 @DiscriminatorValue(value = "BOOK")
 public class Book extends Publication {
-    private String ISBN;
+    private String isbn;
     private int pages;
     private String genre;
 
@@ -21,9 +21,9 @@ public class Book extends Publication {
         super();
     }
 
-    public Book(String title, Author author, LocalDate publicationDate, String format, Status status, String ISBN, int pages, String genre) {
+    public Book(String title, Author author, LocalDate publicationDate, String format, Status status, String isbn, int pages, String genre) {
         super(title, author, publicationDate, format, status);
-        this.ISBN = ISBN;
+        this.isbn = isbn;
         this.pages = pages;
         this.genre = genre;
     }

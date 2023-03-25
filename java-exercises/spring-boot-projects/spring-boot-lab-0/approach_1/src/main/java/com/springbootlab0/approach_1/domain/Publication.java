@@ -40,11 +40,11 @@ public abstract class Publication implements PublicationOperations{
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    public Publication() {
+    protected Publication() {
         this.id = Helper.createUUID();
     }
 
-    public Publication(String title, Author author, LocalDate publicationDate, String format, Status status) {
+    protected Publication(String title, Author author, LocalDate publicationDate, String format, Status status) {
         this();
         this.title = title;
 
