@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1
+      - java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/**
 
 
 jobs:
