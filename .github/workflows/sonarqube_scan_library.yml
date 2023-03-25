@@ -2,11 +2,11 @@ name: Library Manager Scan
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1
+  #push:
+  #  branches:
+  #    - main
+  #  paths:
+  #    - java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1
 
 jobs:
   sonarqube_scan:
