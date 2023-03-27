@@ -103,7 +103,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 1      	| MONDAY (W34)                 	            | TUESDAY (W26)                         | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                    |---                                    |---	                                |---                                        |---    |
-| Morning   	| PMS: Weekly planning (W8)                 | TP: Update UMLs (W5)                  | DOL: Update Quarto docs (W3)          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
+| Morning   	| ~~PMS: Weekly planning (W8)~~                 | TP: Update UMLs (W5)                  | DOL: Update Quarto docs (W3)          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
 | Afternoon 	| TP: Finish User Entity (W13)              | DOL: Learn about observability (W13)  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
 | Evening   	| CP: Complete SonarQube GitHub action (W13)| CP: Create Library REST API (W8)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | PMS: Weekly retrospective (W8)    |
 
@@ -127,7 +127,9 @@ Think about the complexity of the completed tasks and if they matched the expect
 - If the task was harder than you though, think about spitting it into less complex tasks
 
 Completed tasks:
-
+- PMS: Weekly planning (W8) --> Done when planned
+- CP: Complete SonarQube GitHub action (W13) --> Worked on it on Monday morning, still not finished (missing Code coverage)
+- Offtopic: Work with KiCAD 6 --> Done instead of Monday tasks
 
 
 ### Unfinished tasks
