@@ -1,7 +1,7 @@
 package com.springbootlab0.approach_1.services;
 
+
 import com.springbootlab0.approach_1.domain.LibraryMember;
-import com.springbootlab0.approach_1.domain.User;
 import com.springbootlab0.approach_1.repository.LibraryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,11 +42,11 @@ public class LibraryMemberService {
         return libraryMemberRepository.findAll();
     }
 
-    public Iterable<User> getAllUsers() {
+    public Iterable<LibraryMember> getAllUsers() {
         return libraryMemberRepository.findUsers();
     }
 
-    public Iterable<User> getAllLibrarians() {
+    public Iterable<LibraryMember> getAllLibrarians() {
         return libraryMemberRepository.findLibrarians();
     }
 }

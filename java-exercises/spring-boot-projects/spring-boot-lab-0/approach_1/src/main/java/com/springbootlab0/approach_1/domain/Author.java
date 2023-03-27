@@ -7,6 +7,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -33,5 +34,17 @@ public class Author extends Person{
         super(firstName, lastName, nationality, birthDate);
         this.id = Helper.createUUID();
         this.penName = penName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Author author)) return false;
+        return id.equals(author.id) && penName.equals(author.penName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, penName);
     }
 }

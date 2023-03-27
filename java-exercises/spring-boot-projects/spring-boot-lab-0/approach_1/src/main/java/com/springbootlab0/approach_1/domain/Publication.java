@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 // Lombok annotations
 @Setter
@@ -58,5 +59,17 @@ public abstract class Publication implements PublicationOperations{
     @Override
     public void publish(){
         System.out.println("Publishing item: " + this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Publication that)) return false;
+        return id.equals(that.id) && title.equals(that.title) && author.equals(that.author) && publicationDate.equals(that.publicationDate) && format.equals(that.format) && status == that.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, author, publicationDate, format, status);
     }
 }

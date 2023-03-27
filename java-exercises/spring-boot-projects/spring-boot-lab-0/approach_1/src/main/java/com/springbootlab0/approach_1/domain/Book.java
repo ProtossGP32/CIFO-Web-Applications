@@ -27,4 +27,5 @@ public class Book extends Publication {
         this.pages = pages;
         this.genre = genre;
     }
+
 }
