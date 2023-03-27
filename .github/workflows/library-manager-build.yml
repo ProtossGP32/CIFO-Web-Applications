@@ -46,4 +46,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B compile org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ProtossGP32_CIFO-Web-Applications_AYcZKPmoYGaZKjBqbseC -Dsonar.projectBaseDir=java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1 -f java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/pom.xml
+          LIBRARY_MANAGER_SONARQUBE_PROJECT_KEY: ${{ secrets.LIBRARY_MANAGER_SONARQUBE_PROJECT_KEY }}
+          LIBRARY_MANAGER_PATH: java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1
+        run: mvn -B compile org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${LIBRARY_MANAGER_SONARQUBE_PROJECT_KEY} -Dsonar.projectBaseDir=${LIBRARY_MANAGER_PATH} -f ${LIBRARY_MANAGER_PATH}/pom.xml
