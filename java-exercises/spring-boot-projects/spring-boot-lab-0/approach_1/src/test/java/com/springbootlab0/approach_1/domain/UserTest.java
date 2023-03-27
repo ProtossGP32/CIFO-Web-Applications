@@ -1,6 +1,7 @@
 package com.springbootlab0.approach_1.domain;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import com.springbootlab0.approach_1.utils.FakeDataGenerator;
 
@@ -53,30 +54,35 @@ class UserTest {
     }
 
     @Test
+    @Disabled
     void createBorrow() {
         this.fakeUser.createBorrow();
         fail("Pending to implement");
     }
 
     @Test
+    @Disabled
     void findBorrow() {
         this.fakeUser.findBorrow();
         fail("Pending to implement");
     }
 
     @Test
+    @Disabled
     void removeBorrow() {
         this.fakeUser.removeBorrow();
         fail("Pending to implement");
     }
 
     @Test
+    @Disabled
     void updateBorrow() {
         this.fakeUser.updateBorrow();
         fail("Pending to implement");
     }
 
     @Test
+    @Disabled
     void listBorrows() {
         this.fakeUser.listBorrows();
         fail("Pending to implement");
