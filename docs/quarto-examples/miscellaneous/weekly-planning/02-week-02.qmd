@@ -1,0 +1,143 @@
+---
+title: "01 - Week 02"
+description: "Second iteration"
+categories: ["Time management"]
+author: ProtossGP32
+date: 2023/03/27
+from: markdown+emoji
+---
+# Introduction
+
+## RoadMap: Define what you want, know your energy and yourself
+Things to accomplish:
+
+- Finish the Library Web application using Web Controller (GET/POST)
+- Create a REST API application with SpringBoot
+- Create the first CI/CD pipeline for a Spring Boot project
+- Complete my tasks for the Team Project in Sprint 2
+- Deeper understanding of the DevOps methodology
+
+## TO-DO: list all the tasks that you have to do by concepts, technologies, tools, etc...
+- Categories:
+    - Class Project (CP)
+    - Team Project (TP)
+    - Continuous Integration/Continuous Delivery (CI/CD)
+    - DevOps Learning (DOL)
+    - Planning & MindSet (PMS)
+
+| CATEGORY  | TASK                              | WEIGHT    | INTRODUCED ON
+|---        | ---                               | ---:      | ---
+| CP        | Create Library REST API           | 8         | Week 1
+| CP        | Create Library REST client        | 5         | Week 1
+| CP        | Unify User HTML forms             | 5         | Week 1
+| CP        | Unify Publications creation       | 8         | Week 1
+| CP        | Migrate H2 to another DB          | 13        | Week 1
+| CP        | Update Quarto docs                | 5         | Week 1
+| CP        | Create missing Unit Tests         | 8         | Week 1
+| CP        | Create GitHub issues              | 3         | Week 1
+| CP        | Complete SonarQube GitHub action  | 13        | Week 2
+| CI/CD     | Learn GitHub Actions              | 13        | Week 1
+| CI/CD     | Install Jenkins                   | 8         | Week 1
+| CI/CD     | Create staging environment        | 13        | Week 1
+| TP        | Finish User Entity                | 13        | Week 1
+| TP        | Finish Vertical Slicing designs   | 13        | Week 1
+| TP        | Create missing Unit Tests         | 8         | Week 1
+| DOL       | Learn about observability         | 13        | Week 1
+| DOL       | Deploy workloads on Kubernetes    | 13        | Week 1
+| DOL       | Learn about OpenStack             | 21        | Week 1
+| DOL       | Learn about OKD                   | 21        | Week 2
+| DOL       | Learn about Python and Flask      | 13        | Week 2
+| DOL       | Learn about Argo workflows        | 21        | Week 2
+| DOL       | Learn about SQL and Postgres      | 21        | Week 2
+| DOL       | Install a SMTP server             | 13        | Week 1
+| DOL       | Update Quarto docs                | 8         | Week 1
+| PMS       | Weekly retrospective              | 8         | Week 1
+| PMS       | Weekly planning                   | 8         | Week 1
+| PMS       | MindSet & Lectures                | 5         | Week 1
+
+## Spring goal: categorize and filter them by importance and urgency based on your roadmap
+27 tasks:
+
+- Important and urgent (6):
+    - CP: Complete SonarQube GitHub action (W13)
+    - TP: Finish User Entity (W13)
+    - TP: Update functional diagrams (W8)
+    - TP: Finish Vertical Slicing designs (W13)
+    - DOL: Learn about observability (W13)
+    - DOL: Learn about OKD (21)
+    - DOL: Learn about Python and Flask (13)
+    - DOL: Learn about Argo workflows (21)
+    - PMS: Weekly planning (W8)
+
+- Important but not urgent (16):
+    - CP: Create missing Unit Tests (W8)
+    - CP: Unify User HTML forms (W5)
+    - CP: Unify Publications creation (W8)
+    - CP: Create GitHub issues (W3)
+    - CP: Create Library REST API (W8)
+    - CP: Create Library REST client (W5)
+    - CP: Migrate H2 to another DB (W13)
+    - TP: Create missing Unit Tests (W8)
+    - TP: Update UMLs (W5)
+    - CI/CD: Learn GitHub Actions (W13)
+    - CI/CD: Create staging environment (W13)
+    - DOL: Deploy workloads on Kubernetes (W13)
+    - DOL: Update Quarto docs (W3)
+    - DOL: Learn about SQL and Postgres (W21)
+    - PMS: Weekly retrospective (W8)
+    - PMS: MindSet & Lectures (W5)
+
+- Not important but urgent (5):
+    - DOL: Install a SMTP server (W13)
+    - CI/CD: Install Jenkins (W8)
+    - DOL: Learn about OpenStack (W21)
+
+- Neither important nor urgent:
+    - 
+
+
+## Decision-making: plan your week
+Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week:
+
+- Week 1:
+
+| WEEK 1      	| MONDAY (W34)                 	            | TUESDAY (W26)                         | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
+|-----------	|---   	                                    |---                                    |---	                                |---                                        |---    |
+| Morning   	| PMS: Weekly planning (W8)                 | TP: Update UMLs (W5)                  | DOL: Update Quarto docs (W3)          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
+| Afternoon 	| TP: Finish User Entity (W13)              | DOL: Learn about observability (W13)  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
+| Evening   	| CP: Complete SonarQube GitHub action (W13)| CP: Create Library REST API (W8)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | PMS: Weekly retrospective (W8)    |
+
+## Ultimate goal: metrics
+Make a retrospective of the previous week, analyse the results of the planning and take action.
+
+- Number of planned tasks per category:
+
+| CATEGORY                  | NUMBER OF PLANNED TASKS   | NUMBER OF COMPLETED TASKS
+| ---                       | ---:                      | ---:
+| Class Projects (CP)       |                           | 
+| Team Project (TP)         |                           |
+| CI/CD                     |                           |
+| DevOps Learning (DOL)     |                           |
+| Planning and MindSet (PMS)|                           |
+
+### Completed tasks
+Think about the complexity of the completed tasks and if they matched the expectatives:
+
+- If the task was easier than you thought, move it to lower energies spaces
+- If the task was harder than you though, think about spitting it into less complex tasks
+
+Completed tasks:
+
+
+
+### Unfinished tasks
+Think about the reasons why these tasks aren't done:
+
+- Did you lack some kind of resource (knowledge, tools, etc...) to even start it?
+- Did you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task
+- Is this task something that you've been dragging along for some time? Is it really necessary?
+
+
+
+## Retrospective
+Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:

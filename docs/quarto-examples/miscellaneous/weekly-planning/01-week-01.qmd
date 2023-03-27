@@ -106,7 +106,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 1      	| MONDAY (W16)                 	        | TUESDAY (W24)                         | WEDNESDAY (W24)                       | THURSDAY (W47)                            | FRIDAY (W34)                     	|
 |-----------	|---                           	        |---	                                |---	                                |---	                                    |---	|
-| Morning   	| ~~CP: Review GitHub issues (W3)~~         | TP: Do a weekly scrum	(W8)            | ~~CP: Add HTTP Session login (W8)~~        | ~~TP: Update OpenProject tasks (W8)~~ TP: Finish User Entity (W13)         | CI/CD: Learn GitHub Actions (W13)  	|
+| Morning   	| ~~CP: Review GitHub issues (W3)~~         | ~~TP: Do a weekly scrum	(W8)~~            | ~~CP: Add HTTP Session login (W8)~~        | ~~TP: Update OpenProject tasks (W8)~~ TP: Finish User Entity (W13)         | CI/CD: Learn GitHub Actions (W13)  	|
 | Afternoon 	| ~~TP: Review Team project status (W5)~~      | ~~CP: Update Quarto docs (W3)~~      | CP: Create Library REST API (W8)          | CP: Migrate H2 to another database (W13)  | DOL: Install a SMTP server (W13)   	|
 | Evening   	| ~~CP: Finish Borrow Entity (W8)~~        	| DOL: Learn about observability (W13)  | CP: Create Library REST client (W8)   | TP: Finish Vertical Slicing designs (W13) | PMS: Weekly retrospective (W8)  	|
 
@@ -137,6 +137,7 @@ Completed tasks:
 - CP: Update Quarto docs (W3) --> Already done during previous tasks
 - CP: Add HTTP Session login (W8) --> Completed on Wednesday morning instead of [TP: Finish User Entity (W13)]
 - TP: Update OpenProject tasks (W8) --> Rought review of the tasks status, then added [TP: Finish User Entity (W13)] task in the same slot
+- TP: Do a weekly scrum	(W8) --> Done on Friday
 
 ### Unfinished tasks
 Think about the reasons why these tasks aren't done:
@@ -151,4 +152,7 @@ Think about the reasons why these tasks aren't done:
 
 
 ## Retrospective
-Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week
+Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
+
+- At the end of the week I had more energy in the morning, I could complete some high-energy tasks there. This week I'll stick to the plan of doing low~mid-energy tasks in the morning, see if the pattern from previous week repeats
+- On afternoon and evenings I couldn't get in the mood of working. This week I'll try to get to work earlier after lunch, doing some 10-min tasks to build momentum

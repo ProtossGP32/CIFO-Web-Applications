@@ -50,3 +50,8 @@ Think about the reasons why these tasks aren't done:
 
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week
+
+- Best decision of all week
+- Avoided pits
+- Core concepts learnt during this week
+- What have you reorganized during this week?
