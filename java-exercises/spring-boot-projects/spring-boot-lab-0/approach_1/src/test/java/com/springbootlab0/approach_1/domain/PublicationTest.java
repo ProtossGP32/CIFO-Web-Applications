@@ -16,7 +16,7 @@ class PublicationTest {
     }
 
     @Test
-    @Disabled
+    @Disabled("Still no use-case for this")
     void publish() {
         this.fakePublication.publish();
         fail("Pending to implement");

@@ -54,35 +54,35 @@ class UserTest {
     }
 
     @Test
-    @Disabled
+    @Disabled("Still no use-case for this")
     void createBorrow() {
         this.fakeUser.createBorrow();
         fail("Pending to implement");
     }
 
     @Test
-    @Disabled
+    @Disabled("Still no use-case for this")
     void findBorrow() {
         this.fakeUser.findBorrow();
         fail("Pending to implement");
     }
 
     @Test
-    @Disabled
+    @Disabled("Still no use-case for this")
     void removeBorrow() {
         this.fakeUser.removeBorrow();
         fail("Pending to implement");
     }
 
     @Test
-    @Disabled
+    @Disabled("Still no use-case for this")
     void updateBorrow() {
         this.fakeUser.updateBorrow();
         fail("Pending to implement");
     }
 
     @Test
-    @Disabled
+    @Disabled("Still no use-case for this")
     void listBorrows() {
         this.fakeUser.listBorrows();
         fail("Pending to implement");
