@@ -39,12 +39,16 @@ Things to accomplish:
 | CP        | Complete SonarQube GitHub action  | 13        | Week 2
 | CP        | Update soft. script with Postman  | 8         | Week 2
 | CP        | Swagger and Mockito into Library  | 8         | Week 2
+| CP        | Enable logging in Java            | 8         | Week 2
+| CP        | Quarto: automate weekly planning  | 13        | Week 2
 | CI/CD     | Learn GitHub Actions              | 13        | Week 1
 | CI/CD     | Install Jenkins                   | 8         | Week 1
 | CI/CD     | Create staging environment        | 13        | Week 1
 | TP        | Finish User Entity                | 13        | Week 1
 | TP        | Finish Vertical Slicing designs   | 13        | Week 1
 | TP        | Create missing Unit Tests         | 8         | Week 1
+| TP        | Enable logging                    | 5         | Week 2
+| TP        | Create REST API                   | 5         | Week 2
 | DOL       | Learn about observability         | 13        | Week 1
 | DOL       | Deploy workloads on Kubernetes    | 13        | Week 1
 | DOL       | Learn about OpenStack             | 21        | Week 1
@@ -84,8 +88,11 @@ Things to accomplish:
     - CP: Create Library REST client (W5)
     - CP: Migrate H2 to another DB (W13)
     - CP: Update soft. script with Postman (W8)
+    - CP: Enable logging in Java (W8)
     - TP: Create missing Unit Tests (W8)
     - TP: Update UMLs (W5)
+    - TP: Enable logging (W5)
+    - TP: Create REST API (W5)
     - CI/CD: Learn GitHub Actions (W13)
     - CI/CD: Create staging environment (W13)
     - DOL: Deploy workloads on Kubernetes (W13)
@@ -108,13 +115,13 @@ Things to accomplish:
 ## Decision-making: plan your week
 Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week:
 
-- Week 1:
+- Week 2:
 
-| WEEK 1      	| MONDAY (W34)                 	            | TUESDAY (W26)                         | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
+| WEEK 2      	| MONDAY (W34)                 	            | TUESDAY (W26)                         | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                    |---                                    |---	                                |---                                        |---    |
-| Morning   	| ~~PMS: Weekly planning (W8)~~                 | TP: Update UMLs (W5)                  | DOL: Update Quarto docs (W3)          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
-| Afternoon 	| TP: Finish User Entity (W13)  ~~MSX: Adapters and gamepads study (W5)~~             | DOL: Learn about observability (W13)  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
-| Evening   	| CP: Complete SonarQube GitHub action (W13)    ~~MSX: MSX-Mega v3 Design (W21)~~| CP: Create Library REST API (W8)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | PMS: Weekly retrospective (W8)    |
+| Morning   	| ~~PMS: Weekly planning (W8)~~                 | ~~CP: Create Library REST API (W8)~~                  | DOL: Update Quarto docs (W3)          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
+| Afternoon 	| TP: Finish User Entity (W13)  ~~MSX: Adapters and gamepads study (W5)~~             | ~~DOL: Learn about observability (W13)~~  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
+| Evening   	| CP: Complete SonarQube GitHub action (W13)    ~~MSX: MSX-Mega v3 Design (W21)~~| TP: Update UMLs (W5)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -142,6 +149,7 @@ Completed tasks:
 - CP: Complete SonarQube GitHub action (W13) --> Worked on it on Monday morning, still not finished (missing JaCoCo Code coverage dependency)
 - MSX: MSX-Mega v3 Design (W21) --> Done instead of Monday tasks
 - MSX: Adapters and gamepads study (W5) --> Done instead of Monday tasks
+- DOL: Learn about observability (W13) --> Short introduction course from [o11y](https://academy.o11y.io/)
 
 
 ### Unfinished tasks
