@@ -55,3 +55,4 @@ Based on the previous analysis, identify the weak points of the previous plannin
 - Avoided pits
 - Core concepts learnt during this week
 - What have you reorganized during this week?
+- What have you learned?

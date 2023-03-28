@@ -24,6 +24,7 @@ Things to accomplish:
     - Continuous Integration/Continuous Delivery (CI/CD)
     - DevOps Learning (DOL)
     - Planning & MindSet (PMS)
+    - MSX-related tasks (MSX)
 
 | CATEGORY  | TASK                              | WEIGHT    | INTRODUCED ON
 |---        | ---                               | ---:      | ---
@@ -36,6 +37,7 @@ Things to accomplish:
 | CP        | Create missing Unit Tests         | 8         | Week 1
 | CP        | Create GitHub issues              | 3         | Week 1
 | CP        | Complete SonarQube GitHub action  | 13        | Week 2
+| CP        | Update soft. script with Postman  | 8         | Week 2
 | CI/CD     | Learn GitHub Actions              | 13        | Week 1
 | CI/CD     | Install Jenkins                   | 8         | Week 1
 | CI/CD     | Create staging environment        | 13        | Week 1
@@ -51,6 +53,8 @@ Things to accomplish:
 | DOL       | Learn about SQL and Postgres      | 21        | Week 2
 | DOL       | Install a SMTP server             | 13        | Week 1
 | DOL       | Update Quarto docs                | 8         | Week 1
+| MSX       | Adapters and gamepads study       | 5         | Week 2
+| MSX       | MSX-Mega v3 design                | 21        | Week 2
 | PMS       | Weekly retrospective              | 8         | Week 1
 | PMS       | Weekly planning                   | 8         | Week 1
 | PMS       | MindSet & Lectures                | 5         | Week 1
@@ -58,7 +62,7 @@ Things to accomplish:
 ## Spring goal: categorize and filter them by importance and urgency based on your roadmap
 27 tasks:
 
-- Important and urgent (6):
+- Important and urgent (9):
     - CP: Complete SonarQube GitHub action (W13)
     - TP: Finish User Entity (W13)
     - TP: Update functional diagrams (W8)
@@ -69,7 +73,7 @@ Things to accomplish:
     - DOL: Learn about Argo workflows (21)
     - PMS: Weekly planning (W8)
 
-- Important but not urgent (16):
+- Important but not urgent (19):
     - CP: Create missing Unit Tests (W8)
     - CP: Unify User HTML forms (W5)
     - CP: Unify Publications creation (W8)
@@ -77,6 +81,7 @@ Things to accomplish:
     - CP: Create Library REST API (W8)
     - CP: Create Library REST client (W5)
     - CP: Migrate H2 to another DB (W13)
+    - CP: Update soft. script with Postman (W8)
     - TP: Create missing Unit Tests (W8)
     - TP: Update UMLs (W5)
     - CI/CD: Learn GitHub Actions (W13)
@@ -84,6 +89,8 @@ Things to accomplish:
     - DOL: Deploy workloads on Kubernetes (W13)
     - DOL: Update Quarto docs (W3)
     - DOL: Learn about SQL and Postgres (W21)
+    - MSX: Adapters and gamepads study (W5)
+    - MSX: MSX-Mega v3 design (W21)
     - PMS: Weekly retrospective (W8)
     - PMS: MindSet & Lectures (W5)
 
@@ -104,8 +111,8 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 | WEEK 1      	| MONDAY (W34)                 	            | TUESDAY (W26)                         | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                    |---                                    |---	                                |---                                        |---    |
 | Morning   	| ~~PMS: Weekly planning (W8)~~                 | TP: Update UMLs (W5)                  | DOL: Update Quarto docs (W3)          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
-| Afternoon 	| TP: Finish User Entity (W13)              | DOL: Learn about observability (W13)  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
-| Evening   	| CP: Complete SonarQube GitHub action (W13)| CP: Create Library REST API (W8)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | PMS: Weekly retrospective (W8)    |
+| Afternoon 	| TP: Finish User Entity (W13)  ~~MSX: Adapters and gamepads study (W5)~~             | DOL: Learn about observability (W13)  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
+| Evening   	| CP: Complete SonarQube GitHub action (W13)    ~~MSX: MSX-Mega v3 Design (W21)~~| CP: Create Library REST API (W8)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -119,6 +126,7 @@ Make a retrospective of the previous week, analyse the results of the planning a
 | CI/CD                     |                           |
 | DevOps Learning (DOL)     |                           |
 | Planning and MindSet (PMS)|                           |
+| MSX-related tasks (MSX)   |                           |
 
 ### Completed tasks
 Think about the complexity of the completed tasks and if they matched the expectatives:
@@ -127,9 +135,11 @@ Think about the complexity of the completed tasks and if they matched the expect
 - If the task was harder than you though, think about spitting it into less complex tasks
 
 Completed tasks:
+
 - PMS: Weekly planning (W8) --> Done when planned
-- CP: Complete SonarQube GitHub action (W13) --> Worked on it on Monday morning, still not finished (missing Code coverage)
-- Offtopic: Work with KiCAD 6 --> Done instead of Monday tasks
+- CP: Complete SonarQube GitHub action (W13) --> Worked on it on Monday morning, still not finished (missing JaCoCo Code coverage dependency)
+- MSX: MSX-Mega v3 Design (W21) --> Done instead of Monday tasks
+- MSX: Adapters and gamepads study (W5) --> Done instead of Monday tasks
 
 
 ### Unfinished tasks
@@ -140,6 +150,14 @@ Think about the reasons why these tasks aren't done:
 - Is this task something that you've been dragging along for some time? Is it really necessary?
 
 
-
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
+
+- Best decision of all week
+- Avoided pits
+- Core concepts learnt during this week
+- What have you reorganized during this week?
+- What have you learned?
+    - KiCAD 6 schematics and pcb design
+    - GitHub Actions + SonarQube
+    - Spring REST API

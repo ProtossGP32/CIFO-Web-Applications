@@ -35,3 +35,12 @@ The API design for a weather service could ask the user for a zip code as a `req
 ## TODO
 Pending to elaborate!
 :::
+
+# Debugging tools
+## Postman
+
+[Link here:](https://www.postman.com/)
+
+According to the official page:
+
+> Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.
