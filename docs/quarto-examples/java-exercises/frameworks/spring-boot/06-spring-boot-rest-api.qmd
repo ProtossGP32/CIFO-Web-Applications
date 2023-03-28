@@ -31,3 +31,15 @@ Types of data that the REST methods will return:
 - `ResponseEntity<T Entity>`: It's a container that includes the following data:
     - `HttpHeaders`: info regarding the API (i.e. version) as well as the operation confirmation
     - `Body` content: it stores the `Entity` or the collection of `Entity` that we want to return
+
+## Additional tools
+### Swagger
+[_From official page:_](https://swagger.io/)
+
+Swagger is a tool that tries to simplify API development.
+Swagger isn't available as a Spring initializer dependency, so we have to install it via Maven Repository. [Follow this article](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) for Swagger integration in your Java project. This article is related to Swagger 2, if you want to user v3 (also known as OpenAPI 3.0), [follow this other article](https://www.baeldung.com/spring-rest-openapi-documentation).
+
+### Mockito
+[_From official page:_](https://site.mockito.org/)
+
+> Mockito is a mocking framework that tastes really good. It lets you write beautiful tests with a clean & simple API. [...] the tests are very readable and they produce clean verification errors.

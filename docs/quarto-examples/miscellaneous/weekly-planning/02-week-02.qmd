@@ -38,6 +38,7 @@ Things to accomplish:
 | CP        | Create GitHub issues              | 3         | Week 1
 | CP        | Complete SonarQube GitHub action  | 13        | Week 2
 | CP        | Update soft. script with Postman  | 8         | Week 2
+| CP        | Swagger and Mockito into Library  | 8         | Week 2
 | CI/CD     | Learn GitHub Actions              | 13        | Week 1
 | CI/CD     | Install Jenkins                   | 8         | Week 1
 | CI/CD     | Create staging environment        | 13        | Week 1
@@ -64,6 +65,7 @@ Things to accomplish:
 
 - Important and urgent (9):
     - CP: Complete SonarQube GitHub action (W13)
+    - CP: Swagger and Mockito into Library (W8)
     - TP: Finish User Entity (W13)
     - TP: Update functional diagrams (W8)
     - TP: Finish Vertical Slicing designs (W13)
