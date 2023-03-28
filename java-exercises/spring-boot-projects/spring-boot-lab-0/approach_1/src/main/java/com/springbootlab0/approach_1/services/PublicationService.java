@@ -21,6 +21,18 @@ public class PublicationService {
         return publicationRepository.findByStatus(Status.AVAILABLE);
     }
 
+    public Iterable<Publication> getAllBooks() {
+        return publicationRepository.findBooks();
+    }
+
+    public Iterable<Publication> getAllCDs() {
+        return publicationRepository.findCDs();
+    }
+
+    public Iterable<Publication> getAllDVDs() {
+        return publicationRepository.findDVDs();
+    }
+
     // CRUD
     public Publication createPublication(Publication publication) {
         return publicationRepository.save(publication);

@@ -65,4 +65,19 @@ public class Borrow {
         // Assign the publication
         this.setBorrowedPublication(borrowedPublication);
     }
+
+    public static Borrow createCopy(Borrow borrow) {
+        // Create a new borrow to return
+        Borrow borrowCopy = new Borrow();
+        // Copy all attributes from the given borrow to the copy
+        borrowCopy.setId(borrow.getId());
+        borrowCopy.setBorrowUser(borrow.getBorrowUser());
+        borrowCopy.setBorrowedPublication(borrow.getBorrowedPublication());
+        borrowCopy.setStartBorrowDate(borrow.getStartBorrowDate());
+        borrowCopy.setDueBorrowDate(borrow.getDueBorrowDate());
+        borrowCopy.setReturnedBorrowDate(borrow.getReturnedBorrowDate());
+        borrowCopy.setBorrowStatus(borrow.getBorrowStatus());
+        // Return the copy
+        return borrowCopy;
+    }
 }

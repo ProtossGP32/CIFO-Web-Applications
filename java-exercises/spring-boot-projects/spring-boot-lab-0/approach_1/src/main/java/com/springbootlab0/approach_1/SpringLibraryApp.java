@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
+//@EnableSwagger2
 public class SpringLibraryApp {
 
 	public static void main(String[] args) {

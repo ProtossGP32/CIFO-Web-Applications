@@ -123,10 +123,21 @@ public class BorrowService {
                     case LATE -> {
                         // TODO: define what to do when it is LATE
                     }
-                    case IN_PROGRESS ->
+                    case IN_PROGRESS -> {
                         // TODO: define the case scenarios where a borrow changes to IN_PROGRESS again
-                        // Update the dueBorrowDate 15 days from now
-                        borrowFromDB.setDueBorrowDate(LocalDate.now().plusDays(15));
+                        // Set the publication status to BORROWED
+                        if (!borrowFromDB.getBorrowedPublication().getStatus().equals(Status.BORROWED)) {
+                            borrowFromDB.getBorrowedPublication().setStatus(Status.BORROWED);
+                            // Update the dueBorrowDate 15 days from now
+                            borrowFromDB.setDueBorrowDate(LocalDate.now().plusDays(15));
+                            // Restart the return date
+                            borrowFromDB.setReturnedBorrowDate(null);
+                        } else {
+                            // Can't change a borrow status from closed/lost to in_progress if its publication is already borrowed!!
+                            return false;
+                        }
+                    }
+
 
                     default -> {
                         // Unknown borrow status!
@@ -142,5 +153,30 @@ public class BorrowService {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Changes the Borrow status to CLOSED
+     * @param borrowId
+     * @return
+     */
+    public Borrow returnBorrowByID(String borrowId) {
+        Optional<Borrow> borrowFromDB = borrowRepository.findById(borrowId);
+        if (borrowFromDB.isPresent()) {
+            Borrow currentBorrow = borrowFromDB.get();
+            // TODO: create a deep copy of the borrow from DB
+            Borrow borrowCopy = Borrow.createCopy(currentBorrow);
+            // Change the borrow status to CLOSED
+            borrowCopy.setBorrowStatus(BorrowStatus.CLOSED);
+            // Update the borrow in the DB
+            if (updateBorrow(borrowCopy)) {
+                return borrowCopy;
+            } else {
+                // Return null if something went wrong on the update process
+                return null;
+            }
+        }
+        // Return null if the borrow is not present in the DB
+        return null;
     }
 }

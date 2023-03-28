@@ -13,6 +13,11 @@ public class LibraryMembersRestController {
     @Autowired
     LibraryMemberService libraryMemberService;
 
+    @GetMapping("all")
+    public Iterable<LibraryMember> getAllLibraryMembers() {
+        return libraryMemberService.getAllLibraryMembers();
+    }
+
     @GetMapping("librarians")
     public Iterable<LibraryMember> getAllLibrarians() {
         return libraryMemberService.getAllLibrarians();
