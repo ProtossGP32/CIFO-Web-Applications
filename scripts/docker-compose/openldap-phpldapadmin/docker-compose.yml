@@ -1,0 +1,74 @@
+version: '2'
+name: ldap-service
+services:
+  # LDAP server
+  openldap:
+    image: docker.io/bitnami/openldap:2.6
+    container_name: openldap
+    hostname: openldap
+    restart: always
+    ports:
+      - '1389:1389'
+      - '1636:1636'
+    environment:
+      # Default LDAP_ROOT: dc=example,dc=org
+      - LDAP_ROOT=dc=cifojava,dc=local
+      - LDAP_ADMIN_PASSWORD_FILE=/run/secrets/ldap_admin_password
+      - LDAP_USERS=
+      - LDAP_PASSWORDS=
+      - LDAP_ENABLE_TLS=no
+    volumes:
+      - 'openldap_data:/bitnami/openldap'
+    networks:
+      - network
+    secrets:
+      - ldap_admin_password
+
+  # LDAP administrator via web interface
+  phpldapadmin:
+    image: osixia/phpldapadmin:latest
+    container_name: phpldapadmin
+    restart: always
+    # Don't know why this link attribute started to fail
+    #link:
+    #  openldap: ldap-server
+    environment:
+      # bitnami/openldap uses non-privileged port as default
+      PHPLDAPADMIN_LDAP_HOSTS: "#PYTHON2BASH:[{'openldap': [{'server': [{ 'port': 1389 }]}]}]"
+      #PHPLDAPADMIN_LDAP_HOSTS: ldap-host
+      PHPLDAPADMIN_HTTPS: "false"
+      PHPLDAPADMIN_LDAP_CLIENT_TLS: "false"
+    networks:
+      - network
+    ports:
+      - "8080:80"
+    depends_on:
+      - openldap
+
+  # Simple web service for password restart
+  self-service-password:
+    image: ltbproject/self-service-password:latest
+    container_name: self-service-password
+    environment:
+      LDAP_BIND_PASSWORD: ${LDAP_BIND_PASSWORD}
+      SSP_KEYPHRASE: ${SSP_KEYPHRASE}
+    volumes:
+      - '$PWD/conf/config.inc.local.php:/var/www/conf/config.inc.local.php'
+    ports:
+      - "8081:80"
+    networks:
+      - network
+    depends_on:
+      - openldap
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  openldap_data:
+    driver: local
+
+secrets:
+  ldap_admin_password:
+    file: secrets/ldap_admin_password.txt

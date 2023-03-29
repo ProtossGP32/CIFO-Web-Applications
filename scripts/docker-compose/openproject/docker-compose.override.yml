@@ -1,0 +1,8 @@
+version: "3.7"
+
+services:
+  web:
+    environment:
+      #OPENPROJECT_HTTPS: "false"
+      OPENPROJECT_HOST__NAME: "openproject.example.com"
+      OPENPROJECT_LDAP__USERS__SYNC__STATUS: true

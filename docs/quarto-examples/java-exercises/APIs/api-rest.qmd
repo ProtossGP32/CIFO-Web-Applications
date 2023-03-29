@@ -44,3 +44,14 @@ Pending to elaborate!
 According to the official page:
 
 > Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.
+
+Postman allows the following:
+
+- Create collections of REST requests
+- Create APIs that query against other datasources (?)
+- Create Mock Servers to test your APIs
+- Create Monitor to observe your system
+- Create Flows to automate processes
+
+### Environments
+Create environment variables when they are used across all collections or when they have sensitive data (secret)

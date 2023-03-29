@@ -3,6 +3,12 @@ title: "Docker software deployment"
 ---
 
 # Introduction
+This post includes instructions on how to deploy self-hosted software via Docker containers
+
+:::{.callout-note}
+## Careful with web domains!
+In this examples, we are using `example.com` as our web domain. Change it to your own domain where the applications are accessed from.
+:::
 
 # Software categories
 ## Communication
@@ -39,13 +45,10 @@ As an alternative to the built-in Collabora/CODE document server, if you want to
 :::
 
 #### Configuration
-Try to create a `docker-compose.yml` file to ease the nextCloud deployment. The steps are defined in the installation guide:
+Try to create a `docker-compose.yml` file to ease the nextCloud deployment, the steps are defined in the installation guide. You'll also have to provide `secrets` for both the nextcloud and postgres admin credentials:
 
-:::{.callout-warning}
-## TODO
-Upload the `docker-compose.yml` of NextCloud and render it here
-
-:::
+```{.yml filename=docker-compose.yml include=../../../../scripts/docker-compose/nextcloud/docker-compose.yml}
+```
 
 ## Collaborative tools
 
@@ -72,19 +75,22 @@ Things to consider configuring:
 * **User creation activation:** by default, the `admin` user is responsible of manually activate any new account. This can be changed to automatically activate accounts either instantly or by sending an e-mail
     * The e-mail option requires OpenProject to have an SMTP server available to send mails
 
-:::{.callout-warning}
-## TODO
-Upload the `docker-compose.yml` and `docker-compose.override.yml` files and render them here.
-:::
+* Use a `docker-compose.override.yml` file to replace values of `docker-compose.yml`, don't modify it:
+
+```{.yml filename=docker-compose.override.yml include=../../../../scripts/docker-compose/openproject/docker-compose.override.yml}
+```
 
 ## User database and authentication
-### OpenLDAP + phpLDAPadmin
-We'll be using a bitnami/openldap docker image as it runs as non-privileged user, providing an additional layer of security.
+### OpenLDAP + phpLDAPadmin + Self-Service-Password
+We'll be using a bitnami/openldap docker image as it runs as non-privileged user, providing an additional layer of security. You'll need to provide the following files:
 
-:::{.callout-warning}
-## TODO
-Upload the `docker-compose.yml` file and render it here.
-:::
+- A `conf/config.inc.local.php` to override default openldap config
+- A `secrets/ldap_admin_password.txt` file containing the ldap admin user password (just the password in plain text, no key-value format)
+- A `.env` file containing key-value fields for the `SSP_KEYPHRASE` and the `LDAP_BIND_PASSWORD` required for the Self-Service-Password docker image. `LDAP_BIND_PASSWORD` must match the ldap admin password of OpenLDAP
+
+```{.yml filename=docker-compose.yml include=../../../../scripts/docker-compose/openldap-phpldapadmin/docker-compose.yml}
+```
+
 
 ### FreeIPA
 Follow this tutorial:
