@@ -40,8 +40,6 @@ public class PublicationsRestController {
         return publicationService.createPublication(cd);
     }
 
-
-
     @GetMapping("dvd")
     public Iterable<Publication> getAllDVD() {
         return publicationService.getAllDVDs();
