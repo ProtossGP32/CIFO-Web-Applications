@@ -119,7 +119,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 2      	| MONDAY (W34)                 	            | TUESDAY (W26)                         | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                    |---                                    |---	                                |---                                        |---    |
-| Morning   	| ~~PMS: Weekly planning (W8)~~                 | ~~CP: Create Library REST API (W8)~~                  | DOL: Update Quarto docs (W3)          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
+| Morning   	| ~~PMS: Weekly planning (W8)~~                 | ~~CP: Create Library REST API (W8)~~                  | ~~DOL: Update Quarto docs (W3)~~          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
 | Afternoon 	| TP: Finish User Entity (W13)  ~~MSX: Adapters and gamepads study (W5)~~             | ~~DOL: Learn about observability (W13)~~  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
 | Evening   	| CP: Complete SonarQube GitHub action (W13)    ~~MSX: MSX-Mega v3 Design (W21)~~| TP: Update UMLs (W5)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | PMS: Weekly retrospective (W8)    |
 
@@ -150,6 +150,8 @@ Completed tasks:
 - MSX: MSX-Mega v3 Design (W21) --> Done instead of Monday tasks
 - MSX: Adapters and gamepads study (W5) --> Done instead of Monday tasks
 - DOL: Learn about observability (W13) --> Short introduction course from [o11y](https://academy.o11y.io/)
+- DOL: Update Quarto docs (W3) --> Updated Quarto docs related to self-hosted software deployment
+
 
 
 ### Unfinished tasks
@@ -159,6 +161,12 @@ Think about the reasons why these tasks aren't done:
 - Did you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task
 - Is this task something that you've been dragging along for some time? Is it really necessary?
 
+- Monday:
+    - Replaced planned tasks with MSX-related stuff
+-Tuesday:
+    - Learn about Observability took me more time than expected
+- Wednesday:
+    - Family matters kept me from doing anything in the afternoon and the evening
 
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
@@ -168,6 +176,6 @@ Based on the previous analysis, identify the weak points of the previous plannin
 - Core concepts learnt during this week
 - What have you reorganized during this week?
 - What have you learned?
-    - KiCAD 6 schematics and pcb design
+    - KiCAD 6 schematics and PCB design
     - GitHub Actions + SonarQube
     - Spring REST API
