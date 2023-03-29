@@ -533,7 +533,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#user-database-and-authentication" id="toc-user-database-and-authentication" class="nav-link" data-scroll-target="#user-database-and-authentication">User database and authentication</a>
   <ul class="collapse">
-  <li><a href="#openldap-phpldapadmin" id="toc-openldap-phpldapadmin" class="nav-link" data-scroll-target="#openldap-phpldapadmin">OpenLDAP + phpLDAPadmin</a></li>
+  <li><a href="#openldap-phpldapadmin-self-service-password" id="toc-openldap-phpldapadmin-self-service-password" class="nav-link" data-scroll-target="#openldap-phpldapadmin-self-service-password">OpenLDAP + phpLDAPadmin + Self-Service-Password</a></li>
   <li><a href="#freeipa" id="toc-freeipa" class="nav-link" data-scroll-target="#freeipa">FreeIPA</a></li>
   </ul></li>
   <li><a href="#code-analysis" id="toc-code-analysis" class="nav-link" data-scroll-target="#code-analysis">Code analysis</a>
@@ -566,6 +566,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<p>This post includes instructions on how to deploy self-hosted software via Docker containers</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Careful with web domains!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this examples, we are using <code>example.com</code> as our web domain. Change it to your own domain where the applications are accessed from.</p>
+</div>
+</div>
 </section>
 <section id="software-categories" class="level1">
 <h1>Software categories</h1>
@@ -635,19 +649,81 @@ OnlyOffice + NextCloud integration
 </section>
 <section id="configuration" class="level4">
 <h4 class="anchored" data-anchor-id="configuration">Configuration</h4>
-<p>Try to create a <code>docker-compose.yml</code> file to ease the nextCloud deployment. The steps are defined in the installation guide:</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Try to create a <code>docker-compose.yml</code> file to ease the nextCloud deployment, the steps are defined in the installation guide. You’ll also have to provide <code>secrets</code> for both the nextcloud and postgres admin credentials:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>docker-compose.yml</strong></pre>
 </div>
-<div class="callout-caption-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Upload the <code>docker-compose.yml</code> of NextCloud and render it here</p>
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'3.2'</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> nextcloud</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">  </span><span class="fu">db</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> postgres</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">    #container_name: nextcloud_db</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="at">    </span><span class="fu">hostname</span><span class="kw">:</span><span class="at"> nextcloud_db</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 5432:5432</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db:/var/lib/postgresql/data</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="at">      </span><span class="kw">-</span><span class="at"> TZ=Europe/Madrid</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_DB_FILE=/run/secrets/postgres_db</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_USER_FILE=/run/secrets/postgres_user</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="at">    </span><span class="fu">secrets</span><span class="kw">:</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres_db</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres_password</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres_user</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> nextcloud:stable-apache</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co">    #container_name: nextcloud_app</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 8081:80</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="at">      </span><span class="kw">-</span><span class="at"> data:/var/www/html</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="at">      </span><span class="kw">-</span><span class="at"> TZ=Europe/Madrid</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_HOST=nextcloud_db</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_DB_FILE=/run/secrets/postgres_db</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_USER_FILE=/run/secrets/postgres_user</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="at">      </span><span class="kw">-</span><span class="at"> NEXTCLOUD_ADMIN_PASSWORD_FILE=/run/secrets/nextcloud_admin_password</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a><span class="at">      </span><span class="kw">-</span><span class="at"> NEXTCLOUD_ADMIN_USER_FILE=/run/secrets/nextcloud_admin_user</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a><span class="at">      </span><span class="kw">-</span><span class="at"> NEXTCLOUD_TRUSTED_DOMAINS=&lt;nextcloud.server.ip&gt; nextcloud.example.com localhost</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a><span class="co">      # Required fields for Cloudflare HTTPS access</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="at">      </span><span class="kw">-</span><span class="at"> OVERWRITEPROTOCOL=https</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a><span class="co">      #- APACHE_DISABLE_REWRITE_IP=1</span></span>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="co">      #- TRUSTED_PROXIES=nextcloud.example.com</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a><span class="co">      # Additional memory increase for both clients and uploads</span></span>
+<span id="cb2-45"><a href="#cb2-45"></a><span class="co">      #- PHP_MEMORY_LIMIT=1024M</span></span>
+<span id="cb2-46"><a href="#cb2-46"></a><span class="co">      #- PHP_UPLOAD_LIMIT=1024M</span></span>
+<span id="cb2-47"><a href="#cb2-47"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb2-48"><a href="#cb2-48"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
+<span id="cb2-49"><a href="#cb2-49"></a><span class="at">    </span><span class="fu">secrets</span><span class="kw">:</span></span>
+<span id="cb2-50"><a href="#cb2-50"></a><span class="at">      </span><span class="kw">-</span><span class="at"> nextcloud_admin_password</span></span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="at">      </span><span class="kw">-</span><span class="at"> nextcloud_admin_user</span></span>
+<span id="cb2-52"><a href="#cb2-52"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres_db</span></span>
+<span id="cb2-53"><a href="#cb2-53"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres_password</span></span>
+<span id="cb2-54"><a href="#cb2-54"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres_user</span></span>
+<span id="cb2-55"><a href="#cb2-55"></a></span>
+<span id="cb2-56"><a href="#cb2-56"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb2-57"><a href="#cb2-57"></a><span class="at">  </span><span class="fu">db</span><span class="kw">:</span></span>
+<span id="cb2-58"><a href="#cb2-58"></a><span class="at">  </span><span class="fu">data</span><span class="kw">:</span></span>
+<span id="cb2-59"><a href="#cb2-59"></a></span>
+<span id="cb2-60"><a href="#cb2-60"></a><span class="fu">secrets</span><span class="kw">:</span></span>
+<span id="cb2-61"><a href="#cb2-61"></a><span class="at">  </span><span class="fu">nextcloud_admin_password</span><span class="kw">:</span></span>
+<span id="cb2-62"><a href="#cb2-62"></a><span class="at">    </span><span class="fu">file</span><span class="kw">:</span><span class="at"> $PWD/secrets/nextcloud_admin_password.txt</span><span class="co"> # put admin password in this file</span></span>
+<span id="cb2-63"><a href="#cb2-63"></a><span class="at">  </span><span class="fu">nextcloud_admin_user</span><span class="kw">:</span></span>
+<span id="cb2-64"><a href="#cb2-64"></a><span class="at">    </span><span class="fu">file</span><span class="kw">:</span><span class="at"> $PWD/secrets/nextcloud_admin_user.txt</span><span class="co"> # put admin username in this file</span></span>
+<span id="cb2-65"><a href="#cb2-65"></a><span class="at">  </span><span class="fu">postgres_db</span><span class="kw">:</span></span>
+<span id="cb2-66"><a href="#cb2-66"></a><span class="at">    </span><span class="fu">file</span><span class="kw">:</span><span class="at"> $PWD/secrets/postgres_db.txt</span><span class="co"> # put postgresql db name in this file</span></span>
+<span id="cb2-67"><a href="#cb2-67"></a><span class="at">  </span><span class="fu">postgres_password</span><span class="kw">:</span></span>
+<span id="cb2-68"><a href="#cb2-68"></a><span class="at">    </span><span class="fu">file</span><span class="kw">:</span><span class="at"> $PWD/secrets/postgres_password.txt</span><span class="co"> # put postgresql password in this file</span></span>
+<span id="cb2-69"><a href="#cb2-69"></a><span class="at">  </span><span class="fu">postgres_user</span><span class="kw">:</span></span>
+<span id="cb2-70"><a href="#cb2-70"></a><span class="at">    </span><span class="fu">file</span><span class="kw">:</span><span class="at"> $PWD/secrets/postgres_user.txt</span><span class="co"> # put postgresql username in this file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -674,7 +750,7 @@ Be patient with the OpenProject initialization
 </div>
 <div class="callout-body-container callout-body">
 <p>It takes some time for the OpenProject Web GUI to be available, just wait at least 5 minutes. If something goes wrong, check logs. From the same <code>docker-compose.yml</code> dir:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">docker</span> compose logs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> compose logs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>Once up, access the Web GUI at <code>http://&lt;openproject-ip&gt;:8080</code></p>
@@ -687,40 +763,112 @@ Be patient with the OpenProject initialization
 <ul>
 <li>The e-mail option requires OpenProject to have an SMTP server available to send mails</li>
 </ul></li>
+<li>Use a <code>docker-compose.override.yml</code> file to replace values of <code>docker-compose.yml</code>, don’t modify it:</li>
 </ul>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>docker-compose.override.yml</strong></pre>
 </div>
-<div class="callout-caption-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Upload the <code>docker-compose.yml</code> and <code>docker-compose.override.yml</code> files and render them here.</p>
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">"3.7"</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="at">  </span><span class="fu">web</span><span class="kw">:</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">      #OPENPROJECT_HTTPS: "false"</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="at">      </span><span class="fu">OPENPROJECT_HOST__NAME</span><span class="kw">:</span><span class="at"> </span><span class="st">"openproject.example.com"</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="at">      </span><span class="fu">OPENPROJECT_LDAP__USERS__SYNC__STATUS</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 </section>
 <section id="user-database-and-authentication" class="level2">
 <h2 class="anchored" data-anchor-id="user-database-and-authentication">User database and authentication</h2>
-<section id="openldap-phpldapadmin" class="level3">
-<h3 class="anchored" data-anchor-id="openldap-phpldapadmin">OpenLDAP + phpLDAPadmin</h3>
-<p>We’ll be using a bitnami/openldap docker image as it runs as non-privileged user, providing an additional layer of security.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="openldap-phpldapadmin-self-service-password" class="level3">
+<h3 class="anchored" data-anchor-id="openldap-phpldapadmin-self-service-password">OpenLDAP + phpLDAPadmin + Self-Service-Password</h3>
+<p>We’ll be using a bitnami/openldap docker image as it runs as non-privileged user, providing an additional layer of security. You’ll need to provide the following files:</p>
+<ul>
+<li>A <code>conf/config.inc.local.php</code> to override default openldap config</li>
+<li>A <code>secrets/ldap_admin_password.txt</code> file containing the ldap admin user password (just the password in plain text, no key-value format)</li>
+<li>A <code>.env</code> file containing key-value fields for the <code>SSP_KEYPHRASE</code> and the <code>LDAP_BIND_PASSWORD</code> required for the Self-Service-Password docker image. <code>LDAP_BIND_PASSWORD</code> must match the ldap admin password of OpenLDAP</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>docker-compose.yml</strong></pre>
 </div>
-<div class="callout-caption-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Upload the <code>docker-compose.yml</code> file and render it here.</p>
-</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'2'</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> ldap-service</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">  # LDAP server</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="at">  </span><span class="fu">openldap</span><span class="kw">:</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> docker.io/bitnami/openldap:2.6</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> openldap</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="at">    </span><span class="fu">hostname</span><span class="kw">:</span><span class="at"> openldap</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">'1389:1389'</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">'1636:1636'</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">      # Default LDAP_ROOT: dc=example,dc=org</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="at">      </span><span class="kw">-</span><span class="at"> LDAP_ROOT=dc=cifojava,dc=local</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="at">      </span><span class="kw">-</span><span class="at"> LDAP_ADMIN_PASSWORD_FILE=/run/secrets/ldap_admin_password</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="at">      </span><span class="kw">-</span><span class="at"> LDAP_USERS=</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="at">      </span><span class="kw">-</span><span class="at"> LDAP_PASSWORDS=</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="at">      </span><span class="kw">-</span><span class="at"> LDAP_ENABLE_TLS=no</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">'openldap_data:/bitnami/openldap'</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="at">      </span><span class="kw">-</span><span class="at"> network</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="at">    </span><span class="fu">secrets</span><span class="kw">:</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ldap_admin_password</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="co">  # LDAP administrator via web interface</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="at">  </span><span class="fu">phpldapadmin</span><span class="kw">:</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> osixia/phpldapadmin:latest</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> phpldapadmin</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="co">    # Don't know why this link attribute started to fail</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="co">    #link:</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="co">    #  openldap: ldap-server</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb5-36"><a href="#cb5-36"></a><span class="co">      # bitnami/openldap uses non-privileged port as default</span></span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="at">      </span><span class="fu">PHPLDAPADMIN_LDAP_HOSTS</span><span class="kw">:</span><span class="at"> </span><span class="st">"#PYTHON2BASH:[{'openldap': [{'server': [{ 'port': 1389 }]}]}]"</span></span>
+<span id="cb5-38"><a href="#cb5-38"></a><span class="co">      #PHPLDAPADMIN_LDAP_HOSTS: ldap-host</span></span>
+<span id="cb5-39"><a href="#cb5-39"></a><span class="at">      </span><span class="fu">PHPLDAPADMIN_HTTPS</span><span class="kw">:</span><span class="at"> </span><span class="st">"false"</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a><span class="at">      </span><span class="fu">PHPLDAPADMIN_LDAP_CLIENT_TLS</span><span class="kw">:</span><span class="at"> </span><span class="st">"false"</span></span>
+<span id="cb5-41"><a href="#cb5-41"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a><span class="at">      </span><span class="kw">-</span><span class="at"> network</span></span>
+<span id="cb5-43"><a href="#cb5-43"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb5-44"><a href="#cb5-44"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8080:80"</span></span>
+<span id="cb5-45"><a href="#cb5-45"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb5-46"><a href="#cb5-46"></a><span class="at">      </span><span class="kw">-</span><span class="at"> openldap</span></span>
+<span id="cb5-47"><a href="#cb5-47"></a></span>
+<span id="cb5-48"><a href="#cb5-48"></a><span class="co">  # Simple web service for password restart</span></span>
+<span id="cb5-49"><a href="#cb5-49"></a><span class="at">  </span><span class="fu">self-service-password</span><span class="kw">:</span></span>
+<span id="cb5-50"><a href="#cb5-50"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> ltbproject/self-service-password:latest</span></span>
+<span id="cb5-51"><a href="#cb5-51"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> self-service-password</span></span>
+<span id="cb5-52"><a href="#cb5-52"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb5-53"><a href="#cb5-53"></a><span class="at">      </span><span class="fu">LDAP_BIND_PASSWORD</span><span class="kw">:</span><span class="at"> ${LDAP_BIND_PASSWORD}</span></span>
+<span id="cb5-54"><a href="#cb5-54"></a><span class="at">      </span><span class="fu">SSP_KEYPHRASE</span><span class="kw">:</span><span class="at"> ${SSP_KEYPHRASE}</span></span>
+<span id="cb5-55"><a href="#cb5-55"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb5-56"><a href="#cb5-56"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">'$PWD/conf/config.inc.local.php:/var/www/conf/config.inc.local.php'</span></span>
+<span id="cb5-57"><a href="#cb5-57"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb5-58"><a href="#cb5-58"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8081:80"</span></span>
+<span id="cb5-59"><a href="#cb5-59"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
+<span id="cb5-60"><a href="#cb5-60"></a><span class="at">      </span><span class="kw">-</span><span class="at"> network</span></span>
+<span id="cb5-61"><a href="#cb5-61"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb5-62"><a href="#cb5-62"></a><span class="at">      </span><span class="kw">-</span><span class="at"> openldap</span></span>
+<span id="cb5-63"><a href="#cb5-63"></a></span>
+<span id="cb5-64"><a href="#cb5-64"></a><span class="fu">networks</span><span class="kw">:</span></span>
+<span id="cb5-65"><a href="#cb5-65"></a><span class="at">  </span><span class="fu">network</span><span class="kw">:</span></span>
+<span id="cb5-66"><a href="#cb5-66"></a><span class="at">    </span><span class="fu">driver</span><span class="kw">:</span><span class="at"> bridge</span></span>
+<span id="cb5-67"><a href="#cb5-67"></a></span>
+<span id="cb5-68"><a href="#cb5-68"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb5-69"><a href="#cb5-69"></a><span class="at">  </span><span class="fu">openldap_data</span><span class="kw">:</span></span>
+<span id="cb5-70"><a href="#cb5-70"></a><span class="at">    </span><span class="fu">driver</span><span class="kw">:</span><span class="at"> local</span></span>
+<span id="cb5-71"><a href="#cb5-71"></a></span>
+<span id="cb5-72"><a href="#cb5-72"></a><span class="fu">secrets</span><span class="kw">:</span></span>
+<span id="cb5-73"><a href="#cb5-73"></a><span class="at">  </span><span class="fu">ldap_admin_password</span><span class="kw">:</span></span>
+<span id="cb5-74"><a href="#cb5-74"></a><span class="at">    </span><span class="fu">file</span><span class="kw">:</span><span class="at"> secrets/ldap_admin_password.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="freeipa" class="level3">
@@ -743,16 +891,16 @@ TODO
 <div class="code-with-filename-file">
 <pre><strong>docker-compose.yml</strong></pre>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">service</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="at">    </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">    # Init container for system parameter changes</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="at">        </span><span class="fu">image</span><span class="kw">:</span><span class="at"> bash</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="at">        </span><span class="fu">privileged</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="at">        </span><span class="fu">user</span><span class="kw">:</span><span class="at"> root</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="at">        </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="at">        </span><span class="kw">-</span><span class="at"> ./scripts/init.sh:/mnt/init.sh</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="at">        </span><span class="fu">command</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"sh"</span><span class="kw">,</span><span class="at"> </span><span class="st">"-e"</span><span class="kw">,</span><span class="at"> </span><span class="st">"/mnt/init.sh"</span><span class="kw">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">service</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="at">    </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">    # Init container for system parameter changes</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="at">        </span><span class="fu">image</span><span class="kw">:</span><span class="at"> bash</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="at">        </span><span class="fu">privileged</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="at">        </span><span class="fu">user</span><span class="kw">:</span><span class="at"> root</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="at">        </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="at">        </span><span class="kw">-</span><span class="at"> ./scripts/init.sh:/mnt/init.sh</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="at">        </span><span class="fu">command</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"sh"</span><span class="kw">,</span><span class="at"> </span><span class="st">"-e"</span><span class="kw">,</span><span class="at"> </span><span class="st">"/mnt/init.sh"</span><span class="kw">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Create a <code>scripts/init.sh</code> file that changes some limits:</li>
@@ -761,8 +909,8 @@ TODO
 <div class="code-with-filename-file">
 <pre><strong>scripts/init.sh</strong></pre>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">sysctl</span> <span class="at">-w</span> vm.max_map_count=524288</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">sysctl</span> <span class="at">-w</span> fs.file-max=131072</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">sysctl</span> <span class="at">-w</span> vm.max_map_count=524288</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="ex">sysctl</span> <span class="at">-w</span> fs.file-max=131072</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>If we want SonarQube to use LDAP authentication, we need to add custom config properties:</p>
 <ul>
@@ -772,23 +920,23 @@ TODO
 <div class="code-with-filename-file">
 <pre><strong>$SONARQUBE_HOME/conf/sonar.properties</strong></pre>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># LDAP configuration</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># General Configuration</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="at">sonar.security.realm=LDAP</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="at">ldap.url=ldap://myserver.mycompany.com:[port]</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="at">ldap.bindDn=my_bind_dn</span><span class="co"> # i.e: cn=admin,dc=mycompany,dc=com</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="at">ldap.bindPassword=my_bind_password</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># User Configuration</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="at">ldap.user.baseDn=ou=Users,dc=mycompany,dc=com</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="at">ldap.user.request=(&amp;(objectClass=inetOrgPerson)(uid={login}))</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="at">ldap.user.realNameAttribute=displayName</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="at">ldap.user.emailAttribute=mail</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># Group Configuration</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="at">ldap.group.baseDn=ou=Groups,dc=sonarsource,dc=com</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="at">ldap.group.request=(&amp;(objectClass=groupOfUniqueNames)(uniqueMember={dn}))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># LDAP configuration</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co"># General Configuration</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="at">sonar.security.realm=LDAP</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="at">ldap.url=ldap://myserver.mycompany.com:[port]</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="at">ldap.bindDn=my_bind_dn</span><span class="co"> # i.e: cn=admin,dc=mycompany,dc=com</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="at">ldap.bindPassword=my_bind_password</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co"># User Configuration</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="at">ldap.user.baseDn=ou=Users,dc=mycompany,dc=com</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="at">ldap.user.request=(&amp;(objectClass=inetOrgPerson)(uid={login}))</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="at">ldap.user.realNameAttribute=displayName</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="at">ldap.user.emailAttribute=mail</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="co"># Group Configuration</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="at">ldap.group.baseDn=ou=Groups,dc=sonarsource,dc=com</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="at">ldap.group.request=(&amp;(objectClass=groupOfUniqueNames)(uniqueMember={dn}))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Add both a <code>conf</code> volume and the <code>sonar.properties</code> inside the SonarQube docker-compose file:</li>
@@ -797,16 +945,16 @@ TODO
 <div class="code-with-filename-file">
 <pre><strong>$PWD/docker-compose.yml</strong></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">services</span><span class="kw">:</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="at">    </span><span class="fu">sonarqube</span><span class="kw">:</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="at">        </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="at">        </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="at">        </span><span class="kw">-</span><span class="at"> sonarqube_conf:/opt/sonarqube/conf</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="at">        </span><span class="kw">-</span><span class="at"> $PWD/conf/sonar.properties:/opt/sonarqube/conf/sonar.properties</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="at">    </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="at">    </span><span class="fu">sonarqube_conf</span><span class="kw">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="at">    </span><span class="fu">sonarqube</span><span class="kw">:</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="at">        </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="at">        </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="at">        </span><span class="kw">-</span><span class="at"> sonarqube_conf:/opt/sonarqube/conf</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="at">        </span><span class="kw">-</span><span class="at"> $PWD/conf/sonar.properties:/opt/sonarqube/conf/sonar.properties</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="at">    </span><span class="kw">[</span><span class="at">...</span><span class="kw">]</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="at">    </span><span class="fu">sonarqube_conf</span><span class="kw">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 <div class="callout-warning callout callout-style-default callout-captioned">
