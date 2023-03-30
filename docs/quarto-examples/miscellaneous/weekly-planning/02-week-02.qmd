@@ -28,12 +28,12 @@ Things to accomplish:
 
 | CATEGORY  | TASK                              | WEIGHT    | INTRODUCED ON
 |---        | ---                               | ---:      | ---
-| CP        | Create Library REST API           | 8         | Week 1
+| CP        | ~~Create Library REST API~~           | 8         | Week 1
 | CP        | Create Library REST client        | 5         | Week 1
 | CP        | Unify User HTML forms             | 5         | Week 1
 | CP        | Unify Publications creation       | 8         | Week 1
 | CP        | Migrate H2 to another DB          | 13        | Week 1
-| CP        | Update Quarto docs                | 5         | Week 1
+| CP        | ~~Update Quarto docs~~                | 5         | Week 1
 | CP        | Create missing Unit Tests         | 8         | Week 1
 | CP        | Create GitHub issues              | 3         | Week 1
 | CP        | Complete SonarQube GitHub action  | 13        | Week 2
@@ -45,11 +45,11 @@ Things to accomplish:
 | CI/CD     | Install Jenkins                   | 8         | Week 1
 | CI/CD     | Create staging environment        | 13        | Week 1
 | TP        | Finish User Entity                | 13        | Week 1
-| TP        | Finish Vertical Slicing designs   | 13        | Week 1
+| TP        | ~~Finish Vertical Slicing designs~~   | 13        | Week 1
 | TP        | Create missing Unit Tests         | 8         | Week 1
 | TP        | Enable logging                    | 5         | Week 2
 | TP        | Create REST API                   | 5         | Week 2
-| DOL       | Learn about observability         | 13        | Week 1
+| DOL       | ~~Learn about observability~~         | 13        | Week 1
 | DOL       | Deploy workloads on Kubernetes    | 13        | Week 1
 | DOL       | Learn about OpenStack             | 21        | Week 1
 | DOL       | Learn about OKD                   | 21        | Week 2
@@ -57,11 +57,11 @@ Things to accomplish:
 | DOL       | Learn about Argo workflows        | 21        | Week 2
 | DOL       | Learn about SQL and Postgres      | 21        | Week 2
 | DOL       | Install a SMTP server             | 13        | Week 1
-| DOL       | Update Quarto docs                | 8         | Week 1
-| MSX       | Adapters and gamepads study       | 5         | Week 2
-| MSX       | MSX-Mega v3 design                | 21        | Week 2
+| DOL       | ~~Update Quarto docs~~                | 8         | Week 1
+| MSX       | ~~Adapters and gamepads study~~       | 5         | Week 2
+| MSX       | ~~MSX-Mega v3 design~~                | 21        | Week 2
 | PMS       | Weekly retrospective              | 8         | Week 1
-| PMS       | Weekly planning                   | 8         | Week 1
+| PMS       | ~~Weekly planning~~                   | 8         | Week 1
 | PMS       | MindSet & Lectures                | 5         | Week 1
 
 ## Spring goal: categorize and filter them by importance and urgency based on your roadmap
@@ -72,19 +72,19 @@ Things to accomplish:
     - CP: Swagger and Mockito into Library (W8)
     - TP: Finish User Entity (W13)
     - TP: Update functional diagrams (W8)
-    - TP: Finish Vertical Slicing designs (W13)
-    - DOL: Learn about observability (W13)
+    - ~~TP: Finish Vertical Slicing designs (W13)~~
+    - ~~DOL: Learn about observability (W13)~~
     - DOL: Learn about OKD (21)
     - DOL: Learn about Python and Flask (13)
     - DOL: Learn about Argo workflows (21)
-    - PMS: Weekly planning (W8)
+    - ~~PMS: Weekly planning (W8)~~
 
 - Important but not urgent (19):
     - CP: Create missing Unit Tests (W8)
     - CP: Unify User HTML forms (W5)
     - CP: Unify Publications creation (W8)
     - CP: Create GitHub issues (W3)
-    - CP: Create Library REST API (W8)
+    - ~~CP: Create Library REST API (W8)~~
     - CP: Create Library REST client (W5)
     - CP: Migrate H2 to another DB (W13)
     - CP: Update soft. script with Postman (W8)
@@ -96,10 +96,10 @@ Things to accomplish:
     - CI/CD: Learn GitHub Actions (W13)
     - CI/CD: Create staging environment (W13)
     - DOL: Deploy workloads on Kubernetes (W13)
-    - DOL: Update Quarto docs (W3)
+    - ~~DOL: Update Quarto docs (W3)~~
     - DOL: Learn about SQL and Postgres (W21)
-    - MSX: Adapters and gamepads study (W5)
-    - MSX: MSX-Mega v3 design (W21)
+    - ~~MSX: Adapters and gamepads study (W5)~~
+    - ~~MSX: MSX-Mega v3 design (W21)~~
     - PMS: Weekly retrospective (W8)
     - PMS: MindSet & Lectures (W5)
 
@@ -119,7 +119,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 2      	| MONDAY (W34)                 	            | TUESDAY (W26)                         | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                    |---                                    |---	                                |---                                        |---    |
-| Morning   	| ~~PMS: Weekly planning (W8)~~                 | ~~CP: Create Library REST API (W8)~~                  | ~~DOL: Update Quarto docs (W3)~~          | TP: Finish Vertical Slicing designs (W13) | TP: Update functional diagrams (W8)  	|
+| Morning   	| ~~PMS: Weekly planning (W8)~~                 | ~~CP: Create Library REST API (W8)~~                  | ~~DOL: Update Quarto docs (W3)~~          | ~~TP: Finish Vertical Slicing designs (W13)~~ | TP: Update functional diagrams (W8)  	|
 | Afternoon 	| TP: Finish User Entity (W13)  ~~MSX: Adapters and gamepads study (W5)~~             | ~~DOL: Learn about observability (W13)~~  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
 | Evening   	| CP: Complete SonarQube GitHub action (W13)    ~~MSX: MSX-Mega v3 Design (W21)~~| TP: Update UMLs (W5)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | PMS: Weekly retrospective (W8)    |
 

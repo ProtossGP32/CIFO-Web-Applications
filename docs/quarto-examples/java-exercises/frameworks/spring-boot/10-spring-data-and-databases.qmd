@@ -1,0 +1,44 @@
+---
+title: "10 - Data and Databases - Spring Data"
+author: ProtossGP32
+categories: [springboot, JPA, Spring Data]
+description: "Introduction to Databases with Spring"
+date: 2023/03/30
+---
+
+# Introduction
+[_From Spring official page:_](https://spring.io/projects/spring-data#overview)
+
+> Spring Data’s mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store.
+>
+>It makes it easy to use data access technologies, relational and non-relational databases, map-reduce frameworks, and cloud-based data services. This is an umbrella project which contains many subprojects that are specific to a given database. The projects are developed by working together with many of the companies and developers that are behind these exciting technologies.
+
+## Features:
+
+- Powerful repository and custom object-mapping abstractions
+- Dynamic query derivation from repository method names
+- Implementation domain base classes providing basic properties
+- Support for transparent auditing (created, last changed)
+- Possibility to integrate custom repository code
+- Easy Spring integration via JavaConfig and custom XML namespaces
+- Advanced integration with Spring MVC controllers
+- Experimental support for cross-store persistence
+
+## Examples of database types
+
+### SQL
+
+- Normalized: typed database
+- Very Structured: Less error-prone when dealing with its data as it is all very defined
+- Low scalability: relational databases introduce high coupling between tables
+- Relational database: tables linked by ID fields
+- Example: each Java entity has its own table and they can be joined using ID fields
+
+### NoSQL
+
+- Not normalized: database isn't typed (JSON-style entries, documents)
+- High scalability
+- Fast query responses
+- Examples:
+    - DynamoDB
+    - MongoDB
