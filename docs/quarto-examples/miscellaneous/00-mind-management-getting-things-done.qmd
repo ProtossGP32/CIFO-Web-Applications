@@ -1,5 +1,5 @@
 ---
-title: "00 - Mind Management and Getting Thinds Done"
+title: "00 - Mind Management and Getting Things Done"
 description: "Tips to get the best out of your time"
 categories: ["Mind management", "Time management"]
 author: ProtossGP32
@@ -23,6 +23,7 @@ from: markdown+emoji
 ## Understand your available tools
 - When do you think a task is DONE?
 - What tasks are you DOING?
+    - **Avoid being the turkey in Taleb's problem** and be prepared for Black Swan Events ([Related article](https://mypatriotsupply.com/blogs/scout/the-turkey-problem-and-how-to-prepare-for-the-impossible))
 - How many TASKS can you manage at the same time?
 - How much ENERGY do you have to accomplish these TASKS?
 

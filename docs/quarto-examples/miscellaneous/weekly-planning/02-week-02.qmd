@@ -171,11 +171,17 @@ Think about the reasons why these tasks aren't done:
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
 
-- Best decision of all week
-- Avoided pits
-- Core concepts learnt during this week
-- What have you reorganized during this week?
-- What have you learned?
+- **Best decision of all week**
+    - Talk with the team members about the status of our tasks
+    - Add personal project tasks to the planning (MSX)
+
+- **Avoided pits**
+    - No pits this week
+
+- **What have you reorganized during this week?**
+    - Documentation tasks vs Learning tasks
+
+- **Core concepts learnt during this week / What have you learned?**
     - KiCAD 6 schematics and PCB design
     - GitHub Actions + SonarQube
     - Spring REST API
