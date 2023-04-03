@@ -6,8 +6,11 @@ import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.boot.json.JsonParser;
+import org.springframework.boot.json.JsonParserFactory;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -53,5 +56,14 @@ public class User extends LibraryMember implements BorrowOperations{
     @Override
     public void listBorrows() {
         // List all user's borrow
+    }
+
+    public static User createFromJson(String userJSON) {
+        // First, convert the JSON into a Map
+        JsonParser bodyParser = JsonParserFactory.getJsonParser();
+        Map<String, Object> bodyMap = bodyParser.parseMap(userJSON);
+        // Then, create a new User with all the fields of the JSON
+        User newUser = new User();
+        return newUser;
     }
 }

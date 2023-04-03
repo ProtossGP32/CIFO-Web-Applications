@@ -23,7 +23,7 @@ public class BorrowsRestController {
         return borrowService.getAllBorrows();
     }
 
-    @GetMapping("create")
+    @PostMapping("create")
     public Iterable<Borrow> createBorrow(@RequestBody String createBorrowData) {
         JsonParser bodyParser = JsonParserFactory.getJsonParser();
         Map<String, Object> bodyMap = bodyParser.parseMap(createBorrowData);

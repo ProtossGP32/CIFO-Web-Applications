@@ -3,10 +3,7 @@ package com.springbootlab0.approach_1.restControllers;
 import com.springbootlab0.approach_1.domain.*;
 import com.springbootlab0.approach_1.services.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/publications")
@@ -25,28 +22,28 @@ public class PublicationsRestController {
         return publicationService.getAllBooks();
     }
 
-    @PostMapping("books/create")
-    public Publication createBook(Book book) {
+    @PostMapping(value = "books/create", consumes = "application/JSON")
+    public Publication createBook(@RequestBody Book book) {
         return publicationService.createPublication(book);
     }
 
-    @GetMapping("cd")
+    @GetMapping("cds")
     public Iterable<Publication> getAllCD() {
         return publicationService.getAllCDs();
     }
 
-    @PostMapping("cd/create")
-    public Publication createCD(CD cd) {
+    @PostMapping(value = "cds/create", consumes = "application/JSON")
+    public Publication createCD(@RequestBody CD cd) {
         return publicationService.createPublication(cd);
     }
 
-    @GetMapping("dvd")
+    @GetMapping("dvds")
     public Iterable<Publication> getAllDVD() {
         return publicationService.getAllDVDs();
     }
 
-    @PostMapping("dvd/create")
-    public Publication createDVD(DVD dvd) {
+    @PostMapping(value = "dvds/create", consumes = "application/JSON")
+    public Publication createDVD(@RequestBody DVD dvd) {
         return publicationService.createPublication(dvd);
     }
 

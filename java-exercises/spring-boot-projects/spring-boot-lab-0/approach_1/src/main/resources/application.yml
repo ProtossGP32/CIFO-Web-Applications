@@ -3,12 +3,12 @@ server:
 
 # Spring properties
 spring:
-  security:
-    # Here you can change the default username and password
-    user:
-      name: protoss
-      password: 1234
-      role: user
+  #security:
+  #  # Here you can change the default username and password
+  #  user:
+  #    name: protoss
+  #    password: 1234
+  #    role: user
 
   main:
     banner-mode: off
