@@ -1,9 +1,9 @@
 ---
-title: "02 - Week 02"
+title: "03 - Week 03"
 description: "Second iteration"
 categories: ["Time management"]
 author: ProtossGP32
-date: 2023/03/27
+date: 2023/04/03
 from: markdown+emoji
 ---
 # Introduction
@@ -11,7 +11,6 @@ from: markdown+emoji
 ## RoadMap: Define what you want, know your energy and yourself
 Things to accomplish:
 
-- Finish the Library Web application using Web Controller (GET/POST)
 - Create a REST API application with SpringBoot
 - Create the first CI/CD pipeline for a Spring Boot project
 - Complete my tasks for the Team Project in Sprint 2
@@ -28,12 +27,10 @@ Things to accomplish:
 
 | CATEGORY  | TASK                              | WEIGHT    | INTRODUCED ON
 |---        | ---                               | ---:      | ---
-| CP        | ~~Create Library REST API~~           | 8         | Week 1
 | CP        | Create Library REST client        | 5         | Week 1
 | CP        | Unify User HTML forms             | 5         | Week 1
 | CP        | Unify Publications creation       | 8         | Week 1
 | CP        | Migrate H2 to another DB          | 13        | Week 1
-| CP        | ~~Update Quarto docs~~                | 5         | Week 1
 | CP        | Create missing Unit Tests         | 8         | Week 1
 | CP        | Create GitHub issues              | 3         | Week 1
 | CP        | Complete SonarQube GitHub action  | 13        | Week 2
@@ -45,46 +42,43 @@ Things to accomplish:
 | CI/CD     | Install Jenkins                   | 8         | Week 1
 | CI/CD     | Create staging environment        | 13        | Week 1
 | TP        | Finish User Entity                | 13        | Week 1
-| TP        | ~~Finish Vertical Slicing designs~~   | 13        | Week 1
 | TP        | Create missing Unit Tests         | 8         | Week 1
 | TP        | Enable logging                    | 5         | Week 2
 | TP        | Create REST API                   | 5         | Week 2
-| DOL       | ~~Learn about observability~~         | 13        | Week 1
 | DOL       | Deploy workloads on Kubernetes    | 13        | Week 1
 | DOL       | Learn about OpenStack             | 21        | Week 1
 | DOL       | Learn about OKD                   | 21        | Week 2
-| DOL       | Learn about Python and Flask      | 13        | Week 2
+| DOL       | Learn about Python and Django     | 13        | Week 2
 | DOL       | Learn about Argo workflows        | 21        | Week 2
 | DOL       | Learn about SQL and Postgres      | 21        | Week 2
+| DOL       | Learn about Terraform             | 21        | Week 3
+| DOL       | Learn about Ansible               | 21        | Week 3
 | DOL       | Install a SMTP server             | 13        | Week 1
-| DOL       | ~~Update Quarto docs~~                | 8         | Week 1
-| MSX       | ~~Adapters and gamepads study~~       | 5         | Week 2
-| MSX       | ~~MSX-Mega v3 design~~                | 21        | Week 2
-| PMS       | ~~Weekly retrospective~~              | 8         | Week 1
-| PMS       | ~~Weekly planning~~                   | 8         | Week 1
+| PMS       | ~~Weekly planning~~               | 8         | Week 1
+| PMS       | Weekly retrospective              | 8         | Week 1
 | PMS       | MindSet & Lectures                | 5         | Week 1
 
 ## Spring goal: categorize and filter them by importance and urgency based on your roadmap
 27 tasks:
 
-- Important and urgent (9):
+- Important and urgent:
     - CP: Complete SonarQube GitHub action (W13)
     - CP: Swagger and Mockito into Library (W8)
     - TP: Finish User Entity (W13)
     - TP: Update functional diagrams (W8)
-    - ~~TP: Finish Vertical Slicing designs (W13)~~
-    - ~~DOL: Learn about observability (W13)~~
+    - DOL: Learn about observability (W13)
     - DOL: Learn about OKD (21)
     - DOL: Learn about Python and Flask (13)
     - DOL: Learn about Argo workflows (21)
+    - DOL: Learn about Terraform (21)
+    - DOL: Learn about Ansible (21)
     - ~~PMS: Weekly planning (W8)~~
 
-- Important but not urgent (19):
+- Important but not urgent:
     - CP: Create missing Unit Tests (W8)
     - CP: Unify User HTML forms (W5)
     - CP: Unify Publications creation (W8)
     - CP: Create GitHub issues (W3)
-    - ~~CP: Create Library REST API (W8)~~
     - CP: Create Library REST client (W5)
     - CP: Migrate H2 to another DB (W13)
     - CP: Update soft. script with Postman (W8)
@@ -96,20 +90,17 @@ Things to accomplish:
     - CI/CD: Learn GitHub Actions (W13)
     - CI/CD: Create staging environment (W13)
     - DOL: Deploy workloads on Kubernetes (W13)
-    - ~~DOL: Update Quarto docs (W3)~~
     - DOL: Learn about SQL and Postgres (W21)
-    - ~~MSX: Adapters and gamepads study (W5)~~
-    - ~~MSX: MSX-Mega v3 design (W21)~~
+    - DOL: Learn about OpenStack (W21)
     - PMS: Weekly retrospective (W8)
     - PMS: MindSet & Lectures (W5)
 
-- Not important but urgent (5):
+- Not important but urgent:
     - DOL: Install a SMTP server (W13)
     - CI/CD: Install Jenkins (W8)
-    - DOL: Learn about OpenStack (W21)
 
 - Neither important nor urgent:
-    - 
+    - DOL: Finish Penpot deployment and documentation
 
 
 ## Decision-making: plan your week
@@ -117,11 +108,11 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 - Week 2:
 
-| WEEK 2      	| MONDAY (W34)                 	            | TUESDAY (W26)                         | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
-|-----------	|---   	                                    |---                                    |---	                                |---                                        |---    |
-| Morning   	| ~~PMS: Weekly planning (W8)~~                 | ~~CP: Create Library REST API (W8)~~                  | ~~DOL: Update Quarto docs (W3)~~          | ~~TP: Finish Vertical Slicing designs (W13)~~ | TP: Update functional diagrams (W8)  	|
-| Afternoon 	| TP: Finish User Entity (W13)  ~~MSX: Adapters and gamepads study (W5)~~             | ~~DOL: Learn about observability (W13)~~  | DOL: Learn about Argo workflows (21)  | DOL: Learn about Python and Flask (13)    | DOL: Learn about OKD (21)  	|
-| Evening   	| CP: Complete SonarQube GitHub action (W13)    ~~MSX: MSX-Mega v3 Design (W21)~~| TP: Update UMLs (W5)      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)        | ~~PMS: Weekly retrospective (W8)~~    |
+| WEEK 2      	| MONDAY (W34)                 	                | TUESDAY (W26)                             | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
+|-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
+| Morning   	| ~~PMS: Weekly planning (W8)~~                 | CP: Complete SonarQube GitHub action (W13)| CP: Enable logging in Java (W8)       | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
+| Afternoon 	| TP: Finish User Entity (W13)                  | DOL: Learn about Python and Django (13)   | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
+| Evening   	| DOL: Learn about observability (W13)          | TP: Update UMLs (W5)                      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -145,14 +136,6 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 Completed tasks:
 
-- PMS: Weekly planning (W8) --> Done when planned
-- CP: Complete SonarQube GitHub action (W13) --> Worked on it on Monday morning, still not finished (missing JaCoCo Code coverage dependency)
-- MSX: MSX-Mega v3 Design (W21) --> Done instead of Monday tasks
-- MSX: Adapters and gamepads study (W5) --> Done instead of Monday tasks
-- DOL: Learn about observability (W13) --> Short introduction course from [o11y](https://academy.o11y.io/)
-- DOL: Update Quarto docs (W3) --> Updated Quarto docs related to self-hosted software deployment
-
-
 
 ### Unfinished tasks
 Think about the reasons why these tasks aren't done:
@@ -162,26 +145,27 @@ Think about the reasons why these tasks aren't done:
 - Is this task something that you've been dragging along for some time? Is it really necessary?
 
 - Monday:
-    - Replaced planned tasks with MSX-related stuff
--Tuesday:
-    - Learn about Observability took me more time than expected
+    - 
+- Tuesday:
+    - 
 - Wednesday:
-    - Family matters kept me from doing anything in the afternoon and the evening
+    - 
+- Thursday:
+    -
+- Friday:
+    - 
 
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
 
 - **Best decision of all week**
-    - Talk with the team members about the status of our tasks
-    - Add personal project tasks to the planning (MSX)
+    - 
 
 - **Avoided pits**
-    - No pits this week
+    - 
 
 - **What have you reorganized during this week?**
-    - Documentation tasks vs Learning tasks
+    - 
 
 - **Core concepts learnt during this week / What have you learned?**
-    - KiCAD 6 schematics and PCB design
-    - GitHub Actions + SonarQube
-    - Spring REST API
+    - 
