@@ -48,4 +48,4 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           LIBRARY_MANAGER_SONARQUBE_PROJECT_KEY: ${{ secrets.LIBRARY_MANAGER_SONARQUBE_PROJECT_KEY }}
           LIBRARY_MANAGER_PATH: java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${LIBRARY_MANAGER_SONARQUBE_PROJECT_KEY} -Dsonar.projectBaseDir=${LIBRARY_MANAGER_PATH} -f ${LIBRARY_MANAGER_PATH}/pom.xml
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage -Dsonar.projectKey=${LIBRARY_MANAGER_SONARQUBE_PROJECT_KEY} -Dsonar.projectBaseDir=${LIBRARY_MANAGER_PATH} -f ${LIBRARY_MANAGER_PATH}/pom.xml
