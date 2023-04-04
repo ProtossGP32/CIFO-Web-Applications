@@ -1,15 +1,11 @@
-package com.springbootlab0.approach_1.restControllers;
+package com.springbootlab0.approach_1.rest_controllers;
 
 import com.springbootlab0.approach_1.domain.Librarian;
 import com.springbootlab0.approach_1.domain.LibraryMember;
 import com.springbootlab0.approach_1.domain.User;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JsonParser;
-import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/librarymembers")
@@ -30,17 +26,20 @@ public class LibraryMembersRestController {
         return libraryMemberService.createLibraryMember(newLibrarian);
     }
 
-    /*
+
     @PostMapping(path="create/{memberType}", consumes = "application/JSON")
     public LibraryMember createUser(@PathVariable("memberType") String memberType, @RequestBody String newMember) {
         switch (memberType) {
-            case "user":
-                return createUser(User.createFromJson(newMember));
+            case "user": {
+                return createUser(LibraryMember.createFromJson(newMember, User.class));
+            }
+            case "librarian": {
+                return createLibrarian(LibraryMember.createFromJson(newMember, Librarian.class));
+            }
             default:
                 return null;
         }
     }
-    */
 
     // Read Library Members
     @GetMapping("all")
@@ -57,4 +56,11 @@ public class LibraryMembersRestController {
     public Iterable<LibraryMember> getAllUsers() {
         return libraryMemberService.getAllUsers();
     }
+
+    /*
+    @DeleteMapping(path="users/delete", consumes = "application/JSON")
+    public ResponseEntity<LibraryMember> deleteUser(@RequestBody String deleteBody) {
+
+    }
+     */
 }

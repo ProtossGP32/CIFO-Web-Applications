@@ -1,4 +1,4 @@
-package com.springbootlab0.approach_1.restControllers;
+package com.springbootlab0.approach_1.rest_controllers;
 
 import com.springbootlab0.approach_1.domain.Author;
 import com.springbootlab0.approach_1.services.AuthorService;
