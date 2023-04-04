@@ -24,8 +24,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECT_PATH: "java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/pom.xml"
         # Avoid verify for now, until workflow is stable
-        run: mvn -B clean compile -f ${PROJECT_PATH}
-
+        # Profile coverage is used for JaCoCo
+        run: mvn -B verify -Pcoverage -f ${PROJECT_PATH}
+ 
       - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
