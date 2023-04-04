@@ -736,6 +736,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#swagger" id="toc-swagger" class="nav-link" data-scroll-target="#swagger">Swagger</a></li>
   <li><a href="#mockito" id="toc-mockito" class="nav-link" data-scroll-target="#mockito">Mockito</a></li>
   </ul></li>
+  <li><a href="#things-to-consider" id="toc-things-to-consider" class="nav-link" data-scroll-target="#things-to-consider">Things to consider</a>
+  <ul class="collapse">
+  <li><a href="#controller" id="toc-controller" class="nav-link" data-scroll-target="#controller">Controller</a></li>
+  <li><a href="#service" id="toc-service" class="nav-link" data-scroll-target="#service">Service</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -819,6 +824,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote class="blockquote">
 <p>Mockito is a mocking framework that tastes really good. It lets you write beautiful tests with a clean &amp; simple API. […] the tests are very readable and they produce clean verification errors.</p>
 </blockquote>
+</section>
+</section>
+<section id="things-to-consider" class="level2">
+<h2 class="anchored" data-anchor-id="things-to-consider">Things to consider</h2>
+<section id="controller" class="level3">
+<h3 class="anchored" data-anchor-id="controller">Controller</h3>
+<ul>
+<li>It will deal with <code>ResponseEntity&lt;T&gt;</code> objects in the API methods.</li>
+<li><code>HttpHeaders</code> object includes information related to the response:
+<ul>
+<li><code>operation</code>: the API operation executed</li>
+<li><code>version</code>: the API version</li>
+<li><code>operationStatus</code>: whether the operation is successful or not</li>
+</ul></li>
+</ul>
+</section>
+<section id="service" class="level3">
+<h3 class="anchored" data-anchor-id="service">Service</h3>
+<p>It will deal with <code>Optional&lt;T&gt;</code> types coming from the <code>Repository</code> interface. <code>Optional</code> types include either an object of the referenced type or a <code>null</code>, so they must be checked prior to its usage.</p>
 
 
 </section>
