@@ -110,7 +110,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 3      	| MONDAY (W34)                 	                | TUESDAY (W26)                             | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
-| Morning   	| ~~PMS: Weekly planning (W8)~~                 | CP: Complete SonarQube GitHub action (W13)| CP: Enable logging in Java (W8)       | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
+| Morning   	| ~~PMS: Weekly planning (W8)~~                 | ~~CP: Complete SonarQube GitHub action (W13)~~| CP: Enable logging in Java (W8)       | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
 | Afternoon 	| TP: Finish User Entity (W13) ~~MSX: Redo 3D case for wired adapter (W8)~~ | DOL: Learn about Python and Django (13)   | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
 | Evening   	| DOL: Learn about observability (W13) ~~MSX: Redo 3D case for wired adapter (W8)~~ | TP: Update UMLs (W5)                      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
 
@@ -140,7 +140,7 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Tuesday:
 
-- 
+- Morning: Completed SonarQube GitHub action
 
 #### Wednesday:
 

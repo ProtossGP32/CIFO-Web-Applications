@@ -43,3 +43,16 @@ Swagger isn't available as a Spring initializer dependency, so we have to instal
 [_From official page:_](https://site.mockito.org/)
 
 > Mockito is a mocking framework that tastes really good. It lets you write beautiful tests with a clean & simple API. [...] the tests are very readable and they produce clean verification errors.
+
+## Things to consider
+### Controller
+
+- It will deal with `ResponseEntity<T>` objects in the API methods.
+- `HttpHeaders` object includes information related to the response:
+    - `operation`: the API operation executed
+    - `version`: the API version
+    - `operationStatus`: whether the operation is successful or not
+
+
+### Service
+It will deal with `Optional<T>` types coming from the `Repository` interface. `Optional` types include either an object of the referenced type or a `null`, so they must be checked prior to its usage.
