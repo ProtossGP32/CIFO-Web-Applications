@@ -32,7 +32,7 @@ Things to accomplish:
 | CP        | Unify Publications creation       | 8         | Week 1
 | CP        | Migrate H2 to another DB          | 13        | Week 1
 | CP        | Create missing Unit Tests         | 8         | Week 1
-| CP        | Create GitHub issues              | 3         | Week 1
+| CP        | ~~Create GitHub issues~~          | 3         | Week 1
 | CP        | ~~Complete SonarQube GitHub action~~  | 13        | Week 2
 | CP        | Update soft. script with Postman  | 8         | Week 2
 | CP        | Swagger and Mockito into Library  | 8         | Week 2
@@ -80,7 +80,7 @@ Things to accomplish:
     - CP: Create missing Unit Tests (W8)
     - CP: Unify User HTML forms (W5)
     - CP: Unify Publications creation (W8)
-    - CP: Create GitHub issues (W3)
+    - ~~CP: Create GitHub issues (W3)~~
     - CP: Create Library REST client (W5)
     - CP: Migrate H2 to another DB (W13)
     - CP: Update soft. script with Postman (W8)
@@ -112,7 +112,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 3      	| MONDAY (W34)                 	                | TUESDAY (W26)                             | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
-| Morning   	| ~~PMS: Weekly planning (W8)~~                 | ~~CP: Complete SonarQube GitHub action (W13)~~| CP: Enable logging in Java (W8) ~~CP: Work on REST API controllers (W8)~~      | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
+| Morning   	| ~~PMS: Weekly planning (W8)~~ ~~CP: Create GitHub issues (W3)~~                | ~~CP: Complete SonarQube GitHub action (W13)~~| CP: Enable logging in Java (W8) ~~CP: Work on REST API controllers (W8)~~      | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
 | Afternoon 	| TP: Finish User Entity (W13) ~~MSX: Redo 3D case for wired adapter (W8)~~ | DOL: Learn about Python and Django (13)   | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
 | Evening   	| DOL: Learn about observability (W13) ~~MSX: Redo 3D case for wired adapter (W8)~~ | TP: Update UMLs (W5)                      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
 
@@ -138,15 +138,17 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Monday:
 
-- Planning done and redesign of MSX adapter case
+- Morning: planning done and GitHub issues created
+- Afternoon: redesign of MSX adapter case
 
 #### Tuesday:
 
-- Morning: Completed SonarQube GitHub action
+- Morning: completed SonarQube GitHub action
 
 #### Wednesday:
 
 - Morning: kept working on Library REST API controllers and services
+- Afternoon and evening: started the Python CRUD Rest API with Django tutorial, pending to finish it
 
 #### Thursday:
 
@@ -173,7 +175,7 @@ Think about the reasons why these tasks aren't done:
 
 #### Wednesday:
 
-- 
+- Replaced afternoon and evening tasks with the pending Python task from Tuesday
 
 #### Thursday:
 
@@ -190,10 +192,13 @@ Based on the previous analysis, identify the weak points of the previous plannin
     - 
 
 - **Avoided pits**
-    - 
+    - I avoided spending too much time configuring a new IDE (PyCharm) for the Django tutorial
 
 - **What have you reorganized during this week?**
-    - 
+    - Django tutorial instead of Argo workflows
+    - MSX related stuff over finishing observability course
 
 - **Core concepts learnt during this week / What have you learned?**
-    - 
+    - API Rest with Django (not much)
+    - API Rest with Spring Boot
+    - Dealing with Generics in Java SE and designing factory strategies in REST APIs
