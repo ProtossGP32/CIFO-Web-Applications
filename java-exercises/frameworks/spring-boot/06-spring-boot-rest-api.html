@@ -831,7 +831,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="controller" class="level3">
 <h3 class="anchored" data-anchor-id="controller">Controller</h3>
 <ul>
-<li>It will deal with <code>ResponseEntity&lt;T&gt;</code> objects in the API methods.</li>
+<li>It will deal with <code>ResponseEntity&lt;T&gt;</code> objects in the API methods to manipulate the HTTP response.</li>
 <li><code>HttpHeaders</code> object includes information related to the response:
 <ul>
 <li><code>operation</code>: the API operation executed</li>
@@ -839,6 +839,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>operationStatus</code>: whether the operation is successful or not</li>
 </ul></li>
 </ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Where should we send the response information?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Taking into account the separation of concerns, it’s a good approach to include in the headers all the information regarding the outcome of the operation, while leaving the body for pure data objects.</p>
+</div>
+</div>
 </section>
 <section id="service" class="level3">
 <h3 class="anchored" data-anchor-id="service">Service</h3>
