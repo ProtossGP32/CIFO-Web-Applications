@@ -4,6 +4,7 @@ import com.springbootlab0.approach_1.domain.Librarian;
 import com.springbootlab0.approach_1.domain.LibraryMember;
 import com.springbootlab0.approach_1.domain.User;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
+import com.springbootlab0.approach_1.utils.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,12 +30,13 @@ public class LibraryMembersRestController {
 
     @PostMapping(path="create/{memberType}", consumes = "application/JSON")
     public LibraryMember createUser(@PathVariable("memberType") String memberType, @RequestBody String newMember) {
+        // TODO: migrate logic to LibraryMember service
         switch (memberType) {
             case "user": {
-                return createUser(LibraryMember.createFromJson(newMember, User.class));
+                return libraryMemberService.createLibraryMember(Helper.createFromJson(newMember, User.class));
             }
             case "librarian": {
-                return createLibrarian(LibraryMember.createFromJson(newMember, Librarian.class));
+                return libraryMemberService.createLibraryMember(Helper.createFromJson(newMember, Librarian.class));
             }
             default:
                 return null;

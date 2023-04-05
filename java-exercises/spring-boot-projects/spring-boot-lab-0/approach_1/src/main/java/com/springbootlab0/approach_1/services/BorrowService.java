@@ -100,6 +100,22 @@ public class BorrowService {
         return false;
     }
 
+    public Borrow deleteAndReturnBorrowById(String borrowId) {
+        // TODO: change the Publication status to available again
+        if (borrowRepository.existsById(borrowId)) {
+            Optional<Borrow> borrowToDelete = borrowRepository.findById(borrowId);
+            if (borrowToDelete.isPresent()) {
+                // Change the Publication status
+                Publication publication = borrowToDelete.get().getBorrowedPublication();
+                publication.setStatus(Status.AVAILABLE);
+                // Delete the borrow
+                borrowRepository.deleteById(borrowId);
+                return borrowToDelete.get();
+            }
+        }
+        return null;
+    }
+
     /**
      * Update a Borrow into the database
      * @param borrowToUpdate is the Borrow with the updated fields
