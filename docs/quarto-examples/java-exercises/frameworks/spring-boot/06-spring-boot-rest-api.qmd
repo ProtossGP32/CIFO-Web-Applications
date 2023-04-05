@@ -47,11 +47,16 @@ Swagger isn't available as a Spring initializer dependency, so we have to instal
 ## Things to consider
 ### Controller
 
-- It will deal with `ResponseEntity<T>` objects in the API methods.
+- It will deal with `ResponseEntity<T>` objects in the API methods to manipulate the HTTP response.
 - `HttpHeaders` object includes information related to the response:
     - `operation`: the API operation executed
     - `version`: the API version
     - `operationStatus`: whether the operation is successful or not
+
+:::{.callout-note}
+## Where should we send the response information?
+Taking into account the separation of concerns, it's a good approach to include in the headers all the information regarding the outcome of the operation, while leaving the body for pure data objects.
+:::
 
 
 ### Service
