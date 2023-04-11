@@ -1,6 +1,6 @@
 ---
 title: "03 - Week 03"
-description: "Second iteration"
+description: "Weekly planning iteration"
 categories: ["Time management"]
 author: ProtossGP32
 date: 2023/04/03

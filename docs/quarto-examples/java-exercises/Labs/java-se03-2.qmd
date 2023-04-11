@@ -554,3 +554,11 @@ On login stage, we'll store the following session attributes:
 - `memberName`: the full name of the Library Member for rendering purposes
 
 ## Log in / Log out process
+:::{.callout-warning}
+## TODO: implement and document
+:::
+
+# Integrating MongoDB
+## Dependencies
+## Changes in current classes
+## Repositories for MongoDB

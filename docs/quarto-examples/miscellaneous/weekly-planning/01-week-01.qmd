@@ -1,6 +1,6 @@
 ---
 title: "01 - Week 01"
-description: "First iteration"
+description: "Weekly planning iteration"
 categories: ["Time management"]
 author: ProtossGP32
 date: 2023/03/20

@@ -1,0 +1,59 @@
+---
+title: "00 - MongoDB"
+description: "Introduction to Non-relational database"
+categories: ["MongoDB", "databases"]
+author: ProtossGP32
+date: 2023/04/11
+from: markdown+emoji
+---
+
+# Introduction
+MongoDB works with BSON (Binary JSON).
+
+Instead of working with tables, we work with **Collections**. Each Collection has **Documents**. Each document is stored with JSON structure.
+
+# How to initialize a MongoDB database
+On cloud:
+
+- Go to MongoDB webpage --> Done
+- Create an account --> Done
+- Create a cluster --> Done
+- Security Quickstart: 2 options
+    - Create a user with read-write access to the databases --> DONE
+    - Authenticate via a certificate --> TODO
+- Network access: defined via IPs
+    - Add each one of the public IPs from where you'll connect to the MongoDB cloud cluster
+
+- Database deployments:
+
+    ![MongoDB - Dashboard](../../images/databases/mongodb-atlas-dashboard.png)
+
+- Database access: provides the URL syntax to connect to the database
+
+    ![MongoDB - Database connection details](../../images/databases/mongodb-atlas-database-connection-details.png)
+
+    - Replace the `username` and `password` with the user credentials created in the previous steps
+
+- Extra: LDAP authentication --> TODO
+
+
+
+On premises:
+
+- Docker deployment --> TODO
+
+# How to connect projects to a MongoDB database
+Spring Boot project:
+
+- Spring connection:
+
+    ```{.yml filename=application.yml}
+    spring:
+        data:
+            mongodb:
+                url: mongodb+srv://<mongodb-url>
+    ```
+- JPA annotations to access Collections and Documents
+    - `@Document`: defined with a `collection` value that represents the MongoDB collection
+    
+- `MongoRepository`
