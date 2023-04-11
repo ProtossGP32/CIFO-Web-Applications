@@ -77,6 +77,13 @@
     "text": "Planning"
   },
   {
+    "objectID": "miscellaneous/weekly-planning/04-week-04.html",
+    "href": "miscellaneous/weekly-planning/04-week-04.html",
+    "title": "04 - Week 04",
+    "section": "",
+    "text": "Things to accomplish:\n\nCreate a REST API application with SpringBoot\nCreate the first CI/CD pipeline for a Spring Boot project\nComplete my tasks for the Team Project in Sprint 2\nDeeper understanding of the DevOps methodology\n\n\n\n\n\nCategories:\n\nClass Project (CP)\nTeam Project (TP)\nContinuous Integration/Continuous Delivery (CI/CD)\nDevOps Learning (DOL)\nPlanning & MindSet (PMS)\nMSX-related tasks (MSX)\n\n\n\n\n\n\n\n\n\n\n\nCATEGORY\nTASK\nWEIGHT\nINTRODUCED ON\n\n\n\n\nCP\nCreate Library REST client\n5\nWeek 1\n\n\nCP\nUnify User HTML forms\n5\nWeek 1\n\n\nCP\nUnify Publications creation\n8\nWeek 1\n\n\nCP\nMigrate H2 to another DB\n13\nWeek 1\n\n\nCP\nCreate missing Unit Tests\n8\nWeek 1\n\n\nCP\nUpdate soft. script with Postman\n8\nWeek 2\n\n\nCP\nSwagger and Mockito into Library\n8\nWeek 2\n\n\nCP\nEnable logging in Java\n8\nWeek 2\n\n\nCP\nQuarto: automate weekly planning\n13\nWeek 2\n\n\nCP\nIntegrate MongoDB to project\n8\nWeek 4\n\n\nCI/CD\nLearn GitHub Actions\n13\nWeek 1\n\n\nCI/CD\nInstall Jenkins\n8\nWeek 1\n\n\nCI/CD\nCreate staging environment\n13\nWeek 1\n\n\nTP\nFinish User Entity\n13\nWeek 1\n\n\nTP\nCreate missing Unit Tests\n8\nWeek 1\n\n\nTP\nEnable logging\n5\nWeek 2\n\n\nTP\nCreate REST API\n5\nWeek 2\n\n\nDOL\nDeploy workloads on Kubernetes\n13\nWeek 1\n\n\nDOL\nLearn about OpenStack\n21\nWeek 1\n\n\nDOL\nLearn about OKD\n21\nWeek 2\n\n\nDOL\nLearn about Python and Django\n13\nWeek 2\n\n\nDOL\nLearn about Argo workflows\n21\nWeek 2\n\n\nDOL\nLearn about SQL and Postgres\n21\nWeek 2\n\n\nDOL\nLearn about Terraform\n21\nWeek 3\n\n\nDOL\nLearn about Ansible\n21\nWeek 3\n\n\nDOL\nInstall a SMTP server\n13\nWeek 1\n\n\nDOL\nFinish Penpot deployment and documentation\n5\nWeek 3\n\n\nMSX\nTest wired adapter\n5\nWeek 3\n\n\nPMS\nWeekly planning\n8\nWeek 1\n\n\nPMS\nWeekly retrospective\n8\nWeek 1\n\n\nPMS\nMindSet & Lectures\n5\nWeek 1\n\n\n\n\n\n\n34 tasks:\n\nImportant and urgent:\n\nCP: Swagger and Mockito into Library (W8)\nCP: Integrate MongoDB to project (W8)\nTP: Finish User Entity (W13)\nTP: Update functional diagrams (W8)\nDOL: Learn about observability (W13)\nDOL: Learn about OKD (21)\nDOL: Learn about Python and Flask (13)\nDOL: Learn about Argo workflows (21)\nDOL: Learn about Terraform (21)\nDOL: Learn about Ansible (21)\nPMS: Weekly planning (W8)\n\nImportant but not urgent:\n\nCP: Create missing Unit Tests (W8)\nCP: Unify User HTML forms (W5)\nCP: Unify Publications creation (W8)\nCP: Create Library REST client (W5)\nCP: Migrate H2 to another DB (W13)\nCP: Update soft. script with Postman (W8)\nCP: Enable logging in Java (W8)\nTP: Create missing Unit Tests (W8)\nTP: Update UMLs (W5)\nTP: Enable logging (W5)\nTP: Create REST API (W5)\nCI/CD: Learn GitHub Actions (W13)\nCI/CD: Create staging environment (W13)\nDOL: Deploy workloads on Kubernetes (W13)\nDOL: Learn about SQL and Postgres (W21)\nDOL: Learn about OpenStack (W21)\nMSX: Test wired adapter (W5)\nPMS: Weekly retrospective (W8)\nPMS: MindSet & Lectures (W5)\n\nNot important but urgent:\n\nDOL: Install a SMTP server (W13)\nCI/CD: Install Jenkins (W8)\n\nNeither important nor urgent:\n\nDOL: Finish Penpot deployment and documentation (W5)\n\n\n\n\n\nEach week, define tasks for each energy slot of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week:\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nMONDAY (W34)\nTUESDAY (W26)\nWEDNESDAY (W32)\nTHURSDAY (W34)\nFRIDAY (W37)\n\n\n\n\nMorning\n–\nPMS: Weekly planning (W8) CP: Integrate MongoDB to project (W8)\nCP: Enable logging in Java (W8) TP: Finish User Entity (W13)\nCP: Swagger and Mockito into Library (W8)\nTP: Update functional diagrams (W8)\n\n\nAfternoon\n–\nDOL: Learn about Python and Django (13) DOL: Learn about observability (W13)\nTP: Finish User Entity (W13) DOL: Learn about Argo workflows (21)\nDOL: Learn about OKD (21)\nTP: Enable logging (W5)\n\n\nEvening\n–\nTP: Update UMLs (W5)\nCP: Create missing Unit Tests (W8)\nTP: Create missing Unit Tests (W8)\nPMS: Weekly retrospective (W8)\n\n\n\n\n\n\nMake a retrospective of the previous week, analyse the results of the planning and take action.\n\nNumber of planned tasks per category:\n\n\n\n\n\n\n\n\n\nCATEGORY\nNUMBER OF PLANNED TASKS\nNUMBER OF COMPLETED TASKS\n\n\n\n\nClass Projects (CP)\n\n\n\n\nTeam Project (TP)\n\n\n\n\nCI/CD\n\n\n\n\nDevOps Learning (DOL)\n\n\n\n\nPlanning and MindSet (PMS)\n\n\n\n\nMSX-related tasks (MSX)\n\n\n\n\n\n\n\nThink about the complexity of the completed tasks and if they matched the expectatives:\n\nIf the task was easier than you thought, move it to lower energies spaces\nIf the task was harder than you though, think about spitting it into less complex tasks\n\n\n\n\nMorning:\nAfternoon:\nEvening:\n\n\n\n\n\nMorning:\nAfternoon:\nEvening:\n\n\n\n\n\nMorning:\nAfternoon:\nEvening:\n\n\n\n\n\nMorning:\nAfternoon:\nEvening:\n\n\n\n\n\nMorning:\nAfternoon:\nEvening:\n\n\n\n\n\nThink about the reasons why these tasks aren’t done:\n\nDid you lack some kind of resource (knowledge, tools, etc…) to even start it?\nDid you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task\nIs this task something that you’ve been dragging along for some time? Is it really necessary?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBased on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:\n\nBest decision of all week\n\n\n\nAvoided pits\n\n\n\nWhat have you reorganized during this week?\n\n\n\nCore concepts learnt during this week / What have you learned?"
+  },
+  {
     "objectID": "miscellaneous/weekly-planning/03-week-03.html",
     "href": "miscellaneous/weekly-planning/03-week-03.html",
     "title": "03 - Week 03",
@@ -560,6 +567,13 @@
     "text": "NGO Tinder (David Maqueda)\n\nWhat is it expected to do? Provides info related to Non-governmental Organizations (NGO) and volunteers with common interests\nWhat is it for? Its main purpose is to act as a bridge between the organizations and the people who want to volunteer with them\nWho is it for? Volunteers that want to find NGO activities and demonstrations based on their interests\nWhy would it be interesting to do? Social movements are very diverse and it’s difficult to know which activities have the most affinity with each person. This app would help people to know the goals of each NGO and contribute to their causes with a better understanding.\nHow would it be done?\n\nData acquisition…\nData engineering…\nData persistency…\nData representation…"
   },
   {
+    "objectID": "java-exercises/databases/00-mongodb.html",
+    "href": "java-exercises/databases/00-mongodb.html",
+    "title": "00 - MongoDB",
+    "section": "",
+    "text": "Introduction\nMongoDB works with BSON (Binary JSON).\nInstead of working with tables, we work with Collections. Each Collection has Documents. Each document is stored with JSON structure.\n\n\nHow to initialize a MongoDB database\nOn cloud:\n\nGo to MongoDB webpage –> Done\nCreate an account –> Done\nCreate a cluster –> Done\nSecurity Quickstart: 2 options\n\nCreate a user with read-write access to the databases –> DONE\nAuthenticate via a certificate –> TODO\n\nNetwork access: defined via IPs\n\nAdd each one of the public IPs from where you’ll connect to the MongoDB cloud cluster\n\nDatabase deployments:\n\n\n\nMongoDB - Dashboard\n\n\nDatabase access: provides the URL syntax to connect to the database\n\n\n\nMongoDB - Database connection details\n\n\n\nReplace the username and password with the user credentials created in the previous steps\n\nExtra: LDAP authentication –> TODO\n\nOn premises:\n\nDocker deployment –> TODO\n\n\n\nHow to connect projects to a MongoDB database\nSpring Boot project:\n\nSpring connection:\n\n\napplication.yml\n\nspring:\n    data:\n        mongodb:\n            url: mongodb+srv://<mongodb-url>\n\nJPA annotations to access Collections and Documents\n\n@Document: defined with a collection value that represents the MongoDB collection\n\nMongoRepository"
+  },
+  {
     "objectID": "java-exercises/Concepts/object-creation.html",
     "href": "java-exercises/Concepts/object-creation.html",
     "title": "Object creation",
@@ -977,7 +991,14 @@
     "href": "java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html",
     "title": "10 - Data and Databases - Spring Data",
     "section": "",
-    "text": "From Spring official page:\n\nSpring Data’s mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store.\nIt makes it easy to use data access technologies, relational and non-relational databases, map-reduce frameworks, and cloud-based data services. This is an umbrella project which contains many subprojects that are specific to a given database. The projects are developed by working together with many of the companies and developers that are behind these exciting technologies.\n\n\n\n\nPowerful repository and custom object-mapping abstractions\nDynamic query derivation from repository method names\nImplementation domain base classes providing basic properties\nSupport for transparent auditing (created, last changed)\nPossibility to integrate custom repository code\nEasy Spring integration via JavaConfig and custom XML namespaces\nAdvanced integration with Spring MVC controllers\nExperimental support for cross-store persistence\n\n\n\n\n\n\n\nNormalized: typed database\nVery Structured: Less error-prone when dealing with its data as it is all very defined\nLow scalability: relational databases introduce high coupling between tables\nRelational database: tables linked by ID fields\nExample: each Java entity has its own table and they can be joined using ID fields\n\n\n\n\n\nNot normalized: database isn’t typed (JSON-style entries, documents)\nHigh scalability\nFast query responses\nExamples:\n\nDynamoDB\nMongoDB"
+    "text": "From Spring official page:\n\nSpring Data’s mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store.\nIt makes it easy to use data access technologies, relational and non-relational databases, map-reduce frameworks, and cloud-based data services. This is an umbrella project which contains many subprojects that are specific to a given database. The projects are developed by working together with many of the companies and developers that are behind these exciting technologies.\n\n\n\n\nPowerful repository and custom object-mapping abstractions\nDynamic query derivation from repository method names\nImplementation domain base classes providing basic properties\nSupport for transparent auditing (created, last changed)\nPossibility to integrate custom repository code\nEasy Spring integration via JavaConfig and custom XML namespaces\nAdvanced integration with Spring MVC controllers\nExperimental support for cross-store persistence\n\n\n\n\n\n\n\nNormalized: typed database\nVery Structured: Less error-prone when dealing with its data as it is all very defined\nLow scalability: relational databases introduce high coupling between tables\nRelational database: tables linked by ID fields\nExample: each Java entity has its own table and they can be joined using ID fields\n\n\n\n\n\nNot normalized: database isn’t typed (JSON-style entries, documents)\nHigh scalability\nFast query responses\nExamples:\n\nDynamoDB\nMongoDB\n\n\n\n\n\n\nAdd the appropriate Spring Data dependency to the project and configure the data source properties in the application.properties or application.yml file."
+  },
+  {
+    "objectID": "java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html#comparative-table",
+    "href": "java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html#comparative-table",
+    "title": "10 - Data and Databases - Spring Data",
+    "section": "Comparative table",
+    "text": "Comparative table\n\n\n\n\n\n\n\n\nConcept\nSQL\nNoSQL\n\n\n\n\nData Model\nRelational\nDocument, key-value, column-family, graph\n\n\nQuery language\nStructured Query Language (SQL)\nQuery APIs, sometimes proprietary\n\n\nScalability\nVertical\nHorizontal\n\n\nData consistency\nStrong\nEventual\n\n\nTransactional support\nACID compliance\nLimited\n\n\nSchema definition\nRequired\nOptional\n\n\nQuery flexibility\nLimited\nFlexible\n\n\nJoin operations\nComplex\nNot supported\n\n\nData modeling\nFixed schema\nDynamic schema\n\n\nAvailability and Fault tolerance\nLow\nHigh"
   },
   {
     "objectID": "java-exercises/frameworks/quarkus/00-what-is-quarkus.html",
@@ -1187,7 +1208,28 @@
     "href": "java-exercises/Labs/java-se03-2.html#log-in-log-out-process",
     "title": "LAB#SE03-2: Library/Book, Expand Model",
     "section": "Log in / Log out process",
-    "text": "Log in / Log out process"
+    "text": "Log in / Log out process\n\n\n\n\n\n\nTODO: implement and document"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se03-2.html#dependencies",
+    "href": "java-exercises/Labs/java-se03-2.html#dependencies",
+    "title": "LAB#SE03-2: Library/Book, Expand Model",
+    "section": "Dependencies",
+    "text": "Dependencies"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se03-2.html#changes-in-current-classes",
+    "href": "java-exercises/Labs/java-se03-2.html#changes-in-current-classes",
+    "title": "LAB#SE03-2: Library/Book, Expand Model",
+    "section": "Changes in current classes",
+    "text": "Changes in current classes"
+  },
+  {
+    "objectID": "java-exercises/Labs/java-se03-2.html#repositories-for-mongodb",
+    "href": "java-exercises/Labs/java-se03-2.html#repositories-for-mongodb",
+    "title": "LAB#SE03-2: Library/Book, Expand Model",
+    "section": "Repositories for MongoDB",
+    "text": "Repositories for MongoDB"
   },
   {
     "objectID": "java-exercises/Labs/java-se01-1.html",
