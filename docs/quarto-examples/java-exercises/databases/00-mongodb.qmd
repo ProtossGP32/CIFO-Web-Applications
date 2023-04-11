@@ -13,16 +13,16 @@ MongoDB works with BSON (Binary JSON).
 Instead of working with tables, we work with **Collections**. Each Collection has **Documents**. Each document is stored with JSON structure.
 
 # How to initialize a MongoDB database
-On cloud:
+## On cloud:
 
-- Go to MongoDB webpage --> Done
+- Go to [MongoDB webpage](https://cloud.mongodb.com/) --> Done
 - Create an account --> Done
 - Create a cluster --> Done
 - Security Quickstart: 2 options
     - Create a user with read-write access to the databases --> DONE
     - Authenticate via a certificate --> TODO
 - Network access: defined via IPs
-    - Add each one of the public IPs from where you'll connect to the MongoDB cloud cluster
+    - Add each of the public IPs from where you'll connect to the MongoDB cloud cluster
 
 - Database deployments:
 
@@ -38,7 +38,7 @@ On cloud:
 
 
 
-On premises:
+## On premises:
 
 - Docker deployment --> TODO
 
