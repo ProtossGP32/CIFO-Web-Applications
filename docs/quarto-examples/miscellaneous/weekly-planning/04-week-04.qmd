@@ -37,6 +37,7 @@ Things to accomplish:
 | CP        | Enable logging in Java            | 8         | Week 2
 | CP        | Quarto: automate weekly planning  | 13        | Week 2
 | CP        | Integrate MongoDB to project      | 8         | Week 4
+| CP        | Finish MongoDB tutorials          | 8         | Week 4
 | CI/CD     | Learn GitHub Actions              | 13        | Week 1
 | CI/CD     | Install Jenkins                   | 8         | Week 1
 | CI/CD     | Create staging environment        | 13        | Week 1
@@ -60,11 +61,11 @@ Things to accomplish:
 | PMS       | MindSet & Lectures                | 5         | Week 1
 
 ## Spring goal: categorize and filter them by importance and urgency based on your roadmap
-34 tasks:
 
 - Important and urgent:
     - CP: Swagger and Mockito into Library (W8)
     - CP: Integrate MongoDB to project (W8)
+    - CP: Finish MongoDB tutorials (W8)
     - TP: Finish User Entity (W13)
     - TP: Update functional diagrams (W8)
     - DOL: Learn about observability (W13)
@@ -77,8 +78,6 @@ Things to accomplish:
 
 - Important but not urgent:
     - CP: Create missing Unit Tests (W8)
-    - CP: Unify User HTML forms (W5)
-    - CP: Unify Publications creation (W8)
     - CP: Create Library REST client (W5)
     - CP: Migrate H2 to another DB (W13)
     - CP: Update soft. script with Postman (W8)
@@ -102,6 +101,8 @@ Things to accomplish:
 
 - Neither important nor urgent:
     - DOL: Finish Penpot deployment and documentation (W5)
+    - CP: Unify User HTML forms (W5)
+    - CP: Unify Publications creation (W8)
 
 
 ## Decision-making: plan your week
@@ -111,7 +112,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
 | Morning   	| --                | ~~PMS: Weekly planning (W8)~~ CP: Integrate MongoDB to project (W8) | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
 | Afternoon 	| -- | DOL: Learn about Python and Django (13) DOL: Learn about observability (W13) | TP: Finish User Entity (W13) DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
-| Evening   	| --  | TP: Update UMLs (W5)                      | CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
+| Evening   	| --  | TP: Update UMLs (W5)                      | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -135,9 +136,9 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Monday:
 
-- Morning: 
-- Afternoon:
-- Evening:
+- Morning: Weekly planning done. Started MongoDB tutorials
+- Afternoon: Nothing done
+- Evening: Nothing done
 
 #### Tuesday:
 
@@ -172,7 +173,7 @@ Think about the reasons why these tasks aren't done:
 
 #### Monday:
 
-- 
+- Nothing done, no reason at all
 
 #### Tuesday:
 

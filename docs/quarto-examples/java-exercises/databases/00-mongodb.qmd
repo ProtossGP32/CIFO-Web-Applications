@@ -43,7 +43,7 @@ Instead of working with tables, we work with **Collections**. Each Collection ha
 - Docker deployment --> TODO
 
 # How to connect projects to a MongoDB database
-Spring Boot project:
+## Spring Boot project:
 
 - Spring connection:
 
@@ -57,3 +57,51 @@ Spring Boot project:
     - `@Document`: defined with a `collection` value that represents the MongoDB collection
     
 - `MongoRepository`
+
+# MongoDB Free online course
+
+Course: [Using MongoDB with Java](https://learn.mongodb.com/learning-paths/using-mongodb-with-java)
+
+    - Estimated duration: 3 hours
+
+## Unit 1: Connecting to MongoDB in Java
+
+### Lesson 1: Using MongoDB Java Client Libraries
+What do we need to connect to MongoDB?
+
+- Set of libraries --> Drivers
+- MongoDB official drivers for synchronous or asynchronous application code
+- Benefits of MongoDB official drivers:
+    - Simplify connecting to and interacting with their database from your application
+    - Establish secure connections to a MongoDB cluster
+    - Execute database operations on behalf of client applications
+    - Specify connection options (security, writing ability, isolation, etc..)
+    - Adhere to language best practices
+    - Use the full functionality of MongoDB deployment
+    - Make upgrading easier
+- Official docs:
+    - Usage examples
+    - Fundamental concepts
+    - Reference documentation
+    - API documentation
+
+Recap:
+
+- MongoDB Java applications must use the official drivers to ensure optimal performance, compatibility and an easy update path
+- Drivers simplify connecting to and interacting with a MongoDB deployment
+- Official driver documentation is available on the MongoDB website
+
+Quiz:
+
+- Q: What is the principal responsibility of a MongoDB driver?
+- A: To establish secure connections to a MongoDB cluster and execute database operations on behalf of client applications.
+
+- Q: The official MongoDB drivers adhere to each programming language’s best practices.
+- A: True
+
+### Lesson 2: Connecting to an Atlas Cluster in Java Applications
+
+
+## Unit 2: MongoDB CRUD Operations in Java
+
+## Unit 3: MongoDB Aggregation with Java
