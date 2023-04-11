@@ -571,7 +571,21 @@
     "href": "java-exercises/databases/00-mongodb.html",
     "title": "00 - MongoDB",
     "section": "",
-    "text": "Introduction\nMongoDB works with BSON (Binary JSON).\nInstead of working with tables, we work with Collections. Each Collection has Documents. Each document is stored with JSON structure.\n\n\nHow to initialize a MongoDB database\nOn cloud:\n\nGo to MongoDB webpage –> Done\nCreate an account –> Done\nCreate a cluster –> Done\nSecurity Quickstart: 2 options\n\nCreate a user with read-write access to the databases –> DONE\nAuthenticate via a certificate –> TODO\n\nNetwork access: defined via IPs\n\nAdd each one of the public IPs from where you’ll connect to the MongoDB cloud cluster\n\nDatabase deployments:\n\n\n\nMongoDB - Dashboard\n\n\nDatabase access: provides the URL syntax to connect to the database\n\n\n\nMongoDB - Database connection details\n\n\n\nReplace the username and password with the user credentials created in the previous steps\n\nExtra: LDAP authentication –> TODO\n\nOn premises:\n\nDocker deployment –> TODO\n\n\n\nHow to connect projects to a MongoDB database\nSpring Boot project:\n\nSpring connection:\n\n\napplication.yml\n\nspring:\n    data:\n        mongodb:\n            url: mongodb+srv://<mongodb-url>\n\nJPA annotations to access Collections and Documents\n\n@Document: defined with a collection value that represents the MongoDB collection\n\nMongoRepository"
+    "text": "MongoDB works with BSON (Binary JSON).\nInstead of working with tables, we work with Collections. Each Collection has Documents. Each document is stored with JSON structure."
+  },
+  {
+    "objectID": "java-exercises/databases/00-mongodb.html#on-cloud",
+    "href": "java-exercises/databases/00-mongodb.html#on-cloud",
+    "title": "00 - MongoDB",
+    "section": "On cloud:",
+    "text": "On cloud:\n\nGo to MongoDB webpage –> Done\nCreate an account –> Done\nCreate a cluster –> Done\nSecurity Quickstart: 2 options\n\nCreate a user with read-write access to the databases –> DONE\nAuthenticate via a certificate –> TODO\n\nNetwork access: defined via IPs\n\nAdd each of the public IPs from where you’ll connect to the MongoDB cloud cluster\n\nDatabase deployments:\n\n\n\nMongoDB - Dashboard\n\n\nDatabase access: provides the URL syntax to connect to the database\n\n\n\nMongoDB - Database connection details\n\n\n\nReplace the username and password with the user credentials created in the previous steps\n\nExtra: LDAP authentication –> TODO"
+  },
+  {
+    "objectID": "java-exercises/databases/00-mongodb.html#on-premises",
+    "href": "java-exercises/databases/00-mongodb.html#on-premises",
+    "title": "00 - MongoDB",
+    "section": "On premises:",
+    "text": "On premises:\n\nDocker deployment –> TODO"
   },
   {
     "objectID": "java-exercises/Concepts/object-creation.html",

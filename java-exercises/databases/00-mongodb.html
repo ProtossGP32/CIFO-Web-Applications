@@ -752,7 +752,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#how-to-initialize-a-mongodb-database" id="toc-how-to-initialize-a-mongodb-database" class="nav-link" data-scroll-target="#how-to-initialize-a-mongodb-database">How to initialize a MongoDB database</a></li>
+  <li><a href="#how-to-initialize-a-mongodb-database" id="toc-how-to-initialize-a-mongodb-database" class="nav-link" data-scroll-target="#how-to-initialize-a-mongodb-database">How to initialize a MongoDB database</a>
+  <ul class="collapse">
+  <li><a href="#on-cloud" id="toc-on-cloud" class="nav-link" data-scroll-target="#on-cloud">On cloud:</a></li>
+  <li><a href="#on-premises" id="toc-on-premises" class="nav-link" data-scroll-target="#on-premises">On premises:</a></li>
+  </ul></li>
   <li><a href="#how-to-connect-projects-to-a-mongodb-database" id="toc-how-to-connect-projects-to-a-mongodb-database" class="nav-link" data-scroll-target="#how-to-connect-projects-to-a-mongodb-database">How to connect projects to a MongoDB database</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/databases/00-mongodb.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -805,9 +809,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="how-to-initialize-a-mongodb-database" class="level1">
 <h1>How to initialize a MongoDB database</h1>
-<p>On cloud:</p>
+<section id="on-cloud" class="level2">
+<h2 class="anchored" data-anchor-id="on-cloud">On cloud:</h2>
 <ul>
-<li><p>Go to MongoDB webpage –&gt; Done</p></li>
+<li><p>Go to <a href="https://cloud.mongodb.com/">MongoDB webpage</a> –&gt; Done</p></li>
 <li><p>Create an account –&gt; Done</p></li>
 <li><p>Create a cluster –&gt; Done</p></li>
 <li><p>Security Quickstart: 2 options</p>
@@ -817,7 +822,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li><p>Network access: defined via IPs</p>
 <ul>
-<li>Add each one of the public IPs from where you’ll connect to the MongoDB cloud cluster</li>
+<li>Add each of the public IPs from where you’ll connect to the MongoDB cloud cluster</li>
 </ul></li>
 <li><p>Database deployments:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -838,10 +843,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li><p>Extra: LDAP authentication –&gt; TODO</p></li>
 </ul>
-<p>On premises:</p>
+</section>
+<section id="on-premises" class="level2">
+<h2 class="anchored" data-anchor-id="on-premises">On premises:</h2>
 <ul>
 <li>Docker deployment –&gt; TODO</li>
 </ul>
+</section>
 </section>
 <section id="how-to-connect-projects-to-a-mongodb-database" class="level1">
 <h1>How to connect projects to a MongoDB database</h1>
