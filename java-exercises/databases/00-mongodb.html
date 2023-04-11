@@ -757,7 +757,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#on-cloud" id="toc-on-cloud" class="nav-link" data-scroll-target="#on-cloud">On cloud:</a></li>
   <li><a href="#on-premises" id="toc-on-premises" class="nav-link" data-scroll-target="#on-premises">On premises:</a></li>
   </ul></li>
-  <li><a href="#how-to-connect-projects-to-a-mongodb-database" id="toc-how-to-connect-projects-to-a-mongodb-database" class="nav-link" data-scroll-target="#how-to-connect-projects-to-a-mongodb-database">How to connect projects to a MongoDB database</a></li>
+  <li><a href="#how-to-connect-projects-to-a-mongodb-database" id="toc-how-to-connect-projects-to-a-mongodb-database" class="nav-link" data-scroll-target="#how-to-connect-projects-to-a-mongodb-database">How to connect projects to a MongoDB database</a>
+  <ul class="collapse">
+  <li><a href="#spring-boot-project" id="toc-spring-boot-project" class="nav-link" data-scroll-target="#spring-boot-project">Spring Boot project:</a></li>
+  </ul></li>
+  <li><a href="#mongodb-free-online-course" id="toc-mongodb-free-online-course" class="nav-link" data-scroll-target="#mongodb-free-online-course">MongoDB Free online course</a>
+  <ul class="collapse">
+  <li><a href="#unit-1-connecting-to-mongodb-in-java" id="toc-unit-1-connecting-to-mongodb-in-java" class="nav-link" data-scroll-target="#unit-1-connecting-to-mongodb-in-java">Unit 1: Connecting to MongoDB in Java</a>
+  <ul class="collapse">
+  <li><a href="#lesson-1-using-mongodb-java-client-libraries" id="toc-lesson-1-using-mongodb-java-client-libraries" class="nav-link" data-scroll-target="#lesson-1-using-mongodb-java-client-libraries">Lesson 1: Using MongoDB Java Client Libraries</a></li>
+  <li><a href="#lesson-2-connecting-to-an-atlas-cluster-in-java-applications" id="toc-lesson-2-connecting-to-an-atlas-cluster-in-java-applications" class="nav-link" data-scroll-target="#lesson-2-connecting-to-an-atlas-cluster-in-java-applications">Lesson 2: Connecting to an Atlas Cluster in Java Applications</a></li>
+  </ul></li>
+  <li><a href="#unit-2-mongodb-crud-operations-in-java" id="toc-unit-2-mongodb-crud-operations-in-java" class="nav-link" data-scroll-target="#unit-2-mongodb-crud-operations-in-java">Unit 2: MongoDB CRUD Operations in Java</a></li>
+  <li><a href="#unit-3-mongodb-aggregation-with-java" id="toc-unit-3-mongodb-aggregation-with-java" class="nav-link" data-scroll-target="#unit-3-mongodb-aggregation-with-java">Unit 3: MongoDB Aggregation with Java</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/databases/00-mongodb.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -853,7 +866,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="how-to-connect-projects-to-a-mongodb-database" class="level1">
 <h1>How to connect projects to a MongoDB database</h1>
-<p>Spring Boot project:</p>
+<section id="spring-boot-project" class="level2">
+<h2 class="anchored" data-anchor-id="spring-boot-project">Spring Boot project:</h2>
 <ul>
 <li><p>Spring connection:</p>
 <div class="code-with-filename">
@@ -871,8 +885,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li><p><code>MongoRepository</code></p></li>
 </ul>
+</section>
+</section>
+<section id="mongodb-free-online-course" class="level1">
+<h1>MongoDB Free online course</h1>
+<p>Course: <a href="https://learn.mongodb.com/learning-paths/using-mongodb-with-java">Using MongoDB with Java</a></p>
+<pre><code>- Estimated duration: 3 hours</code></pre>
+<section id="unit-1-connecting-to-mongodb-in-java" class="level2">
+<h2 class="anchored" data-anchor-id="unit-1-connecting-to-mongodb-in-java">Unit 1: Connecting to MongoDB in Java</h2>
+<section id="lesson-1-using-mongodb-java-client-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="lesson-1-using-mongodb-java-client-libraries">Lesson 1: Using MongoDB Java Client Libraries</h3>
+<p>What do we need to connect to MongoDB?</p>
+<ul>
+<li>Set of libraries –&gt; Drivers</li>
+<li>MongoDB official drivers for synchronous or asynchronous application code</li>
+<li>Benefits of MongoDB official drivers:
+<ul>
+<li>Simplify connecting to and interacting with their database from your application</li>
+<li>Establish secure connections to a MongoDB cluster</li>
+<li>Execute database operations on behalf of client applications</li>
+<li>Specify connection options (security, writing ability, isolation, etc..)</li>
+<li>Adhere to language best practices</li>
+<li>Use the full functionality of MongoDB deployment</li>
+<li>Make upgrading easier</li>
+</ul></li>
+<li>Official docs:
+<ul>
+<li>Usage examples</li>
+<li>Fundamental concepts</li>
+<li>Reference documentation</li>
+<li>API documentation</li>
+</ul></li>
+</ul>
+<p>Recap:</p>
+<ul>
+<li>MongoDB Java applications must use the official drivers to ensure optimal performance, compatibility and an easy update path</li>
+<li>Drivers simplify connecting to and interacting with a MongoDB deployment</li>
+<li>Official driver documentation is available on the MongoDB website</li>
+</ul>
+<p>Quiz:</p>
+<ul>
+<li><p>Q: What is the principal responsibility of a MongoDB driver?</p></li>
+<li><p>A: To establish secure connections to a MongoDB cluster and execute database operations on behalf of client applications.</p></li>
+<li><p>Q: The official MongoDB drivers adhere to each programming language’s best practices.</p></li>
+<li><p>A: True</p></li>
+</ul>
+</section>
+<section id="lesson-2-connecting-to-an-atlas-cluster-in-java-applications" class="level3">
+<h3 class="anchored" data-anchor-id="lesson-2-connecting-to-an-atlas-cluster-in-java-applications">Lesson 2: Connecting to an Atlas Cluster in Java Applications</h3>
+</section>
+</section>
+<section id="unit-2-mongodb-crud-operations-in-java" class="level2">
+<h2 class="anchored" data-anchor-id="unit-2-mongodb-crud-operations-in-java">Unit 2: MongoDB CRUD Operations in Java</h2>
+</section>
+<section id="unit-3-mongodb-aggregation-with-java" class="level2">
+<h2 class="anchored" data-anchor-id="unit-3-mongodb-aggregation-with-java">Unit 3: MongoDB Aggregation with Java</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
