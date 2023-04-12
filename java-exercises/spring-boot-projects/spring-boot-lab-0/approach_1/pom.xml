@@ -12,7 +12,7 @@
 	<artifactId>approach_1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>approach_1</name>
-	<description>Library Manager with H2 database</description>
+	<description>Library Manager with H2 and MongoDB database</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -108,6 +108,11 @@
 			<artifactId>jacoco-maven-plugin</artifactId>
 			<version>0.8.9</version>
 		</dependency>
+		<!-- MongoDB dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
 	</dependencies>
 
 	<build>

@@ -36,6 +36,10 @@ Instead of working with tables, we work with **Collections**. Each Collection ha
 
 - Extra: LDAP authentication --> TODO
 
+- Create a Collection
+    - Either load a sample dataset or add your own data. When loading the provided sample test, you can browse 9 databases with their own collections:
+
+    ![MongoDB - Cluster dashboard](../../images/databases/mongodb-atlas-cluster-details.png)
 
 
 ## On premises:

@@ -47,6 +47,12 @@ spring:
           sharedCache:
             mode: ENABLE_SELECTIVE
 
+  # MongoDB config
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      database: book_images
+
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher
