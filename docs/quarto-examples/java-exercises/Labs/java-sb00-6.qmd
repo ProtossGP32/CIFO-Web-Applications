@@ -1,0 +1,49 @@
+---
+title: "LAB#SB00-6: Rest & MongoDB"
+categories: [Spring Boot, lab, JPA, REST, MongoDB]
+author: ProtossGP32
+date: 2023/04/12
+from: markdown+emoji
+---
+# Introduction
+# Getting started
+## Prepare a MongoDB project
+### On cloud
+In your cluster, 
+
+## Initialize a Spring Boot project
+### Dependencies
+
+- Spring Boot DevTools
+- Lombok
+- Spring Web
+- Rest Repositories
+- Spring Session
+- Spring Data JPA
+- Spring Data MongoDB
+
+### `pom.xml`
+### `application.yml`
+
+# Implement the REST API that connects to MongoDB
+## Domain classes
+### BookImage
+
+```{.java filename=BookImage.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImage.java}
+```
+
+## Repository
+### BookImageRepository
+```{.java filename=BookImageRepository.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImageRepository.java}
+```
+
+## Service
+### BookImageService
+```{.java filename=BookImageService.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImageService.java}
+```
+
+## Controller
+### BookImageRestController
+```{.java filename=BookImageRestController.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImageRestController.java}
+```
+
