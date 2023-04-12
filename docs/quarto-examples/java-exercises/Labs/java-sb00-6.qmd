@@ -32,6 +32,13 @@ In your cluster,
 ```{.java filename=BookImage.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImage.java}
 ```
 
+:::{.callout-note}
+## What happens with the document's `id`?
+Here are some insights on how the `id` value is handled in the Mapping Layer --> [LINK](https://docs.spring.io/spring-data/mongodb/docs/current-SNAPSHOT/reference/html/#mongo-template.id-handling)
+
+For more control over the actual id mapping, try to use the `@MongoId` annotation.
+:::
+
 ## Repository
 ### BookImageRepository
 ```{.java filename=BookImageRepository.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImageRepository.java}

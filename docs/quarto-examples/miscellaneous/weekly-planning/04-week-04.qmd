@@ -110,8 +110,8 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 3      	| MONDAY (W34)                 	                | TUESDAY (W26)                             | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
-| Morning   	| --                | ~~PMS: Weekly planning (W8)~~ CP: Integrate MongoDB to project (W8) | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
-| Afternoon 	| -- | DOL: Learn about Python and Django (13) DOL: Learn about observability (W13) | TP: Finish User Entity (W13) DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
+| Morning   	| --                | ~~PMS: Weekly planning (W8)~~ ~~CP: Integrate MongoDB to project (W8)~~ | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
+| Afternoon 	| -- | ~~DOL: Learn about Python and Django (13)~~ ~~DOL: Learn about observability (W13)~~ | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
 | Evening   	| --  | TP: Update UMLs (W5)                      | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
@@ -136,21 +136,21 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Monday:
 
+- Holiday
+
+#### Tuesday:
+
 - Morning: Weekly planning done. Started MongoDB tutorials
 - Afternoon: Nothing done
 - Evening: Nothing done
 
-#### Tuesday:
-
-- Morning:
-- Afternoon:
-- Evening:
-
 #### Wednesday:
 
 - Morning:
-- Afternoon:
-- Evening:
+    - Cloud MongoDB integration into LibraryManagement project (only BookImage objects)
+    - Finished Python + Django REST API tutorial, endpoints tested using Postman
+- Afternoon: Finished Practical Observability course
+- Evening: Finished Practical Observability course
 
 #### Thursday:
 
@@ -173,15 +173,15 @@ Think about the reasons why these tasks aren't done:
 
 #### Monday:
 
-- Nothing done, no reason at all
+- Holiday
 
 #### Tuesday:
 
-- 
+- Nothing done, no reason at all
 
 #### Wednesday:
 
-- 
+- Replaced tasks with the pending ones from Tuesday
 
 #### Thursday:
 
@@ -204,4 +204,5 @@ Based on the previous analysis, identify the weak points of the previous plannin
     - 
 
 - **Core concepts learnt during this week / What have you learned?**
-    - 
+    - Basic principles of system observability
+    - Integrate MongoDB into Java projects
