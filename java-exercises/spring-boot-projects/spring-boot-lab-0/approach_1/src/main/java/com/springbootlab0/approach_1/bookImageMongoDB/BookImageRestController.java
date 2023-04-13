@@ -1,5 +1,7 @@
 package com.springbootlab0.approach_1.bookImageMongoDB;
 
+import com.springbootlab0.approach_1.domain.Publication;
+import com.springbootlab0.approach_1.services.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
@@ -9,22 +11,29 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.Base64.Encoder;
+import java.util.Optional;
+
 @Controller
 @RequestMapping(value = "/api/bookImages")
 public class BookImageRestController {
 
     @Autowired
     BookImageService bookImageService;
+    @Autowired
+    PublicationService publicationService;
 
     // CRUD
     // Create --> Upload an image
     @PostMapping(value = "upload")
-    public ResponseEntity<BookImage> uploadBookImage(@RequestParam String name, @RequestParam MultipartFile file) throws IOException {
+    public ResponseEntity<BookImage> uploadBookImage(@RequestParam String publicationId, @RequestParam String name, @RequestParam MultipartFile file) throws IOException {
         HttpHeaders headers = new HttpHeaders();
         headers.add("operation", "upload");
         headers.add("version", "api 1.0");
         BookImage uploadedBookImage = bookImageService.uploadBookImage(name, file);
         if (uploadedBookImage != null) {
+            // Retrieve the publication
+            Optional<Publication> imagePublication = publicationService.findPublicationById(publicationId);
+
             headers.add("operationStatus", "OK");
             return ResponseEntity.ok().headers(headers).body(uploadedBookImage);
         }

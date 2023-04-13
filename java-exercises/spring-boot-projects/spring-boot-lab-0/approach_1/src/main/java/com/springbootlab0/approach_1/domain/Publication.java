@@ -1,5 +1,6 @@
 package com.springbootlab0.approach_1.domain;
 
+import com.springbootlab0.approach_1.bookImageMongoDB.BookImage;
 import com.springbootlab0.approach_1.utils.Helper;
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,9 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.lang.reflect.Field;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 // Lombok annotations
 @Setter
@@ -45,15 +44,17 @@ public abstract class Publication implements PublicationOperations{
     @Column(name="PUBLICATION_STATUS")
     @Enumerated(EnumType.STRING)
     private Status status;
+    @Column(name="IMAGE_IDS")
+    private List<String> imageIds;
 
     protected Publication() {
         this.id = Helper.createUUID();
+        this.imageIds = new ArrayList<>();
     }
 
     protected Publication(String title, Author author, LocalDate publicationDate, String format, Status status) {
         this();
         this.title = title;
-
         this.author = author;
         this.publicationDate = publicationDate;
         this.format = format;
