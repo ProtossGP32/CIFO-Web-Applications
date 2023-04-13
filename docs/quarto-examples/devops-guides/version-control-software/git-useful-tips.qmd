@@ -5,21 +5,21 @@ title: "GIT useful tips"
 # Git commands
 ## Remote repository
 ### Get a copy of a remote repository
-```bash
+```{.bash}
 git clone <git-repository-url>
 ```
 
 When authenticating with SSH, use the appropriate SSH url.
 
 ### Update list of repository's remote branches
-```bash
+```{.bash}
 git remote update <remote-repo> --prune
 ```
 - `--prune` removes any local reference to non-existing remote branches
 
 If we have other remotes, just repeat the process changing the remote name:
 
-```bash
+```{.bash}
 git remote update <another-remote-repo> --prune
 ```
 
@@ -57,50 +57,55 @@ You can always check what branches are tracked for each local branch in the `.gi
 
 ## Branches
 ### Show available branches
-```bash
+```{.bash}
 git branch
 ```
 
 - Also show remote branches:
-```bash
+```{.bash}
 git branch -a
 ```
 
 ### Clone an existing branch
-```bash
+```{.bash}
 git checkout <branch-name>
 ```
 
+If you want to checkout a branch from another remote repository, do the following:
+
+```
+```
+
 ### Create a new branch
-```bash
+```{.bash}
 git checkout -b <new-branch-name>
 ```
 
 ### Delete a local branch
-```bash
+```{.bash}
 git branch --delete <branch-name>
 ```
 
 ### Delete a remote branch
-```bash
+```{.bash}
 git push origin --delete feature/login
 ```
 
 ## Updating local checkouts
 ### Retrieve latest changes in remote repositories
-```bash
+```{.bash}
 git fetch
 ```
 - This command downloads the git objects (blobs, trees and commits), it doesn't `merge` the changes into the local checkouts.
     - This means that the files in local branches are still behind the latest commits, they must be `merge`d or `fast-forward`ed
 
 ### Update local branches
-```bash
+```{.bash}
 git merge <remote-branch> <local-branch>
 ```
 
 ### Overwrite local branches with remote repositories
-```bash
+```{.bash}
 git pull
 ```
 
@@ -114,8 +119,10 @@ git push --set-upstream <remote-repo> <local-branch>
 
 - `--set-upstream` automatically sets up the tracking information for that branch
 
-If the branch is already created in the remote repository, you can simply push it to the desired remote by executing:
+If the branch is already created in the remote repository or you're pushing to a different remote (and don't want it as the following repository), you can simply push it to the desired remote by executing:
 
 ```{.bash}
 git push <remote-repo>
 ```
+
+Be aware that for this to work, a remote repository must be already configured as the following one. I.e: you already told Git that you're following the same branch in `origin` repo and now you want to simply push it to the `upstream` repository.

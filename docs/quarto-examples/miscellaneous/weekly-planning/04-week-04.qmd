@@ -154,9 +154,9 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Thursday:
 
-- Morning:
-- Afternoon:
-- Evening:
+- Morning: Team meeting, compared current tasks progress and defined new workflow approaches for frontend tasks
+- Afternoon: Worked on Team project tasks
+- Evening: Worked on Team project tasks
 
 #### Friday:
 
