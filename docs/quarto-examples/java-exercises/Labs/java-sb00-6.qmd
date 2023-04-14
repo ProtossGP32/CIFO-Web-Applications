@@ -23,7 +23,10 @@ In your cluster,
 - Spring Data MongoDB
 
 ### `pom.xml`
+Add the official MongoDB driver dependency.
+
 ### `application.yml`
+Define the MongoDB connection parameters.
 
 # Implement the REST API that connects to MongoDB
 ## Domain classes

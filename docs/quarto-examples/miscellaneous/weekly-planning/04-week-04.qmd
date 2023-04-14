@@ -36,7 +36,7 @@ Things to accomplish:
 | CP        | Swagger and Mockito into Library  | 8         | Week 2
 | CP        | Enable logging in Java            | 8         | Week 2
 | CP        | Quarto: automate weekly planning  | 13        | Week 2
-| CP        | Integrate MongoDB to project      | 8         | Week 4
+| CP        | ~~Integrate MongoDB to project~~  | 8         | Week 4
 | CP        | Finish MongoDB tutorials          | 8         | Week 4
 | CI/CD     | Learn GitHub Actions              | 13        | Week 1
 | CI/CD     | Install Jenkins                   | 8         | Week 1
@@ -48,7 +48,7 @@ Things to accomplish:
 | DOL       | Deploy workloads on Kubernetes    | 13        | Week 1
 | DOL       | Learn about OpenStack             | 21        | Week 1
 | DOL       | Learn about OKD                   | 21        | Week 2
-| DOL       | Learn about Python and Django     | 13        | Week 2
+| DOL       | ~~Learn about Python and Django~~ | 13        | Week 2
 | DOL       | Learn about Argo workflows        | 21        | Week 2
 | DOL       | Learn about SQL and Postgres      | 21        | Week 2
 | DOL       | Learn about Terraform             | 21        | Week 3
@@ -64,13 +64,13 @@ Things to accomplish:
 
 - Important and urgent:
     - CP: Swagger and Mockito into Library (W8)
-    - CP: Integrate MongoDB to project (W8)
+    - ~~CP: Integrate MongoDB to project (W8)~~
     - CP: Finish MongoDB tutorials (W8)
     - TP: Finish User Entity (W13)
     - TP: Update functional diagrams (W8)
-    - DOL: Learn about observability (W13)
+    - ~~DOL: Learn about observability (W13)~~
     - DOL: Learn about OKD (21)
-    - DOL: Learn about Python and Flask (13)
+    - ~~DOL: Learn about Python and Django (13)~~
     - DOL: Learn about Argo workflows (21)
     - DOL: Learn about Terraform (21)
     - DOL: Learn about Ansible (21)
@@ -83,7 +83,7 @@ Things to accomplish:
     - CP: Update soft. script with Postman (W8)
     - CP: Enable logging in Java (W8)
     - TP: Create missing Unit Tests (W8)
-    - TP: Update UMLs (W5)
+    - ~~TP: Update UMLs (W5)~~
     - TP: Enable logging (W5)
     - TP: Create REST API (W5)
     - CI/CD: Learn GitHub Actions (W13)
@@ -112,7 +112,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
 | Morning   	| --                | ~~PMS: Weekly planning (W8)~~ ~~CP: Integrate MongoDB to project (W8)~~ | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
 | Afternoon 	| -- | ~~DOL: Learn about Python and Django (13)~~ ~~DOL: Learn about observability (W13)~~ | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
-| Evening   	| --  | TP: Update UMLs (W5)                      | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
+| Evening   	| --  | ~~TP: Update UMLs (W5)~~                      | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -121,7 +121,7 @@ Make a retrospective of the previous week, analyse the results of the planning a
 
 | CATEGORY                  | NUMBER OF PLANNED TASKS   | NUMBER OF COMPLETED TASKS
 | ---                       | ---:                      | ---:
-| Class Projects (CP)       |                           | 
+| Class Projects (CP)       |                           |
 | Team Project (TP)         |                           |
 | CI/CD                     |                           |
 | DevOps Learning (DOL)     |                           |
@@ -201,8 +201,10 @@ Based on the previous analysis, identify the weak points of the previous plannin
     - 
 
 - **What have you reorganized during this week?**
-    - 
+    - Self-learning sessions
 
 - **Core concepts learnt during this week / What have you learned?**
     - Basic principles of system observability
     - Integrate MongoDB into Java projects
+    - Python + Django API
+    - Team management (OpenProject)
