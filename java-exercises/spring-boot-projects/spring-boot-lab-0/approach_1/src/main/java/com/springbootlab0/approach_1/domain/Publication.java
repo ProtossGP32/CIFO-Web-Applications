@@ -79,44 +79,4 @@ public abstract class Publication implements PublicationOperations{
         return Objects.hash(id, title, author, publicationDate, format, status);
     }
 
-    // Generics
-    public static <T extends Publication> T createFromJson(String userJSON, Class<T> clazz) {
-        // First, convert the JSON into a Map
-        JsonParser bodyParser = JsonParserFactory.getJsonParser();
-        Map<String, Object> bodyMap = bodyParser.parseMap(userJSON);
-        // Then, create a new User with all the fields of the JSON
-        // TODO: assign the fields of the JSON
-        try {
-            T newMember = clazz.newInstance();
-            Field[] fields = clazz.getDeclaredFields();
-            Arrays.stream(fields)
-                    .filter(field -> {
-                        // Only get fields that exist in the User class
-                        try {
-                            Object userValue = field.get(bodyMap);
-                            return userValue != null &&
-                                    (!(userValue instanceof Number) || ((Number) userValue).intValue() != 0) &&
-                                    (!(userValue instanceof Boolean) || (Boolean) userValue);
-                        } catch (IllegalAccessException e) {
-                            // Not a class field
-                            return false;
-                        }
-                    })
-                    .forEach(field -> {
-                        try {
-                            field.set(newMember, field.get(bodyMap));
-                        } catch (IllegalAccessException e) {
-                            // Handle the stream exception
-                        }
-                    });
-            // Return the newly created User
-            return newMember;
-        } catch (InstantiationException e) {
-            // Generics exception
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            // Generics exception
-            throw new RuntimeException(e);
-        }
-    }
 }
