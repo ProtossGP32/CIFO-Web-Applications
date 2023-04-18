@@ -112,6 +112,97 @@
     "text": "Things to accomplish:\n\nFinish the Library Web application using Web Controller (GET/POST)\nCreate a REST API application with SpringBoot\nCreate the first CI/CD pipeline for a Spring Boot project\nComplete my tasks for the Team Project in Sprint 2\nDeeper understanding of the DevOps methodology\n\n\n\n\n\nCategories:\n\nClass Project (CP)\nTeam Project (TP)\nContinuous Integration/Continuous Delivery (CI/CD)\nDevOps Learning (DOL)\nPlanning & MindSet (PMS)\nMSX-related tasks (MSX)\n\n\n\n\n\n\n\n\n\n\n\nCATEGORY\nTASK\nWEIGHT\nINTRODUCED ON\n\n\n\n\nCP\nCreate Library REST API\n8\nWeek 1\n\n\nCP\nCreate Library REST client\n5\nWeek 1\n\n\nCP\nUnify User HTML forms\n5\nWeek 1\n\n\nCP\nUnify Publications creation\n8\nWeek 1\n\n\nCP\nMigrate H2 to another DB\n13\nWeek 1\n\n\nCP\nUpdate Quarto docs\n5\nWeek 1\n\n\nCP\nCreate missing Unit Tests\n8\nWeek 1\n\n\nCP\nCreate GitHub issues\n3\nWeek 1\n\n\nCP\nComplete SonarQube GitHub action\n13\nWeek 2\n\n\nCP\nUpdate soft. script with Postman\n8\nWeek 2\n\n\nCP\nSwagger and Mockito into Library\n8\nWeek 2\n\n\nCP\nEnable logging in Java\n8\nWeek 2\n\n\nCP\nQuarto: automate weekly planning\n13\nWeek 2\n\n\nCI/CD\nLearn GitHub Actions\n13\nWeek 1\n\n\nCI/CD\nInstall Jenkins\n8\nWeek 1\n\n\nCI/CD\nCreate staging environment\n13\nWeek 1\n\n\nTP\nFinish User Entity\n13\nWeek 1\n\n\nTP\nFinish Vertical Slicing designs\n13\nWeek 1\n\n\nTP\nCreate missing Unit Tests\n8\nWeek 1\n\n\nTP\nEnable logging\n5\nWeek 2\n\n\nTP\nCreate REST API\n5\nWeek 2\n\n\nDOL\nLearn about observability\n13\nWeek 1\n\n\nDOL\nDeploy workloads on Kubernetes\n13\nWeek 1\n\n\nDOL\nLearn about OpenStack\n21\nWeek 1\n\n\nDOL\nLearn about OKD\n21\nWeek 2\n\n\nDOL\nLearn about Python and Flask\n13\nWeek 2\n\n\nDOL\nLearn about Argo workflows\n21\nWeek 2\n\n\nDOL\nLearn about SQL and Postgres\n21\nWeek 2\n\n\nDOL\nInstall a SMTP server\n13\nWeek 1\n\n\nDOL\nUpdate Quarto docs\n8\nWeek 1\n\n\nMSX\nAdapters and gamepads study\n5\nWeek 2\n\n\nMSX\nMSX-Mega v3 design\n21\nWeek 2\n\n\nPMS\nWeekly retrospective\n8\nWeek 1\n\n\nPMS\nWeekly planning\n8\nWeek 1\n\n\nPMS\nMindSet & Lectures\n5\nWeek 1\n\n\n\n\n\n\n27 tasks:\n\nImportant and urgent (9):\n\nCP: Complete SonarQube GitHub action (W13)\nCP: Swagger and Mockito into Library (W8)\nTP: Finish User Entity (W13)\nTP: Update functional diagrams (W8)\nTP: Finish Vertical Slicing designs (W13)\nDOL: Learn about observability (W13)\nDOL: Learn about OKD (21)\nDOL: Learn about Python and Flask (13)\nDOL: Learn about Argo workflows (21)\nPMS: Weekly planning (W8)\n\nImportant but not urgent (19):\n\nCP: Create missing Unit Tests (W8)\nCP: Unify User HTML forms (W5)\nCP: Unify Publications creation (W8)\nCP: Create GitHub issues (W3)\nCP: Create Library REST API (W8)\nCP: Create Library REST client (W5)\nCP: Migrate H2 to another DB (W13)\nCP: Update soft. script with Postman (W8)\nCP: Enable logging in Java (W8)\nTP: Create missing Unit Tests (W8)\nTP: Update UMLs (W5)\nTP: Enable logging (W5)\nTP: Create REST API (W5)\nCI/CD: Learn GitHub Actions (W13)\nCI/CD: Create staging environment (W13)\nDOL: Deploy workloads on Kubernetes (W13)\nDOL: Update Quarto docs (W3)\nDOL: Learn about SQL and Postgres (W21)\nMSX: Adapters and gamepads study (W5)\nMSX: MSX-Mega v3 design (W21)\nPMS: Weekly retrospective (W8)\nPMS: MindSet & Lectures (W5)\n\nNot important but urgent (5):\n\nDOL: Install a SMTP server (W13)\nCI/CD: Install Jenkins (W8)\nDOL: Learn about OpenStack (W21)\n\nNeither important nor urgent:\n\n\n\n\n\n\n\nEach week, define tasks for each energy slot of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week:\n\nWeek 2:\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nMONDAY (W34)\nTUESDAY (W26)\nWEDNESDAY (W32)\nTHURSDAY (W34)\nFRIDAY (W37)\n\n\n\n\nMorning\nPMS: Weekly planning (W8)\nCP: Create Library REST API (W8)\nDOL: Update Quarto docs (W3)\nTP: Finish Vertical Slicing designs (W13)\nTP: Update functional diagrams (W8)\n\n\nAfternoon\nTP: Finish User Entity (W13) MSX: Adapters and gamepads study (W5)\nDOL: Learn about observability (W13)\nDOL: Learn about Argo workflows (21)\nDOL: Learn about Python and Flask (13)\nDOL: Learn about OKD (21)\n\n\nEvening\nCP: Complete SonarQube GitHub action (W13) MSX: MSX-Mega v3 Design (W21)\nTP: Update UMLs (W5)\nCP: Create missing Unit Tests (W8)\nTP: Create missing Unit Tests (W8)\nPMS: Weekly retrospective (W8)\n\n\n\n\n\n\nMake a retrospective of the previous week, analyse the results of the planning and take action.\n\nNumber of planned tasks per category:\n\n\n\n\n\n\n\n\n\nCATEGORY\nNUMBER OF PLANNED TASKS\nNUMBER OF COMPLETED TASKS\n\n\n\n\nClass Projects (CP)\n\n\n\n\nTeam Project (TP)\n\n\n\n\nCI/CD\n\n\n\n\nDevOps Learning (DOL)\n\n\n\n\nPlanning and MindSet (PMS)\n\n\n\n\nMSX-related tasks (MSX)\n\n\n\n\n\n\n\nThink about the complexity of the completed tasks and if they matched the expectatives:\n\nIf the task was easier than you thought, move it to lower energies spaces\nIf the task was harder than you though, think about spitting it into less complex tasks\n\nCompleted tasks:\n\nPMS: Weekly planning (W8) –> Done when planned\nCP: Complete SonarQube GitHub action (W13) –> Worked on it on Monday morning, still not finished (missing JaCoCo Code coverage dependency)\nMSX: MSX-Mega v3 Design (W21) –> Done instead of Monday tasks\nMSX: Adapters and gamepads study (W5) –> Done instead of Monday tasks\nDOL: Learn about observability (W13) –> Short introduction course from o11y\nDOL: Update Quarto docs (W3) –> Updated Quarto docs related to self-hosted software deployment\n\n\n\n\nThink about the reasons why these tasks aren’t done:\n\nDid you lack some kind of resource (knowledge, tools, etc…) to even start it?\nDid you find any obstacle that slowed down your progress? The obstacle can be either internal or external, related or unrelated to the task\nIs this task something that you’ve been dragging along for some time? Is it really necessary?\nMonday:\n\nReplaced planned tasks with MSX-related stuff -Tuesday:\nLearn about Observability took me more time than expected\n\nWednesday:\n\nFamily matters kept me from doing anything in the afternoon and the evening\n\n\n\n\n\n\nBased on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:\n\nBest decision of all week\n\nTalk with the team members about the status of our tasks\nAdd personal project tasks to the planning (MSX)\n\nAvoided pits\n\nNo pits this week\n\nWhat have you reorganized during this week?\n\nDocumentation tasks vs Learning tasks\n\nCore concepts learnt during this week / What have you learned?\n\nKiCAD 6 schematics and PCB design\nGitHub Actions + SonarQube\nSpring REST API"
   },
   {
+    "objectID": "react-exercises/labs/01-lab-re01-1.html",
+    "href": "react-exercises/labs/01-lab-re01-1.html",
+    "title": "React JS: Lab#RE01-1",
+    "section": "",
+    "text": "Link to class page\nMain objectives:\n\nWe’ll be uusing Open Library API, which is a RESTful API, to create a React app that will display a list of books\nWe will use the Axios library to make HTTP requests to the API and retrieve the data in JSON format\nWe will display the book data in a table with four fields for each book: title, year, ISBN, pages and author\nWe will also add a loading state to show the user that the app is retrieving data from the API\n\nThe lab will demonstrate docs/quarto-examples/react-exercises/labs/how to use a RESTful API with React to build a functional web application**."
+  },
+  {
+    "objectID": "react-exercises/labs/01-lab-re01-1.html#install-development-environment",
+    "href": "react-exercises/labs/01-lab-re01-1.html#install-development-environment",
+    "title": "React JS: Lab#RE01-1",
+    "section": "Install development environment",
+    "text": "Install development environment\nFollow this guide to install NVM and Node.js."
+  },
+  {
+    "objectID": "react-exercises/labs/01-lab-re01-1.html#creating-a-new-react-application",
+    "href": "react-exercises/labs/01-lab-re01-1.html#creating-a-new-react-application",
+    "title": "React JS: Lab#RE01-1",
+    "section": "Creating a new React application",
+    "text": "Creating a new React application\nFirst, create a path for your React applications and execute the following command:\n\n\nCreate new React project\n\nnpx create-react-app lab-re01-1"
+  },
+  {
+    "objectID": "react-exercises/labs/01-lab-re01-1.html#install-required-dependencies-for-the-project",
+    "href": "react-exercises/labs/01-lab-re01-1.html#install-required-dependencies-for-the-project",
+    "title": "React JS: Lab#RE01-1",
+    "section": "Install required dependencies for the project",
+    "text": "Install required dependencies for the project\nNow go to the newly created project folder and install the following dependencies:\n\n\nInstall dependencies\n\ncd lab-re01-1\nnpm install axios"
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html",
+    "href": "react-exercises/00-getting-started.html",
+    "title": "React: Getting started",
+    "section": "",
+    "text": "According to React official page:\n\n\n\n\nReact is very easy to use\nReact uses a Component Oriented Programming paradigm\nEach component returns a fragment"
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html#install-node.js-and-npm-via-its-official-script",
+    "href": "react-exercises/00-getting-started.html#install-node.js-and-npm-via-its-official-script",
+    "title": "React: Getting started",
+    "section": "Install Node.js and NPM via its official script",
+    "text": "Install Node.js and NPM via its official script\nFollow the instructions in the Nodesource github repository to execute the installation script:\n\n\nNode.js installation on Debian-based OS\n\n# As root or sudo user\ncurl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\\\napt-get install -y nodejs\n\nEach Node.js version has its own installation script."
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html#install-node.js-using-nvm",
+    "href": "react-exercises/00-getting-started.html#install-node.js-using-nvm",
+    "title": "React: Getting started",
+    "section": "Install Node.js using NVM",
+    "text": "Install Node.js using NVM\nNVM is Nodejs Version Manager, it allows to manage differnt Node.js versions.\nInstallation guide"
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html#use-a-custom-script-to-automate-nvm-and-node.js-installation",
+    "href": "react-exercises/00-getting-started.html#use-a-custom-script-to-automate-nvm-and-node.js-installation",
+    "title": "React: Getting started",
+    "section": "Use a custom script to automate NVM and Node.js installation",
+    "text": "Use a custom script to automate NVM and Node.js installation\n\n\ninstall_react_framework.sh\n\n#!/bin/bash\n#   CIFO Web Applications - Software installation\n#   - This script install the required software for the course\n#   - Categories:\n#       - IDEs\n#       - Version Control Sofware\n#       - Documentation\n\nNODE_VERSION=0\n\nwhile getopts n: flag\ndo\n\tcase \"${flag}\" in\n\t\tn) NODE_VERSION=${OPTARG};;\n\tesac\ndone\n\n# Define the installation command\n# -qq flag prior to the install command reduces the output messages except for errors\n# -y after the install command is for non-interactive/unattended installations\nINSTALL=\"apt-get -qq install -y\"\nUPDATE=\"apt-get -qq update\"\n\n# Pre-requisites:\n# - Install download and GPG binaries\n# - Apt installation via HTTPS paths must also be installed\n#$INSTALL wget gpg curl apt-transport-https\n\n# NVM installation:\n# =================\nif [ -x \"$(command -v nvm)\" ]; then\n\techo \"Installing NVM...\"\n\t# Download and install NVM\n\tcurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash\n\t# Execute this if NVM is not available after installation script\n\texport NVM_DIR=\"${HOME}/.nvm\"\n\t[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\" # This loads nvm\n\t[ -s \"${NVM_DIR}/bash_completion\" ] && \\. \"${NVM_DIR}/bash_completion\" # This loads nvm bash_completion\n\nfi\n\n# Node.js installation\n# ====================\nif [[ ${NODE_VERSION} -ne 0 ]]; then\n\t# Execute this if NVM is not available after installation script\n\texport NVM_DIR=\"${HOME}/.nvm\"\n\t[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\" # This loads nvm\n\t[ -s \"${NVM_DIR}/bash_completion\" ] && \\. \"${NVM_DIR}/bash_completion\" # This loads nvm bash_completion\n\t# Install the desired version\n\techo \"Node.js version selected: ${NODE_VERSION}\"\n\tnvm install ${NODE_VERSION}\n\t# Use the installed version\n\tnvm use ${NODE_VERSION}\n\t# Check the version\n\tnode -v\n\t# Install npx\n\tnpm install npx\nfi\n\n# (Do not use this if installing NVM)\n# ===================================\n#if [[ ${NODE_VERSION} -ne 0 ]]; then\n#\techo \"Node.js version selected: ${NODE_VERSION}\"\n#\n#\t# Add Node.js PPA to the system\n#\tcurl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -\n#\n#\t# Update repositories\n#\t# ===================\n#\t$UPDATE\n#\n#\t# Install packages\n#\t# ================\n#\n#\t# Node.js\n#\t$INSTALL nodejs\n#fi"
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html#start-a-new-react-project",
+    "href": "react-exercises/00-getting-started.html#start-a-new-react-project",
+    "title": "React: Getting started",
+    "section": "Start a new React project",
+    "text": "Start a new React project\nOfficial tutorial\nWe’ll be using npx command to initialize React projects.\nOnce done, execute npm start from the new project path to launch it and have a live webpage that updates on code changes.\nThe newly-created react project has the following structure:\n\nnode_modules: path with all the Node.js dependencies (do not push to Git!)\npublic: includes the public web assets such as the favicon.ico, the manifest.json and the index.html\n\nindex.html uses the manifest.json to populate some links in the <head> tag\n\nsrc: the source code of our app\n\nindex.js: our entrypoint, it imports the App component already created\nApp.js: our main app\nreportWebVitals.js: this defines the exposed metrics of our app for further observability\nsrc package also includes App.test.js for the App component"
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html#install-dependencies-for-your-node.js-project",
+    "href": "react-exercises/00-getting-started.html#install-dependencies-for-your-node.js-project",
+    "title": "React: Getting started",
+    "section": "Install dependencies for your Node.js project",
+    "text": "Install dependencies for your Node.js project\nWe’ll be using NPM (Node Package Manager) to install Node.js dependencies."
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html#react-project",
+    "href": "react-exercises/00-getting-started.html#react-project",
+    "title": "React: Getting started",
+    "section": "React project",
+    "text": "React project\n\nInstall linter\nFrom the React project path, execute:\n\n\nInstall eslint\n\nnpm install -g eslint"
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html#vs-code-extensions",
+    "href": "react-exercises/00-getting-started.html#vs-code-extensions",
+    "title": "React: Getting started",
+    "section": "VS Code extensions",
+    "text": "VS Code extensions\n\nLinting and formatting\n\nESLint\nFollow this guide:\n\nGo to the Extensions Marketplace and search eslint by Microsoft.\nOnce installed, go to the Command Palette (Ctrl + Shift + P) and use the command ESLint: Create ESLint configuration\n\nThe resulting config is saved in the .eslintrc.js file in your project root\n\n\nESLint will now analyze open files and shows warnings of anti-patterns, code not following code conventions and more sophisticated analysis.\n\n\nPrettier\n\nPrettier - Code formatter\n\n\nPrettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.\n\n\n\n\nCSS tools\n\nCSS Peek\n\n\n\nPackages cost\n\nImport cost\n\n\nThis extension will display inline in the editor the size of the imported package. The extension utilizes webpack in order to detect the imported size."
+  },
+  {
+    "objectID": "react-exercises/00-getting-started.html#web-browser-extensions",
+    "href": "react-exercises/00-getting-started.html#web-browser-extensions",
+    "title": "React: Getting started",
+    "section": "Web browser extensions",
+    "text": "Web browser extensions\n\nGoogle Chrome\nReact Developer Tools\n\n\nMozilla Firefox\nReact DevTools"
+  },
+  {
     "objectID": "devops-guides/self-hosted-project/docker-software-deployment.html",
     "href": "devops-guides/self-hosted-project/docker-software-deployment.html",
     "title": "Docker software deployment",
