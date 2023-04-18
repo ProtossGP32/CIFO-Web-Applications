@@ -25,6 +25,7 @@ website:
         file: index.qmd
       - sidebar:devops-guides
       - sidebar:java-exercises
+      - sidebar:react-exercises
       - sidebar:project-management
       - sidebar:team-projects
       - sidebar:miscellaneous
@@ -51,6 +52,11 @@ website:
       title: "Java exercises"
       style: "docked"
       contents: java-exercises/**
+
+    - id: react-exercises
+      title: "React exercises"
+      style: "docked"
+      contents: react-exercises/**
 
     - id: walkthrough
       title: "Walkthrough"

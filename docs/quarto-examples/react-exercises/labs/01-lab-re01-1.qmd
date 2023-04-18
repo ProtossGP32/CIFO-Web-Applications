@@ -1,0 +1,51 @@
+---
+title: "React JS: Lab#RE01-1"
+categories: [React, Node.js, NPM, Install guide]
+author: ProtossGP32
+date: 2023/04/18
+from: markdown+emoji
+---
+# Introduction
+[Link to class page](https://albertprofe.dev/reactjs/rjslab1.html)
+
+Main objectives:
+
+- We'll be uusing `Open Library API`, which is a `RESTful API`, to create a React app that will display a list of books
+- We will use the Axios library to make HTTP requests to the API and retrieve the data in JSON format
+- We will display the `book data` in a table with four fields for each book: title, year, ISBN, pages and author
+- We will also add a `loading state` to show the user that the app is retrieving data from the API
+
+The lab will demonstrate *docs/quarto-examples/react-exercises/labs/*how to use a RESTful API with React to build a functional web application**.
+
+# Getting started
+## Install development environment
+Follow [this guide](../00-getting-started.qmd) to install NVM and Node.js.
+
+# API Rest
+REST (Representational State Transfer) is a software architectural style for building web services. It is based on HTTP (Hypertext Transfer Protocol) and is commonly used for creating APIs. A RESTful API allows different software applications to communicate with each other by using HTTP methods like GET, POST, PUT and DELETE to access and manipulate data.
+
+The `Open Library API is a RESTful API` that provides access to the data stored in the Open Library project. The Open Library project aims to create a web page for every book ever published. The API allows developers to retrieve information about books, authors, subjects, and more.
+
+The two `Open Library API` endpoints we are going to use are:
+
+- `https://openlibrary.org/dev/docs/api/books`: this endpoint provides documentation for the Open Library Books API. It includes information on how to use the API to search for books, retrieve book details, and access other book-related information
+- `https://openlibrary.org/search.json?q=*&limit=100`: this endpoint is used to retrieve a list of up to 100 books from the Open Library API. The `q=*` parameter is used to searcch for all books, and the `limit=100` parameter limits the results to 100 books. The response data is in JSON format and includes information like the book title, author, publication date, and more
+
+# Create app
+## Creating a new React application
+First, create a path for your React applications and execute the following command:
+
+```{.bash filename="Create new React project"}
+npx create-react-app lab-re01-1
+```
+
+## Install required dependencies for the project
+Now go to the newly created project folder and install the following dependencies:
+
+```{.bash filename="Install dependencies"}
+cd lab-re01-1
+npm install axios
+```
+
+# Developing the app
+

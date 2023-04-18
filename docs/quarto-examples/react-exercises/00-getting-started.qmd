@@ -1,0 +1,104 @@
+---
+title: "React: Getting started"
+categories: [React, Node.js, NPM, Install guide]
+author: ProtossGP32
+date: 2023/04/18
+from: markdown+emoji
+---
+
+# Introduction
+## What is React?
+According to React official page:
+
+>
+
+
+- React is very easy to use
+- React uses a Component Oriented Programming paradigm
+- Each component returns a **fragment**
+- 
+
+# Getting started
+## Install Node.js and NPM via its official script
+Follow the instructions in the [Nodesource github repository](https://github.com/nodesource/distributions) to execute the installation script:
+
+```{.bash filename="Node.js installation on Debian-based OS"}
+# As root or sudo user
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
+apt-get install -y nodejs
+```
+
+Each Node.js version has its own installation script.
+
+## Install Node.js using NVM
+NVM is Nodejs Version Manager, it allows to manage differnt Node.js versions.
+
+
+[Installation guide](https://github.com/nvm-sh/nvm?ref=softhints.com#install--update-script)
+
+## Use a custom script to automate NVM and Node.js installation
+
+```{.bash filename="install_react_framework.sh" include=../../../scripts/software_installation/install_react_framework.sh}
+```
+
+# Projects
+## Start a new React project
+[Official tutorial](https://react.dev/learn/start-a-new-react-project)
+
+We'll be using `npx` command to initialize React projects.
+
+Once done, execute `npm start` from the new project path to launch it and have a live webpage that updates on code changes.
+
+The newly-created react project has the following structure:
+
+- `node_modules`: path with all the Node.js dependencies (do not push to Git!)
+- `public`: includes the public web assets such as the `favicon.ico`, the `manifest.json` and the `index.html`
+    - `index.html` uses the `manifest.json` to populate some links in the `<head>` tag
+- `src`: the source code of our app
+    - `index.js`: our entrypoint, it imports the `App` component already created
+    - `App.js`: our main app
+    - `reportWebVitals.js`: this defines the exposed metrics of our app for further observability
+    - `src` package also includes `App.test.js` for the `App` component
+
+## Install dependencies for your Node.js project
+We'll be using NPM (Node Package Manager) to install Node.js dependencies.
+
+# Development tools
+## React project
+### Install linter
+From the React project path, execute:
+```{.bash filename="Install eslint"}
+npm install -g eslint
+``` 
+## VS Code extensions
+### Linting and formatting
+#### ESLint
+[Follow this guide](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial#_linting):
+
+- Go to the Extensions Marketplace and search `eslint` by Microsoft.
+- Once installed, go to the Command Palette (`Ctrl + Shift + P`) and use the command **ESLint: Create ESLint configuration**
+    - The resulting config is saved in the `.eslintrc.js` file in your project root
+
+ESLint will now analyze open files and shows warnings of anti-patterns, code not following code conventions and more sophisticated analysis.
+
+#### Prettier
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+> Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.
+
+### CSS tools
+
+- [CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek)
+
+### Packages cost
+
+- [Import cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)
+
+> This extension will display inline in the editor the size of the imported package. The extension utilizes webpack in order to detect the imported size.
+
+## Web browser extensions
+### Google Chrome
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+
+### Mozilla Firefox
+[React DevTools](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
