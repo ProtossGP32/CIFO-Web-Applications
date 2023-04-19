@@ -102,3 +102,12 @@ ESLint will now analyze open files and shows warnings of anti-patterns, code not
 
 ### Mozilla Firefox
 [React DevTools](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
+
+# Launch the app
+Go to the project root path and execute the following command:
+
+```{.bash filename="Launch React app"}
+npm start
+```
+
+A browser window will automatically open pointing to the default Node.js port (`http://localhost:3000`)

@@ -9,11 +9,11 @@ const BookList = () => {
     useEffect(() => {
         // Define the fetchBooks function (?)
         const fetchBooks = async () => {
-
             const response = await axios.get(
-                'https://openlibrary.org/search.json?q=*&limit=100'
+                'http://localhost:9090/api/publications/books'
             );
-            const booksData = response.data.docs;
+            
+            const booksData = response.data;
             setBooks(booksData);
             setIsLoading(false);
 
@@ -32,12 +32,13 @@ const BookList = () => {
             ) : (
                 <ul>
                     {books.map((book) => (
-                        <li key={book.key}>
+                        <li key={book.id}>
                             <strong>Title:</strong> {book.title} <br />
-                            <strong>Year:</strong> {book.publish_year} <br />
+                            <strong>Year:</strong> {book.publicationDate} <br />
+                            <strong>Author:</strong> {book.author.firstName + " " + book.author.lastName} <br />
                             <strong>ISBN:</strong> {book.isbn} <br />
-                            <strong>Pages:</strong> {book.number_of_pages} <br />
-                            <strong>Author:</strong> {book.author_name}
+                            <strong>Pages:</strong> {book.pages} <br />
+                            <strong>Genre:</strong> {book.genre} <br />
                         </li>
                     ))}
                 </ul>

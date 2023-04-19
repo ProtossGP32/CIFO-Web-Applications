@@ -1,0 +1,43 @@
+---
+title: "React JS: Lab#RE02-1"
+categories: [React, Node.js, NPM, Spring Boot]
+author: ProtossGP32
+date: 2023/04/19
+from: markdown+emoji
+---
+# Introduction
+[Link to class page](https://albertprofe.dev/reactjs/rjslab2.html)
+
+Main objectives:
+
+- We'll be uusing our own `RESTful API` in SpringBoot to create a React app that will display a list of publications
+- We will use the Axios library to make HTTP requests to the API and retrieve the data in JSON format
+- We will display the `publication data` in a table with fields that will depend on the publication type
+- We will also add a `loading state` to show the user that the app is retrieving data from the API
+
+The lab will demonstrate **how to use a RESTful API with React to build a functional web application**
+
+# Create the app
+Follow the same steps as in [the Lab-RE01-1](01-lab-re01-1.qmd) or simply clone the project into another directory.
+
+Remember to install `axios` dependency inside the project.
+
+# Prepare the Spring Boot API
+We'll be using our Library Management Spring Boot API to retrieve any kind of resource, be it Publications, Users, Librarians, Authors, etc...
+
+Leave it running while testing the React app.
+
+# Modify the app
+## BookList
+Now the `BookList` component should request data from our SpringBoot API, so some things must be changed.
+
+```{.js filename="BookList.jsx" include=../../../../react-exercises/lab-re02-1/src/BookList.jsx}
+```
+
+# Modify the Spring Boot API
+Due to some restrictions related to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), we must modify our `@RestController` mappings to accept incoming requests from the React app. In order to do so, we'll add the `@CrossOrigin` annotated followed by the `origins` parameter with the accepted URLs as values:
+
+```{.java filename="PublicationsRestController.java" include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/rest_controllers/PublicationsRestController.java}
+```
+
+For now, we'll add `http://localhost:3000` as our React app URL, but when going to production, these paths should be parametrized.

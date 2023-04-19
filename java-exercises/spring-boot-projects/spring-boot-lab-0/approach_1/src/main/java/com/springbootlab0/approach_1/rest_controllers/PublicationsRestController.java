@@ -12,11 +12,13 @@ public class PublicationsRestController {
     @Autowired
     PublicationService publicationService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("all")
     public Iterable<Publication> getAllPublications() {
         return publicationService.getAllPublications();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("books")
     public Iterable<Publication> getAllBooks() {
         return publicationService.getAllBooks();
@@ -27,6 +29,7 @@ public class PublicationsRestController {
         return publicationService.createPublication(book);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("cds")
     public Iterable<Publication> getAllCD() {
         return publicationService.getAllCDs();
@@ -37,6 +40,7 @@ public class PublicationsRestController {
         return publicationService.createPublication(cd);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("dvds")
     public Iterable<Publication> getAllDVD() {
         return publicationService.getAllDVDs();

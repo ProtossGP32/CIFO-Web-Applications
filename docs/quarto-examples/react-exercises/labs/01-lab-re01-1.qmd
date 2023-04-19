@@ -15,7 +15,7 @@ Main objectives:
 - We will display the `book data` in a table with four fields for each book: title, year, ISBN, pages and author
 - We will also add a `loading state` to show the user that the app is retrieving data from the API
 
-The lab will demonstrate *docs/quarto-examples/react-exercises/labs/*how to use a RESTful API with React to build a functional web application**.
+The lab will demonstrate **how to use a RESTful API with React to build a functional web application**.
 
 # Getting started
 ## Install development environment
@@ -48,4 +48,41 @@ npm install axios
 ```
 
 # Developing the app
+## BookList
+We'll create a `BookList` component that retrieves 100 books from the Open Library API. The logic is stored in the `BookList.jsx` file:
 
+```{.js filename="BookList.jsx" include=../../../../react-exercises/lab-re01-1/src/BookList.jsx}
+```
+
+What it basically does is:
+
+- Create a `BookList` function that asynchronously makes a request to the Open Library API and saves the retrieved books into the `books` variable via a `useState` hook
+- After that, return the HTML snipped with all books rendered as a list
+
+## Update the `index.js` file
+With the `BookList` component created, we'll add it into the `index.js` file, that is our app entrypoint:
+
+```{.js filename="BookList.jsx" include=../../../../react-exercises/lab-re01-1/src/index.js}
+```
+
+Two lines are responsible of implementing the `BookList` component:
+
+- ```{.js filename="Importing BookList component"}
+import BookList from './BookList'
+```
+    This imports the component logic into the script
+- ```{.js filename="Rendering BookList component"}
+<React.StrictMode>
+    <BookList />
+</React.StrictMode>
+```
+    This renders the component after the `<App />` component
+
+# Launching the app
+Now it's time to launch the app. Go to the project root path and execute the following command:
+
+```{.bash filename="Launch React app"}
+npm start
+```
+
+A browser window will automatically open pointing to the default Node.js port (`http://localhost:3000`)
