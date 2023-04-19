@@ -1,9 +1,9 @@
 ---
-title: "04 - Week 04"
+title: "05 - Week 05"
 description: "Weekly planning iteration"
 categories: ["Time management"]
 author: ProtossGP32
-date: 2023/04/11
+date: 2023/04/19
 from: markdown+emoji
 ---
 # Introduction
@@ -36,8 +36,9 @@ Things to accomplish:
 | CP        | Swagger and Mockito into Library  | 8         | Week 2
 | CP        | Enable logging in Java            | 8         | Week 2
 | CP        | Quarto: automate weekly planning  | 13        | Week 2
-| CP        | ~~Integrate MongoDB to project~~  | 8         | Week 4
 | CP        | Finish MongoDB tutorials          | 8         | Week 4
+| CP        | Finish React Lab-RE01-1           | 8         | Week 5
+| CP        | Finish React Lab-RE02-1           | 8         | Week 5
 | CI/CD     | Learn GitHub Actions              | 13        | Week 1
 | CI/CD     | Install Jenkins                   | 8         | Week 1
 | CI/CD     | Create staging environment        | 13        | Week 1
@@ -45,10 +46,10 @@ Things to accomplish:
 | TP        | Create missing Unit Tests         | 8         | Week 1
 | TP        | Enable logging                    | 5         | Week 2
 | TP        | Create REST API                   | 5         | Week 2
+| TP        | Finish GamesCollection            | 8         | Week 5
 | DOL       | Deploy workloads on Kubernetes    | 13        | Week 1
 | DOL       | Learn about OpenStack             | 21        | Week 1
 | DOL       | Learn about OKD                   | 21        | Week 2
-| DOL       | ~~Learn about Python and Django~~ | 13        | Week 2
 | DOL       | Learn about Argo workflows        | 21        | Week 2
 | DOL       | Learn about SQL and Postgres      | 21        | Week 2
 | DOL       | Learn about Terraform             | 21        | Week 3
@@ -64,13 +65,10 @@ Things to accomplish:
 
 - Important and urgent:
     - CP: Swagger and Mockito into Library (W8)
-    - ~~CP: Integrate MongoDB to project (W8)~~
     - CP: Finish MongoDB tutorials (W8)
     - TP: Finish User Entity (W13)
     - TP: Update functional diagrams (W8)
-    - ~~DOL: Learn about observability (W13)~~
     - DOL: Learn about OKD (21)
-    - ~~DOL: Learn about Python and Django (13)~~
     - DOL: Learn about Argo workflows (21)
     - DOL: Learn about Terraform (21)
     - DOL: Learn about Ansible (21)
@@ -83,7 +81,6 @@ Things to accomplish:
     - CP: Update soft. script with Postman (W8)
     - CP: Enable logging in Java (W8)
     - TP: Create missing Unit Tests (W8)
-    - ~~TP: Update UMLs (W5)~~
     - TP: Enable logging (W5)
     - TP: Create REST API (W5)
     - CI/CD: Learn GitHub Actions (W13)
@@ -110,9 +107,9 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 3      	| MONDAY (W34)                 	                | TUESDAY (W26)                             | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
-| Morning   	| --                | ~~PMS: Weekly planning (W8)~~ ~~CP: Integrate MongoDB to project (W8)~~ | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
-| Afternoon 	| -- | ~~DOL: Learn about Python and Django (13)~~ ~~DOL: Learn about observability (W13)~~ | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
-| Evening   	| --  | ~~TP: Update UMLs (W5)~~                      | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
+| Morning   	| ~~PMS: Weekly planning (W8)~~                |  | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
+| Afternoon 	|  |  | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
+| Evening   	|   |                      | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -136,27 +133,31 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Monday:
 
-- Holiday
+- Morning: BSC
+- Afternoon: BSC
+- Evening: Nothing done
 
 #### Tuesday:
 
-- Morning: Weekly planning done. Started MongoDB tutorials
-- Afternoon: Nothing done
-- Evening: Nothing done
+- Morning: React
+    - Created WIP project for Open Library requests
+    - Created Postman API request to Open Library
+- Afternoon: BSC
+- Evening: BSC
 
 #### Wednesday:
 
 - Morning:
-    - Cloud MongoDB integration into LibraryManagement project (only BookImage objects)
-    - Finished Python + Django REST API tutorial, endpoints tested using Postman
-- Afternoon: Finished Practical Observability course
-- Evening: Finished Practical Observability course
+    - Helped Sergi with VirtualBox
+    
+- Afternoon: 
+- Evening: 
 
 #### Thursday:
 
-- Morning: Team meeting, compared current tasks progress and defined new workflow approaches for frontend tasks
-- Afternoon: Worked on Team project tasks
-- Evening: Worked on Team project tasks
+- Morning: 
+- Afternoon: 
+- Evening: 
 
 #### Friday:
 
@@ -173,15 +174,15 @@ Think about the reasons why these tasks aren't done:
 
 #### Monday:
 
-- Holiday
+- BSC
 
 #### Tuesday:
 
-- Nothing done, no reason at all
+- BSC
 
 #### Wednesday:
 
-- Replaced tasks with the pending ones from Tuesday
+- 
 
 #### Thursday:
 
@@ -201,10 +202,10 @@ Based on the previous analysis, identify the weak points of the previous plannin
     - 
 
 - **What have you reorganized during this week?**
-    - Self-learning sessions
+    - 
 
 - **Core concepts learnt during this week / What have you learned?**
-    - Basic principles of system observability
-    - Integrate MongoDB into Java projects
-    - Python + Django API
-    - Team management (OpenProject)
+    - 
+    - 
+    - 
+    - 
