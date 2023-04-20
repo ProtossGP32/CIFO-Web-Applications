@@ -21,8 +21,9 @@ UPDATE="apt-get -qq update"
 # Pre-requisites:
 # - Install download and GPG binaries
 # - Apt installation via HTTPS paths must also be installed
+# - FUSE (libfuse2) for AppImages (jetbrains-toolbox) --> Required on Ubuntu 22.04 with FUSE3 installed by default
 #sudo apt-get install -y wget gpg curl apt-transport-https
-$INSTALL wget gpg curl apt-transport-https
+$INSTALL wget gpg curl apt-transport-https libfuse2
 
 # Additional repositories installation
 # ====================================
