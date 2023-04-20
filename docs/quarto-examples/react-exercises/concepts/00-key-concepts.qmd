@@ -1,0 +1,37 @@
+---
+title: "React: Key concepts"
+categories: [React, Key concepts]
+author: ProtossGP32
+date: 2023/04/20
+from: markdown+emoji
+---
+
+# Introduction
+React introduces inmutability in its code
+
+# Keywords
+
+- Components
+- Fragment
+- Hook
+- State
+- `async` / `await`
+- return
+- html / css
+- spa
+- render
+- function / arrow
+- jsx
+- props
+- **Immubatility!**
+
+# Immutability
+React components are immutable
+## States as a snapshot
+[Link](https://react.dev/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)
+
+To sum up:
+
+- Variable values don't change on rendering time
+- Any change in values are shown in the next render
+- Repeating a state change over a variable in the same render isn't cumulative, as the source value of the variable to change will always be the same during that render. React will only take into account the last state change of that variable

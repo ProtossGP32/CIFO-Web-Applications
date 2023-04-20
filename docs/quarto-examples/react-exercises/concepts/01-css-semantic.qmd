@@ -1,0 +1,60 @@
+---
+title: "React: CSS Libraries - Semantic"
+categories: [React, CSS, Semantic]
+author: ProtossGP32
+date: 2023/04/20
+from: markdown+emoji
+---
+
+# Introduction
+React has a lot of CSS libraries, being Semantic one of these.
+
+# Getting started
+## Importing components
+Import the components that you need from the `semantic-ui-react` library:
+
+```{.js filename="Importing components from Semantic library"}
+import { Card, Image } from 'semantic-ui-react';
+
+// Now we can use the components from Semantic
+const PersonCard = ({person}) => (
+    <Card>
+        <Image src={person.image} wrapped ui={false} />
+        <Card.Content>
+            <Card.Header>{`${person.name} + " " + ${person.surname}`}</Card.Header>
+            <Card.Meta>
+                <span className='age'>Age: {person.age}</span>
+            </Card.Meta>
+            <Card.Description>
+                Job: {person.job}
+            </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+        <a>
+            <Icon name='user' />
+            {person.friends} friends
+        </a>
+        </Card.Content>
+    </Card>
+);
+
+// Export the PersonCard object
+export default PersonCard
+``` 
+
+After that, the component `PersonCard` is reusable in any other React component:
+```{.js filename="Using the new PersonCard component"}
+ReactDOM.render(
+    <App>
+        <PersonCard
+            person = ({
+                image: "https://i.imgur.com/MK3eW3As.jpg",
+                name: 'Katherine',
+                surname: 'Johnson',
+                age: 101,
+                job: 'mathematician',
+                friends: 2
+            }) />
+    </App>
+)
+```
