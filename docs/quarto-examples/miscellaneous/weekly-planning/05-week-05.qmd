@@ -209,3 +209,11 @@ Based on the previous analysis, identify the weak points of the previous plannin
     - 
     - 
     - 
+
+# Weekend homework
+
+- Lectures:
+- React:
+    - Semantinc import: Card, Image, Grid
+    - Spread operator to pass props to PersonCard
+    - Map to send all person from array People

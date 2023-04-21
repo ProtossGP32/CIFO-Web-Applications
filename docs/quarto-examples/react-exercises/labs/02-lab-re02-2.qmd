@@ -1,0 +1,53 @@
+---
+title: "React JS: Lab#RE02-2"
+categories: [React, Node.js, NPM, Spring Boot, CSS, Semantic]
+author: ProtossGP32
+date: 2023/04/19
+from: markdown+emoji
+---
+# Introduction
+[Link to class page](https://albertprofe.dev/reactjs/rjslab2.html)
+
+Main objectives:
+
+- Following Lab-RE02-1, we'll add some styling to the React app and use JavaScript to render objects in different fashions
+    - Grid
+    - Card
+    - Image
+- JavaScript
+
+The lab will demonstrate **how to use a RESTful API with React and use Components to render objects with CSS**
+
+# Create the app
+Follow the same steps as in [the Lab-RE02-1](01-lab-re02-1.qmd) or simply clone the project into another directory.
+
+Remember to install `axios` dependency inside the project.
+
+# Install dependencies
+Install Semantic through `npm`
+
+```{.bash filename="Install Semantic"}
+npm install semantic-ui
+```
+
+# Modify components
+## BookList
+Now the `BookList` component should request data from our SpringBoot API, so some things must be changed.
+
+```{.js filename="BookList.jsx" include=../../../../react-exercises/lab-re02-1/src/BookList.jsx}
+```
+# Modify functions
+## Book
+`Book` will provide the parameters of any stored book. Make sure that Spring Boot API provides the required information.
+
+:::{.callout-note}
+## Do the same for the rest of publications
+Same for CD and DVD
+:::
+
+## Person
+`Person` will be used to provide the parameters of any LibraryManager. Make sure that Spring Boot API provides the required information.
+
+# Create new components
+## Card
+Go to Semantic CSS page and look for the Card component. Analyse what parameters the Card expects and make sure that the SpringBoot API provides them when requesting Books
