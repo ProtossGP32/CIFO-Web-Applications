@@ -1,0 +1,104 @@
+---
+title: "00 - React JS: Principles"
+categories: [React JS, Key concepts]
+author: ProtossGP32
+date: 2023/04/20
+from: markdown+emoji
+---
+
+# Introduction
+React introduces inmutability in its code
+
+# Keywords
+
+- Components
+- Fragment
+- Hook
+- State
+- `async` / `await`
+- return
+- html / css
+- spa
+- render
+- function / arrow
+- jsx
+- props
+- **Immubatility!**
+
+# Immutability
+React components are immutable
+## States as a snapshot
+[Link](https://react.dev/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)
+
+To sum up:
+
+- Variable values don't change on rendering time
+- Any change in values are shown in the next render
+- Repeating a state change over a variable in the same render isn't cumulative, as the source value of the variable to change will always be the same during that render. React will only take into account the last state change of that variable
+
+# Principles
+Follow [this link](https://beta.reactjs.org/learn) for a proper introduction to React concepts used on a daily basis.
+
+## Overview
+Main features:
+
+- **Single-page application (SPA)** framework: it allows developers to create web applications that load a single HTML page and dynamically update the page in response to user actions without reloading the page
+    - This makes React applications faster and more responsive than traditional web applications
+- **Components:** in React, everything is a component
+    - Components are small, reusable pieces of code that can be easily combined to create complex user interfaces
+- **Virtual DOM:** React uses a virtual DOM (Document Object Model) to improve the performance of components
+    - It is a lightweight in-memory representation of the actual DOM
+    - It allows React to update only the specific components that have changed, instead of re-rendering the entire page
+- **JSX:** syntax extension to JavaScript that allows developers to write HTML-like code that can be compiled into JavaScript.
+    - This allows developers to use familiar HTML tags and attributes to build React components
+    - It makes it easier to write and understand React code
+- **State:** React components have a built-in state object that stores the local data of a component
+    - The state of a component can be updated in response to user actions or other events
+    - The updated state will automatically be reflected in the user interface
+- **Props:** In React, components can receive data from their parent components through props, which are essentially **input parameters that allow components to be customized and reused**
+    - Props can be used to pass data, functions, or any other type of information to a child component
+- **Routing:** React Router is a popular library that provides routing capabilities to React applications
+    - It allows developers to define the different routes of the application
+    - It allows developers to map each route to a specific component
+    - This makes it possible to create a single-page application with multiple pages and views, without reloading the page
+
+
+## With JSX and Hooks comes order in just one document
+
+:::{.callout-note}
+## No need for classes
+**Hooks** are a new feature ([added in React 16.8](https://reactjs.org/docs/hooks-intro.html)) that allows developers to use state and other React features **without writing a class**.
+:::
+
+Hooks and JSX are powerful tools for simplifying and improving the way you write React components, and they can be used to **combine the HTML, CSS, business logic, model and navigation code of a component into a single, cohesive unit.**
+
+```{.js filename="React example with hooks"}
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import './styles.css';
+
+function ExampleComponent(props) {
+  const { data } = props;
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="example-component">
+      <h1>Example Component</h1>
+      <p>{data.description}</p>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+      <Link to="/">Back to Home</Link>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+```
+
+Explanation:
+
+- The current state is stored in the `count` variable
+- The function to update the state is stored in the `setCount` variable

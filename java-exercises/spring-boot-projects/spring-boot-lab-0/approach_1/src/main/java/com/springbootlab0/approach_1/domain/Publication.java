@@ -1,15 +1,11 @@
 package com.springbootlab0.approach_1.domain;
 
-import com.springbootlab0.approach_1.bookImageMongoDB.BookImage;
 import com.springbootlab0.approach_1.utils.Helper;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.boot.json.JsonParser;
-import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -45,11 +41,11 @@ public abstract class Publication implements PublicationOperations{
     @Enumerated(EnumType.STRING)
     private Status status;
     @Column(name="IMAGE_IDS")
-    private List<String> imageIds;
+    private Set<String> imageIds;
 
     protected Publication() {
         this.id = Helper.createUUID();
-        this.imageIds = new ArrayList<>();
+        this.imageIds = new HashSet<>();
     }
 
     protected Publication(String title, Author author, LocalDate publicationDate, String format, Status status) {
@@ -59,6 +55,14 @@ public abstract class Publication implements PublicationOperations{
         this.publicationDate = publicationDate;
         this.format = format;
         this.status = status;
+    }
+
+    public void addImageId(String imageId) {
+        this.imageIds.add(imageId);
+    }
+
+    public void removeImageId(String imageId) {
+        this.imageIds.remove(imageId);
     }
 
     // Interface methods

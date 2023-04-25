@@ -1,0 +1,46 @@
+---
+title: "02 - React JS: Project structure"
+categories: [React JS, Project structure]
+author: ProtossGP32
+date: 2023/04/25
+from: markdown+emoji
+---
+
+# Introduction
+Read [this article for further insights](https://www.xenonstack.com/insights/reactjs-project-structure)
+
+# How to structure a React project?
+The folder structure should look like this:
+
+![React - Folder structure](../../images/react-labs/concepts/react-directory-structure.png)
+
+- `Assets`: it contains assets of our project
+    - It consists of **images and styling files**
+    - Here we can store our **global styles**
+    - We are centralizing the project so we can store the page-based or component-based styles over here, but we can also keep style according to the pages folder or component folder. This is up to the developer's comfortability
+- `Layouts`: it contains the available layouts of the whole project, such as `header`, `footer`, etc...
+    - Stored layouts can be called from any file
+- `Components`: building blocks of any React project
+    - This folder consists of a collection of UI components like **buttons, modals, inputs, loader, etc...** that can be used across various files in the project
+    - Each component should consist of a test file to do a unit test as it will be widely used in the project
+- `Pages`: each file in the pages folder represent a React contains a **route**
+    - A `Page` can contain its subfolder
+    - **Each page has its state and is usually used to call an async operation**
+    - A `Page` usually consists on various grouped components
+- `Middleware`: allows for **side effects** in our application
+    - **redux** uses it (?)
+    - Any custom middleware is kept here
+- `Routes`: contains **all routes of the application**
+    - It consists of **private, protected, and all other type of routes**
+    - Here we can even call _sub-routes_
+- `Config`: configuration file where we store **environment variables**
+    - Filename: `config.js`
+    - This file shall be used to set up multi-environment configurations in your application
+- `Services`: included in the project if we use **redux**.
+    - It contains 3 folders:
+        - `actions`: called in almost all the pages
+        - `reducers`: called in almost all the pages
+        - `constant`:
+    - Create `actions`, `reducers` and `constants` according to `Pages` name
+- `Utils`: consists of some repeatedly used functions that are commonly used in the project
+    - It should contain only common js functions and objects like dropdown options, regex condition, data formatting, etc...

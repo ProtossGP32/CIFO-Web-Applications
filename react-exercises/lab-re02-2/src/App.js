@@ -1,23 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
+  // View with return JSX
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 style={{ padding: "20px", backgroundColor: "#E8E8E8" }}>
+        Grid with spread operator
+      </h1>
+      {/* Grid semantic component calling PersonCard component from map and spread operator
+      https://react.semantic-ui.com/collections/grid/ */}
     </div>
   );
 }

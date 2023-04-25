@@ -1,6 +1,6 @@
 ---
-title: "React: CSS Libraries - Semantic"
-categories: [React, CSS, Semantic]
+title: "01 - React JS: CSS Libraries - Semantic"
+categories: [React JS, CSS, Semantic]
 author: ProtossGP32
 date: 2023/04/20
 from: markdown+emoji
@@ -10,6 +10,19 @@ from: markdown+emoji
 React has a lot of CSS libraries, being Semantic one of these.
 
 # Getting started
+## Install the Semantic dependency
+If you only want to use Semantic as a dependency and use the default theme, install `semantic-ui-css` or `semantic-ui-less`:
+
+```{.bash filename="Installinc Semantic dependency"}
+# From the React project root
+# Install the Semantic UI dependency
+npm install semantic-ui-react
+# Install the lightweight dependency
+npm install semantic-ui-css
+# or...
+npm install semantic-ui-less
+```
+
 ## Importing components
 Import the components that you need from the `semantic-ui-react` library:
 
