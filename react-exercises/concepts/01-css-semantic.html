@@ -9,7 +9,7 @@
 <meta name="author" content="ProtossGP32">
 <meta name="dcterms.date" content="2023-04-20">
 
-<title>CIFO - Web Applications - React: CSS Libraries - Semantic</title>
+<title>CIFO - Web Applications - 01 - React JS: CSS Libraries - Semantic</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,8 +95,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../react-exercises/concepts/00-key-concepts.html" rel="next">
-<link href="../../react-exercises/00-getting-started.html" rel="prev">
+<link href="../../react-exercises/concepts/02-project-structure.html" rel="next">
+<link href="../../react-exercises/concepts/00-principles.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -345,12 +345,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Concepts</li>
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/01-css-semantic.html">
- <span class="dropdown-text">React: CSS Libraries - Semantic</span></a>
+    <a class="dropdown-item" href="../../react-exercises/concepts/00-principles.html">
+ <span class="dropdown-text">00 - React JS: Principles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/00-key-concepts.html">
- <span class="dropdown-text">React: Key concepts</span></a>
+    <a class="dropdown-item" href="../../react-exercises/concepts/01-css-semantic.html">
+ <span class="dropdown-text">01 - React JS: CSS Libraries - Semantic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/concepts/02-project-structure.html">
+ <span class="dropdown-text">02 - React JS: Project structure</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/concepts/03-designing-an-app.html">
+ <span class="dropdown-text">03 - React JS: Designing an App</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/concepts/04-debugging-reactjs.html">
+ <span class="dropdown-text">04 - React JS: Debugging an App</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
@@ -476,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">React: CSS Libraries - Semantic</h1>
+      <h1 class="quarto-secondary-nav-title">01 - React JS: CSS Libraries - Semantic</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -504,12 +516,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/01-css-semantic.html" class="sidebar-item-text sidebar-link active">React: CSS Libraries - Semantic</a>
+  <a href="../../react-exercises/concepts/00-principles.html" class="sidebar-item-text sidebar-link">00 - React JS: Principles</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/00-key-concepts.html" class="sidebar-item-text sidebar-link">React: Key concepts</a>
+  <a href="../../react-exercises/concepts/01-css-semantic.html" class="sidebar-item-text sidebar-link active">01 - React JS: CSS Libraries - Semantic</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/02-project-structure.html" class="sidebar-item-text sidebar-link">02 - React JS: Project structure</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/03-designing-an-app.html" class="sidebar-item-text sidebar-link">03 - React JS: Designing an App</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/04-debugging-reactjs.html" class="sidebar-item-text sidebar-link">04 - React JS: Debugging an App</a>
   </div>
 </li>
       </ul>
@@ -551,6 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
   <ul class="collapse">
+  <li><a href="#install-the-semantic-dependency" id="toc-install-the-semantic-dependency" class="nav-link" data-scroll-target="#install-the-semantic-dependency">Install the Semantic dependency</a></li>
   <li><a href="#importing-components" id="toc-importing-components" class="nav-link" data-scroll-target="#importing-components">Importing components</a></li>
   </ul></li>
   </ul>
@@ -561,9 +589,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">React: CSS Libraries - Semantic</h1>
+<h1 class="title d-none d-lg-block">01 - React JS: CSS Libraries - Semantic</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">React</div>
+    <div class="quarto-category">React JS</div>
     <div class="quarto-category">CSS</div>
     <div class="quarto-category">Semantic</div>
   </div>
@@ -599,6 +627,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="getting-started" class="level1">
 <h1>Getting started</h1>
+<section id="install-the-semantic-dependency" class="level2">
+<h2 class="anchored" data-anchor-id="install-the-semantic-dependency">Install the Semantic dependency</h2>
+<p>If you only want to use Semantic as a dependency and use the default theme, install <code>semantic-ui-css</code> or <code>semantic-ui-less</code>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Installinc Semantic dependency</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># From the React project root</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># Install the Semantic UI dependency</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">npm</span> install semantic-ui-react</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Install the lightweight dependency</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">npm</span> install semantic-ui-css</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># or...</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="ex">npm</span> install semantic-ui-less</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="importing-components" class="level2">
 <h2 class="anchored" data-anchor-id="importing-components">Importing components</h2>
 <p>Import the components that you need from the <code>semantic-ui-react</code> library:</p>
@@ -606,51 +650,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="code-with-filename-file">
 <pre><strong>Importing components from Semantic library</strong></pre>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> { Card<span class="op">,</span> Image } <span class="im">from</span> <span class="st">'semantic-ui-react'</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">// Now we can use the components from Semantic</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">const</span> PersonCard <span class="op">=</span> ({person}) <span class="kw">=&gt;</span> (</span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="op">&lt;</span>Card<span class="op">&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>        <span class="op">&lt;</span>Image src<span class="op">=</span>{person<span class="op">.</span><span class="at">image</span>} wrapped ui<span class="op">=</span>{<span class="kw">false</span>} <span class="op">/&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>        <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>            <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Header</span><span class="op">&gt;</span>{<span class="vs">`</span><span class="sc">${</span>person<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs"> + " " + </span><span class="sc">${</span>person<span class="op">.</span><span class="at">surname</span><span class="sc">}</span><span class="vs">`</span>}<span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Header</span><span class="op">&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>            <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Meta</span><span class="op">&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>                <span class="op">&lt;</span>span className<span class="op">=</span><span class="st">'age'</span><span class="op">&gt;</span>Age<span class="op">:</span> {person<span class="op">.</span><span class="at">age</span>}<span class="op">&lt;/</span>span<span class="op">&gt;</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>            <span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Meta</span><span class="op">&gt;</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>            <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Description</span><span class="op">&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a>                Job<span class="op">:</span> {person<span class="op">.</span><span class="at">job</span>}</span>
-<span id="cb1-14"><a href="#cb1-14"></a>            <span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Description</span><span class="op">&gt;</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>        <span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>        <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Content</span> extra<span class="op">&gt;</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a>        <span class="op">&lt;</span>a<span class="op">&gt;</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>            <span class="op">&lt;</span>Icon name<span class="op">=</span><span class="st">'user'</span> <span class="op">/&gt;</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>            {person<span class="op">.</span><span class="at">friends</span>} friends</span>
-<span id="cb1-20"><a href="#cb1-20"></a>        <span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>        <span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>    <span class="op">&lt;/</span>Card<span class="op">&gt;</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>)<span class="op">;</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="co">// Export the PersonCard object</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="im">export</span> <span class="im">default</span> PersonCard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> { Card<span class="op">,</span> Image } <span class="im">from</span> <span class="st">'semantic-ui-react'</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">// Now we can use the components from Semantic</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">const</span> PersonCard <span class="op">=</span> ({person}) <span class="kw">=&gt;</span> (</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="op">&lt;</span>Card<span class="op">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>        <span class="op">&lt;</span>Image src<span class="op">=</span>{person<span class="op">.</span><span class="at">image</span>} wrapped ui<span class="op">=</span>{<span class="kw">false</span>} <span class="op">/&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>        <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>            <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Header</span><span class="op">&gt;</span>{<span class="vs">`</span><span class="sc">${</span>person<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs"> + " " + </span><span class="sc">${</span>person<span class="op">.</span><span class="at">surname</span><span class="sc">}</span><span class="vs">`</span>}<span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Header</span><span class="op">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>            <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Meta</span><span class="op">&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>                <span class="op">&lt;</span>span className<span class="op">=</span><span class="st">'age'</span><span class="op">&gt;</span>Age<span class="op">:</span> {person<span class="op">.</span><span class="at">age</span>}<span class="op">&lt;/</span>span<span class="op">&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>            <span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Meta</span><span class="op">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>            <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Description</span><span class="op">&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>                Job<span class="op">:</span> {person<span class="op">.</span><span class="at">job</span>}</span>
+<span id="cb2-14"><a href="#cb2-14"></a>            <span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Description</span><span class="op">&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>        <span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>        <span class="op">&lt;</span>Card<span class="op">.</span><span class="at">Content</span> extra<span class="op">&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>        <span class="op">&lt;</span>a<span class="op">&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>            <span class="op">&lt;</span>Icon name<span class="op">=</span><span class="st">'user'</span> <span class="op">/&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>            {person<span class="op">.</span><span class="at">friends</span>} friends</span>
+<span id="cb2-20"><a href="#cb2-20"></a>        <span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>        <span class="op">&lt;/</span>Card<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>    <span class="op">&lt;/</span>Card<span class="op">&gt;</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>)<span class="op">;</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co">// Export the PersonCard object</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="im">export</span> <span class="im">default</span> PersonCard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>After that, the component <code>PersonCard</code> is reusable in any other React component:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Using the new PersonCard component</strong></pre>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a>ReactDOM<span class="op">.</span><span class="fu">render</span>(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="op">&lt;</span>App<span class="op">&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>        <span class="op">&lt;</span>PersonCard</span>
-<span id="cb2-4"><a href="#cb2-4"></a>            person <span class="op">=</span> ({</span>
-<span id="cb2-5"><a href="#cb2-5"></a>                <span class="dt">image</span><span class="op">:</span> <span class="st">"https://i.imgur.com/MK3eW3As.jpg"</span><span class="op">,</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>                <span class="dt">name</span><span class="op">:</span> <span class="st">'Katherine'</span><span class="op">,</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>                <span class="dt">surname</span><span class="op">:</span> <span class="st">'Johnson'</span><span class="op">,</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>                <span class="dt">age</span><span class="op">:</span> <span class="dv">101</span><span class="op">,</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>                <span class="dt">job</span><span class="op">:</span> <span class="st">'mathematician'</span><span class="op">,</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>                <span class="dt">friends</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>            }) <span class="op">/&gt;</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>    <span class="op">&lt;/</span>App<span class="op">&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1"></a>ReactDOM<span class="op">.</span><span class="fu">render</span>(</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="op">&lt;</span>App<span class="op">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>        <span class="op">&lt;</span>PersonCard</span>
+<span id="cb3-4"><a href="#cb3-4"></a>            person <span class="op">=</span> ({</span>
+<span id="cb3-5"><a href="#cb3-5"></a>                <span class="dt">image</span><span class="op">:</span> <span class="st">"https://i.imgur.com/MK3eW3As.jpg"</span><span class="op">,</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>                <span class="dt">name</span><span class="op">:</span> <span class="st">'Katherine'</span><span class="op">,</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>                <span class="dt">surname</span><span class="op">:</span> <span class="st">'Johnson'</span><span class="op">,</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>                <span class="dt">age</span><span class="op">:</span> <span class="dv">101</span><span class="op">,</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>                <span class="dt">job</span><span class="op">:</span> <span class="st">'mathematician'</span><span class="op">,</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>                <span class="dt">friends</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>            }) <span class="op">/&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="op">&lt;/</span>App<span class="op">&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -908,13 +952,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../react-exercises/00-getting-started.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">React: Getting started</span>
+      <a href="../../react-exercises/concepts/00-principles.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00 - React JS: Principles</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../react-exercises/concepts/00-key-concepts.html" class="pagination-link">
-        <span class="nav-page-text">React: Key concepts</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../react-exercises/concepts/02-project-structure.html" class="pagination-link">
+        <span class="nav-page-text">02 - React JS: Project structure</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

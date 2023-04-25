@@ -344,12 +344,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Concepts</li>
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/01-css-semantic.html">
- <span class="dropdown-text">React: CSS Libraries - Semantic</span></a>
+    <a class="dropdown-item" href="../../react-exercises/concepts/00-principles.html">
+ <span class="dropdown-text">00 - React JS: Principles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/00-key-concepts.html">
- <span class="dropdown-text">React: Key concepts</span></a>
+    <a class="dropdown-item" href="../../react-exercises/concepts/01-css-semantic.html">
+ <span class="dropdown-text">01 - React JS: CSS Libraries - Semantic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/concepts/02-project-structure.html">
+ <span class="dropdown-text">02 - React JS: Project structure</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/concepts/03-designing-an-app.html">
+ <span class="dropdown-text">03 - React JS: Designing an App</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/concepts/04-debugging-reactjs.html">
+ <span class="dropdown-text">04 - React JS: Debugging an App</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
@@ -503,12 +515,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/01-css-semantic.html" class="sidebar-item-text sidebar-link">React: CSS Libraries - Semantic</a>
+  <a href="../../react-exercises/concepts/00-principles.html" class="sidebar-item-text sidebar-link">00 - React JS: Principles</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/00-key-concepts.html" class="sidebar-item-text sidebar-link">React: Key concepts</a>
+  <a href="../../react-exercises/concepts/01-css-semantic.html" class="sidebar-item-text sidebar-link">01 - React JS: CSS Libraries - Semantic</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/02-project-structure.html" class="sidebar-item-text sidebar-link">02 - React JS: Project structure</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/03-designing-an-app.html" class="sidebar-item-text sidebar-link">03 - React JS: Designing an App</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/04-debugging-reactjs.html" class="sidebar-item-text sidebar-link">04 - React JS: Debugging an App</a>
   </div>
 </li>
       </ul>
@@ -652,7 +679,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-5"><a href="#cb2-5"></a>    <span class="kw">const</span> [books<span class="op">,</span> setBooks] <span class="op">=</span> <span class="fu">useState</span>([])<span class="op">;</span></span>
 <span id="cb2-6"><a href="#cb2-6"></a>    <span class="kw">const</span> [isLoading<span class="op">,</span> setIsLoading] <span class="op">=</span> <span class="fu">useState</span>(<span class="kw">true</span>)<span class="op">;</span></span>
 <span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a>    <span class="co">// useEffect hook ensures that the BookList component stays connected to the Open Library API while displated on the page</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="co">// useEffect hook ensures that the BookList component stays connected to the SpringBoot API while displayed on the page</span></span>
 <span id="cb2-9"><a href="#cb2-9"></a>    <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
 <span id="cb2-10"><a href="#cb2-10"></a>        <span class="co">// Define the fetchBooks function (?)</span></span>
 <span id="cb2-11"><a href="#cb2-11"></a>        <span class="kw">const</span> fetchBooks <span class="op">=</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
@@ -667,7 +694,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-20"><a href="#cb2-20"></a>        }<span class="op">;</span></span>
 <span id="cb2-21"><a href="#cb2-21"></a>        <span class="co">// Invoke the fetchBooks function</span></span>
 <span id="cb2-22"><a href="#cb2-22"></a>        <span class="fu">fetchBooks</span>()<span class="op">;</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: return a clean code function with cleanup code that disconnects from the Open Library API</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: return a clean code function with cleanup code that disconnects from the SpringBoot API</span></span>
 <span id="cb2-24"><a href="#cb2-24"></a></span>
 <span id="cb2-25"><a href="#cb2-25"></a>    }<span class="op">,</span> [])<span class="op">;</span> <span class="co">// No dependencies required nor values from the component used inside of those functions</span></span>
 <span id="cb2-26"><a href="#cb2-26"></a></span>

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="ProtossGP32">
+<meta name="dcterms.date" content="2023-04-25">
 
-<title>CIFO - Web Applications - What is a model?</title>
+<title>CIFO - Web Applications - 04 - React JS: Debugging an App</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" rel="next">
-<link href="../../java-exercises/Concepts/what-is-a-class.html" rel="prev">
+<link href="../../react-exercises/labs/01-lab-re01-1.html" rel="next">
+<link href="../../react-exercises/concepts/03-designing-an-app.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,9 +64,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -426,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">What is a model?</h1>
+      <h1 class="quarto-secondary-nav-title">04 - React JS: Debugging an App</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -439,9 +438,14 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/00-getting-started.html" class="sidebar-item-text sidebar-link">React: Getting started</a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">APIs</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Concepts</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -449,14 +453,34 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link">API REST</a>
+  <a href="../../react-exercises/concepts/00-principles.html" class="sidebar-item-text sidebar-link">00 - React JS: Principles</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/01-css-semantic.html" class="sidebar-item-text sidebar-link">01 - React JS: CSS Libraries - Semantic</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/02-project-structure.html" class="sidebar-item-text sidebar-link">02 - React JS: Project structure</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/03-designing-an-app.html" class="sidebar-item-text sidebar-link">03 - React JS: Designing an App</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/04-debugging-reactjs.html" class="sidebar-item-text sidebar-link active">04 - React JS: Debugging an App</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Concepts</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Labs</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -464,277 +488,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/pojo-bean-entity.html" class="sidebar-item-text sidebar-link">Differences between a POJO, a JavaBean and an Entity</a>
+  <a href="../../react-exercises/labs/01-lab-re01-1.html" class="sidebar-item-text sidebar-link">React JS: Lab#RE01-1</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/object-creation.html" class="sidebar-item-text sidebar-link">Object creation</a>
+  <a href="../../react-exercises/labs/02-lab-re02-1.html" class="sidebar-item-text sidebar-link">React JS: Lab#RE02-1</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-class.html" class="sidebar-item-text sidebar-link">What is a class?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link active">What is a model?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="sidebar-item-text sidebar-link">What is coupling and cohesion?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link">What is DDD?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-maven.html" class="sidebar-item-text sidebar-link">What is Maven?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-tdd.html" class="sidebar-item-text sidebar-link">What is TDD?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-the-static-modifier.html" class="sidebar-item-text sidebar-link">What is the static modifier?</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Databases</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/databases/00-mongodb.html" class="sidebar-item-text sidebar-link">00 - MongoDB</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Design Patterns</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link">UML</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Frameworks</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Quarkus</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" class="sidebar-item-text sidebar-link">00 - What is Quarkus?</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">Spring Boot</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" class="sidebar-item-text sidebar-link">00 - What is Spring Boot?</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">01 - Creating a Spring Boot project</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="sidebar-item-text sidebar-link">02 - Creating a Spring Boot project with H2 and ThyMeLeaf</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/03-spring-security.html" class="sidebar-item-text sidebar-link">03 - Spring Security</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link">04 - Spring Boot with JPA and H2</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" class="sidebar-item-text sidebar-link">05 - Spring Boot and JPA composition</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" class="sidebar-item-text sidebar-link">05 - Spring Boot and Rest API</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html" class="sidebar-item-text sidebar-link">07 - Configure Spring Boot Test Profiles</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="sidebar-item-text sidebar-link">08 - Configure Spring Boot Controllers</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/09-http-session.html" class="sidebar-item-text sidebar-link">09 - HTTP sessions</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html" class="sidebar-item-text sidebar-link">10 - Data and Databases - Spring Data</a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">Frontend</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frontend/00-Introduction.html" class="sidebar-item-text sidebar-link">00 - Frontend - Introduction</a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">Engines</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frontend/engines/00-thymeleaf.html" class="sidebar-item-text sidebar-link">01 - Java template engine - Thymeleaf</a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">Labs</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-sb00-6.html" class="sidebar-item-text sidebar-link">LAB#SB00-6: Rest &amp; MongoDB</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Clinic</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-1.html" class="sidebar-item-text sidebar-link">LAB#SE00-1: Maven Person</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">LAB#SE00-3: Maven Library model</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">LAB#SE01-1: Maven Person and Account</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link">LAB#SE02-1: Movie/Review, model</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se03-1.html" class="sidebar-item-text sidebar-link">LAB#SE03-1: Library/Book core model</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se03-2.html" class="sidebar-item-text sidebar-link">LAB#SE03-2: Library/Book, Expand Model</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">Principles</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/01-abstraction.html" class="sidebar-item-text sidebar-link">Abstraction</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link">Encapsulation</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link">Inheritance</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/03-polymorphism.html" class="sidebar-item-text sidebar-link">Polymorphism</a>
+  <a href="../../react-exercises/labs/02-lab-re02-2.html" class="sidebar-item-text sidebar-link">React JS: Lab#RE02-2</a>
   </div>
 </li>
       </ul>
@@ -748,32 +512,42 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#models-description" id="toc-models-description" class="nav-link" data-scroll-target="#models-description">Models description</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#mvc" id="toc-mvc" class="nav-link" data-scroll-target="#mvc">MVC</a>
-  <ul class="collapse">
-  <li><a href="#model-parts" id="toc-model-parts" class="nav-link" data-scroll-target="#model-parts">Model parts</a></li>
-  <li><a href="#model-view-controller-example" id="toc-model-view-controller-example" class="nav-link" data-scroll-target="#model-view-controller-example">Model View controller example</a></li>
-  <li><a href="#mvc-on-the-web" id="toc-mvc-on-the-web" class="nav-link" data-scroll-target="#mvc-on-the-web">MVC on the web</a></li>
-  </ul></li>
+  <li><a href="#debugging-reactjs" id="toc-debugging-reactjs" class="nav-link" data-scroll-target="#debugging-reactjs">Debugging ReactJS</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Concepts/what-is-a-model.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/react-exercises/concepts/04-debugging-reactjs.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">What is a model?</h1>
-</div>
+<h1 class="title d-none d-lg-block">04 - React JS: Debugging an App</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">React JS</div>
+    <div class="quarto-category">Debugging</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ProtossGP32 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 25, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -783,168 +557,32 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>A <strong>model</strong> is…</p>
-</section>
-<section id="models-description" class="level1">
-<h1>Models description</h1>
-<section id="mvc" class="level2">
-<h2 class="anchored" data-anchor-id="mvc">MVC</h2>
-<p><em>From <a href="https://developer.mozilla.org/en-US/docs/Glossary/MVC">Mozilla.org</a>:</em></p>
-<blockquote class="blockquote">
-<p><strong>MVC</strong> (Model-View-Controller) is a pattern in software design commonly used to implement user interfaces, data, and controlling logic. It emphasizes a separation between the software’s business logic and display. This “separation of concerns” provides for a better division of labor and improved maintenance. Some other design patterns are based on MVC, such as MVVM (Model-View-Viewmodel), MVP (Model-View-Presenter), and MVW (Model-View-Whatever).</p>
-</blockquote>
-<section id="model-parts" class="level3">
-<h3 class="anchored" data-anchor-id="model-parts">Model parts</h3>
-<p>An MVC software-design pattern is composed by three parts:</p>
-<section id="model-manages-data-and-business-logic" class="level4">
-<h4 class="anchored" data-anchor-id="model-manages-data-and-business-logic">Model: manages data and business logic</h4>
-<p>The model defines what data the app should contain. If the state of thsi data changes, then the model will usually notify the view (so the display can change as needed) and sometimes the controller (if different logic is needed to control the updated view).</p>
-</section>
-<section id="view-handles-layout-and-display" class="level4">
-<h4 class="anchored" data-anchor-id="view-handles-layout-and-display">View: handles layout and display</h4>
-<p>The view defines how the app’s data should be displayed.</p>
-</section>
-<section id="controller-routes-commands-to-the-model-and-view-parts" class="level4">
-<h4 class="anchored" data-anchor-id="controller-routes-commands-to-the-model-and-view-parts">Controller: routes commands to the model and view parts</h4>
-<p>The controller contains logic that updates the model and/or view in response to input from the users of the app.</p>
-<div class="callout-tip callout callout-style-simple">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>You might however also want to just update the view to display the data in a different format, e.g., change the item order to alphabetical, or lowest to highest price. In this case the controller could handle this directly without needing to update the model.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="model-view-controller-example" class="level3">
-<h3 class="anchored" data-anchor-id="model-view-controller-example">Model View controller example</h3>
-<p><em>From <a href="https://developer.mozilla.org/en-US/docs/Glossary/MVC#model_view_controller_example">Mozilla.org</a>:</em></p>
-<p>Let’s define a simple shopping list app. What do we want to show? For each item in our shopping list, we want:</p>
-<ol type="1">
-<li>The name of the item</li>
-<li>The quantity of the item to buy</li>
-<li>The price of the item</li>
-</ol>
-<p>The following diagram describes required functionalities and how they are implemented using MVC:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figure class="figure">
-<img src="https://developer.mozilla.org/en-US/docs/Glossary/MVC/model-view-controller-light-blue.png" title="MVC - Shopping app example" class="img-fluid figure-img">
-</figure>
-<p></p><figcaption class="figure-caption">MVC - Shopping app example</figcaption><p></p>
-</figure>
-</div>
-<section id="the-model" class="level4">
-<h4 class="anchored" data-anchor-id="the-model">The model</h4>
-<p>The model would specify what data the list items should contain – item, price, etc. – and what list items are already present.</p>
-<p>The following UML diagram is an example of the required data structure</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">classDiagram
-    %% Define an Item class that contains the info of each item
-    class Item {
-        -String name
-        -double price
-
-        +getName() String
-        +setName() void
-        +getPrice() double
-        +setPrice() void
-        +equals() boolean
-        +toString() String
-    }
-
-    %% Define a ShoppingList class to keep track of the items to buy
-    class ShoppingList {
-        +printList() void
-        +getItemAmount(Item newItem) int
-        +getItemPrice(Item newItem) double
-        +getTotalPrice() double
-        +addItem(Item newItem, int initialAmount) void
-        +increaseAmountOfItem(Item item, int amount) void
-    }
-
-    %% Classes relationships
-    Item "*" o-- "1" ShoppingList : contains
-
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="the-view" class="level4">
-<h4 class="anchored" data-anchor-id="the-view">The View</h4>
-<p>In our shopping list app, the view would define how the list is presented to the user, and receive the data to display from the model.</p>
-<p>The following UML diagram is an example of the expected user interface:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">classDiagram
-    class UserInterface {
-    }
-
-    %% Define a ShoppingView class that has the View design, its layout, its UI elements, etc...
-    class ShoppingView {
-        +getView() Scene
-    }
-
-    %% Classes relationships
-    ShoppingView "1" o-- "1" UserInterface : uses
-</pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="the-controller" class="level4">
-<h4 class="anchored" data-anchor-id="the-controller">The Controller</h4>
-<p>Our shopping list could have input forms and buttons that allow us to add or delete items. These actions require the model to be updated, so the input is sent to the controller, which then manipulates the model as appropriate, which then sends updated data to the view.</p>
-<p>The following UML diagram is an example of the expected controller</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Add the UML diagram of the shopping list controller</p>
-</div>
-</div>
-</section>
-</section>
-<section id="mvc-on-the-web" class="level3">
-<h3 class="anchored" data-anchor-id="mvc-on-the-web">MVC on the web</h3>
-<section id="the-model-1" class="level4">
-<h4 class="anchored" data-anchor-id="the-model-1">The Model</h4>
-<p>The data model is probably contained in some kind of database</p>
-</section>
-<section id="the-view-1" class="level4">
-<h4 class="anchored" data-anchor-id="the-view-1">The View</h4>
-<p>The User Interface is probably written using HTML/CSS/whatever else you like, but Java can also do frontend.</p>
-</section>
-<section id="the-controller-1" class="level4">
-<h4 class="anchored" data-anchor-id="the-controller-1">The Controller</h4>
-<p>The app’s controlling code is probably written in HTML/JavaScript, but Java can also implement it in the frontend.</p>
+<section id="debugging-reactjs" class="level2">
+<h2 class="anchored" data-anchor-id="debugging-reactjs">Debugging ReactJS</h2>
+<p>Several steps to make the debugging process easier:</p>
+<ul>
+<li><strong>Check the Browser’s console:</strong> Look for any error message error in the browser’s console
+<ul>
+<li>Often, errors will be logged in the console, which will give you an idea of where to start debugging</li>
+<li>You can learn more about this here: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Console">MDN Web Docs - Console</a></li>
+</ul></li>
+<li><strong>Use React Developer Tools:</strong> browser extension that provides a suite of tools for debugging and profiling React components
+<ul>
+<li>It allows to inspect React component hierarchies and track the flow of data between components</li>
+<li>Learn more about using React Developer Tools here: <a href="https://github.com/facebook/react-devtools">React Developer Tools</a></li>
+</ul></li>
+<li><strong>Use <code>console.log()</code>:</strong> Place <code>console.log()</code> statements through your code to print out variables and see how they change as the code executes
+<ul>
+<li>Learn more about using <code>console.log()</code> here: <a href="https://developer.mozilla.org/en-US/docs/Web/javascript/Reference/Statements/console">MDN Web Docs - Debugging JavaScript</a></li>
+</ul></li>
+<li><strong>Breakpoints:</strong> Set breakpoints in your code using the browser’s developer tools or an integrated development environment (IDE) like Visual Studio Code
+<ul>
+<li>This allows you to pause the execution of your code and step through it line by line, inspecting variables and the state of your components</li>
+<li>Learn more about using breakpoints here: <a href="https://developers.google.com/web/tools/chrome-devtools/javascript">Chrome DevTools - Debugging JavaScript</a></li>
+</ul></li>
+</ul>
 
 
-</section>
-</section>
 </section>
 </section>
 
@@ -1199,13 +837,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Concepts/what-is-a-class.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is a class?</span>
+      <a href="../../react-exercises/concepts/03-designing-an-app.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">03 - React JS: Designing an App</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="pagination-link">
-        <span class="nav-page-text">What is coupling and cohesion?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../react-exercises/labs/01-lab-re01-1.html" class="pagination-link">
+        <span class="nav-page-text">React JS: Lab#RE01-1</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
