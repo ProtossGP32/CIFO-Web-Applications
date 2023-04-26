@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="ProtossGP32">
+<meta name="dcterms.date" content="2023-04-26">
 
-<title>CIFO - Web Applications - What is the static modifier?</title>
+<title>CIFO - Web Applications - 05 - React JS: Using hooks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/databases/00-mongodb.html" rel="next">
-<link href="../../java-exercises/Concepts/what-is-tdd.html" rel="prev">
+<link href="../../react-exercises/labs/01-lab-re01-1.html" rel="next">
+<link href="../../react-exercises/concepts/04-debugging-reactjs.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -430,7 +466,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../java-exercises/Concepts/object-creation.html">Concepts</a></li><li class="breadcrumb-item"><a href="../../java-exercises/Concepts/what-is-the-static-modifier.html">What is the static modifier?</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../react-exercises/concepts/00-principles.html">Concepts</a></li><li class="breadcrumb-item"><a href="../../react-exercises/concepts/05-hooks.html">05 - React JS: Using hooks</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -442,10 +478,16 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/00-getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">React: Getting started</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">APIs</span></a>
+ <span class="menu-text">Concepts</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -453,8 +495,38 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">API REST</span></a>
+  <a href="../../react-exercises/concepts/00-principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00 - React JS: Principles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/01-css-semantic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 - React JS: CSS Libraries - Semantic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/02-project-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02 - React JS: Project structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/03-designing-an-app.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 - React JS: Designing an App</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/04-debugging-reactjs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 - React JS: Debugging an App</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/05-hooks.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">05 - React JS: Using hooks</span></a>
   </div>
 </li>
       </ul>
@@ -462,7 +534,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Concepts</span></a>
+ <span class="menu-text">Labs</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -470,323 +542,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/object-creation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Object creation</span></a>
+  <a href="../../react-exercises/labs/01-lab-re01-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">React JS: Lab#RE01-1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/pojo-bean-entity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Differences between a POJO, a JavaBean and an Entity</span></a>
+  <a href="../../react-exercises/labs/02-lab-re01-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">React JS: Lab#RE01-2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is a class?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is a model?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is coupling and cohesion?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is DDD?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-maven.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is Maven?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-tdd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is TDD?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-the-static-modifier.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">What is the static modifier?</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Databases</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/databases/00-mongodb.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - MongoDB</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Design Patterns</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">UML</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Frameworks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Quarkus</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - What is Quarkus?</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">Spring Boot</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - What is Spring Boot?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Creating a Spring Boot project</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Creating a Spring Boot project with H2 and ThyMeLeaf</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/03-spring-security.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Spring Security</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Spring Boot with JPA and H2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 - Spring Boot and JPA composition</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 - Spring Boot and Rest API</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07 - Configure Spring Boot Test Profiles</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08 - Configure Spring Boot Controllers</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/09-http-session.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09 - HTTP sessions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10 - Data and Databases - Spring Data</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
- <span class="menu-text">Frontend</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frontend/00-Introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - Frontend - Introduction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
- <span class="menu-text">Engines</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frontend/engines/00-thymeleaf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Java template engine - Thymeleaf</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
- <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-sb00-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SB00-6: Rest &amp; MongoDB</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE00-1: Maven Person</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE00-1: Maven Clinic</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE00-3: Maven Library model</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE01-1: Maven Person and Account</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE02-1: Movie/Review, model</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se03-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE03-1: Library/Book core model</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se03-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE03-2: Library/Book, Expand Model</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
- <span class="menu-text">Principles</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Encapsulation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/01-abstraction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Abstraction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Inheritance</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/03-polymorphism.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Polymorphism</span></a>
+  <a href="../../react-exercises/labs/03-lab-re02-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">React JS: Lab#RE02-1</span></a>
   </div>
 </li>
       </ul>
@@ -797,21 +566,58 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#types-of-hooks" id="toc-types-of-hooks" class="nav-link" data-scroll-target="#types-of-hooks">Types of hooks</a>
+  <ul class="collapse">
+  <li><a href="#usestate" id="toc-usestate" class="nav-link" data-scroll-target="#usestate"><code>useState</code></a></li>
+  <li><a href="#usereducer" id="toc-usereducer" class="nav-link" data-scroll-target="#usereducer"><code>useReducer</code></a>
+  <ul class="collapse">
+  <li><a href="#initialization" id="toc-initialization" class="nav-link" data-scroll-target="#initialization">Initialization</a></li>
+  <li><a href="#dispatch-function" id="toc-dispatch-function" class="nav-link" data-scroll-target="#dispatch-function">Dispatch function</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
+  </ul></li>
+  <li><a href="#useref" id="toc-useref" class="nav-link" data-scroll-target="#useref"><code>useRef</code></a></li>
+  <li><a href="#useeffect" id="toc-useeffect" class="nav-link" data-scroll-target="#useeffect"><code>useEffect</code></a></li>
+  <li><a href="#usecontext" id="toc-usecontext" class="nav-link" data-scroll-target="#usecontext"><code>useContext</code></a></li>
+  <li><a href="#custom-hooks" id="toc-custom-hooks" class="nav-link" data-scroll-target="#custom-hooks">Custom hooks</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/react-exercises/concepts/05-hooks.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">What is the static modifier?</h1>
-</div>
+<h1 class="title">05 - React JS: Using hooks</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">React JS</div>
+    <div class="quarto-category">Hooks</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ProtossGP32 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 26, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -819,9 +625,131 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The <code>static</code> modifier defines the access scope of any element of the object-oriented domain (?)</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+</section>
+<section id="types-of-hooks" class="level1">
+<h1>Types of hooks</h1>
+<section id="usestate" class="level2">
+<h2 class="anchored" data-anchor-id="usestate"><code>useState</code></h2>
+</section>
+<section id="usereducer" class="level2">
+<h2 class="anchored" data-anchor-id="usereducer"><code>useReducer</code></h2>
+<p>A reducer is a function takes in the current state of an application and an action, and returns a new state. Reducers are often used in conjunction with a state manager library like <code>Redux</code>, which helps manage the state of a React application.</p>
+<section id="initialization" class="level3">
+<h3 class="anchored" data-anchor-id="initialization">Initialization</h3>
+<p><code>useReducer</code> is a hook with the following parameters:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">useReducer</span>(reducer<span class="op">,</span> intialArg<span class="op">,</span> init<span class="op">?</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>reducer</code>: function that specifies how the state gets updated
+<ul>
+<li>It must be pure, should take the state and action as arguments, and should return the next state</li>
+<li>State and action can be of any types</li>
+</ul></li>
+<li><code>initialArg</code>: value from which the initial state is calculated
+<ul>
+<li>It can be a value of any type</li>
+<li>Calculation of the initial state depends on the next <code>init</code> argument</li>
+</ul></li>
+<li><code>[optional] init</code>: initializer function that specifies how the initial state is calculated
+<ul>
+<li>If not specified, initial state is set to <code>initialArg</code></li>
+<li>Otherwise, initial state is set to the result of calling <code>init(initialArg)</code></li>
+</ul></li>
+</ul>
+<p>It is very similar to <code>useState</code> but it lets you move the state update logic from event handlers into a single function outside of your component.</p>
+</section>
+<section id="dispatch-function" class="level3">
+<h3 class="anchored" data-anchor-id="dispatch-function">Dispatch function</h3>
+<p><code>useReducer</code> returns an array with exactly two values:</p>
+<ul>
+<li><strong>The current state:</strong> During the first render, it’s set to <code>init(initialArg)</code> or <code>initialArg</code> (if there’s no <code>init</code>)</li>
+<li><strong>The <code>dispatch</code> function</strong> that lets you update the state to a different value and trigger a re-render
+<ul>
+<li>You need to pass the action as the only argument to the <code>dispatch</code> function</li>
+<li><code>dispatch</code> function doesn’t return anything</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example 1</h3>
+<p>Take this <code>useReducer</code> implementation as an example:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>useReducer example</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> { useReducer } <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">function</span> <span class="fu">reducer</span>(state<span class="op">,</span> action) {</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="cf">if</span> (action<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">'incremented_age'</span>) {</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="cf">return</span> {</span>
+<span id="cb2-6"><a href="#cb2-6"></a>      <span class="dt">age</span><span class="op">:</span> state<span class="op">.</span><span class="at">age</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    }<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  }</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="cf">throw</span> <span class="bu">Error</span>(<span class="st">'Unknown action.'</span>)<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>}</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">Counter</span>() {</span>
+<span id="cb2-13"><a href="#cb2-13"></a>  <span class="kw">const</span> [state<span class="op">,</span> dispatch] <span class="op">=</span> <span class="fu">useReducer</span>(reducer<span class="op">,</span> { <span class="dt">age</span><span class="op">:</span> <span class="dv">42</span> })<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a>  <span class="cf">return</span> (</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="op">&lt;&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>      <span class="op">&lt;</span>button onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> {</span>
+<span id="cb2-18"><a href="#cb2-18"></a>        <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'incremented_age'</span> })</span>
+<span id="cb2-19"><a href="#cb2-19"></a>      }}<span class="op">&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>        Increment age</span>
+<span id="cb2-21"><a href="#cb2-21"></a>      <span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>      <span class="op">&lt;</span>p<span class="op">&gt;</span>Hello<span class="op">!</span> You are {state<span class="op">.</span><span class="at">age</span>}<span class="op">.&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>    <span class="op">&lt;/&gt;</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>  )<span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s analyse it:</p>
+<ul>
+<li><code>reducer</code>: the reducer manages a state object with one field, <code>age</code>
+<ul>
+<li>If the <code>action</code> received is <code>incremented_age</code>, then it update the <code>age</code> value of the current state and returns a whole new state (take note of the JSON object returned with the <code>age</code> key inside)</li>
+<li>Else, throw an exception as the received action is unknown to the function</li>
+</ul></li>
+<li><code>dispatch</code>: the trigger of the <code>useReducer</code> hook
+<ul>
+<li>It is called upon a button <code>onClick</code> method</li>
+<li>A JSON object with a single <code>type</code> key is passed to the function; this is the <code>action</code> that the <code>reducer</code> receives along the current state</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example 2</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TODO: copy the example 2 from <a href="https://albertprofe.dev/reactjs/reactjs-hook-reducer.html">here</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+</section>
+<section id="useref" class="level2">
+<h2 class="anchored" data-anchor-id="useref"><code>useRef</code></h2>
+</section>
+<section id="useeffect" class="level2">
+<h2 class="anchored" data-anchor-id="useeffect"><code>useEffect</code></h2>
+</section>
+<section id="usecontext" class="level2">
+<h2 class="anchored" data-anchor-id="usecontext"><code>useContext</code></h2>
+</section>
+<section id="custom-hooks" class="level2">
+<h2 class="anchored" data-anchor-id="custom-hooks">Custom hooks</h2>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1174,13 +1102,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Concepts/what-is-tdd.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What is TDD?</span>
+      <a href="../../react-exercises/concepts/04-debugging-reactjs.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">04 - React JS: Debugging an App</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/databases/00-mongodb.html" class="pagination-link">
-        <span class="nav-page-text">00 - MongoDB</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../react-exercises/labs/01-lab-re01-1.html" class="pagination-link">
+        <span class="nav-page-text">React JS: Lab#RE01-1</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1196,7 +1124,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="../../about.html">About</a>
   </li>  
 </ul>
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Concepts/what-is-the-static-modifier.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
