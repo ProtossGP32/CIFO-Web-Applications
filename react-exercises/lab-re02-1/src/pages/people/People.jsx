@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Grid } from 'semantic-ui-react'
-import PersonCard from './Components/PersonCard';
+import { Grid } from "semantic-ui-react";
+import PersonCard from "../../components/PersonCard";
 
-const PersonList = () => {
+function People() {
+    // It is a copy of the PersonList function in Lab-RE01-2
     const [persons, setPersons] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -51,6 +52,6 @@ const PersonList = () => {
             }
         </>
     )
-};
+}
 
-export default PersonList;
+export default People;
