@@ -11,6 +11,8 @@ function Layout() {
                 <span>  </span>
                 <Link to="/people">People</Link>
                 <span>  </span>
+                <Link to="/hooksexamples">Hooks examples</Link>
+                <span>  </span>
                 <Link to="/contact">Contact</Link>
             </nav>
             {/* Outlet is the space where the pages are rendered*/}

@@ -1,5 +1,5 @@
 const Footer = () => {
-    return <p>Footer</p>;
+    return <p>This footer is visible from any page</p>;
 };
 
 export default Footer;
