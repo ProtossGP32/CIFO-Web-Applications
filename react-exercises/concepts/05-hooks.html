@@ -580,6 +580,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dispatch-function" id="toc-dispatch-function" class="nav-link" data-scroll-target="#dispatch-function">Dispatch function</a></li>
   <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
   <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
+  <li><a href="#example-3---personform" id="toc-example-3---personform" class="nav-link" data-scroll-target="#example-3---personform">Example 3 - PersonForm</a></li>
   </ul></li>
   <li><a href="#useref" id="toc-useref" class="nav-link" data-scroll-target="#useref"><code>useRef</code></a></li>
   <li><a href="#useeffect" id="toc-useeffect" class="nav-link" data-scroll-target="#useeffect"><code>useEffect</code></a></li>
@@ -687,7 +688,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-7"><a href="#cb2-7"></a>    }<span class="op">;</span></span>
 <span id="cb2-8"><a href="#cb2-8"></a>  }</span>
 <span id="cb2-9"><a href="#cb2-9"></a>  <span class="cf">throw</span> <span class="bu">Error</span>(<span class="st">'Unknown action.'</span>)<span class="op">;</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>}</span>
+<span id="cb2-10"><a href="#cb2-10"></a>}<span class="op">;</span></span>
 <span id="cb2-11"><a href="#cb2-11"></a></span>
 <span id="cb2-12"><a href="#cb2-12"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">Counter</span>() {</span>
 <span id="cb2-13"><a href="#cb2-13"></a>  <span class="kw">const</span> [state<span class="op">,</span> dispatch] <span class="op">=</span> <span class="fu">useReducer</span>(reducer<span class="op">,</span> { <span class="dt">age</span><span class="op">:</span> <span class="dv">42</span> })<span class="op">;</span></span>
@@ -702,7 +703,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-22"><a href="#cb2-22"></a>      <span class="op">&lt;</span>p<span class="op">&gt;</span>Hello<span class="op">!</span> You are {state<span class="op">.</span><span class="at">age</span>}<span class="op">.&lt;/</span>p<span class="op">&gt;</span></span>
 <span id="cb2-23"><a href="#cb2-23"></a>    <span class="op">&lt;/&gt;</span></span>
 <span id="cb2-24"><a href="#cb2-24"></a>  )<span class="op">;</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-25"><a href="#cb2-25"></a>}<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s analyse it:</p>
 <ul>
@@ -732,6 +733,117 @@ TODO: copy the example 2 from <a href="https://albertprofe.dev/reactjs/reactjs-h
 <div class="callout-body-container callout-body">
 
 </div>
+</div>
+</section>
+<section id="example-3---personform" class="level3">
+<h3 class="anchored" data-anchor-id="example-3---personform">Example 3 - PersonForm</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>PersonForm.jsx</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> { useReducer } <span class="im">from</span> <span class="st">"react"</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">// First, define an initial state to work it, although it is optional</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">const</span> initialPerson <span class="op">=</span> { <span class="dt">name</span><span class="op">:</span> <span class="st">"John"</span><span class="op">,</span> <span class="dt">surname</span><span class="op">:</span> <span class="st">"Smith"</span><span class="op">,</span> <span class="dt">age</span><span class="op">:</span> <span class="dv">25</span>}<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">// Then define the reducer function</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">function</span> <span class="fu">reducer</span> (state<span class="op">,</span> action) {</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="co">// Apply the changes in your state based on the provided application</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="co">// Usually, the decision making is coded as a switch-cas or if-else conditional</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="cf">switch</span> (action<span class="op">.</span><span class="at">type</span>) {</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="cf">case</span> <span class="st">"increment_age"</span><span class="op">:</span> {</span>
+<span id="cb3-11"><a href="#cb3-11"></a>      <span class="co">// Always return a new state (JSON object)</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>      <span class="cf">return</span> {</span>
+<span id="cb3-13"><a href="#cb3-13"></a>          <span class="dt">name</span><span class="op">:</span> state<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>          <span class="dt">surname</span><span class="op">:</span> state<span class="op">.</span><span class="at">surname</span><span class="op">,</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>          <span class="dt">age</span><span class="op">:</span> state<span class="op">.</span><span class="at">age</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>      }<span class="op">;</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>    }</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    <span class="cf">case</span> <span class="st">"decrement_age"</span><span class="op">:</span> {</span>
+<span id="cb3-19"><a href="#cb3-19"></a>      <span class="co">// Always return a new state (JSON object)</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>      <span class="cf">return</span> {</span>
+<span id="cb3-21"><a href="#cb3-21"></a>          <span class="dt">name</span><span class="op">:</span> state<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>          <span class="dt">surname</span><span class="op">:</span> state<span class="op">.</span><span class="at">surname</span><span class="op">,</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>          <span class="dt">age</span><span class="op">:</span> state<span class="op">.</span><span class="at">age</span> <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>      }<span class="op">;</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a>    }</span>
+<span id="cb3-26"><a href="#cb3-26"></a>    <span class="cf">case</span> <span class="st">"change_name"</span><span class="op">:</span> {</span>
+<span id="cb3-27"><a href="#cb3-27"></a>      <span class="co">// Always return a new state (JSON object)</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a>      <span class="co">// New values are included in the "action" parameter</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>      <span class="cf">return</span> {</span>
+<span id="cb3-30"><a href="#cb3-30"></a>          <span class="dt">name</span><span class="op">:</span> action<span class="op">.</span><span class="at">nextName</span><span class="op">,</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>          <span class="dt">surname</span><span class="op">:</span> state<span class="op">.</span><span class="at">surname</span><span class="op">,</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>          <span class="dt">age</span><span class="op">:</span> state<span class="op">.</span><span class="at">age</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a>      }<span class="op">;</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>    }</span>
+<span id="cb3-35"><a href="#cb3-35"></a>    <span class="cf">case</span> <span class="st">"change_surname"</span><span class="op">:</span> {</span>
+<span id="cb3-36"><a href="#cb3-36"></a>      <span class="co">// Always return a new state (JSON object)</span></span>
+<span id="cb3-37"><a href="#cb3-37"></a>      <span class="co">// New values are included in the "action" parameter</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a>      <span class="cf">return</span> {</span>
+<span id="cb3-39"><a href="#cb3-39"></a>          <span class="dt">name</span><span class="op">:</span> state<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a>          <span class="dt">surname</span><span class="op">:</span> action<span class="op">.</span><span class="at">nextSurname</span><span class="op">,</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>          <span class="dt">age</span><span class="op">:</span> state<span class="op">.</span><span class="at">age</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a>      }<span class="op">;</span></span>
+<span id="cb3-43"><a href="#cb3-43"></a>    }</span>
+<span id="cb3-44"><a href="#cb3-44"></a>    <span class="cf">default</span><span class="op">:</span> {</span>
+<span id="cb3-45"><a href="#cb3-45"></a>      <span class="cf">throw</span> <span class="bu">Error</span>(<span class="st">"Unknown action: "</span> <span class="op">+</span> action<span class="op">.</span><span class="at">type</span>)</span>
+<span id="cb3-46"><a href="#cb3-46"></a>    }</span>
+<span id="cb3-47"><a href="#cb3-47"></a>  }</span>
+<span id="cb3-48"><a href="#cb3-48"></a>}<span class="op">;</span></span>
+<span id="cb3-49"><a href="#cb3-49"></a></span>
+<span id="cb3-50"><a href="#cb3-50"></a><span class="co">// Now define the PersonForm function that will return the render component</span></span>
+<span id="cb3-51"><a href="#cb3-51"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">PersonForm</span>() {</span>
+<span id="cb3-52"><a href="#cb3-52"></a>  <span class="co">// Initialize the useReducer hook</span></span>
+<span id="cb3-53"><a href="#cb3-53"></a>  <span class="kw">const</span> [state<span class="op">,</span> dispatch] <span class="op">=</span> <span class="fu">useReducer</span>(reducer<span class="op">,</span> initialPerson)<span class="op">;</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a></span>
+<span id="cb3-55"><a href="#cb3-55"></a>  <span class="co">// Define every "action" function that the reducer will use</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a>  <span class="co">// - Function that increments the age of the person (initialPerson.age)</span></span>
+<span id="cb3-57"><a href="#cb3-57"></a>  <span class="kw">function</span> <span class="fu">handleButtonClickIncrement</span>() {</span>
+<span id="cb3-58"><a href="#cb3-58"></a>    <span class="co">// Invoke the dispatch function with a JSON object that contains the required params --&gt; This will be the "action"</span></span>
+<span id="cb3-59"><a href="#cb3-59"></a>    <span class="fu">dispatch</span>({</span>
+<span id="cb3-60"><a href="#cb3-60"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"increment_age"</span></span>
+<span id="cb3-61"><a href="#cb3-61"></a>    })<span class="op">;</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a>  }<span class="op">;</span></span>
+<span id="cb3-63"><a href="#cb3-63"></a></span>
+<span id="cb3-64"><a href="#cb3-64"></a>  <span class="co">// - Function that decrements the age of the person (initialPerson.age)</span></span>
+<span id="cb3-65"><a href="#cb3-65"></a>  <span class="kw">function</span> <span class="fu">handleButtonClickDecrement</span>() {</span>
+<span id="cb3-66"><a href="#cb3-66"></a>    <span class="co">// Invoke the dispatch function with a JSON object that contains the required params --&gt; This will be the "action"</span></span>
+<span id="cb3-67"><a href="#cb3-67"></a>    <span class="fu">dispatch</span>({</span>
+<span id="cb3-68"><a href="#cb3-68"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"decrement_age"</span></span>
+<span id="cb3-69"><a href="#cb3-69"></a>    })<span class="op">;</span></span>
+<span id="cb3-70"><a href="#cb3-70"></a>  }<span class="op">;</span></span>
+<span id="cb3-71"><a href="#cb3-71"></a></span>
+<span id="cb3-72"><a href="#cb3-72"></a>  <span class="co">// - Function that updates the Name in the form based on the provided value</span></span>
+<span id="cb3-73"><a href="#cb3-73"></a>  <span class="kw">function</span> <span class="fu">handleInputChangeName</span>(e) {</span>
+<span id="cb3-74"><a href="#cb3-74"></a>    <span class="co">// Invoke the dispatch function with a JSON object that contains the required params --&gt; This will be the "action"</span></span>
+<span id="cb3-75"><a href="#cb3-75"></a>    <span class="fu">dispatch</span>({</span>
+<span id="cb3-76"><a href="#cb3-76"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"change_name"</span><span class="op">,</span></span>
+<span id="cb3-77"><a href="#cb3-77"></a>      <span class="dt">nextName</span><span class="op">:</span> e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span></span>
+<span id="cb3-78"><a href="#cb3-78"></a>    })<span class="op">;</span></span>
+<span id="cb3-79"><a href="#cb3-79"></a>  }<span class="op">;</span></span>
+<span id="cb3-80"><a href="#cb3-80"></a>  <span class="co">// - Function that updates the Surname in the form based on the provided value</span></span>
+<span id="cb3-81"><a href="#cb3-81"></a>  <span class="kw">function</span> <span class="fu">handleInputChangeSurname</span>(e) {</span>
+<span id="cb3-82"><a href="#cb3-82"></a>    <span class="co">// Invoke the dispatch function with a JSON object that contains the required params --&gt; This will be the "action"</span></span>
+<span id="cb3-83"><a href="#cb3-83"></a>    <span class="fu">dispatch</span>({</span>
+<span id="cb3-84"><a href="#cb3-84"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"change_surname"</span><span class="op">,</span></span>
+<span id="cb3-85"><a href="#cb3-85"></a>      <span class="dt">nextSurname</span><span class="op">:</span> e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span></span>
+<span id="cb3-86"><a href="#cb3-86"></a>    })<span class="op">;</span></span>
+<span id="cb3-87"><a href="#cb3-87"></a>  }<span class="op">;</span></span>
+<span id="cb3-88"><a href="#cb3-88"></a></span>
+<span id="cb3-89"><a href="#cb3-89"></a>  <span class="cf">return</span> (</span>
+<span id="cb3-90"><a href="#cb3-90"></a>    <span class="co">// Start with a fragment (empty tag)</span></span>
+<span id="cb3-91"><a href="#cb3-91"></a>    <span class="op">&lt;&gt;</span></span>
+<span id="cb3-92"><a href="#cb3-92"></a>      <span class="op">&lt;</span>h2<span class="op">&gt;</span>Person Form <span class="op">-</span> useReduce example<span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb3-93"><a href="#cb3-93"></a>      <span class="op">&lt;</span>hr <span class="op">/&gt;</span></span>
+<span id="cb3-94"><a href="#cb3-94"></a>      <span class="op">&lt;</span>input value<span class="op">=</span>{state<span class="op">.</span><span class="at">name</span>} onChange<span class="op">=</span>{handleInputChangeName}<span class="op">/&gt;</span></span>
+<span id="cb3-95"><a href="#cb3-95"></a>      <span class="op">&lt;</span>input value<span class="op">=</span>{state<span class="op">.</span><span class="at">surname</span>} onChange<span class="op">=</span>{handleInputChangeSurname}<span class="op">/&gt;</span></span>
+<span id="cb3-96"><a href="#cb3-96"></a>      <span class="op">&lt;</span>button onClick<span class="op">=</span>{handleButtonClickIncrement}<span class="op">&gt;</span>Increment age<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb3-97"><a href="#cb3-97"></a>      <span class="op">&lt;</span>button onClick<span class="op">=</span>{handleButtonClickDecrement}<span class="op">&gt;</span>Decrement age<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb3-98"><a href="#cb3-98"></a>      <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span><span class="dt">Name</span><span class="op">:</span> <span class="op">&lt;/</span>strong<span class="op">&gt;</span>{state<span class="op">.</span><span class="at">name</span>}<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb3-99"><a href="#cb3-99"></a>      <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span><span class="dt">Surname</span><span class="op">:</span> <span class="op">&lt;/</span>strong<span class="op">&gt;</span>{state<span class="op">.</span><span class="at">surname</span>}<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb3-100"><a href="#cb3-100"></a>      <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span><span class="dt">Age</span><span class="op">:</span> <span class="op">&lt;/</span>strong<span class="op">&gt;</span>{state<span class="op">.</span><span class="at">age</span>}<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb3-101"><a href="#cb3-101"></a>    <span class="op">&lt;/&gt;</span></span>
+<span id="cb3-102"><a href="#cb3-102"></a>  )<span class="op">;</span></span>
+<span id="cb3-103"><a href="#cb3-103"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
