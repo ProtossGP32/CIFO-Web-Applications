@@ -1,0 +1,57 @@
+---
+title: "React JS: Lab#RE02-1"
+categories: [React, Router, Hooks]
+author: ProtossGP32
+date: 2023/04/19
+from: markdown+emoji
+---
+# Introduction
+[Link to class page](https://albertprofe.dev/reactjs/rjslab2.html)
+
+React Router enables "client side routing".
+
+[Client side routing](https://reactrouter.com/en/main/start/overview) allows your app to **update the URL from a link click without making another request for another document from the server.**
+
+## Main concepts of Router
+[Link](https://reactrouter.com/en/main/start/concepts)
+
+
+# Getting started
+## Install dependencies
+
+- Router:
+
+```{.bash filename="Installing Router dependency"}
+npm install react-router-dom
+```
+
+## Create the project directory structure
+
+```{.bash filename="Project structure"}
+src
+├── App.css
+├── App.js
+├── App.test.js
+├── components
+│   └── PersonCard
+│       └── index.jsx
+├── index.css
+├── index.js
+├── logo.svg
+├── pages
+│   ├── contact
+│   │   └── Contact.jsx
+│   ├── home
+│   │   └── Home.jsx
+│   └── people
+├── reportWebVitals.js
+├── route
+│   ├── Footer.jsx
+│   ├── Layout.jsx
+│   └── NoPage.jsx
+└── setupTests.js
+```
+
+:::{.callout-warning}
+## TODO: Complete the lab
+:::

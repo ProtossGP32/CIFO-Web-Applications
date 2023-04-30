@@ -1,0 +1,102 @@
+---
+title: "05 - React JS: Using hooks"
+categories: [React JS, Hooks]
+author: ProtossGP32
+date: 2023/04/26
+from: markdown+emoji
+---
+# Introduction
+
+
+# Types of hooks
+## `useState`
+
+## `useReducer`
+A reducer is a function takes in the current state of an application and an action, and returns a new state. Reducers are often used in conjunction with a state manager library like `Redux`, which helps manage the state of a React application.
+
+### Initialization
+`useReducer` is a hook with the following parameters:
+
+```{.js}
+useReducer(reducer, intialArg, init?)
+```
+
+- `reducer`: function that specifies how the state gets updated
+    - It must be pure, should take the state and action as arguments, and should return the next state
+    - State and action can be of any types
+- `initialArg`: value from which the initial state is calculated
+    - It can be a value of any type
+    - Calculation of the initial state depends on the next `init` argument
+- `[optional] init`: initializer function that specifies how the initial state is calculated
+    - If not specified, initial state is set to `initialArg`
+    - Otherwise, initial state is set to the result of calling `init(initialArg)`
+
+It is very similar to `useState` but it lets you move the state update logic from event handlers into a single function outside of your component.
+
+### Dispatch function
+`useReducer` returns an array with exactly two values:
+
+- **The current state:** During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`)
+- **The `dispatch` function** that lets you update the state to a different value and trigger a re-render
+    - You need to pass the action as the only argument to the `dispatch` function
+    - `dispatch` function doesn't return anything
+
+### Example 1
+Take this `useReducer` implementation as an example:
+
+```{.js filename="useReducer example"}
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  if (action.type === 'incremented_age') {
+    return {
+      age: state.age + 1
+    };
+  }
+  throw Error('Unknown action.');
+};
+
+export default function Counter() {
+  const [state, dispatch] = useReducer(reducer, { age: 42 });
+
+  return (
+    <>
+      <button onClick={() => {
+        dispatch({ type: 'incremented_age' })
+      }}>
+        Increment age
+      </button>
+      <p>Hello! You are {state.age}.</p>
+    </>
+  );
+};
+```
+Let's analyse it:
+
+- `reducer`: the reducer manages a state object with one field, `age`
+    - If the `action` received is `incremented_age`, then it update the `age` value of the current state and returns a whole new state (take note of the JSON object returned with the `age` key inside)
+    - Else, throw an exception as the received action is unknown to the function
+- `dispatch`: the trigger of the `useReducer` hook
+    - It is called upon a button `onClick` method
+    - A JSON object with a single `type` key is passed to the function; this is the `action` that the `reducer` receives along the current state
+
+### Example 2
+:::{.callout-warning}
+## TODO: copy the example 2 from [here](https://albertprofe.dev/reactjs/reactjs-hook-reducer.html)
+:::
+
+
+### Example 3 - PersonForm
+
+```{.js filename="PersonForm.jsx" include="../../../../react-exercises/lab-re02-1/src/components/PersonForm/index.jsx"}
+
+```
+
+## `useRef`
+
+## `useEffect`
+
+## `useContext`
+
+## Custom hooks
+

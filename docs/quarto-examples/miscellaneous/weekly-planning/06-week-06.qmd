@@ -1,9 +1,9 @@
 ---
-title: "05 - Week 05"
+title: "06 - Week 06"
 description: "Weekly planning iteration"
 categories: ["Time management"]
 author: ProtossGP32
-date: 2023/04/19
+date: 2023/04/24
 from: markdown+emoji
 ---
 # Introduction
@@ -140,16 +140,12 @@ Think about the complexity of the completed tasks and if they matched the expect
 #### Tuesday:
 
 - Morning: React
-    - Created WIP project for Open Library requests
-    - Created Postman API request to Open Library
 - Afternoon: BSC
 - Evening: BSC
 
 #### Wednesday:
 
-- Morning:
-    - Helped Sergi with VirtualBox
-    
+- Morning: React
 - Afternoon: 
 - Evening: 
 
@@ -182,11 +178,11 @@ Think about the reasons why these tasks aren't done:
 
 #### Wednesday:
 
-- 
+- BSC
 
 #### Thursday:
 
--
+- BSC
 
 #### Friday:
 
@@ -213,7 +209,6 @@ Based on the previous analysis, identify the weak points of the previous plannin
 # Weekend homework
 
 - Lectures:
+    - Readings about two hemispheres
 - React:
-    - Semantinc import: Card, Image, Grid
-    - Spread operator to pass props to PersonCard
     - Map to send all person from array People

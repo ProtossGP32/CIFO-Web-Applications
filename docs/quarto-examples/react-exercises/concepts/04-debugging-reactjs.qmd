@@ -1,0 +1,22 @@
+---
+title: "04 - React JS: Debugging an App"
+categories: [React JS, Debugging]
+author: ProtossGP32
+date: 2023/04/25
+from: markdown+emoji
+---
+# Introduction
+## Debugging ReactJS
+Several steps to make the debugging process easier:
+
+- **Check the Browser's console:** Look for any error message error in the browser's console
+    - Often, errors will be logged in the console, which will give you an idea of where to start debugging
+    - You can learn more about this here: [MDN Web Docs - Console](https://developer.mozilla.org/en-US/docs/Web/API/Console)
+- **Use React Developer Tools:** browser extension that provides a suite of tools for debugging and profiling React components
+    - It allows to inspect React component hierarchies and track the flow of data between components
+    - Learn more about using React Developer Tools here: [React Developer Tools](https://github.com/facebook/react-devtools)
+- **Use `console.log()`:** Place `console.log()` statements through your code to print out variables and see how they change as the code executes
+    - Learn more about using `console.log()` here: [MDN Web Docs - Debugging JavaScript](https://developer.mozilla.org/en-US/docs/Web/javascript/Reference/Statements/console)
+- **Breakpoints:** Set breakpoints in your code using the browser's developer tools or an integrated development environment (IDE) like Visual Studio Code
+    - This allows you to pause the execution of your code and step through it line by line, inspecting variables and the state of your components
+    - Learn more about using breakpoints here: [Chrome DevTools - Debugging JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript)

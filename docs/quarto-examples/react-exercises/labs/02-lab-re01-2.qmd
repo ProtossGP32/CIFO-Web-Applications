@@ -1,5 +1,5 @@
 ---
-title: "React JS: Lab#RE02-1"
+title: "React JS: Lab#RE01-2"
 categories: [React, Node.js, NPM, Spring Boot]
 author: ProtossGP32
 date: 2023/04/19
@@ -31,7 +31,7 @@ Leave it running while testing the React app.
 ## BookList
 Now the `BookList` component should request data from our SpringBoot API, so some things must be changed.
 
-```{.js filename="BookList.jsx" include=../../../../react-exercises/lab-re02-1/src/BookList.jsx}
+```{.js filename="BookList.jsx" include=../../../../react-exercises/lab-re01-2/src/BookList.jsx}
 ```
 
 # Modify the Spring Boot API
@@ -41,3 +41,43 @@ Due to some restrictions related to [CORS](https://developer.mozilla.org/en-US/d
 ```
 
 For now, we'll add `http://localhost:3000` as our React app URL, but when going to production, these paths should be parametrized.
+
+# Adding CSS to ReactJS
+
+## Main objectives:
+
+We'll add some styling to the React app and use JavaScript to render objects in different fashions:
+
+- Grid
+- Card
+- Image
+- JavaScript
+
+The lab will demonstrate **how to use a RESTful API with React and use Components to render objects with CSS**
+
+## Install dependencies
+Install Semantic through `npm`
+
+```{.bash filename="Install Semantic"}
+npm install semantic-ui
+```
+
+## Modify functions
+### Book
+`Book` will provide the parameters of any stored book. Make sure that Spring Boot API provides the required information.
+
+:::{.callout-note}
+## Do the same for the rest of publications
+Same for CD and DVD
+:::
+
+### Person
+`Person` will be used to provide the parameters of any LibraryManager. Make sure that Spring Boot API provides the required information.
+
+## Create new components
+### PersonCard
+Go to Semantic CSS page and look for the Card component. Analyse what parameters the Card expects and make sure that the SpringBoot API provides them when requesting Books. Then, create your own `PersonCard` to format it with the available `LibraryMember` attributes:
+
+```{.js filename="src/Componets/PersonCard/index.jsx" include="../../../../react-exercises/lab-re01-2/src/Components/PersonCard/index.jsx"}
+
+```

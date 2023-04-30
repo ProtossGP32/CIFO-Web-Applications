@@ -44,16 +44,19 @@ public class LibraryMembersRestController {
     }
 
     // Read Library Members
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("all")
     public Iterable<LibraryMember> getAllLibraryMembers() {
         return libraryMemberService.getAllLibraryMembers();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("librarians")
     public Iterable<LibraryMember> getAllLibrarians() {
         return libraryMemberService.getAllLibrarians();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("users")
     public Iterable<LibraryMember> getAllUsers() {
         return libraryMemberService.getAllUsers();

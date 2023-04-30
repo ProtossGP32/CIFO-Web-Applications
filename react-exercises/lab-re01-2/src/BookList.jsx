@@ -5,7 +5,7 @@ const BookList = () => {
     const [books, setBooks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    // useEffect hook ensures that the BookList component stays connected to the Open Library API while displated on the page
+    // useEffect hook ensures that the BookList component stays connected to the SpringBoot API while displayed on the page
     useEffect(() => {
         // Define the fetchBooks function (?)
         const fetchBooks = async () => {
@@ -20,7 +20,7 @@ const BookList = () => {
         };
         // Invoke the fetchBooks function
         fetchBooks();
-        // TODO: return a clean code function with cleanup code that disconnects from the Open Library API
+        // TODO: return a clean code function with cleanup code that disconnects from the SpringBoot API
 
     }, []); // No dependencies required nor values from the component used inside of those functions
 
