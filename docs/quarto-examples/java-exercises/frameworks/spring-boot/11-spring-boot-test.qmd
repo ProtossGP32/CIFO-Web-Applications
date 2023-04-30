@@ -1,0 +1,148 @@
+---
+title: "11 - Tests - Spring Boot and JPA"
+author: ProtossGP32
+categories: [springboot, JPA, Spring Data, Tests]
+description: "Introduction to JPA tests in Spring Boot"
+date: 2023/04/30
+---
+# Introduction
+When dealing with databases, we must ensure that the repositories, services and controllers that we create for manipulating its data do what it's expected. To do so, SpringBoot introduces a `@SpringBootTest` annotation that eases all the process of creating Integratin tests
+
+# Getting started
+## Project dependencies
+In order to use the `@SpringBootTest` annotation, we need to add the following dependency to our `pom.xml`:
+```{.xml filename="pom.xml"}
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>3.0.4</version>
+			<scope>test</scope>
+		</dependency>
+```
+As the scope of the dependency states, this will only be included and applied on test, not on runtime.
+
+## Define your tests
+Now we can define our tests as if we were coding any other test, and we can make use of the same Spring annotations in our code:
+
+:::{.callout-warning}
+## TODO: replace this snippet with a reference to an actual test file from the java examples
+:::
+
+```{.java filename="UserServiceTest.java" }
+package org.teamcifo.tindergames.userEntity;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+class UserServiceTest {
+
+    @Autowired
+    UserService userService;
+    @Autowired
+    UserRepository userRepository;
+    @Test
+    void addUserToDB() {
+        User newUser = new User();
+        // Add the new user to the database
+        userService.addUserToDB(newUser);
+        // Check that the user has been saved in the DB
+        assertTrue(userRepository.existsById(newUser.getUserId()));
+    }
+}
+```
+
+## Defining the scope of the tests
+If you need to set up some objects before each or all tests execution, you can use the `@BeforeEach` or `@BeforeAll` annotations. Be aware that these annotations expect the objects to be `static` so they can be accessed by each test by default. If you don't want to make them `static` and you know that the results of this test class won't be reused outside it, you can keep them as local by adding the annotation `@TestInstance(TestInstance.LifeCycle.PER_CLASS)` to the class.
+
+Here's an example:
+
+```{.java filename="Tests with @BeforeAll annotation"}
+package org.teamcifo.tindergames.userEntity;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.teamcifo.utils.FakeDataGenerator;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class UserServiceTest {
+
+    @Autowired
+    UserService userService;
+    @Autowired
+    UserRepository userRepository;
+
+    private User fakeUser;
+
+    @BeforeAll
+    void setUp(){
+        this.fakeUser = FakeDataGenerator.createFakeUser();
+    }
+
+    @Test
+    void addUserToDB() {
+        // Add the new user to the database
+        userService.addUserToDB(this.fakeUser);
+        // Check that the user has been saved in the DB
+        assertTrue(userRepository.existsById(this.fakeUser.getUserId()));
+    }
+}
+```
+
+## Defining integration tests with JPA
+When retrieving data from a database, Hibernate creates a `Session` to execute the required commands, and then closes it. This prevents further queries on nested objects within the retrieved one (we're talking here about multiplicity relationships - `@OneToOne`, `@OneToMany` or `@ManyToMany`, etc...) because by default the fetch configuration for these types of related objects is set to `FetchType.LAZY`, and that's what we want (other types such as `FetchType.EAGER` are unadvised). This config makes the test fail and it will throw a `org.hibernate.LazyInitializationException` exception
+
+A lot of options seem to exist to fix this exception, but either are too old or don't seem to be aligned with the way we've learned to use SpringBoot annotations and JPA up to this moment. [This StackOverflow entry](https://stackoverflow.com/questions/62486278/hibernate-lazy-initialization-exception-for-loading-lazy-list) enumerates just 3 ways to overcome this, being the third one the one with success results.
+
+`@Transactional` annotation creates a `Session` that is kept alive during all of the method/service execution. As its drawbacks applied to a more global scope might be too complicated to handle, its usage is limited to the test methods that really need it.
+
+Following the previous example, here is a test that retrieves data from the DB and then tries to see if it is equal to a fake one. The `equals` method of the entity requires the system to have all of its attributes references already solved, so we implement the `@Transactional` annotation to make sure that `GamesCollection`, `Gameplay` and `Users` are correctly retrieved prior to the `assertEquals`. The same goes for the second example, where we go even further and compare `BoardGame`s from the `User`'s `GamesCollection`:
+
+```{.java filename="@Transactional examples"}
+    @Test
+    @Transactional
+    void getUserByID() {
+        // Retrieve the fakeUser from the DB
+        User userFromDB = userService.getUserByID(this.fakeUser.getUserId());
+        // Check that both users are the same
+        assertEquals(this.fakeUser, userFromDB);
+    }
+
+    @Test
+    @Transactional
+    void addGamesToCollection() {
+        // Add a random number of games to the collection
+        Integer numGames = this.random.nextInt(1, this.fakeBoardGames.size());
+        List<String> storedGames = new ArrayList<>();
+        for (int i = 0; i < numGames; i++) {
+            Integer randomGame = this.random.nextInt(0, this.fakeBoardGames.size());
+            String gameId = this.fakeBoardGames.get(randomGame).getGameID();
+            while (storedGames.contains(gameId)) {
+                // Repeat until a non-already selected game is found
+                randomGame = random.nextInt(0, this.fakeBoardGames.size());
+                gameId = this.fakeBoardGames.get(randomGame).getGameID();
+            }
+            storedGames.add(gameId);
+        }
+        // Add the list of gameIDs into the user's collection
+        userService.addGamesToCollection(this.fakeUser.getUserId(), storedGames);
+        // Check that the collection has been updated
+        User userFromDB = userService.getUserByID(this.fakeUser.getUserId());
+        for (String gameID: storedGames
+             ) {
+            // Retrieve the game from the BoardGame DB and assert that the user has it
+            assertTrue(userFromDB.getUserGamesCollection().hasGame(boardGameService.getGameByID(gameID)));
+        }
+    }
+```
