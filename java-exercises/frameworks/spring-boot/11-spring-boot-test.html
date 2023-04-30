@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="ProtossGP32">
+<meta name="dcterms.date" content="2023-04-30">
+<meta name="description" content="Introduction to JPA tests in Spring Boot">
 
-<title>CIFO - Web Applications - LAB#SE02-1: Movie/Review, model</title>
+<title>CIFO - Web Applications - 11 - Tests - Spring Boot and JPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,26 +60,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../java-exercises/Labs/java-se03-1.html" rel="next">
-<link href="../../java-exercises/Labs/java-se01-1.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../java-exercises/frontend/00-Introduction.html" rel="next">
+<link href="../../../java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -96,12 +99,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">CIFO - Web Applications</span>
     </a>
   </div>
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
+    <a class="nav-link" href="../../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -131,43 +131,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-devops-guides">    
         <li>
-    <a class="dropdown-item" href="../../devops-guides/mint-vm-provisioning.html" rel="" target="">
+    <a class="dropdown-item" href="../../../devops-guides/mint-vm-provisioning.html" rel="" target="">
  <span class="dropdown-text">Virtual Machine Provisioning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../devops-guides/software-installation.html" rel="" target="">
+    <a class="dropdown-item" href="../../../devops-guides/software-installation.html" rel="" target="">
  <span class="dropdown-text">Software installation</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Documentation</li>
         <li>
-    <a class="dropdown-item" href="../../devops-guides/documentation/quarto-quick-guide.html" rel="" target="">
+    <a class="dropdown-item" href="../../../devops-guides/documentation/quarto-quick-guide.html" rel="" target="">
  <span class="dropdown-text">Quarto - Quick guide</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Self Hosted Project</li>
         <li>
-    <a class="dropdown-item" href="../../devops-guides/self-hosted-project/docker-software-deployment.html" rel="" target="">
+    <a class="dropdown-item" href="../../../devops-guides/self-hosted-project/docker-software-deployment.html" rel="" target="">
  <span class="dropdown-text">Docker software deployment</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Version Control Software</li>
         <li>
-    <a class="dropdown-item" href="../../devops-guides/version-control-software/git-useful-tips.html" rel="" target="">
+    <a class="dropdown-item" href="../../../devops-guides/version-control-software/git-useful-tips.html" rel="" target="">
  <span class="dropdown-text">GIT useful tips</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../devops-guides/version-control-software/github-credentials.html" rel="" target="">
+    <a class="dropdown-item" href="../../../devops-guides/version-control-software/github-credentials.html" rel="" target="">
  <span class="dropdown-text">GitHub - Configuring SSH credentials</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Virtualization</li>
         <li>
-    <a class="dropdown-item" href="../../devops-guides/virtualization/harvester.html" rel="" target="">
+    <a class="dropdown-item" href="../../../devops-guides/virtualization/harvester.html" rel="" target="">
  <span class="dropdown-text">Harvester</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../devops-guides/virtualization/proxmox.html" rel="" target="">
+    <a class="dropdown-item" href="../../../devops-guides/virtualization/proxmox.html" rel="" target="">
  <span class="dropdown-text">Proxmox VE</span></a>
   </li>  
     </ul>
@@ -179,129 +179,129 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-java-exercises">    
         <li class="dropdown-header">APIs</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/APIs/api-rest.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/APIs/api-rest.html" rel="" target="">
  <span class="dropdown-text">API REST</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Concepts</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/object-creation.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/object-creation.html" rel="" target="">
  <span class="dropdown-text">Object creation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/pojo-bean-entity.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/pojo-bean-entity.html" rel="" target="">
  <span class="dropdown-text">Differences between a POJO, a JavaBean and an Entity</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-class.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-a-class.html" rel="" target="">
  <span class="dropdown-text">What is a class?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-model.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-a-model.html" rel="" target="">
  <span class="dropdown-text">What is a model?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" rel="" target="">
  <span class="dropdown-text">What is coupling and cohesion?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-ddd.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-ddd.html" rel="" target="">
  <span class="dropdown-text">What is DDD?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-maven.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-maven.html" rel="" target="">
  <span class="dropdown-text">What is Maven?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-tdd.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-tdd.html" rel="" target="">
  <span class="dropdown-text">What is TDD?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-static-modifier.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-the-static-modifier.html" rel="" target="">
  <span class="dropdown-text">What is the static modifier?</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Databases</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/databases/00-mongodb.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/databases/00-mongodb.html" rel="" target="">
  <span class="dropdown-text">00 - MongoDB</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Design Patterns</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Design-patterns/uml.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Design-patterns/uml.html" rel="" target="">
  <span class="dropdown-text">UML</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Frameworks</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" rel="" target="">
  <span class="dropdown-text">Quarkus</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" rel="" target="">
  <span class="dropdown-text">Spring Boot</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Frontend</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/frontend/00-Introduction.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/frontend/00-Introduction.html" rel="" target="">
  <span class="dropdown-text">00 - Frontend - Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/frontend/engines/00-thymeleaf.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/frontend/engines/00-thymeleaf.html" rel="" target="">
  <span class="dropdown-text">Engines</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-sb00-6.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-sb00-6.html" rel="" target="">
  <span class="dropdown-text">LAB#SB00-6: Rest &amp; MongoDB</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-1.html" rel="" target="">
  <span class="dropdown-text">LAB#SE00-1: Maven Person</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-2.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-2.html" rel="" target="">
  <span class="dropdown-text">LAB#SE00-1: Maven Clinic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-3.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-3.html" rel="" target="">
  <span class="dropdown-text">LAB#SE00-3: Maven Library model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se01-1.html" rel="" target="">
  <span class="dropdown-text">LAB#SE01-1: Maven Person and Account</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se02-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se02-1.html" rel="" target="">
  <span class="dropdown-text">LAB#SE02-1: Movie/Review, model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se03-1.html" rel="" target="">
  <span class="dropdown-text">LAB#SE03-1: Library/Book core model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-2.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se03-2.html" rel="" target="">
  <span class="dropdown-text">LAB#SE03-2: Library/Book, Expand Model</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Principles</li>
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Principles/00-encapsulation.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Principles/00-encapsulation.html" rel="" target="">
  <span class="dropdown-text">Encapsulation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Principles/01-abstraction.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Principles/01-abstraction.html" rel="" target="">
  <span class="dropdown-text">Abstraction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Principles/02-inheritance.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Principles/02-inheritance.html" rel="" target="">
  <span class="dropdown-text">Inheritance</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../java-exercises/Principles/03-polymorphism.html" rel="" target="">
+    <a class="dropdown-item" href="../../../java-exercises/Principles/03-polymorphism.html" rel="" target="">
  <span class="dropdown-text">Polymorphism</span></a>
   </li>  
     </ul>
@@ -312,47 +312,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-react-exercises">    
         <li>
-    <a class="dropdown-item" href="../../react-exercises/00-getting-started.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/00-getting-started.html" rel="" target="">
  <span class="dropdown-text">React: Getting started</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Concepts</li>
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/00-principles.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/concepts/00-principles.html" rel="" target="">
  <span class="dropdown-text">00 - React JS: Principles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/01-css-semantic.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/concepts/01-css-semantic.html" rel="" target="">
  <span class="dropdown-text">01 - React JS: CSS Libraries - Semantic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/02-project-structure.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/concepts/02-project-structure.html" rel="" target="">
  <span class="dropdown-text">02 - React JS: Project structure</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/03-designing-an-app.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/concepts/03-designing-an-app.html" rel="" target="">
  <span class="dropdown-text">03 - React JS: Designing an App</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/04-debugging-reactjs.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/concepts/04-debugging-reactjs.html" rel="" target="">
  <span class="dropdown-text">04 - React JS: Debugging an App</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/concepts/05-hooks.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/concepts/05-hooks.html" rel="" target="">
  <span class="dropdown-text">05 - React JS: Using hooks</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
-    <a class="dropdown-item" href="../../react-exercises/labs/01-lab-re01-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/labs/01-lab-re01-1.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE01-1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/labs/02-lab-re01-2.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/labs/02-lab-re01-2.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE01-2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../react-exercises/labs/03-lab-re02-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../../react-exercises/labs/03-lab-re02-1.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE02-1</span></a>
   </li>  
     </ul>
@@ -363,19 +363,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-project-management">    
         <li>
-    <a class="dropdown-item" href="../../project-management/decision-making.html" rel="" target="">
+    <a class="dropdown-item" href="../../../project-management/decision-making.html" rel="" target="">
  <span class="dropdown-text">Decision Making</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../project-management/project-life-cycle.html" rel="" target="">
+    <a class="dropdown-item" href="../../../project-management/project-life-cycle.html" rel="" target="">
  <span class="dropdown-text">What is the project lifecycle?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../project-management/scrum-management.html" rel="" target="">
+    <a class="dropdown-item" href="../../../project-management/scrum-management.html" rel="" target="">
  <span class="dropdown-text">Scrum management</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../project-management/useful-questions.html" rel="" target="">
+    <a class="dropdown-item" href="../../../project-management/useful-questions.html" rel="" target="">
  <span class="dropdown-text">Useful questions</span></a>
   </li>  
     </ul>
@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-team-projects">    
         <li>
-    <a class="dropdown-item" href="../../team-projects/00-game-tracker.html" rel="" target="">
+    <a class="dropdown-item" href="../../../team-projects/00-game-tracker.html" rel="" target="">
  <span class="dropdown-text">First project - GameTracker</span></a>
   </li>  
     </ul>
@@ -397,37 +397,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-miscellaneous">    
         <li>
-    <a class="dropdown-item" href="../../miscellaneous/00-mind-management-getting-things-done.html" rel="" target="">
+    <a class="dropdown-item" href="../../../miscellaneous/00-mind-management-getting-things-done.html" rel="" target="">
  <span class="dropdown-text">00 - Mind Management and Getting Things Done</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Weekly Planning</li>
         <li>
-    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/00-template.html" rel="" target="">
+    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/00-template.html" rel="" target="">
  <span class="dropdown-text">00 - Week template</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/01-week-01.html" rel="" target="">
+    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/01-week-01.html" rel="" target="">
  <span class="dropdown-text">01 - Week 01</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/02-week-02.html" rel="" target="">
+    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/02-week-02.html" rel="" target="">
  <span class="dropdown-text">02 - Week 02</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/03-week-03.html" rel="" target="">
+    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/03-week-03.html" rel="" target="">
  <span class="dropdown-text">03 - Week 03</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/04-week-04.html" rel="" target="">
+    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/04-week-04.html" rel="" target="">
  <span class="dropdown-text">04 - Week 04</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/05-week-05.html" rel="" target="">
+    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/05-week-05.html" rel="" target="">
  <span class="dropdown-text">05 - Week 05</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/06-week-06.html" rel="" target="">
+    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/06-week-06.html" rel="" target="">
  <span class="dropdown-text">06 - Week 06</span></a>
   </li>  
     </ul>
@@ -438,13 +438,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-walkthrough">    
         <li>
-    <a class="dropdown-item" href="../../walkthrough/walkthrough.html" rel="" target="">
+    <a class="dropdown-item" href="../../../walkthrough/walkthrough.html" rel="" target="">
  <span class="dropdown-text">Hello, Quarto</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -471,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../java-exercises/Labs/java-sb00-6.html">Labs</a></li><li class="breadcrumb-item"><a href="../../java-exercises/Labs/java-se02-1.html">LAB#SE02-1: Movie/Review, model</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Frameworks</li><li class="breadcrumb-item"><a href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">Spring Boot</a></li><li class="breadcrumb-item"><a href="../../../java-exercises/frameworks/spring-boot/11-spring-boot-test.html">11 - Tests - Spring Boot and JPA</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -494,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">API REST</span></a>
   </div>
 </li>
@@ -511,55 +511,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/object-creation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/object-creation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Object creation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/pojo-bean-entity.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/pojo-bean-entity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Differences between a POJO, a JavaBean and an Entity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-class.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/what-is-a-class.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is a class?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is a model?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is coupling and cohesion?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is DDD?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-maven.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/what-is-maven.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is Maven?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-tdd.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/what-is-tdd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is TDD?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Concepts/what-is-the-static-modifier.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Concepts/what-is-the-static-modifier.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is the static modifier?</span></a>
   </div>
 </li>
@@ -576,7 +576,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/databases/00-mongodb.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/databases/00-mongodb.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - MongoDB</span></a>
   </div>
 </li>
@@ -593,7 +593,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">UML</span></a>
   </div>
 </li>
@@ -619,7 +619,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - What is Quarkus?</span></a>
   </div>
 </li>
@@ -627,82 +627,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
  <span class="menu-text">Spring Boot</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - What is Spring Boot?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01 - Creating a Spring Boot project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02 - Creating a Spring Boot project with H2 and ThyMeLeaf</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/03-spring-security.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/03-spring-security.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03 - Spring Security</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">04 - Spring Boot with JPA and H2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05 - Spring Boot and JPA composition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05 - Spring Boot and Rest API</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">07 - Configure Spring Boot Test Profiles</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">08 - Configure Spring Boot Controllers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/09-http-session.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/09-http-session.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09 - HTTP sessions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">10 - Data and Databases - Spring Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frameworks/spring-boot/11-spring-boot-test.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/11-spring-boot-test.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">11 - Tests - Spring Boot and JPA</span></a>
   </div>
 </li>
@@ -721,7 +721,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frontend/00-Introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frontend/00-Introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - Frontend - Introduction</span></a>
   </div>
 </li>
@@ -736,7 +736,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/frontend/engines/00-thymeleaf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frontend/engines/00-thymeleaf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01 - Java template engine - Thymeleaf</span></a>
   </div>
 </li>
@@ -755,49 +755,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-sb00-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Labs/java-sb00-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LAB#SB00-6: Rest &amp; MongoDB</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Labs/java-se00-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LAB#SE00-1: Maven Person</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LAB#SE00-1: Maven Clinic</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LAB#SE00-3: Maven Library model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LAB#SE01-1: Maven Person and Account</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LAB#SE02-1: Movie/Review, model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se03-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Labs/java-se03-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LAB#SE03-1: Library/Book core model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Labs/java-se03-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Labs/java-se03-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LAB#SE03-2: Library/Book, Expand Model</span></a>
   </div>
 </li>
@@ -814,25 +814,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Encapsulation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/01-abstraction.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Principles/01-abstraction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Abstraction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Inheritance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../java-exercises/Principles/03-polymorphism.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/Principles/03-polymorphism.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Polymorphism</span></a>
   </div>
 </li>
@@ -849,57 +849,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#tasks-1" id="toc-tasks-1" class="nav-link" data-scroll-target="#tasks-1">Tasks</a>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
   <ul class="collapse">
-  <li><a href="#model-design" id="toc-model-design" class="nav-link" data-scroll-target="#model-design">Model design</a></li>
-  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
-  <li><a href="#first-approach" id="toc-first-approach" class="nav-link" data-scroll-target="#first-approach">First approach</a>
-  <ul class="collapse">
-  <li><a href="#domain-design" id="toc-domain-design" class="nav-link" data-scroll-target="#domain-design">Domain design</a></li>
-  <li><a href="#uml-diagram" id="toc-uml-diagram" class="nav-link" data-scroll-target="#uml-diagram">UML diagram</a></li>
-  </ul></li>
-  <li><a href="#second-approach---less-coupling-between-classes" id="toc-second-approach---less-coupling-between-classes" class="nav-link" data-scroll-target="#second-approach---less-coupling-between-classes">Second approach - Less coupling between classes</a>
-  <ul class="collapse">
-  <li><a href="#changes-in-previous-domain" id="toc-changes-in-previous-domain" class="nav-link" data-scroll-target="#changes-in-previous-domain">Changes in previous Domain</a></li>
-  <li><a href="#uml-diagram-1" id="toc-uml-diagram-1" class="nav-link" data-scroll-target="#uml-diagram-1">UML diagram</a></li>
-  </ul></li>
-  <li><a href="#third-approach---use-manager-classes" id="toc-third-approach---use-manager-classes" class="nav-link" data-scroll-target="#third-approach---use-manager-classes">Third approach - Use Manager classes</a>
-  <ul class="collapse">
-  <li><a href="#logic" id="toc-logic" class="nav-link" data-scroll-target="#logic">Logic</a></li>
-  <li><a href="#uml-diagram-2" id="toc-uml-diagram-2" class="nav-link" data-scroll-target="#uml-diagram-2">UML diagram</a></li>
-  </ul></li>
-  <li><a href="#fourth-approach---create-a-superclass-person" id="toc-fourth-approach---create-a-superclass-person" class="nav-link" data-scroll-target="#fourth-approach---create-a-superclass-person">Fourth approach - Create a superclass Person</a>
-  <ul class="collapse">
-  <li><a href="#changes-in-domain" id="toc-changes-in-domain" class="nav-link" data-scroll-target="#changes-in-domain">Changes in Domain</a></li>
-  <li><a href="#logic-1" id="toc-logic-1" class="nav-link" data-scroll-target="#logic-1">Logic</a></li>
-  <li><a href="#uml-diagram-3" id="toc-uml-diagram-3" class="nav-link" data-scroll-target="#uml-diagram-3">UML diagram</a></li>
-  </ul></li>
-  <li><a href="#create-a-console-user-interface" id="toc-create-a-console-user-interface" class="nav-link" data-scroll-target="#create-a-console-user-interface">Create a console User Interface</a></li>
-  <li><a href="#create-tests-for-each-one" id="toc-create-tests-for-each-one" class="nav-link" data-scroll-target="#create-tests-for-each-one">Create tests for each one</a>
-  <ul class="collapse">
-  <li><a href="#tests-using-inputstreams" id="toc-tests-using-inputstreams" class="nav-link" data-scroll-target="#tests-using-inputstreams">Tests using InputStreams</a></li>
-  </ul></li>
+  <li><a href="#project-dependencies" id="toc-project-dependencies" class="nav-link" data-scroll-target="#project-dependencies">Project dependencies</a></li>
+  <li><a href="#define-your-tests" id="toc-define-your-tests" class="nav-link" data-scroll-target="#define-your-tests">Define your tests</a></li>
+  <li><a href="#defining-the-scope-of-the-tests" id="toc-defining-the-scope-of-the-tests" class="nav-link" data-scroll-target="#defining-the-scope-of-the-tests">Defining the scope of the tests</a></li>
+  <li><a href="#defining-integration-tests-with-jpa" id="toc-defining-integration-tests-with-jpa" class="nav-link" data-scroll-target="#defining-integration-tests-with-jpa">Defining integration tests with JPA</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/Labs/java-se02-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/11-spring-boot-test.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">LAB#SE02-1: Movie/Review, model</h1>
+<h1 class="title">11 - Tests - Spring Boot and JPA</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">javase</div>
-    <div class="quarto-category">lab</div>
+    <div class="quarto-category">springboot</div>
+    <div class="quarto-category">JPA</div>
+    <div class="quarto-category">Spring Data</div>
+    <div class="quarto-category">Tests</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    Introduction to JPA tests in Spring Boot
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ProtossGP32 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 30, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -909,433 +904,167 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Context</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Goal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Tasks</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Optional</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p><strong>Basic understanding of Java programming language is required</strong>, as well as some familiarity with <strong>Maven or Gradle for managing dependencies</strong> and building the project.</p>
-<p><strong>Knowledge of algotighms and data structures</strong> to implement the required classes.</p>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p><strong>Create three classes in Java</strong> (<code>Movie</code>, <code>Critic</code> and <code>Review</code>) that implement different algorightms or data structures.</p>
-<p><strong>Test these classes</strong> using JUnit.</p>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<ol class="example" type="1">
-<li>Create <strong>a new Maven or Gradle project</strong> and setting up the project structure</li>
-<li>Modify the project’s <code>pom.xml</code> or <code>build.gradle</code> file to import necessary dependencies, including <strong>JUnit</strong> for testing</li>
-<li>Implement the three required classes in Java</li>
-<li>Implement two basic patter-designs: <strong>singleton</strong> and <strong>think about factory</strong></li>
-<li>Write <strong>JUnit tests</strong> to verify that classes work as expected</li>
-</ol>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<ul>
-<li><strong>Allow the user to input data via the console</strong>, rather than using <code>hard-coded test data</code> in JUnit tests</li>
-</ul>
-</div>
-</div>
-</div>
+<p>When dealing with databases, we must ensure that the repositories, services and controllers that we create for manipulating its data do what it’s expected. To do so, SpringBoot introduces a <code>@SpringBootTest</code> annotation that eases all the process of creating Integratin tests</p>
 </section>
-<section id="tasks-1" class="level1">
-<h1>Tasks</h1>
-<section id="model-design" class="level2">
-<h2 class="anchored" data-anchor-id="model-design">Model design</h2>
+<section id="getting-started" class="level1">
+<h1>Getting started</h1>
+<section id="project-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="project-dependencies">Project dependencies</h2>
+<p>In order to use the <code>@SpringBootTest</code> annotation, we need to add the following dependency to our <code>pom.xml</code>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pom.xml</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1"></a>        <span class="co">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test --&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>        &lt;<span class="kw">dependency</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3"></a>            &lt;<span class="kw">groupId</span>&gt;org.springframework.boot&lt;/<span class="kw">groupId</span>&gt;</span>
+<span id="cb1-4"><a href="#cb1-4"></a>            &lt;<span class="kw">artifactId</span>&gt;spring-boot-starter-test&lt;/<span class="kw">artifactId</span>&gt;</span>
+<span id="cb1-5"><a href="#cb1-5"></a>            &lt;<span class="kw">version</span>&gt;3.0.4&lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb1-6"><a href="#cb1-6"></a>            &lt;<span class="kw">scope</span>&gt;test&lt;/<span class="kw">scope</span>&gt;</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        &lt;/<span class="kw">dependency</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As the scope of the dependency states, this will only be included and applied on test, not on runtime.</p>
+</section>
+<section id="define-your-tests" class="level2">
+<h2 class="anchored" data-anchor-id="define-your-tests">Define your tests</h2>
+<p>Now we can define our tests as if we were coding any other test, and we can make use of the same Spring annotations in our code:</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-UML diagram of the model
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TODO: Review <a href="https://www.umlboard.com/docs/relations/multiplicity/">multiplicity concept</a> and apply it to the UML!!</p>
-<p>An association (the UML equivalent to a relationship in data modeling circles) has a multiplicity for each direction.</p>
-</div>
-</div>
-</section>
-<section id="dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="dependencies">Dependencies</h2>
-<ul>
-<li>Lombok (both dependency and Maven plugin):</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>&lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3"></a>    &lt;<span class="kw">groupId</span>&gt;org.projectlombok&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    &lt;<span class="kw">artifactId</span>&gt;lombok&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb1-5"><a href="#cb1-5"></a>    &lt;<span class="kw">version</span>&gt;1.18.24&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb1-6"><a href="#cb1-6"></a>    &lt;<span class="kw">scope</span>&gt;provided&lt;/<span class="kw">scope</span>&gt;</span>
-<span id="cb1-7"><a href="#cb1-7"></a>&lt;/<span class="kw">dependency</span>&gt;</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin --&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>&lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb1-10"><a href="#cb1-10"></a>    &lt;<span class="kw">groupId</span>&gt;org.projectlombok&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb1-11"><a href="#cb1-11"></a>    &lt;<span class="kw">artifactId</span>&gt;lombok-maven-plugin&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb1-12"><a href="#cb1-12"></a>    &lt;<span class="kw">version</span>&gt;1.18.20.0&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb1-13"><a href="#cb1-13"></a>    &lt;<span class="kw">scope</span>&gt;provided&lt;/<span class="kw">scope</span>&gt;</span>
-<span id="cb1-14"><a href="#cb1-14"></a>&lt;/<span class="kw">dependency</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Junit:</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">&lt;!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api --&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>&lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    &lt;<span class="kw">groupId</span>&gt;org.junit.jupiter&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    &lt;<span class="kw">artifactId</span>&gt;junit-jupiter-api&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    &lt;<span class="kw">version</span>&gt;5.9.1&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    &lt;<span class="kw">scope</span>&gt;test&lt;/<span class="kw">scope</span>&gt;</span>
-<span id="cb2-7"><a href="#cb2-7"></a>&lt;/<span class="kw">dependency</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Java Faker: dependency used to generate stub data for testing</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">&lt;!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker --&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>&lt;<span class="kw">dependency</span>&gt;</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    &lt;<span class="kw">groupId</span>&gt;com.github.javafaker&lt;/<span class="kw">groupId</span>&gt;</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    &lt;<span class="kw">artifactId</span>&gt;javafaker&lt;/<span class="kw">artifactId</span>&gt;</span>
-<span id="cb3-5"><a href="#cb3-5"></a>    &lt;<span class="kw">version</span>&gt;1.0.2&lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb3-6"><a href="#cb3-6"></a>&lt;/<span class="kw">dependency</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="first-approach" class="level2">
-<h2 class="anchored" data-anchor-id="first-approach">First approach</h2>
-<section id="domain-design" class="level3">
-<h3 class="anchored" data-anchor-id="domain-design">Domain design</h3>
-<section id="movie" class="level4">
-<h4 class="anchored" data-anchor-id="movie">Movie</h4>
-<p>A <code>Movie</code> class shall represent a movie being reviewed. It should have the following attributes:</p>
-<ul>
-<li><code>title</code>: a <code>String</code> representing the title of the movie</li>
-<li><code>reviews</code>: a <code>Set</code> of <code>Review</code> objects representing the reviews that have been written for this movie</li>
-<li><code>critic</code>: The <code>Critic</code> class represents a critic who writes reviews</li>
-</ul>
-</section>
-<section id="critic" class="level4">
-<h4 class="anchored" data-anchor-id="critic">Critic</h4>
-<p>A <code>Critic</code> class shall represent a critic and a <code>Review</code> of its own. It should have the following attributes:</p>
-<ul>
-<li><code>name</code>: a String representing the name of the critic</li>
-<li><code>Review</code>: the <code>Review</code> class represents a review of a movie written by a critic</li>
-</ul>
-</section>
-<section id="review" class="level4">
-<h4 class="anchored" data-anchor-id="review">Review</h4>
-<p>A <code>Review</code> class shall represent the information that identifies a review of a movie. It shall have the following attributes:</p>
-<ul>
-<li><code>movie</code>: a <code>Movie</code> object representing the movie being reviewed</li>
-<li><code>critic</code>: a <code>Critic</code> object representing the critic</li>
-</ul>
-</section>
-</section>
-<section id="uml-diagram" class="level3">
-<h3 class="anchored" data-anchor-id="uml-diagram">UML diagram</h3>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Quarto bug
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>.mmd</code> files attachment through the <code>file</code> directive (<a href="https://quarto.org/docs/authoring/diagrams.html#file-include">as explained here</a>) isn’t working, there’s <a href="https://github.com/quarto-dev/quarto-cli/issues/3665">an open bug in github</a>.</p>
-<p>Once the bug is solved, replace any <code>{mermaid}</code> snippet with a link to the <code>uml.mmd</code> file attached to each lab approach like this:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{mermaid}</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>%%| label: fig<span class="ot">-u</span>ml</span>
-<span id="cb4-3"><a href="#cb4-3"></a>%%| fig<span class="ot">-c</span>ap: <span class="ot">"</span><span class="st">UML diagram</span><span class="ot">"</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>%%| file: ..<span class="ot">/../</span>..<span class="ot">/../</span>java<span class="ot">-e</span>xercises/lab<span class="ot">-s</span>e<span class="bn">-02</span><span class="dv">-1</span>/approach_1/uml.mmd</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-uml" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div>
-<pre class="mermaid mermaid-js" data-label="fig-uml">classDiagram
-    direction LR
-    Review "*" o-- "1" Movie : has
-    Review "*" o-- "1" Critic : is done by
-    Critic "1" *-- "*" Review : can do
-    Movie "*" *-- "*" Critic : is reviewed by
-    
-    class Movie{
-        -title: String
-        -year: int
-        -critics: Set
-    }
-    
-    class Critic {
-        -name: String
-        -reviews: Set
-    }
-
-    class Review {
-        -movie: Movie
-        -rating: int
-        -comment: String
-        -critic: Critic
-    }
-</pre>
-</div>
-<figcaption class="figure-caption">Figure&nbsp;1: UML diagram - First approach</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="second-approach---less-coupling-between-classes" class="level2">
-<h2 class="anchored" data-anchor-id="second-approach---less-coupling-between-classes">Second approach - Less coupling between classes</h2>
-<p>In this approach we remove redundant or unnecessary associations between the classes.</p>
-<section id="changes-in-previous-domain" class="level3">
-<h3 class="anchored" data-anchor-id="changes-in-previous-domain">Changes in previous Domain</h3>
-<section id="movie-1" class="level4">
-<h4 class="anchored" data-anchor-id="movie-1">Movie</h4>
-<ul>
-<li>This time <code>Movie</code> has a <code>Review</code> set instead of a <code>Critic</code> set</li>
-</ul>
-</section>
-<section id="critic-1" class="level4">
-<h4 class="anchored" data-anchor-id="critic-1">Critic</h4>
-<ul>
-<li>This time <code>Critic</code> doesn’t include any reference to the class <code>Review</code></li>
-</ul>
-</section>
-<section id="review-1" class="level4">
-<h4 class="anchored" data-anchor-id="review-1">Review</h4>
-<ul>
-<li><code>Review</code> class is the same as in the first approach</li>
-</ul>
-</section>
-</section>
-<section id="uml-diagram-1" class="level3">
-<h3 class="anchored" data-anchor-id="uml-diagram-1">UML diagram</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-uml" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div>
-<pre class="mermaid mermaid-js" data-label="fig-uml">classDiagram
-    direction LR
-    Movie "1" *-- "*" Review : may have
-    Review "*" o-- "1" Movie : talks about
-    Review "1" o-- "1" Critic : is written by
-
-    class Movie {
-        -title: String
-        -reviews: Set
-    }
-
-    class Review {
-        -movie: Movie
-        -critic: Critic
-        -rating: int
-        -comment: String
-    }
-
-    class Critic {
-        -name: String
-    }
-</pre>
-</div>
-<figcaption class="figure-caption">Figure&nbsp;2: UML diagram - Second approach</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="third-approach---use-manager-classes" class="level2">
-<h2 class="anchored" data-anchor-id="third-approach---use-manager-classes">Third approach - Use Manager classes</h2>
-<p>In this approach, instead of heavily binding classes between them, we delegate the responsibility to an external class, called <code>MovieManager</code></p>
-<section id="logic" class="level3">
-<h3 class="anchored" data-anchor-id="logic">Logic</h3>
-<section id="moviemanager-non-static" class="level4">
-<h4 class="anchored" data-anchor-id="moviemanager-non-static">MovieManager (<code>non-static</code>)</h4>
-<p>The <code>non-static</code> approach requests the user to create a <code>MovieManager</code> object in order to access its methods.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<div>
-<pre class="mermaid mermaid-js">classDiagram
-
-    class MovieManager {
-    }
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="moviemanager-static" class="level4">
-<h4 class="anchored" data-anchor-id="moviemanager-static">MovieManager (<code>static</code>)</h4>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Static method and static class
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A <code>static</code> method is a method that is owned only by the class, not by the class objects. You don’t instantiate a class object to access the <code>static</code> methods.</p>
-<p>A <code>static</code> class is a class that doesn’t instantiate objects; thus, <code>static</code> class’ methods are accessed through the class name.</p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<div>
-<pre class="mermaid mermaid-js">classDiagram
-    class MovieManager {
-    }
-
-    &lt;&lt;Static&gt;&gt; MovieManager
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-TODO
+TODO: replace this snippet with a reference to an actual test file from the java examples
 </div>
 </div>
 <div class="callout-body-container callout-body">
 
 </div>
 </div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>UserServiceTest.java</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">teamcifo</span><span class="op">.</span><span class="im">tindergames</span><span class="op">.</span><span class="im">userEntity</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">beans</span><span class="op">.</span><span class="im">factory</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">Autowired</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">boot</span><span class="op">.</span><span class="im">test</span><span class="op">.</span><span class="im">autoconfigure</span><span class="op">.</span><span class="im">orm</span><span class="op">.</span><span class="im">jpa</span><span class="op">.</span><span class="im">DataJpaTest</span><span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">boot</span><span class="op">.</span><span class="im">test</span><span class="op">.</span><span class="im">context</span><span class="op">.</span><span class="im">SpringBootTest</span><span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Assertions</span><span class="op">.*;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="at">@SpringBootTest</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="kw">class</span> UserServiceTest <span class="op">{</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="at">@Autowired</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>    UserService userService<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="at">@Autowired</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>    UserRepository userRepository<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    <span class="at">@Test</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>    <span class="dt">void</span> <span class="fu">addUserToDB</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>        User newUser <span class="op">=</span> <span class="kw">new</span> <span class="fu">User</span><span class="op">();</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>        <span class="co">// Add the new user to the database</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>        userService<span class="op">.</span><span class="fu">addUserToDB</span><span class="op">(</span>newUser<span class="op">);</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>        <span class="co">// Check that the user has been saved in the DB</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>        <span class="fu">assertTrue</span><span class="op">(</span>userRepository<span class="op">.</span><span class="fu">existsById</span><span class="op">(</span>newUser<span class="op">.</span><span class="fu">getUserId</span><span class="op">()));</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>    <span class="op">}</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
+<section id="defining-the-scope-of-the-tests" class="level2">
+<h2 class="anchored" data-anchor-id="defining-the-scope-of-the-tests">Defining the scope of the tests</h2>
+<p>If you need to set up some objects before each or all tests execution, you can use the <code>@BeforeEach</code> or <code>@BeforeAll</code> annotations. Be aware that these annotations expect the objects to be <code>static</code> so they can be accessed by each test by default. If you don’t want to make them <code>static</code> and you know that the results of this test class won’t be reused outside it, you can keep them as local by adding the annotation <code>@TestInstance(TestInstance.LifeCycle.PER_CLASS)</code> to the class.</p>
+<p>Here’s an example:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Tests with @BeforeAll annotation</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">package</span><span class="im"> org</span><span class="op">.</span><span class="im">teamcifo</span><span class="op">.</span><span class="im">tindergames</span><span class="op">.</span><span class="im">userEntity</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">BeforeAll</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">TestInstance</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">beans</span><span class="op">.</span><span class="im">factory</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">Autowired</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">boot</span><span class="op">.</span><span class="im">test</span><span class="op">.</span><span class="im">context</span><span class="op">.</span><span class="im">SpringBootTest</span><span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">teamcifo</span><span class="op">.</span><span class="im">utils</span><span class="op">.</span><span class="im">FakeDataGenerator</span><span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Assertions</span><span class="op">.*;</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="at">@SpringBootTest</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="at">@TestInstance</span><span class="op">(</span>TestInstance<span class="op">.</span><span class="fu">Lifecycle</span><span class="op">.</span><span class="fu">PER_CLASS</span><span class="op">)</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="kw">class</span> UserServiceTest <span class="op">{</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="at">@Autowired</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>    UserService userService<span class="op">;</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>    <span class="at">@Autowired</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>    UserRepository userRepository<span class="op">;</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a></span>
+<span id="cb3-21"><a href="#cb3-21"></a>    <span class="kw">private</span> User fakeUser<span class="op">;</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a>    <span class="at">@BeforeAll</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>    <span class="dt">void</span> <span class="fu">setUp</span><span class="op">(){</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">fakeUser</span> <span class="op">=</span> FakeDataGenerator<span class="op">.</span><span class="fu">createFakeUser</span><span class="op">();</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>    <span class="op">}</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a></span>
+<span id="cb3-28"><a href="#cb3-28"></a>    <span class="at">@Test</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>    <span class="dt">void</span> <span class="fu">addUserToDB</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a>        <span class="co">// Add the new user to the database</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>        userService<span class="op">.</span><span class="fu">addUserToDB</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">fakeUser</span><span class="op">);</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>        <span class="co">// Check that the user has been saved in the DB</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a>        <span class="fu">assertTrue</span><span class="op">(</span>userRepository<span class="op">.</span><span class="fu">existsById</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">fakeUser</span><span class="op">.</span><span class="fu">getUserId</span><span class="op">()));</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>    <span class="op">}</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="uml-diagram-2" class="level3">
-<h3 class="anchored" data-anchor-id="uml-diagram-2">UML diagram</h3>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="defining-integration-tests-with-jpa" class="level2">
+<h2 class="anchored" data-anchor-id="defining-integration-tests-with-jpa">Defining integration tests with JPA</h2>
+<p>When retrieving data from a database, Hibernate creates a <code>Session</code> to execute the required commands, and then closes it. This prevents further queries on nested objects within the retrieved one (we’re talking here about multiplicity relationships - <code>@OneToOne</code>, <code>@OneToMany</code> or <code>@ManyToMany</code>, etc…) because by default the fetch configuration for these types of related objects is set to <code>FetchType.LAZY</code>, and that’s what we want (other types such as <code>FetchType.EAGER</code> are unadvised). This config makes the test fail and it will throw a <code>org.hibernate.LazyInitializationException</code> exception</p>
+<p>A lot of options seem to exist to fix this exception, but either are too old or don’t seem to be aligned with the way we’ve learned to use SpringBoot annotations and JPA up to this moment. <a href="https://stackoverflow.com/questions/62486278/hibernate-lazy-initialization-exception-for-loading-lazy-list">This StackOverflow entry</a> enumerates just 3 ways to overcome this, being the third one the one with success results.</p>
+<p><code>@Transactional</code> annotation creates a <code>Session</code> that is kept alive during all of the method/service execution. As its drawbacks applied to a more global scope might be too complicated to handle, its usage is limited to the test methods that really need it.</p>
+<p>Following the previous example, here is a test that retrieves data from the DB and then tries to see if it is equal to a fake one. The <code>equals</code> method of the entity requires the system to have all of its attributes references already solved, so we implement the <code>@Transactional</code> annotation to make sure that <code>GamesCollection</code>, <code>Gameplay</code> and <code>Users</code> are correctly retrieved prior to the <code>assertEquals</code>. The same goes for the second example, where we go even further and compare <code>BoardGame</code>s from the <code>User</code>’s <code>GamesCollection</code>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>@Transactional examples</strong></pre>
 </div>
-<div class="callout-title-container flex-fill">
-TODO
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1"></a>    <span class="at">@Test</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="at">@Transactional</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="dt">void</span> <span class="fu">getUserByID</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>        <span class="co">// Retrieve the fakeUser from the DB</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>        User userFromDB <span class="op">=</span> userService<span class="op">.</span><span class="fu">getUserByID</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">fakeUser</span><span class="op">.</span><span class="fu">getUserId</span><span class="op">());</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>        <span class="co">// Check that both users are the same</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>        <span class="fu">assertEquals</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">fakeUser</span><span class="op">,</span> userFromDB<span class="op">);</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>    <span class="op">}</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="at">@Test</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="at">@Transactional</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="dt">void</span> <span class="fu">addGamesToCollection</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>        <span class="co">// Add a random number of games to the collection</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>        <span class="bu">Integer</span> numGames <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">random</span><span class="op">.</span><span class="fu">nextInt</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="kw">this</span><span class="op">.</span><span class="fu">fakeBoardGames</span><span class="op">.</span><span class="fu">size</span><span class="op">());</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>        <span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> storedGames <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> numGames<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>            <span class="bu">Integer</span> randomGame <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">random</span><span class="op">.</span><span class="fu">nextInt</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="kw">this</span><span class="op">.</span><span class="fu">fakeBoardGames</span><span class="op">.</span><span class="fu">size</span><span class="op">());</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>            <span class="bu">String</span> gameId <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">fakeBoardGames</span><span class="op">.</span><span class="fu">get</span><span class="op">(</span>randomGame<span class="op">).</span><span class="fu">getGameID</span><span class="op">();</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>            <span class="cf">while</span> <span class="op">(</span>storedGames<span class="op">.</span><span class="fu">contains</span><span class="op">(</span>gameId<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>                <span class="co">// Repeat until a non-already selected game is found</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>                randomGame <span class="op">=</span> random<span class="op">.</span><span class="fu">nextInt</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="kw">this</span><span class="op">.</span><span class="fu">fakeBoardGames</span><span class="op">.</span><span class="fu">size</span><span class="op">());</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>                gameId <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">fakeBoardGames</span><span class="op">.</span><span class="fu">get</span><span class="op">(</span>randomGame<span class="op">).</span><span class="fu">getGameID</span><span class="op">();</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>            <span class="op">}</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>            storedGames<span class="op">.</span><span class="fu">add</span><span class="op">(</span>gameId<span class="op">);</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a>        <span class="op">}</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>        <span class="co">// Add the list of gameIDs into the user's collection</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>        userService<span class="op">.</span><span class="fu">addGamesToCollection</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">fakeUser</span><span class="op">.</span><span class="fu">getUserId</span><span class="op">(),</span> storedGames<span class="op">);</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>        <span class="co">// Check that the collection has been updated</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>        User userFromDB <span class="op">=</span> userService<span class="op">.</span><span class="fu">getUserByID</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">fakeUser</span><span class="op">.</span><span class="fu">getUserId</span><span class="op">());</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> gameID<span class="op">:</span> storedGames</span>
+<span id="cb4-31"><a href="#cb4-31"></a>             <span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>            <span class="co">// Retrieve the game from the BoardGame DB and assert that the user has it</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a>            <span class="fu">assertTrue</span><span class="op">(</span>userFromDB<span class="op">.</span><span class="fu">getUserGamesCollection</span><span class="op">().</span><span class="fu">hasGame</span><span class="op">(</span>boardGameService<span class="op">.</span><span class="fu">getGameByID</span><span class="op">(</span>gameID<span class="op">)));</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>        <span class="op">}</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>    <span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="callout-body-container callout-body">
 
-</div>
-</div>
-</section>
-</section>
-<section id="fourth-approach---create-a-superclass-person" class="level2">
-<h2 class="anchored" data-anchor-id="fourth-approach---create-a-superclass-person">Fourth approach - Create a superclass Person</h2>
-<p>Let’s say that we want to add information about the <code>FilmMaker</code> and the <code>Actor</code>s of a <code>Movie</code> to our model. Now we have three classes (<code>Critic</code>, <code>FilmMaker</code> and <code>Actor</code>) that have something in common: <strong>they are all persons</strong>. Thus, we can encapsule their common treats into a new class <code>Person</code> and make these classes inherit it.</p>
-<section id="changes-in-domain" class="level3">
-<h3 class="anchored" data-anchor-id="changes-in-domain">Changes in Domain</h3>
-<section id="person" class="level4">
-<h4 class="anchored" data-anchor-id="person">Person</h4>
-<p>The <code>Person</code> class defines the common treats of any human being:</p>
-<ul>
-<li><code>name</code>: a <code>String</code> representing the name of the person</li>
-<li><code>birthDate</code>: a <code>String</code> representing the birth date of the person (it can also be a <code>Date</code> type)</li>
-</ul>
-</section>
-<section id="filmmaker" class="level4">
-<h4 class="anchored" data-anchor-id="filmmaker">FilmMaker</h4>
-<p><code>FilmMaker</code> is a <code>Person</code> subclass that contains info about its works:</p>
-<ul>
-<li><code>movies</code>: a <strong>Set</strong> of <code>Movie</code> containing all the movies that this <code>Person</code> has filmed</li>
-</ul>
-</section>
-<section id="actor" class="level4">
-<h4 class="anchored" data-anchor-id="actor">Actor</h4>
-<p><code>Actor</code> is a <code>Person</code> subclass that contains info about its works:</p>
-<ul>
-<li><code>movies</code>: a <strong>Set</strong> of <code>Movie</code> containing all the movies where this <code>Person</code> has performed in</li>
-</ul>
-</section>
-<section id="critic-2" class="level4">
-<h4 class="anchored" data-anchor-id="critic-2">Critic</h4>
-<p><code>Critic</code> now is a <code>Person</code> subclass that contains info about the reviews it has written:</p>
-<ul>
-<li><code>reviews</code>: a <strong>Set</strong> of <code>Review</code> containing all its reviews</li>
-</ul>
-</section>
-</section>
-<section id="logic-1" class="level3">
-<h3 class="anchored" data-anchor-id="logic-1">Logic</h3>
-<p>Now the <code>MovieManager</code> class must take into account all these changes in its methods</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
 
-</div>
-</div>
-</section>
-<section id="uml-diagram-3" class="level3">
-<h3 class="anchored" data-anchor-id="uml-diagram-3">UML diagram</h3>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-</section>
-</section>
-<section id="create-a-console-user-interface" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-console-user-interface">Create a console User Interface</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-</section>
-<section id="create-tests-for-each-one" class="level2">
-<h2 class="anchored" data-anchor-id="create-tests-for-each-one">Create tests for each one</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-TODO
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<section id="tests-using-inputstreams" class="level3">
-<h3 class="anchored" data-anchor-id="tests-using-inputstreams">Tests using InputStreams</h3>
-
-
-</section>
 </section>
 </section>
 
@@ -1690,13 +1419,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../java-exercises/Labs/java-se01-1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">LAB#SE01-1: Maven Person and Account</span>
+      <a href="../../../java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">10 - Data and Databases - Spring Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../java-exercises/Labs/java-se03-1.html" class="pagination-link">
-        <span class="nav-page-text">LAB#SE03-1: Library/Book core model</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../java-exercises/frontend/00-Introduction.html" class="pagination-link">
+        <span class="nav-page-text">00 - Frontend - Introduction</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1709,7 +1438,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../../about.html">About</a>
+    <a class="nav-link" href="../../../about.html">About</a>
   </li>  
 </ul>
     </div>
