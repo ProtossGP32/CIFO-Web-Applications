@@ -1,9 +1,9 @@
 ---
-title: "06 - Week 06"
+title: "07 - Week 07"
 description: "Weekly planning iteration"
 categories: ["Time management"]
 author: ProtossGP32
-date: 2023/04/24
+date: 2023/05/01
 from: markdown+emoji
 ---
 # Introduction
@@ -12,6 +12,7 @@ from: markdown+emoji
 Things to accomplish:
 
 - Create a REST API application with SpringBoot
+- Learn to properly define unit tests and integration tests for REST API applications
 - Create the first CI/CD pipeline for a Spring Boot project
 - Complete my tasks for the Team Project in Sprint 2
 - Deeper understanding of the DevOps methodology
@@ -39,6 +40,7 @@ Things to accomplish:
 | CP        | Finish MongoDB tutorials          | 8         | Week 4
 | CP        | Finish React Lab-RE01-1           | 8         | Week 5
 | CP        | Finish React Lab-RE02-1           | 8         | Week 5
+| CP        | Finish React Lab-RE03-1           | 8         | Week 7
 | CI/CD     | Learn GitHub Actions              | 13        | Week 1
 | CI/CD     | Install Jenkins                   | 8         | Week 1
 | CI/CD     | Create staging environment        | 13        | Week 1
@@ -55,7 +57,6 @@ Things to accomplish:
 | DOL       | Learn about Terraform             | 21        | Week 3
 | DOL       | Learn about Ansible               | 21        | Week 3
 | DOL       | Install a SMTP server             | 13        | Week 1
-| DOL       | Finish Penpot deployment and documentation | 5    | Week 3
 | MSX       | Test wired adapter                | 5         | Week 3
 | PMS       | Weekly planning                   | 8         | Week 1
 | PMS       | Weekly retrospective              | 8         | Week 1
@@ -107,7 +108,7 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | WEEK 3      	| MONDAY (W34)                 	                | TUESDAY (W26)                             | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
-| Morning   	| ~~PMS: Weekly planning (W8)~~                |  | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
+| Morning   	| PMS: Weekly planning (W8)                |  | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
 | Afternoon 	|  |  | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
 | Evening   	|   |                      | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
 
@@ -133,32 +134,30 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Monday:
 
-- Morning: BSC
-- Afternoon: BSC
-- Evening: Nothing done
+- Holiday
 
 #### Tuesday:
 
-- Morning: React
+- Morning: BSC
 - Afternoon: BSC
-- Evening: BSC
+- Evening:
 
 #### Wednesday:
 
-- Morning: React
-- Afternoon: 
+- Morning: 
+- Afternoon: BSC
 - Evening: 
 
 #### Thursday:
 
 - Morning: 
-- Afternoon: 
+- Afternoon: BSC
 - Evening: 
 
 #### Friday:
 
 - Morning:
-- Afternoon:
+- Afternoon: BSC
 - Evening:
 
 ### Unfinished tasks
@@ -170,7 +169,7 @@ Think about the reasons why these tasks aren't done:
 
 #### Monday:
 
-- BSC
+- Holiday
 
 #### Tuesday:
 
@@ -178,15 +177,15 @@ Think about the reasons why these tasks aren't done:
 
 #### Wednesday:
 
-- BSC
+- 
 
 #### Thursday:
 
-- BSC
+- 
 
 #### Friday:
 
-- BSC
+- 
 
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
@@ -202,13 +201,11 @@ Based on the previous analysis, identify the weak points of the previous plannin
 
 - **Core concepts learnt during this week / What have you learned?**
     - Learned about Spring Boot tests
-    - Learned about ReactJS hooks
-    - 
     - 
 
 # Weekend homework
 
 - Lectures:
-    - Readings about two hemispheres
+    - 
 - React:
-    - Map to send all person from array People
+    - 
