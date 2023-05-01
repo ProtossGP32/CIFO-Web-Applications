@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -22,4 +23,15 @@ abstract class Person {
     @Column(name="PERSON_BIRTHDATE")
     private LocalDate birthDate;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person person)) return false;
+        return getFirstName().equals(person.getFirstName()) && getLastName().equals(person.getLastName()) && getNationality().equals(person.getNationality()) && getBirthDate().equals(person.getBirthDate());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName(), getNationality(), getBirthDate());
+    }
 }

@@ -1,10 +1,10 @@
 package com.springbootlab0.approach_1.utils;
 
-import com.springbootlab0.approach_1.domain.LibraryMember;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Helper {
@@ -49,10 +49,8 @@ public class Helper {
         JsonParser bodyParser = JsonParserFactory.getJsonParser();
         Map<String, Object> bodyMap = bodyParser.parseMap(objectJSON);
         // Then, create a new User with all the fields of the JSON
-        // TODO: assign the fields of the JSON
         try {
-            T newObject = clazz.newInstance();
-            //Field[] fields = clazz.getDeclaredFields();
+            T newObject = clazz.getDeclaredConstructor().newInstance();
             // Retrieve all fields from the class, even the inherited ones
             List<Field> fields = Helper.getDeclaredFields(clazz);
             fields.stream()
@@ -76,11 +74,13 @@ public class Helper {
                     });
             // Return the newly created User
             return newObject;
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
         } catch (InstantiationException e) {
-            // Generics exception
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
-            // Generics exception
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
     }

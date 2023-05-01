@@ -1,4 +1,4 @@
-package com.springbootlab0.approach_1.bookImageMongoDB;
+package com.springbootlab0.approach_1.bookimagemongodb;
 
 import jakarta.persistence.Id;
 import lombok.*;

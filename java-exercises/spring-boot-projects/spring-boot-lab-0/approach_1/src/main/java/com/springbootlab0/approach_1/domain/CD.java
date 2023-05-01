@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.Hibernate;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -25,5 +27,19 @@ public class CD extends Publication{
         super(title, author, publicationDate, format, status);
         this.duration = duration;
         this.numberOfTracks = numberOfTracks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CD cd)) return false;
+        if (!super.equals(o)) return false;
+        if (Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        return getDuration() == cd.getDuration() && getNumberOfTracks() == cd.getNumberOfTracks();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getDuration(), getNumberOfTracks());
     }
 }

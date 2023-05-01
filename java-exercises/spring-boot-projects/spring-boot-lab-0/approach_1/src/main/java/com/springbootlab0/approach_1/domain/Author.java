@@ -40,11 +40,12 @@ public class Author extends Person{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Author author)) return false;
-        return id.equals(author.id) && penName.equals(author.penName);
+        if (!super.equals(o)) return false;
+        return getId().equals(author.getId()) && getPenName().equals(author.getPenName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, penName);
+        return Objects.hash(super.hashCode(), getId(), getPenName());
     }
 }

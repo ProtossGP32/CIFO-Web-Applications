@@ -1,4 +1,4 @@
-package com.springbootlab0.approach_1.bookImageMongoDB;
+package com.springbootlab0.approach_1.bookimagemongodb;
 
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;

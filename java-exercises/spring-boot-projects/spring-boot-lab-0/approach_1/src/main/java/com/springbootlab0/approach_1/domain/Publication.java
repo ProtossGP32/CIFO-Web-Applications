@@ -3,6 +3,7 @@ package com.springbootlab0.approach_1.domain;
 import com.springbootlab0.approach_1.utils.Helper;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -75,6 +76,7 @@ public abstract class Publication implements PublicationOperations{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Publication that)) return false;
+        if (Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         return id.equals(that.id) && title.equals(that.title) && author.equals(that.author) && publicationDate.equals(that.publicationDate) && format.equals(that.format) && status == that.status;
     }
 

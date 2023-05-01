@@ -47,19 +47,21 @@ public class FakeDataGenerator {
     }
 
     public static Book createFakeBook() {
-        return new Book(
-                faker.book().title(),
-                createFakeAuthor(),
+        Book fakeBook = new Book();
+        fakeBook.setTitle(faker.book().title());
+        fakeBook.setAuthor(createFakeAuthor());
+        fakeBook.setPublicationDate(
                 faker.date().birthday()
-                        .toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate(),
-                PHYSICAL,
-                Status.AVAILABLE,
-                faker.code().isbn13(),
-                faker.number().numberBetween(10, 2000),
-                faker.book().genre()
+                .toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate()
         );
+        fakeBook.setFormat(PHYSICAL);
+        fakeBook.setStatus(Status.AVAILABLE);
+        fakeBook.setIsbn(faker.code().isbn13());
+        fakeBook.setPages(faker.number().numberBetween(10, 2000));
+        fakeBook.setGenre(faker.book().genre());
+        return fakeBook;
     }
 
     public static CD createFakeCD() {
@@ -126,21 +128,22 @@ public class FakeDataGenerator {
     }
 
     public static User createFakeUser() {
-        return new User(
-                faker.name().firstName(),
-                faker.name().lastName(),
-                faker.country().name(),
-                faker
-                        .date()
+        User fakeUser = new User();
+        fakeUser.setFirstName(faker.name().firstName());
+        fakeUser.setLastName(faker.name().lastName());
+        fakeUser.setNationality(faker.country().name());
+        fakeUser.setBirthDate(
+                faker.date()
                         .birthday()
                         .toInstant()
                         .atZone(ZoneId.systemDefault())
-                        .toLocalDate(),
-                faker.address().fullAddress(),
-                faker.phoneNumber().phoneNumber(),
-                faker.internet().safeEmailAddress(),
-                faker.internet().password()
-                );
+                        .toLocalDate()
+        );
+        fakeUser.setAddress(faker.address().fullAddress());
+        fakeUser.setPhoneNumber(faker.phoneNumber().phoneNumber());
+        fakeUser.setMail(faker.internet().safeEmailAddress());
+        fakeUser.setPassword(faker.internet().password());
+        return fakeUser;
     }
 
     public static Librarian createFakeLibrarian() {

@@ -4,8 +4,10 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.Hibernate;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -72,5 +74,19 @@ abstract class StaffMember extends LibraryMember implements StaffOperations {
     @Override
     public void generateReports() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StaffMember that)) return false;
+        if (!super.equals(o)) return false;
+        if (Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        return Double.compare(that.getSalary(), getSalary()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getSalary());
     }
 }

@@ -6,6 +6,7 @@ import com.springbootlab0.approach_1.domain.User;
 import com.springbootlab0.approach_1.services.LibraryMemberService;
 import com.springbootlab0.approach_1.utils.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -62,10 +63,10 @@ public class LibraryMembersRestController {
         return libraryMemberService.getAllUsers();
     }
 
-    /*
+
     @DeleteMapping(path="users/delete", consumes = "application/JSON")
     public ResponseEntity<LibraryMember> deleteUser(@RequestBody String deleteBody) {
-
+        // TODO: Implement this endpoint
+        return ResponseEntity.internalServerError().body(null);
     }
-     */
 }

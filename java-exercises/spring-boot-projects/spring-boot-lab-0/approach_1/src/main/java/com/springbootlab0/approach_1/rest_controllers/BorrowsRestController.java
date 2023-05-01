@@ -17,6 +17,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("api/borrows")
 public class BorrowsRestController {
+    private final String OPERATION = "operation";
+    private final String VERSION = "version";
+    private final String API = "api 1.0";
+    private final String OPERATION_STATUS = "operationStatus";
     @Autowired
     BorrowService borrowService;
 
@@ -52,17 +56,17 @@ public class BorrowsRestController {
         // Initialize the headers
         // TODO: Parametrize the headers attributes
         HttpHeaders headers = new HttpHeaders();
-        headers.add("operation", "deleteBorrow");
-        headers.add("version", "api 1.0");
+        headers.add(OPERATION, "deleteBorrow");
+        headers.add(VERSION, API);
         // Call the service to delete the Borrow from the DB if it exists
         Borrow deletedBorrow = borrowService.deleteAndReturnBorrowById(borrowId);
         if (deletedBorrow != null) {
             // Add the operation status to the headers
-            headers.add("operationStatus", "deleted");
+            headers.add(OPERATION_STATUS, "deleted");
             return ResponseEntity.ok().headers(headers).body(deletedBorrow);
         }
         // Return a null response
-        headers.add("operationStatus", "borrow not found");
+        headers.add(OPERATION_STATUS, "borrow not found");
         return ResponseEntity.badRequest().headers(headers).body(null);
     }
 }

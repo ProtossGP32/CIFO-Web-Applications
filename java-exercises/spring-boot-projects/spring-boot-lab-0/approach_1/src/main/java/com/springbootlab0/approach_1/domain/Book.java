@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @ToString(callSuper = true)
@@ -20,12 +18,4 @@ public class Book extends Publication {
     public Book() {
         super();
     }
-
-    public Book(String title, Author author, LocalDate publicationDate, String format, Status status, String isbn, int pages, String genre) {
-        super(title, author, publicationDate, format, status);
-        this.isbn = isbn;
-        this.pages = pages;
-        this.genre = genre;
-    }
-
 }

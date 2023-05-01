@@ -11,6 +11,7 @@ import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 // Lombok annotations
 @Getter
@@ -52,5 +53,18 @@ public abstract class LibraryMember extends Person implements GeneralOperations 
     @Override
     public void searchPublications(String query) {
         System.out.println("[" + this.getClass().getSimpleName() + "] Searching publications...");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LibraryMember that)) return false;
+        if (!super.equals(o)) return false;
+        return getId().equals(that.getId()) && getAddress().equals(that.getAddress()) && getPhoneNumber().equals(that.getPhoneNumber());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getId(), getAddress(), getPhoneNumber());
     }
 }

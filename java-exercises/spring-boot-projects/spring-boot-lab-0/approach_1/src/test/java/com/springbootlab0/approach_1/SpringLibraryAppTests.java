@@ -1,18 +1,15 @@
 package com.springbootlab0.approach_1;
 
-import com.github.javafaker.Faker;
 import com.springbootlab0.approach_1.domain.Book;
 import com.springbootlab0.approach_1.domain.CD;
 import com.springbootlab0.approach_1.domain.DVD;
 import com.springbootlab0.approach_1.domain.Publication;
 import com.springbootlab0.approach_1.repository.*;
 import com.springbootlab0.approach_1.utils.FakeDataGenerator;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.ZoneId;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

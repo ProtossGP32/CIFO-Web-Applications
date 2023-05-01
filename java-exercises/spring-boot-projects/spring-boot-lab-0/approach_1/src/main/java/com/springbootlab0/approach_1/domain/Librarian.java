@@ -56,4 +56,5 @@ public class Librarian extends StaffMember implements BorrowOperations {
         // List all borrows by asking for user and book information
         System.out.println("A " + this.getClass().getSimpleName() + " is trying to list all borrows");
     }
+
 }
