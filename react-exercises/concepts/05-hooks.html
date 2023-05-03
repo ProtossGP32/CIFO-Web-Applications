@@ -591,9 +591,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example-3---personform" id="toc-example-3---personform" class="nav-link" data-scroll-target="#example-3---personform">Example 3 - PersonForm</a></li>
   </ul></li>
   <li><a href="#useref" id="toc-useref" class="nav-link" data-scroll-target="#useref"><code>useRef</code></a></li>
-  <li><a href="#useeffect" id="toc-useeffect" class="nav-link" data-scroll-target="#useeffect"><code>useEffect</code></a></li>
+  <li><a href="#useeffect" id="toc-useeffect" class="nav-link" data-scroll-target="#useeffect"><code>useEffect</code></a>
+  <ul class="collapse">
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#example-1-1" id="toc-example-1-1" class="nav-link" data-scroll-target="#example-1-1">Example 1</a></li>
+  <li><a href="#example-2-1" id="toc-example-2-1" class="nav-link" data-scroll-target="#example-2-1">Example 2</a></li>
+  <li><a href="#synchronizing-with-effects" id="toc-synchronizing-with-effects" class="nav-link" data-scroll-target="#synchronizing-with-effects">Synchronizing with Effects</a></li>
+  </ul></li>
   <li><a href="#usecontext" id="toc-usecontext" class="nav-link" data-scroll-target="#usecontext"><code>useContext</code></a></li>
   <li><a href="#custom-hooks" id="toc-custom-hooks" class="nav-link" data-scroll-target="#custom-hooks">Custom hooks</a></li>
+  </ul></li>
+  <li><a href="#basic-hooks-rules" id="toc-basic-hooks-rules" class="nav-link" data-scroll-target="#basic-hooks-rules">Basic hooks rules</a>
+  <ul class="collapse">
+  <li><a href="#only-call-hooks-at-the-top-level" id="toc-only-call-hooks-at-the-top-level" class="nav-link" data-scroll-target="#only-call-hooks-at-the-top-level">Only call hooks at the top level</a></li>
+  <li><a href="#only-call-hooks-from-react-functions" id="toc-only-call-hooks-from-react-functions" class="nav-link" data-scroll-target="#only-call-hooks-from-react-functions">Only call hooks from React Functions</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/react-exercises/concepts/05-hooks.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -860,12 +871,133 @@ TODO: copy the example 2 from <a href="https://albertprofe.dev/reactjs/reactjs-h
 </section>
 <section id="useeffect" class="level2">
 <h2 class="anchored" data-anchor-id="useeffect"><code>useEffect</code></h2>
+<blockquote class="blockquote">
+<p><a href="https://react.dev/learn/synchronizing-with-effects"><strong>Official docs:</strong></a></p>
+</blockquote>
+<p><code>useEffect</code> is a hook that <strong>doesn’t depend on its component’s render lifecycle</strong>.</p>
+<section id="parameters" class="level3">
+<h3 class="anchored" data-anchor-id="parameters">Parameters</h3>
+<p><code>useEffect</code> accepts two arguments. The second argument is optional.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">useEffect</span>(setup<span class="op">,</span> dependencies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>where:</p>
+<ul>
+<li><code>setup</code>: function with the <code>effect</code>’s logic
+<ul>
+<li>This function may also optionally return a clean-up function</li>
+<li>When the component is first added to the DOM, React will run the setup function</li>
+<li>After every re-render with <strong>changed dependencies</strong>, React will first run the clean-up function (when provided) with the old values, and then run the setup function with the new values</li>
+<li>Once the component is removed from the DOM, React will run your cleanup function one last time</li>
+</ul></li>
+<li><code>(optional) dependencies</code>: list of all reactive values referenced inside the setup code
+<ul>
+<li>Reactive values include props, state and all the variables and functions declared directly inside your component body</li>
+<li>These are the ones that trigger the <code>useEffect</code>: when no dependencies are defined, the <code>useEffect</code> is triggered…</li>
+<li>Dependency array properties:
+<ul>
+<li><strong>Optional:</strong> if not specified, <code>useEffect</code> runs after each render</li>
+<li><strong>Empty array:</strong> then the <code>useEffect</code> runs once after the initial render</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="example-1-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-1">Example 1</h3>
+<p>Let’s see an example:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>App.js</strong></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> { useEffect } <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> { createConnection } <span class="im">from</span> <span class="st">'./chat.js'</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">function</span> <span class="fu">ChatRoom</span>({ roomId }) {</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="co">// Define a useState to manage the serverUrl</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="kw">const</span> [serverUrl<span class="op">,</span> setServerUrl] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">'https://localhost:1234'</span>)<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="co">// Define a useEffect to manage connections to the ChatRoom</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb5-9"><a href="#cb5-9"></a>      <span class="kw">const</span> connection <span class="op">=</span> <span class="fu">createConnection</span>(serverUrl<span class="op">,</span> roomId)<span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>      connnection<span class="op">.</span><span class="fu">connect</span>()<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>      <span class="cf">return</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb5-12"><a href="#cb5-12"></a>        connection<span class="op">.</span><span class="fu">disconnect</span>()<span class="op">;</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>      }<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>    }<span class="op">,</span> [serverUrl<span class="op">,</span> roomId])<span class="op">;</span> <span class="co">// Dependencies are both the serverUrl and roomId</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>  <span class="co">// Do something else...</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>where:</p>
+<ul>
+<li><code>setup</code> function creates the connection to the <code>serverUrl</code> and a specified <code>roomId</code></li>
+<li><code>dependencies</code> here are both the <code>serverUrl</code> and the <code>roomId</code>, meaning that if any of them</li>
+</ul>
+</section>
+<section id="example-2-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-1">Example 2</h3>
+<p>Another example:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> React<span class="op">,</span> { useState<span class="op">,</span> useEffect } <span class="im">from</span> <span class="st">"react"</span><span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">const</span> App <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="co">// Define a useState to control the message state</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="kw">const</span> [message<span class="op">,</span> setMessage] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">"Hi there, how are you?"</span>)<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="co">// Define a useEffect to change the message value</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb6-8"><a href="#cb6-8"></a>      <span class="co">// Each time a dependency changes, useEffect will launch the setTimeout</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>      <span class="co">// Wait for 6 secs and then change the message</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb6-11"><a href="#cb6-11"></a>        <span class="fu">setMessage</span>(<span class="st">"I'm fine, thanks!"</span>)<span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>      }<span class="op">,</span> <span class="dv">6000</span>)<span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>  }<span class="op">,</span> [])<span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a>  <span class="cf">return</span> <span class="op">&lt;</span>h1<span class="op">&gt;</span>{message}<span class="op">&lt;/</span>h1<span class="op">&gt;;</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>}<span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TODO: explain this example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="synchronizing-with-effects" class="level3">
+<h3 class="anchored" data-anchor-id="synchronizing-with-effects">Synchronizing with Effects</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Synchronize is a key-word
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p>The question is not ‘when does this effect run’, the question is ‘with which state does this effect synchronize’ - Ryan Florence</p>
+</blockquote>
+</div>
+</div>
+</section>
 </section>
 <section id="usecontext" class="level2">
 <h2 class="anchored" data-anchor-id="usecontext"><code>useContext</code></h2>
 </section>
 <section id="custom-hooks" class="level2">
 <h2 class="anchored" data-anchor-id="custom-hooks">Custom hooks</h2>
+</section>
+</section>
+<section id="basic-hooks-rules" class="level1">
+<h1>Basic hooks rules</h1>
+<section id="only-call-hooks-at-the-top-level" class="level2">
+<h2 class="anchored" data-anchor-id="only-call-hooks-at-the-top-level">Only call hooks at the top level</h2>
+</section>
+<section id="only-call-hooks-from-react-functions" class="level2">
+<h2 class="anchored" data-anchor-id="only-call-hooks-from-react-functions">Only call hooks from React Functions</h2>
 
 
 </section>

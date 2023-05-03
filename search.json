@@ -1502,7 +1502,7 @@
     "href": "react-exercises/concepts/05-hooks.html#useeffect",
     "title": "05 - React JS: Using hooks",
     "section": "useEffect",
-    "text": "useEffect"
+    "text": "useEffect\n\nOfficial docs:\n\nuseEffect is a hook that doesn’t depend on its component’s render lifecycle.\n\nParameters\nuseEffect accepts two arguments. The second argument is optional.\nuseEffect(setup, dependencies)\nwhere:\n\nsetup: function with the effect’s logic\n\nThis function may also optionally return a clean-up function\nWhen the component is first added to the DOM, React will run the setup function\nAfter every re-render with changed dependencies, React will first run the clean-up function (when provided) with the old values, and then run the setup function with the new values\nOnce the component is removed from the DOM, React will run your cleanup function one last time\n\n(optional) dependencies: list of all reactive values referenced inside the setup code\n\nReactive values include props, state and all the variables and functions declared directly inside your component body\nThese are the ones that trigger the useEffect: when no dependencies are defined, the useEffect is triggered…\nDependency array properties:\n\nOptional: if not specified, useEffect runs after each render\nEmpty array: then the useEffect runs once after the initial render\n\n\n\n\n\nExample 1\nLet’s see an example:\n\n\nApp.js\n\nimport { useEffect } from 'react';\nimport { createConnection } from './chat.js';\n\nfunction ChatRoom({ roomId }) {\n  // Define a useState to manage the serverUrl\n  const [serverUrl, setServerUrl] = useState('https://localhost:1234');\n  // Define a useEffect to manage connections to the ChatRoom\n  useEffect(() =&gt; {\n      const connection = createConnection(serverUrl, roomId);\n      connnection.connect();\n      return () =&gt; {\n        connection.disconnect();\n      };\n    }, [serverUrl, roomId]); // Dependencies are both the serverUrl and roomId\n  // Do something else...\n}\n\nwhere:\n\nsetup function creates the connection to the serverUrl and a specified roomId\ndependencies here are both the serverUrl and the roomId, meaning that if any of them\n\n\n\nExample 2\nAnother example:\nimport React, { useState, useEffect } from \"react\";\n\nconst App = () =&gt; {\n  // Define a useState to control the message state\n  const [message, setMessage] = useState(\"Hi there, how are you?\");\n  // Define a useEffect to change the message value\n  useEffect(() =&gt; {\n      // Each time a dependency changes, useEffect will launch the setTimeout\n      // Wait for 6 secs and then change the message\n      setTimeout(() =&gt; {\n        setMessage(\"I'm fine, thanks!\");\n      }, 6000);\n  }, []);\n\n  return &lt;h1&gt;{message}&lt;/h1&gt;;\n};\n\nexport default App;\n\n\n\n\n\n\nTODO: explain this example\n\n\n\n\n\n\n\n\nSynchronizing with Effects\n\n\n\n\n\n\nSynchronize is a key-word\n\n\n\n\nThe question is not ‘when does this effect run’, the question is ‘with which state does this effect synchronize’ - Ryan Florence"
   },
   {
     "objectID": "react-exercises/concepts/05-hooks.html#usecontext",
@@ -1517,6 +1517,20 @@
     "title": "05 - React JS: Using hooks",
     "section": "Custom hooks",
     "text": "Custom hooks"
+  },
+  {
+    "objectID": "react-exercises/concepts/05-hooks.html#only-call-hooks-at-the-top-level",
+    "href": "react-exercises/concepts/05-hooks.html#only-call-hooks-at-the-top-level",
+    "title": "05 - React JS: Using hooks",
+    "section": "Only call hooks at the top level",
+    "text": "Only call hooks at the top level"
+  },
+  {
+    "objectID": "react-exercises/concepts/05-hooks.html#only-call-hooks-from-react-functions",
+    "href": "react-exercises/concepts/05-hooks.html#only-call-hooks-from-react-functions",
+    "title": "05 - React JS: Using hooks",
+    "section": "Only call hooks from React Functions",
+    "text": "Only call hooks from React Functions"
   },
   {
     "objectID": "react-exercises/concepts/00-principles.html",
