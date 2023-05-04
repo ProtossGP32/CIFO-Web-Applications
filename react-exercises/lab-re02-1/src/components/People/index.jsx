@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid } from "semantic-ui-react";
-import PersonCard from "../../components/PersonCard";
+import PersonCard from "../PersonCard";
 
 function People() {
     // It is a copy of the PersonList function in Lab-RE01-2
@@ -29,7 +29,8 @@ function People() {
     // Render the component
     return (
         <>
-            <h1>Persons - Grid with spread operator</h1>
+            <h2>Persons - useEffect hook for API connection and Grid with spread operator example</h2>
+            <hr />
             {/* Conditional rendering depending on the isLoading value */}
             { isLoading ? (
                 <p>Loading...</p>

@@ -175,6 +175,46 @@ export default App;
 ## TODO: explain this example
 :::
 
+### Example 3: `useEffect` with dependencies
+Yet another example:
+```{.js}
+import React, { useState, useEffect } from "react";
+
+const App = () => {
+  const [message, setMessage] = useState("Message 1: Hi there, how are you?");
+  const [message2, setMessage2] = useState("This is message 2");
+
+  const handleClick = (event) => {
+    setMessage2("New message 2");
+  };
+
+  useEffect(() => {
+    console.log("trigger use effect hook");
+
+    setTimeout(() => {
+      setMessage(message2);
+    }, 6000);
+    console.log("end of useEffect");
+  }, [message2]);
+
+  return (
+    <>
+      <h1>{message}</h1>
+      <h2>New message: {message2}</h2>
+      <button onClick={handleClick}>Update message2</button>
+    </>
+  );
+};
+
+export default App;
+```
+In this example, the `useEffect` is called once on component mounting (first render), and also with any change on the `message2` state:
+
+- We can change the `message2` state any time by clicking on the `Update message2` button:
+  - `Update message2` button calls `handleClick`
+  - `handleClick` updates the `message2` state to `"New message 2"`
+  - `useEffect` syncs with `message2` and runs again, updating the `message` state to the value of `message2`
+
 ### Synchronizing with Effects
 :::{.callout-tip}
 ## Synchronize is a key-word

@@ -13,6 +13,7 @@ const PersonCard = ({image, firstName, lastName, birthDate, role}) => {
                         {lastName}, {firstName}
                     </Card.Header>
                     <Card.Meta>Birthdate: {birthDate}</Card.Meta>
+                    {/* TODO: API doesn't return the role of the person, not included in the DB entry */}
                     <Card.Description>{firstName} is a {role}</Card.Description>
                 </Card.Content>
             </Card>

@@ -9,8 +9,6 @@ function Layout() {
             <nav>
                 <Link to="/">Home</Link>
                 <span>  </span>
-                <Link to="/people">People</Link>
-                <span>  </span>
                 <Link to="/hooksexamples">Hooks examples</Link>
                 <span>  </span>
                 <Link to="/contact">Contact</Link>

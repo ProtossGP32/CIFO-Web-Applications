@@ -106,11 +106,11 @@ Things to accomplish:
 ## Decision-making: plan your week
 Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a week). At the end of the week, review it to see how many of the tasks have been accomplished. Once done, plan the next week taking into account the feedback from the previous week:
 
-| WEEK 3      	| MONDAY (W34)                 	                | TUESDAY (W26)                             | WEDNESDAY (W32)                       | THURSDAY (W34)                            | FRIDAY (W37)  |
+| TIME OF DAY      	| MONDAY                 	                | TUESDAY                             | WEDNESDAY                       | THURSDAY                            | FRIDAY  |
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
-| Morning   	| PMS: Weekly planning (W8)                |  | CP: Enable logging in Java (W8) TP: Finish User Entity (W13)     | CP: Swagger and Mockito into Library (W8)                                  | TP: Update functional diagrams (W8)  	|
-| Afternoon 	|  |  | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
-| Evening   	|   |                      | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8)| PMS: Weekly retrospective (W8)    |
+| Morning   	| Holiday | BSC | PMS: Weekly planning (W8) CP: Enable logging in Java (W8)     | CP: Finish React Lab-RE03-1 (8)                                  | TP: Update functional diagrams (W8)  	|
+| Afternoon 	| Holiday | BSC | DOL: Learn about Argo workflows (21)  | DOL: Learn about OKD (21)         | TP: Enable logging (W5)  	|
+| Evening   	| Holiday | BSC | CP: Create missing Unit Tests (W8) CP: Finish MongoDB tutorials (W8)   | TP: Create missing Unit Tests (W8) TP: Finish User Entity (W13) | PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -144,13 +144,13 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Wednesday:
 
-- Morning: 
+- Morning: React `useEffect` hook
 - Afternoon: BSC
-- Evening: 
+- Evening: Nothing
 
 #### Thursday:
 
-- Morning: 
+- Morning: React + BSC
 - Afternoon: BSC
 - Evening: 
 
@@ -177,7 +177,7 @@ Think about the reasons why these tasks aren't done:
 
 #### Wednesday:
 
-- 
+- BSC
 
 #### Thursday:
 
