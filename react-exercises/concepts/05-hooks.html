@@ -596,6 +596,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#example-1-1" id="toc-example-1-1" class="nav-link" data-scroll-target="#example-1-1">Example 1</a></li>
   <li><a href="#example-2-1" id="toc-example-2-1" class="nav-link" data-scroll-target="#example-2-1">Example 2</a></li>
+  <li><a href="#example-3-useeffect-with-dependencies" id="toc-example-3-useeffect-with-dependencies" class="nav-link" data-scroll-target="#example-3-useeffect-with-dependencies">Example 3: <code>useEffect</code> with dependencies</a></li>
   <li><a href="#synchronizing-with-effects" id="toc-synchronizing-with-effects" class="nav-link" data-scroll-target="#synchronizing-with-effects">Synchronizing with Effects</a></li>
   </ul></li>
   <li><a href="#usecontext" id="toc-usecontext" class="nav-link" data-scroll-target="#usecontext"><code>useContext</code></a></li>
@@ -964,6 +965,48 @@ TODO: explain this example
 
 </div>
 </div>
+</section>
+<section id="example-3-useeffect-with-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="example-3-useeffect-with-dependencies">Example 3: <code>useEffect</code> with dependencies</h3>
+<p>Yet another example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> React<span class="op">,</span> { useState<span class="op">,</span> useEffect } <span class="im">from</span> <span class="st">"react"</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">const</span> App <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="kw">const</span> [message<span class="op">,</span> setMessage] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">"Message 1: Hi there, how are you?"</span>)<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="kw">const</span> [message2<span class="op">,</span> setMessage2] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">"This is message 2"</span>)<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a></span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="kw">const</span> handleClick <span class="op">=</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-8"><a href="#cb7-8"></a>    <span class="fu">setMessage2</span>(<span class="st">"New message 2"</span>)<span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  }<span class="op">;</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a></span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb7-12"><a href="#cb7-12"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"trigger use effect hook"</span>)<span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a></span>
+<span id="cb7-14"><a href="#cb7-14"></a>    <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb7-15"><a href="#cb7-15"></a>      <span class="fu">setMessage</span>(message2)<span class="op">;</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>    }<span class="op">,</span> <span class="dv">6000</span>)<span class="op">;</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"end of useEffect"</span>)<span class="op">;</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a>  }<span class="op">,</span> [message2])<span class="op">;</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a></span>
+<span id="cb7-20"><a href="#cb7-20"></a>  <span class="cf">return</span> (</span>
+<span id="cb7-21"><a href="#cb7-21"></a>    <span class="op">&lt;&gt;</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a>      <span class="op">&lt;</span>h1<span class="op">&gt;</span>{message}<span class="op">&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a>      <span class="op">&lt;</span>h2<span class="op">&gt;</span>New <span class="dt">message</span><span class="op">:</span> {message2}<span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>      <span class="op">&lt;</span>button onClick<span class="op">=</span>{handleClick}<span class="op">&gt;</span>Update message2<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a>    <span class="op">&lt;/&gt;</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a>  )<span class="op">;</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a>}<span class="op">;</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, the <code>useEffect</code> is called once on component mounting (first render), and also with any change on the <code>message2</code> state:</p>
+<ul>
+<li>We can change the <code>message2</code> state any time by clicking on the <code>Update message2</code> button:
+<ul>
+<li><code>Update message2</code> button calls <code>handleClick</code></li>
+<li><code>handleClick</code> updates the <code>message2</code> state to <code>"New message 2"</code></li>
+<li><code>useEffect</code> syncs with <code>message2</code> and runs again, updating the <code>message</code> state to the value of <code>message2</code></li>
+</ul></li>
+</ul>
 </section>
 <section id="synchronizing-with-effects" class="level3">
 <h3 class="anchored" data-anchor-id="synchronizing-with-effects">Synchronizing with Effects</h3>
