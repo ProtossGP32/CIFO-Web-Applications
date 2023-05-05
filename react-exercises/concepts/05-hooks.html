@@ -597,6 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example-1-1" id="toc-example-1-1" class="nav-link" data-scroll-target="#example-1-1">Example 1</a></li>
   <li><a href="#example-2-1" id="toc-example-2-1" class="nav-link" data-scroll-target="#example-2-1">Example 2</a></li>
   <li><a href="#example-3-useeffect-with-dependencies" id="toc-example-3-useeffect-with-dependencies" class="nav-link" data-scroll-target="#example-3-useeffect-with-dependencies">Example 3: <code>useEffect</code> with dependencies</a></li>
+  <li><a href="#example-4-combination-of-usereducer-useeffect-and-useref-hooks" id="toc-example-4-combination-of-usereducer-useeffect-and-useref-hooks" class="nav-link" data-scroll-target="#example-4-combination-of-usereducer-useeffect-and-useref-hooks">Example 4: combination of <code>useReducer</code>, <code>useEffect</code> and <code>useRef</code> hooks:</a></li>
   <li><a href="#synchronizing-with-effects" id="toc-synchronizing-with-effects" class="nav-link" data-scroll-target="#synchronizing-with-effects">Synchronizing with Effects</a></li>
   </ul></li>
   <li><a href="#usecontext" id="toc-usecontext" class="nav-link" data-scroll-target="#usecontext"><code>useContext</code></a></li>
@@ -884,9 +885,12 @@ TODO: copy the example 2 from <a href="https://albertprofe.dev/reactjs/reactjs-h
 <ul>
 <li><code>setup</code>: function with the <code>effect</code>’s logic
 <ul>
-<li>This function may also optionally return a clean-up function</li>
+<li>This function may also optionally return a <strong>clean-up function</strong> (A function that is remembered and launched on the next re-render if dependencies have changed)</li>
 <li>When the component is first added to the DOM, React will run the setup function</li>
-<li>After every re-render with <strong>changed dependencies</strong>, React will first run the clean-up function (when provided) with the old values, and then run the setup function with the new values</li>
+<li>After every re-render with <strong>changed dependencies</strong>, React will first run the clean-up function (when provided) with the old values, and then run the setup function with the new values
+<ul>
+<li>This means that React <strong>remembers the clean-up function</strong> and executes it before running the effect again</li>
+</ul></li>
 <li>Once the component is removed from the DOM, React will run your cleanup function one last time</li>
 </ul></li>
 <li><code>(optional) dependencies</code>: list of all reactive values referenced inside the setup code
@@ -900,6 +904,21 @@ TODO: copy the example 2 from <a href="https://albertprofe.dev/reactjs/reactjs-h
 </ul></li>
 </ul></li>
 </ul>
+<p>Same explanation [from ReactJS docs:]</p>
+<blockquote class="blockquote">
+<p>React calls your <strong>setup</strong> and <strong>cleanup</strong> functions whenever it’s necessary, which may happen multiple times:</p>
+<ol type="1">
+<li>Your <strong>setup code</strong> runs when your component is added to the page (mounts).</li>
+<li>After every re-render of your component where the <strong>dependencies</strong> have changed:</li>
+</ol>
+<ul>
+<li>First, your <strong>cleanup code</strong> runs with the old props and state.</li>
+<li>Then, your <strong>setup code</strong> runs with the new props and state.</li>
+</ul>
+<ol start="3" type="1">
+<li>Your <strong>cleanup code</strong> runs one final time after your component is removed from the page (unmounts).</li>
+</ol>
+</blockquote>
 </section>
 <section id="example-1-1" class="level3">
 <h3 class="anchored" data-anchor-id="example-1-1">Example 1</h3>
@@ -918,12 +937,14 @@ TODO: copy the example 2 from <a href="https://albertprofe.dev/reactjs/reactjs-h
 <span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
 <span id="cb5-9"><a href="#cb5-9"></a>      <span class="kw">const</span> connection <span class="op">=</span> <span class="fu">createConnection</span>(serverUrl<span class="op">,</span> roomId)<span class="op">;</span></span>
 <span id="cb5-10"><a href="#cb5-10"></a>      connnection<span class="op">.</span><span class="fu">connect</span>()<span class="op">;</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>      <span class="cf">return</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb5-12"><a href="#cb5-12"></a>        connection<span class="op">.</span><span class="fu">disconnect</span>()<span class="op">;</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a>      }<span class="op">;</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a>    }<span class="op">,</span> [serverUrl<span class="op">,</span> roomId])<span class="op">;</span> <span class="co">// Dependencies are both the serverUrl and roomId</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>  <span class="co">// Do something else...</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a href="#cb5-11"></a>      <span class="co">// Now define the cleanup code, that will be the responsible of disconnecting when any of the dependencies change</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>      <span class="co">// --&gt; This way we ensure that no connections are left unhandled</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>      <span class="cf">return</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb5-14"><a href="#cb5-14"></a>        connection<span class="op">.</span><span class="fu">disconnect</span>()<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>      }<span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>    }<span class="op">,</span> [serverUrl<span class="op">,</span> roomId])<span class="op">;</span> <span class="co">// Dependencies are both the serverUrl and roomId</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a>  <span class="co">// Do something else...</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>where:</p>
 <ul>
@@ -1007,6 +1028,145 @@ TODO: explain this example
 <li><code>useEffect</code> syncs with <code>message2</code> and runs again, updating the <code>message</code> state to the value of <code>message2</code></li>
 </ul></li>
 </ul>
+</section>
+<section id="example-4-combination-of-usereducer-useeffect-and-useref-hooks" class="level3">
+<h3 class="anchored" data-anchor-id="example-4-combination-of-usereducer-useeffect-and-useref-hooks">Example 4: combination of <code>useReducer</code>, <code>useEffect</code> and <code>useRef</code> hooks:</h3>
+<p><a href="https://albertprofe.dev/reactjs/rjslab2.html#usereducer-useeffect-useref-clock">Doc page</a></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Timer.jsx</strong></pre>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">/*</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">    Timer example: combination of useRef, useReducer, and useEffect</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">*/</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="im">import</span> { useRef<span class="op">,</span> useReducer<span class="op">,</span> useEffect } <span class="im">from</span> <span class="st">"react"</span><span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co">// Define an initialState of the timer</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="kw">const</span> initialTimerState <span class="op">=</span> {</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="dt">isRunning</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="dt">time</span><span class="op">:</span> <span class="dv">0</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>}</span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">// Define the reducer function that manages the features of the timer</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="kw">function</span> <span class="fu">reducer</span>(state<span class="op">,</span> action) {</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    <span class="cf">switch</span> (action<span class="op">.</span><span class="at">type</span>) {</span>
+<span id="cb8-15"><a href="#cb8-15"></a>        <span class="cf">case</span> <span class="st">"start"</span><span class="op">:</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>            <span class="co">// Change the 'isRunning' value to true</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a>            <span class="co">// --&gt; This will trigger the useEffect and set an interval task to update the time each second</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a>            <span class="cf">return</span> {</span>
+<span id="cb8-19"><a href="#cb8-19"></a>                <span class="op">...</span>state<span class="op">,</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a>                <span class="dt">isRunning</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a>            }<span class="op">;</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a>        <span class="cf">case</span> <span class="st">"stop"</span><span class="op">:</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a>            <span class="co">// Change the 'isRunning' value to false</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a>            <span class="co">// --&gt; This will trigger the useEffect again and clear the previously defined interval</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a>            <span class="cf">return</span> {</span>
+<span id="cb8-26"><a href="#cb8-26"></a>                <span class="op">...</span>state<span class="op">,</span></span>
+<span id="cb8-27"><a href="#cb8-27"></a>                <span class="dt">isRunning</span><span class="op">:</span> <span class="kw">false</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a>            }<span class="op">;</span></span>
+<span id="cb8-29"><a href="#cb8-29"></a>        <span class="cf">case</span> <span class="st">"reset"</span><span class="op">:</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a>            <span class="co">// Returns the initial state of the timer</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a>            <span class="co">// --&gt; This will trigger the useEffect if the isRunning state changes; else, it won't need</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a>            <span class="cf">return</span> initialTimerState<span class="op">;</span></span>
+<span id="cb8-33"><a href="#cb8-33"></a>        <span class="cf">case</span> <span class="st">"tick"</span><span class="op">:</span></span>
+<span id="cb8-34"><a href="#cb8-34"></a>            <span class="co">// Returns the updated state.time value</span></span>
+<span id="cb8-35"><a href="#cb8-35"></a>            <span class="co">// --&gt; This WON'T trigger the useEffect as the isRunning value won't change</span></span>
+<span id="cb8-36"><a href="#cb8-36"></a>            <span class="cf">return</span> {</span>
+<span id="cb8-37"><a href="#cb8-37"></a>                <span class="op">...</span>state<span class="op">,</span></span>
+<span id="cb8-38"><a href="#cb8-38"></a>                <span class="dt">time</span><span class="op">:</span> state<span class="op">.</span><span class="at">time</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb8-39"><a href="#cb8-39"></a>            }<span class="op">;</span></span>
+<span id="cb8-40"><a href="#cb8-40"></a>        <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb8-41"><a href="#cb8-41"></a>            <span class="co">// Throw an error for any unexpected value</span></span>
+<span id="cb8-42"><a href="#cb8-42"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>()<span class="op">;</span></span>
+<span id="cb8-43"><a href="#cb8-43"></a>    }</span>
+<span id="cb8-44"><a href="#cb8-44"></a>}</span>
+<span id="cb8-45"><a href="#cb8-45"></a></span>
+<span id="cb8-46"><a href="#cb8-46"></a><span class="co">// Define the Timer main function</span></span>
+<span id="cb8-47"><a href="#cb8-47"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">Timer</span>() {</span>
+<span id="cb8-48"><a href="#cb8-48"></a>    <span class="co">// First off, initialize a timer state and its reducer function</span></span>
+<span id="cb8-49"><a href="#cb8-49"></a>    <span class="co">// --&gt; The reducer will be the previously defined function that will manage the behaviour of the Timer</span></span>
+<span id="cb8-50"><a href="#cb8-50"></a>    <span class="co">// --&gt; We also provide the desired initialTimerState</span></span>
+<span id="cb8-51"><a href="#cb8-51"></a>    <span class="kw">const</span> [state<span class="op">,</span> dispatch] <span class="op">=</span> <span class="fu">useReducer</span>(reducer<span class="op">,</span> initialTimerState)<span class="op">;</span></span>
+<span id="cb8-52"><a href="#cb8-52"></a>    <span class="co">// Then, define a reference value (idRef) using the `useRef` hook to handle the time value update</span></span>
+<span id="cb8-53"><a href="#cb8-53"></a>    <span class="kw">const</span> idRef <span class="op">=</span> <span class="fu">useRef</span>(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb8-54"><a href="#cb8-54"></a></span>
+<span id="cb8-55"><a href="#cb8-55"></a>    <span class="co">// Define the useEffect hook that updates the lifecycle of the timer</span></span>
+<span id="cb8-56"><a href="#cb8-56"></a>    <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb8-57"><a href="#cb8-57"></a>        <span class="co">// if 'state.isRunning' changes to false, there's no need to do anything. Reasons:</span></span>
+<span id="cb8-58"><a href="#cb8-58"></a>        <span class="co">// --&gt; The cleanup code from the "start" business logic already clears the "setInterval"</span></span>
+<span id="cb8-59"><a href="#cb8-59"></a>        <span class="co">// --&gt; The return here only serves to avoid executing the rest of the code</span></span>
+<span id="cb8-60"><a href="#cb8-60"></a>        <span class="cf">if</span> (<span class="op">!</span>state<span class="op">.</span><span class="at">isRunning</span>) {</span>
+<span id="cb8-61"><a href="#cb8-61"></a>            <span class="co">//</span></span>
+<span id="cb8-62"><a href="#cb8-62"></a>            <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb8-63"><a href="#cb8-63"></a>        }<span class="op">;</span></span>
+<span id="cb8-64"><a href="#cb8-64"></a></span>
+<span id="cb8-65"><a href="#cb8-65"></a>        <span class="co">// Set the idRef current value to the initialization of a new interval</span></span>
+<span id="cb8-66"><a href="#cb8-66"></a>        <span class="co">// --&gt; This interval is the responsible of calling the useReducer hook with the 'tick' action type</span></span>
+<span id="cb8-67"><a href="#cb8-67"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Starting Timer"</span>)<span class="op">;</span></span>
+<span id="cb8-68"><a href="#cb8-68"></a>        idRef<span class="op">.</span><span class="at">current</span> <span class="op">=</span> <span class="pp">setInterval</span>(</span>
+<span id="cb8-69"><a href="#cb8-69"></a>            () <span class="kw">=&gt;</span> <span class="fu">dispatch</span>(</span>
+<span id="cb8-70"><a href="#cb8-70"></a>                    {</span>
+<span id="cb8-71"><a href="#cb8-71"></a>                        <span class="dt">type</span><span class="op">:</span> <span class="st">"tick"</span></span>
+<span id="cb8-72"><a href="#cb8-72"></a>                    })<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span> <span class="co">// Set the interval value to 1 sec</span></span>
+<span id="cb8-73"><a href="#cb8-73"></a>        </span>
+<span id="cb8-74"><a href="#cb8-74"></a>        <span class="co">// Define the CLEANUP code that runs on re-rendering when dependencies have changed</span></span>
+<span id="cb8-75"><a href="#cb8-75"></a>        <span class="co">// --&gt; This function is stored in memory and when executed it uses the old props and state</span></span>
+<span id="cb8-76"><a href="#cb8-76"></a>        <span class="cf">return</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb8-77"><a href="#cb8-77"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Stopping Timer"</span>)<span class="op">;</span></span>
+<span id="cb8-78"><a href="#cb8-78"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(idRef<span class="op">.</span><span class="at">current</span>)<span class="op">;</span></span>
+<span id="cb8-79"><a href="#cb8-79"></a>            <span class="pp">clearInterval</span>(idRef<span class="op">.</span><span class="at">current</span>)<span class="op">;</span></span>
+<span id="cb8-80"><a href="#cb8-80"></a>            idRef<span class="op">.</span><span class="at">current</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-81"><a href="#cb8-81"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(idRef<span class="op">.</span><span class="at">current</span>)<span class="op">;</span></span>
+<span id="cb8-82"><a href="#cb8-82"></a>        }</span>
+<span id="cb8-83"><a href="#cb8-83"></a></span>
+<span id="cb8-84"><a href="#cb8-84"></a>    }<span class="op">,</span> [state<span class="op">.</span><span class="at">isRunning</span>])<span class="op">;</span> <span class="co">// useEffect will only run once on component creation/mount and each time the value of 'state.isRunning' changes</span></span>
+<span id="cb8-85"><a href="#cb8-85"></a></span>
+<span id="cb8-86"><a href="#cb8-86"></a>    <span class="co">// Return the HTML snippet</span></span>
+<span id="cb8-87"><a href="#cb8-87"></a>      <span class="co">// https://www.w3schools.com/colors/colors_shades.asp</span></span>
+<span id="cb8-88"><a href="#cb8-88"></a>  <span class="cf">return</span> (</span>
+<span id="cb8-89"><a href="#cb8-89"></a>    <span class="op">&lt;</span>div style<span class="op">=</span>{{ <span class="dt">backgroundColor</span><span class="op">:</span> <span class="st">"#D0D0D0"</span><span class="op">,</span> <span class="dt">padding</span><span class="op">:</span> <span class="st">"12px"</span> }}<span class="op">&gt;</span></span>
+<span id="cb8-90"><a href="#cb8-90"></a>      <span class="op">&lt;</span>h2<span class="op">&gt;</span>Timer <span class="op">-</span> combination <span class="kw">of</span> <span class="fu">useEffect</span> (<span class="cf">with</span> cleanup code)<span class="op">,</span> useReducer and useState hooks <span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb8-91"><a href="#cb8-91"></a>      <span class="op">&lt;</span>div</span>
+<span id="cb8-92"><a href="#cb8-92"></a>        style<span class="op">=</span>{{</span>
+<span id="cb8-93"><a href="#cb8-93"></a>          <span class="dt">backgroundColor</span><span class="op">:</span> <span class="st">"#F0F0F0"</span><span class="op">,</span></span>
+<span id="cb8-94"><a href="#cb8-94"></a>          <span class="dt">boxShadow</span><span class="op">:</span> <span class="st">"0 4px 20px 0 rgba(0,0,0,0.8)"</span><span class="op">,</span></span>
+<span id="cb8-95"><a href="#cb8-95"></a>          <span class="dt">transition</span><span class="op">:</span> <span class="st">"0.3s"</span><span class="op">,</span></span>
+<span id="cb8-96"><a href="#cb8-96"></a>          <span class="dt">width</span><span class="op">:</span> <span class="st">"40%"</span><span class="op">,</span></span>
+<span id="cb8-97"><a href="#cb8-97"></a>          <span class="dt">borderRadius</span><span class="op">:</span> <span class="st">"5px"</span><span class="op">,</span></span>
+<span id="cb8-98"><a href="#cb8-98"></a>          <span class="dt">padding</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span></span>
+<span id="cb8-99"><a href="#cb8-99"></a>          <span class="dt">textAlign</span><span class="op">:</span> <span class="st">"center"</span><span class="op">,</span></span>
+<span id="cb8-100"><a href="#cb8-100"></a>          <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"20px"</span></span>
+<span id="cb8-101"><a href="#cb8-101"></a>        }}</span>
+<span id="cb8-102"><a href="#cb8-102"></a>      <span class="op">&gt;</span></span>
+<span id="cb8-103"><a href="#cb8-103"></a>        {<span class="co">/* 'state.time' is the only state value that changes without user intervention and will trigger a re-render of this component by itself */</span>}</span>
+<span id="cb8-104"><a href="#cb8-104"></a>        {state<span class="op">.</span><span class="at">time</span>}s</span>
+<span id="cb8-105"><a href="#cb8-105"></a>      <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb8-106"><a href="#cb8-106"></a>      <span class="op">&lt;</span>br <span class="op">/&gt;</span></span>
+<span id="cb8-107"><a href="#cb8-107"></a>      <span class="op">&lt;</span>div style<span class="op">=</span>{{ <span class="dt">display</span><span class="op">:</span> <span class="st">"flex"</span> }}<span class="op">&gt;</span></span>
+<span id="cb8-108"><a href="#cb8-108"></a>        <span class="op">&lt;</span>button</span>
+<span id="cb8-109"><a href="#cb8-109"></a>          style<span class="op">=</span>{{ <span class="dt">margin</span><span class="op">:</span> <span class="st">"8px"</span> }}</span>
+<span id="cb8-110"><a href="#cb8-110"></a>          onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"start"</span> })}</span>
+<span id="cb8-111"><a href="#cb8-111"></a>        <span class="op">&gt;</span></span>
+<span id="cb8-112"><a href="#cb8-112"></a>          Start</span>
+<span id="cb8-113"><a href="#cb8-113"></a>        <span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb8-114"><a href="#cb8-114"></a>        <span class="op">&lt;</span>button</span>
+<span id="cb8-115"><a href="#cb8-115"></a>          style<span class="op">=</span>{{ <span class="dt">margin</span><span class="op">:</span> <span class="st">"8px"</span> }}</span>
+<span id="cb8-116"><a href="#cb8-116"></a>          onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"stop"</span> })}</span>
+<span id="cb8-117"><a href="#cb8-117"></a>        <span class="op">&gt;</span></span>
+<span id="cb8-118"><a href="#cb8-118"></a>          Stop</span>
+<span id="cb8-119"><a href="#cb8-119"></a>        <span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb8-120"><a href="#cb8-120"></a>        <span class="op">&lt;</span>button</span>
+<span id="cb8-121"><a href="#cb8-121"></a>          style<span class="op">=</span>{{ <span class="dt">margin</span><span class="op">:</span> <span class="st">"8px"</span> }}</span>
+<span id="cb8-122"><a href="#cb8-122"></a>          onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"reset"</span> })}</span>
+<span id="cb8-123"><a href="#cb8-123"></a>        <span class="op">&gt;</span></span>
+<span id="cb8-124"><a href="#cb8-124"></a>          Reset</span>
+<span id="cb8-125"><a href="#cb8-125"></a>        <span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb8-126"><a href="#cb8-126"></a>      <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb8-127"><a href="#cb8-127"></a>    <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb8-128"><a href="#cb8-128"></a>  )<span class="op">;</span></span>
+<span id="cb8-129"><a href="#cb8-129"></a>}</span>
+<span id="cb8-130"><a href="#cb8-130"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="synchronizing-with-effects" class="level3">
 <h3 class="anchored" data-anchor-id="synchronizing-with-effects">Synchronizing with Effects</h3>
