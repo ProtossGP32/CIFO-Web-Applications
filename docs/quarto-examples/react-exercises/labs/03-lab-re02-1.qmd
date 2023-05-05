@@ -55,3 +55,13 @@ src
 :::{.callout-warning}
 ## TODO: Complete the lab
 :::
+
+# Adding components
+## Hooks
+
+## API Rest
+We'll use the public API [JSONPlaceHolder](https://jsonplaceholder.typicode.com/) to access data through an API. We'll use `axios` to send HTTP requests to the API.
+
+:::{.callout-warning}
+## Question: Why do we define the `setData` function as the `useEffect` dependency?
+:::

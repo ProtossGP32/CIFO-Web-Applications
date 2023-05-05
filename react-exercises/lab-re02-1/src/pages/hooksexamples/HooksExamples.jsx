@@ -2,6 +2,7 @@ import React from 'react';
 import Sculptors from '../../components/Sculptors';
 import PersonForm from '../../components/PersonForm';
 import People from '../../components/People';
+import Timer from '../../components/Timer';
 
 function HooksExamples() {
 
@@ -12,6 +13,7 @@ function HooksExamples() {
             <People />
             <Sculptors />
             <PersonForm />
+            <Timer />
         </>
     )
 }

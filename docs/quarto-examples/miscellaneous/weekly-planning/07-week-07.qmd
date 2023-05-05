@@ -135,12 +135,14 @@ Think about the complexity of the completed tasks and if they matched the expect
 #### Monday:
 
 - Holiday
+- Team project: improved `GamesCollection` implementation and defined integration tests
+- Lecture about brain hemispheres
 
 #### Tuesday:
 
 - Morning: BSC
 - Afternoon: BSC
-- Evening:
+- Evening: Nothing
 
 #### Wednesday:
 
@@ -151,12 +153,12 @@ Think about the complexity of the completed tasks and if they matched the expect
 #### Thursday:
 
 - Morning: React + BSC
-- Afternoon: BSC
-- Evening: 
+- Afternoon: BSC --> Docker compose insights
+- Evening: Nothing
 
 #### Friday:
 
-- Morning:
+- Morning: Docker compose insights + ReactJS `useEffect` cleanup code
 - Afternoon: BSC
 - Evening:
 
@@ -173,35 +175,42 @@ Think about the reasons why these tasks aren't done:
 
 #### Tuesday:
 
-- BSC
+- Didn't follow the timetable
 
 #### Wednesday:
 
-- BSC
+- Didn't follow the timetable
 
 #### Thursday:
 
-- 
+- Didn't follow the timetable 
 
 #### Friday:
 
-- 
+- Didn't follow the timetable 
 
 ## Retrospective
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
 
 - **Best decision of all week**
-    - 
+    - Coming to class at 9AM and using the first hour to gear up with pending tasks (Team projects, BSC, etc...)
+    - Focus on SpringBoot integration tests
+        - This will make it easier to locally test any interaction with the DB, automating any required check
 
 - **Avoided pits**
-    - 
+    - Pits not avoided:
+        - SpringBoot integration tests
+        - ReactJS `useEffect` hook
 
 - **What have you reorganized during this week?**
-    - 
+    - Priorities: energies redirected to DevOps instead of programming
 
 - **Core concepts learnt during this week / What have you learned?**
-    - Learned about Spring Boot tests
+    - Learned about Spring Boot tests (`Service` and access to DB)
     - 
+
+- **Have you respected SCRUM cycles? Have you respected learning approach cycles?**
+    - No
 
 # Weekend homework
 
@@ -209,3 +218,6 @@ Based on the previous analysis, identify the weak points of the previous plannin
     - 
 - React:
     - 
+- VS Code:
+    - Try some React plugins
+    - Learn how to install them via CLI

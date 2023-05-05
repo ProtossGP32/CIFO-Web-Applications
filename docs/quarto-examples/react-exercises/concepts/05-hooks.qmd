@@ -109,9 +109,10 @@ useEffect(setup, dependencies)
 where:
 
 - `setup`: function with the `effect`'s logic
-  - This function may also optionally return a clean-up function
+  - This function may also optionally return a **clean-up function** (A function that is remembered and launched on the next re-render if dependencies have changed)
   - When the component is first added to the DOM, React will run the setup function
   - After every re-render with **changed dependencies**, React will first run the clean-up function (when provided) with the old values, and then run the setup function with the new values
+    - This means that React **remembers the clean-up function** and executes it before running the effect again
   - Once the component is removed from the DOM, React will run your cleanup function one last time
 - `(optional) dependencies`: list of all reactive values referenced inside the setup code
   - Reactive values include props, state and all the variables and functions declared directly inside your component body
@@ -119,6 +120,16 @@ where:
   - Dependency array properties:
     - **Optional:** if not specified, `useEffect` runs after each render
     - **Empty array:** then the `useEffect` runs once after the initial render
+
+Same explanation [from ReactJS docs:]
+
+> React calls your **setup** and **cleanup** functions whenever it’s necessary, which may happen multiple times:
+>
+> 1. Your **setup code** runs when your component is added to the page (mounts).
+> 2. After every re-render of your component where the **dependencies** have changed:
+>   - First, your **cleanup code** runs with the old props and state.
+>   - Then, your **setup code** runs with the new props and state.
+> 3. Your **cleanup code** runs one final time after your component is removed from the page (unmounts).
 
 ### Example 1
 Let's see an example:
@@ -134,6 +145,8 @@ function ChatRoom({ roomId }) {
   useEffect(() => {
       const connection = createConnection(serverUrl, roomId);
       connnection.connect();
+      // Now define the cleanup code, that will be the responsible of disconnecting when any of the dependencies change
+      // --> This way we ensure that no connections are left unhandled
       return () => {
         connection.disconnect();
       };
@@ -214,6 +227,13 @@ In this example, the `useEffect` is called once on component mounting (first ren
   - `Update message2` button calls `handleClick`
   - `handleClick` updates the `message2` state to `"New message 2"`
   - `useEffect` syncs with `message2` and runs again, updating the `message` state to the value of `message2`
+
+
+### Example 4: combination of `useReducer`, `useEffect` and `useRef` hooks:
+[Doc page](https://albertprofe.dev/reactjs/rjslab2.html#usereducer-useeffect-useref-clock)
+
+```{.js filename="Timer.jsx" include="../../../../react-exercises/lab-re02-1/src/components/Timer/index.jsx"}
+```
 
 ### Synchronizing with Effects
 :::{.callout-tip}

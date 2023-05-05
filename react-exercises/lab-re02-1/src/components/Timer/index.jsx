@@ -54,21 +54,77 @@ export default function Timer() {
 
     // Define the useEffect hook that updates the lifecycle of the timer
     useEffect(() => {
-        // if 'state.isRunning' changes to false, then we have to clear the interval function that updates the timer value
+        // if 'state.isRunning' changes to false, there's no need to do anything. Reasons:
+        // --> The cleanup code from the "start" business logic already clears the "setInterval"
+        // --> The return here only serves to avoid executing the rest of the code
         if (!state.isRunning) {
-            clearInterval(idRef.current);
-            idRef.current = 0;
+            //
             return;
         };
 
         // Set the idRef current value to the initialization of a new interval
         // --> This interval is the responsible of calling the useReducer hook with the 'tick' action type
+        console.log("Starting Timer");
         idRef.current = setInterval(
             () => dispatch(
                     {
                         type: "tick"
                     }), 1000); // Set the interval value to 1 sec
         
+        // Define the CLEANUP code that runs on re-rendering when dependencies have changed
+        // --> This function is stored in memory and when executed it uses the old props and state
+        return () => {
+            console.log("Stopping Timer");
+            console.log(idRef.current);
+            clearInterval(idRef.current);
+            idRef.current = 0;
+            console.log(idRef.current);
+        }
+
     }, [state.isRunning]); // useEffect will only run once on component creation/mount and each time the value of 'state.isRunning' changes
+
+    // Return the HTML snippet
+      // https://www.w3schools.com/colors/colors_shades.asp
+  return (
+    <div style={{ backgroundColor: "#D0D0D0", padding: "12px" }}>
+      <h2>Timer - combination of useEffect (with cleanup code), useReducer and useState hooks </h2>
+      <div
+        style={{
+          backgroundColor: "#F0F0F0",
+          boxShadow: "0 4px 20px 0 rgba(0,0,0,0.8)",
+          transition: "0.3s",
+          width: "40%",
+          borderRadius: "5px",
+          padding: "12px",
+          textAlign: "center",
+          fontSize: "20px"
+        }}
+      >
+        {/* 'state.time' is the only state value that changes without user intervention and will trigger a re-render of this component by itself */}
+        {state.time}s
+      </div>
+      <br />
+      <div style={{ display: "flex" }}>
+        <button
+          style={{ margin: "8px" }}
+          onClick={() => dispatch({ type: "start" })}
+        >
+          Start
+        </button>
+        <button
+          style={{ margin: "8px" }}
+          onClick={() => dispatch({ type: "stop" })}
+        >
+          Stop
+        </button>
+        <button
+          style={{ margin: "8px" }}
+          onClick={() => dispatch({ type: "reset" })}
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  );
 }
     
