@@ -32,7 +32,7 @@ Define the MongoDB connection parameters.
 ## Domain classes
 ### BookImage
 
-```{.java filename=BookImage.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImage.java}
+```{.java filename=BookImage.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookimagemongodb/BookImage.java}
 ```
 
 :::{.callout-note}
@@ -44,16 +44,16 @@ For more control over the actual id mapping, try to use the `@MongoId` annotatio
 
 ## Repository
 ### BookImageRepository
-```{.java filename=BookImageRepository.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImageRepository.java}
+```{.java filename=BookImageRepository.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookimagemongodb/BookImageRepository.java}
 ```
 
 ## Service
 ### BookImageService
-```{.java filename=BookImageService.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImageService.java}
+```{.java filename=BookImageService.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookimagemongodb/BookImageService.java}
 ```
 
 ## Controller
 ### BookImageRestController
-```{.java filename=BookImageRestController.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookImageMongoDB/BookImageRestController.java}
+```{.java filename=BookImageRestController.java include=../../../../java-exercises/spring-boot-projects/spring-boot-lab-0/approach_1/src/main/java/com/springbootlab0/approach_1/bookimagemongodb/BookImageRestController.java}
 ```
 
