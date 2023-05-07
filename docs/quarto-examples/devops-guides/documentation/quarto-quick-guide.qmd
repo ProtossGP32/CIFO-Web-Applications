@@ -60,3 +60,15 @@ where the important fields to modify are the following ones:
 Once done, commit and push these changes. GitHub will automatically render and publish the Quarto project the next time you push a project change:
 
 ![Quarto workflow executed via GitHub actions](../../images/devops-guides/documentation/quarto-github-action.png)
+
+:::{.callout-warning}
+## Check the Actions Workflow permissions!!
+By default, now GitHub configures the `GITHUB_TOKEN` permissions to `read-only`. If your workflow fails with an error like the following:
+```
+remote: Permission to <your-repository> denied to github-actions[bot].
+fatal: unable to access 'https://github.com/<your-repository>': The requested URL returned error: 403
+```
+... then it's most likely that the token has insufficient permissions. To solve this, go to your repository Settings --> Actions --> General, and change Workflow permissions to `Read and write permissions`
+
+![GitHub Actions Workflow permissions](../../images/devops-guides/documentation/quarto-github-action-workflow-permissions.png)
+:::
