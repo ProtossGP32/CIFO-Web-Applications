@@ -711,6 +711,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption class="figure-caption">Quarto workflow executed via GitHub actions</figcaption>
 </figure>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Check the Actions Workflow permissions!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By default, now GitHub configures the <code>GITHUB_TOKEN</code> permissions to <code>read-only</code>. If your workflow fails with an error like the following:</p>
+<pre><code>remote: Permission to &lt;your-repository&gt; denied to github-actions[bot].
+fatal: unable to access 'https://github.com/&lt;your-repository&gt;': The requested URL returned error: 403</code></pre>
+<p>… then it’s most likely that the token has insufficient permissions. To solve this, go to your repository Settings –&gt; Actions –&gt; General, and change Workflow permissions to <code>Read and write permissions</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/devops-guides/documentation/quarto-github-action-workflow-permissions.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GitHub Actions Workflow permissions</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
