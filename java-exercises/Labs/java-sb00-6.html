@@ -972,7 +972,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>BookImage.java</strong></pre>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">springbootlab0</span><span class="op">.</span><span class="im">approach_1</span><span class="op">.</span><span class="im">bookimagemongodb</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">import</span> <span class="im">jakarta</span><span class="op">.</span><span class="im">persistence</span><span class="op">.</span><span class="im">Id</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">import</span> <span class="im">lombok</span><span class="op">.*;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">bson</span><span class="op">.</span><span class="im">types</span><span class="op">.</span><span class="im">Binary</span><span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">data</span><span class="op">.</span><span class="im">mongodb</span><span class="op">.</span><span class="im">core</span><span class="op">.</span><span class="im">mapping</span><span class="op">.</span><span class="im">Document</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">// Lombok annotations</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="at">@Getter</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="at">@Setter</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="at">@ToString</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="at">@NoArgsConstructor</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="at">@AllArgsConstructor</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">// MongoDB annotations</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="at">@Document</span><span class="op">(</span>collection <span class="op">=</span> <span class="st">"book_images"</span><span class="op">)</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="kw">public</span> <span class="kw">class</span> BookImage <span class="op">{</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="at">@Id</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="kw">private</span> <span class="bu">String</span> id<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="co">// Image is stored as a binary file</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="kw">private</span> Binary image<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a></span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="kw">private</span> <span class="bu">String</span> publication_id<span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -998,7 +1021,14 @@ What happens with the document’s <code>id</code>?
 <div class="code-with-filename-file">
 <pre><strong>BookImageRepository.java</strong></pre>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">springbootlab0</span><span class="op">.</span><span class="im">approach_1</span><span class="op">.</span><span class="im">bookimagemongodb</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">data</span><span class="op">.</span><span class="im">mongodb</span><span class="op">.</span><span class="im">repository</span><span class="op">.</span><span class="im">MongoRepository</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">stereotype</span><span class="op">.</span><span class="im">Repository</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="at">@Repository</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">public</span> <span class="kw">interface</span> BookImageRepository <span class="kw">extends</span> MongoRepository<span class="op">&lt;</span>BookImage<span class="op">,</span> <span class="bu">String</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1010,7 +1040,54 @@ What happens with the document’s <code>id</code>?
 <div class="code-with-filename-file">
 <pre><strong>BookImageService.java</strong></pre>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">springbootlab0</span><span class="op">.</span><span class="im">approach_1</span><span class="op">.</span><span class="im">bookimagemongodb</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">bson</span><span class="op">.</span><span class="im">types</span><span class="op">.</span><span class="im">Binary</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">beans</span><span class="op">.</span><span class="im">factory</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">Autowired</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">stereotype</span><span class="op">.</span><span class="im">Service</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">web</span><span class="op">.</span><span class="im">multipart</span><span class="op">.</span><span class="im">MultipartFile</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Optional</span><span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="at">@Service</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="kw">public</span> <span class="kw">class</span> BookImageService <span class="op">{</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="at">@Autowired</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>    BookImageRepository bookImageRepository<span class="op">;</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="kw">public</span> BookImage <span class="fu">uploadBookImage</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> MultipartFile file<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span> <span class="op">{</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>        BookImage bookImage <span class="op">=</span> <span class="kw">new</span> <span class="fu">BookImage</span><span class="op">();</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: Assign alternative ID to avoid exposing sensitive data</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>        bookImage<span class="op">.</span><span class="fu">setName</span><span class="op">(</span>name<span class="op">);</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>        bookImage<span class="op">.</span><span class="fu">setImage</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Binary</span><span class="op">(</span>file<span class="op">.</span><span class="fu">getBytes</span><span class="op">()));</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>        <span class="co">// Save the image into the repository</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>        <span class="cf">return</span> bookImageRepository<span class="op">.</span><span class="fu">save</span><span class="op">(</span>bookImage<span class="op">);</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>    <span class="op">}</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a>    <span class="kw">public</span> <span class="bu">Iterable</span><span class="op">&lt;</span>BookImage<span class="op">&gt;</span> <span class="fu">getAllBookImages</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>        <span class="cf">return</span> bookImageRepository<span class="op">.</span><span class="fu">findAll</span><span class="op">();</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a>    <span class="op">}</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a></span>
+<span id="cb3-29"><a href="#cb3-29"></a>    <span class="kw">public</span> BookImage <span class="fu">getBookImageById</span><span class="op">(</span><span class="bu">String</span> id<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a>        Optional<span class="op">&lt;</span>BookImage<span class="op">&gt;</span> expectedBook <span class="op">=</span> bookImageRepository<span class="op">.</span><span class="fu">findById</span><span class="op">(</span>id<span class="op">);</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>        <span class="cf">if</span> <span class="op">(</span>expectedBook<span class="op">.</span><span class="fu">isPresent</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>            <span class="cf">return</span> expectedBook<span class="op">.</span><span class="fu">get</span><span class="op">();</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a>        <span class="op">}</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>        <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a>    <span class="op">}</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a></span>
+<span id="cb3-37"><a href="#cb3-37"></a>    <span class="co">// </span><span class="al">TODO</span><span class="co">: updateBookImage</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a></span>
+<span id="cb3-39"><a href="#cb3-39"></a>    <span class="kw">public</span> BookImage <span class="fu">deleteBookImageById</span><span class="op">(</span><span class="bu">String</span> id<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a>        Optional<span class="op">&lt;</span>BookImage<span class="op">&gt;</span> bookImageOptional <span class="op">=</span> bookImageRepository<span class="op">.</span><span class="fu">findById</span><span class="op">(</span>id<span class="op">);</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>        <span class="cf">if</span> <span class="op">(</span>bookImageOptional<span class="op">.</span><span class="fu">isPresent</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a>            bookImageRepository<span class="op">.</span><span class="fu">deleteById</span><span class="op">(</span>id<span class="op">);</span></span>
+<span id="cb3-43"><a href="#cb3-43"></a>            <span class="cf">return</span> bookImageOptional<span class="op">.</span><span class="fu">get</span><span class="op">();</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a>        <span class="op">}</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a>        <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a>    <span class="op">}</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a></span>
+<span id="cb3-48"><a href="#cb3-48"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1022,7 +1099,141 @@ What happens with the document’s <code>id</code>?
 <div class="code-with-filename-file">
 <pre><strong>BookImageRestController.java</strong></pre>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">package</span><span class="im"> com</span><span class="op">.</span><span class="im">springbootlab0</span><span class="op">.</span><span class="im">approach_1</span><span class="op">.</span><span class="im">bookimagemongodb</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">import</span> <span class="im">com</span><span class="op">.</span><span class="im">springbootlab0</span><span class="op">.</span><span class="im">approach_1</span><span class="op">.</span><span class="im">domain</span><span class="op">.</span><span class="im">Publication</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">import</span> <span class="im">com</span><span class="op">.</span><span class="im">springbootlab0</span><span class="op">.</span><span class="im">approach_1</span><span class="op">.</span><span class="im">services</span><span class="op">.</span><span class="im">PublicationService</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">beans</span><span class="op">.</span><span class="im">factory</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">Autowired</span><span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">http</span><span class="op">.*;</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">stereotype</span><span class="op">.</span><span class="im">Controller</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">web</span><span class="op">.</span><span class="im">bind</span><span class="op">.</span><span class="im">annotation</span><span class="op">.*;</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">web</span><span class="op">.</span><span class="im">multipart</span><span class="op">.</span><span class="im">MultipartFile</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Base64</span><span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Base64</span><span class="op">.</span><span class="im">Encoder</span><span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Optional</span><span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="at">@Controller</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="at">@RequestMapping</span><span class="op">(</span>value <span class="op">=</span> <span class="st">"/api/bookImages"</span><span class="op">)</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="kw">public</span> <span class="kw">class</span> BookImageRestController <span class="op">{</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a>    <span class="at">@Autowired</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>    BookImageService bookImageService<span class="op">;</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>    <span class="at">@Autowired</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>    PublicationService publicationService<span class="op">;</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> OPERATION <span class="op">=</span> <span class="st">"operation"</span><span class="op">;</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> VERSION <span class="op">=</span> <span class="st">"version"</span><span class="op">;</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> API <span class="op">=</span> <span class="st">"api 1.0"</span><span class="op">;</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> OPERATION_STATUS <span class="op">=</span> <span class="st">"operationStatus"</span><span class="op">;</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> ID_NOT_FOUND <span class="op">=</span> <span class="st">"ID not found"</span><span class="op">;</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a></span>
+<span id="cb4-31"><a href="#cb4-31"></a></span>
+<span id="cb4-32"><a href="#cb4-32"></a>    <span class="co">// CRUD</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a>    <span class="co">// Create --&gt; Upload an image</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>    <span class="at">@PostMapping</span><span class="op">(</span>value <span class="op">=</span> <span class="st">"upload"</span><span class="op">)</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>    <span class="kw">public</span> ResponseEntity<span class="op">&lt;</span>BookImage<span class="op">&gt;</span> <span class="fu">uploadBookImage</span><span class="op">(</span><span class="at">@RequestParam</span> <span class="bu">String</span> publicationId<span class="op">,</span> <span class="at">@RequestParam</span> <span class="bu">String</span> name<span class="op">,</span> <span class="at">@RequestParam</span> MultipartFile file<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span> <span class="op">{</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>        HttpHeaders headers <span class="op">=</span> <span class="kw">new</span> <span class="fu">HttpHeaders</span><span class="op">();</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION<span class="op">,</span> <span class="st">"upload"</span><span class="op">);</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>VERSION<span class="op">,</span> API<span class="op">);</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a>        BookImage uploadedBookImage <span class="op">=</span> bookImageService<span class="op">.</span><span class="fu">uploadBookImage</span><span class="op">(</span>name<span class="op">,</span> file<span class="op">);</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a>        <span class="cf">if</span> <span class="op">(</span>uploadedBookImage <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a>            <span class="co">// Retrieve the publication</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a>            Optional<span class="op">&lt;</span>Publication<span class="op">&gt;</span> imagePublication <span class="op">=</span> publicationService<span class="op">.</span><span class="fu">findPublicationById</span><span class="op">(</span>publicationId<span class="op">);</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a>            <span class="co">// Assign the BookImage ID to the publication</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a>            <span class="cf">if</span> <span class="op">(</span>imagePublication<span class="op">.</span><span class="fu">isPresent</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>                imagePublication<span class="op">.</span><span class="fu">get</span><span class="op">().</span><span class="fu">addImageId</span><span class="op">(</span>uploadedBookImage<span class="op">.</span><span class="fu">getId</span><span class="op">());</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a>                publicationService<span class="op">.</span><span class="fu">updatePublication</span><span class="op">(</span>imagePublication<span class="op">.</span><span class="fu">get</span><span class="op">());</span></span>
+<span id="cb4-47"><a href="#cb4-47"></a>                headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> <span class="st">"OK"</span><span class="op">);</span></span>
+<span id="cb4-48"><a href="#cb4-48"></a>                <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">ok</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">body</span><span class="op">(</span>uploadedBookImage<span class="op">);</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>            <span class="op">}</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>            headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> <span class="st">"Publication not found"</span><span class="op">);</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>            <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">ok</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">body</span><span class="op">(</span>uploadedBookImage<span class="op">);</span></span>
+<span id="cb4-52"><a href="#cb4-52"></a>        <span class="op">}</span></span>
+<span id="cb4-53"><a href="#cb4-53"></a>        <span class="co">// Return an internal server error if the image couldn't be uploaded</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> <span class="st">"Not uploaded"</span><span class="op">);</span></span>
+<span id="cb4-55"><a href="#cb4-55"></a>        <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">internalServerError</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">body</span><span class="op">(</span><span class="kw">null</span><span class="op">);</span></span>
+<span id="cb4-56"><a href="#cb4-56"></a>    <span class="op">}</span></span>
+<span id="cb4-57"><a href="#cb4-57"></a></span>
+<span id="cb4-58"><a href="#cb4-58"></a>    <span class="co">// Read --&gt; get all images</span></span>
+<span id="cb4-59"><a href="#cb4-59"></a>    <span class="at">@GetMapping</span><span class="op">(</span><span class="st">""</span><span class="op">)</span></span>
+<span id="cb4-60"><a href="#cb4-60"></a>    <span class="kw">public</span> ResponseEntity<span class="op">&lt;</span><span class="bu">Iterable</span><span class="op">&lt;</span>BookImage<span class="op">&gt;&gt;</span> <span class="fu">getAllBookImages</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-61"><a href="#cb4-61"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: Parametrize the headers attributes</span></span>
+<span id="cb4-62"><a href="#cb4-62"></a>        HttpHeaders headers <span class="op">=</span> <span class="kw">new</span> <span class="fu">HttpHeaders</span><span class="op">();</span></span>
+<span id="cb4-63"><a href="#cb4-63"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION<span class="op">,</span> <span class="st">"getAllImages"</span><span class="op">);</span></span>
+<span id="cb4-64"><a href="#cb4-64"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>VERSION<span class="op">,</span> API<span class="op">);</span></span>
+<span id="cb4-65"><a href="#cb4-65"></a>        <span class="bu">Iterable</span><span class="op">&lt;</span>BookImage<span class="op">&gt;</span> availableBookImages <span class="op">=</span> bookImageService<span class="op">.</span><span class="fu">getAllBookImages</span><span class="op">();</span></span>
+<span id="cb4-66"><a href="#cb4-66"></a>        <span class="cf">if</span> <span class="op">(</span>availableBookImages <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-67"><a href="#cb4-67"></a>            headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> <span class="st">"ok"</span><span class="op">);</span></span>
+<span id="cb4-68"><a href="#cb4-68"></a>            <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">ok</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">body</span><span class="op">(</span>availableBookImages<span class="op">);</span></span>
+<span id="cb4-69"><a href="#cb4-69"></a>        <span class="op">}</span></span>
+<span id="cb4-70"><a href="#cb4-70"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> <span class="st">"Cannot access book images collection"</span><span class="op">);</span></span>
+<span id="cb4-71"><a href="#cb4-71"></a>        <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">internalServerError</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">build</span><span class="op">();</span></span>
+<span id="cb4-72"><a href="#cb4-72"></a></span>
+<span id="cb4-73"><a href="#cb4-73"></a>    <span class="op">}</span></span>
+<span id="cb4-74"><a href="#cb4-74"></a></span>
+<span id="cb4-75"><a href="#cb4-75"></a>    <span class="co">// Read --&gt; get a single image</span></span>
+<span id="cb4-76"><a href="#cb4-76"></a>    <span class="at">@GetMapping</span><span class="op">(</span><span class="st">"getImage"</span><span class="op">)</span></span>
+<span id="cb4-77"><a href="#cb4-77"></a>    <span class="kw">public</span> ResponseEntity<span class="op">&lt;</span><span class="dt">byte</span><span class="op">[]&gt;</span> <span class="fu">getBookImage</span><span class="op">(</span><span class="at">@RequestParam</span> <span class="bu">String</span> id<span class="op">){</span></span>
+<span id="cb4-78"><a href="#cb4-78"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: Parametrize the headers attributes</span></span>
+<span id="cb4-79"><a href="#cb4-79"></a>        HttpHeaders headers <span class="op">=</span> <span class="kw">new</span> <span class="fu">HttpHeaders</span><span class="op">();</span></span>
+<span id="cb4-80"><a href="#cb4-80"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION<span class="op">,</span> <span class="st">"getImage"</span><span class="op">);</span></span>
+<span id="cb4-81"><a href="#cb4-81"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>VERSION<span class="op">,</span> API<span class="op">);</span></span>
+<span id="cb4-82"><a href="#cb4-82"></a>        <span class="co">// Don't forget to set the returned content type!!</span></span>
+<span id="cb4-83"><a href="#cb4-83"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: define generic MediaType for images</span></span>
+<span id="cb4-84"><a href="#cb4-84"></a>        headers<span class="op">.</span><span class="fu">setContentType</span><span class="op">(</span>MediaType<span class="op">.</span><span class="fu">IMAGE_JPEG</span><span class="op">);</span></span>
+<span id="cb4-85"><a href="#cb4-85"></a>        <span class="co">// Retrieve the requested bookImage</span></span>
+<span id="cb4-86"><a href="#cb4-86"></a>        BookImage requestedBookImage <span class="op">=</span> bookImageService<span class="op">.</span><span class="fu">getBookImageById</span><span class="op">(</span>id<span class="op">);</span></span>
+<span id="cb4-87"><a href="#cb4-87"></a>        <span class="cf">if</span> <span class="op">(</span>requestedBookImage <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-88"><a href="#cb4-88"></a>            headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> <span class="st">"found"</span><span class="op">);</span></span>
+<span id="cb4-89"><a href="#cb4-89"></a>            <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">ok</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">body</span><span class="op">(</span>requestedBookImage<span class="op">.</span><span class="fu">getImage</span><span class="op">().</span><span class="fu">getData</span><span class="op">());</span></span>
+<span id="cb4-90"><a href="#cb4-90"></a>        <span class="op">}</span></span>
+<span id="cb4-91"><a href="#cb4-91"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> ID_NOT_FOUND<span class="op">);</span></span>
+<span id="cb4-92"><a href="#cb4-92"></a>        <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">notFound</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">build</span><span class="op">();</span></span>
+<span id="cb4-93"><a href="#cb4-93"></a>    <span class="op">}</span></span>
+<span id="cb4-94"><a href="#cb4-94"></a></span>
+<span id="cb4-95"><a href="#cb4-95"></a>    <span class="co">// Read --&gt; Get the data of a single image</span></span>
+<span id="cb4-96"><a href="#cb4-96"></a>    <span class="at">@GetMapping</span><span class="op">(</span><span class="st">"getData"</span><span class="op">)</span></span>
+<span id="cb4-97"><a href="#cb4-97"></a>    <span class="kw">public</span> ResponseEntity<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> <span class="fu">getDataBookImage</span><span class="op">(</span><span class="at">@RequestParam</span> <span class="bu">String</span> id<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-98"><a href="#cb4-98"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: Parametrize the headers attributes</span></span>
+<span id="cb4-99"><a href="#cb4-99"></a>        HttpHeaders headers <span class="op">=</span> <span class="kw">new</span> <span class="fu">HttpHeaders</span><span class="op">();</span></span>
+<span id="cb4-100"><a href="#cb4-100"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION<span class="op">,</span> <span class="st">"getData"</span><span class="op">);</span></span>
+<span id="cb4-101"><a href="#cb4-101"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>VERSION<span class="op">,</span> API<span class="op">);</span></span>
+<span id="cb4-102"><a href="#cb4-102"></a>        BookImage requestedBookImage <span class="op">=</span> bookImageService<span class="op">.</span><span class="fu">getBookImageById</span><span class="op">(</span>id<span class="op">);</span></span>
+<span id="cb4-103"><a href="#cb4-103"></a>        <span class="cf">if</span> <span class="op">(</span>requestedBookImage <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-104"><a href="#cb4-104"></a>            headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> <span class="st">"found"</span><span class="op">);</span></span>
+<span id="cb4-105"><a href="#cb4-105"></a>            <span class="bu">Encoder</span> encoder <span class="op">=</span> Base64<span class="op">.</span><span class="fu">getEncoder</span><span class="op">();</span></span>
+<span id="cb4-106"><a href="#cb4-106"></a>            <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">ok</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">body</span><span class="op">(</span>encoder<span class="op">.</span><span class="fu">encodeToString</span><span class="op">(</span>requestedBookImage<span class="op">.</span><span class="fu">getImage</span><span class="op">().</span><span class="fu">getData</span><span class="op">()));</span></span>
+<span id="cb4-107"><a href="#cb4-107"></a>        <span class="op">}</span></span>
+<span id="cb4-108"><a href="#cb4-108"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> ID_NOT_FOUND<span class="op">);</span></span>
+<span id="cb4-109"><a href="#cb4-109"></a>        <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">notFound</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">build</span><span class="op">();</span></span>
+<span id="cb4-110"><a href="#cb4-110"></a>    <span class="op">}</span></span>
+<span id="cb4-111"><a href="#cb4-111"></a></span>
+<span id="cb4-112"><a href="#cb4-112"></a>    <span class="co">// Update --&gt; Update a Book Image information</span></span>
+<span id="cb4-113"><a href="#cb4-113"></a>    <span class="co">// </span><span class="al">TODO</span></span>
+<span id="cb4-114"><a href="#cb4-114"></a>    <span class="at">@PutMapping</span><span class="op">(</span><span class="st">"update"</span><span class="op">)</span></span>
+<span id="cb4-115"><a href="#cb4-115"></a>    <span class="kw">public</span> ResponseEntity<span class="op">&lt;</span>BookImage<span class="op">&gt;</span> <span class="fu">updateBookImage</span><span class="op">(</span><span class="at">@RequestParam</span> <span class="bu">String</span> id<span class="op">,</span> <span class="at">@RequestParam</span><span class="op">(</span>required <span class="op">=</span> <span class="kw">false</span><span class="op">)</span> <span class="bu">String</span> name<span class="op">,</span> <span class="at">@RequestParam</span><span class="op">(</span>required <span class="op">=</span> <span class="kw">false</span><span class="op">)</span> MultipartFile file<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-116"><a href="#cb4-116"></a>        <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb4-117"><a href="#cb4-117"></a>    <span class="op">}</span></span>
+<span id="cb4-118"><a href="#cb4-118"></a></span>
+<span id="cb4-119"><a href="#cb4-119"></a>    <span class="co">// Delete --&gt; Delete a Book Image</span></span>
+<span id="cb4-120"><a href="#cb4-120"></a>    <span class="at">@DeleteMapping</span><span class="op">(</span><span class="st">"delete"</span><span class="op">)</span></span>
+<span id="cb4-121"><a href="#cb4-121"></a>    <span class="kw">public</span> ResponseEntity<span class="op">&lt;</span>BookImage<span class="op">&gt;</span> <span class="fu">deleteBookImage</span><span class="op">(</span><span class="at">@RequestParam</span> <span class="bu">String</span> id<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-122"><a href="#cb4-122"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: Parametrize the headers attributes</span></span>
+<span id="cb4-123"><a href="#cb4-123"></a>        HttpHeaders headers <span class="op">=</span> <span class="kw">new</span> <span class="fu">HttpHeaders</span><span class="op">();</span></span>
+<span id="cb4-124"><a href="#cb4-124"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION<span class="op">,</span> <span class="st">"getData"</span><span class="op">);</span></span>
+<span id="cb4-125"><a href="#cb4-125"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>VERSION<span class="op">,</span> API<span class="op">);</span></span>
+<span id="cb4-126"><a href="#cb4-126"></a>        BookImage deletedBookImage <span class="op">=</span> bookImageService<span class="op">.</span><span class="fu">deleteBookImageById</span><span class="op">(</span>id<span class="op">);</span></span>
+<span id="cb4-127"><a href="#cb4-127"></a>        <span class="cf">if</span> <span class="op">(</span>deletedBookImage <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-128"><a href="#cb4-128"></a>            headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> <span class="st">"deleted"</span><span class="op">);</span></span>
+<span id="cb4-129"><a href="#cb4-129"></a>            <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">ok</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">body</span><span class="op">(</span>deletedBookImage<span class="op">);</span></span>
+<span id="cb4-130"><a href="#cb4-130"></a>        <span class="op">}</span></span>
+<span id="cb4-131"><a href="#cb4-131"></a>        headers<span class="op">.</span><span class="fu">add</span><span class="op">(</span>OPERATION_STATUS<span class="op">,</span> ID_NOT_FOUND<span class="op">);</span></span>
+<span id="cb4-132"><a href="#cb4-132"></a>        <span class="cf">return</span> ResponseEntity<span class="op">.</span><span class="fu">notFound</span><span class="op">().</span><span class="fu">headers</span><span class="op">(</span>headers<span class="op">).</span><span class="fu">build</span><span class="op">();</span></span>
+<span id="cb4-133"><a href="#cb4-133"></a>    <span class="op">}</span></span>
+<span id="cb4-134"><a href="#cb4-134"></a></span>
+<span id="cb4-135"><a href="#cb4-135"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
