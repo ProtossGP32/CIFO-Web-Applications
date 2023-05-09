@@ -29,7 +29,7 @@ function People() {
     // Render the component
     return (
         <>
-            <h2>Persons - useEffect hook for API connection and Grid with spread operator example</h2>
+            <h2>Persons - useEffect hook for SpringBoot API connection and Grid with spread operator example</h2>
             <hr />
             {/* Conditional rendering depending on the isLoading value */}
             { isLoading ? (

@@ -1,9 +1,10 @@
 ---
 title: "React JS: Lab#RE02-1"
-categories: [React, Router, Hooks]
+categories: [React, Router, Hooks, API, axios]
 author: ProtossGP32
 date: 2023/04/19
 from: markdown+emoji
+description: Training with Hooks and API HTTP requests
 ---
 # Introduction
 [Link to class page](https://albertprofe.dev/reactjs/rjslab2.html)
@@ -32,7 +33,7 @@ src
 ├── App.css
 ├── App.js
 ├── App.test.js
-├── components
+├── components // Here we'll create each of the Hook examples
 │   └── PersonCard
 │       └── index.jsx
 ├── index.css
@@ -58,6 +59,9 @@ src
 
 # Adding components
 ## Hooks
+:::{.callout-warning}
+## TODO: Transcribe the already coded hook examples here
+:::
 
 ## API Rest
 We'll use the public API [JSONPlaceHolder](https://jsonplaceholder.typicode.com/) to access data through an API. We'll use `axios` to send HTTP requests to the API.
@@ -65,3 +69,97 @@ We'll use the public API [JSONPlaceHolder](https://jsonplaceholder.typicode.com/
 :::{.callout-warning}
 ## Question: Why do we define the `setData` function as the `useEffect` dependency?
 :::
+
+### Install required packages
+
+`axios` is a **promise-based HTTP client for node.js and the browser.**
+
+- It is `isomorphic`, meaning...
+    - On the server-side it uses the native `node.js` HTTP module
+    - On the client (browser) it uses `XMLHttpRequests`
+
+We use the [Axios](https://axios-http.com/docs/intro) library to **fetch data from the [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API**, which provides a fake REST API for testing and prototyping.
+
+Install `axios` using `npm`:
+
+```{.bash filename="Installing axios package"}
+npm install axios
+```
+
+### Create the component
+Let's create a new component:
+
+- It's project path will be: `src/components/AxiosApiRest/index.jsx`
+
+Let's start by initializing a state variable called `data` that will store the response received from the API:
+
+```{.js}
+const [data, setData] = useState([]);
+```
+A `useState` manages its state and sets `data` initial value to an empty array.
+
+Let's also set the API url as a constant:
+
+```{.js}
+const url = "https://jsonplaceholder.typicode.com/todos";
+```
+
+Now we'll create a `useEffect` to **fetch the data from the API** and upate the `data` state variable when:
+
+- The component is **mounted** (on initialization time)
+- The `setData` function is called
+
+```{.js}
+useEffect(() => {
+    // Configure the axios command to retrieve data from the API
+    axios
+        .get(url)
+        // 'then' is executed only if data has been received from the GET request
+        .then((response) => {
+            // Assign the received data to the 'data' state variable -> This will trigger again the useEffect hook
+            setData(response.data);
+        })
+        // If there's some kind of error on the GET request, catch it and print it as a console log
+        .catch((error) => {
+            console.log(error)
+        });
+}, [setData]); // Set 'setData' as a dependency of the useEffect to trigger it
+```
+This should act as a kind-of-recursive function, as the `useEffect` triggers itself again if a response is received from the GET request to the API.
+
+Finally, return the HTML rendered component:
+
+```{.js}
+return (
+    <>
+        <h1>My data todos from axios</h1>
+        { /* Only render this part if data is not empty */}
+        { data &&
+            data.map((item) => {
+                return(
+                    <spam key={item.id}>
+                        id: {item.id}
+                        <spam>userId:   {item.userId}</spam>
+                        <spam>title:    {item.title}</spam>
+                        <spam>completed:    {item.completed}</spam>
+                        <br />
+                    </spam>
+                );
+            })
+        }
+    </>
+);
+```
+
+The final component should be something like this:
+
+ ```{.js filename=AxiosApiRest/index.jsx include=../../../../react-exercises/lab-re02-1/src/components/AxiosApiRest/index.jsx}
+```
+
+Add a new page in `src/pages/apirest/ApiRest.jsx` pointing towards the component and the corresponding route to that page in the `App.js`:
+
+```{.js filename="src/pages/apirest/ApiRest.jsx" include=../../../../react-exercises/lab-re02-1/src/pages/apirest/ApiRest.jsx}
+```
+
+```{.js filename="src/App.js" include=../../../../react-exercises/lab-re02-1/src/App.js}
+```

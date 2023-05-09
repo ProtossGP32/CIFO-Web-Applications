@@ -4,6 +4,7 @@ import Home from "./pages/home/Home.jsx";
 import HooksExamples from "./pages/hooksexamples/HooksExamples.jsx"
 import Contact from "./pages/contact/Contact.jsx";
 import NoPage from "./route/NoPage.jsx";
+import ApiRest from "./pages/apirest/ApiRest.jsx";
 
 function App() {
   // View with return JSX
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="hooksexamples" element={<HooksExamples />} />
+          <Route path="apirest" element={<ApiRest />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} />
         </Route>
