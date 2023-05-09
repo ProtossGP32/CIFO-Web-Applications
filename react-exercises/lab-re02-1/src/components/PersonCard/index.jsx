@@ -1,7 +1,7 @@
 import { Card, Image } from "semantic-ui-react";
 
 // Props are spreaded prior to pass them to the PersonCard component
-const PersonCard = ({image, firstName, lastName, birthDate, nationality, mail, phoneNumber}) => {
+const PersonCard = ({image, firstName, lastName, birthDate, nationality, mail, phoneNumber, salary}) => {
     return (
         <>
             <Card style={{ margin: "10px" }}>
@@ -18,8 +18,9 @@ const PersonCard = ({image, firstName, lastName, birthDate, nationality, mail, p
                     </Card.Meta>
                     {/* TODO: API doesn't return the role of the person, not included in the DB entry */}
                     <Card.Description>
-                        <p><b>Mail:</b> { mail || "Unknown" }</p>
                         <p><b>Phone:</b> { phoneNumber || "Unknown" }</p>
+                        { mail ? <p><b>Mail:</b> { mail }</p> :''}
+                        { salary ? <p><b>Salary:</b> { salary }€</p> :''}
                     </Card.Description>
                 </Card.Content>
             </Card>
