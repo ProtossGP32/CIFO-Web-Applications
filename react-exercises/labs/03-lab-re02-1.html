@@ -8,6 +8,7 @@
 
 <meta name="author" content="ProtossGP32">
 <meta name="dcterms.date" content="2023-04-19">
+<meta name="description" content="Training with Hooks and API HTTP requests">
 
 <title>CIFO - Web Applications - React JS: Lab#RE02-1</title>
 <style>
@@ -589,7 +590,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#adding-components" id="toc-adding-components" class="nav-link" data-scroll-target="#adding-components">Adding components</a>
   <ul class="collapse">
   <li><a href="#hooks" id="toc-hooks" class="nav-link" data-scroll-target="#hooks">Hooks</a></li>
-  <li><a href="#api-rest" id="toc-api-rest" class="nav-link" data-scroll-target="#api-rest">API Rest</a></li>
+  <li><a href="#api-rest" id="toc-api-rest" class="nav-link" data-scroll-target="#api-rest">API Rest</a>
+  <ul class="collapse">
+  <li><a href="#install-required-packages" id="toc-install-required-packages" class="nav-link" data-scroll-target="#install-required-packages">Install required packages</a></li>
+  <li><a href="#create-the-component" id="toc-create-the-component" class="nav-link" data-scroll-target="#create-the-component">Create the component</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/react-exercises/labs/03-lab-re02-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -604,9 +609,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-category">React</div>
     <div class="quarto-category">Router</div>
     <div class="quarto-category">Hooks</div>
+    <div class="quarto-category">API</div>
+    <div class="quarto-category">axios</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    Training with Hooks and API HTTP requests
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -665,24 +677,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2"></a><span class="ex">├──</span> App.css</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="ex">├──</span> App.js</span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="ex">├──</span> App.test.js</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">├──</span> components</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">│&nbsp;&nbsp;</span> └── PersonCard</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">│&nbsp;&nbsp;</span>     └── index.jsx</span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">├──</span> index.css</span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="ex">├──</span> index.js</span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="ex">├──</span> logo.svg</span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="ex">├──</span> pages</span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="ex">│&nbsp;&nbsp;</span> ├── contact</span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">│&nbsp;&nbsp;</span> │&nbsp;&nbsp; └── Contact.jsx</span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="ex">│&nbsp;&nbsp;</span> ├── home</span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="ex">│&nbsp;&nbsp;</span> │&nbsp;&nbsp; └── Home.jsx</span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="ex">│&nbsp;&nbsp;</span> └── people</span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="ex">├──</span> reportWebVitals.js</span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="ex">├──</span> route</span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="ex">│&nbsp;&nbsp;</span> ├── Footer.jsx</span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="ex">│&nbsp;&nbsp;</span> ├── Layout.jsx</span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="ex">│&nbsp;&nbsp;</span> └── NoPage.jsx</span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="ex">└──</span> setupTests.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">├──</span> components // Here we<span class="st">'ll create each of the Hook examples</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="st">│&nbsp;&nbsp; └── PersonCard</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="st">│&nbsp;&nbsp;     └── index.jsx</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="st">├── index.css</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="st">├── index.js</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="st">├── logo.svg</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="st">├── pages</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="st">│&nbsp;&nbsp; ├── contact</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="st">│&nbsp;&nbsp; │&nbsp;&nbsp; └── Contact.jsx</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="st">│&nbsp;&nbsp; ├── home</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="st">│&nbsp;&nbsp; │&nbsp;&nbsp; └── Home.jsx</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="st">│&nbsp;&nbsp; └── people</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="st">├── reportWebVitals.js</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="st">├── route</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="st">│&nbsp;&nbsp; ├── Footer.jsx</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="st">│&nbsp;&nbsp; ├── Layout.jsx</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="st">│&nbsp;&nbsp; └── NoPage.jsx</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="st">└── setupTests.js</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -703,6 +715,19 @@ TODO: Complete the lab
 <h1>Adding components</h1>
 <section id="hooks" class="level2">
 <h2 class="anchored" data-anchor-id="hooks">Hooks</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TODO: Transcribe the already coded hook examples here
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 </section>
 <section id="api-rest" class="level2">
 <h2 class="anchored" data-anchor-id="api-rest">API Rest</h2>
@@ -720,8 +745,182 @@ Question: Why do we define the <code>setData</code> function as the <code>useEff
 
 </div>
 </div>
+<section id="install-required-packages" class="level3">
+<h3 class="anchored" data-anchor-id="install-required-packages">Install required packages</h3>
+<p><code>axios</code> is a <strong>promise-based HTTP client for node.js and the browser.</strong></p>
+<ul>
+<li>It is <code>isomorphic</code>, meaning…
+<ul>
+<li>On the server-side it uses the native <code>node.js</code> HTTP module</li>
+<li>On the client (browser) it uses <code>XMLHttpRequests</code></li>
+</ul></li>
+</ul>
+<p>We use the <a href="https://axios-http.com/docs/intro">Axios</a> library to <strong>fetch data from the <a href="https://jsonplaceholder.typicode.com/">JSONPlaceholder</a> API</strong>, which provides a fake REST API for testing and prototyping.</p>
+<p>Install <code>axios</code> using <code>npm</code>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Installing axios package</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">npm</span> install axios</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-the-component" class="level3">
+<h3 class="anchored" data-anchor-id="create-the-component">Create the component</h3>
+<p>Let’s create a new component:</p>
+<ul>
+<li>It’s project path will be: <code>src/components/AxiosApiRest/index.jsx</code></li>
+</ul>
+<p>Let’s start by initializing a state variable called <code>data</code> that will store the response received from the API:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">const</span> [data<span class="op">,</span> setData] <span class="op">=</span> <span class="fu">useState</span>([])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A <code>useState</code> manages its state and sets <code>data</code> initial value to an empty array.</p>
+<p>Let’s also set the API url as a constant:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">const</span> url <span class="op">=</span> <span class="st">"https://jsonplaceholder.typicode.com/todos"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we’ll create a <code>useEffect</code> to <strong>fetch the data from the API</strong> and upate the <code>data</code> state variable when:</p>
+<ul>
+<li>The component is <strong>mounted</strong> (on initialization time)</li>
+<li>The <code>setData</code> function is called</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="co">// Configure the axios command to retrieve data from the API</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    axios</span>
+<span id="cb6-4"><a href="#cb6-4"></a>        <span class="op">.</span><span class="fu">get</span>(url)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>        <span class="co">// 'then' is executed only if data has been received from the GET request</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>        <span class="op">.</span><span class="fu">then</span>((response) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-7"><a href="#cb6-7"></a>            <span class="co">// Assign the received data to the 'data' state variable -&gt; This will trigger again the useEffect hook</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>            <span class="fu">setData</span>(response<span class="op">.</span><span class="at">data</span>)<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>        })</span>
+<span id="cb6-10"><a href="#cb6-10"></a>        <span class="co">// If there's some kind of error on the GET request, catch it and print it as a console log</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>        <span class="op">.</span><span class="fu">catch</span>((error) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-12"><a href="#cb6-12"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(error)</span>
+<span id="cb6-13"><a href="#cb6-13"></a>        })<span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>}<span class="op">,</span> [setData])<span class="op">;</span> <span class="co">// Set 'setData' as a dependency of the useEffect to trigger it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This should act as a kind-of-recursive function, as the <code>useEffect</code> triggers itself again if a response is received from the GET request to the API.</p>
+<p>Finally, return the HTML rendered component:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">return</span> (</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="op">&lt;&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>        <span class="op">&lt;</span>h1<span class="op">&gt;</span>My data todos <span class="im">from</span> axios<span class="op">&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>        { <span class="co">/* Only render this part if data is not empty */</span>}</span>
+<span id="cb7-5"><a href="#cb7-5"></a>        { data <span class="op">&amp;&amp;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>            data<span class="op">.</span><span class="fu">map</span>((item) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-7"><a href="#cb7-7"></a>                <span class="cf">return</span>(</span>
+<span id="cb7-8"><a href="#cb7-8"></a>                    <span class="op">&lt;</span>spam key<span class="op">=</span>{item<span class="op">.</span><span class="at">id</span>}<span class="op">&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>                        <span class="dt">id</span><span class="op">:</span> {item<span class="op">.</span><span class="at">id</span>}</span>
+<span id="cb7-10"><a href="#cb7-10"></a>                        <span class="op">&lt;</span>spam<span class="op">&gt;</span><span class="dt">userId</span><span class="op">:</span>   {item<span class="op">.</span><span class="at">userId</span>}<span class="op">&lt;/</span>spam<span class="op">&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>                        <span class="op">&lt;</span>spam<span class="op">&gt;</span><span class="dt">title</span><span class="op">:</span>    {item<span class="op">.</span><span class="at">title</span>}<span class="op">&lt;/</span>spam<span class="op">&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>                        <span class="op">&lt;</span>spam<span class="op">&gt;</span><span class="dt">completed</span><span class="op">:</span>    {item<span class="op">.</span><span class="at">completed</span>}<span class="op">&lt;/</span>spam<span class="op">&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>                        <span class="op">&lt;</span>br <span class="op">/&gt;</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>                    <span class="op">&lt;/</span>spam<span class="op">&gt;</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>                )<span class="op">;</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>            })</span>
+<span id="cb7-17"><a href="#cb7-17"></a>        }</span>
+<span id="cb7-18"><a href="#cb7-18"></a>    <span class="op">&lt;/&gt;</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The final component should be something like this:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>AxiosApiRest/index.jsx</strong></pre>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> React<span class="op">,</span> { useEffect<span class="op">,</span> useState } <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> axios <span class="im">from</span> <span class="st">'axios'</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">AxiosApiRest</span>() {</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="co">// Declare the 'data' state variable</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="kw">const</span> [data<span class="op">,</span> setData] <span class="op">=</span> <span class="fu">useState</span>([])<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="co">// Define the REST API URL to request data from</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="st">"https://jsonplaceholder.typicode.com/todos"</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a>    <span class="co">// Define the 'useEffect' that will fetch the data</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb8-12"><a href="#cb8-12"></a>        <span class="co">// Configure the axios command to retrieve data from the API</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a>        axios</span>
+<span id="cb8-14"><a href="#cb8-14"></a>            <span class="op">.</span><span class="fu">get</span>(url)</span>
+<span id="cb8-15"><a href="#cb8-15"></a>            <span class="co">// 'then' is executed only if data has been received from the GET request</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>            <span class="op">.</span><span class="fu">then</span>((response) <span class="kw">=&gt;</span> {</span>
+<span id="cb8-17"><a href="#cb8-17"></a>                <span class="co">// Assign the received data to the 'data' state variable -&gt; This will trigger again the useEffect hook</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a>                <span class="fu">setData</span>(response<span class="op">.</span><span class="at">data</span>)<span class="op">;</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a>            })</span>
+<span id="cb8-20"><a href="#cb8-20"></a>            <span class="co">// If there's some kind of error on the GET request, catch it and print it as a console log</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a>            <span class="op">.</span><span class="fu">catch</span>((error) <span class="kw">=&gt;</span> {</span>
+<span id="cb8-22"><a href="#cb8-22"></a>                <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(error)</span>
+<span id="cb8-23"><a href="#cb8-23"></a>            })<span class="op">;</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a>    }<span class="op">,</span> [setData])<span class="op">;</span> <span class="co">// Set 'setData' as a dependency of the useEffect to trigger it</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a></span>
+<span id="cb8-26"><a href="#cb8-26"></a>    <span class="co">// Return the rendered component</span></span>
+<span id="cb8-27"><a href="#cb8-27"></a>    <span class="cf">return</span> (</span>
+<span id="cb8-28"><a href="#cb8-28"></a>        <span class="op">&lt;&gt;</span></span>
+<span id="cb8-29"><a href="#cb8-29"></a>            <span class="op">&lt;</span>h2<span class="op">&gt;</span>My data todos <span class="im">from</span> axios<span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a>            { <span class="co">/* Only render this part if data is not empty */</span>}</span>
+<span id="cb8-31"><a href="#cb8-31"></a>            { data <span class="op">&amp;&amp;</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a>                data<span class="op">.</span><span class="fu">map</span>((item) <span class="kw">=&gt;</span> {</span>
+<span id="cb8-33"><a href="#cb8-33"></a>                    <span class="cf">return</span>(</span>
+<span id="cb8-34"><a href="#cb8-34"></a>                        <span class="op">&lt;</span>spam key<span class="op">=</span>{item<span class="op">.</span><span class="at">id</span>}<span class="op">&gt;</span></span>
+<span id="cb8-35"><a href="#cb8-35"></a>                            <span class="dt">id</span><span class="op">:</span> {item<span class="op">.</span><span class="at">id</span>}</span>
+<span id="cb8-36"><a href="#cb8-36"></a>                            <span class="op">&lt;</span>spam<span class="op">&gt;</span><span class="dt">userId</span><span class="op">:</span>   {item<span class="op">.</span><span class="at">userId</span>}<span class="op">&lt;/</span>spam<span class="op">&gt;</span></span>
+<span id="cb8-37"><a href="#cb8-37"></a>                            <span class="op">&lt;</span>spam<span class="op">&gt;</span><span class="dt">title</span><span class="op">:</span>    {item<span class="op">.</span><span class="at">title</span>}<span class="op">&lt;/</span>spam<span class="op">&gt;</span></span>
+<span id="cb8-38"><a href="#cb8-38"></a>                            <span class="op">&lt;</span>spam<span class="op">&gt;</span><span class="dt">completed</span><span class="op">:</span>    {item<span class="op">.</span><span class="at">completed</span>}<span class="op">&lt;/</span>spam<span class="op">&gt;</span></span>
+<span id="cb8-39"><a href="#cb8-39"></a>                            <span class="op">&lt;</span>br <span class="op">/&gt;</span></span>
+<span id="cb8-40"><a href="#cb8-40"></a>                        <span class="op">&lt;/</span>spam<span class="op">&gt;</span></span>
+<span id="cb8-41"><a href="#cb8-41"></a>                    )<span class="op">;</span></span>
+<span id="cb8-42"><a href="#cb8-42"></a>                })</span>
+<span id="cb8-43"><a href="#cb8-43"></a>            }</span>
+<span id="cb8-44"><a href="#cb8-44"></a>        <span class="op">&lt;/&gt;</span></span>
+<span id="cb8-45"><a href="#cb8-45"></a>    )<span class="op">;</span></span>
+<span id="cb8-46"><a href="#cb8-46"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Add a new page in <code>src/pages/apirest/ApiRest.jsx</code> pointing towards the component and the corresponding route to that page in the <code>App.js</code>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>src/pages/apirest/ApiRest.jsx</strong></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> React <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> AxiosApiRest <span class="im">from</span> <span class="st">'../../components/AxiosApiRest'</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="kw">function</span> <span class="fu">ApiRest</span>() {</span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="cf">return</span> (</span>
+<span id="cb9-6"><a href="#cb9-6"></a>        <span class="op">&lt;&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>            <span class="op">&lt;</span>h1<span class="op">&gt;</span>API Rest examples<span class="op">&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>            <span class="op">&lt;</span>hr<span class="op">&gt;&lt;/</span>hr<span class="op">&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>            <span class="op">&lt;</span>AxiosApiRest <span class="op">/&gt;</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>        <span class="op">&lt;/&gt;</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>    )</span>
+<span id="cb9-12"><a href="#cb9-12"></a>}</span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="im">export</span> <span class="im">default</span> ApiRest<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>src/App.js</strong></pre>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> { BrowserRouter<span class="op">,</span> Routes<span class="op">,</span> Route } <span class="im">from</span> <span class="st">"react-router-dom"</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> Layout <span class="im">from</span> <span class="st">"./route/Layout.jsx"</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="im">import</span> Home <span class="im">from</span> <span class="st">"./pages/home/Home.jsx"</span><span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="im">import</span> HooksExamples <span class="im">from</span> <span class="st">"./pages/hooksexamples/HooksExamples.jsx"</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="im">import</span> Contact <span class="im">from</span> <span class="st">"./pages/contact/Contact.jsx"</span><span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="im">import</span> NoPage <span class="im">from</span> <span class="st">"./route/NoPage.jsx"</span><span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="im">import</span> ApiRest <span class="im">from</span> <span class="st">"./pages/apirest/ApiRest.jsx"</span><span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb10-10"><a href="#cb10-10"></a>  <span class="co">// View with return JSX</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a>  <span class="cf">return</span> (</span>
+<span id="cb10-12"><a href="#cb10-12"></a>    <span class="op">&lt;</span>BrowserRouter<span class="op">&gt;</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a>      <span class="op">&lt;</span>Routes<span class="op">&gt;</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a>        <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">"/"</span> element<span class="op">=</span>{<span class="op">&lt;</span>Layout <span class="op">/&gt;</span>}<span class="op">&gt;</span></span>
+<span id="cb10-15"><a href="#cb10-15"></a>          <span class="op">&lt;</span>Route index element<span class="op">=</span>{<span class="op">&lt;</span>Home <span class="op">/&gt;</span>} <span class="op">/&gt;</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a>          <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">"hooksexamples"</span> element<span class="op">=</span>{<span class="op">&lt;</span>HooksExamples <span class="op">/&gt;</span>} <span class="op">/&gt;</span></span>
+<span id="cb10-17"><a href="#cb10-17"></a>          <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">"apirest"</span> element<span class="op">=</span>{<span class="op">&lt;</span>ApiRest <span class="op">/&gt;</span>} <span class="op">/&gt;</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>          <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">"contact"</span> element<span class="op">=</span>{<span class="op">&lt;</span>Contact <span class="op">/&gt;</span>} <span class="op">/&gt;</span></span>
+<span id="cb10-19"><a href="#cb10-19"></a>          <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">"*"</span> element<span class="op">=</span>{<span class="op">&lt;</span>NoPage <span class="op">/&gt;</span>} <span class="op">/&gt;</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a>        <span class="op">&lt;/</span>Route<span class="op">&gt;</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a>      <span class="op">&lt;/</span>Routes<span class="op">&gt;</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a>    <span class="op">&lt;/</span>BrowserRouter<span class="op">&gt;</span></span>
+<span id="cb10-23"><a href="#cb10-23"></a>  )<span class="op">;</span></span>
+<span id="cb10-24"><a href="#cb10-24"></a>}</span>
+<span id="cb10-25"><a href="#cb10-25"></a></span>
+<span id="cb10-26"><a href="#cb10-26"></a><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 </section>
 
