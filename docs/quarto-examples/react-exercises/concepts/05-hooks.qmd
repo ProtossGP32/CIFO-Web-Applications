@@ -244,6 +244,11 @@ In this example, the `useEffect` is called once on component mounting (first ren
 
 ## `useContext`
 
+### Problem
+### Solution: context
+> Context works similarly to props, but instead of providing data to a single child, it can be used to provide data to an entire subtree.
+> Context **can only send data down the tree (parent ot subtree).** It can be paired with `callback` functions to pass data back up.
+
 ## Custom hooks
 
 # Basic hooks rules

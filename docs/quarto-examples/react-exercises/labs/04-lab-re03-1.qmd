@@ -1,0 +1,119 @@
+---
+title: "React JS: Lab#RE03-1"
+categories: [React, Router, Hooks, API, axios, semantic]
+author: ProtossGP32
+date: 2023/05/09
+from: markdown+emoji
+description: Creating a TO-DO app
+---
+# Introduction
+We'll create a To-Do app that uses almost all of the React hooks that we worked with on previous labs.
+
+We'll be using:
+
+- `react-router-dom`: used for bindings when useing React Router in web applications
+- [Semantinc React](https://react.semantic-ui.com/): library to paing some CSS:
+    - Data represented as a [table](https://react.semantic-ui.com/collections/table/) or as a [list](https://react.semantic-ui.com/elements/list/)
+- [HighCharts](https://www.highcharts.com/): library for data representation
+- Hooks:
+    - Basic app creation: `useReducer`, `useContext`
+    - State value persistence between renders: `useEffect`, `useRef`
+    - States or variables management: `useState`
+- Axios, REST API and Database storage:
+    - Once the basic app is done, we'll add API communication and Database storage
+- Local storage: we can use the device local storage to store the data between renders
+
+# Getting started
+## User-story and mock-up
+
+A basic implementation of the To-Do app manages data and has a basic business logic to manage this data (create entries, update entries, delete entries, etc...).
+
+- Our to-do data will be stored in the `state` from the `useReducer`
+- When dealing with render-cycle complexity, we'll use `useRef` to keep track of our variables state
+- When additional components are included as children, then we'll use `useContext` to deal with components communication. Remember the steps:
+    - Define your context
+    - Choose your provider (upmost component)
+    - Define its consumers (selected children)
+
+Our architecture (pseudo-code) should look something like this:
+
+```{.js filename="Architecture pseudo-code"}
+export default function TodoList() {
+    // Define an initial hardcoded ToDo state, just for testing purposes
+    const initialTodoState = [
+        {
+            id: 0,
+            task: "task 1",
+            assignee: "User 1",
+            date: "2023/05/09",
+            completed: false
+        },
+        {
+            id: 1,
+            task: "task 2",
+            assignee: "User 2",
+            date: "2023/05/09",
+            completed: true
+        }
+    ];
+    // Define a useReduce to deal with the TODO data
+    const [ todoState, todoDispatch ] = useReducer(todoReducer, initialTodoState);
+
+    // Render the component
+    return (
+        <>
+        <h2>To-Do table</h2>
+        {/* Iterate over the todoState and create a formatted Item for each available entry */}
+        {todoState.map((todoEntry) => {
+            // Call the Item component with the 'entry' as props (pending to define)
+            <Item todoEntry/>
+        })}
+        </>
+    );
+}
+```
+
+Once defined the pseudo-code, we can make a list of the required components to design and hooks to use:
+
+- `<Item />`: returns the rendered todo item
+    - Input: a `todoEntry` object that contains the following fields:
+        - `id`: ID of the task
+        - `task`: Task description
+        - `asignee`: Name of the person in charge of the task
+        - `date`: Some date field (creation? due?)
+        - `completion`: boolean value that defines the task completion
+    - Output: an HTML rendered table entry of the input `todoEntry` along with a `Delete` button to remove it from the `todoState`
+
+## Create a new project and install dependencies
+
+```{.bash filename="Create project and install packages"}
+# Create the new project
+npx create-react-app lab-re03-1
+# Install Router, Axios and Semantic
+npm install axios semantic-ui-react semantic-ui-css react-router-dom
+```
+
+## Start coding your app
+
+First off, we'll define a hardcoded list of initial To-Do to work with:
+
+```{.js}
+const initialTodoState = [
+        {
+            id: 0,
+            task: "task 1",
+            assignee: "User 1",
+            date: "2023/05/09"
+            completed: false
+        },
+        {
+            id: 1,
+            task: "task 2",
+            assignee: "User 2",
+            date: "2023/05/09"
+            completed: true
+        }
+    ];
+```
+
+
