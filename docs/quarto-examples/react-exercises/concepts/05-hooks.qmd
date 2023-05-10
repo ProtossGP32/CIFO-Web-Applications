@@ -243,11 +243,72 @@ In this example, the `useEffect` is called once on component mounting (first ren
 :::
 
 ## `useContext`
+:::{.callout-note}
+## What is `useContext`?
+`useContext` is a React Hook that lets you read and subscribe to context from your component.
+:::
 
-### Problem
-### Solution: context
-> Context works similarly to props, but instead of providing data to a single child, it can be used to provide data to an entire subtree.
-> Context **can only send data down the tree (parent ot subtree).** It can be paired with `callback` functions to pass data back up.
+`useContext` allows you to **consume context values from a nearest ancestor** `Context.Provider`.
+Here's a brief overview of the three steps to use `useContext`:
+
+1. **Create a context:** to use `useContext`, you must first create a context using the `React.createContext` function
+  - This function takes in a default value for the context, which will be used if a `Context.Provider` is not present in the component tree
+1. **Provide the context value:** to make the context value available to your components, you need to wrap your component tree with a `Context.Provider` component, and **pass the context value as a prop**
+1. **Consume the context value:** to consume the context value in a component, you can  use the `useContext` hook and pass in the context object as an argument
+  - The hook will **return the current context value**, which you can then use in your component
+
+![Context cycle steps: Create -> Provide -> Consume](../../images/react-labs/concepts/context-provider-consumer.png)
+
+### Usage of `useContext`
+#### Problem
+The big issue that comes up is figuring out [how components should communicate with each other](https://www.javascriptstuff.com/component-communication/#7-global-variables).
+
+
+
+![Eight simple strategies for communicating between React components](../../images/react-labs/concepts/react-communication-strategies.png)
+
+#### Solution: context
+Context works similarly to props, but instead of providing data to a single child, it can be used to provide data to an entire subtree.
+
+:::{.callout-tip}
+Context **can only send data down the tree (parent ot subtree).** It can be paired with `callback` functions to pass data back up.
+:::
+
+
+### Examples:
+#### Basic example
+In this example, the `MyContext` context component is created using the `React.createContext` function, with a default value of `default value`. The `MyComponent` component consumes the context value using the `useContext` hook, and **displays the value in the DOM**:
+
+```{.js filename="useContext basic example"}
+// Initialize a context component
+const MyContext = React.createContext("default value");
+
+// Define a function that will use that context by invoking the `useContext` hook
+function MyComponent() {
+  const value = useContext(MyContext);
+  return <div>{value}</div>;
+}
+
+// Main function
+function App() {
+  // The main function consumes the context provider by accessing its previously created component
+  return (
+    // Pass "Hello, world!" to the context component as a prop
+    <MyContext.Provider value="Hello, world!">
+      {/* The child component now has access to the MyContext component */}
+      <MyComponent />
+    </MyContext.Provider>
+  );
+}
+```
+What's going on here?
+
+- The `App` component wraps the `MyComponent` component with a `MyContext.Provider` component, and passes the value `"Hello, world!"` as a prop
+- This makes the context value available to the `MyComponent` component, which will use the value passed by the **provider** rather than the default value
+
+:::{.callout-warning}
+## TODO: finish the rest of examples
+:::
 
 ## Custom hooks
 

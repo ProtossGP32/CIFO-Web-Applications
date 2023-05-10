@@ -1,0 +1,18 @@
+---
+title: "React JS: Lab#RE03-2"
+categories: [React, Router, Hooks, API, axios, semantic, highcharts]
+author: ProtossGP32
+date: 2023/05/10
+from: markdown+emoji
+description: Using Highcharts for data charts representation
+---
+# Introduction
+In this lab, we'll be using [Highcharts](https://www.highcharts.com/) React
+
+- Library that allows you to integrate Highcharts, **a popular JavaScript charting library**, into your React application
+- It provides a React component that acts as a **wrapper** around the Highcharts library, enabling you to create interactive and visually appealing charts
+- By utilizing the Highcharts React library, you can easily incorporate **interactive charts into your React application, making the data visually accessible and enhancing the user experience**
+
+For more information, go to the [Highcharts article](../concepts/06-highcharts.qmd).
+
+# Getting started

@@ -94,7 +94,7 @@ npm install axios semantic-ui-react semantic-ui-css react-router-dom
 ```
 
 ## Start coding your app
-
+### Initial values
 First off, we'll define a hardcoded list of initial To-Do to work with:
 
 ```{.js}
@@ -116,4 +116,122 @@ const initialTodoState = [
     ];
 ```
 
+### Expected `return`
+Then, we define the `return` of our TodoFake:
 
+```{.js}
+return (
+    <>
+        <h1>To-Do Fake - hardcoded list of tasks</h1>
+        <TodoList receivedTodoState={initialTodoState} />
+    </>
+);
+```
+where:
+- `TodoList` would be the component that handles the To-Do list rendering based on an initial todo state. Params:
+    - `receivedTodoState`: the initial To-Do state values
+
+#### `TodoList` component
+Let's develop the `TodoList` component:
+
+```{.js}
+export default function TodoList({receivedTodoState}) {
+    const [todoState, todoDispatch] = useReducer(todoReducer, receivedTodoState);
+    return (
+        <>
+            <button onClick={() => {
+                todoDispatch({ type: 'add' })
+            }}>New To-Do entry</button>
+            <List>
+                {todoState.map((todoEntry) => {
+                    return(
+                        <TodoItem todoEntry={todoEntry} />
+                    );
+                })}    
+            </List>
+        </>
+    );
+}
+``` 
+
+Things that we've introduced here:
+- The `useReducer` hook to deal with our To-Do entries
+- A button called `New To-do entry` that calls the `useReducer` dispatch (`todoDispatch`) so a new entry is added to the `todoState`
+- A new component called `TodoItem` that manages the formatting of each To-Do entry
+
+#### `useReducer` hook
+Let's continue with the `useReducer`, then:
+
+- Its `reducer` function should be something like this:
+
+    ```{.js filename="Reducer function for To-do app"}
+    function todoReducer(todoState, todoAction) {
+        switch(todoAction.type) {
+            case "add": {
+                return [
+                    ...todoState,
+                    // Add a new task at the end of the array
+                    newTask()
+                ];
+            }
+            case "delete": {
+                // TODO: return the todoState without the current entry
+                return todoState;
+            }
+            default: {
+                return todoState;    
+            }
+        };
+    }
+    ```
+- Here we introduce an auxiliar `newTask` function that simply returns a JSON object with empty values for the expected To-Do entry keys:
+  
+    ```{.js filename="Auxiliar newTask function"}
+    function newTask() {
+        return {
+            id: Date.now(),
+            task: "",
+            assignee: "",
+            date: Date.now(),
+            completed: false
+        }
+    }
+    ```
+
+#### `TodoItem` component
+The `TodoItem` should return a CSS-formatted entry based on the provided `todoEntry`. It should allow the user to modify the tasks fields as well as delete it from the `todoState`:
+
+```{.js filename="Tentative todoItem component"}
+function TodoItem({todoEntry}) {
+    return (
+        <List.Item>
+            {/** TODO: Add images to each entry */}
+            <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png'/>
+            <List.Content>
+                <List.Header as='a'><b>Task: </b><Input placeholder="Enter task" value={todoEntry.task} /></List.Header>
+                <List.Description>
+                    <b>Assignee: </b><Input placeholder="Enter assignee" value={todoEntry.assignee} />
+                    <br/>
+                    <b>Date: </b><Input type="date" value={todoEntry.date} />
+                    <br/>
+                    <Checkbox label="Completed" value={todoEntry.completed} />
+                </List.Description>
+            </List.Content>
+            <Button onClick={() => {
+                // ERROR: TodoItem doesn't have visibility of the todoDispatch!!
+                todoDispatch({ type: 'delete' })
+            }} icon labelPosition="right">
+                Delete
+                <Icon name="trash" />
+            </Button>
+        </List.Item>
+    );
+}
+```
+But here we have a problem: `todoDispatch` called by the Delete button isn't on the same scope/context as the `TodoItem` component!!
+
+
+## Final result:
+
+```{.js filename="TodoList.jsx" include="../../../../react-exercises/lab-re03-1/src/components/todolist/TodoList.jsx"}
+```

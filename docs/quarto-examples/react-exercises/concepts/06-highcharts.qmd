@@ -1,0 +1,112 @@
+---
+title: "06 - React JS: Highcharts"
+categories: [React JS, Highcharts]
+author: ProtossGP32
+date: 2023/04/26
+from: markdown+emoji
+description: Render charts using Highcharts
+---
+# Introduction
+[Highcharts](https://www.highcharts.com/) React is a library that allows you to integrate Highcharts, **a popular JavaScript charting library**, into your React application
+- It provides a React component that acts as a **wrapper** around the Highcharts library, enabling you to create interactive and visually appealing charts
+- By utilizing the Highcharts React library, you can easily incorporate **interactive charts into your React application, making the data visually accessible and enhancing the user experience**
+
+# Overview:
+How Highcharts React works to make data visible in a React app:
+- `Installation`: First, you need to install the Highcharts React library along with the Highcharts library itself.
+    - You can do this using package managers like **npm** or yarn
+- `Importing` components: Once installed, you can import the necessary components from the Highcharts React library into your React application
+    - The main component you'll use is typically called Highcharts React
+- `Configuration`: Highcharts charts require **configuration options to define the type of chart, data sources, styling, and various other settings**
+    - In your React component, you'll create a configuration object that specifies
+    - You can define the configuration object directly in your component or import it from an external file
+- `Rendering` the Chart: within your React component's render method, you'll use the Highcharts React component, **passing in the configuration object as a prop**
+    - This component acts as a **container** for the Highcharts chart and **handles the integration with React**
+- `Updating` the data: to make the chart data visible and dynamic, you'll typically store the data in the component's state or props
+    - Whenever the data changes, you can update the state or props accordingly, triggering a re-render of the chart component with the new data
+- `Interactivity and Events`: Highcharts provides various interactive features like tooltips, legends, zooming and selection
+    - You can configure these features through the chart's configuration object and handle events triggered by user interactions, such as clicking on a data point
+- `Styling and Customization`: Highcharts offers extensive customization options to control the appearance of your charts
+    - You can modify colors, fonts, labels, axes, and other visual elements using the configuration object
+    - Additionally, you can apply CSS styles to the chart container
+    - You can also use Highcharts-specific APIs to further customize the chart's appearance
+- `Additional features`: Highcharts supports a wide range of chart types, including:
+    - line charts
+    - bar charts
+    - pie charts
+    - area charts
+    - radar charts
+    - windrose charts
+    - stock charts and more
+
+You can explore the [Highcharts docs](https://www.highcharts.com/docs) to learn about additional features, such as exporting charts, adding annotations, or integrating with external data sources.
+
+# Getting started
+## Importing dependencies
+The following code imports the necessary dependencies:
+- `React` from the `react` package
+- `Highcharts` from the `highcharts/highstock` package
+- `PieChart` from the `highcharts-react-official` package. You'd import a different component depending on the chart you want to render
+
+```{.js filename="Highcharts React imports"}
+import React from "react";
+import Highcharts from "highcharts/highstock";
+import PieChart from "highcharts-react-official";
+```
+
+These dependencies are required for using Highcharts with React.
+
+## Defining data
+Data must be formatted as an array of JSON objects, each one with the expected key-value pairs for a defined data set:
+
+```{.js filename="Dataset example"}
+const grades = [
+    {
+        name: "Carla",
+        y: 135
+    },
+    {
+        name: "Marc",
+        y: 89
+    },
+    {
+        name: "Víctor",
+        y: 44
+    },
+    {
+        name: "Rafa",
+        y: 32
+    },
+    {
+        name: "Fabrizio",
+        y: 12
+    }
+]
+```
+
+## Chart configuration
+Chart configuration is a JSON object that contains relevant keys to format your chart:
+
+```{.js filename="Chart options"}
+const chart_options = {
+    title: {
+
+    },
+    chart: {
+
+    },
+    series: [
+        {
+            data: grades
+        }
+    ]
+}
+```
+
+where:
+
+- `title`: formatting options for the chart title
+- `chart`: formatting and type options of the chart
+- `series`: data sets to include in the chart
+
+## Creating the React component
