@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../react-exercises/labs/01-lab-re01-1.html" rel="next">
+<link href="../../react-exercises/concepts/06-highcharts.html" rel="next">
 <link href="../../react-exercises/concepts/04-debugging-reactjs.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -340,6 +340,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../react-exercises/concepts/05-hooks.html" rel="" target="">
  <span class="dropdown-text">05 - React JS: Using hooks</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/concepts/06-highcharts.html" rel="" target="">
+ <span class="dropdown-text">06 - React JS: Highcharts</span></a>
+  </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
@@ -357,6 +361,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../react-exercises/labs/04-lab-re03-1.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE03-1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/labs/05-lab-re03-2.html" rel="" target="">
+ <span class="dropdown-text">React JS: Lab#RE03-2</span></a>
   </li>  
     </ul>
   </li>
@@ -545,6 +553,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">05 - React JS: Using hooks</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/06-highcharts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06 - React JS: Highcharts</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -578,6 +592,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../react-exercises/labs/04-lab-re03-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">React JS: Lab#RE03-1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/labs/05-lab-re03-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">React JS: Lab#RE03-2</span></a>
   </div>
 </li>
       </ul>
@@ -616,8 +636,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#usecontext" id="toc-usecontext" class="nav-link" data-scroll-target="#usecontext"><code>useContext</code></a>
   <ul class="collapse">
-  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#solution-context" id="toc-solution-context" class="nav-link" data-scroll-target="#solution-context">Solution: context</a></li>
+  <li><a href="#usage-of-usecontext" id="toc-usage-of-usecontext" class="nav-link" data-scroll-target="#usage-of-usecontext">Usage of <code>useContext</code></a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples:</a></li>
   </ul></li>
   <li><a href="#custom-hooks" id="toc-custom-hooks" class="nav-link" data-scroll-target="#custom-hooks">Custom hooks</a></li>
   </ul></li>
@@ -1207,14 +1227,118 @@ Synchronize is a key-word
 </section>
 <section id="usecontext" class="level2">
 <h2 class="anchored" data-anchor-id="usecontext"><code>useContext</code></h2>
-<section id="problem" class="level3">
-<h3 class="anchored" data-anchor-id="problem">Problem</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is <code>useContext</code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>useContext</code> is a React Hook that lets you read and subscribe to context from your component.</p>
+</div>
+</div>
+<p><code>useContext</code> allows you to <strong>consume context values from a nearest ancestor</strong> <code>Context.Provider</code>. Here’s a brief overview of the three steps to use <code>useContext</code>:</p>
+<ol type="1">
+<li><strong>Create a context:</strong> to use <code>useContext</code>, you must first create a context using the <code>React.createContext</code> function</li>
+</ol>
+<ul>
+<li>This function takes in a default value for the context, which will be used if a <code>Context.Provider</code> is not present in the component tree</li>
+</ul>
+<ol type="1">
+<li><strong>Provide the context value:</strong> to make the context value available to your components, you need to wrap your component tree with a <code>Context.Provider</code> component, and <strong>pass the context value as a prop</strong></li>
+<li><strong>Consume the context value:</strong> to consume the context value in a component, you can use the <code>useContext</code> hook and pass in the context object as an argument</li>
+</ol>
+<ul>
+<li>The hook will <strong>return the current context value</strong>, which you can then use in your component</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/react-labs/concepts/context-provider-consumer.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Context cycle steps: Create -&gt; Provide -&gt; Consume</figcaption>
+</figure>
+</div>
+<section id="usage-of-usecontext" class="level3">
+<h3 class="anchored" data-anchor-id="usage-of-usecontext">Usage of <code>useContext</code></h3>
+<section id="problem" class="level4">
+<h4 class="anchored" data-anchor-id="problem">Problem</h4>
+<p>The big issue that comes up is figuring out <a href="https://www.javascriptstuff.com/component-communication/#7-global-variables">how components should communicate with each other</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/react-labs/concepts/react-communication-strategies.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Eight simple strategies for communicating between React components</figcaption>
+</figure>
+</div>
 </section>
-<section id="solution-context" class="level3">
-<h3 class="anchored" data-anchor-id="solution-context">Solution: context</h3>
-<blockquote class="blockquote">
-<p>Context works similarly to props, but instead of providing data to a single child, it can be used to provide data to an entire subtree. Context <strong>can only send data down the tree (parent ot subtree).</strong> It can be paired with <code>callback</code> functions to pass data back up.</p>
-</blockquote>
+<section id="solution-context" class="level4">
+<h4 class="anchored" data-anchor-id="solution-context">Solution: context</h4>
+<p>Context works similarly to props, but instead of providing data to a single child, it can be used to provide data to an entire subtree.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Context <strong>can only send data down the tree (parent ot subtree).</strong> It can be paired with <code>callback</code> functions to pass data back up.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples:</h3>
+<section id="basic-example" class="level4">
+<h4 class="anchored" data-anchor-id="basic-example">Basic example</h4>
+<p>In this example, the <code>MyContext</code> context component is created using the <code>React.createContext</code> function, with a default value of <code>default value</code>. The <code>MyComponent</code> component consumes the context value using the <code>useContext</code> hook, and <strong>displays the value in the DOM</strong>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>useContext basic example</strong></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">// Initialize a context component</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">const</span> MyContext <span class="op">=</span> React<span class="op">.</span><span class="fu">createContext</span>(<span class="st">"default value"</span>)<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">// Define a function that will use that context by invoking the `useContext` hook</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="kw">function</span> <span class="fu">MyComponent</span>() {</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="kw">const</span> value <span class="op">=</span> <span class="fu">useContext</span>(MyContext)<span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>{value}<span class="op">&lt;/</span>div<span class="op">&gt;;</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>}</span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co">// Main function</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb9-12"><a href="#cb9-12"></a>  <span class="co">// The main function consumes the context provider by accessing its previously created component</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a>  <span class="cf">return</span> (</span>
+<span id="cb9-14"><a href="#cb9-14"></a>    <span class="co">// Pass "Hello, world!" to the context component as a prop</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>    <span class="op">&lt;</span>MyContext<span class="op">.</span><span class="at">Provider</span> value<span class="op">=</span><span class="st">"Hello, world!"</span><span class="op">&gt;</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a>      {<span class="co">/* The child component now has access to the MyContext component */</span>}</span>
+<span id="cb9-17"><a href="#cb9-17"></a>      <span class="op">&lt;</span>MyComponent <span class="op">/&gt;</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a>    <span class="op">&lt;/</span>MyContext<span class="op">.</span><span class="at">Provider</span><span class="op">&gt;</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a>  )<span class="op">;</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What’s going on here?</p>
+<ul>
+<li>The <code>App</code> component wraps the <code>MyComponent</code> component with a <code>MyContext.Provider</code> component, and passes the value <code>"Hello, world!"</code> as a prop</li>
+<li>This makes the context value available to the <code>MyComponent</code> component, which will use the value passed by the <strong>provider</strong> rather than the default value</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TODO: finish the rest of examples
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="custom-hooks" class="level2">
@@ -1589,8 +1713,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../react-exercises/labs/01-lab-re01-1.html" class="pagination-link">
-        <span class="nav-page-text">React JS: Lab#RE01-1</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../react-exercises/concepts/06-highcharts.html" class="pagination-link">
+        <span class="nav-page-text">06 - React JS: Highcharts</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
