@@ -176,6 +176,7 @@ Let's continue with the `useReducer`, then:
             }
             case "delete": {
                 // TODO: return the todoState without the current entry
+                // Use the todoAction.payload to identify which entry to delete from the todoState
                 return todoState;
             }
             default: {
@@ -219,7 +220,8 @@ function TodoItem({todoEntry}) {
             </List.Content>
             <Button onClick={() => {
                 // ERROR: TodoItem doesn't have visibility of the todoDispatch!!
-                todoDispatch({ type: 'delete' })
+                // We provide a 'payload' key with the ID value to delete that entry from the todoState
+                todoDispatch({ type: 'delete', payload: todoEntry.id })
             }} icon labelPosition="right">
                 Delete
                 <Icon name="trash" />
