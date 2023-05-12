@@ -4,6 +4,20 @@ import { List, Image, Input, Checkbox, Button, Icon } from "semantic-ui-react";
 // Define a Context Provider to deal with initial states and reducer dispatch functions
 const TodoContext = createContext();
 
+// Define a function that handle fields update
+function handleFieldUpdate(todoDispatch, itemId, itemField, itemValue) {
+    // This function shall call the reducer dispatches
+    todoDispatch({
+        type: "updateField",
+        payload: {
+            "id": itemId,
+            "field": itemField,
+            "value": itemValue 
+        }
+    });
+
+}
+
 // Define the function to generate list items
 function TodoItem({todoEntry}) {
     const todoDispatch = useContext(TodoContext)
@@ -12,10 +26,10 @@ function TodoItem({todoEntry}) {
             {/** TODO: Add images to each entry */}
             <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png'/>
             <List.Content>
-                <List.Header as='a'><b>Task: </b><Input placeholder="Enter task" value={todoEntry.task} /></List.Header>
+                <List.Header as='a'><b>Task: </b><Input placeholder="Enter task" onChange={(event) => handleFieldUpdate(todoDispatch, todoEntry.id, "task", event.target.value)} value={todoEntry.task} /></List.Header>
                 <List.Description>
-                    <b>Assignee: </b><Input placeholder="Enter assignee" value={todoEntry.assignee} />
-                    <b>Date: </b><Input type="date" value={todoEntry.date} />
+                    <b>Assignee: </b><Input placeholder="Enter assignee" onChange={(event) => handleFieldUpdate(todoDispatch, todoEntry.id, "assignee", event.target.value)} value={todoEntry.assignee} />
+                    <b>Date: </b><Input type="date" onChange={(event) => handleFieldUpdate(todoDispatch, todoEntry.id, "date", event.target.value)} value={todoEntry.date} />
                     <Checkbox label="Completed" onChange={() => todoDispatch({ type: "completed", payload: todoEntry.id })} checked={todoEntry.completed} />
                     <Button onClick={() => {
                         todoDispatch({ type: 'delete', payload: todoEntry.id })
@@ -36,7 +50,11 @@ function newTask() {
         id: Date.now(),
         task: "",
         assignee: "",
-        date: Date.now(),
+        date: Intl.DateTimeFormat("az", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        }).format((Date.now())),
         completed: false
     }
 }
@@ -52,8 +70,7 @@ function todoReducer(todoState, todoAction) {
             ];
         }
         case "delete": {
-            // TODO: return the todoState without the current entry
-            // Simply filter the todoState map by the provided todoAction.payload
+            // Filter the todoState map by the provided todoAction.payload
             return todoState.filter((todoEntry) => todoEntry.id !== todoAction.payload);
         }
         case "completed": {
@@ -70,12 +87,31 @@ function todoReducer(todoState, todoAction) {
                 return item;
             });
         }
+        case "updateField": {
+            // Distructure the payload into the expected values
+            const { id, field, value } = todoAction.payload;
+            // Return all of the todoState items
+            return todoState.map((item) => {
+                // If the item ID matches the received ID in the payload, change its defined value and return it
+                if (item.id === id) {
+                    return {
+                        ...item,
+                        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names
+                        [field]: value
+                    };
+                }
+                // Else, return the item without changes
+                return item;
+            });
+            
+        }
         case "reset": {
             // TODO: reset the state to the initially provided To-Do
             return [
                 // Empty string
             ];
         }
+        // TODO: add the text fields update cases (task, assignee, date, etc...)
         default: {
             return todoState;    
         }
