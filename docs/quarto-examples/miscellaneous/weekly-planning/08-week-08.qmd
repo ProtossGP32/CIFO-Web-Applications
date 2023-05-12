@@ -151,19 +151,19 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Wednesday:
 
-- Morning: BSC + 
+- Morning: BSC (Correctly deploy OKD using OpenStack installer) + React LabRE03-1
 - Afternoon: BSC
 - Evening: 
 
 #### Thursday:
 
-- Morning: BSC + 
-- Afternoon: BSC
+- Morning: BSC (Create OKD / OpenShift installation docs) + React LabRE03-1 
+- Afternoon: BSC (Failed deploying OKD from local machine)
 - Evening: 
 
 #### Friday:
 
-- Morning: BSC + 
+- Morning: BSC + Weekly retrospective + ReactJS To-Do contexts
 - Afternoon: BSC
 - Evening:
 
@@ -198,8 +198,8 @@ Think about the reasons why these tasks aren't done:
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
 
 - **Best decision of all week**
-    - 
-    - 
+    - Only working on the course during mornings
+    - Documentation of the OpenShift deployments
 
 - **Avoided pits**
     - 
@@ -208,11 +208,11 @@ Based on the previous analysis, identify the weak points of the previous plannin
     - 
 
 - **Core concepts learnt during this week / What have you learned?**
-    - 
+    - OKD deployments
     - 
 
 - **Have you respected SCRUM cycles? Have you respected learning approach cycles?**
-    - 
+    - No
 
 # Weekend homework
 
