@@ -1,0 +1,65 @@
+[
+    {
+      "id": 1,
+      "text": "Java",
+      "completed": true,
+      "author": "Toni",
+      "due": "1/5/2022"
+    },
+    {
+      "id": 2,
+      "text": "React",
+      "completed": false,
+      "author": "Toni",
+      "due": "1/6/2022"
+    },
+    {
+      "id": 3,
+      "text": "Python",
+      "completed": false,
+      "author": "Toni",
+      "due": "1/6/2022"
+    },
+    {
+      "id": 4,
+      "text": "Spring",
+      "completed": true,
+      "author": "Alex",
+      "due": "1/6/2022"
+    },
+    {
+      "id": 5,
+      "text": "Visual",
+      "completed": false,
+      "author": "Alex",
+      "due": "1/6/2022"
+    },
+    {
+      "id": 6,
+      "text": "C#",
+      "completed": true,
+      "author": "Toni",
+      "due": "1/6/2022"
+    },
+    {
+      "id": 7,
+      "text": "Ruby on Rails",
+      "completed": false,
+      "author": "Joan",
+      "due": "1/6/2022"
+    },
+    {
+      "id": 8,
+      "text": "C# and .NET",
+      "completed": false,
+      "author": "Joan",
+      "due": "1/6/2022"
+    },
+    {
+      "id": 9,
+      "text": "Spring Boot",
+      "completed": false,
+      "author": "Joan",
+      "due": "1/6/2022"
+    }
+  ]

@@ -7,7 +7,9 @@ from: markdown+emoji
 description: Using Highcharts for data charts representation
 ---
 # Introduction
-In this lab, we'll be using [Highcharts](https://www.highcharts.com/) React
+Class docs: [ReactJS Lab#RE03-2](https://albertprofe.dev/reactjs/rjslab3-2.html)
+
+In this lab, we'll be using [Highcharts](https://www.highcharts.com/) for ReactJS:
 
 - Library that allows you to integrate Highcharts, **a popular JavaScript charting library**, into your React application
 - It provides a React component that acts as a **wrapper** around the Highcharts library, enabling you to create interactive and visually appealing charts
@@ -16,3 +18,61 @@ In this lab, we'll be using [Highcharts](https://www.highcharts.com/) React
 For more information, go to the [Highcharts article](../concepts/06-highcharts.qmd).
 
 # Getting started
+## Create new project
+
+```{.bash}
+npx create-react-app lab-re03-2
+```
+
+## Install dependencies:
+
+```{.bash}
+npm install react-router-dom axios semantic-ui-react semantic-ui-css highcharts-react-official
+```
+
+## Create your project structure:
+Using the knowledge from previous labs and concepts, create the required paths for a Highcharts example page:
+
+```{.bash}
+src
+├── App.css
+├── App.js
+├── App.test.js
+├── components
+│   └── highcharts
+├── index.css
+├── index.js
+├── pages
+│   ├── contact
+│   │   └── Contact.jsx
+│   ├── highcharts-examples
+│   │   └── HighchartsExamples.jsx
+│   └── home
+│       └── Home.jsx
+├── reportWebVitals.js
+├── route
+│   ├── Footer.jsx
+│   ├── Layout.jsx
+│   └── NoPage.jsx
+└── setupTests.js
+```
+
+Within `src/components/highcharts` we'll add all of our highcharts examples
+
+# Create Highcharts examples
+## Pie Chart
+
+## Pie Chart grouped by some field
+
+`App` transforms the data and then on render time it calls to the custom `PieChart` component with the transformed data as an input.
+
+:::{.callout-tip}
+A middleware operation transforms the input obtained from an external source and adapts it to be compliant with the Highcharts component.
+:::
+
+Take into account the context of all your components so they can access both the `state` values and `useReducer`
+
+### Prepare data from a fake API for testing purposes
+We'll use [MockAPI](https://mockapi.io) to provide a fake API with fake data for testing purposes.
+
+Create an account (your can also use GitHub to login) and then create a new project. Your ReactJS app shall point to each one of the endpoints you create on that fake API.
