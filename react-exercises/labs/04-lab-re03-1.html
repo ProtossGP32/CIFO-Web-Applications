@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -449,6 +449,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../miscellaneous/weekly-planning/08-week-08.html" rel="" target="">
  <span class="dropdown-text">08 - Week 08</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/09-week-09.html" rel="" target="">
+ <span class="dropdown-text">09 - Week 09</span></a>
   </li>  
     </ul>
   </li>
@@ -929,107 +933,143 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-4"><a href="#cb9-4"></a><span class="co">// Define a Context Provider to deal with initial states and reducer dispatch functions</span></span>
 <span id="cb9-5"><a href="#cb9-5"></a><span class="kw">const</span> TodoContext <span class="op">=</span> <span class="fu">createContext</span>()<span class="op">;</span></span>
 <span id="cb9-6"><a href="#cb9-6"></a></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">// Define the function to generate list items</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="kw">function</span> <span class="fu">TodoItem</span>({todoEntry}) {</span>
-<span id="cb9-9"><a href="#cb9-9"></a>    <span class="kw">const</span> todoDispatch <span class="op">=</span> <span class="fu">useContext</span>(TodoContext)</span>
-<span id="cb9-10"><a href="#cb9-10"></a>    <span class="cf">return</span> (</span>
-<span id="cb9-11"><a href="#cb9-11"></a>        <span class="op">&lt;</span>List<span class="op">.</span><span class="at">Item</span><span class="op">&gt;</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a>            {<span class="co">/** </span><span class="al">TODO</span><span class="co">: Add images to each entry */</span>}</span>
-<span id="cb9-13"><a href="#cb9-13"></a>            <span class="op">&lt;</span>Image avatar src<span class="op">=</span><span class="st">'https://react.semantic-ui.com/images/avatar/small/rachel.png'</span><span class="op">/&gt;</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a>            <span class="op">&lt;</span>List<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a>                <span class="op">&lt;</span>List<span class="op">.</span><span class="at">Header</span> <span class="im">as</span><span class="op">=</span><span class="st">'a'</span><span class="op">&gt;&lt;</span>b<span class="op">&gt;</span><span class="dt">Task</span><span class="op">:</span> <span class="op">&lt;/</span>b<span class="op">&gt;&lt;</span>Input placeholder<span class="op">=</span><span class="st">"Enter task"</span> value<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">task</span>} <span class="op">/&gt;&lt;/</span>List<span class="op">.</span><span class="at">Header</span><span class="op">&gt;</span></span>
-<span id="cb9-16"><a href="#cb9-16"></a>                <span class="op">&lt;</span>List<span class="op">.</span><span class="at">Description</span><span class="op">&gt;</span></span>
-<span id="cb9-17"><a href="#cb9-17"></a>                    <span class="op">&lt;</span>b<span class="op">&gt;</span><span class="dt">Assignee</span><span class="op">:</span> <span class="op">&lt;/</span>b<span class="op">&gt;&lt;</span>Input placeholder<span class="op">=</span><span class="st">"Enter assignee"</span> value<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">assignee</span>} <span class="op">/&gt;</span></span>
-<span id="cb9-18"><a href="#cb9-18"></a>                    <span class="op">&lt;</span>b<span class="op">&gt;</span><span class="dt">Date</span><span class="op">:</span> <span class="op">&lt;/</span>b<span class="op">&gt;&lt;</span>Input type<span class="op">=</span><span class="st">"date"</span> value<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">date</span>} <span class="op">/&gt;</span></span>
-<span id="cb9-19"><a href="#cb9-19"></a>                    <span class="op">&lt;</span>Checkbox label<span class="op">=</span><span class="st">"Completed"</span> onChange<span class="op">=</span>{() <span class="kw">=&gt;</span> <span class="fu">todoDispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"completed"</span><span class="op">,</span> <span class="dt">payload</span><span class="op">:</span> todoEntry<span class="op">.</span><span class="at">id</span> })} checked<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">completed</span>} <span class="op">/&gt;</span></span>
-<span id="cb9-20"><a href="#cb9-20"></a>                    <span class="op">&lt;</span>Button onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> {</span>
-<span id="cb9-21"><a href="#cb9-21"></a>                        <span class="fu">todoDispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'delete'</span><span class="op">,</span> <span class="dt">payload</span><span class="op">:</span> todoEntry<span class="op">.</span><span class="at">id</span> })</span>
-<span id="cb9-22"><a href="#cb9-22"></a>                        <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb9-23"><a href="#cb9-23"></a>                    }} icon labelPosition<span class="op">=</span><span class="st">"right"</span><span class="op">&gt;</span></span>
-<span id="cb9-24"><a href="#cb9-24"></a>                        Delete</span>
-<span id="cb9-25"><a href="#cb9-25"></a>                        <span class="op">&lt;</span>Icon name<span class="op">=</span><span class="st">"trash"</span> <span class="op">/&gt;</span></span>
-<span id="cb9-26"><a href="#cb9-26"></a>                    <span class="op">&lt;/</span>Button<span class="op">&gt;</span></span>
-<span id="cb9-27"><a href="#cb9-27"></a>                <span class="op">&lt;/</span>List<span class="op">.</span><span class="at">Description</span><span class="op">&gt;</span></span>
-<span id="cb9-28"><a href="#cb9-28"></a>            <span class="op">&lt;/</span>List<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
-<span id="cb9-29"><a href="#cb9-29"></a></span>
-<span id="cb9-30"><a href="#cb9-30"></a>        <span class="op">&lt;/</span>List<span class="op">.</span><span class="at">Item</span><span class="op">&gt;</span></span>
-<span id="cb9-31"><a href="#cb9-31"></a>    )<span class="op">;</span></span>
-<span id="cb9-32"><a href="#cb9-32"></a>}</span>
-<span id="cb9-33"><a href="#cb9-33"></a></span>
-<span id="cb9-34"><a href="#cb9-34"></a><span class="kw">function</span> <span class="fu">newTask</span>() {</span>
-<span id="cb9-35"><a href="#cb9-35"></a>    <span class="cf">return</span> {</span>
-<span id="cb9-36"><a href="#cb9-36"></a>        <span class="dt">id</span><span class="op">:</span> <span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()<span class="op">,</span></span>
-<span id="cb9-37"><a href="#cb9-37"></a>        <span class="dt">task</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
-<span id="cb9-38"><a href="#cb9-38"></a>        <span class="dt">assignee</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
-<span id="cb9-39"><a href="#cb9-39"></a>        <span class="dt">date</span><span class="op">:</span> <span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()<span class="op">,</span></span>
-<span id="cb9-40"><a href="#cb9-40"></a>        <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span></span>
-<span id="cb9-41"><a href="#cb9-41"></a>    }</span>
-<span id="cb9-42"><a href="#cb9-42"></a>}</span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">// Define a function that handle fields update</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="kw">function</span> <span class="fu">handleFieldUpdate</span>(todoDispatch<span class="op">,</span> itemId<span class="op">,</span> itemField<span class="op">,</span> itemValue) {</span>
+<span id="cb9-9"><a href="#cb9-9"></a>    <span class="co">// This function shall call the reducer dispatches</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="fu">todoDispatch</span>({</span>
+<span id="cb9-11"><a href="#cb9-11"></a>        <span class="dt">type</span><span class="op">:</span> <span class="st">"updateField"</span><span class="op">,</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>        <span class="dt">payload</span><span class="op">:</span> {</span>
+<span id="cb9-13"><a href="#cb9-13"></a>            <span class="st">"id"</span><span class="op">:</span> itemId<span class="op">,</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a>            <span class="st">"field"</span><span class="op">:</span> itemField<span class="op">,</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>            <span class="st">"value"</span><span class="op">:</span> itemValue </span>
+<span id="cb9-16"><a href="#cb9-16"></a>        }</span>
+<span id="cb9-17"><a href="#cb9-17"></a>    })<span class="op">;</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a></span>
+<span id="cb9-19"><a href="#cb9-19"></a>}</span>
+<span id="cb9-20"><a href="#cb9-20"></a></span>
+<span id="cb9-21"><a href="#cb9-21"></a><span class="co">// Define the function to generate list items</span></span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="kw">function</span> <span class="fu">TodoItem</span>({todoEntry}) {</span>
+<span id="cb9-23"><a href="#cb9-23"></a>    <span class="kw">const</span> todoDispatch <span class="op">=</span> <span class="fu">useContext</span>(TodoContext)</span>
+<span id="cb9-24"><a href="#cb9-24"></a>    <span class="cf">return</span> (</span>
+<span id="cb9-25"><a href="#cb9-25"></a>        <span class="op">&lt;</span>List<span class="op">.</span><span class="at">Item</span><span class="op">&gt;</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a>            {<span class="co">/** </span><span class="al">TODO</span><span class="co">: Add images to each entry */</span>}</span>
+<span id="cb9-27"><a href="#cb9-27"></a>            <span class="op">&lt;</span>Image avatar src<span class="op">=</span><span class="st">'https://react.semantic-ui.com/images/avatar/small/rachel.png'</span><span class="op">/&gt;</span></span>
+<span id="cb9-28"><a href="#cb9-28"></a>            <span class="op">&lt;</span>List<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
+<span id="cb9-29"><a href="#cb9-29"></a>                <span class="op">&lt;</span>List<span class="op">.</span><span class="at">Header</span> <span class="im">as</span><span class="op">=</span><span class="st">'a'</span><span class="op">&gt;&lt;</span>b<span class="op">&gt;</span><span class="dt">Task</span><span class="op">:</span> <span class="op">&lt;/</span>b<span class="op">&gt;&lt;</span>Input placeholder<span class="op">=</span><span class="st">"Enter task"</span> onChange<span class="op">=</span>{(<span class="bu">event</span>) <span class="kw">=&gt;</span> <span class="fu">handleFieldUpdate</span>(todoDispatch<span class="op">,</span> todoEntry<span class="op">.</span><span class="at">id</span><span class="op">,</span> <span class="st">"task"</span><span class="op">,</span> <span class="bu">event</span><span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)} value<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">task</span>} <span class="op">/&gt;&lt;/</span>List<span class="op">.</span><span class="at">Header</span><span class="op">&gt;</span></span>
+<span id="cb9-30"><a href="#cb9-30"></a>                <span class="op">&lt;</span>List<span class="op">.</span><span class="at">Description</span><span class="op">&gt;</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a>                    <span class="op">&lt;</span>b<span class="op">&gt;</span><span class="dt">Assignee</span><span class="op">:</span> <span class="op">&lt;/</span>b<span class="op">&gt;&lt;</span>Input placeholder<span class="op">=</span><span class="st">"Enter assignee"</span> onChange<span class="op">=</span>{(<span class="bu">event</span>) <span class="kw">=&gt;</span> <span class="fu">handleFieldUpdate</span>(todoDispatch<span class="op">,</span> todoEntry<span class="op">.</span><span class="at">id</span><span class="op">,</span> <span class="st">"assignee"</span><span class="op">,</span> <span class="bu">event</span><span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)} value<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">assignee</span>} <span class="op">/&gt;</span></span>
+<span id="cb9-32"><a href="#cb9-32"></a>                    <span class="op">&lt;</span>b<span class="op">&gt;</span><span class="dt">Date</span><span class="op">:</span> <span class="op">&lt;/</span>b<span class="op">&gt;&lt;</span>Input type<span class="op">=</span><span class="st">"date"</span> onChange<span class="op">=</span>{(<span class="bu">event</span>) <span class="kw">=&gt;</span> <span class="fu">handleFieldUpdate</span>(todoDispatch<span class="op">,</span> todoEntry<span class="op">.</span><span class="at">id</span><span class="op">,</span> <span class="st">"date"</span><span class="op">,</span> <span class="bu">event</span><span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)} value<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">date</span>} <span class="op">/&gt;</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a>                    <span class="op">&lt;</span>Checkbox label<span class="op">=</span><span class="st">"Completed"</span> onChange<span class="op">=</span>{() <span class="kw">=&gt;</span> <span class="fu">todoDispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"completed"</span><span class="op">,</span> <span class="dt">payload</span><span class="op">:</span> todoEntry<span class="op">.</span><span class="at">id</span> })} checked<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">completed</span>} <span class="op">/&gt;</span></span>
+<span id="cb9-34"><a href="#cb9-34"></a>                    <span class="op">&lt;</span>Button onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> {</span>
+<span id="cb9-35"><a href="#cb9-35"></a>                        <span class="fu">todoDispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'delete'</span><span class="op">,</span> <span class="dt">payload</span><span class="op">:</span> todoEntry<span class="op">.</span><span class="at">id</span> })</span>
+<span id="cb9-36"><a href="#cb9-36"></a>                        <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb9-37"><a href="#cb9-37"></a>                    }} icon labelPosition<span class="op">=</span><span class="st">"right"</span><span class="op">&gt;</span></span>
+<span id="cb9-38"><a href="#cb9-38"></a>                        Delete</span>
+<span id="cb9-39"><a href="#cb9-39"></a>                        <span class="op">&lt;</span>Icon name<span class="op">=</span><span class="st">"trash"</span> <span class="op">/&gt;</span></span>
+<span id="cb9-40"><a href="#cb9-40"></a>                    <span class="op">&lt;/</span>Button<span class="op">&gt;</span></span>
+<span id="cb9-41"><a href="#cb9-41"></a>                <span class="op">&lt;/</span>List<span class="op">.</span><span class="at">Description</span><span class="op">&gt;</span></span>
+<span id="cb9-42"><a href="#cb9-42"></a>            <span class="op">&lt;/</span>List<span class="op">.</span><span class="at">Content</span><span class="op">&gt;</span></span>
 <span id="cb9-43"><a href="#cb9-43"></a></span>
-<span id="cb9-44"><a href="#cb9-44"></a><span class="co">// Define the reducer function</span></span>
-<span id="cb9-45"><a href="#cb9-45"></a><span class="kw">function</span> <span class="fu">todoReducer</span>(todoState<span class="op">,</span> todoAction) {</span>
-<span id="cb9-46"><a href="#cb9-46"></a>    <span class="cf">switch</span>(todoAction<span class="op">.</span><span class="at">type</span>) {</span>
-<span id="cb9-47"><a href="#cb9-47"></a>        <span class="cf">case</span> <span class="st">"add"</span><span class="op">:</span> {</span>
-<span id="cb9-48"><a href="#cb9-48"></a>            <span class="cf">return</span> [</span>
-<span id="cb9-49"><a href="#cb9-49"></a>                <span class="op">...</span>todoState<span class="op">,</span></span>
-<span id="cb9-50"><a href="#cb9-50"></a>                <span class="co">// Add a new task at the end of the array</span></span>
-<span id="cb9-51"><a href="#cb9-51"></a>                <span class="fu">newTask</span>()</span>
-<span id="cb9-52"><a href="#cb9-52"></a>            ]<span class="op">;</span></span>
-<span id="cb9-53"><a href="#cb9-53"></a>        }</span>
-<span id="cb9-54"><a href="#cb9-54"></a>        <span class="cf">case</span> <span class="st">"delete"</span><span class="op">:</span> {</span>
-<span id="cb9-55"><a href="#cb9-55"></a>            <span class="co">// </span><span class="al">TODO</span><span class="co">: return the todoState without the current entry</span></span>
-<span id="cb9-56"><a href="#cb9-56"></a>            <span class="co">// Simply filter the todoState map by the provided todoAction.payload</span></span>
-<span id="cb9-57"><a href="#cb9-57"></a>            <span class="cf">return</span> todoState<span class="op">.</span><span class="fu">filter</span>((todoEntry) <span class="kw">=&gt;</span> todoEntry<span class="op">.</span><span class="at">id</span> <span class="op">!==</span> todoAction<span class="op">.</span><span class="at">payload</span>)<span class="op">;</span></span>
-<span id="cb9-58"><a href="#cb9-58"></a>        }</span>
-<span id="cb9-59"><a href="#cb9-59"></a>        <span class="cf">case</span> <span class="st">"completed"</span><span class="op">:</span> {</span>
-<span id="cb9-60"><a href="#cb9-60"></a>            <span class="co">// </span><span class="al">TODO</span><span class="co">: change the completed value of the provided ID item from true to false</span></span>
-<span id="cb9-61"><a href="#cb9-61"></a>            <span class="cf">return</span> todoState<span class="op">.</span><span class="fu">map</span>((item) <span class="kw">=&gt;</span> {</span>
-<span id="cb9-62"><a href="#cb9-62"></a>                <span class="co">// If the item ID matches the payload, change its completed value and return it</span></span>
-<span id="cb9-63"><a href="#cb9-63"></a>                <span class="cf">if</span> (item<span class="op">.</span><span class="at">id</span> <span class="op">===</span> todoAction<span class="op">.</span><span class="at">payload</span>) {</span>
-<span id="cb9-64"><a href="#cb9-64"></a>                    <span class="cf">return</span> {</span>
-<span id="cb9-65"><a href="#cb9-65"></a>                        <span class="op">...</span>item<span class="op">,</span></span>
-<span id="cb9-66"><a href="#cb9-66"></a>                        <span class="dt">completed</span><span class="op">:</span> <span class="op">!</span>item<span class="op">.</span><span class="at">completed</span></span>
-<span id="cb9-67"><a href="#cb9-67"></a>                    }</span>
-<span id="cb9-68"><a href="#cb9-68"></a>                }</span>
-<span id="cb9-69"><a href="#cb9-69"></a>                <span class="co">// Else, return the item without changes</span></span>
-<span id="cb9-70"><a href="#cb9-70"></a>                <span class="cf">return</span> item<span class="op">;</span></span>
-<span id="cb9-71"><a href="#cb9-71"></a>            })<span class="op">;</span></span>
-<span id="cb9-72"><a href="#cb9-72"></a>        }</span>
-<span id="cb9-73"><a href="#cb9-73"></a>        <span class="cf">case</span> <span class="st">"reset"</span><span class="op">:</span> {</span>
-<span id="cb9-74"><a href="#cb9-74"></a>            <span class="co">// </span><span class="al">TODO</span><span class="co">: reset the state to the initially provided To-Do</span></span>
-<span id="cb9-75"><a href="#cb9-75"></a>            <span class="cf">return</span> [</span>
-<span id="cb9-76"><a href="#cb9-76"></a>                <span class="co">// Empty string</span></span>
-<span id="cb9-77"><a href="#cb9-77"></a>            ]<span class="op">;</span></span>
-<span id="cb9-78"><a href="#cb9-78"></a>        }</span>
-<span id="cb9-79"><a href="#cb9-79"></a>        <span class="cf">default</span><span class="op">:</span> {</span>
-<span id="cb9-80"><a href="#cb9-80"></a>            <span class="cf">return</span> todoState<span class="op">;</span>    </span>
-<span id="cb9-81"><a href="#cb9-81"></a>        }</span>
-<span id="cb9-82"><a href="#cb9-82"></a>    }<span class="op">;</span></span>
-<span id="cb9-83"><a href="#cb9-83"></a>}</span>
-<span id="cb9-84"><a href="#cb9-84"></a></span>
-<span id="cb9-85"><a href="#cb9-85"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">TodoList</span>({receivedTodoState}) {</span>
-<span id="cb9-86"><a href="#cb9-86"></a>    <span class="co">// Define the useReducer to manage the entries of our To-Do list</span></span>
-<span id="cb9-87"><a href="#cb9-87"></a>    <span class="kw">const</span> [todoState<span class="op">,</span> todoDispatch] <span class="op">=</span> <span class="fu">useReducer</span>(todoReducer<span class="op">,</span> receivedTodoState)<span class="op">;</span></span>
-<span id="cb9-88"><a href="#cb9-88"></a></span>
-<span id="cb9-89"><a href="#cb9-89"></a>    <span class="cf">return</span> (</span>
-<span id="cb9-90"><a href="#cb9-90"></a>        <span class="op">&lt;</span>TodoContext<span class="op">.</span><span class="at">Provider</span> value<span class="op">=</span>{todoDispatch} <span class="op">&gt;</span></span>
-<span id="cb9-91"><a href="#cb9-91"></a>            {<span class="co">/* Create an "New To-Do entry" to add entries to the todoState */</span>}</span>
-<span id="cb9-92"><a href="#cb9-92"></a>            <span class="op">&lt;</span>button onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> { <span class="fu">todoDispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'add'</span> }) }}<span class="op">&gt;</span>New To<span class="op">-</span>Do entry<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
-<span id="cb9-93"><a href="#cb9-93"></a>            {<span class="co">/* Create an "New To-Do entry" to add entries to the todoState */</span>}</span>
-<span id="cb9-94"><a href="#cb9-94"></a>            <span class="op">&lt;</span>button onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> { <span class="fu">todoDispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'reset'</span> }) }}<span class="op">&gt;</span>Reset To<span class="op">-</span>Do list<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
-<span id="cb9-95"><a href="#cb9-95"></a>            {<span class="co">/* Use the Semantic List component to compose our To-Do list*/</span>}</span>
-<span id="cb9-96"><a href="#cb9-96"></a>            <span class="op">&lt;</span>List animated verticalAlign<span class="op">=</span><span class="st">'middle'</span><span class="op">&gt;</span></span>
-<span id="cb9-97"><a href="#cb9-97"></a>                {todoState<span class="op">.</span><span class="fu">map</span>((todoEntry) <span class="kw">=&gt;</span> {</span>
-<span id="cb9-98"><a href="#cb9-98"></a>                    <span class="cf">return</span>(</span>
-<span id="cb9-99"><a href="#cb9-99"></a>                        <span class="co">// Delegate the entries rendering to the TodoItem component</span></span>
-<span id="cb9-100"><a href="#cb9-100"></a>                        <span class="co">// Important!! Each unique item in a list must have its own 'key'</span></span>
-<span id="cb9-101"><a href="#cb9-101"></a>                        <span class="op">&lt;</span>TodoItem  key<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">id</span>} todoEntry<span class="op">=</span>{todoEntry} <span class="op">/&gt;</span></span>
-<span id="cb9-102"><a href="#cb9-102"></a>                    )<span class="op">;</span></span>
-<span id="cb9-103"><a href="#cb9-103"></a>                })}    </span>
-<span id="cb9-104"><a href="#cb9-104"></a>            <span class="op">&lt;/</span>List<span class="op">&gt;</span></span>
-<span id="cb9-105"><a href="#cb9-105"></a>        <span class="op">&lt;/</span>TodoContext<span class="op">.</span><span class="at">Provider</span><span class="op">&gt;</span></span>
-<span id="cb9-106"><a href="#cb9-106"></a>    )<span class="op">;</span></span>
-<span id="cb9-107"><a href="#cb9-107"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-44"><a href="#cb9-44"></a>        <span class="op">&lt;/</span>List<span class="op">.</span><span class="at">Item</span><span class="op">&gt;</span></span>
+<span id="cb9-45"><a href="#cb9-45"></a>    )<span class="op">;</span></span>
+<span id="cb9-46"><a href="#cb9-46"></a>}</span>
+<span id="cb9-47"><a href="#cb9-47"></a></span>
+<span id="cb9-48"><a href="#cb9-48"></a><span class="kw">function</span> <span class="fu">newTask</span>() {</span>
+<span id="cb9-49"><a href="#cb9-49"></a>    <span class="cf">return</span> {</span>
+<span id="cb9-50"><a href="#cb9-50"></a>        <span class="dt">id</span><span class="op">:</span> <span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()<span class="op">,</span></span>
+<span id="cb9-51"><a href="#cb9-51"></a>        <span class="dt">task</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb9-52"><a href="#cb9-52"></a>        <span class="dt">assignee</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb9-53"><a href="#cb9-53"></a>        <span class="dt">date</span><span class="op">:</span> <span class="bu">Intl</span><span class="op">.</span><span class="fu">DateTimeFormat</span>(<span class="st">"az"</span><span class="op">,</span> {</span>
+<span id="cb9-54"><a href="#cb9-54"></a>            <span class="dt">day</span><span class="op">:</span> <span class="st">"2-digit"</span><span class="op">,</span></span>
+<span id="cb9-55"><a href="#cb9-55"></a>            <span class="dt">month</span><span class="op">:</span> <span class="st">"2-digit"</span><span class="op">,</span></span>
+<span id="cb9-56"><a href="#cb9-56"></a>            <span class="dt">year</span><span class="op">:</span> <span class="st">"numeric"</span></span>
+<span id="cb9-57"><a href="#cb9-57"></a>        })<span class="op">.</span><span class="fu">format</span>((<span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()))<span class="op">,</span></span>
+<span id="cb9-58"><a href="#cb9-58"></a>        <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span></span>
+<span id="cb9-59"><a href="#cb9-59"></a>    }</span>
+<span id="cb9-60"><a href="#cb9-60"></a>}</span>
+<span id="cb9-61"><a href="#cb9-61"></a></span>
+<span id="cb9-62"><a href="#cb9-62"></a><span class="co">// Define the reducer function</span></span>
+<span id="cb9-63"><a href="#cb9-63"></a><span class="kw">function</span> <span class="fu">todoReducer</span>(todoState<span class="op">,</span> todoAction) {</span>
+<span id="cb9-64"><a href="#cb9-64"></a>    <span class="cf">switch</span>(todoAction<span class="op">.</span><span class="at">type</span>) {</span>
+<span id="cb9-65"><a href="#cb9-65"></a>        <span class="cf">case</span> <span class="st">"add"</span><span class="op">:</span> {</span>
+<span id="cb9-66"><a href="#cb9-66"></a>            <span class="cf">return</span> [</span>
+<span id="cb9-67"><a href="#cb9-67"></a>                <span class="op">...</span>todoState<span class="op">,</span></span>
+<span id="cb9-68"><a href="#cb9-68"></a>                <span class="co">// Add a new task at the end of the array</span></span>
+<span id="cb9-69"><a href="#cb9-69"></a>                <span class="fu">newTask</span>()</span>
+<span id="cb9-70"><a href="#cb9-70"></a>            ]<span class="op">;</span></span>
+<span id="cb9-71"><a href="#cb9-71"></a>        }</span>
+<span id="cb9-72"><a href="#cb9-72"></a>        <span class="cf">case</span> <span class="st">"delete"</span><span class="op">:</span> {</span>
+<span id="cb9-73"><a href="#cb9-73"></a>            <span class="co">// Filter the todoState map by the provided todoAction.payload</span></span>
+<span id="cb9-74"><a href="#cb9-74"></a>            <span class="cf">return</span> todoState<span class="op">.</span><span class="fu">filter</span>((todoEntry) <span class="kw">=&gt;</span> todoEntry<span class="op">.</span><span class="at">id</span> <span class="op">!==</span> todoAction<span class="op">.</span><span class="at">payload</span>)<span class="op">;</span></span>
+<span id="cb9-75"><a href="#cb9-75"></a>        }</span>
+<span id="cb9-76"><a href="#cb9-76"></a>        <span class="cf">case</span> <span class="st">"completed"</span><span class="op">:</span> {</span>
+<span id="cb9-77"><a href="#cb9-77"></a>            <span class="co">// </span><span class="al">TODO</span><span class="co">: change the completed value of the provided ID item from true to false</span></span>
+<span id="cb9-78"><a href="#cb9-78"></a>            <span class="cf">return</span> todoState<span class="op">.</span><span class="fu">map</span>((item) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-79"><a href="#cb9-79"></a>                <span class="co">// If the item ID matches the payload, change its completed value and return it</span></span>
+<span id="cb9-80"><a href="#cb9-80"></a>                <span class="cf">if</span> (item<span class="op">.</span><span class="at">id</span> <span class="op">===</span> todoAction<span class="op">.</span><span class="at">payload</span>) {</span>
+<span id="cb9-81"><a href="#cb9-81"></a>                    <span class="cf">return</span> {</span>
+<span id="cb9-82"><a href="#cb9-82"></a>                        <span class="op">...</span>item<span class="op">,</span></span>
+<span id="cb9-83"><a href="#cb9-83"></a>                        <span class="dt">completed</span><span class="op">:</span> <span class="op">!</span>item<span class="op">.</span><span class="at">completed</span></span>
+<span id="cb9-84"><a href="#cb9-84"></a>                    }</span>
+<span id="cb9-85"><a href="#cb9-85"></a>                }</span>
+<span id="cb9-86"><a href="#cb9-86"></a>                <span class="co">// Else, return the item without changes</span></span>
+<span id="cb9-87"><a href="#cb9-87"></a>                <span class="cf">return</span> item<span class="op">;</span></span>
+<span id="cb9-88"><a href="#cb9-88"></a>            })<span class="op">;</span></span>
+<span id="cb9-89"><a href="#cb9-89"></a>        }</span>
+<span id="cb9-90"><a href="#cb9-90"></a>        <span class="cf">case</span> <span class="st">"updateField"</span><span class="op">:</span> {</span>
+<span id="cb9-91"><a href="#cb9-91"></a>            <span class="co">// Distructure the payload into the expected values</span></span>
+<span id="cb9-92"><a href="#cb9-92"></a>            <span class="kw">const</span> { id<span class="op">,</span> field<span class="op">,</span> value } <span class="op">=</span> todoAction<span class="op">.</span><span class="at">payload</span><span class="op">;</span></span>
+<span id="cb9-93"><a href="#cb9-93"></a>            <span class="co">// Return all of the todoState items</span></span>
+<span id="cb9-94"><a href="#cb9-94"></a>            <span class="cf">return</span> todoState<span class="op">.</span><span class="fu">map</span>((item) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-95"><a href="#cb9-95"></a>                <span class="co">// If the item ID matches the received ID in the payload, change its defined value and return it</span></span>
+<span id="cb9-96"><a href="#cb9-96"></a>                <span class="cf">if</span> (item<span class="op">.</span><span class="at">id</span> <span class="op">===</span> id) {</span>
+<span id="cb9-97"><a href="#cb9-97"></a>                    <span class="cf">return</span> {</span>
+<span id="cb9-98"><a href="#cb9-98"></a>                        <span class="op">...</span>item<span class="op">,</span></span>
+<span id="cb9-99"><a href="#cb9-99"></a>                        <span class="co">//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names</span></span>
+<span id="cb9-100"><a href="#cb9-100"></a>                        [field]<span class="op">:</span> value</span>
+<span id="cb9-101"><a href="#cb9-101"></a>                    }<span class="op">;</span></span>
+<span id="cb9-102"><a href="#cb9-102"></a>                }</span>
+<span id="cb9-103"><a href="#cb9-103"></a>                <span class="co">// Else, return the item without changes</span></span>
+<span id="cb9-104"><a href="#cb9-104"></a>                <span class="cf">return</span> item<span class="op">;</span></span>
+<span id="cb9-105"><a href="#cb9-105"></a>            })<span class="op">;</span></span>
+<span id="cb9-106"><a href="#cb9-106"></a>            </span>
+<span id="cb9-107"><a href="#cb9-107"></a>        }</span>
+<span id="cb9-108"><a href="#cb9-108"></a>        <span class="cf">case</span> <span class="st">"reset"</span><span class="op">:</span> {</span>
+<span id="cb9-109"><a href="#cb9-109"></a>            <span class="co">// </span><span class="al">TODO</span><span class="co">: reset the state to the initially provided To-Do</span></span>
+<span id="cb9-110"><a href="#cb9-110"></a>            <span class="cf">return</span> [</span>
+<span id="cb9-111"><a href="#cb9-111"></a>                <span class="co">// Empty string</span></span>
+<span id="cb9-112"><a href="#cb9-112"></a>            ]<span class="op">;</span></span>
+<span id="cb9-113"><a href="#cb9-113"></a>        }</span>
+<span id="cb9-114"><a href="#cb9-114"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co">: add the text fields update cases (task, assignee, date, etc...)</span></span>
+<span id="cb9-115"><a href="#cb9-115"></a>        <span class="cf">default</span><span class="op">:</span> {</span>
+<span id="cb9-116"><a href="#cb9-116"></a>            <span class="cf">return</span> todoState<span class="op">;</span>    </span>
+<span id="cb9-117"><a href="#cb9-117"></a>        }</span>
+<span id="cb9-118"><a href="#cb9-118"></a>    }<span class="op">;</span></span>
+<span id="cb9-119"><a href="#cb9-119"></a>}</span>
+<span id="cb9-120"><a href="#cb9-120"></a></span>
+<span id="cb9-121"><a href="#cb9-121"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">TodoList</span>({receivedTodoState}) {</span>
+<span id="cb9-122"><a href="#cb9-122"></a>    <span class="co">// Define the useReducer to manage the entries of our To-Do list</span></span>
+<span id="cb9-123"><a href="#cb9-123"></a>    <span class="kw">const</span> [todoState<span class="op">,</span> todoDispatch] <span class="op">=</span> <span class="fu">useReducer</span>(todoReducer<span class="op">,</span> receivedTodoState)<span class="op">;</span></span>
+<span id="cb9-124"><a href="#cb9-124"></a></span>
+<span id="cb9-125"><a href="#cb9-125"></a>    <span class="cf">return</span> (</span>
+<span id="cb9-126"><a href="#cb9-126"></a>        <span class="op">&lt;</span>TodoContext<span class="op">.</span><span class="at">Provider</span> value<span class="op">=</span>{todoDispatch} <span class="op">&gt;</span></span>
+<span id="cb9-127"><a href="#cb9-127"></a>            {<span class="co">/* Create an "New To-Do entry" to add entries to the todoState */</span>}</span>
+<span id="cb9-128"><a href="#cb9-128"></a>            <span class="op">&lt;</span>button onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> { <span class="fu">todoDispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'add'</span> }) }}<span class="op">&gt;</span>New To<span class="op">-</span>Do entry<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb9-129"><a href="#cb9-129"></a>            {<span class="co">/* Create an "New To-Do entry" to add entries to the todoState */</span>}</span>
+<span id="cb9-130"><a href="#cb9-130"></a>            <span class="op">&lt;</span>button onClick<span class="op">=</span>{() <span class="kw">=&gt;</span> { <span class="fu">todoDispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'reset'</span> }) }}<span class="op">&gt;</span>Reset To<span class="op">-</span>Do list<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb9-131"><a href="#cb9-131"></a>            {<span class="co">/* Use the Semantic List component to compose our To-Do list*/</span>}</span>
+<span id="cb9-132"><a href="#cb9-132"></a>            <span class="op">&lt;</span>List animated verticalAlign<span class="op">=</span><span class="st">'middle'</span><span class="op">&gt;</span></span>
+<span id="cb9-133"><a href="#cb9-133"></a>                {todoState<span class="op">.</span><span class="fu">map</span>((todoEntry) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-134"><a href="#cb9-134"></a>                    <span class="cf">return</span>(</span>
+<span id="cb9-135"><a href="#cb9-135"></a>                        <span class="co">// Delegate the entries rendering to the TodoItem component</span></span>
+<span id="cb9-136"><a href="#cb9-136"></a>                        <span class="co">// Important!! Each unique item in a list must have its own 'key'</span></span>
+<span id="cb9-137"><a href="#cb9-137"></a>                        <span class="op">&lt;</span>TodoItem  key<span class="op">=</span>{todoEntry<span class="op">.</span><span class="at">id</span>} todoEntry<span class="op">=</span>{todoEntry} <span class="op">/&gt;</span></span>
+<span id="cb9-138"><a href="#cb9-138"></a>                    )<span class="op">;</span></span>
+<span id="cb9-139"><a href="#cb9-139"></a>                })}    </span>
+<span id="cb9-140"><a href="#cb9-140"></a>            <span class="op">&lt;/</span>List<span class="op">&gt;</span></span>
+<span id="cb9-141"><a href="#cb9-141"></a>        <span class="op">&lt;/</span>TodoContext<span class="op">.</span><span class="at">Provider</span><span class="op">&gt;</span></span>
+<span id="cb9-142"><a href="#cb9-142"></a>    )<span class="op">;</span></span>
+<span id="cb9-143"><a href="#cb9-143"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
