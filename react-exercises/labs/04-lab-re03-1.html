@@ -345,6 +345,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../react-exercises/concepts/06-highcharts.html" rel="" target="">
  <span class="dropdown-text">06 - React JS: Highcharts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../react-exercises/concepts/07-async.html" rel="" target="">
+ <span class="dropdown-text">06 - React JS: async</span></a>
+  </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
@@ -564,6 +568,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">06 - React JS: Highcharts</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../react-exercises/concepts/07-async.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06 - React JS: async</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -629,6 +639,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#final-result" id="toc-final-result" class="nav-link" data-scroll-target="#final-result">Final result:</a></li>
   </ul></li>
+  <li><a href="#to-do-list-with-data-fetched-from-an-api" id="toc-to-do-list-with-data-fetched-from-an-api" class="nav-link" data-scroll-target="#to-do-list-with-data-fetched-from-an-api">To-Do list with data fetched from an API</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/react-exercises/labs/04-lab-re03-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -918,6 +929,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-26"><a href="#cb8-26"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But here we have a problem: <code>todoDispatch</code> called by the Delete button isn’t on the same scope/context as the <code>TodoItem</code> component!!</p>
+<p>We solve this issue by creating a <code>context</code> where we’ll pass the <code>todoDispatch</code></p>
 </section>
 </section>
 </section>
@@ -1071,9 +1083,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-142"><a href="#cb9-142"></a>    )<span class="op">;</span></span>
 <span id="cb9-143"><a href="#cb9-143"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
 </section>
+</section>
+<section id="to-do-list-with-data-fetched-from-an-api" class="level1">
+<h1>To-Do list with data fetched from an API</h1>
+
+
 </section>
 
 </main> <!-- /main -->
