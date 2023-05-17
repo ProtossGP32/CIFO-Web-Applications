@@ -232,8 +232,11 @@ function TodoItem({todoEntry}) {
 ```
 But here we have a problem: `todoDispatch` called by the Delete button isn't on the same scope/context as the `TodoItem` component!!
 
+We solve this issue by creating a `context` where we'll pass the `todoDispatch`
 
 ## Final result:
 
 ```{.js filename="TodoList.jsx" include="../../../../react-exercises/lab-re03-1/src/components/todolist/TodoList.jsx"}
 ```
+
+# To-Do list with data fetched from an API

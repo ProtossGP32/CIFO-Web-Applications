@@ -1,0 +1,84 @@
+---
+title: "06 - React JS: async"
+categories: [React JS, async]
+author: ProtossGP32
+date: 2023/05/17
+from: markdown+emoji
+description: Using `async` calls on your code
+---
+# Introduction
+
+- [Class article](https://albertprofe.dev/reactjs/reactjs-app-async.html)
+
+Prior to learning about `async`, read the following official documents:
+
+- [Synchronizing with Effects](https://react.dev/learn/synchronizing-with-effects)
+- [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect)
+
+Some examples about `async`:
+
+- 
+
+
+React async hook docs (unofficial docs): [LINK](https://docs.react-async.com/getting-started/usage)
+
+# What are asynchronous functions?
+
+## Difference between synchronous vs asynchronous processes
+- [What is the difference between asynchronous and synchronous programming?](https://www.mendix.com/blog/asynchronous-vs-synchronous-programming/)
+
+Synchronous and asynchronous are two types of programming models.
+
+Understanding how these two models difffer is critical in building application programming interfaces (APIs), creating event-based architectures, and deciding how to handle long-running tasks.
+
+Some quick facts:
+- Asynchronous programming is a multithreaded model that's most applicable to networking and communications. Asynchronous is a non-blocking architecture, which means it doesn't block further executions while one or more operations are in progress.
+    - With asynchronous programming, multiple related operations can run concurrently without waiting for other tasks to complete. During asynchronous communication, parties receive and process messages when it's convenient or possible, rather than responding immediately upon receipt.
+    - Texting is an asynchronous communication method. One person can send a text message, and the recipient can respond at their leisure. In the meantime, the sender may do other things while waiting for a response.
+    - 
+- Synchronous processes are...
+
+## `async` example
+
+Let's analyse this example:
+
+```{.js}
+// Sync and blocking function
+function resolveAfter2Seconds() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            // Return a 'resolved' message
+            resolve('resolved');
+        }, 2000);
+    });
+}
+
+// Async and non-blocking function
+async function asyncCall() {
+    console.log('Async function started');
+    // Call the sync function with the 'await'
+    const result = await resolveAfter2Seconds();
+    // After 2 seconds, the next log shall be executed
+    console.log('Sync function called with an await')
+    console.log(result);
+    // Expected output: "resolved"
+}
+
+// Call the async function
+asyncCall();
+// Write something to the logs
+console.log("Message after the async function call...");
+```
+
+The `async` functions don't block the execution of the next lines of codes, that's why the last `console.log` call appears in the output before `asyncCall` ends.
+
+## What does `await` do?
+
+## What is the `Promise` object?
+- [Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [Using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+
+The `Promise` object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+# Structure
+We can create a `service` folder in our project that holds our API functions (CRUD)

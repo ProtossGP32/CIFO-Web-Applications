@@ -2,7 +2,7 @@
 title: "06 - React JS: Highcharts"
 categories: [React JS, Highcharts]
 author: ProtossGP32
-date: 2023/04/26
+date: 2023/05/16
 from: markdown+emoji
 description: Render charts using Highcharts
 ---
