@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ProtossGP32">
-<meta name="dcterms.date" content="2023-03-07">
-<meta name="description" content="Define custom properties for testing environments">
+<meta name="dcterms.date" content="2023-05-18">
+<meta name="description" content="how to avoid common pitfalls">
 
-<title>CIFO - Web Applications - 07 - Configure Spring Boot Test Profiles</title>
+<title>CIFO - Web Applications - 12 - Annotations - Spring Boot, JPA vs Lombok</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +67,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" rel="next">
-<link href="../../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" rel="prev">
+<link href="../../../java-exercises/frontend/00-Introduction.html" rel="next">
+<link href="../../../java-exercises/frameworks/spring-boot/11-spring-boot-test.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -469,7 +503,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Frameworks</li><li class="breadcrumb-item"><a href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">Spring Boot</a></li><li class="breadcrumb-item"><a href="../../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html">07 - Configure Spring Boot Test Profiles</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Frameworks</li><li class="breadcrumb-item"><a href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html">Spring Boot</a></li><li class="breadcrumb-item"><a href="../../../java-exercises/frameworks/spring-boot/12-spring-boot-jpa-and-lombok.html">12 - Annotations - Spring Boot, JPA vs Lombok</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -676,7 +710,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">07 - Configure Spring Boot Test Profiles</span></a>
   </div>
 </li>
@@ -706,7 +740,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/12-spring-boot-jpa-and-lombok.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../java-exercises/frameworks/spring-boot/12-spring-boot-jpa-and-lombok.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">12 - Annotations - Spring Boot, JPA vs Lombok</span></a>
   </div>
 </li>
@@ -853,26 +887,33 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#lombok-vs.-jpa" id="toc-lombok-vs.-jpa" class="nav-link" data-scroll-target="#lombok-vs.-jpa">Lombok vs.&nbsp;JPA</a>
+  <ul class="collapse">
+  <li><a href="#lombok-annotations-you-need-to-avoid" id="toc-lombok-annotations-you-need-to-avoid" class="nav-link" data-scroll-target="#lombok-annotations-you-need-to-avoid">Lombok annotations you need to avoid</a>
+  <ul class="collapse">
+  <li><a href="#dont-use-equalsandhashcode" id="toc-dont-use-equalsandhashcode" class="nav-link" data-scroll-target="#dont-use-equalsandhashcode">Dont use <code>@EqualsAndHashCode</code></a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frameworks/spring-boot/12-spring-boot-jpa-and-lombok.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">07 - Configure Spring Boot Test Profiles</h1>
+<h1 class="title">12 - Annotations - Spring Boot, JPA vs Lombok</h1>
   <div class="quarto-categories">
     <div class="quarto-category">springboot</div>
-    <div class="quarto-category">Test</div>
-    <div class="quarto-category">Profiles</div>
+    <div class="quarto-category">JPA</div>
+    <div class="quarto-category">Spring Data</div>
+    <div class="quarto-category">Tests</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Define custom properties for testing environments
+    how to avoid common pitfalls
   </div>
 </div>
 
@@ -889,7 +930,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 7, 2023</p>
+      <p class="date">May 18, 2023</p>
     </div>
   </div>
   
@@ -901,26 +942,181 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>When developing an application, tests should have their own environment. To achieve this, we can define a specific <code>application.yml</code> within the <code>test</code> domain:</p>
-<p>Follow the explanation in this <a href="https://stackoverflow.com/a/66324710">StackOverflow answer</a> to configure it.</p>
+<p>Annotations make coding more readable, but introduce an abstraction layer that can hide incompatibilities with other libraries. That’s specially true when combining JPA and Lombok. This <a href="https://thorben-janssen.com/lombok-hibernate-how-to-avoid-common-pitfalls/#Don8217t_Use_EqualsAndHashCode">article</a> by <a href="https://thorben-janssen.com/">Thorben Janssen</a> explains in detail many of the common pitfalls a developer can fall into.</p>
 </section>
-<section id="getting-started" class="level1">
-<h1>Getting started</h1>
-<p>First we need to define the <code>application.yml</code> file for the main applications in its <code>src/main/resources</code> path. This file will contain all the global parameters shared with any profile.</p>
-<p>After that, create the path <code>src/test/resources/config</code>. Inside this path, create another <code>application.yml</code> file with the <code>test</code> properties that will override the default ones.</p>
-<p>The finishing results should look like this:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../../images/spring-boot/test-application-properties.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Spring Boot - Test properties</figcaption>
-</figure>
+<section id="lombok-vs.-jpa" class="level1">
+<h1>Lombok vs.&nbsp;JPA</h1>
+<section id="lombok-annotations-you-need-to-avoid" class="level2">
+<h2 class="anchored" data-anchor-id="lombok-annotations-you-need-to-avoid">Lombok annotations you need to avoid</h2>
+<section id="dont-use-equalsandhashcode" class="level3">
+<h3 class="anchored" data-anchor-id="dont-use-equalsandhashcode">Dont use <code>@EqualsAndHashCode</code></h3>
+<p>Thorben explains it very well in his article, but to sum up the <code>@EqualsAndHashCode</code> Lombok annotations don’t comply with what Hibernate expects:</p>
+<blockquote class="blockquote">
+<p>_… your <code>hashCode()</code> method should always return a fixed value […]. In the <code>equals()</code> method, you should only compare the <strong>type of the objects</strong> and their <strong>primary key</strong> values. <strong>If at least one of the primary keys is null, the equals method has to return <code>false</code></strong>.</p>
+</blockquote>
+<p>Take the example models of the article:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Order.java</strong></pre>
 </div>
-<p>Where:</p>
-<ul>
-<li>The tests logs show that we are indeed executing tests against an embedded in-memory database instead of the one defined for production</li>
-</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a><span class="at">@Entity</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">public</span> <span class="kw">class</span> Order <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a> </span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="at">@Id</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="at">@GeneratedValue</span><span class="op">(</span>strategy <span class="op">=</span> GenerationType<span class="op">.</span><span class="fu">SEQUENCE</span><span class="op">)</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="kw">private</span> <span class="bu">Long</span> id<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a> </span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="kw">private</span> <span class="bu">String</span> customer<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a> </span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="at">@OneToMany</span><span class="op">(</span>mappedBy <span class="op">=</span> <span class="st">"order"</span><span class="op">)</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="kw">private</span> <span class="bu">Set</span><span class="op">&lt;</span>OrderPosition<span class="op">&gt;</span> positions <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashSet</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a> </span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="kw">public</span> <span class="bu">Long</span> <span class="fu">getId</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>        <span class="cf">return</span> id<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="op">}</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getCustomer</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>        <span class="cf">return</span> customer<span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="op">}</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a> </span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setCustomer</span><span class="op">(</span><span class="bu">String</span> customer<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">customer</span> <span class="op">=</span> customer<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="op">}</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a> </span>
+<span id="cb1-24"><a href="#cb1-24"></a>    <span class="kw">public</span> <span class="bu">Set</span><span class="op">&lt;</span>OrderPosition<span class="op">&gt;</span> <span class="fu">getPositions</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>        <span class="cf">return</span> positions<span class="op">;</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="op">}</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a> </span>
+<span id="cb1-28"><a href="#cb1-28"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setPositions</span><span class="op">(</span><span class="bu">Set</span><span class="op">&lt;</span>OrderPosition<span class="op">&gt;</span> positions<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">positions</span> <span class="op">=</span> positions<span class="op">;</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>    <span class="op">}</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a> </span>
+<span id="cb1-32"><a href="#cb1-32"></a>    <span class="at">@Override</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">hashCode</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>        <span class="cf">return</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>    <span class="op">}</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a> </span>
+<span id="cb1-37"><a href="#cb1-37"></a>    <span class="at">@Override</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span><span class="op">(</span><span class="bu">Object</span> obj<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">==</span> obj<span class="op">)</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a>        <span class="cf">if</span> <span class="op">(</span>obj <span class="op">==</span> <span class="kw">null</span><span class="op">)</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">getClass</span><span class="op">()</span> <span class="op">!=</span> obj<span class="op">.</span><span class="fu">getClass</span><span class="op">())</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a>        Order other <span class="op">=</span> <span class="op">(</span>Order<span class="op">)</span> obj<span class="op">;</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a>        <span class="cf">if</span> <span class="op">(</span>id <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(!</span>id<span class="op">.</span><span class="fu">equals</span><span class="op">(</span>other<span class="op">.</span><span class="fu">id</span><span class="op">))</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a>    <span class="op">}</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a> </span>
+<span id="cb1-53"><a href="#cb1-53"></a>    <span class="at">@Override</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a>        <span class="cf">return</span> <span class="st">"Order [customer="</span> <span class="op">+</span> customer <span class="op">+</span> <span class="st">", id="</span> <span class="op">+</span> id <span class="op">+</span> <span class="st">"]"</span><span class="op">;</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a>    <span class="op">}</span></span>
+<span id="cb1-57"><a href="#cb1-57"></a>     </span>
+<span id="cb1-58"><a href="#cb1-58"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>OrderPosition.java</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1"></a><span class="at">@Entity</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">public</span> <span class="kw">class</span> OrderPosition <span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>     </span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="at">@Id</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="at">@GeneratedValue</span><span class="op">(</span>strategy <span class="op">=</span> GenerationType<span class="op">.</span><span class="fu">SEQUENCE</span><span class="op">)</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="kw">private</span> <span class="bu">Long</span> id<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a> </span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="kw">private</span> <span class="bu">String</span> product<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a> </span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="kw">private</span> <span class="dt">int</span> quantity<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a> </span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="at">@ManyToOne</span><span class="op">(</span>fetch <span class="op">=</span> FetchType<span class="op">.</span><span class="fu">LAZY</span><span class="op">)</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="kw">private</span> Order order<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a> </span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="kw">public</span> <span class="bu">Long</span> <span class="fu">getId</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>        <span class="cf">return</span> id<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    <span class="op">}</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a> </span>
+<span id="cb2-19"><a href="#cb2-19"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getProduct</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>        <span class="cf">return</span> product<span class="op">;</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>    <span class="op">}</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a> </span>
+<span id="cb2-23"><a href="#cb2-23"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setProduct</span><span class="op">(</span><span class="bu">String</span> product<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">product</span> <span class="op">=</span> product<span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>    <span class="op">}</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a> </span>
+<span id="cb2-27"><a href="#cb2-27"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">getQuantity</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>        <span class="cf">return</span> quantity<span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>    <span class="op">}</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a> </span>
+<span id="cb2-31"><a href="#cb2-31"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setQuantity</span><span class="op">(</span><span class="dt">int</span> quantity<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">quantity</span> <span class="op">=</span> quantity<span class="op">;</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a>    <span class="op">}</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a> </span>
+<span id="cb2-35"><a href="#cb2-35"></a>    <span class="kw">public</span> Order <span class="fu">getOrder</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a>        <span class="cf">return</span> order<span class="op">;</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a>    <span class="op">}</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a> </span>
+<span id="cb2-39"><a href="#cb2-39"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setOrder</span><span class="op">(</span>Order order<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">order</span> <span class="op">=</span> order<span class="op">;</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a>    <span class="op">}</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a> </span>
+<span id="cb2-43"><a href="#cb2-43"></a>    <span class="at">@Override</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">hashCode</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-45"><a href="#cb2-45"></a>        <span class="cf">return</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb2-46"><a href="#cb2-46"></a>    <span class="op">}</span></span>
+<span id="cb2-47"><a href="#cb2-47"></a> </span>
+<span id="cb2-48"><a href="#cb2-48"></a>    <span class="at">@Override</span></span>
+<span id="cb2-49"><a href="#cb2-49"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span><span class="op">(</span><span class="bu">Object</span> obj<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-50"><a href="#cb2-50"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">==</span> obj<span class="op">)</span></span>
+<span id="cb2-51"><a href="#cb2-51"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-52"><a href="#cb2-52"></a>        <span class="cf">if</span> <span class="op">(</span>obj <span class="op">==</span> <span class="kw">null</span><span class="op">)</span></span>
+<span id="cb2-53"><a href="#cb2-53"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-54"><a href="#cb2-54"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">getClass</span><span class="op">()</span> <span class="op">!=</span> obj<span class="op">.</span><span class="fu">getClass</span><span class="op">())</span></span>
+<span id="cb2-55"><a href="#cb2-55"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-56"><a href="#cb2-56"></a>        OrderPosition other <span class="op">=</span> <span class="op">(</span>OrderPosition<span class="op">)</span> obj<span class="op">;</span></span>
+<span id="cb2-57"><a href="#cb2-57"></a>        <span class="cf">if</span> <span class="op">(</span>id <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-58"><a href="#cb2-58"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-59"><a href="#cb2-59"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(!</span>id<span class="op">.</span><span class="fu">equals</span><span class="op">(</span>other<span class="op">.</span><span class="fu">id</span><span class="op">))</span></span>
+<span id="cb2-60"><a href="#cb2-60"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-61"><a href="#cb2-61"></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-62"><a href="#cb2-62"></a>    <span class="op">}</span></span>
+<span id="cb2-63"><a href="#cb2-63"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Lombok <code>equals()</code> and <code>hashCode</code> implementations include all non-final attributes of the class. This can be changed by setting the <code>onlyExplicitlyIncluded</code> attribute of the <code>@EqualsAndHashCode</code> annotation to <code>true</code> and annotating the primary key attribute with <code>@EqualsAndHashCode.Include</code>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Example of configured @EqualsAndHashCode annotated class</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="at">@Entity</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="at">@EqualsAndHashCode</span><span class="op">(</span>onlyExplicitlyIncluded <span class="op">=</span> <span class="kw">true</span><span class="op">)</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">public</span> <span class="kw">class</span> Order <span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a> </span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="at">@Id</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="at">@GeneratedValue</span><span class="op">(</span>strategy <span class="op">=</span> GenerationType<span class="op">.</span><span class="fu">SEQUENCE</span><span class="op">)</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="at">@EqualsAndHashCode</span><span class="op">.</span><span class="fu">Include</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="kw">private</span> <span class="bu">Long</span> id<span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a> </span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="kw">private</span> <span class="bu">String</span> customer<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a> </span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="at">@OneToMany</span><span class="op">(</span>mappedBy <span class="op">=</span> <span class="st">"order"</span><span class="op">)</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="kw">private</span> <span class="bu">Set</span><span class="op">&lt;</span>OrderPosition<span class="op">&gt;</span> positions <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashSet</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>     </span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="kw">...</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>…but this won’t fix all issues. As Thorben says:</p>
+<blockquote class="blockquote">
+<p><em>Your <code>equals()</code> method <strong>should return false if the primary key value of both entity objects is null</strong>. But Lombok’s <code>equals()</code> method returns true. Because of that, you can’t add two new entity objects to a Set.</em></p>
+</blockquote>
+<p>In the example shown avobe, that means that you can’t add two new <code>OrderPosition</code> objects to an <code>Order</code> (<strong>TODO: Explain why</strong>). You should, therefore, avoid Lombok’s <code>@EqualsAndHashCode</code> annotation.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1274,13 +1470,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">05 - Spring Boot and Rest API</span>
+      <a href="../../../java-exercises/frameworks/spring-boot/11-spring-boot-test.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">11 - Tests - Spring Boot and JPA</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="pagination-link">
-        <span class="nav-page-text">08 - Configure Spring Boot Controllers</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../java-exercises/frontend/00-Introduction.html" class="pagination-link">
+        <span class="nav-page-text">00 - Frontend - Introduction</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
