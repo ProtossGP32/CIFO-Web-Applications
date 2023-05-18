@@ -240,3 +240,4 @@ We solve this issue by creating a `context` where we'll pass the `todoDispatch`
 ```
 
 # To-Do list with data fetched from an API
+Follow-up on [Lab#RE03-3](./06-lab-re03-3.qmd06).

@@ -1,0 +1,172 @@
+---
+title: "12 - Annotations - Spring Boot, JPA vs Lombok"
+author: ProtossGP32
+categories: [springboot, JPA, Spring Data, Tests]
+description: "how to avoid common pitfalls"
+date: 2023/05/18
+---
+# Introduction
+Annotations make coding more readable, but introduce an abstraction layer that can hide incompatibilities with other libraries. That's specially true when combining JPA and Lombok. This [article](https://thorben-janssen.com/lombok-hibernate-how-to-avoid-common-pitfalls/#Don8217t_Use_EqualsAndHashCode) by [Thorben Janssen](https://thorben-janssen.com/) explains in detail many of the common pitfalls a developer can fall into.
+
+# Lombok vs. JPA
+## Lombok annotations you need to avoid
+### Dont use `@EqualsAndHashCode`
+Thorben explains it very well in his article, but to sum up the `@EqualsAndHashCode` Lombok annotations don't comply with what Hibernate expects:
+
+> _... your `hashCode()` method should always return a fixed value [...]. In the `equals()` method, you should only compare the **type of the objects** and their **primary key** values. **If at least one of the primary keys is null, the equals method has to return `false`**.
+
+Take the example models of the article:
+
+```{.java filename="Order.java"}
+@Entity
+public class Order {
+ 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+ 
+    private String customer;
+ 
+    @OneToMany(mappedBy = "order")
+    private Set<OrderPosition> positions = new HashSet<>();
+ 
+    public Long getId() {
+        return id;
+    }
+    public String getCustomer() {
+        return customer;
+    }
+ 
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
+ 
+    public Set<OrderPosition> getPositions() {
+        return positions;
+    }
+ 
+    public void setPositions(Set<OrderPosition> positions) {
+        this.positions = positions;
+    }
+ 
+    @Override
+    public int hashCode() {
+        return 42;
+    }
+ 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Order other = (Order) obj;
+        if (id == null) {
+            return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+ 
+    @Override
+    public String toString() {
+        return "Order [customer=" + customer + ", id=" + id + "]";
+    }
+     
+}
+```
+
+```{.java filename="OrderPosition.java"}
+@Entity
+public class OrderPosition {
+     
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+ 
+    private String product;
+ 
+    private int quantity;
+ 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
+ 
+    public Long getId() {
+        return id;
+    }
+ 
+    public String getProduct() {
+        return product;
+    }
+ 
+    public void setProduct(String product) {
+        this.product = product;
+    }
+ 
+    public int getQuantity() {
+        return quantity;
+    }
+ 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+ 
+    public Order getOrder() {
+        return order;
+    }
+ 
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+ 
+    @Override
+    public int hashCode() {
+        return 42;
+    }
+ 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        OrderPosition other = (OrderPosition) obj;
+        if (id == null) {
+            return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+}
+```
+
+Lombok `equals()` and `hashCode` implementations include all non-final attributes of the class. This can be changed by setting the `onlyExplicitlyIncluded` attribute of the `@EqualsAndHashCode` annotation to `true` and annotating the primary key attribute with `@EqualsAndHashCode.Include`:
+
+```{.java filename="Example of configured @EqualsAndHashCode annotated class"}
+@Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Order {
+ 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @EqualsAndHashCode.Include
+    private Long id;
+ 
+    private String customer;
+ 
+    @OneToMany(mappedBy = "order")
+    private Set<OrderPosition> positions = new HashSet<>();
+     
+    ...
+}
+```
+
+...but this won't fix all issues. As Thorben says:
+
+> _Your `equals()` method **should return false if the primary key value of both entity objects is null**. But Lombok's `equals()` method returns true. Because of that, you can't add two new entity objects to a Set._
+
+In the example shown avobe, that means that you can't add two new `OrderPosition` objects to an `Order` (**TODO: Explain why**). You should, therefore, avoid Lombok's `@EqualsAndHashCode` annotation.
