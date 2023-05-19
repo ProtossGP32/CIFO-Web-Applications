@@ -68,12 +68,12 @@ Things to accomplish:
 ## Spring goal: categorize and filter them by importance and urgency based on your roadmap
 
 - Important and urgent:
-    - BSC: Deploy OKD cluster (W21)
+    - ~~BSC: Deploy OKD cluster (W21)~~
     - CP: Swagger and Mockito into Library (W8)
     - CP: Finish MongoDB tutorials (W8)
-    - TP: Finish User Entity (W13)
+    - ~~TP: Finish User Entity (W13)~~
     - TP: Update functional diagrams (W8)
-    - DOL: Learn about OKD (21)
+    - ~~DOL: Learn about OKD (21)~~
     - DOL: Learn about Argo workflows (21)
     - DOL: Learn about Terraform (21)
     - DOL: Learn about Ansible (21)
@@ -93,7 +93,7 @@ Things to accomplish:
     - CI/CD: Create staging environment (W13)
     - DOL: Deploy workloads on Kubernetes (W13)
     - DOL: Learn about SQL and Postgres (W21)
-    - DOL: Learn about OpenStack (W21)
+    - ~~DOL: Learn about OpenStack (W21)~~
     - MSX: Test wired adapter (W5)
     - PMS: Weekly retrospective (W8)
     - PMS: MindSet & Lectures (W5)
@@ -113,9 +113,9 @@ Each week, define tasks for each _energy slot_ of the day (3 each day, 5 days a 
 
 | TIME OF DAY      	| MONDAY                 	                | TUESDAY                             | WEDNESDAY                       | THURSDAY                            | FRIDAY  |
 |-----------	|---   	                                        |---                                        |---	                                |---                                        |---    |
-| Morning   	| BSC | PMS: Weekly planning (W8) CP: Finish React Lab-RE02-1 (W8) |  CP: Enable logging in Java (W8) TP: Finish User Entity (W13) | CP: Finish React Lab-RE03-1 (8) TP: Finish User Entity (W13)| TP: Update functional diagrams (W8) CP: Finish MongoDB tutorials (W8) |
-| Afternoon 	| BSC | BSC: Deploy OKD cluster (W21)  | BSC: Deploy OKD cluster (W21)   | BSC: Deploy OKD cluster (W21)          | BSC: Deploy OKD cluster (W21)  	|
-| Evening   	| BSC | DOL: Learn about OKD (21) | DOL: Learn about Argo workflows (21)CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8) | TP: Enable logging (W5) PMS: Weekly retrospective (W8)    |
+| Morning   	| ~~DOL: Learn about OpenStack (W21)~~ | ~~PMS: Weekly planning (W8)~~ CP: Finish React Lab-RE02-1 (W8) |  CP: Enable logging in Java ~~(W8) TP: Finish User Entity (W13)~~ | CP: Finish React Lab-RE03-1 (8) ~~TP: Finish User Entity (W13)~~ | TP: Update functional diagrams (W8) CP: Finish MongoDB tutorials (W8) |
+| Afternoon 	| ~~DOL: Learn about OpenStack (W21)~~ | ~~BSC: Deploy OKD cluster (W21)~~  | ~~BSC: Deploy OKD cluster (W21)~~   | ~~BSC: Deploy OKD cluster (W21)~~          | ~~BSC: Deploy OKD cluster (W21)~~  	|
+| Evening   	| ~~DOL: Learn about OpenStack (W21)~~ | ~~DOL: Learn about OKD (21)~~ | DOL: Learn about Argo workflows (21)CP: Create missing Unit Tests (W8)    | TP: Create missing Unit Tests (W8) | TP: Enable logging (W5) PMS: Weekly retrospective (W8)    |
 
 ## Ultimate goal: metrics
 Make a retrospective of the previous week, analyse the results of the planning and take action.
@@ -139,26 +139,26 @@ Think about the complexity of the completed tasks and if they matched the expect
 
 #### Monday:
 
-- Morning: BSC
-- Afternoon: BSC
+- Morning: BSC Tensorflow
+- Afternoon: BSC OKD + Floki
 - Evening: Nothing
 
 #### Tuesday:
 
 - Morning: BSC + React LabRE03-1
-- Afternoon: BSC
+- Afternoon: BSC OKD
 - Evening: Nothing
 
 #### Wednesday:
 
-- Morning: BSC + 
-- Afternoon: BSC
+- Morning: BSC + React LabRE03-2
+- Afternoon: BSC OKD
 - Evening: 
 
 #### Thursday:
 
-- Morning: BSC +
-- Afternoon: BSC
+- Morning: BSC + ReactJS LabRE03-2
+- Afternoon: BSC OKD
 - Evening: 
 
 #### Friday:
@@ -198,16 +198,17 @@ Think about the reasons why these tasks aren't done:
 Based on the previous analysis, identify the weak points of the previous planning, discard useless tasks, reassing new weights to pending tasks and schedule your next week:
 
 - **Best decision of all week**
-    - 
+    - Document all the OKD deployment attempts
+        - Now we can explain with more detail how OpenStack and OpenShift/OKD works and what they expect to work well
 
 - **Avoided pits**
-    - 
+    - Unavoided pit: OKD deployment
 
 - **What have you reorganized during this week?**
     - 
 
 - **Core concepts learnt during this week / What have you learned?**
-    - 
+    - How to deploy an OKD on a restricted OpenStack platform
     - 
 
 - **Have you respected SCRUM cycles? Have you respected learning approach cycles?**
@@ -216,8 +217,10 @@ Based on the previous analysis, identify the weak points of the previous plannin
 # Weekend homework
 
 - Lectures:
-    - 
+    - Any given Sunday: Al Pacino speech
 - React:
-    - 
-- VS Code:
-    - 
+    - Contexts, To-Do app
+- MongoDB:
+    - Finish tutorials, apply it in your projects
+- Retrospective:
+    - Have you been alive this last week?

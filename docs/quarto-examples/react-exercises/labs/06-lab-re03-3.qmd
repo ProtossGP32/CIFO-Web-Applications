@@ -14,9 +14,25 @@ description: Developing a To-Do app with RESTful API integration
 We'll pick up where we left off in the [Lab#RE03-1](./04-lab-re03-1.qmd). We'll create a To-Do list that retrieves data from a RESTful API (a mock-up API created with [mockAPI.io](https://mockapi.io)) and updates its entry.
 
 # Getting started
+## Project creation
 Create a new ReactJS project with the following dependencies:
 
 - `react-router-dom`
 - `semantic-ui-react` and `semantic-ui-css`
 - `axios`
 - `uuidv4` for UUID generation. [LINK](https://www.npmjs.com/package/uuidv4)
+
+## Mock API creation
+Go to [mockAPI](https://mockapi.io) and create a new API. Then, create several endpoints for each required transaction.
+
+:::{.callout-warning}
+## TODO: define them once the app is designed
+:::
+
+## Application design
+
+:::{.callout-warning}
+## TODO: Create a functional diagram of the application and pseudo-code
+:::
+
+# To-Do 

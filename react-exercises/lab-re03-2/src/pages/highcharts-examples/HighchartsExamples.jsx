@@ -1,6 +1,7 @@
 import React from "react";
 import PieChartExample from "../../components/highcharts/PieChartExample";
 import PieChartByAuthorExample from "../../components/highcharts/PieChartByAuthorExample";
+
 function HighchartsExamples() {
     return (
         <>
