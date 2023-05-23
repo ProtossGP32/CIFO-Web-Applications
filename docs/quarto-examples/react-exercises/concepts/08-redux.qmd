@@ -1,0 +1,16 @@
+---
+title: "06 - React JS: redux"
+categories: [React JS, redux]
+author: ProtossGP32
+date: 2023/05/23
+from: markdown+emoji
+description: Using `redux` in your code
+---
+# Introduction
+
+# What does redux do?
+A redux acts as a reducer, but instead of passing the payload and the operation to a reducer, it is sent to a `Store`, where it recreates the state of all Components. Redux lives outside the scope of the dispatcher, executes its `reducers` based on the received payload, and then acts over any component that has references to the redux.
+
+:::{.callout-warning}
+## TODO: Improve explanation
+:::

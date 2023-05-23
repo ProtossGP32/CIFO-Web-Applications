@@ -1,17 +1,20 @@
 ---
-title: "React JS: Lab#RE03-3"
-categories: [React, Router, Hooks, API, axios, fetch, semantic]
+title: "React JS: Lab#RE03-4"
+categories: [React, Router, Hooks, API, axios, fetch, semantic, context, provider]
 author: ProtossGP32
-date: 2023/05/18
+date: 2023/05/23
 from: markdown+emoji
-description: Developing a To-Do app with RESTful API integration, as a monolithic component
+description: Developing a To-Do app with RESTful API integration, from monolith to several components and domains
 ---
 # Introduction
 
-- Class notes: [LINK](https://albertprofe.dev/reactjs/rjslab3-3.html)
+- Class notes: [LINK](https://albertprofe.dev/reactjs/rjslab3-4.html)
+- `useContext` class link: [LINK](https://albertprofe.dev/reactjs/reactjs-hook-context.html)
 - `async` link: [LINK](https://albertprofe.dev/reactjs/reactjs-app-async.html)
+- `useContext` hook link: [LINK](https://react.dev/reference/react/useContext)
+- `createContext` API link: [LINK](https://react.dev/reference/react/createContext)
 
-We'll pick up where we left off in the [Lab#RE03-1](./04-lab-re03-1.qmd). We'll create a To-Do list that retrieves data from a RESTful API (a mock-up API created with [mockAPI.io](https://mockapi.io)) and updates its entry.
+We'll pick up where we left off in the [Lab#RE03-3](./04-lab-re03-3.qmd). We'll refactor the ToDo application from a monolith into several components.
 
 # Getting started
 ## Project creation
@@ -35,4 +38,4 @@ Go to [mockAPI](https://mockapi.io) and create a new API. Then, create several e
 ## TODO: Create a functional diagram of the application and pseudo-code
 :::
 
-# To-Do app
+# To-Do 

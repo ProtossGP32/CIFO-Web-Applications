@@ -7,6 +7,7 @@ from: markdown+emoji
 ---
 # Introduction
 
+- Class notes: [Rules of Hooks](https://albertprofe.dev/reactjs/reactjs-hook-rules.html)
 
 # Types of hooks
 ## `useState`
