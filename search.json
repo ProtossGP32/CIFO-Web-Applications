@@ -280,6 +280,13 @@
     "text": "Introduction\nRead this article for further insights\n\n\nHow to structure a React project?\nThe folder structure should look like this:\n\n\n\nReact - Folder structure\n\n\n\nAssets: it contains assets of our project\n\nIt consists of images and styling files\nHere we can store our global styles\nWe are centralizing the project so we can store the page-based or component-based styles over here, but we can also keep style according to the pages folder or component folder. This is up to the developer’s comfortability\n\nLayouts: it contains the available layouts of the whole project, such as header, footer, etc…\n\nStored layouts can be called from any file\n\nComponents: building blocks of any React project\n\nThis folder consists of a collection of UI components like buttons, modals, inputs, loader, etc… that can be used across various files in the project\nEach component should consist of a test file to do a unit test as it will be widely used in the project\n\nPages: each file in the pages folder represent a React contains a route\n\nA Page can contain its subfolder\nEach page has its state and is usually used to call an async operation\nA Page usually consists on various grouped components\n\nMiddleware: allows for side effects in our application\n\nredux uses it (?)\nAny custom middleware is kept here\n\nRoutes: contains all routes of the application\n\nIt consists of private, protected, and all other type of routes\nHere we can even call sub-routes\n\nConfig: configuration file where we store environment variables\n\nFilename: config.js\nThis file shall be used to set up multi-environment configurations in your application\n\nServices: included in the project if we use redux.\n\nIt contains 3 folders:\n\nactions: called in almost all the pages\nreducers: called in almost all the pages\nconstant:\n\nCreate actions, reducers and constants according to Pages name\n\nUtils: consists of some repeatedly used functions that are commonly used in the project\n\nIt should contain only common js functions and objects like dropdown options, regex condition, data formatting, etc…"
   },
   {
+    "objectID": "react-exercises/concepts/05-hooks.html",
+    "href": "react-exercises/concepts/05-hooks.html",
+    "title": "05 - React JS: Using hooks",
+    "section": "",
+    "text": "Class notes: Rules of Hooks"
+  },
+  {
     "objectID": "react-exercises/concepts/05-hooks.html#usestate",
     "href": "react-exercises/concepts/05-hooks.html#usestate",
     "title": "05 - React JS: Using hooks",
@@ -355,6 +362,13 @@
     "title": "03 - React JS: Designing an App",
     "section": "Router",
     "text": "Router"
+  },
+  {
+    "objectID": "react-exercises/concepts/08-redux.html",
+    "href": "react-exercises/concepts/08-redux.html",
+    "title": "06 - React JS: redux",
+    "section": "",
+    "text": "Introduction\n\n\nWhat does redux do?\nA redux acts as a reducer, but instead of passing the payload and the operation to a reducer, it is sent to a Store, where it recreates the state of all Components. Redux lives outside the scope of the dispatcher, executes its reducers based on the received payload, and then acts over any component that has references to the redux.\n\n\n\n\n\n\nTODO: Improve explanation"
   },
   {
     "objectID": "react-exercises/concepts/06-highcharts.html",
@@ -656,6 +670,34 @@
     "title": "React JS: Lab#RE03-2",
     "section": "Pie Chart grouped by some field",
     "text": "Pie Chart grouped by some field\nApp transforms the data and then on render time it calls to the custom PieChart component with the transformed data as an input.\n\n\n\n\n\n\nTip\n\n\n\nA middleware operation transforms the input obtained from an external source and adapts it to be compliant with the Highcharts component.\n\n\nTake into account the context of all your components so they can access both the state values and useReducer\n\nPrepare data from a fake API for testing purposes\nWe’ll use MockAPI to provide a fake API with fake data for testing purposes.\nCreate an account (your can also use GitHub to login) and then create a new project. Your ReactJS app shall point to each one of the endpoints you create on that fake API."
+  },
+  {
+    "objectID": "react-exercises/labs/07-lab-re03-4.html",
+    "href": "react-exercises/labs/07-lab-re03-4.html",
+    "title": "React JS: Lab#RE03-4",
+    "section": "",
+    "text": "Class notes: LINK\nuseContext class link: LINK\nasync link: LINK\nuseContext hook link: LINK\ncreateContext API link: LINK\n\nWe’ll pick up where we left off in the Lab#RE03-3. We’ll refactor the ToDo application from a monolith into several components."
+  },
+  {
+    "objectID": "react-exercises/labs/07-lab-re03-4.html#project-creation",
+    "href": "react-exercises/labs/07-lab-re03-4.html#project-creation",
+    "title": "React JS: Lab#RE03-4",
+    "section": "Project creation",
+    "text": "Project creation\nCreate a new ReactJS project with the following dependencies:\n\nreact-router-dom\nsemantic-ui-react and semantic-ui-css\naxios\nuuidv4 for UUID generation. LINK"
+  },
+  {
+    "objectID": "react-exercises/labs/07-lab-re03-4.html#mock-api-creation",
+    "href": "react-exercises/labs/07-lab-re03-4.html#mock-api-creation",
+    "title": "React JS: Lab#RE03-4",
+    "section": "Mock API creation",
+    "text": "Mock API creation\nGo to mockAPI and create a new API. Then, create several endpoints for each required transaction.\n\n\n\n\n\n\nTODO: define them once the app is designed"
+  },
+  {
+    "objectID": "react-exercises/labs/07-lab-re03-4.html#application-design",
+    "href": "react-exercises/labs/07-lab-re03-4.html#application-design",
+    "title": "React JS: Lab#RE03-4",
+    "section": "Application design",
+    "text": "Application design\n\n\n\n\n\n\nTODO: Create a functional diagram of the application and pseudo-code"
   },
   {
     "objectID": "react-exercises/labs/03-lab-re02-1.html",
