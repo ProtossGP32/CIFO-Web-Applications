@@ -1,0 +1,18 @@
+---
+title: "React JS: Lab#RE03-5"
+categories: [React, Router, Hooks, API, axios, fetch, semantic, context, provider]
+author: ProtossGP32
+date: 2023/05/25
+from: markdown+emoji
+description: Data management
+---
+# Introduction
+
+- [Class notes](https://albertprofe.dev/reactjs/rjslab3-5.html)
+    
+
+Data management in React can be achieved using Context, Redux, and local storage.
+
+- `Context` simplifies state management
+- `Redux` offers scalability
+- `local storage` provides persistent storage for offline functionality

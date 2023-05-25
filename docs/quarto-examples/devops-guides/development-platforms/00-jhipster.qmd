@@ -1,0 +1,57 @@
+---
+title: "JHipster"
+categories: [Java, Node.js, JHipster]
+author: ProtossGP32
+date: 2023/05/25
+from: markdown+emoji
+description: Generating, developing and deploying modern web applications & microservice architectures
+---
+
+# Introduction
+
+- [jHipster official website](https://www.jhipster.tech/)
+
+# Getting started
+
+- Make sure you have installed `Java`, `git` and [Node.js](../../react-exercises/00-getting-started.qmd)
+- Install `jHipster`:
+```{.bash}
+$ npm install -g generator-jhipster
+```
+:::{.callout-warning}
+## Known bug with JHipster 7.9.3 and NodeJs > 16.0
+JHIpster expects an additional `export` in its node module's `package.json` file --> [GitHub related bug](https://github.com/jhipster/generator-jhipster/issues/19627#issuecomment-1454327477)
+
+```{.json filename="~/.nvm/versions/node/v18.12.1/lib/node_modules/generator-jhipster/node_modules/yeoman-environment/package.json"}
+{ 
+    "exports": {
+        ...
+        "./lib/util/namespace": "./lib/util/namespace.js"
+    }
+}
+```
+
+This bug is expected to be solved in `JHipster>=7.9.4`
+
+:::
+
+- Create a new directory and go into it:
+```{.bash}
+$ mkdir myApp && cd myApp
+```
+
+- Run JHipster and follow instructions on screen:
+```{.bash}
+$ jhipster
+```
+
+:::{.callout-tip}
+## Avoid JHipster from locally commit after generation
+By default, JHipster commits the project to your git project after creating it. If you just want a sandbox project and don't want these changes in your repository, launch it with the `--skip-git` option
+
+```{.bash}
+$ jhipster --skip-git
+```
+Other useful command-line options can be found [here](https://www.jhipster.tech/creating-an-app/#3)
+
+:::
