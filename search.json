@@ -112,6 +112,13 @@
     "text": "Creating VMs using a template and Cloud-Init\n\nWhat is Cloud-Init?\nCloud-Init is a feature that allows zero-touch OS installations in VM. Cloud-Init allows to define an initial username and password as well as use SSH keys for external logging. It also allows the user to define Network configurations and other things.\nThis is very useful as an auto-provisioning tool!\n\n\nInstallation instructions\nFollow this guide and its corresponding video:\n\nPerfect Proxmox Template with Cloud Image and Cloud Init\n\n\n\n\nNotes on configuring Cloud-Init\n\n\n\n\n\n\nConfigure the network interface!\n\n\n\n\n\n\nProxmox VM - Cloud-Init parameters\n\n\nBy default, Cloud-Init leaves the config of the Network as static and empty, so you must configure it or else there won’t be any network ready:\n\n\n\nProxmox VM - Cloud-Init network default values\n\n\n\n\n\n\n\n\n\n\nNever start the Template VM machine!\n\n\n\nThis VM shall act as a template for other Ubuntu Cloud VMs, and if it is started, then it will be bootstrapped and assigned to an ID that will pass along any VM created from this one.\n\n\n\n\n\n\n\n\nCreating clones with the Cloud-Init VM template\n\n\n\nFor this, you can use the WebUI and right-click on the VM template, or you can use pvesh commands to do it from the terminal. Read this article for more info:\n\nRapid Topology deployment with Proxmox\n\nYou can also use the qm clone command, but make sure to configure unique hardware configs for each one, such as network parameters:\nqm set &lt;vmid&gt; --ipconfig0 ip=&lt;new-ip&gt;,gw=&lt;new-gw&gt;"
   },
   {
+    "objectID": "devops-guides/development-platforms/00-jhipster.html",
+    "href": "devops-guides/development-platforms/00-jhipster.html",
+    "title": "JHipster",
+    "section": "",
+    "text": "Introduction\n\njHipster official website\n\n\n\nGetting started\n\nMake sure you have installed Java, git and Node.js\nInstall jHipster:\n\n$ npm install -g generator-jhipster\n\n\n\n\n\n\nKnown bug with JHipster 7.9.3 and NodeJs &gt; 16.0\n\n\n\nJHIpster expects an additional export in its node module’s package.json file –&gt; GitHub related bug\n\n\n~/.nvm/versions/node/v18.12.1/lib/node_modules/generator-jhipster/node_modules/yeoman-environment/package.json\n\n{ \n    \"exports\": {\n        ...\n        \"./lib/util/namespace\": \"./lib/util/namespace.js\"\n    }\n}\n\nThis bug is expected to be solved in JHipster&gt;=7.9.4\n\n\n\nCreate a new directory and go into it:\n\n$ mkdir myApp && cd myApp\n\nRun JHipster and follow instructions on screen:\n\n$ jhipster\n\n\n\n\n\n\nAvoid JHipster from locally commit after generation\n\n\n\nBy default, JHipster commits the project to your git project after creating it. If you just want a sandbox project and don’t want these changes in your repository, launch it with the --skip-git option\n$ jhipster --skip-git\nOther useful command-line options can be found here"
+  },
+  {
     "objectID": "devops-guides/version-control-software/github-credentials.html",
     "href": "devops-guides/version-control-software/github-credentials.html",
     "title": "GitHub - Configuring SSH credentials",
@@ -483,6 +490,13 @@
     "text": "Importing components\nIn the main file, import the semantic-ui-css library:\n\n\nindex.js\n\nimport \"semantic-ui-css/semantic.min.css\";\n\nImport the components that you need from the semantic-ui-react library:\n\n\nImporting components from Semantic library\n\nimport { Card, Image } from 'semantic-ui-react';\n\n// Now we can use the components from Semantic\nconst PersonCard = ({person}) =&gt; (\n    &lt;Card&gt;\n        &lt;Image src={person.image} wrapped ui={false} /&gt;\n        &lt;Card.Content&gt;\n            &lt;Card.Header&gt;{`${person.name} + \" \" + ${person.surname}`}&lt;/Card.Header&gt;\n            &lt;Card.Meta&gt;\n                &lt;span className='age'&gt;Age: {person.age}&lt;/span&gt;\n            &lt;/Card.Meta&gt;\n            &lt;Card.Description&gt;\n                Job: {person.job}\n            &lt;/Card.Description&gt;\n        &lt;/Card.Content&gt;\n        &lt;Card.Content extra&gt;\n        &lt;a&gt;\n            &lt;Icon name='user' /&gt;\n            {person.friends} friends\n        &lt;/a&gt;\n        &lt;/Card.Content&gt;\n    &lt;/Card&gt;\n);\n\n// Export the PersonCard object\nexport default PersonCard\n\nAfter that, the component PersonCard is reusable in any other React component:\n\n\nUsing the new PersonCard component\n\nReactDOM.render(\n    &lt;App&gt;\n        &lt;PersonCard\n            person = ({\n                image: \"https://i.imgur.com/MK3eW3As.jpg\",\n                name: 'Katherine',\n                surname: 'Johnson',\n                age: 101,\n                job: 'mathematician',\n                friends: 2\n            }) /&gt;\n    &lt;/App&gt;\n)"
   },
   {
+    "objectID": "react-exercises/labs/08-lab-re03-5.html",
+    "href": "react-exercises/labs/08-lab-re03-5.html",
+    "title": "React JS: Lab#RE03-5",
+    "section": "",
+    "text": "Introduction\n\nClass notes\n\nData management in React can be achieved using Context, Redux, and local storage.\n\nContext simplifies state management\nRedux offers scalability\nlocal storage provides persistent storage for offline functionality"
+  },
+  {
     "objectID": "react-exercises/labs/02-lab-re01-2.html",
     "href": "react-exercises/labs/02-lab-re01-2.html",
     "title": "React JS: Lab#RE01-2",
@@ -628,6 +642,13 @@
     "title": "React JS: Lab#RE01-1",
     "section": "Update the index.js file",
     "text": "Update the index.js file\nWith the BookList component created, we’ll add it into the index.js file, that is our app entrypoint:\n\n\nBookList.jsx\n\nimport React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport './index.css';\nimport App from './App';\nimport BookList from './BookList';\nimport reportWebVitals from './reportWebVitals';\n\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(\n  &lt;React.StrictMode&gt;\n    &lt;App /&gt;\n    &lt;BookList /&gt;\n  &lt;/React.StrictMode&gt;\n);\n\n// If you want to start measuring performance in your app, pass a function\n// to log results (for example: reportWebVitals(console.log))\n// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals\nreportWebVitals();\n\nTwo lines are responsible of implementing the BookList component:\n\n\n\nImporting BookList component\n\nimport BookList from './BookList'\n\nThis imports the component logic into the script\n\n\nRendering BookList component\n\n&lt;React.StrictMode&gt;\n    &lt;BookList /&gt;\n&lt;/React.StrictMode&gt;\n\nThis renders the component after the &lt;App /&gt; component"
+  },
+  {
+    "objectID": "react-exercises/labs/09-lab-re04-1.html",
+    "href": "react-exercises/labs/09-lab-re04-1.html",
+    "title": "React JS: Lab#RE04-1",
+    "section": "",
+    "text": "Introduction\n\nClass notes\n\nExamples of Node.js and SpringBoot Todo server examples\n\n\n\n\n\n\n\nOverall"
   },
   {
     "objectID": "react-exercises/labs/05-lab-re03-2.html",
