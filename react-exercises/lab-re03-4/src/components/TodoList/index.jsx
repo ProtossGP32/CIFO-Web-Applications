@@ -42,3 +42,31 @@ const TodoItem = ({ todo, onDelete, onUpdate }) => {
         </List.Item>
     );
 };
+
+// TodoList: read items and create the To-Do list
+const TodoList = ({ todos, onDelete, onUpdate }) => {
+    // Ensure that we show the Loading state while we don't have the 'todo' items
+    if (todos === null) {
+        return <p>Loading...</p>;
+    }
+
+    return (
+        // Initialize a semantic List
+        <List animated verticalAlign='middle'>
+            {todos.map((todoEntry) => {
+                return(
+                    // Delegate the entries rendering to the TodoItem component
+                    // Important!! Each unique item in a list must have its own 'key'
+                    <TodoItem 
+                        key={todoEntry.id}
+                        todo={todoEntry}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
+                    />
+                );
+            })}    
+        </List>
+    );
+};
+
+export default TodoList;
