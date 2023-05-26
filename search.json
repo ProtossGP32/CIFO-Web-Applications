@@ -721,6 +721,20 @@
     "text": "Application design\n\n\n\n\n\n\nTODO: Create a functional diagram of the application and pseudo-code"
   },
   {
+    "objectID": "react-exercises/labs/07-lab-re03-4.html#services",
+    "href": "react-exercises/labs/07-lab-re03-4.html#services",
+    "title": "React JS: Lab#RE03-4",
+    "section": "Services",
+    "text": "Services\n\nTodoContext\n\n\nTodoService"
+  },
+  {
+    "objectID": "react-exercises/labs/07-lab-re03-4.html#components",
+    "href": "react-exercises/labs/07-lab-re03-4.html#components",
+    "title": "React JS: Lab#RE03-4",
+    "section": "Components",
+    "text": "Components\n\nTodoList\n\n\nTodoAdd\n\n\nTodoApp"
+  },
+  {
     "objectID": "react-exercises/labs/03-lab-re02-1.html",
     "href": "react-exercises/labs/03-lab-re02-1.html",
     "title": "React JS: Lab#RE02-1",
