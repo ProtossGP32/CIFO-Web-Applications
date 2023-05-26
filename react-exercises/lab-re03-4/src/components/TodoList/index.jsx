@@ -28,14 +28,17 @@ const TodoItem = ({ todo, onDelete, onUpdate }) => {
             {/** TODO: Add images to each entry */}
             <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png'/>
             <List.Content>
-                <List.Header as='a'><b>Task: </b><Input placeholder="Enter task" onChange={handleUpdate} value={todo.task} /></List.Header>
+                <List.Header as='a'><b>Task: </b><Input placeholder="Enter task" value={todo.task} /></List.Header>
                 <List.Description>
                     <b>ID: </b>{todo.id}
-                    <b>Assignee: </b><Input placeholder="Enter assignee" onChange={handleUpdate} value={todo.assignee} />
-                    <b>Date: </b><Input type="date" onChange={handleUpdate} value={todo.createdAt} />
-                    <Checkbox label="Completed" onChange={handleUpdate} checked={todo.completed} />
+                    <b>Assignee: </b><Input value={todo.assignee} />
+                    <b>Date: </b><Input type="date" value={todo.createdAt} />
+                    <Checkbox label="Completed" checked={todo.completed} />
                     <Button onClick={handleDelete} icon labelPosition="right">Delete
                         <Icon name="trash" />
+                    </Button>
+                    <Button onClick={handleUpdate} icon labelPosition="right">Update
+                        <Icon name="refresh" />
                     </Button>
                 </List.Description>
             </List.Content>

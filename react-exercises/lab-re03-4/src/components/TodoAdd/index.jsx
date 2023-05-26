@@ -18,16 +18,21 @@ const TodoAdd = ({ onCreate }) => {
 
     // Define the function that will handle the creation of a new item
     const handleSubmit = () => {
+        console.log("HandleSubmit - Composing the ToDo item JSON...");
         onCreate({
-            task: task,
+            createdAt: Intl.DateTimeFormat("az", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            }).format((Date.now())),
             assignee: assignee,
             avatar: avatar,
-            createdAt: Date.now(),
+            task: task,
             completed: false
         });
     };
 
-    // Rende the component
+    // Render the component
     return (
         <React.Fragment>
             <hr />

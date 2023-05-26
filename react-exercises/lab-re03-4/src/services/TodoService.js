@@ -11,8 +11,10 @@ const TodoService = {
     getAllTodos: async () => {
         try {
             // Retrieve data from the API using the GET method
+            console.log("Retrieving data from external API...");
             const response = await axios.get(`${API_BASE_URL}/todoitems`);
             // Return only the JSON containing the actual todo items data
+            console.log(response.data);
             return response.data;
         } catch (error) {
             // Inform that data couldn't be retrieved
@@ -25,8 +27,10 @@ const TodoService = {
     createTodo: async (todo) => {
         try {
             // Send the 'todo' to the API using the POST method
-            const response = await axios.post(`${API_BASE_URL}/todoitems`)
+            console.log("Sending new ToDo to the API...");
+            const response = await axios.post(`${API_BASE_URL}/todoitems`, todo);
             // Return the response of the operation
+            console.log("CreateTodo: received response:", response.data);
             return response.data
         } catch (error) {
             // Inform that data couldn't be created
@@ -40,7 +44,7 @@ const TodoService = {
         try {
             // Send the updated 'todo' to the API using the PUT method
             // --> We need to provide the ID of the updated 'todo' in the URL
-            const response = await axios.put(`${API_BASE_URL}/todoitems/${todo.id}`);
+            const response = await axios.put(`${API_BASE_URL}/todoitems/${todo.id}`, todo);
             // Return the response of the operation
             return response.data;
         } catch (error) {
@@ -65,3 +69,6 @@ const TodoService = {
         }
     }
 };
+
+// Don't forget to define the default function to export!
+export default TodoService;

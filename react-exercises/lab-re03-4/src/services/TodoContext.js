@@ -18,6 +18,11 @@ const TodoProvider = ({ children }) => {
     // Define a state for the Todo items
     const [ todos, setTodos ] = useState([]);
 
+    // Use a useEffect to fetch the list of ToDo items on first render only!
+    useEffect(() => {
+        fetchTodos();
+    }, []);
+
     // Define a function to fetch all the Todo items
     // --> async function, as we don't want to block the execution of the parent thread
     const fetchTodos = async () => {
@@ -36,6 +41,7 @@ const TodoProvider = ({ children }) => {
     const createTodo = async (todo) => {
         try {
             // Send the already created 'todo' item to the API
+            console.log("TodoContext: Creating new todo item...")
             const createdTodo = await TodoService.createTodo(todo);
             // Update the 'todos' state with the new entry
             // TODO: should it be better to call the fetchTodos instead?
@@ -43,7 +49,8 @@ const TodoProvider = ({ children }) => {
             // prevTodos: It is an updater function. Convention dictates that
             // the previous state should be named after the first letter of the state variable name
             // or as 'prev${state_variable_name}'
-            setTodos((prevTodos) => [ ...prevTodos, todo ]);
+            console.log("TodoContext: Setting local todo list");
+            setTodos((prevTodos) => [ ...prevTodos, createdTodo ]);
         } catch (error) {
             // Notify an error in the operation
             // TODO: don't shadow the try-catch within the TodoService.createTodo() function

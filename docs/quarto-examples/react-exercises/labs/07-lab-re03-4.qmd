@@ -38,4 +38,12 @@ Go to [mockAPI](https://mockapi.io) and create a new API. Then, create several e
 ## TODO: Create a functional diagram of the application and pseudo-code
 :::
 
-# To-Do 
+# Layers
+## Services
+### TodoContext
+### TodoService
+
+## Components
+### TodoList
+### TodoAdd
+### TodoApp
