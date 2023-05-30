@@ -26,7 +26,7 @@ const TodoAdd = ({ onCreate }) => {
                 year: "numeric"
             }).format((Date.now())),
             assignee: assignee,
-            avatar: avatar,
+            avatar: "",
             task: task,
             completed: false
         });

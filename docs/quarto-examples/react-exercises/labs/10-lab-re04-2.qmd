@@ -1,0 +1,33 @@
+---
+title: "React JS: Lab#RE04-2"
+categories: [React, Router, Hooks, API, Node.js, Feathers, AWS, Spring Boot]
+author: ProtossGP32
+date: 2023/05/30
+from: markdown+emoji
+description: Deploying a To-Do backend server in different technologies
+---
+# Introduction
+
+- [Class notes](https://albertprofe.dev/reactjs/rjslab4-2.html)
+    - Examples of using Spring Boot as the backend server
+
+:::{.callout-warning}
+:::
+
+# Overall
+## Define the use cases, user-stories and a mock-up of the desired features
+
+## Frontend
+We'll create a ReactJS client to retrieve the ToDo items and render them. It will include the business logic of managing the ToDo list (CRUD actions).
+
+## REST API
+Let's create a simple Spring Boot application that provides a REST controller for the Todo CRUD. We'll test it with Postman.
+
+## noSQL
+We'll use a mongoDB collection stored in our [cloud Atlas account](../../java-exercises/databases/00-mongodb.qmd) for simplicity.
+
+:::{.callout-note}
+# Further steps
+Once this works, try to deploy your own mongoDB database and connect to it instead of the cloud.
+:::
+

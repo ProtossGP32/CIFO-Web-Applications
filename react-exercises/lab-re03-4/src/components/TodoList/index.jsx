@@ -26,7 +26,7 @@ const TodoItem = ({ todo, onDelete, onUpdate }) => {
     return (
         <List.Item>
             {/** TODO: Add images to each entry */}
-            <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png'/>
+            <Image avatar src={todo.avatar}/>
             <List.Content>
                 <List.Header as='a'><b>Task: </b><Input placeholder="Enter task" value={todo.task} /></List.Header>
                 <List.Description>

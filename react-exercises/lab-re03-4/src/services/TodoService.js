@@ -27,7 +27,7 @@ const TodoService = {
     createTodo: async (todo) => {
         try {
             // Send the 'todo' to the API using the POST method
-            console.log("Sending new ToDo to the API...");
+            console.log("CreateTodo: Sending new ToDo to the API...");
             const response = await axios.post(`${API_BASE_URL}/todoitems`, todo);
             // Return the response of the operation
             console.log("CreateTodo: received response:", response.data);

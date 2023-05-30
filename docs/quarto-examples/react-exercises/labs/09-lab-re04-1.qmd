@@ -11,7 +11,7 @@ description: Deploying a To-Do backend server in different technologies
 - [Class notes](https://albertprofe.dev/reactjs/rjslab4.html)
     - Examples of Node.js and SpringBoot Todo server examples
 
-:::{.callout-}
+:::{.callout-warning}
 :::
 
 # Overall
