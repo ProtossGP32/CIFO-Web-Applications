@@ -644,11 +644,46 @@
     "text": "Update the index.js file\nWith the BookList component created, we’ll add it into the index.js file, that is our app entrypoint:\n\n\nBookList.jsx\n\nimport React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport './index.css';\nimport App from './App';\nimport BookList from './BookList';\nimport reportWebVitals from './reportWebVitals';\n\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(\n  &lt;React.StrictMode&gt;\n    &lt;App /&gt;\n    &lt;BookList /&gt;\n  &lt;/React.StrictMode&gt;\n);\n\n// If you want to start measuring performance in your app, pass a function\n// to log results (for example: reportWebVitals(console.log))\n// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals\nreportWebVitals();\n\nTwo lines are responsible of implementing the BookList component:\n\n\n\nImporting BookList component\n\nimport BookList from './BookList'\n\nThis imports the component logic into the script\n\n\nRendering BookList component\n\n&lt;React.StrictMode&gt;\n    &lt;BookList /&gt;\n&lt;/React.StrictMode&gt;\n\nThis renders the component after the &lt;App /&gt; component"
   },
   {
+    "objectID": "react-exercises/labs/10-lab-re04-2.html",
+    "href": "react-exercises/labs/10-lab-re04-2.html",
+    "title": "React JS: Lab#RE04-2",
+    "section": "",
+    "text": "Class notes\n\nExamples of using Spring Boot as the backend server\n\n\n\n\n\n\n\n\nWarning"
+  },
+  {
+    "objectID": "react-exercises/labs/10-lab-re04-2.html#define-the-use-cases-user-stories-and-a-mock-up-of-the-desired-features",
+    "href": "react-exercises/labs/10-lab-re04-2.html#define-the-use-cases-user-stories-and-a-mock-up-of-the-desired-features",
+    "title": "React JS: Lab#RE04-2",
+    "section": "Define the use cases, user-stories and a mock-up of the desired features",
+    "text": "Define the use cases, user-stories and a mock-up of the desired features"
+  },
+  {
+    "objectID": "react-exercises/labs/10-lab-re04-2.html#frontend",
+    "href": "react-exercises/labs/10-lab-re04-2.html#frontend",
+    "title": "React JS: Lab#RE04-2",
+    "section": "Frontend",
+    "text": "Frontend\nWe’ll create a ReactJS client to retrieve the ToDo items and render them. It will include the business logic of managing the ToDo list (CRUD actions)."
+  },
+  {
+    "objectID": "react-exercises/labs/10-lab-re04-2.html#rest-api",
+    "href": "react-exercises/labs/10-lab-re04-2.html#rest-api",
+    "title": "React JS: Lab#RE04-2",
+    "section": "REST API",
+    "text": "REST API\nLet’s create a simple Spring Boot application that provides a REST controller for the Todo CRUD. We’ll test it with Postman."
+  },
+  {
+    "objectID": "react-exercises/labs/10-lab-re04-2.html#nosql",
+    "href": "react-exercises/labs/10-lab-re04-2.html#nosql",
+    "title": "React JS: Lab#RE04-2",
+    "section": "noSQL",
+    "text": "noSQL\nWe’ll use a mongoDB collection stored in our cloud Atlas account for simplicity.\n\n\n\n\n\n\nFurther steps\n\n\n\nOnce this works, try to deploy your own mongoDB database and connect to it instead of the cloud."
+  },
+  {
     "objectID": "react-exercises/labs/09-lab-re04-1.html",
     "href": "react-exercises/labs/09-lab-re04-1.html",
     "title": "React JS: Lab#RE04-1",
     "section": "",
-    "text": "Introduction\n\nClass notes\n\nExamples of Node.js and SpringBoot Todo server examples\n\n\n\n\n\n\n\nOverall"
+    "text": "Introduction\n\nClass notes\n\nExamples of Node.js and SpringBoot Todo server examples\n\n\n\n\n\n\n\n\nWarning\n\n\n\n\n\n\n\n\nOverall"
   },
   {
     "objectID": "react-exercises/labs/05-lab-re03-2.html",
