@@ -56,8 +56,7 @@ const TodoList = ({ todos, onDelete, onUpdate }) => {
     return (
         // Initialize a semantic List
         <List animated verticalAlign='middle'>
-            {todos.map((todoEntry) => {
-                return(
+            {todos.map((todoEntry) => (
                     // Delegate the entries rendering to the TodoItem component
                     // Important!! Each unique item in a list must have its own 'key'
                     <TodoItem 
@@ -66,8 +65,7 @@ const TodoList = ({ todos, onDelete, onUpdate }) => {
                         onDelete={onDelete}
                         onUpdate={onUpdate}
                     />
-                );
-            })}    
+                ))}    
         </List>
     );
 };

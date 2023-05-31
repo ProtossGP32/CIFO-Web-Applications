@@ -49,8 +49,10 @@ const TodoProvider = ({ children }) => {
             // prevTodos: It is an updater function. Convention dictates that
             // the previous state should be named after the first letter of the state variable name
             // or as 'prev${state_variable_name}'
+            console.log("TodoContext: Created todo item ", createdTodo);
             console.log("TodoContext: Setting local todo list");
             setTodos((prevTodos) => [ ...prevTodos, createdTodo ]);
+            console.log("CreateTodo: new state --> ", todos);
         } catch (error) {
             // Notify an error in the operation
             // TODO: don't shadow the try-catch within the TodoService.createTodo() function
@@ -86,12 +88,11 @@ const TodoProvider = ({ children }) => {
         try {
             // Send the ID of the item to delete to the API
             // Ignore the returned result of the operation
-            await TodoService.deleteTodo(todoId);
+            const deleteResponse = await TodoService.deleteTodo(todoId);
+            console.log("TodoContext.deleteTodo: after delete --> ", deleteResponse);
             // Filter that same entry from the todo state variable
             // Again, use an updater function
-            setTodos((prevTodos) => {
-                prevTodos.filter((todo) => todo.id !== todoId);
-            });
+            setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
         } catch (error) {
             // Notify an error in the operation
             // TODO: don't shadow the try-catch within the TodoService.deleteTodo() function
