@@ -7,6 +7,7 @@ import BookList from './BookList';
 import PersonList from './PersonList';
 import TriggerAPI from './TriggerAPI';
 import "semantic-ui-css/semantic.min.css";
+import ListPublications from './Components/publication/ListPublications';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
     <BookList />
     <PersonList />
     <TriggerAPI />
+    <ListPublications />
   </React.StrictMode>
 );
 
