@@ -207,7 +207,7 @@
     "href": "devops-guides/version-control-software/git-useful-tips.html#branches",
     "title": "GIT useful tips",
     "section": "Branches",
-    "text": "Branches\n\nShow available branches\ngit branch\n\nAlso show remote branches:\n\ngit branch -a\n\n\nClone an existing branch\ngit checkout &lt;branch-name&gt;\nIf you want to checkout a branch from another remote repository, do the following:\n\n\n\nCreate a new branch\ngit checkout -b &lt;new-branch-name&gt;\n\n\nDelete a local branch\ngit branch --delete &lt;branch-name&gt;\n\n\nDelete a remote branch\ngit push origin --delete feature/login"
+    "text": "Branches\n\nShow available branches\ngit branch\n\nAlso show remote branches:\n\ngit branch -a\n\n\nClone an existing branch\ngit checkout &lt;branch-name&gt;\nIf you want to checkout a branch from another remote repository, do the following:\n\n\n\nCreate a new branch\ngit checkout -b &lt;new-branch-name&gt;\n\n\nDelete a local branch\ngit branch --delete &lt;branch-name&gt;\n\n\nRename a remote branch (StackOverflow post)\n# In this option, we will push the branch to the remote with the new name\n# While keeping the local name as is\ngit push &lt;remote&gt; &lt;remote&gt;/&lt;old_name&gt;:refs/heads/&lt;new_name&gt; :&lt;old_name&gt;\n\n\nDelete a remote branch\ngit push origin --delete feature/login"
   },
   {
     "objectID": "devops-guides/version-control-software/git-useful-tips.html#updating-local-checkouts",

@@ -701,6 +701,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#clone-an-existing-branch" id="toc-clone-an-existing-branch" class="nav-link" data-scroll-target="#clone-an-existing-branch">Clone an existing branch</a></li>
   <li><a href="#create-a-new-branch" id="toc-create-a-new-branch" class="nav-link" data-scroll-target="#create-a-new-branch">Create a new branch</a></li>
   <li><a href="#delete-a-local-branch" id="toc-delete-a-local-branch" class="nav-link" data-scroll-target="#delete-a-local-branch">Delete a local branch</a></li>
+  <li><a href="#rename-a-remote-branch-stackoverflow-post" id="toc-rename-a-remote-branch-stackoverflow-post" class="nav-link" data-scroll-target="#rename-a-remote-branch-stackoverflow-post">Rename a remote branch (StackOverflow post)</a></li>
   <li><a href="#delete-a-remote-branch" id="toc-delete-a-remote-branch" class="nav-link" data-scroll-target="#delete-a-remote-branch">Delete a remote branch</a></li>
   </ul></li>
   <li><a href="#updating-local-checkouts" id="toc-updating-local-checkouts" class="nav-link" data-scroll-target="#updating-local-checkouts">Updating local checkouts</a>
@@ -811,16 +812,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="delete-a-local-branch">Delete a local branch</h3>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">git</span> branch <span class="at">--delete</span> <span class="op">&lt;</span>branch-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="rename-a-remote-branch-stackoverflow-post" class="level3">
+<h3 class="anchored" data-anchor-id="rename-a-remote-branch-stackoverflow-post">Rename a remote branch (<a href="https://stackoverflow.com/a/30590238">StackOverflow post</a>)</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># In this option, we will push the branch to the remote with the new name</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># While keeping the local name as is</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote<span class="op">&gt;</span> <span class="op">&lt;</span>remote<span class="op">&gt;</span>/<span class="op">&lt;</span>old_name<span class="op">&gt;</span>:refs/heads/<span class="op">&lt;</span>new_name<span class="op">&gt;</span> :<span class="op">&lt;</span>old_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="delete-a-remote-branch" class="level3">
 <h3 class="anchored" data-anchor-id="delete-a-remote-branch">Delete a remote branch</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">git</span> push origin <span class="at">--delete</span> feature/login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">git</span> push origin <span class="at">--delete</span> feature/login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="updating-local-checkouts" class="level2">
 <h2 class="anchored" data-anchor-id="updating-local-checkouts">Updating local checkouts</h2>
 <section id="retrieve-latest-changes-in-remote-repositories" class="level3">
 <h3 class="anchored" data-anchor-id="retrieve-latest-changes-in-remote-repositories">Retrieve latest changes in remote repositories</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">git</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">git</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>This command downloads the git objects (blobs, trees and commits), it doesn’t <code>merge</code> the changes into the local checkouts.
 <ul>
@@ -830,11 +837,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="update-local-branches" class="level3">
 <h3 class="anchored" data-anchor-id="update-local-branches">Update local branches</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>remote-branch<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">git</span> merge <span class="op">&lt;</span>remote-branch<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="overwrite-local-branches-with-remote-repositories" class="level3">
 <h3 class="anchored" data-anchor-id="overwrite-local-branches-with-remote-repositories">Overwrite local branches with remote repositories</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="pushing-local-checkouts" class="level2">
@@ -842,12 +849,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="push-a-local-branch-to-a-remote-repository" class="level3">
 <h3 class="anchored" data-anchor-id="push-a-local-branch-to-a-remote-repository">Push a local branch to a remote repository</h3>
 <p>When pushing a branch for the first time, it has to be created in the remote repository. This is done during <code>push</code> with the following command:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span> <span class="op">&lt;</span>local-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>--set-upstream</code> automatically sets up the tracking information for that branch</li>
 </ul>
 <p>If the branch is already created in the remote repository or you’re pushing to a different remote (and don’t want it as the following repository), you can simply push it to the desired remote by executing:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Be aware that for this to work, a remote repository must be already configured as the following one. I.e: you already told Git that you’re following the same branch in <code>origin</code> repo and now you want to simply push it to the <code>upstream</code> repository.</p>
 
 
