@@ -81,9 +81,17 @@ If you want to checkout a branch from another remote repository, do the followin
 git checkout -b <new-branch-name>
 ```
 
+
 ### Delete a local branch
 ```{.bash}
 git branch --delete <branch-name>
+```
+
+### Rename a remote branch ([StackOverflow post](https://stackoverflow.com/a/30590238))
+```{.bash}
+# In this option, we will push the branch to the remote with the new name
+# While keeping the local name as is
+git push <remote> <remote>/<old_name>:refs/heads/<new_name> :<old_name>
 ```
 
 ### Delete a remote branch
