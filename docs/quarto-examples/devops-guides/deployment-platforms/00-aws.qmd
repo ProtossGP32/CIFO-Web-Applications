@@ -1,0 +1,11 @@
+---
+title: "Amazon Web Services"
+categories: [AWS, DevOps, deployment]
+author: ProtossGP32
+date: 2023/06/06
+from: markdown+emoji
+description: Introduction to AWS and its services
+---
+# Introduction
+
+- Main page: [AWS](https://aws.amazon.com)
