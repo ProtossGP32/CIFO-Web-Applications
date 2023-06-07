@@ -40,6 +40,8 @@ WebSockets listen to these events using `addEventListener()` or by assigning an 
 - `message`: fired when data is received thorugh a WebSocket. Also available via the `onmessage` property
 - `open`: fired when a connection with a WebSocket is opened. Also available via the `onopen` property
 
+We configure the socket logic inside a `useEffect` that only executes on component creation.
+
 ### Example: WebSocket client
 
 ```{.js filename="websocket-client-example.js"}
@@ -69,3 +71,14 @@ socket.onerror = function(event) {
     onSocketError(event);
 };
 ```
+
+## Debugging tools
+### WebSocketKing
+
+- Link: [websocketking.com](https://websocketking.com/)
+
+# Already deployed examples:
+
+- CifoChat with ToDo API: Deployed with Amazon AWS --> [LINK](https://todo-api-new-feature.d2hdlnh6ln8tyf.amplifyapp.com/)
+    - Both the Chat and the TodoAPI applications connect to Amazon DynamoDB tables through WebSockets via API Gateway
+    - Link to the repository: [LINK](https://github.com/ProtossGP32/CifoTodo-development)
