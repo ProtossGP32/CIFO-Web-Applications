@@ -719,7 +719,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events">Events</a></li>
   <li><a href="#example-websocket-client" id="toc-example-websocket-client" class="nav-link" data-scroll-target="#example-websocket-client">Example: WebSocket client</a></li>
   </ul></li>
+  <li><a href="#debugging-tools" id="toc-debugging-tools" class="nav-link" data-scroll-target="#debugging-tools">Debugging tools</a>
+  <ul class="collapse">
+  <li><a href="#websocketking" id="toc-websocketking" class="nav-link" data-scroll-target="#websocketking">WebSocketKing</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#already-deployed-examples" id="toc-already-deployed-examples" class="nav-link" data-scroll-target="#already-deployed-examples">Already deployed examples:</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/react-exercises/labs/11-lab-re05-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -801,6 +806,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>message</code>: fired when data is received thorugh a WebSocket. Also available via the <code>onmessage</code> property</li>
 <li><code>open</code>: fired when a connection with a WebSocket is opened. Also available via the <code>onopen</code> property</li>
 </ul>
+<p>We configure the socket logic inside a <code>useEffect</code> that only executes on component creation.</p>
 </section>
 <section id="example-websocket-client" class="level3">
 <h3 class="anchored" data-anchor-id="example-websocket-client">Example: WebSocket client</h3>
@@ -834,10 +840,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-24"><a href="#cb1-24"></a>    <span class="fu">onSocketError</span>(<span class="bu">event</span>)<span class="op">;</span></span>
 <span id="cb1-25"><a href="#cb1-25"></a>}<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
 </section>
 </section>
+<section id="debugging-tools" class="level2">
+<h2 class="anchored" data-anchor-id="debugging-tools">Debugging tools</h2>
+<section id="websocketking" class="level3">
+<h3 class="anchored" data-anchor-id="websocketking">WebSocketKing</h3>
+<ul>
+<li>Link: <a href="https://websocketking.com/">websocketking.com</a></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="already-deployed-examples" class="level1">
+<h1>Already deployed examples:</h1>
+<ul>
+<li>CifoChat with ToDo API: Deployed with Amazon AWS –&gt; <a href="https://todo-api-new-feature.d2hdlnh6ln8tyf.amplifyapp.com/">LINK</a>
+<ul>
+<li>Both the Chat and the TodoAPI applications connect to Amazon DynamoDB tables through WebSockets via API Gateway</li>
+<li>Link to the repository: <a href="https://github.com/ProtossGP32/CifoTodo-development">LINK</a></li>
+</ul></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
