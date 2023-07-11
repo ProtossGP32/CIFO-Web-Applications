@@ -134,3 +134,27 @@ git push <remote-repo>
 ```
 
 Be aware that for this to work, a remote repository must be already configured as the following one. I.e: you already told Git that you're following the same branch in `origin` repo and now you want to simply push it to the `upstream` repository.
+
+# Git Large File System
+Due to [size limits on GitHub](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github), [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage) can be used instead.
+
+Git LFS handles large files by storing references to the file in the repository, but not the actual file itself.
+
+Follow the next articles to both install and configure what's needed to use LFS:
+
+- [Install](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage): this will install the required binaries in your local server to start working with LFS
+- [Configure](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage): this will help you configure the type of files that you want to be stored in Git LFS
+- [Pushing](https://docs.github.com/en/repositories/working-with-files/managing-large-files/resolving-git-large-file-storage-upload-failures): if having troubles uploading to LFS for the first time, try to execute first this command:
+  ```{.bash}
+  $ git lfs push --all origin
+  Uploading LFS objects: 100% (17/17), 1.3 GB | 30 MB/s, done.             
+  ```
+  A progress count should verify that indeed the LFS is available. Oncs done, push the rest of the commits with the classic `git push`
+
+In order to track some type of extension file as LFS, launch from your repository:
+
+```{.bash}
+$ git lfs track "*.<selected-extension>"
+```
+
+Git operation after installing and configuring LFS are the same as always, the only thing to know is that `git lfs` commands will execute underneath them.
