@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -715,6 +715,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#push-a-local-branch-to-a-remote-repository" id="toc-push-a-local-branch-to-a-remote-repository" class="nav-link" data-scroll-target="#push-a-local-branch-to-a-remote-repository">Push a local branch to a remote repository</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#git-large-file-system" id="toc-git-large-file-system" class="nav-link" data-scroll-target="#git-large-file-system">Git Large File System</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/version-control-software/git-useful-tips.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -856,10 +857,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If the branch is already created in the remote repository or you’re pushing to a different remote (and don’t want it as the following repository), you can simply push it to the desired remote by executing:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote-repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Be aware that for this to work, a remote repository must be already configured as the following one. I.e: you already told Git that you’re following the same branch in <code>origin</code> repo and now you want to simply push it to the <code>upstream</code> repository.</p>
-
-
 </section>
 </section>
+</section>
+<section id="git-large-file-system" class="level1">
+<h1>Git Large File System</h1>
+<p>Due to <a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github">size limits on GitHub</a>, <a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage">Git LFS</a> can be used instead.</p>
+<p>Git LFS handles large files by storing references to the file in the repository, but not the actual file itself.</p>
+<p>Follow the next articles to both install and configure what’s needed to use LFS:</p>
+<ul>
+<li><p><a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage">Install</a>: this will install the required binaries in your local server to start working with LFS</p></li>
+<li><p><a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage">Configure</a>: this will help you configure the type of files that you want to be stored in Git LFS</p></li>
+<li><p><a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/resolving-git-large-file-storage-upload-failures">Pushing</a>: if having troubles uploading to LFS for the first time, try to execute first this command:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ex">$</span> git lfs push <span class="at">--all</span> origin</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="ex">Uploading</span> LFS objects: 100% <span class="er">(</span><span class="ex">17/17</span><span class="kw">)</span><span class="ex">,</span> 1.3 GB <span class="kw">|</span> <span class="ex">30</span> MB/s, done.             </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A progress count should verify that indeed the LFS is available. Oncs done, push the rest of the commits with the classic <code>git push</code></p></li>
+</ul>
+<p>In order to track some type of extension file as LFS, launch from your repository:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ex">$</span> git lfs track <span class="st">"*.&lt;selected-extension&gt;"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Git operation after installing and configuring LFS are the same as always, the only thing to know is that <code>git lfs</code> commands will execute underneath them.</p>
+
+
 </section>
 
 </main> <!-- /main -->
