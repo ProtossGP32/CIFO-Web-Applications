@@ -81,6 +81,11 @@ If you want to checkout a branch from another remote repository, do the followin
 git checkout -b <new-branch-name>
 ```
 
+:::{.callout-note}
+# Differences between new `switch` command and `checkout`
+This [StackOverflow thread](https://stackoverflow.com/a/70454786) explains the reason why `switch` command has been added and the translation of older `checkout` commands to the new ones
+:::
+
 
 ### Delete a local branch
 ```{.bash}
