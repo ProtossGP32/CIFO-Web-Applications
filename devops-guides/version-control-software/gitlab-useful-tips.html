@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ProtossGP32">
-<meta name="dcterms.date" content="2023-05-25">
-<meta name="description" content="Deploying a To-Do backend server in different technologies">
+<meta name="dcterms.date" content="2023-08-03">
 
-<title>CIFO - Web Applications - React JS: Lab#RE04-1</title>
+<title>CIFO - Web Applications - GitLab - Useful tips</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../react-exercises/labs/10-lab-re04-2.html" rel="next">
-<link href="../../react-exercises/labs/08-lab-re03-5.html" rel="prev">
+<link href="../../devops-guides/virtualization/harvester.html" rel="next">
+<link href="../../devops-guides/version-control-software/github-credentials.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -510,7 +543,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../react-exercises/labs/01-lab-re01-1.html">Labs</a></li><li class="breadcrumb-item"><a href="../../react-exercises/labs/09-lab-re04-1.html">React JS: Lab#RE04-1</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../devops-guides/version-control-software/git-useful-tips.html">Version Control Software</a></li><li class="breadcrumb-item"><a href="../../devops-guides/version-control-software/gitlab-useful-tips.html">GitLab - Useful tips</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -524,14 +557,20 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/00-getting-started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React: Getting started</span></a>
+  <a href="../../devops-guides/mint-vm-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Machine Provisioning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/software-installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Software installation</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Concepts</span></a>
+ <span class="menu-text">Deployment Platforms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -539,56 +578,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/00-principles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - React JS: Principles</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/01-css-semantic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - React JS: CSS Libraries - Semantic</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/02-project-structure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - React JS: Project structure</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/03-designing-an-app.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - React JS: Designing an App</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/04-debugging-reactjs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - React JS: Debugging an App</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/05-hooks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 - React JS: Using hooks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/06-highcharts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 - React JS: Highcharts</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/07-async.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 - React JS: async</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/concepts/08-redux.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 - React JS: redux</span></a>
+  <a href="../../devops-guides/deployment-platforms/00-aws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amazon Web Services</span></a>
   </div>
 </li>
       </ul>
@@ -596,7 +587,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Labs</span></a>
+ <span class="menu-text">Development Platforms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -604,68 +595,94 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/01-lab-re01-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE01-1</span></a>
+  <a href="../../devops-guides/development-platforms/00-jhipster.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JHipster</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Documentation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/documentation/quarto-quick-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto - Quick guide</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Self Hosted Project</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/self-hosted-project/docker-software-deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker software deployment</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Version Control Software</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/version-control-software/git-useful-tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GIT useful tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/02-lab-re01-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE01-2</span></a>
+  <a href="../../devops-guides/version-control-software/github-credentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub - Configuring SSH credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/03-lab-re02-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE02-1</span></a>
+  <a href="../../devops-guides/version-control-software/gitlab-useful-tips.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">GitLab - Useful tips</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Virtualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/virtualization/harvester.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Harvester</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/04-lab-re03-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE03-1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/05-lab-re03-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE03-2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/06-lab-re03-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE03-3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/07-lab-re03-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE03-4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/08-lab-re03-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE03-5</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/09-lab-re04-1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">React JS: Lab#RE04-1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/10-lab-re04-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE04-2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../react-exercises/labs/11-lab-re05-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">React JS: Lab#RE05-1</span></a>
+  <a href="../../devops-guides/virtualization/proxmox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Proxmox VE</span></a>
   </div>
 </li>
       </ul>
@@ -680,34 +697,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#overall" id="toc-overall" class="nav-link" data-scroll-target="#overall">Overall</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#gitlab-merge-requests" id="toc-gitlab-merge-requests" class="nav-link" data-scroll-target="#gitlab-merge-requests">GitLab Merge Requests</a>
+  <ul class="collapse">
+  <li><a href="#open-a-merge-request" id="toc-open-a-merge-request" class="nav-link" data-scroll-target="#open-a-merge-request">Open a Merge Request</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/react-exercises/labs/09-lab-re04-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/version-control-software/gitlab-useful-tips.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">React JS: Lab#RE04-1</h1>
+<h1 class="title">GitLab - Useful tips</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">React</div>
-    <div class="quarto-category">Router</div>
-    <div class="quarto-category">Hooks</div>
-    <div class="quarto-category">API</div>
-    <div class="quarto-category">Node.js</div>
-    <div class="quarto-category">Feathers</div>
-    <div class="quarto-category">AWS</div>
-    <div class="quarto-category">Spring Boot</div>
+    <div class="quarto-category">Git</div>
+    <div class="quarto-category">GitLab</div>
+    <div class="quarto-category">CLI</div>
   </div>
   </div>
 
-<div>
-  <div class="description">
-    Deploying a To-Do backend server in different technologies
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -722,7 +734,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 25, 2023</p>
+      <p class="date">August 3, 2023</p>
     </div>
   </div>
   
@@ -734,30 +746,50 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<ul>
-<li><a href="https://albertprofe.dev/reactjs/rjslab4.html">Class notes</a>
-<ul>
-<li>Examples of Node.js and SpringBoot Todo server examples</li>
-</ul></li>
-</ul>
-<div class="callout callout-style-default callout-warning callout-titled">
+<p>Here you’ll find tips to manage your GitLab repositories from the CLI</p>
+<section id="gitlab-merge-requests" class="level2">
+<h2 class="anchored" data-anchor-id="gitlab-merge-requests">GitLab Merge Requests</h2>
+<section id="open-a-merge-request" class="level3">
+<h3 class="anchored" data-anchor-id="open-a-merge-request">Open a Merge Request</h3>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>In order to open a MR, your local repository must have at least one commit pending to push to the remote branch</p>
+</div>
+</div>
+<p>Once all files are committed, launch the following command:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>GitLab - Create MR</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">git</span> push <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="at">-o</span> merge_request.create <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="at">-o</span> merge_request.target=<span class="op">&lt;</span>branch-where-to-merge-the-changes<span class="op">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="op">&lt;</span>upstream-origin<span class="op">&gt;</span> <span class="op">&lt;</span>remote-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These are the minimum required options to create the merge request, but you can add others to complete its information:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>GitLab - Additional MR fields</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Set the merge request title</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">git</span> push <span class="at">-o</span> merge_request.title=<span class="st">"&lt;desired-title&gt;"</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Set the merge request description</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">git</span> push <span class="at">-o</span> merge_request.description=<span class="st">"Desired description"</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># Set the merge request to remove the source branch once merged</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="fu">git</span> push <span class="at">-o</span> merge_request.remove_source_branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
-</div>
-</div>
+
 </section>
-<section id="overall" class="level1">
-<h1>Overall</h1>
-
-
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1111,13 +1143,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../react-exercises/labs/08-lab-re03-5.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">React JS: Lab#RE03-5</span>
+      <a href="../../devops-guides/version-control-software/github-credentials.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">GitHub - Configuring SSH credentials</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../react-exercises/labs/10-lab-re04-2.html" class="pagination-link">
-        <span class="nav-page-text">React JS: Lab#RE04-2</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../devops-guides/virtualization/harvester.html" class="pagination-link">
+        <span class="nav-page-text">Harvester</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
