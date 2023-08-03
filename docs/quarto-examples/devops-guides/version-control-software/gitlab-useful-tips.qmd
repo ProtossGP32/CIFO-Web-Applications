@@ -1,0 +1,35 @@
+---
+title: "GitLab - Useful tips"
+categories: [Git, GitLab, CLI]
+author: ProtossGP32
+date: 2023/08/03
+from: markdown+emoji
+---
+# Introduction
+Here you'll find tips to manage your GitLab repositories from the CLI
+
+## GitLab Merge Requests
+### Open a Merge Request
+:::{.callout-important}
+In order to open a MR, your local repository must have at least one commit pending to push to the remote branch
+:::
+
+Once all files are committed, launch the following command:
+
+```{.bash filename="GitLab - Create MR"}
+git push \
+    -o merge_request.create \
+    -o merge_request.target=<branch-where-to-merge-the-changes>
+    <upstream-origin> <remote-branch>
+```
+
+These are the minimum required options to create the merge request, but you can add others to complete its information:
+
+```{.bash filename="GitLab - Additional MR fields"}
+# Set the merge request title
+git push -o merge_request.title="<desired-title>"
+# Set the merge request description
+git push -o merge_request.description="Desired description"
+# Set the merge request to remove the source branch once merged
+git push -o merge_request.remove_source_branch
+``` 
