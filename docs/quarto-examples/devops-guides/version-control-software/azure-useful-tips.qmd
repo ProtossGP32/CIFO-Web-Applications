@@ -1,0 +1,37 @@
+---
+title: "Azure DevOps - Useful tips"
+categories: [Git, Azure, CLI]
+author: ProtossGP32
+date: 2023/09/01
+from: markdown+emoji
+---
+# Introduction
+Here you'll find tips to manage your Azure DevOps repositories from the CLI.
+
+## Azure Pull Requests
+### Open a Pull Request
+
+Once all files are committed and commits are pushed, launch the following command:
+
+```{.bash filename="Azure DevOps - Create PR"}
+az repos pr create -s <source-branch> -t <target-branch>
+```
+
+The command will return an JSON payload response with all the information regarding the newly created Pull Request. There, you can check some useful information like the PR ID (you'll need it later), description, status, etc...
+
+### Vote a Pull Request
+If the policies applied to the PRs require them to be voted, you can also do it from the CLI:
+
+```{.bash filename="Azure DevOps - PR voting"}
+az repos pr set-vote --id <pr-id> --vote [approve, approve-with-suggestions, reject, reset, wait-for-author]
+```
+Choose the vote you see fit for the Pull Request current status.
+
+### Complete a Pull Request (merge changes)
+Once reviewed the changes and accepted, you can complete the PR by updating its status with the following command:
+
+```{.bash filename="Azure DevOps - Complete a PR"}
+az repos pr update --id <pr-id> --status [abandoned, active, completed]
+```
+
+Choosing `completed` will automatically start the merging process to the target branch.
