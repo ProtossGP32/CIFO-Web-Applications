@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ProtossGP32">
-<meta name="dcterms.date" content="2023-03-01">
-<meta name="description" content="Render HTML pages with Java objects">
+<meta name="dcterms.date" content="2023-09-01">
 
-<title>CIFO - Web Applications - 01 - Java template engine - Thymeleaf</title>
+<title>CIFO - Web Applications - Azure DevOps - Useful tips</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +22,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../java-exercises/Labs/java-sb00-6.html" rel="next">
-<link href="../../../java-exercises/frontend/00-Introduction.html" rel="prev">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../devops-guides/version-control-software/git-useful-tips.html" rel="next">
+<link href="../../devops-guides/self-hosted-project/docker-software-deployment.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -78,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">CIFO - Web Applications</span>
     </a>
   </div>
@@ -89,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html" rel="" target="">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -98,63 +131,63 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-devops-guides">    
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/mint-vm-provisioning.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/mint-vm-provisioning.html" rel="" target="">
  <span class="dropdown-text">Virtual Machine Provisioning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/software-installation.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/software-installation.html" rel="" target="">
  <span class="dropdown-text">Software installation</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Deployment Platforms</li>
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/deployment-platforms/00-aws.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/deployment-platforms/00-aws.html" rel="" target="">
  <span class="dropdown-text">Amazon Web Services</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Development Platforms</li>
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/development-platforms/00-jhipster.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/development-platforms/00-jhipster.html" rel="" target="">
  <span class="dropdown-text">JHipster</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Documentation</li>
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/documentation/quarto-quick-guide.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/documentation/quarto-quick-guide.html" rel="" target="">
  <span class="dropdown-text">Quarto - Quick guide</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Self Hosted Project</li>
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/self-hosted-project/docker-software-deployment.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/self-hosted-project/docker-software-deployment.html" rel="" target="">
  <span class="dropdown-text">Docker software deployment</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Version Control Software</li>
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/version-control-software/azure-useful-tips.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/version-control-software/azure-useful-tips.html" rel="" target="">
  <span class="dropdown-text">Azure DevOps - Useful tips</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/version-control-software/git-useful-tips.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/version-control-software/git-useful-tips.html" rel="" target="">
  <span class="dropdown-text">GIT useful tips</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/version-control-software/github-credentials.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/version-control-software/github-credentials.html" rel="" target="">
  <span class="dropdown-text">GitHub - Configuring SSH credentials</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/version-control-software/gitlab-useful-tips.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/version-control-software/gitlab-useful-tips.html" rel="" target="">
  <span class="dropdown-text">GitLab - Useful tips</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Virtualization</li>
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/virtualization/harvester.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/virtualization/harvester.html" rel="" target="">
  <span class="dropdown-text">Harvester</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../devops-guides/virtualization/proxmox.html" rel="" target="">
+    <a class="dropdown-item" href="../../devops-guides/virtualization/proxmox.html" rel="" target="">
  <span class="dropdown-text">Proxmox VE</span></a>
   </li>  
     </ul>
@@ -166,129 +199,129 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-java-exercises">    
         <li class="dropdown-header">APIs</li>
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/APIs/api-rest.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/APIs/api-rest.html" rel="" target="">
  <span class="dropdown-text">API REST</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Concepts</li>
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/object-creation.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/object-creation.html" rel="" target="">
  <span class="dropdown-text">Object creation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/pojo-bean-entity.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/pojo-bean-entity.html" rel="" target="">
  <span class="dropdown-text">Differences between a POJO, a JavaBean and an Entity</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-a-class.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-class.html" rel="" target="">
  <span class="dropdown-text">What is a class?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-a-model.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-a-model.html" rel="" target="">
  <span class="dropdown-text">What is a model?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" rel="" target="">
  <span class="dropdown-text">What is coupling and cohesion?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-ddd.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-ddd.html" rel="" target="">
  <span class="dropdown-text">What is DDD?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-maven.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-maven.html" rel="" target="">
  <span class="dropdown-text">What is Maven?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-tdd.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-tdd.html" rel="" target="">
  <span class="dropdown-text">What is TDD?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Concepts/what-is-the-static-modifier.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Concepts/what-is-the-static-modifier.html" rel="" target="">
  <span class="dropdown-text">What is the static modifier?</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Databases</li>
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/databases/00-mongodb.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/databases/00-mongodb.html" rel="" target="">
  <span class="dropdown-text">00 - MongoDB</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Design Patterns</li>
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Design-patterns/uml.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Design-patterns/uml.html" rel="" target="">
  <span class="dropdown-text">UML</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Frameworks</li>
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" rel="" target="">
  <span class="dropdown-text">Quarkus</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" rel="" target="">
  <span class="dropdown-text">Spring Boot</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Frontend</li>
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/frontend/00-Introduction.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/frontend/00-Introduction.html" rel="" target="">
  <span class="dropdown-text">00 - Frontend - Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/frontend/engines/00-thymeleaf.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/frontend/engines/00-thymeleaf.html" rel="" target="">
  <span class="dropdown-text">Engines</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Labs/java-sb00-6.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-sb00-6.html" rel="" target="">
  <span class="dropdown-text">LAB#SB00-6: Rest &amp; MongoDB</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-1.html" rel="" target="">
  <span class="dropdown-text">LAB#SE00-1: Maven Person</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-2.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-2.html" rel="" target="">
  <span class="dropdown-text">LAB#SE00-1: Maven Clinic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se00-3.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se00-3.html" rel="" target="">
  <span class="dropdown-text">LAB#SE00-3: Maven Library model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se01-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se01-1.html" rel="" target="">
  <span class="dropdown-text">LAB#SE01-1: Maven Person and Account</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se02-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se02-1.html" rel="" target="">
  <span class="dropdown-text">LAB#SE02-1: Movie/Review, model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se03-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-1.html" rel="" target="">
  <span class="dropdown-text">LAB#SE03-1: Library/Book core model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Labs/java-se03-2.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Labs/java-se03-2.html" rel="" target="">
  <span class="dropdown-text">LAB#SE03-2: Library/Book, Expand Model</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Principles</li>
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Principles/00-encapsulation.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Principles/00-encapsulation.html" rel="" target="">
  <span class="dropdown-text">Encapsulation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Principles/01-abstraction.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Principles/01-abstraction.html" rel="" target="">
  <span class="dropdown-text">Abstraction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Principles/02-inheritance.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Principles/02-inheritance.html" rel="" target="">
  <span class="dropdown-text">Inheritance</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../java-exercises/Principles/03-polymorphism.html" rel="" target="">
+    <a class="dropdown-item" href="../../java-exercises/Principles/03-polymorphism.html" rel="" target="">
  <span class="dropdown-text">Polymorphism</span></a>
   </li>  
     </ul>
@@ -299,91 +332,91 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-react-exercises">    
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/00-getting-started.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/00-getting-started.html" rel="" target="">
  <span class="dropdown-text">React: Getting started</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Concepts</li>
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/00-principles.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/00-principles.html" rel="" target="">
  <span class="dropdown-text">00 - React JS: Principles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/01-css-semantic.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/01-css-semantic.html" rel="" target="">
  <span class="dropdown-text">01 - React JS: CSS Libraries - Semantic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/02-project-structure.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/02-project-structure.html" rel="" target="">
  <span class="dropdown-text">02 - React JS: Project structure</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/03-designing-an-app.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/03-designing-an-app.html" rel="" target="">
  <span class="dropdown-text">03 - React JS: Designing an App</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/04-debugging-reactjs.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/04-debugging-reactjs.html" rel="" target="">
  <span class="dropdown-text">04 - React JS: Debugging an App</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/05-hooks.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/05-hooks.html" rel="" target="">
  <span class="dropdown-text">05 - React JS: Using hooks</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/06-highcharts.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/06-highcharts.html" rel="" target="">
  <span class="dropdown-text">06 - React JS: Highcharts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/07-async.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/07-async.html" rel="" target="">
  <span class="dropdown-text">06 - React JS: async</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/concepts/08-redux.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/concepts/08-redux.html" rel="" target="">
  <span class="dropdown-text">06 - React JS: redux</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Labs</li>
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/01-lab-re01-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/01-lab-re01-1.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE01-1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/02-lab-re01-2.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/02-lab-re01-2.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE01-2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/03-lab-re02-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/03-lab-re02-1.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE02-1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/04-lab-re03-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/04-lab-re03-1.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE03-1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/05-lab-re03-2.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/05-lab-re03-2.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE03-2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/06-lab-re03-3.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/06-lab-re03-3.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE03-3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/07-lab-re03-4.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/07-lab-re03-4.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE03-4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/08-lab-re03-5.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/08-lab-re03-5.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE03-5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/09-lab-re04-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/09-lab-re04-1.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE04-1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/10-lab-re04-2.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/10-lab-re04-2.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE04-2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../react-exercises/labs/11-lab-re05-1.html" rel="" target="">
+    <a class="dropdown-item" href="../../react-exercises/labs/11-lab-re05-1.html" rel="" target="">
  <span class="dropdown-text">React JS: Lab#RE05-1</span></a>
   </li>  
     </ul>
@@ -394,19 +427,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-project-management">    
         <li>
-    <a class="dropdown-item" href="../../../project-management/decision-making.html" rel="" target="">
+    <a class="dropdown-item" href="../../project-management/decision-making.html" rel="" target="">
  <span class="dropdown-text">Decision Making</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../project-management/project-life-cycle.html" rel="" target="">
+    <a class="dropdown-item" href="../../project-management/project-life-cycle.html" rel="" target="">
  <span class="dropdown-text">What is the project lifecycle?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../project-management/scrum-management.html" rel="" target="">
+    <a class="dropdown-item" href="../../project-management/scrum-management.html" rel="" target="">
  <span class="dropdown-text">Scrum management</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../project-management/useful-questions.html" rel="" target="">
+    <a class="dropdown-item" href="../../project-management/useful-questions.html" rel="" target="">
  <span class="dropdown-text">Useful questions</span></a>
   </li>  
     </ul>
@@ -417,7 +450,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-team-projects">    
         <li>
-    <a class="dropdown-item" href="../../../team-projects/00-game-tracker.html" rel="" target="">
+    <a class="dropdown-item" href="../../team-projects/00-game-tracker.html" rel="" target="">
  <span class="dropdown-text">First project - GameTracker</span></a>
   </li>  
     </ul>
@@ -428,49 +461,49 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-miscellaneous">    
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/00-mind-management-getting-things-done.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/00-mind-management-getting-things-done.html" rel="" target="">
  <span class="dropdown-text">00 - Mind Management and Getting Things Done</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Weekly Planning</li>
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/00-template.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/00-template.html" rel="" target="">
  <span class="dropdown-text">00 - Week template</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/01-week-01.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/01-week-01.html" rel="" target="">
  <span class="dropdown-text">01 - Week 01</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/02-week-02.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/02-week-02.html" rel="" target="">
  <span class="dropdown-text">02 - Week 02</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/03-week-03.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/03-week-03.html" rel="" target="">
  <span class="dropdown-text">03 - Week 03</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/04-week-04.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/04-week-04.html" rel="" target="">
  <span class="dropdown-text">04 - Week 04</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/05-week-05.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/05-week-05.html" rel="" target="">
  <span class="dropdown-text">05 - Week 05</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/06-week-06.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/06-week-06.html" rel="" target="">
  <span class="dropdown-text">06 - Week 06</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/07-week-07.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/07-week-07.html" rel="" target="">
  <span class="dropdown-text">07 - Week 07</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/08-week-08.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/08-week-08.html" rel="" target="">
  <span class="dropdown-text">08 - Week 08</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../miscellaneous/weekly-planning/09-week-09.html" rel="" target="">
+    <a class="dropdown-item" href="../../miscellaneous/weekly-planning/09-week-09.html" rel="" target="">
  <span class="dropdown-text">09 - Week 09</span></a>
   </li>  
     </ul>
@@ -481,13 +514,13 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-walkthrough">    
         <li>
-    <a class="dropdown-item" href="../../../walkthrough/walkthrough.html" rel="" target="">
+    <a class="dropdown-item" href="../../walkthrough/walkthrough.html" rel="" target="">
  <span class="dropdown-text">Hello, Quarto</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -514,7 +547,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../java-exercises/frontend/00-Introduction.html">Frontend</a></li><li class="breadcrumb-item"><a href="../../../java-exercises/frontend/engines/00-thymeleaf.html">Engines</a></li><li class="breadcrumb-item"><a href="../../../java-exercises/frontend/engines/00-thymeleaf.html">01 - Java template engine - Thymeleaf</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../devops-guides/version-control-software/azure-useful-tips.html">Version Control Software</a></li><li class="breadcrumb-item"><a href="../../devops-guides/version-control-software/azure-useful-tips.html">Azure DevOps - Useful tips</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -526,10 +559,22 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/mint-vm-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Machine Provisioning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../devops-guides/software-installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Software installation</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">APIs</span></a>
+ <span class="menu-text">Deployment Platforms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -537,8 +582,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/APIs/api-rest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">API REST</span></a>
+  <a href="../../devops-guides/deployment-platforms/00-aws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amazon Web Services</span></a>
   </div>
 </li>
       </ul>
@@ -546,7 +591,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Concepts</span></a>
+ <span class="menu-text">Development Platforms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -554,56 +599,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/object-creation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Object creation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/pojo-bean-entity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Differences between a POJO, a JavaBean and an Entity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/what-is-a-class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is a class?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/what-is-a-model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is a model?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/what-is-coupling-and-cohesion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is coupling and cohesion?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/what-is-ddd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is DDD?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/what-is-maven.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is Maven?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/what-is-tdd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is TDD?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Concepts/what-is-the-static-modifier.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is the static modifier?</span></a>
+  <a href="../../devops-guides/development-platforms/00-jhipster.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JHipster</span></a>
   </div>
 </li>
       </ul>
@@ -611,7 +608,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Databases</span></a>
+ <span class="menu-text">Documentation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -619,8 +616,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/databases/00-mongodb.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - MongoDB</span></a>
+  <a href="../../devops-guides/documentation/quarto-quick-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto - Quick guide</span></a>
   </div>
 </li>
       </ul>
@@ -628,7 +625,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Design Patterns</span></a>
+ <span class="menu-text">Self Hosted Project</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -636,8 +633,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Design-patterns/uml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">UML</span></a>
+  <a href="../../devops-guides/self-hosted-project/docker-software-deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker software deployment</span></a>
   </div>
 </li>
       </ul>
@@ -645,244 +642,57 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Frameworks</span></a>
+ <span class="menu-text">Version Control Software</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Quarkus</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/quarkus/00-what-is-quarkus.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - What is Quarkus?</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">Spring Boot</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/00-what-is-spring-boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - What is Spring Boot?</span></a>
+  <a href="../../devops-guides/version-control-software/azure-useful-tips.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Azure DevOps - Useful tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/01-create-spring-boot-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Creating a Spring Boot project</span></a>
+  <a href="../../devops-guides/version-control-software/git-useful-tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GIT useful tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/02-create-full-spring-boot-with-H2-and-thymeleaf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Creating a Spring Boot project with H2 and ThyMeLeaf</span></a>
+  <a href="../../devops-guides/version-control-software/github-credentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub - Configuring SSH credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/03-spring-security.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Spring Security</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/04-spring-boot-jpa-H2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Spring Boot with JPA and H2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/05-spring-boot-jpa-composition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 - Spring Boot and JPA composition</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/06-spring-boot-rest-api.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 - Spring Boot and Rest API</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/07-configure-spring-boot-test-profiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07 - Configure Spring Boot Test Profiles</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/08-spring-boot-controller.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08 - Configure Spring Boot Controllers</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/09-http-session.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09 - HTTP sessions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/10-spring-data-and-databases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10 - Data and Databases - Spring Data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/11-spring-boot-test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11 - Tests - Spring Boot and JPA</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frameworks/spring-boot/12-spring-boot-jpa-and-lombok.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">12 - Annotations - Spring Boot, JPA vs Lombok</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
- <span class="menu-text">Frontend</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frontend/00-Introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 - Frontend - Introduction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
- <span class="menu-text">Engines</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/frontend/engines/00-thymeleaf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">01 - Java template engine - Thymeleaf</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
- <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Labs/java-sb00-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SB00-6: Rest &amp; MongoDB</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Labs/java-se00-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE00-1: Maven Person</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Labs/java-se00-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE00-1: Maven Clinic</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Labs/java-se00-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE00-3: Maven Library model</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Labs/java-se01-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE01-1: Maven Person and Account</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Labs/java-se02-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE02-1: Movie/Review, model</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Labs/java-se03-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE03-1: Library/Book core model</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Labs/java-se03-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LAB#SE03-2: Library/Book, Expand Model</span></a>
+  <a href="../../devops-guides/version-control-software/gitlab-useful-tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitLab - Useful tips</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
- <span class="menu-text">Principles</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Virtualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Principles/00-encapsulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Encapsulation</span></a>
+  <a href="../../devops-guides/virtualization/harvester.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Harvester</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Principles/01-abstraction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Abstraction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Principles/02-inheritance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Inheritance</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../java-exercises/Principles/03-polymorphism.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Polymorphism</span></a>
+  <a href="../../devops-guides/virtualization/proxmox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Proxmox VE</span></a>
   </div>
 </li>
       </ul>
@@ -897,30 +707,31 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started:</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#azure-pull-requests" id="toc-azure-pull-requests" class="nav-link" data-scroll-target="#azure-pull-requests">Azure Pull Requests</a>
+  <ul class="collapse">
+  <li><a href="#open-a-pull-request" id="toc-open-a-pull-request" class="nav-link" data-scroll-target="#open-a-pull-request">Open a Pull Request</a></li>
+  <li><a href="#vote-a-pull-request" id="toc-vote-a-pull-request" class="nav-link" data-scroll-target="#vote-a-pull-request">Vote a Pull Request</a></li>
+  <li><a href="#complete-a-pull-request-merge-changes" id="toc-complete-a-pull-request-merge-changes" class="nav-link" data-scroll-target="#complete-a-pull-request-merge-changes">Complete a Pull Request (merge changes)</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/java-exercises/frontend/engines/00-thymeleaf.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/edit/main/docs/quarto-examples/devops-guides/version-control-software/azure-useful-tips.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/protossgp32/CIFO-Web-Applications/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">01 - Java template engine - Thymeleaf</h1>
+<h1 class="title">Azure DevOps - Useful tips</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Java</div>
-    <div class="quarto-category">web</div>
-    <div class="quarto-category">Thymeleaf</div>
-    <div class="quarto-category">HTML</div>
+    <div class="quarto-category">Git</div>
+    <div class="quarto-category">Azure</div>
+    <div class="quarto-category">CLI</div>
   </div>
   </div>
 
-<div>
-  <div class="description">
-    Render HTML pages with Java objects
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -935,7 +746,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 1, 2023</p>
+      <p class="date">September 1, 2023</p>
     </div>
   </div>
   
@@ -945,19 +756,47 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://github.com/thymeleaf/thymeleaf-org/raw/main/artwork/thymeleaf%202016/thymeleaf_logo_transparent.png" class="img-fluid figure-img" style="width:80.0%"></p>
-</figure>
-</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<p>Here you’ll find tips to manage your Azure DevOps repositories from the CLI.</p>
+<section id="azure-pull-requests" class="level2">
+<h2 class="anchored" data-anchor-id="azure-pull-requests">Azure Pull Requests</h2>
+<section id="open-a-pull-request" class="level3">
+<h3 class="anchored" data-anchor-id="open-a-pull-request">Open a Pull Request</h3>
+<p>Once all files are committed and commits are pushed, launch the following command:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Azure DevOps - Create PR</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">az</span> repos pr create <span class="at">-s</span> <span class="op">&lt;</span>source-branch<span class="op">&gt;</span> -t <span class="op">&lt;</span>target-branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The command will return an JSON payload response with all the information regarding the newly created Pull Request. There, you can check some useful information like the PR ID (you’ll need it later), description, status, etc…</p>
 </section>
-<section id="getting-started" class="level1">
-<h1>Getting started:</h1>
-<p>Follow <a href="https://albertprofe.github.io/wiki/springboot/boot-concepts-th.html">this article</a> to know the basics of configuring and using Thymeleaf inside a Spring Boot project</p>
+<section id="vote-a-pull-request" class="level3">
+<h3 class="anchored" data-anchor-id="vote-a-pull-request">Vote a Pull Request</h3>
+<p>If the policies applied to the PRs require them to be voted, you can also do it from the CLI:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Azure DevOps - PR voting</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">az</span> repos pr set-vote <span class="at">--id</span> <span class="op">&lt;</span>pr-id<span class="op">&gt;</span> --vote [approve, approve-with-suggestions, reject, reset, wait-for-author]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Choose the vote you see fit for the Pull Request current status.</p>
+</section>
+<section id="complete-a-pull-request-merge-changes" class="level3">
+<h3 class="anchored" data-anchor-id="complete-a-pull-request-merge-changes">Complete a Pull Request (merge changes)</h3>
+<p>Once reviewed the changes and accepted, you can complete the PR by updating its status with the following command:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Azure DevOps - Complete a PR</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">az</span> repos pr update <span class="at">--id</span> <span class="op">&lt;</span>pr-id<span class="op">&gt;</span> --status [abandoned, active, completed]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Choosing <code>completed</code> will automatically start the merging process to the target branch.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1311,13 +1150,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../java-exercises/frontend/00-Introduction.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00 - Frontend - Introduction</span>
+      <a href="../../devops-guides/self-hosted-project/docker-software-deployment.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Docker software deployment</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../java-exercises/Labs/java-sb00-6.html" class="pagination-link">
-        <span class="nav-page-text">LAB#SB00-6: Rest &amp; MongoDB</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../devops-guides/version-control-software/git-useful-tips.html" class="pagination-link">
+        <span class="nav-page-text">GIT useful tips</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1330,7 +1169,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../../../about.html">About</a>
+    <a class="nav-link" href="../../about.html">About</a>
   </li>  
 </ul>
     </div>
